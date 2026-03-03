@@ -335,9 +335,9 @@ export default function HomePage() {
             Slovakia has the highest Roma concentration per capita in Central
             Europe. We operate{" "}
             <span className="text-[var(--text-primary)] font-medium">
-              5 active locations
+              12 active locations
             </span>{" "}
-            — 2 established parishes, 2 being planted, and 1 mission center.
+            — 8 parishes supported, 3 churches planted, 1 mission center built and another in progress.
             Click any point to learn more.
           </p>
         </div>
