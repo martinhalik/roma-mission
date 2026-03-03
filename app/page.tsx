@@ -56,7 +56,7 @@ const mediaItems = [
   {
     tag: "DOCUMENTARY",
     title: "30-Minute Documentary",
-    desc: "The full story of the mission — from first contact to parish life.",
+    desc: "Official Czech Television production. The director of Christian Roma Mission's journey from IT career to Orthodox priesthood — and the Roma communities he and his family now serve in Slovakia. English captions available.",
   },
   {
     tag: "PODCAST",

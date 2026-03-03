@@ -127,19 +127,23 @@ export default function MediaPage() {
         <div className="flex flex-col gap-6 flex-1">
           <SectionLabel text="Documentary" />
           <h2 className="text-[28px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            The Work of the Church
+            From IT to Priesthood
           </h2>
           <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.7]">
-            A 30-minute documentary following mission teams as they plant
-            parishes, form leaders, and walk alongside Roma communities in their
-            journey toward stable, self-sustaining church life.
+            An official Czech Television documentary. The film follows the
+            director of Christian Roma Mission on his personal journey from a
+            career in IT to Orthodox priesthood in Roma communities across
+            Slovakia — alongside his wife and children. It offers an honest look
+            at daily parish life, family ministry on the mission field, and the
+            long-term sacrifice behind a calling to communities shaped by
+            poverty, exclusion, and deep spiritual need.
           </p>
           <div className="flex items-center gap-6 text-[12px] text-[var(--text-muted)]">
             <span>30 min</span>
             <span>·</span>
-            <span>2025</span>
+            <span>Czech Television</span>
             <span>·</span>
-            <span>English / Romani</span>
+            <span>English captions available</span>
           </div>
           <button
             onClick={() => setModalOpen(true)}
