@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import Link from "next/link";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
+import MissionMap from "@/components/MissionMap";
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -70,7 +71,6 @@ const mediaItems = [
   },
 ];
 
-const countries = ["ROMANIA", "HUNGARY", "SLOVAKIA", "BULGARIA", "SERBIA"];
 
 export default function HomePage() {
   return (
@@ -323,43 +323,61 @@ export default function HomePage() {
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
 
       {/* ── Where We Serve ── */}
-      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
-        <div className="flex flex-col gap-4 mb-10 md:mb-12">
-          <SectionLabel text="Our Locations" />
+      <section className="py-16 md:py-[100px] bg-[var(--bg-card)]">
+        <div className="flex flex-col gap-4 mb-10 md:mb-12 px-5 md:px-[120px]">
+          <SectionLabel text="Mission Field" />
           <h2 className="text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            Where We Serve
+            Where We Serve.
+            <br />
+            What&rsquo;s At Stake.
           </h2>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.6] max-w-[600px]">
-            Active mission parishes across Romania, Hungary, Slovakia, Bulgaria,
-            and Serbia.
+            Slovakia has the highest Roma concentration per capita in Central
+            Europe. We operate{" "}
+            <span className="text-[var(--text-primary)] font-medium">
+              5 active locations
+            </span>{" "}
+            — 2 established parishes, 2 being planted, and 1 mission center.
+            Click any point to learn more.
           </p>
         </div>
 
-        {/* Map with countries overlay at bottom */}
-        <div className="relative w-full h-[240px] md:h-[400px] bg-[var(--bg-elevated)] border border-[var(--border-default)] mb-8 overflow-hidden">
-          <span className="absolute top-5 left-5 text-[11px] font-semibold tracking-[2px] text-[var(--text-muted)]">
-            INTERACTIVE MAP
-          </span>
-          <div className="absolute bottom-0 left-0 right-0 px-5 py-4 flex items-center gap-6 flex-wrap">
-            {countries.map((c, i) => (
-              <span key={c} className="flex items-center gap-6">
-                <span className="text-[10px] font-medium tracking-[1.5px] text-[var(--text-secondary)]">
-                  {c}
-                </span>
-                {i < countries.length - 1 && (
-                  <span className="w-1 h-1 rounded-full bg-[var(--border-strong)] inline-block" />
-                )}
-              </span>
-            ))}
-          </div>
+        {/* Interactive map — full width */}
+        <div className="mb-8">
+          <MissionMap />
         </div>
 
-        <Link
-          href="/locations"
-          className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
-        >
-          VIEW LOCATIONS
-        </Link>
+        {/* Stats bar */}
+        <div className="px-5 md:px-[120px]">
+          <div className="grid grid-cols-3 border border-[var(--border-default)] mb-8">
+            {[
+              { value: "8", label: "Parishes supported" },
+              { value: "3", label: "Churches planted" },
+              { value: "2016", label: "Active in Slovakia" },
+            ].map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`flex flex-col gap-1 px-6 md:px-10 py-6 ${
+                  i < 2 ? "border-r border-[var(--border-default)]" : ""
+                }`}
+              >
+                <span className="text-[26px] md:text-[32px] font-bold text-[var(--gold)] leading-none">
+                  {stat.value}
+                </span>
+                <span className="text-[10px] font-medium tracking-[1px] text-[var(--text-muted)] uppercase">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <Link
+            href="/locations"
+            className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+          >
+            VIEW ALL LOCATIONS →
+          </Link>
+        </div>
       </section>
 
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />

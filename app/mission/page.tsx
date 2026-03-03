@@ -14,10 +14,10 @@ function SectionLabel({ text }: { text: string }) {
 }
 
 const stats = [
-  { value: "5", label: "Countries" },
-  { value: "12+", label: "Active Parishes" },
-  { value: "15yrs", label: "Of Presence" },
-  { value: "3K+", label: "Baptized" },
+  { value: "8", label: "Parishes supported" },
+  { value: "3", label: "Churches planted" },
+  { value: "1", label: "Mission Center Built" },
+  { value: "1", label: "Mission Center in Progress" },
 ];
 
 const beliefs = [

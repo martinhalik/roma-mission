@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import MissionMap from "@/components/MissionMap";
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -97,6 +98,24 @@ export default function LocationsPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Mission Map ── */}
+      <section className="bg-[var(--bg-card)]">
+        <div className="px-5 md:px-[120px] pt-16 md:pt-[80px] pb-8">
+          <SectionLabel text="Mission Field" />
+          <h2 className="text-[26px] md:text-[34px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05] mt-4 mb-3">
+            Slovakia — Where We Work
+          </h2>
+          <p className="text-[14px] text-[var(--text-secondary)] leading-[1.6] max-w-[540px]">
+            Hover countries to see Roma population. Click mission points for
+            details and to support specific parishes directly.
+          </p>
+        </div>
+        <MissionMap />
+        <div className="px-5 md:px-[120px] pb-16 md:pb-[80px]" />
+      </section>
+
+      <div className="h-px bg-[var(--border-default)]" />
 
       {/* ── Locations Grid ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
