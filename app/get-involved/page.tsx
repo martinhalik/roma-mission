@@ -1,6 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import DonationModal from "@/components/DonationModal";
+import ApplicationModal from "@/components/ApplicationModal";
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -26,6 +31,7 @@ const ways = [
     ],
     cta: "GIVE NOW",
     primary: true,
+    action: "donate" as const,
   },
   {
     icon: "✦",
@@ -39,6 +45,7 @@ const ways = [
     ],
     cta: "APPLY TO VOLUNTEER",
     primary: false,
+    action: "volunteer" as const,
   },
   {
     icon: "✦",
@@ -52,6 +59,7 @@ const ways = [
     ],
     cta: "JOIN A TRIP",
     primary: false,
+    action: "trip" as const,
   },
 ];
 
@@ -70,10 +78,29 @@ const faqs = [
   },
 ];
 
+type ModalState = "closed" | "donate" | "volunteer" | "trip";
+
 export default function GetInvolvedPage() {
+  const [modal, setModal] = useState<ModalState>("closed");
+
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
       <Navbar activePage="get-involved" />
+
+      <DonationModal
+        isOpen={modal === "donate"}
+        onClose={() => setModal("closed")}
+      />
+      <ApplicationModal
+        isOpen={modal === "volunteer"}
+        onClose={() => setModal("closed")}
+        type="volunteer"
+      />
+      <ApplicationModal
+        isOpen={modal === "trip"}
+        onClose={() => setModal("closed")}
+        type="trip"
+      />
 
       {/* ── Hero ── */}
       <section className="relative w-full h-[400px] md:h-[480px] overflow-hidden">
@@ -146,6 +173,7 @@ export default function GetInvolvedPage() {
                 ))}
               </ul>
               <button
+                onClick={() => setModal(w.action)}
                 className={`mt-4 py-4 text-[12px] font-bold tracking-[1px] transition-colors ${
                   w.primary
                     ? "bg-[var(--gold)] text-[#111111] hover:opacity-90"

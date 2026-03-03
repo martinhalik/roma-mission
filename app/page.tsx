@@ -18,23 +18,24 @@ function SectionLabel({ text }: { text: string }) {
 const pillars = [
   {
     num: "01",
-    title: "STABLE LITURGICAL\nRHYTHM",
-    desc: "Establishing regular worship and the rhythm of the Church year as the foundation for community life.",
+    title: "YOUTH AND CHILDREN\nFORMATION",
+    desc: "Teaching young people through catechism, literacy, and structured programs rooted in the Church.",
   },
   {
     num: "02",
-    title: "TRANSLATION OF THE\nDIVINE LITURGY",
-    desc: "Making the services accessible in the Romani language so worship is understood and deeply owned.",
+    title: "REMOVE SINS\nNOT CULTURE",
+    desc: "We learn their language, way of speaking, cooking and culture. They learn our faith.",
   },
   {
     num: "03",
-    title: "DISCIPLESHIP OF\nMEN AND FATHERS",
-    desc: "Forming male leadership within the community through accountability, catechism, and mentorship.",
+    title: "PRAYERS AND \nCHURCH INTEGRATION",
+    desc: "We live a Eucharistic life, invite to church, and connect with other believers.",
   },
+
   {
     num: "04",
-    title: "YOUTH AND CHILDREN\nFORMATION",
-    desc: "Teaching young people through catechism, literacy, and structured programs rooted in the Church.",
+    title: "DISCIPLESHIP OF\nMEN AND FATHERS",
+    desc: "Forming male leadership within the community through accountability and mentorship.",
   },
   {
     num: "05",
@@ -80,20 +81,20 @@ export default function HomePage() {
       <section className="relative w-full h-[480px] md:h-[720px] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/hero-home.jpg')" }}
+          style={{ backgroundImage: "url('/images/hero-home.png')" }}
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(0deg, #111111EE 0%, #11111188 70%, #11111144 100%)",
+              "linear-gradient(0deg, #111111EE 0%, #11111188 10%, #11111144 100%)",
           }}
         />
         <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
           <div className="flex flex-col gap-5 md:gap-8 max-w-[800px]">
             <SectionLabel text="Orthodox Roma Mission Europe" />
             <h1 className="text-[34px] md:text-[52px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-              When the Christ Is Present,
+              When Christ Is Present,
               <br />
               Everything Changes.
             </h1>
@@ -136,7 +137,7 @@ export default function HomePage() {
           </h2>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.7]">
             Roma communities are the youngest and fastest-growing population in
-            our region.
+            Europe — nearly 5 million people. Slovakia has the highest concentration in the world.
           </p>
         </div>
 
@@ -150,8 +151,8 @@ export default function HomePage() {
         {/* Statements */}
         <div className="flex flex-col gap-4 mb-6">
           {[
-            "In many areas, parish life is weak or absent.",
-            "A generation is growing up without spiritual structure.",
+            "In many areas, parish life is weak or absent. Children are graduating unable to read or write.",
+            "A generation is growing up without guidance.",
           ].map((s) => (
             <p
               key={s}
@@ -164,13 +165,13 @@ export default function HomePage() {
 
         <div className="p-8 md:p-10 bg-[var(--bg-card)] border border-[var(--border-default)]">
           <p className="text-[15px] md:text-[17px] text-[var(--text-muted)] leading-[1.7]">
-            If the Christ is absent,{" "}
+            If Christ is absent,{" "}
             <span className="text-[var(--text-secondary)]">
               instability grows.
             </span>
           </p>
           <p className="text-[15px] md:text-[17px] text-[var(--text-primary)] font-medium leading-[1.7] mt-2">
-            If the Christ is present,{" "}
+            If Christ is present,{" "}
             <span className="text-[var(--gold)]">families stabilize.</span>
           </p>
         </div>

@@ -1,6 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import VideoModal from "@/components/VideoModal";
+
+const DOCUMENTARY_VIDEO_ID = "K-IDNefOa98";
+const SPOTIFY_URL =
+  "https://open.spotify.com/show/7kLQFO0PBwfj1eWoMK2Ubb?si=54601aa410854140";
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -59,9 +67,16 @@ const news = [
 ];
 
 export default function MediaPage() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
       <Navbar activePage="media" />
+      <VideoModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        videoId={DOCUMENTARY_VIDEO_ID}
+      />
 
       {/* ── Hero ── */}
       <section className="relative w-full h-[400px] md:h-[480px] overflow-hidden">
@@ -94,17 +109,21 @@ export default function MediaPage() {
 
       {/* ── Documentary ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)] flex flex-col md:flex-row gap-10 md:gap-16 items-center">
-        <div className="w-full md:w-[600px] h-[220px] md:h-[400px] bg-[var(--bg-card)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden relative">
+        <button
+          onClick={() => setModalOpen(true)}
+          className="w-full md:w-[600px] h-[220px] md:h-[400px] bg-[var(--bg-card)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden relative group cursor-pointer"
+          aria-label="Watch documentary"
+        >
           <div
-            className="w-full h-full bg-cover bg-center"
+            className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
             style={{ backgroundImage: "url('/images/documentary-thumb.jpg')" }}
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-[var(--gold)] flex items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
               <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[18px] border-l-[#111111] ml-1" />
             </div>
           </div>
-        </div>
+        </button>
         <div className="flex flex-col gap-6 flex-1">
           <SectionLabel text="Documentary" />
           <h2 className="text-[28px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
@@ -122,7 +141,10 @@ export default function MediaPage() {
             <span>·</span>
             <span>English / Romani</span>
           </div>
-          <button className="self-start px-8 py-4 bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity">
+          <button
+            onClick={() => setModalOpen(true)}
+            className="self-start px-8 py-4 bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
+          >
             WATCH DOCUMENTARY
           </button>
         </div>
@@ -143,9 +165,14 @@ export default function MediaPage() {
               the ground.
             </p>
           </div>
-          <button className="border border-[var(--gold)] text-[var(--gold)] text-[12px] font-semibold tracking-[1px] px-7 py-[14px] hover:bg-[var(--gold)] hover:text-[#111111] transition-colors flex-shrink-0">
+          <a
+            href={SPOTIFY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[var(--gold)] text-[var(--gold)] text-[12px] font-semibold tracking-[1px] px-7 py-[14px] hover:bg-[var(--gold)] hover:text-[#111111] transition-colors flex-shrink-0"
+          >
             ALL EPISODES
-          </button>
+          </a>
         </div>
 
         <div className="flex flex-col md:flex-row gap-4 md:gap-6">
