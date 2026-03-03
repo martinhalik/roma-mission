@@ -85,7 +85,7 @@ export default function StoriesPage() {
               children see me pray. That changed everything.&rdquo;
             </blockquote>
             <p className="text-[13px] md:text-[14px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
-              — Lado, Romania
+              — Laco, Slovaki
             </p>
             <p className="text-[13px] md:text-[15px] text-[var(--text-secondary)] leading-[1.7]">
               Lado was one of the first men baptized when the mission arrived in

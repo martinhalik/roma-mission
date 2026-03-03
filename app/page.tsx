@@ -308,7 +308,7 @@ export default function HomePage() {
               see me pray. That changed everything.
             </blockquote>
             <p className="text-[13px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
-              — Lado, Romania
+              — Laco, Slovakia
             </p>
             <Link
               href="/stories"
