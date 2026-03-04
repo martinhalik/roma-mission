@@ -116,7 +116,7 @@ const mediaItems: {
     desc: "Official Czech Television production. The director's journey from IT career to Orthodox priesthood among Roma communities in Slovakia.",
     videoId: DOCUMENTARY_VIDEO_ID,
     thumb: ytThumb(DOCUMENTARY_VIDEO_ID),
-    badges: [{ label: "EN Subtitles", variant: "sub" }],
+    badges: [{ label: "Working on EN Subtitles", variant: "sub" }],
     meta: "30 min · Czech Television",
   },
   {
@@ -126,7 +126,7 @@ const mediaItems: {
     videoId: INTERVIEW_1_ID,
     thumb: ytThumb(INTERVIEW_1_ID),
     badges: [{ label: "Slovak Audio", variant: "audio" }],
-    meta: "48 min",
+    meta: "48 min · Orthodox Faculty Dean Podcast",
   },
   {
     tag: "INTERVIEW",
@@ -135,10 +135,9 @@ const mediaItems: {
     videoId: INTERVIEW_2_ID,
     thumb: ytThumb(INTERVIEW_2_ID),
     badges: [
-      { label: "Slovak Audio", variant: "audio" },
-      { label: "EN Subtitles", variant: "sub" },
+      { label: "Slovak Audio", variant: "audio" }
     ],
-    meta: "35 min",
+    meta: "35 min · Orthodox Faculty Dean Podcast",
   },
 ];
 
