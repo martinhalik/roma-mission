@@ -7,8 +7,12 @@ import CTASection from "@/components/CTASection";
 import VideoModal from "@/components/VideoModal";
 
 const DOCUMENTARY_VIDEO_ID = "K-IDNefOa98";
-const SPOTIFY_URL =
-  "https://open.spotify.com/show/7kLQFO0PBwfj1eWoMK2Ubb?si=54601aa410854140";
+const INTERVIEW_1_ID = "A3-IfJL_vt4";
+const INTERVIEW_2_ID = "7tdFd08wUis";
+
+function ytThumb(id: string) {
+  return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+}
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -21,27 +25,54 @@ function SectionLabel({ text }: { text: string }) {
   );
 }
 
-const episodes = [
+type BadgeVariant = "audio" | "sub";
+
+function LangBadge({ label, variant }: { label: string; variant: BadgeVariant }) {
+  return (
+    <span
+      className={`inline-flex items-center gap-1 text-[9px] font-semibold tracking-[0.5px] px-2 py-[3px] leading-none ${
+        variant === "audio"
+          ? "bg-[var(--gold)]/15 text-[var(--gold)] border border-[var(--gold)]/40"
+          : "text-[var(--text-muted)] border border-[var(--border-strong)]"
+      }`}
+    >
+      {label}
+    </span>
+  );
+}
+
+const interviews: {
+  id: string;
+  videoId: string;
+  thumb: string;
+  title: string;
+  guest: string;
+  duration: string;
+  desc: string;
+  badges: { label: string; variant: BadgeVariant }[];
+}[] = [
   {
-    num: "EP 01",
+    id: "int-1",
+    videoId: INTERVIEW_1_ID,
+    thumb: ytThumb(INTERVIEW_1_ID),
     title: "Why the Roma? Why Now?",
     guest: "Fr. Nikolaj Petrov",
-    duration: "42 min",
-    desc: "An introduction to the mission — its origins, its theology, and why the Roma are one of the most underserved communities in European Orthodoxy.",
+    duration: "48 min",
+    desc: "Boys from the slums — learning to bow their heads, lift their voices, and call on the living God. This conversation goes inside the daily rhythm of Roma mission: how they pray, how they worship, and what it looks like when the Gospel takes root where no one expected it.",
+    badges: [{ label: "Slovak Audio", variant: "audio" }],
   },
   {
-    num: "EP 02",
-    title: "What a Parish Does to a Community",
-    guest: "Deacon Andrej Kovač",
-    duration: "38 min",
-    desc: "A conversation about the concrete effects of stable parish life — from family stability to literacy and economic participation.",
-  },
-  {
-    num: "EP 03",
+    id: "int-2",
+    videoId: INTERVIEW_2_ID,
+    thumb: ytThumb(INTERVIEW_2_ID),
     title: "Long-Term Presence Over Programs",
     guest: "Miroslava Horváth",
-    duration: "51 min",
-    desc: "Why short-term mission models fail, and what it looks like to make a generational commitment to a community.",
+    duration: "35 min",
+    desc: "What does it actually cost to answer a call? This interview traces the first four years of the Klenovec mission — a family uprooting their life and moving to Slovakia, learning to belong to a community that had been forgotten, and discovering what it means to stay.",
+    badges: [
+      { label: "Slovak Audio", variant: "audio" },
+      { label: "EN Subtitles", variant: "sub" },
+    ],
   },
 ];
 
@@ -67,15 +98,15 @@ const news = [
 ];
 
 export default function MediaPage() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
       <Navbar activePage="media" />
       <VideoModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        videoId={DOCUMENTARY_VIDEO_ID}
+        isOpen={!!activeVideoId}
+        onClose={() => setActiveVideoId(null)}
+        videoId={activeVideoId ?? ""}
       />
 
       {/* ── Hero ── */}
@@ -110,7 +141,7 @@ export default function MediaPage() {
       {/* ── Documentary ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)] flex flex-col md:flex-row gap-10 md:gap-16 items-center">
         <button
-          onClick={() => setModalOpen(true)}
+          onClick={() => setActiveVideoId(DOCUMENTARY_VIDEO_ID)}
           className="w-full md:w-[600px] h-[220px] md:h-[400px] bg-[var(--bg-card)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden relative group cursor-pointer"
           aria-label="Watch documentary"
         >
@@ -138,15 +169,17 @@ export default function MediaPage() {
             long-term sacrifice behind a calling to communities shaped by
             poverty, exclusion, and deep spiritual need.
           </p>
-          <div className="flex items-center gap-6 text-[12px] text-[var(--text-muted)]">
+          <div className="flex items-center gap-3 flex-wrap text-[12px] text-[var(--text-muted)]">
             <span>30 min</span>
             <span>·</span>
             <span>Czech Television</span>
             <span>·</span>
-            <span>English captions available</span>
+            <span className="inline-flex items-center gap-1 text-[9px] font-semibold tracking-[0.5px] px-2 py-[3px] text-[var(--text-muted)] border border-[var(--border-strong)]">
+              EN Subtitles
+            </span>
           </div>
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={() => setActiveVideoId(DOCUMENTARY_VIDEO_ID)}
             className="self-start px-8 py-4 bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
           >
             WATCH DOCUMENTARY
@@ -156,53 +189,70 @@ export default function MediaPage() {
 
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
 
-      {/* ── Podcast ── */}
+      {/* ── Interviews ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-10 md:mb-12">
-          <div className="flex flex-col gap-4 max-w-[500px]">
-            <SectionLabel text="Podcast" />
-            <h2 className="text-[28px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[0.95]">
-              Mission Conversations
-            </h2>
-            <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6]">
-              Conversations with priests, volunteers, and community leaders on
-              the ground.
-            </p>
-          </div>
-          <a
-            href={SPOTIFY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-[var(--gold)] text-[var(--gold)] text-[12px] font-semibold tracking-[1px] px-7 py-[14px] hover:bg-[var(--gold)] hover:text-[#111111] transition-colors flex-shrink-0"
-          >
-            ALL EPISODES
-          </a>
+        <div className="flex flex-col gap-4 max-w-[500px] mb-10 md:mb-12">
+          <SectionLabel text="Interviews" />
+          <h2 className="text-[28px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[0.95]">
+            Mission Conversations
+          </h2>
+          <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6]">
+            In-depth conversations about the mission — recorded in Slovak with
+            English subtitles available on select episodes.
+          </p>
         </div>
 
         <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-          {episodes.map((ep) => (
-            <div
-              key={ep.num}
-              className="flex flex-col gap-4 p-6 md:p-7 bg-[var(--bg-primary)] border border-[var(--border-default)] flex-1"
+          {interviews.map((ep) => (
+            <button
+              key={ep.id}
+              onClick={() => setActiveVideoId(ep.videoId)}
+              className="flex flex-col gap-0 bg-[var(--bg-primary)] border border-[var(--border-default)] flex-1 text-left group hover:border-[var(--gold)]/50 transition-colors duration-200 overflow-hidden"
+              aria-label={`Watch: ${ep.title}`}
             >
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold tracking-[1px] text-[var(--gold)]">
-                  {ep.num}
-                </span>
-                <span className="text-[11px] text-[var(--text-muted)]">
-                  {ep.duration}
-                </span>
+              {/* Thumbnail */}
+              <div
+                className="w-full h-[160px] bg-cover bg-center relative flex items-center justify-center"
+                style={{ backgroundImage: `url('${ep.thumb}')` }}
+              >
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
+                <div className="relative w-12 h-12 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[14px] border-l-[#111111] ml-1" />
+                </div>
               </div>
-              <h3 className="text-[15px] md:text-[16px] font-bold text-[var(--text-primary)] leading-[1.3]">
-                {ep.title}
-              </h3>
-              <p className="text-[12px] md:text-[13px] text-[var(--text-secondary)] leading-[1.6]">
-                {ep.desc}
-              </p>
-              <p className="text-[11px] text-[var(--text-muted)] mt-auto pt-2 border-t border-[var(--border-default)]">
-                with {ep.guest}
-              </p>
-            </div>
+
+              {/* Info */}
+              <div className="flex flex-col gap-4 p-6 md:p-7 flex-1">
+                {/* Language badges */}
+                <div className="flex items-center gap-2 flex-wrap">
+                  {ep.badges.map((badge) => (
+                    <LangBadge
+                      key={badge.label}
+                      label={badge.label}
+                      variant={badge.variant}
+                    />
+                  ))}
+                </div>
+
+                <div>
+                  <h3 className="text-[15px] md:text-[16px] font-bold text-[var(--text-primary)] leading-[1.3] group-hover:text-[var(--gold)] transition-colors duration-200 mb-2">
+                    {ep.title}
+                  </h3>
+                  <p className="text-[12px] md:text-[13px] text-[var(--text-secondary)] leading-[1.6]">
+                    {ep.desc}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between mt-auto pt-3 border-t border-[var(--border-default)]">
+                  <p className="text-[11px] text-[var(--text-muted)]">
+                    with {ep.guest}
+                  </p>
+                  <span className="text-[11px] text-[var(--text-muted)]">
+                    {ep.duration}
+                  </span>
+                </div>
+              </div>
+            </button>
           ))}
         </div>
       </section>

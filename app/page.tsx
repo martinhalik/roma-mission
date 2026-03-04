@@ -1,9 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import VideoModal from "@/components/VideoModal";
 import Link from "next/link";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
 import MissionMap from "@/components/MissionMap";
+
+const LACO_VIDEO_ID = "PNhKEQtCrVo";
+const DOCUMENTARY_VIDEO_ID = "K-IDNefOa98";
+const INTERVIEW_1_ID = "A3-IfJL_vt4";
+const INTERVIEW_2_ID = "7tdFd08wUis";
+
+function ytThumb(id: string) {
+  return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+}
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -12,6 +25,40 @@ function SectionLabel({ text }: { text: string }) {
       <span className="text-[11px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
         {text}
       </span>
+    </div>
+  );
+}
+
+function LangBadge({ label, variant }: { label: string; variant: "audio" | "sub" }) {
+  return (
+    <span
+      className={`text-[9px] font-semibold tracking-[0.5px] px-2 py-[3px] leading-none ${
+        variant === "audio"
+          ? "bg-[var(--gold)]/15 text-[var(--gold)] border border-[var(--gold)]/40"
+          : "text-[var(--text-muted)] border border-[var(--border-strong)]"
+      }`}
+    >
+      {label}
+    </span>
+  );
+}
+
+function PlayButton({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+  const dims =
+    size === "lg" ? "w-16 h-16" : size === "sm" ? "w-10 h-10" : "w-12 h-12";
+  const arrow =
+    size === "lg"
+      ? "border-t-[10px] border-b-[10px] border-l-[18px]"
+      : size === "sm"
+      ? "border-t-[6px] border-b-[6px] border-l-[11px]"
+      : "border-t-[8px] border-b-[8px] border-l-[14px]";
+  return (
+    <div
+      className={`${dims} rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200 flex-shrink-0`}
+    >
+      <div
+        className={`w-0 h-0 border-t-transparent border-b-transparent border-l-[#111111] ml-1 ${arrow}`}
+      />
     </div>
   );
 }
@@ -32,7 +79,6 @@ const pillars = [
     title: "PRAYERS AND \nCHURCH INTEGRATION",
     desc: "We live a Eucharistic life, invite to church, and connect with other believers.",
   },
-
   {
     num: "04",
     title: "DISCIPLESHIP OF\nMEN AND FATHERS",
@@ -53,29 +99,61 @@ const resultCards: { Icon: LucideIcon; text: string }[] = [
   { Icon: House, text: "Families reconcile." },
 ];
 
-const mediaItems = [
+type Badge = { label: string; variant: "audio" | "sub" };
+
+const mediaItems: {
+  tag: string;
+  title: string;
+  desc: string;
+  videoId: string;
+  thumb: string;
+  badges: Badge[];
+  meta: string;
+}[] = [
   {
     tag: "DOCUMENTARY",
-    title: "30-Minute Documentary",
-    desc: "Official Czech Television production. The director of Christian Roma Mission's journey from IT career to Orthodox priesthood — and the Roma communities he and his family now serve in Slovakia. English captions available.",
+    title: "From IT to Priesthood",
+    desc: "Official Czech Television production. The director's journey from IT career to Orthodox priesthood among Roma communities in Slovakia.",
+    videoId: DOCUMENTARY_VIDEO_ID,
+    thumb: ytThumb(DOCUMENTARY_VIDEO_ID),
+    badges: [{ label: "EN Subtitles", variant: "sub" }],
+    meta: "30 min · Czech Television",
   },
   {
-    tag: "PODCAST",
-    title: "Mission Podcast",
-    desc: "Conversations with priests, volunteers, and community leaders on the ground.",
+    tag: "INTERVIEW",
+    title: "Why the Roma? Why Now?",
+    desc: "A Slovak-language interview on the origins of the mission and why Orthodox Church planting among Roma matters.",
+    videoId: INTERVIEW_1_ID,
+    thumb: ytThumb(INTERVIEW_1_ID),
+    badges: [{ label: "Slovak Audio", variant: "audio" }],
+    meta: "48 min",
   },
   {
-    tag: "NEWS",
-    title: "News Articles",
-    desc: "Press coverage and field reports from our mission parishes.",
+    tag: "INTERVIEW",
+    title: "Long-Term Presence Over Programs",
+    desc: "Why short-term mission models fail, and what a generational commitment to a community looks like.",
+    videoId: INTERVIEW_2_ID,
+    thumb: ytThumb(INTERVIEW_2_ID),
+    badges: [
+      { label: "Slovak Audio", variant: "audio" },
+      { label: "EN Subtitles", variant: "sub" },
+    ],
+    meta: "35 min",
   },
 ];
 
-
 export default function HomePage() {
+  const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
       <Navbar activePage="home" />
+
+      <VideoModal
+        isOpen={!!activeVideoId}
+        onClose={() => setActiveVideoId(null)}
+        videoId={activeVideoId ?? ""}
+      />
 
       {/* ── Hero ── */}
       <section className="relative w-full h-[480px] md:h-[720px] overflow-hidden">
@@ -166,9 +244,7 @@ export default function HomePage() {
         <div className="p-8 md:p-10 bg-[var(--bg-card)] border border-[var(--border-default)]">
           <p className="text-[15px] md:text-[17px] text-[var(--text-muted)] leading-[1.7]">
             If Christ is absent,{" "}
-            <span className="text-[var(--text-secondary)]">
-              instability grows.
-            </span>
+            <span className="text-[var(--text-secondary)]">instability grows.</span>
           </p>
           <p className="text-[15px] md:text-[17px] text-[var(--text-primary)] font-medium leading-[1.7] mt-2">
             If Christ is present,{" "}
@@ -288,15 +364,24 @@ export default function HomePage() {
 
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
 
-      {/* ── Testimonial ── */}
+      {/* ── Testimonial — Laco ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
-          <div className="w-full md:w-[380px] h-[240px] md:h-[480px] bg-[var(--bg-elevated)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden">
+          {/* Clickable photo with play overlay */}
+          <button
+            onClick={() => setActiveVideoId(LACO_VIDEO_ID)}
+            className="w-full md:w-[380px] h-[240px] md:h-[480px] bg-[var(--bg-elevated)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden relative group cursor-pointer"
+            aria-label="Watch Laco's story"
+          >
             <div
-              className="w-full h-full bg-cover bg-center"
+              className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
               style={{ backgroundImage: "url('/images/testimony-lado.jpg')" }}
             />
-          </div>
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+              <PlayButton size="lg" />
+            </div>
+          </button>
+
           <div className="flex flex-col gap-6">
             <SectionLabel text="Testimony" />
             <span className="text-[var(--gold)] text-[120px] leading-[0.4] font-bold">
@@ -310,12 +395,23 @@ export default function HomePage() {
             <p className="text-[13px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
               — Laco, Slovakia
             </p>
-            <Link
-              href="/stories"
-              className="text-[12px] font-semibold tracking-[1px] text-[var(--gold)] hover:opacity-80 transition-opacity"
-            >
-              Read more stories →
-            </Link>
+            <div className="flex items-center gap-5 flex-wrap">
+              <button
+                onClick={() => setActiveVideoId(LACO_VIDEO_ID)}
+                className="group flex items-center gap-2.5 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] hover:opacity-80 transition-opacity"
+              >
+                <div className="w-6 h-6 rounded-full border border-[var(--gold)] flex items-center justify-center flex-shrink-0">
+                  <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[7px] border-l-[var(--gold)] ml-0.5" />
+                </div>
+                WATCH HIS STORY
+              </button>
+              <Link
+                href="/stories"
+                className="text-[12px] font-semibold tracking-[1px] text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors"
+              >
+                Read more stories →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -335,9 +431,9 @@ export default function HomePage() {
             Slovakia has the highest Roma concentration per capita in Central
             Europe. We operate{" "}
             <span className="text-[var(--text-primary)] font-medium">
-              12 active locations
+              5 active locations
             </span>{" "}
-            — 8 parishes supported, 3 churches planted, 1 mission center built and another in progress.
+            — 2 established parishes, 2 being planted, and 1 mission center.
             Click any point to learn more.
           </p>
         </div>
@@ -382,42 +478,73 @@ export default function HomePage() {
 
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
 
-      {/* ── Media ── */}
+      {/* ── Featured Media ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-4 mb-10 md:mb-12">
-          <SectionLabel text="Media" />
+          <SectionLabel text="Media Library" />
           <h2 className="text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
             Documented. Recorded.
             <br />
             Transparent.
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-4 mb-8">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           {mediaItems.map((item) => (
-            <div
-              key={item.tag}
-              className="bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex flex-col"
+            <button
+              key={item.tag + item.title}
+              onClick={() => setActiveVideoId(item.videoId)}
+              className="bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex flex-col text-left group hover:border-[var(--gold)]/50 transition-colors duration-200"
+              aria-label={`Watch: ${item.title}`}
             >
-              <div className="w-full h-[140px] md:h-[220px] bg-[var(--bg-elevated)]" />
-              <div className="flex flex-col gap-3 p-5 md:p-6">
-                <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)]">
-                  {item.tag}
-                </span>
-                <h3 className="text-[16px] md:text-[18px] font-bold text-[var(--text-primary)] leading-[1.1]">
+              {/* Thumbnail with play button */}
+              <div
+                className="w-full h-[160px] md:h-[200px] bg-cover bg-center relative flex items-center justify-center"
+                style={{ backgroundImage: `url('${item.thumb}')` }}
+              >
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
+                <div className="relative">
+                  <PlayButton size="md" />
+                </div>
+              </div>
+
+              {/* Info */}
+              <div className="flex flex-col gap-3 p-5 md:p-6 flex-1">
+                {/* Tag + language badges */}
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)]">
+                    {item.tag}
+                  </span>
+                  {item.badges.map((badge) => (
+                    <LangBadge
+                      key={badge.label}
+                      label={badge.label}
+                      variant={badge.variant}
+                    />
+                  ))}
+                </div>
+
+                <h3 className="text-[15px] md:text-[17px] font-bold text-[var(--text-primary)] leading-[1.2] group-hover:text-[var(--gold)] transition-colors duration-200">
                   {item.title}
                 </h3>
                 <p className="text-[13px] text-[var(--text-secondary)] leading-[1.5]">
                   {item.desc}
                 </p>
+
+                {/* Meta footer */}
+                <p className="text-[11px] text-[var(--text-muted)] mt-auto pt-3 border-t border-[var(--border-default)]">
+                  {item.meta}
+                </p>
               </div>
-            </div>
+            </button>
           ))}
         </div>
+
         <Link
           href="/media"
           className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
         >
-          EXPLORE MEDIA
+          EXPLORE MEDIA LIBRARY
         </Link>
       </section>
 
