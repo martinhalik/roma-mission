@@ -13,7 +13,7 @@ interface NavbarProps {
 const navLinks: { label: string; href: string; page: Page }[] = [
   { label: "HOME", href: "/", page: "home" },
   { label: "MISSION", href: "/mission", page: "mission" },
-  { label: "LOCATIONS", href: "/locations", page: "locations" },
+  // { label: "LOCATIONS", href: "/locations", page: "locations" },
   { label: "MEDIA", href: "/media", page: "media" },
   { label: "GET INVOLVED", href: "/get-involved", page: "get-involved" },
 ];
