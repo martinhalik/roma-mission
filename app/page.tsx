@@ -191,9 +191,9 @@ export default function HomePage() {
 
         {/* Urgency photos — 3-col row */}
         <div className="grid grid-cols-3 gap-3 md:gap-4 mb-8 md:mb-12">
+          <div className="h-[120px] md:h-[280px] overflow-hidden"><img src="/images/dolinka-od-mili-nov-2020-poster-00001.jpg" alt="Future" className="w-full h-full object-cover" /></div>
           <div className="h-[120px] md:h-[280px] overflow-hidden"><img src="/images/future.jpeg" alt="Future" className="w-full h-full object-cover" /></div>
-          <div className="bg-[var(--bg-card)] h-[120px] md:h-[280px] border border-[var(--border-default)]" />
-          <div className="bg-[var(--bg-card)] h-[120px] md:h-[280px] border border-[var(--border-default)]" />
+          <div className="h-[120px] md:h-[280px] overflow-hidden"><img src="/images/future-church.jpg" alt="Future" className="w-full h-full object-cover" /></div>
         </div>
 
         {/* Statements */}
@@ -289,7 +289,7 @@ export default function HomePage() {
         </div>
 
         {/* Approach photo */}
-        <div className="w-full h-[180px] md:h-[360px] bg-[var(--bg-elevated)] border border-[var(--border-default)] mb-8 md:mb-12 overflow-hidden rounded-sm" />
+        <div className="w-full h-[180px] md:h-[360px] mb-8 md:mb-12 overflow-hidden rounded-sm"><img src="/images/our-approach.jpg" alt="Our approach" className="w-full h-full object-cover" /></div>
 
         {/* Pillars Row 1 — 2 columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
