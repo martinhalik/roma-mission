@@ -383,14 +383,14 @@ export default function HomePage() {
           </button>
 
           <div className="flex flex-col gap-6">
-            <SectionLabel text="Testimony" />
+            <div className="-mb-[10px]">
+              <SectionLabel text="Testimony" />
+            </div>
             <span className="text-[var(--gold)] text-[120px] leading-[0.4] font-bold">
               &ldquo;
             </span>
             <blockquote className="text-[18px] md:text-[22px] font-medium text-[var(--text-primary)] leading-[1.5] -mt-8">
-              Before the mission came, I had no reason to stop drinking. No one
-              expected anything from me. Now I serve in the altar. My children
-              see me pray. That changed everything.
+              That's why we were angry with him for not doing anything and he left us.
             </blockquote>
             <p className="text-[13px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
               — Laco, Slovakia
@@ -398,7 +398,7 @@ export default function HomePage() {
             <div className="flex items-center gap-5 flex-wrap">
               <button
                 onClick={() => setActiveVideoId(LACO_VIDEO_ID)}
-                className="group flex items-center gap-2.5 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] hover:opacity-80 transition-opacity"
+                className="group flex items-center gap-2.5 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] hover:opacity-80 transition-opacity cursor-pointer"
               >
                 <div className="w-6 h-6 rounded-full border border-[var(--gold)] flex items-center justify-center flex-shrink-0">
                   <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[7px] border-l-[var(--gold)] ml-0.5" />
@@ -431,10 +431,9 @@ export default function HomePage() {
             Slovakia has the highest Roma concentration per capita in Central
             Europe. We operate{" "}
             <span className="text-[var(--text-primary)] font-medium">
-              5 active locations
+              12 active locations
             </span>{" "}
-            — 2 established parishes, 2 being planted, and 1 mission center.
-            Click any point to learn more.
+            — 8 parishes supported, 3 planted, 1 mission center, and another being built.
           </p>
         </div>
 
@@ -494,7 +493,7 @@ export default function HomePage() {
             <button
               key={item.tag + item.title}
               onClick={() => setActiveVideoId(item.videoId)}
-              className="bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex flex-col text-left group hover:border-[var(--gold)]/50 transition-colors duration-200"
+              className="bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex flex-col text-left group hover:border-[var(--gold)]/50 transition-colors duration-200 cursor-pointer"
               aria-label={`Watch: ${item.title}`}
             >
               {/* Thumbnail with play button */}
