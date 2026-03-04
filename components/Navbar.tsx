@@ -22,9 +22,9 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <>
+    <div className="fixed top-0 left-0 right-0 z-50">
       {/* Desktop Nav */}
-      <nav className="hidden md:flex items-center justify-between px-20 py-5 bg-[#111111] w-full">
+      <nav className="hidden md:flex items-center justify-between px-20 py-5 bg-[var(--bg-primary)]/50 backdrop-blur-xl w-full border-b border-white/[0.06]">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <span className="font-georgia text-[28px] text-[var(--gold)]">☦</span>
@@ -60,7 +60,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       </nav>
 
       {/* Mobile Nav */}
-      <nav className="flex md:hidden items-center justify-between px-5 py-4 bg-[#111111] w-full">
+      <nav className="flex md:hidden items-center justify-between px-5 py-4 bg-[var(--bg-primary)]/50 backdrop-blur-xl w-full border-b border-white/[0.06]">
         <Link href="/" className="flex items-center gap-2">
           <span className="font-georgia text-[24px] text-[var(--gold)]">☦</span>
           <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--text-primary)] leading-[1.3] uppercase">
@@ -80,7 +80,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
       {/* Mobile Drawer */}
       {menuOpen && (
-        <div className="flex md:hidden flex-col bg-[#111111] border-t border-[var(--border-default)] z-50">
+        <div className="flex md:hidden flex-col bg-[var(--bg-primary)]/90 backdrop-blur-xl border-t border-[var(--border-default)]">
           {navLinks.map((link) => (
             <Link
               key={link.page}
@@ -105,8 +105,6 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
         </div>
       )}
 
-      {/* Nav Divider */}
-      <div className="h-px bg-[var(--border-default)] w-full" />
-    </>
+    </div>
   );
 }

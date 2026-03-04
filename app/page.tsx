@@ -155,18 +155,29 @@ export default function HomePage() {
       />
 
       {/* ── Hero ── */}
-      <section className="relative w-full h-[480px] md:h-[720px] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/hero-home.png')" }}
-        />
+      <section className="relative w-full h-svh md:h-[720px] overflow-hidden">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero-home.png"
+        >
+          <source src="/images/hero-home-optimized.mp4" type="video/mp4" />
+        </video>
+        {/* Top fade — navbar readability */}
+        <div className="absolute inset-x-0 top-0 h-[25%] bg-gradient-to-b from-[var(--bg-primary)]/70 to-transparent" />
+        {/* Bottom-left — text area readability */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(0deg, #111111EE 0%, #11111188 10%, #11111144 100%)",
+              "linear-gradient(to top right, var(--bg-primary) 0%, color-mix(in srgb, var(--bg-primary) 85%, transparent) 30%, color-mix(in srgb, var(--bg-primary) 40%, transparent) 60%, transparent 100%)",
           }}
         />
+        {/* Bottom edge — seamless blend into page content */}
+        <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-[var(--bg-primary)] to-transparent" />
         <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
           <div className="flex flex-col gap-5 md:gap-8 max-w-[800px]">
             <SectionLabel text="Orthodox Roma Mission Europe" />
