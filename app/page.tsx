@@ -220,7 +220,7 @@ export default function HomePage() {
 
         {/* Urgency photos — 3-col row */}
         <div className="grid grid-cols-3 gap-3 md:gap-4 mb-8 md:mb-12">
-          <div className="bg-[var(--bg-card)] h-[120px] md:h-[280px] border border-[var(--border-default)]" />
+          <div className="h-[120px] md:h-[280px] overflow-hidden"><img src="/images/future.jpeg" alt="Future" className="w-full h-full object-cover" /></div>
           <div className="bg-[var(--bg-card)] h-[120px] md:h-[280px] border border-[var(--border-default)]" />
           <div className="bg-[var(--bg-card)] h-[120px] md:h-[280px] border border-[var(--border-default)]" />
         </div>
@@ -266,9 +266,9 @@ export default function HomePage() {
 
         {/* Results photos — 3-col row */}
         <div className="grid grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
-          <div className="bg-[var(--bg-card)] h-[100px] md:h-[240px] border border-[var(--border-default)]" />
-          <div className="bg-[var(--bg-card)] h-[100px] md:h-[240px] border border-[var(--border-default)]" />
-          <div className="bg-[var(--bg-card)] h-[100px] md:h-[240px] border border-[var(--border-default)]" />
+          <div className="h-[100px] md:h-[240px] overflow-hidden"><img src="/images/roma-population-growing.jpeg" alt="Roma population growing" className="w-full h-full object-cover" /></div>
+          <div className="h-[100px] md:h-[240px] overflow-hidden"><img src="/images/transformed-via-education.jpeg" alt="Roma children transformed via education" className="w-full h-full object-cover" /></div>
+          <div className="h-[100px] md:h-[240px] overflow-hidden"><img src="/images/dignity-returns.jpg" alt="Dignity returns" className="w-full h-full object-cover" /></div>
         </div>
 
         {/* Results icon cards — Row 1 */}

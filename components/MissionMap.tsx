@@ -174,6 +174,7 @@ export default function MissionMap() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let mapInstance: any = null;
     let isCleaned = false;
+    let resizeObserver: ResizeObserver | null = null;
 
     import("mapbox-gl").then((mod) => {
       if (isCleaned || !containerRef.current) return;
@@ -191,6 +192,11 @@ export default function MissionMap() {
         attributionControl: false,
       });
 
+      resizeObserver = new ResizeObserver(() => {
+        mapInstance?.resize();
+      });
+      resizeObserver.observe(containerRef.current);
+
       mapInstance.addControl(
         new mapboxgl.AttributionControl({ compact: true }),
         "bottom-right"
@@ -198,6 +204,7 @@ export default function MissionMap() {
 
       mapInstance.on("load", () => {
         if (isCleaned) return;
+        mapInstance.resize();
 
         // ── Country choropleth ───────────────────────────────────────────────
         mapInstance.addSource("countries", {
@@ -324,6 +331,7 @@ export default function MissionMap() {
 
     return () => {
       isCleaned = true;
+      resizeObserver?.disconnect();
       mapInstance?.remove();
     };
   }, []);
@@ -333,7 +341,7 @@ export default function MissionMap() {
   return (
     <div className="relative w-full h-[420px] md:h-[540px] bg-[#0D0D0D] overflow-hidden">
       {/* Map container */}
-      <div ref={containerRef} className="absolute inset-0" />
+      <div ref={containerRef} className="w-full h-[420px] md:h-[540px]" />
 
       {/* Loading state */}
       {!ready && !noToken && (
