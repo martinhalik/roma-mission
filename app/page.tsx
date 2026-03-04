@@ -375,12 +375,12 @@ export default function HomePage() {
                 </div>
                 WATCH HIS STORY
               </button>
-              <Link
+              {/* <Link
                 href="/stories"
                 className="text-[12px] font-semibold tracking-[1px] text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors"
               >
                 Read more stories →
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
@@ -409,7 +409,11 @@ export default function HomePage() {
 
         {/* Interactive map — full width */}
         <div className="mb-8">
-          <MissionMap />
+          {/* TEMP: Replace MissionMap with placeholder while debugging hydration issues */}
+          <div className="relative w-full h-[420px] md:h-[540px] bg-[#0D0D0D] flex items-center justify-center">
+            <span className="text-[11px] font-semibold tracking-[2px] text-[#444]">MAP (placeholder)</span>
+          </div>
+          {/* <MissionMap /> */}
         </div>
 
         {/* Stats bar */}
@@ -436,12 +440,12 @@ export default function HomePage() {
             ))}
           </div>
 
-          <Link
+          {/* <Link
             href="/locations"
             className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
           >
             VIEW ALL LOCATIONS →
-          </Link>
+          </Link> */}
         </div>
       </section>
 

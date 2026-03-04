@@ -221,7 +221,7 @@ export default function MediaPage() {
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
 
       {/* ── Field Reports / News ── */}
-      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
+      {/* <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-10 md:mb-12">
           <div className="flex flex-col gap-4">
             <SectionLabel text="News" />
@@ -257,7 +257,7 @@ export default function MediaPage() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <CTASection />
       <Footer />

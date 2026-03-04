@@ -66,7 +66,7 @@ const ways = [
 const faqs = [
   {
     q: "Where does my donation go?",
-    a: "Donations directly fund priest salaries, parish facilities, children's programs, mission team travel, and materials translation. We publish an annual financial report.",
+    a: "Donations directly fund priest salaries, parish facilities, children's programs, mission team travel, and materials translation.",
   },
   {
     q: "What qualifications do I need to volunteer?",
@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     q: "Can I sponsor a specific parish?",
-    a: "Yes. We offer parish sponsorship packages that provide direct, named support to a single location. Contact us at contact@romamission.eu to learn more.",
+    a: "Yes. We offer parish sponsorship packages that provide direct, named support to a single location. Contact us at misia@krm.sk to learn more.",
   },
 ];
 
@@ -203,10 +203,10 @@ export default function GetInvolvedPage() {
             <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6]">
               Can&apos;t find your answer? Reach out directly at{" "}
               <a
-                href="mailto:contact@romamission.eu"
+                href="mailto:misia@krm.sk"
                 className="text-[var(--gold)] hover:opacity-80 transition-opacity"
               >
-                contact@romamission.eu
+                misia@krm.sk
               </a>
             </p>
           </div>

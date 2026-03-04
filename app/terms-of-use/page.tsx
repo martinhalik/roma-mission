@@ -96,10 +96,10 @@ export default function TermsOfUsePage() {
           <Section title="10. Contact">
             For questions about these Terms of Use, please contact us at{" "}
             <a
-              href="mailto:contact@romamission.eu"
+              href="mailto:misia@krm.sk"
               className="text-[var(--gold)] hover:opacity-80 transition-opacity"
             >
-              contact@romamission.eu
+              misia@krm.sk
             </a>
             .
           </Section>
