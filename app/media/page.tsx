@@ -5,14 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import VideoModal from "@/components/VideoModal";
-
-const DOCUMENTARY_VIDEO_ID = "K-IDNefOa98";
-const INTERVIEW_1_ID = "A3-IfJL_vt4";
-const INTERVIEW_2_ID = "7tdFd08wUis";
-
-function ytThumb(id: string) {
-  return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-}
+import { MEDIA_ITEMS, DOCUMENTARY_VIDEO_ID, ytThumb, BadgeVariant } from "@/lib/media-data";
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -24,8 +17,6 @@ function SectionLabel({ text }: { text: string }) {
     </div>
   );
 }
-
-type BadgeVariant = "audio" | "sub";
 
 function LangBadge({ label, variant }: { label: string; variant: BadgeVariant }) {
   return (
@@ -41,40 +32,15 @@ function LangBadge({ label, variant }: { label: string; variant: BadgeVariant })
   );
 }
 
-const interviews: {
-  id: string;
-  videoId: string;
-  thumb: string;
-  title: string;
-  guest: string;
-  duration: string;
-  desc: string;
-  badges: { label: string; variant: BadgeVariant }[];
-}[] = [
-  {
-    id: "int-1",
-    videoId: INTERVIEW_1_ID,
-    thumb: ytThumb(INTERVIEW_1_ID),
-    title: "Why the Roma? Why Now?",
-    guest: "Fr. Nikolaj Petrov",
-    duration: "48 min",
-    desc: "Boys from the slums — learning to bow their heads, lift their voices, and call on the living God. This conversation goes inside the daily rhythm of Roma mission: how they pray, how they worship, and what it looks like when the Gospel takes root where no one expected it.",
-    badges: [{ label: "Slovak Audio", variant: "audio" }],
-  },
-  {
-    id: "int-2",
-    videoId: INTERVIEW_2_ID,
-    thumb: ytThumb(INTERVIEW_2_ID),
-    title: "Long-Term Presence Over Programs",
-    guest: "Miroslava Horváth",
-    duration: "35 min",
-    desc: "What does it actually cost to answer a call? This interview traces the first four years of the Klenovec mission — a family uprooting their life and moving to Slovakia, learning to belong to a community that had been forgotten, and discovering what it means to stay.",
-    badges: [
-      { label: "Slovak Audio", variant: "audio" },
-      { label: "EN Subtitles", variant: "sub" },
-    ],
-  },
-];
+const documentary = MEDIA_ITEMS.find((item) => item.tag === "DOCUMENTARY")!;
+
+const interviews = MEDIA_ITEMS
+  .filter((item) => item.tag === "INTERVIEW")
+  .map((item) => ({
+    ...item,
+    thumb: ytThumb(item.videoId),
+    desc: item.fullDesc,
+  }));
 
 const news = [
   {
@@ -147,8 +113,9 @@ export default function MediaPage() {
         >
           <div
             className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-            style={{ backgroundImage: "url('/images/documentary-thumb.jpg')" }}
+            style={{ backgroundImage: `url('${ytThumb(DOCUMENTARY_VIDEO_ID)}')` }}
           />
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
               <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[18px] border-l-[#111111] ml-1" />
@@ -158,25 +125,19 @@ export default function MediaPage() {
         <div className="flex flex-col gap-6 flex-1">
           <SectionLabel text="Documentary" />
           <h2 className="text-[28px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            From IT to Priesthood
+            {documentary.title}
           </h2>
           <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.7]">
-            An official Czech Television documentary. The film follows the
-            director of Christian Roma Mission on his personal journey from a
-            career in IT to Orthodox priesthood in Roma communities across
-            Slovakia — alongside his wife and children. It offers an honest look
-            at daily parish life, family ministry on the mission field, and the
-            long-term sacrifice behind a calling to communities shaped by
-            poverty, exclusion, and deep spiritual need.
+            {documentary.fullDesc}
           </p>
           <div className="flex items-center gap-3 flex-wrap text-[12px] text-[var(--text-muted)]">
-            <span>30 min</span>
+            <span>{documentary.duration}</span>
             <span>·</span>
-            <span>Czech Television</span>
+            <span>{documentary.source}</span>
             <span>·</span>
-            <span className="inline-flex items-center gap-1 text-[9px] font-semibold tracking-[0.5px] px-2 py-[3px] text-[var(--text-muted)] border border-[var(--border-strong)]">
-              EN Subtitles
-            </span>
+            {documentary.badges.map((badge) => (
+              <LangBadge key={badge.label} label={badge.label} variant={badge.variant} />
+            ))}
           </div>
           <button
             onClick={() => setActiveVideoId(DOCUMENTARY_VIDEO_ID)}

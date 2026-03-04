@@ -9,14 +9,9 @@ import Link from "next/link";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
 import MissionMap from "@/components/MissionMap";
 
-const LACO_VIDEO_ID = "PNhKEQtCrVo";
-const DOCUMENTARY_VIDEO_ID = "K-IDNefOa98";
-const INTERVIEW_1_ID = "A3-IfJL_vt4";
-const INTERVIEW_2_ID = "7tdFd08wUis";
+import { MEDIA_ITEMS, ytThumb } from "@/lib/media-data";
 
-function ytThumb(id: string) {
-  return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-}
+const LACO_VIDEO_ID = "PNhKEQtCrVo";
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -99,47 +94,12 @@ const resultCards: { Icon: LucideIcon; text: string }[] = [
   { Icon: House, text: "Families reconcile." },
 ];
 
-type Badge = { label: string; variant: "audio" | "sub" };
-
-const mediaItems: {
-  tag: string;
-  title: string;
-  desc: string;
-  videoId: string;
-  thumb: string;
-  badges: Badge[];
-  meta: string;
-}[] = [
-  {
-    tag: "DOCUMENTARY",
-    title: "From IT to Priesthood",
-    desc: "Official Czech Television production. The director's journey from IT career to Orthodox priesthood among Roma communities in Slovakia.",
-    videoId: DOCUMENTARY_VIDEO_ID,
-    thumb: ytThumb(DOCUMENTARY_VIDEO_ID),
-    badges: [{ label: "Working on EN Subtitles", variant: "sub" }],
-    meta: "30 min · Czech Television",
-  },
-  {
-    tag: "INTERVIEW",
-    title: "Why the Roma? Why Now?",
-    desc: "A Slovak-language interview on the origins of the mission and why Orthodox Church planting among Roma matters.",
-    videoId: INTERVIEW_1_ID,
-    thumb: ytThumb(INTERVIEW_1_ID),
-    badges: [{ label: "Slovak Audio", variant: "audio" }],
-    meta: "48 min · Orthodox Faculty Dean Podcast",
-  },
-  {
-    tag: "INTERVIEW",
-    title: "Long-Term Presence Over Programs",
-    desc: "Why short-term mission models fail, and what a generational commitment to a community looks like.",
-    videoId: INTERVIEW_2_ID,
-    thumb: ytThumb(INTERVIEW_2_ID),
-    badges: [
-      { label: "Slovak Audio", variant: "audio" }
-    ],
-    meta: "35 min · Orthodox Faculty Dean Podcast",
-  },
-];
+const mediaItems = MEDIA_ITEMS.map((item) => ({
+  ...item,
+  thumb: ytThumb(item.videoId),
+  desc: item.shortDesc,
+  meta: `${item.duration} · ${item.source}`,
+}));
 
 export default function HomePage() {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);

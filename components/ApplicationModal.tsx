@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-// TODO: Replace with your Google Calendar appointment scheduling link
-const GOOGLE_CALENDAR_URL = "https://calendar.google.com/calendar/appointments/YOUR_BOOKING_LINK";
+const GOOGLE_CALENDAR_URL = "https://calendar.app.google/cTPpM8EAg5QiMKpz6";
 
 interface ApplicationModalProps {
   isOpen: boolean;
