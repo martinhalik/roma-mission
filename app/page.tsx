@@ -187,7 +187,7 @@ export default function HomePage() {
               Everything Changes.
             </h1>
             <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.6] max-w-[600px]">
-              Serving Roma communities in Europe through education, activities,
+              Serving Roma communities in Slovakia for 10 years through education, activities,
               parish life, discipleship, and church planting.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
