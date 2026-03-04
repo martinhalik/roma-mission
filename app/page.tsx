@@ -383,7 +383,7 @@ export default function HomePage() {
           </button>
 
           <div className="flex flex-col gap-6">
-            <div className="-mb-[10px]">
+            <div className="mb-[20px]">
               <SectionLabel text="Testimony" />
             </div>
             <span className="text-[var(--gold)] text-[120px] leading-[0.4] font-bold">
