@@ -190,6 +190,7 @@ export default function MissionMap() {
         maxZoom: 12,
         minZoom: 3,
         attributionControl: false,
+        cooperativeGestures: true,
       });
 
       resizeObserver = new ResizeObserver(() => {
