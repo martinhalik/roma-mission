@@ -6,17 +6,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import VideoModal from "@/components/VideoModal";
 import { MEDIA_ITEMS, DOCUMENTARY_VIDEO_ID, ytThumb, BadgeVariant } from "@/lib/media-data";
-
-function SectionLabel({ text }: { text: string }) {
-  return (
-    <div className="flex items-center gap-3">
-      <div className="w-[3px] h-[14px] bg-[var(--gold)]" />
-      <span className="text-[11px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
-        {text}
-      </span>
-    </div>
-  );
-}
+import SectionLabel from "@/components/SectionLabel";
 
 function LangBadge({ label, variant }: { label: string; variant: BadgeVariant }) {
   return (
