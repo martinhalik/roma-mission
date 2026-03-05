@@ -415,12 +415,12 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* <Link
+          <Link
             href="/locations"
             className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
           >
             VIEW ALL LOCATIONS →
-          </Link> */}
+          </Link>
         </div>
       </section>
 
