@@ -84,7 +84,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
       onClick={handleClose}
     >
       <div
-        className="relative w-full max-w-lg bg-[#1a1a1a] border border-[var(--border-default)] overflow-hidden"
+        className="relative w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -99,6 +99,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
           </div>
           <button
             onClick={handleClose}
+            aria-label="Close"
             className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors text-[20px] leading-none"
           >
             ✕

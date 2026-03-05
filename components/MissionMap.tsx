@@ -372,7 +372,7 @@ export default function MissionMap() {
           <p className="text-[9px] font-bold tracking-[1.5px] uppercase text-[#666]">
             {hovered.name}
           </p>
-          <p className="text-[22px] font-bold text-[#D4AF37] leading-tight mt-0.5">
+          <p className="text-[22px] font-bold text-[var(--gold)] leading-tight mt-0.5">
             {formatPop(hovered.pop)}
           </p>
           <p className="text-[9px] text-[#555]">Roma population</p>
@@ -399,12 +399,13 @@ export default function MissionMap() {
             </div>
             <button
               onClick={() => setSelectedPoint(null)}
+              aria-label="Close"
               className="text-[#555] hover:text-white text-xl leading-none flex-shrink-0 mt-0.5 transition-colors"
             >
               ×
             </button>
           </div>
-          <p className="text-[12px] text-[#A0A0A0] leading-[1.65] px-5 pb-4">
+          <p className="text-[12px] text-[var(--text-secondary)] leading-[1.65] px-5 pb-4">
             {selectedPoint.description}
           </p>
           <div className="px-5 pb-5">

@@ -54,7 +54,7 @@ export default function ApplicationModal({
       onClick={handleClose}
     >
       <div
-        className="relative w-full max-w-md bg-[#1a1a1a] border border-[var(--border-default)]"
+        className="relative w-full max-w-md bg-[var(--bg-card)] border border-[var(--border-default)]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -69,6 +69,7 @@ export default function ApplicationModal({
           </div>
           <button
             onClick={handleClose}
+            aria-label="Close"
             className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors text-[20px] leading-none"
           >
             ✕

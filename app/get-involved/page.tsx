@@ -98,13 +98,7 @@ export default function GetInvolvedPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/get-involved-hero.jpg')" }}
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(0deg, #111111EE 0%, #11111188 70%, #11111144 100%)",
-          }}
-        />
+        <div className="absolute inset-0 bg-[linear-gradient(0deg,color-mix(in_srgb,var(--bg-primary)_93%,transparent)_0%,color-mix(in_srgb,var(--bg-primary)_53%,transparent)_70%,color-mix(in_srgb,var(--bg-primary)_27%,transparent)_100%)]" />
         <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
           <div className="flex flex-col gap-5 md:gap-6 max-w-[700px]">
             <SectionLabel text="Get Involved" />
