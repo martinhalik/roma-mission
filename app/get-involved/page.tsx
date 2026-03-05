@@ -44,8 +44,8 @@ const ways = [
     desc: "Join a team for 1–2 weeks to work alongside local priests and community leaders. No experience necessary — just willingness.",
     points: [
       "Spring and Summer trips available",
-      "Teams of 6–12 people",
-      "Romania, Slovakia, Hungary locations",
+      "Teams of 4–8 people",
+      "Kids' programs, construction, and community outreach",
     ],
     cta: "JOIN A TRIP",
     primary: false,
@@ -56,7 +56,7 @@ const ways = [
 const faqs = [
   {
     q: "Where does my donation go?",
-    a: "Donations directly fund priest salaries, parish facilities, children's programs, mission team travel, and materials translation.",
+    a: "Donations directly fund primarily mission center facilities, children's programs and materials translation.",
   },
   {
     q: "What qualifications do I need to volunteer?",
