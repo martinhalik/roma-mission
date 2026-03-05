@@ -7,26 +7,11 @@ import CTASection from "@/components/CTASection";
 import VideoModal from "@/components/VideoModal";
 import Link from "next/link";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
-import MissionMap from "@/components/MissionMap";
-
 import { MEDIA_ITEMS, ytThumb } from "@/lib/media-data";
 import SectionLabel from "@/components/SectionLabel";
+import LangBadge from "@/components/LangBadge";
 
 const LACO_VIDEO_ID = "PNhKEQtCrVo";
-
-function LangBadge({ label, variant }: { label: string; variant: "audio" | "sub" }) {
-  return (
-    <span
-      className={`text-[9px] font-semibold tracking-[0.5px] px-2 py-[3px] leading-none ${
-        variant === "audio"
-          ? "bg-[var(--gold)]/15 text-[var(--gold)] border border-[var(--gold)]/40"
-          : "text-[var(--text-muted)] border border-[var(--border-strong)]"
-      }`}
-    >
-      {label}
-    </span>
-  );
-}
 
 function PlayButton({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   const dims =

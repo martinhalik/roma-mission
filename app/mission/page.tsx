@@ -722,7 +722,7 @@ export default function MissionPage() {
           </span>
           {[
             { label: "We're Here", cls: "bg-[#22c55e20] text-[#22c55e] border border-[#22c55e]/40" },
-            { label: "Orthodox Active", cls: "bg-[#22c55e20] text-[#22c55e] border border-[#22c55e]/40" },
+            { label: "Orthodox Active", cls: "bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold)]/40" },
             { label: "Next Steps", cls: "bg-[#f9731620] text-[#f97316] border border-[#f97316]/40" },
             { label: "Opportunity", cls: "text-[var(--text-muted)] border border-[var(--border-default)]" },
           ].map((b) => (
