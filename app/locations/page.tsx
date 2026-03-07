@@ -30,7 +30,7 @@ const MISSION_CENTERS = [
     established: null,
     capacity: 100,
     weeklyAttendance: 30,
-    image: "location-markovce.jpg",
+    image: "markovce-with-our-bishop.jpg",
     description:
       "Markovce began as a supported parish — one of many places where our team showed up, ran programs, and helped a local congregation reach its Roma neighbors. The roots have gone deep enough that we are now building this location into a full mission center. The transition is underway.",
     programs: ["Roma outreach", "Sunday ministry support", "Community formation"],
@@ -41,7 +41,7 @@ const MISSION_CENTERS = [
 
 const PLANTED_CHURCHES = [
   {
-    name: "Klenovec Roma Parish",
+    name: "Klenovec Roma Sub-parish",
     village: "Klenovec",
     yearStart: 2012,
     yearEnd: null,
@@ -147,7 +147,7 @@ export default function LocationsPage() {
       <section className="relative w-full h-[420px] md:h-[520px] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/mission-about-us.jpg')" }}
+          style={{ backgroundImage: "url('/images/location-markovce.jpg')" }}
         />
         <div
           className="absolute inset-0"
@@ -332,25 +332,7 @@ export default function LocationsPage() {
           </p>
         </div>
 
-        {/* Markovce callout */}
-        <div className="mt-10 border border-[var(--border-strong)] bg-[var(--bg-elevated)] p-6 md:p-8 max-w-[680px]">
-          <div className="flex items-start gap-4">
-            <Building2 size={20} className="text-[var(--gold)] mt-0.5 shrink-0" />
-            <div>
-              <p className="text-[11px] tracking-[1.5px] text-[var(--gold)] uppercase font-semibold mb-2">
-                From Parish Support to Mission Center
-              </p>
-              <h3 className="text-[16px] font-bold text-[var(--text-primary)] mb-2">
-                Markovce — now becoming our second mission center
-              </h3>
-              <p className="text-[13px] text-[var(--text-secondary)] leading-[1.7]">
-                Markovce started as a supported parish — one name on a list like the ones above.
-                Over time the roots went deep enough that it is now transitioning into a full
-                mission center. That is the trajectory we hope for everywhere we serve.
-              </p>
-            </div>
-          </div>
-        </div>
+        
       </section>
 
       <CTASection />
