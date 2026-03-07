@@ -56,22 +56,22 @@ const PLANTED_CHURCHES = [
     village: "Kačanov",
     yearStart: 2025,
     yearEnd: null,
-    congregation: null,
+    congregation: 20,
     note: "The community is strong and gathering regularly. We are now building a church — the people came first, the building follows.",
-    status: "BUILDING",
+    status: "FIRST CHAPEL",
     isActive: true,
-    image: "kačanov future.jpeg",
+    image: "kacanov-learning.jpeg",
   },
   {
     name: "Mútnik Roma Community",
     village: "Mútnik (Hnúšťa)",
     yearStart: 2017,
     yearEnd: 2026,
-    congregation: null,
+    congregation: 20,
     note: "Nine years of faithful presence. A community formed, believers were baptized, and local leaders emerged. This chapter concluded in 2026.",
     status: "CONCLUDED 2026",
     isActive: false,
-    image: "roma-population-growing.jpeg",
+    image: "mutnik-closed.jpeg",
   },
 ];
 
@@ -236,9 +236,9 @@ export default function LocationsPage() {
           mission centers. Some run for years and conclude. Both outcomes matter.
         </p>
 
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {PLANTED_CHURCHES.map((church) => (
-            <PlantedChurchRow key={church.name} church={church} />
+            <PlantedChurchCard key={church.name} church={church} />
           ))}
         </div>
       </section>
@@ -259,7 +259,7 @@ export default function LocationsPage() {
           Your support keeps them going.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {ACTIVE_PLANTS.map((plant) => (
             <ActivePlantCard key={plant.name} plant={plant} />
           ))}
@@ -444,57 +444,71 @@ function MissionCenterCard({
   );
 }
 
-function PlantedChurchRow({
+function PlantedChurchCard({
   church,
 }: {
   church: (typeof PLANTED_CHURCHES)[number];
 }) {
+  const statusStyle =
+    church.status === "MISSION CENTER"
+      ? "bg-[#D4AF3720] text-[var(--gold)] border border-[#D4AF3740]"
+      : church.status === "FIRST CHAPEL"
+        ? "bg-[#14532D88] text-[#4ADE80] border border-[#166534]"
+        : "bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border-strong)]";
+
   return (
     <div
-      className={`flex flex-col md:flex-row border overflow-hidden ${
-        church.isActive
-          ? "bg-[var(--bg-elevated)] border-[var(--border-default)]"
-          : "bg-[var(--bg-primary)] border-[var(--border-default)] opacity-75"
+      className={`flex flex-col bg-[var(--bg-elevated)] border border-[var(--border-default)] overflow-hidden ${
+        !church.isActive ? "opacity-70" : ""
       }`}
     >
+      {/* Image */}
       <div
-        className="w-full h-[180px] md:w-[200px] md:h-auto md:min-h-[160px] shrink-0 bg-[var(--bg-elevated)] bg-cover bg-center"
+        className="w-full h-[220px] bg-cover bg-center relative"
         style={{ backgroundImage: `url('/images/${church.image}')` }}
-      />
-      <div className="flex-1 flex flex-col md:flex-row md:items-start gap-3 md:gap-6 px-6 py-5 md:pl-0">
-        <div className="min-w-[180px]">
-          <h3
-            className={`text-[15px] font-bold ${church.isActive ? "text-[var(--text-primary)]" : "text-[var(--text-secondary)]"}`}
-          >
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-[#000000CC] via-[#00000044] to-[#00000022]" />
+        <div className="absolute top-4 left-4">
+          <span className={`text-[9px] font-semibold tracking-[1.5px] px-2.5 py-1 uppercase ${statusStyle}`}>
+            {church.status}
+          </span>
+        </div>
+        <div className="absolute bottom-4 left-4 right-4">
+          <h3 className="text-[19px] font-bold text-white tracking-[-0.5px] leading-[1.15]">
             {church.name}
           </h3>
-          <p className="text-[11px] text-[var(--text-muted)] flex items-center gap-1 mt-0.5">
+          <p className="text-[11px] text-white/55 flex items-center gap-1 mt-1">
             <MapPin size={9} /> {church.village}
           </p>
         </div>
-        <p className="text-[13px] text-[var(--text-secondary)] leading-[1.6] flex-1">
+      </div>
+
+      {/* Body */}
+      <div className="flex flex-col gap-4 p-5 flex-1">
+        <p className="text-[13px] text-[var(--text-secondary)] leading-[1.75] flex-1">
           {church.note}
         </p>
-      </div>
-      <div className="flex items-center gap-4 shrink-0 px-6 pb-5 md:px-0 md:py-5 md:pr-6">
-        <div className="flex flex-col items-end gap-0.5">
-          <span className="text-[15px] font-bold text-[var(--text-muted)]">
-            {church.yearStart}
-            {church.yearEnd ? ` – ${church.yearEnd}` : " —"}
-          </span>
-          <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-            {church.yearEnd ? "years active" : "ongoing"}
-          </span>
+
+        {/* Footer */}
+        <div className="flex items-end justify-between pt-4 border-t border-[var(--border-default)]">
+          <div>
+            <span className="text-[16px] font-bold text-[var(--text-muted)]">
+              {church.yearStart}
+              {church.yearEnd ? ` – ${church.yearEnd}` : " —"}
+            </span>
+            <span className="block text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase mt-0.5">
+              {church.yearEnd ? "years active" : "ongoing"}
+            </span>
+          </div>
+          {church.congregation && (
+            <div className="text-right">
+              <span className="text-[16px] font-bold text-[var(--gold)]">{church.congregation}</span>
+              <span className="block text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase mt-0.5">
+                weekly avg
+              </span>
+            </div>
+          )}
         </div>
-        <span
-          className={`text-[9px] font-semibold tracking-[1.5px] px-2 py-1 whitespace-nowrap ${
-            church.isActive
-              ? "bg-[#D4AF3715] text-[var(--gold)] border border-[#D4AF3730]"
-              : "bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border-default)]"
-          }`}
-        >
-          {church.status}
-        </span>
       </div>
     </div>
   );
