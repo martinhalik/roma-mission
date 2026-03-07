@@ -14,7 +14,7 @@ const MISSION_CENTERS = [
     subtitle: "Parish Planted · Mission Center Built",
     region: "Banská Bystrica Region, SK",
     established: 2012,
-    capacity: 80,
+    capacity: 35,
     weeklyAttendance: 55,
     image: "klenovec outside.jpeg",
     description:
@@ -28,8 +28,8 @@ const MISSION_CENTERS = [
     subtitle: "Parish in Transition → Mission Center",
     region: "Prešov Region, SK",
     established: null,
-    capacity: 60,
-    weeklyAttendance: null,
+    capacity: 100,
+    weeklyAttendance: 30,
     image: "location-markovce.jpg",
     description:
       "Markovce began as a supported parish — one of many places where our team showed up, ran programs, and helped a local congregation reach its Roma neighbors. The roots have gone deep enough that we are now building this location into a full mission center. The transition is underway.",
