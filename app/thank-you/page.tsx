@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Thank You",
+  title: "Thank God for Your Support",
   description:
     "Your gift supports Orthodox missionaries living and working among the Roma. Thank you for investing in this work.",
   openGraph: {
-    title: "Thank You — Roma Mission",
+    title: "Thank God for Your Support — Roma Mission",
     description:
       "Your gift supports Orthodox missionaries living and working among the Roma. Thank you for investing in this work.",
     url: "https://romamission.eu/thank-you",
@@ -82,22 +82,40 @@ export default function ThankYouPage() {
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col gap-3">
               <ShareButton
                 title={SHARE_TITLE}
                 text={SHARE_TEXT}
                 url={SHARE_URL}
                 label="SHARE THIS MISSION"
-                className="flex-1 py-4 bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity text-center"
+                className="w-full py-4 px-6 justify-center bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
               />
-              <a
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(SHARE_TEXT + " " + SHARE_URL)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-4 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-bold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors text-center"
-              >
-                POST ON X
-              </a>
+              <div className="flex gap-3">
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(SHARE_TEXT + " " + SHARE_URL)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-4 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-bold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors text-center"
+                >
+                  POST ON X
+                </a>
+                <a
+                  href={`https://wa.me/?text=${encodeURIComponent(SHARE_TEXT + " " + SHARE_URL)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-4 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-bold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors text-center"
+                >
+                  WHATSAPP
+                </a>
+                <a
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(SHARE_URL)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-4 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-bold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors text-center"
+                >
+                  FACEBOOK
+                </a>
+              </div>
             </div>
           </div>
 
