@@ -39,7 +39,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
       "Official Czech Television production. The director's journey from IT career to Orthodox priesthood among Roma communities in Slovakia.",
     fullDesc:
       "An official Czech Television documentary. The film follows the director of Christian Roma Mission on his personal journey from a career in IT to Orthodox priesthood in Roma communities across Slovakia — alongside his wife and children. It offers an honest look at daily parish life, family ministry on the mission field, and the long-term sacrifice behind a calling to communities shaped by poverty, exclusion, and deep spiritual need.",
-    badges: [{ label: "Working on EN Subtitles", variant: "sub" }],
+    badges: [{ label: "EN Subtitles", variant: "sub" }],
     duration: "30 min",
     source: "Czech Television",
   },
