@@ -8,7 +8,7 @@ interface ShareModalProps {
   onClose: () => void;
 }
 
-const SHARE_URL = "https://romamission.org";
+const SHARE_URL = "https://romamission.eu";
 const SHARE_TEXT = "Orthodox Roma Mission — serving Roma communities in Slovakia through education, church planting, and discipleship.";
 
 function IconX() {

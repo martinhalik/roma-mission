@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Stories — Roma Mission",
     description:
       "Real testimonies from Roma communities where the Orthodox Church has taken root. Lives changed through baptism, discipleship, and the presence of a local parish.",
-    url: "https://romamission.org/stories",
+    url: "https://romamission.eu/stories",
     images: [{ url: "/images/testimony-lado.jpg", width: 1200, height: 630, alt: "Transformed lives — Roma Mission" }],
   },
   twitter: {
@@ -26,7 +26,7 @@ import CTASection from "@/components/CTASection";
 import Link from "next/link";
 import ShareButton from "@/components/ShareButton";
 
-const SHARE_URL = "https://romamission.com/stories";
+const SHARE_URL = "https://romamission.eu/stories";
 const SHARE_TITLE = "Lives Transformed — Roma Mission";
 const SHARE_TEXT =
   "These are real stories from Roma communities where the Orthodox Church has taken root. Worth reading.";

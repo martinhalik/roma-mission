@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Thank You — Roma Mission",
     description:
       "Your gift supports Orthodox missionaries living and working among the Roma. Thank you for investing in this work.",
-    url: "https://romamission.org/thank-you",
+    url: "https://romamission.eu/thank-you",
     images: [{ url: "/images/mission-about-us.jpg", width: 1200, height: 630, alt: "Christian Roma Mission" }],
   },
 };
@@ -18,7 +18,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ShareButton from "@/components/ShareButton";
 
-const SHARE_URL = "https://romamission.com";
+const SHARE_URL = "https://romamission.eu";
 const SHARE_TITLE = "Roma Mission";
 const SHARE_TEXT =
   "I just gave to Roma Mission — Orthodox missionaries bringing the Church to Europe's most overlooked communities. Five million Roma, mostly unreached. Worth learning about:";

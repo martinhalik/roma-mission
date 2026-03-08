@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "The Mission — Roma Mission",
     description:
       "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
-    url: "https://romamission.org/mission",
+    url: "https://romamission.eu/mission",
     images: [{ url: "/images/our-approach.jpg", width: 1200, height: 630, alt: "Roma Mission — Europe's Most Neglected People" }],
   },
   twitter: {
@@ -26,7 +26,7 @@ import CTASection from "@/components/CTASection";
 import SectionLabel from "@/components/SectionLabel";
 import ShareButton from "@/components/ShareButton";
 
-const SHARE_URL = "https://romamission.com/mission";
+const SHARE_URL = "https://romamission.eu/mission";
 const SHARE_TITLE = "Roma Mission — Europe's Most Neglected People";
 const SHARE_TEXT =
   "Five million Roma in Europe. Most unreached. One Orthodox mission committed to staying until there's a parish. Worth knowing about:";

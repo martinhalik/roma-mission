@@ -54,7 +54,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           <ShareButton
             title="Christian Roma Mission"
             text="Support the Christian Roma Mission — bringing hope to Roma communities across Europe."
-            url="https://romamission.org"
+            url="https://romamission.eu"
             label="SHARE"
             className="px-6 py-3 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-bold tracking-[1px] hover:opacity-80 transition-opacity"
           />

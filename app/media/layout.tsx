@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Media — Roma Mission",
     description:
       "Watch documentaries and interviews about Orthodox mission among the Roma — bringing the Gospel to Europe's largest unreached minority.",
-    url: "https://romamission.org/media",
+    url: "https://romamission.eu/media",
     images: [{ url: "/images/dolinka-od-mili-nov-2020-poster-00001.jpg", width: 1200, height: 630, alt: "Roma Mission Documentary" }],
   },
   twitter: {

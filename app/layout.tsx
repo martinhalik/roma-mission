@@ -10,7 +10,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_URL ?? "https://romamission.org"
+    process.env.NEXT_PUBLIC_URL ?? "https://romamission.eu"
   ),
   title: {
     default: "Christian Roma Mission",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Christian Roma Mission",
     description:
       "Five million Roma across Europe — most unreached. Orthodox missionaries planting parishes and discipling communities in Slovakia and beyond.",
-    url: process.env.NEXT_PUBLIC_URL ?? "https://romamission.org",
+    url: process.env.NEXT_PUBLIC_URL ?? "https://romamission.eu",
     siteName: "Christian Roma Mission",
     type: "website",
     images: [
