@@ -12,13 +12,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_URL ?? "https://romamission.org"
   ),
-  title: "Christian Roma Mission",
+  title: {
+    default: "Christian Roma Mission",
+    template: "%s — Roma Mission",
+  },
   description:
-    "Planting Orthodox parishes among the Roma people of Central and Eastern Europe.",
+    "Five million Roma across Europe — most unreached. Orthodox missionaries planting parishes and discipling communities in Slovakia and beyond.",
   openGraph: {
     title: "Christian Roma Mission",
     description:
-      "Planting Orthodox parishes among the Roma people of Central and Eastern Europe.",
+      "Five million Roma across Europe — most unreached. Orthodox missionaries planting parishes and discipling communities in Slovakia and beyond.",
     url: process.env.NEXT_PUBLIC_URL ?? "https://romamission.org",
     siteName: "Christian Roma Mission",
     type: "website",
@@ -35,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Christian Roma Mission",
     description:
-      "Planting Orthodox parishes among the Roma people of Central and Eastern Europe.",
+      "Five million Roma across Europe — most unreached. Orthodox missionaries planting parishes and discipling communities in Slovakia and beyond.",
     images: ["/images/mission-about-us.jpg"],
   },
 };

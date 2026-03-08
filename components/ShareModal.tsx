@@ -35,30 +35,38 @@ function IconWhatsApp() {
   );
 }
 
+function withUtm(url: string, source: string) {
+  const u = new URL(url);
+  u.searchParams.set("utm_source", source);
+  u.searchParams.set("utm_medium", "socialshare");
+  u.searchParams.set("utm_campaign", "share_button");
+  return u.toString();
+}
+
 const socials = [
   {
     label: "X / Twitter",
     Icon: IconX,
     href: (url: string) =>
-      `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(SHARE_TEXT)}`,
+      `https://twitter.com/intent/tweet?url=${encodeURIComponent(withUtm(url, "twitter"))}&text=${encodeURIComponent(SHARE_TEXT)}`,
   },
   {
     label: "Facebook",
     Icon: IconFacebook,
     href: (url: string) =>
-      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(SHARE_TEXT)}`,
+      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(withUtm(url, "facebook"))}`,
   },
   {
     label: "WhatsApp",
     Icon: IconWhatsApp,
     href: (url: string) =>
-      `https://wa.me/?text=${encodeURIComponent(SHARE_TEXT + " " + url)}`,
+      `https://wa.me/?text=${encodeURIComponent(SHARE_TEXT + " " + withUtm(url, "whatsapp"))}`,
   },
   {
     label: "Email",
     Icon: Mail,
     href: (url: string) =>
-      `mailto:?subject=${encodeURIComponent("Orthodox Roma Mission")}&body=${encodeURIComponent(SHARE_TEXT + "\n\n" + url)}`,
+      `mailto:?subject=${encodeURIComponent("Orthodox Roma Mission")}&body=${encodeURIComponent(SHARE_TEXT + "\n\n" + withUtm(url, "email"))}`,
   },
 ];
 

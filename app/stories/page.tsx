@@ -1,3 +1,25 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Stories",
+  description:
+    "Real testimonies from Roma communities where the Orthodox Church has taken root. Lives changed through baptism, discipleship, and the presence of a local parish.",
+  openGraph: {
+    title: "Stories — Roma Mission",
+    description:
+      "Real testimonies from Roma communities where the Orthodox Church has taken root. Lives changed through baptism, discipleship, and the presence of a local parish.",
+    url: "https://romamission.org/stories",
+    images: [{ url: "/images/testimony-lado.jpg", width: 1200, height: 630, alt: "Transformed lives — Roma Mission" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Stories — Roma Mission",
+    description:
+      "Real testimonies from Roma communities where the Orthodox Church has taken root. Lives changed through baptism, discipleship, and the presence of a local parish.",
+    images: ["/images/testimony-lado.jpg"],
+  },
+};
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
