@@ -2,6 +2,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import Link from "next/link";
+import ShareButton from "@/components/ShareButton";
+
+const SHARE_URL = "https://romamission.com/stories";
+const SHARE_TITLE = "Lives Transformed — Roma Mission";
+const SHARE_TEXT =
+  "These are real stories from Roma communities where the Orthodox Church has taken root. Worth reading.";
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -132,13 +138,20 @@ export default function StoriesPage() {
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/get-involved"
-            className="border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-semibold tracking-[1px] px-8 py-4 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+            className="px-8 py-4 bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
           >
             SUPPORT THIS MISSION
           </Link>
+          <ShareButton
+            title={SHARE_TITLE}
+            text={SHARE_TEXT}
+            url={SHARE_URL}
+            label="SHARE THESE STORIES"
+            className="px-8 py-4 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-bold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+          />
         </div>
       </section>
 

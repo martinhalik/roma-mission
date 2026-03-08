@@ -11,7 +11,8 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
-const PRESET_AMOUNTS = [30, 100, 250, 500];
+const MONTHLY_AMOUNTS = [10, 25, 50, 100];
+const ONETIME_AMOUNTS = [30, 100, 250, 500];
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -111,7 +112,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             {/* Frequency toggle */}
             <div className="flex bg-[var(--bg-primary)] border border-[var(--border-default)] p-1">
               <button
-                onClick={() => setIsMonthly(true)}
+                onClick={() => { setIsMonthly(true); setSelectedAmount(MONTHLY_AMOUNTS[1]); setIsCustom(false); setCustomAmount(""); }}
                 className={`flex-1 py-2.5 text-[12px] font-semibold tracking-[0.5px] transition-colors ${
                   isMonthly
                     ? "bg-[var(--gold)] text-[#111111]"
@@ -121,7 +122,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                 MONTHLY
               </button>
               <button
-                onClick={() => setIsMonthly(false)}
+                onClick={() => { setIsMonthly(false); setSelectedAmount(ONETIME_AMOUNTS[1]); setIsCustom(false); setCustomAmount(""); }}
                 className={`flex-1 py-2.5 text-[12px] font-semibold tracking-[0.5px] transition-colors ${
                   !isMonthly
                     ? "bg-[var(--gold)] text-[#111111]"
@@ -134,7 +135,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
 
             {/* Preset amounts */}
             <div className="grid grid-cols-4 gap-2">
-              {PRESET_AMOUNTS.map((amt) => (
+              {(isMonthly ? MONTHLY_AMOUNTS : ONETIME_AMOUNTS).map((amt) => (
                 <button
                   key={amt}
                   onClick={() => {
@@ -179,12 +180,12 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             {/* Impact line */}
             {isMonthly && (
               <p className="text-[12px] text-[var(--text-muted)] leading-[1.5]">
-                {finalAmount >= 500
-                  ? "Helps support a local deacon full-time."
-                  : finalAmount >= 100
+                {finalAmount >= 100
                   ? "Covers weekly parish materials and programs."
-                  : finalAmount >= 30
+                  : finalAmount >= 50
                   ? "Funds one child's catechism for a full year."
+                  : finalAmount >= 25
+                  ? "Provides teaching materials for a month."
                   : "Every dollar goes directly to the field."}
               </p>
             )}

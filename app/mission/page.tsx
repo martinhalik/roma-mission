@@ -2,6 +2,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import SectionLabel from "@/components/SectionLabel";
+import ShareButton from "@/components/ShareButton";
+
+const SHARE_URL = "https://romamission.com/mission";
+const SHARE_TITLE = "Roma Mission — Europe's Most Neglected People";
+const SHARE_TEXT =
+  "Five million Roma in Europe. Most unreached. One Orthodox mission committed to staying until there's a parish. Worth knowing about:";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -780,6 +786,20 @@ export default function MissionPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* ── Share nudge ── */}
+      <section className="px-5 md:px-[120px] py-12 md:py-16 bg-[var(--bg-primary)] flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-[var(--border-default)]">
+        <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6] max-w-[520px]">
+          If this mission matters to you, share it. One conversation can bring a new supporter, volunteer, or partner.
+        </p>
+        <ShareButton
+          title={SHARE_TITLE}
+          text={SHARE_TEXT}
+          url={SHARE_URL}
+          label="SHARE THE MISSION"
+          className="flex-shrink-0 px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+        />
       </section>
 
       <CTASection />

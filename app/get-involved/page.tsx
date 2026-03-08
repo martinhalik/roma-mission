@@ -15,9 +15,9 @@ const ways = [
     subtitle: "Give Monthly or One-Time",
     desc: "Your giving directly funds priest salaries, parish buildings, children's programs, and mission team travel. Every amount makes a difference.",
     points: [
-      "$30/mo — Funds one child's catechism for a year",
+      "$25/mo — Provides teaching materials for a month",
+      "$50/mo — Funds one child's catechism for a year",
       "$100/mo — Covers weekly parish materials",
-      "$500/mo — Helps support a local deacon",
     ],
     cta: "GIVE NOW",
     primary: true,
