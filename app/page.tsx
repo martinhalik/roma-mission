@@ -69,7 +69,7 @@ const resultCards: { Icon: LucideIcon; text: string }[] = [
   { Icon: House, text: "Families reconcile." },
 ];
 
-const mediaItems = MEDIA_ITEMS.map((item) => ({
+const mediaItems = MEDIA_ITEMS.filter((item) => item.tag !== "TESTIMONY").slice(0, 3).map((item) => ({
   ...item,
   thumb: ytThumb(item.videoId),
   desc: item.shortDesc,

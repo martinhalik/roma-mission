@@ -48,7 +48,7 @@ const ways = [
       "Invite your church to adopt this mission in prayer",
       "Help us reach new supporters and volunteers",
     ],
-    cta: "WATCH & SHARE",
+    cta: "SHARE",
     primary: false,
     action: "share" as const,
   },
@@ -80,6 +80,10 @@ const faqs = [
   {
     q: "Can I sponsor a specific parish?",
     a: "Yes. We offer parish sponsorship packages that provide direct, named support to a single location. Contact us at misia@krm.sk to learn more.",
+  },
+  {
+    q: "How can I reach someone directly?",
+    a: "You can contact Fr. Martin Halík, Director of Christian Roma Mission, at martin.halik@krm.sk or by phone at +421 951 230 015 (WhatsApp) or +1 (773) 796-8109. More at www.romamission.eu.",
   },
 ];
 
@@ -207,12 +211,12 @@ export default function GetInvolvedPage() {
               Questions
             </h2>
             <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6]">
-              Can&apos;t find your answer? Reach out directly at{" "}
+              Can&apos;t find your answer? Contact Fr. Martin Halík directly at{" "}
               <a
-                href="mailto:misia@krm.sk"
+                href="mailto:martin.halik@krm.sk"
                 className="text-[var(--gold)] hover:opacity-80 transition-opacity"
               >
-                misia@krm.sk
+                martin.halik@krm.sk
               </a>
             </p>
           </div>

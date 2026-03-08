@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     template: "%s — Roma Mission",
   },
   description:
-    "Five million Roma across Europe — most unreached. Orthodox missionaries planting parishes and discipling communities in Slovakia and beyond.",
+    "10 million Roma across Europe — without scripture in their language or an Orthodox parish in their community. We live among them, plant churches that last, and disciple the next generation.",
   openGraph: {
     title: "Christian Roma Mission",
     description:
-      "Five million Roma across Europe — most unreached. Orthodox missionaries planting parishes and discipling communities in Slovakia and beyond.",
+      "10 million Roma across Europe — without scripture in their language or an Orthodox parish in their community. We live among them, plant churches that last, and disciple the next generation.",
     url: process.env.NEXT_PUBLIC_URL ?? "https://romamission.eu",
     siteName: "Christian Roma Mission",
     type: "website",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Christian Roma Mission",
     description:
-      "Five million Roma across Europe — most unreached. Orthodox missionaries planting parishes and discipling communities in Slovakia and beyond.",
+      "10 million Roma across Europe — without scripture in their language or an Orthodox parish in their community. We live among them, plant churches that last, and disciple the next generation.",
     images: ["/images/mission-about-us.jpg"],
   },
 };

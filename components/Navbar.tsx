@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import ShareButton from "@/components/ShareButton";
+import { Menu, X, Share2 } from "lucide-react";
+import ShareModal from "@/components/ShareModal";
 
 type Page = "home" | "mission" | "locations" | "media" | "get-involved";
 
@@ -19,6 +19,7 @@ const navLinks: { label: string; href: string; page: Page }[] = [
 
 export default function Navbar({ activePage = "home" }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [shareOpen, setShareOpen] = useState(false);
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -51,13 +52,13 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
         {/* CTA */}
         <div className="flex items-center gap-3">
-          <ShareButton
-            title="Christian Roma Mission"
-            text="Support the Christian Roma Mission — bringing hope to Roma communities across Europe."
-            url="https://romamission.eu"
-            label="SHARE"
-            className="px-6 py-3 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-bold tracking-[1px] hover:opacity-80 transition-opacity"
-          />
+          <button
+            onClick={() => setShareOpen(true)}
+            className="flex items-center gap-2 px-6 py-3 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-bold tracking-[1px] hover:opacity-80 transition-opacity"
+          >
+            <Share2 size={14} />
+            SHARE
+          </button>
           <a
             href="https://wa.me/421951230015"
             target="_blank"
@@ -125,6 +126,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
         </div>
       )}
 
+      <ShareModal isOpen={shareOpen} onClose={() => setShareOpen(false)} />
     </div>
   );
 }

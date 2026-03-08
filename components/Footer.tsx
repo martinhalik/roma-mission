@@ -29,7 +29,7 @@ export default function Footer() {
                 Mission
               </p>
               <div className="flex flex-col gap-3">
-                {["Our Approach", "Locations", "Stories"].map((item) => (
+                {["Our Approach", "Locations"].map((item) => (
                   <Link
                     key={item}
                     href={`/${item.toLowerCase().replace(" ", "-")}`}
@@ -47,7 +47,7 @@ export default function Footer() {
                 Media
               </p>
               <div className="flex flex-col gap-3">
-                {["Documentary", "Podcast", "News"].map((item) => (
+                {["Documentary", "News"].map((item) => (
                   <Link
                     key={item}
                     href="/media"
@@ -74,6 +74,31 @@ export default function Footer() {
                     {item}
                   </Link>
                 ))}
+              </div>
+            </div>
+
+            {/* Contact */}
+            <div className="flex flex-col gap-4">
+              <p className="text-[11px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
+                Contact
+              </p>
+              <div className="flex flex-col gap-1.5">
+                <p className="text-[13px] font-semibold text-[var(--text-secondary)]">Fr. Martin Halík</p>
+                <p className="text-[12px] text-[var(--text-muted)] mb-1">Director</p>
+                <a
+                  href="https://www.romamission.eu"
+                  className="text-[12px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                >
+                  www.romamission.eu
+                </a>
+                <a
+                  href="mailto:martin.halik@krm.sk"
+                  className="text-[12px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                >
+                  martin.halik@krm.sk
+                </a>
+                <p className="text-[12px] text-[var(--text-secondary)]">+421 951 230 015 (WhatsApp)</p>
+                <p className="text-[12px] text-[var(--text-secondary)]">+1 (773) 796-8109</p>
               </div>
             </div>
           </div>
@@ -126,7 +151,7 @@ export default function Footer() {
               <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
                 Mission
               </p>
-              {["Our Approach", "Locations", "Stories"].map((item) => (
+              {["Our Approach", "Locations"].map((item) => (
                 <Link
                   key={item}
                   href={`/${item.toLowerCase().replace(" ", "-")}`}
@@ -140,7 +165,7 @@ export default function Footer() {
               <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
                 Media
               </p>
-              {["Documentary", "Podcast", "News"].map((item) => (
+              {["Documentary", "News"].map((item) => (
                 <Link key={item} href="/media" className="text-[12px] text-[var(--text-secondary)]">
                   {item}
                 </Link>
@@ -160,6 +185,17 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
+          </div>
+
+          {/* Mobile Contact */}
+          <div className="flex flex-col gap-2">
+            <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">Contact</p>
+            <p className="text-[12px] font-semibold text-[var(--text-secondary)]">Fr. Martin Halík</p>
+            <p className="text-[11px] text-[var(--text-muted)]">Director</p>
+            <a href="https://www.romamission.eu" className="text-[12px] text-[var(--text-secondary)]">www.romamission.eu</a>
+            <a href="mailto:martin.halik@krm.sk" className="text-[12px] text-[var(--text-secondary)]">martin.halik@krm.sk</a>
+            <p className="text-[12px] text-[var(--text-secondary)]">+421 951 230 015 (WhatsApp)</p>
+            <p className="text-[12px] text-[var(--text-secondary)]">+1 (773) 796-8109</p>
           </div>
 
           <div className="h-px bg-[var(--border-default)]" />
