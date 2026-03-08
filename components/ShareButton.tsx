@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Share2, Check } from "lucide-react";
 
 interface ShareButtonProps {
   title: string;
@@ -61,7 +62,8 @@ export default function ShareButton({
   };
 
   return (
-    <button onClick={handleShare} className={className}>
+    <button onClick={handleShare} className={`flex items-center gap-2 cursor-pointer ${className ?? ""}`}>
+      {state === "copied" ? <Check size={14} /> : <Share2 size={14} />}
       {state === "copied" ? "COPIED!" : label}
     </button>
   );
