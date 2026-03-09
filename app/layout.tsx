@@ -17,11 +17,11 @@ export const metadata: Metadata = {
     template: "%s — Roma Mission",
   },
   description:
-    "10 million Roma across Europe — without scripture in their language or an Orthodox parish in their community. We live among them, plant churches that last, and disciple the next generation.",
+    "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
   openGraph: {
     title: "Christian Roma Mission",
     description:
-      "10 million Roma across Europe — without scripture in their language or an Orthodox parish in their community. We live among them, plant churches that last, and disciple the next generation.",
+      "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
     url: process.env.NEXT_PUBLIC_URL ?? "https://romamission.eu",
     siteName: "Christian Roma Mission",
     type: "website",
