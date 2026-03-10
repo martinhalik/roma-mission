@@ -205,7 +205,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             </button>
 
             <p className="text-[11px] text-[var(--text-muted)] text-center leading-[1.5]">
-              Secure payment via Stripe. Roma Mission is a registered non-profit.
+              Secure payment via Stripe. Roma Mission is a registered non-profit in Slovakia. US donors: donations are not tax-deductible at this time.
             </p>
           </div>
         )}
