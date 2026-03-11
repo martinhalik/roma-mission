@@ -49,6 +49,14 @@ export default function ThankYouPage() {
             </p>
           </div>
 
+          {/* Tax notice */}
+          <div className="w-full border border-[var(--border-default)] bg-[var(--bg-card)] px-4 py-3 flex gap-3 items-start text-left">
+            <span className="text-[var(--gold)] text-[12px] flex-shrink-0 mt-0.5">ℹ</span>
+            <p className="text-[11px] text-[var(--text-secondary)] leading-[1.6]">
+              Roma Mission is a registered non-profit in <strong className="text-[var(--text-primary)] font-semibold">Slovakia</strong>. US donors: contributions are <strong className="text-[var(--text-primary)] font-semibold">not tax-deductible</strong> under US law.
+            </p>
+          </div>
+
           {/* Divider */}
           <div className="w-12 h-px bg-[var(--gold)] opacity-40" />
 

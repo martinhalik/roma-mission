@@ -6,6 +6,7 @@ import {
   EmbeddedCheckout,
   EmbeddedCheckoutProvider,
 } from "@stripe/react-stripe-js";
+import { Copy, Check } from "lucide-react";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -21,6 +22,45 @@ interface DonationModalProps {
 
 type Step = "select" | "checkout";
 
+const US_BANK = [
+  { label: "Account name", value: "Martin Halík" },
+  { label: "Account type", value: "Checking" },
+  { label: "Routing number (ACH & wire)", value: "026073150" },
+  { label: "Account number", value: "8310735508" },
+  { label: "Bank", value: "Community Federal Savings Bank" },
+];
+
+const INTL_BANK = [
+  { label: "Account name", value: "Martin Halík" },
+  { label: "Swift / BIC", value: "CMFGUS33" },
+  { label: "Account number", value: "8310735508" },
+  { label: "Bank address", value: "89-16 Jamaica Ave, Woodhaven, NY 11421, US" },
+];
+
+function CopyField({ label, value }: { label: string; value: string }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(value);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1800);
+  };
+  return (
+    <div className="flex items-center justify-between gap-3 py-2.5 border-b border-[var(--border-default)] last:border-b-0">
+      <div className="flex flex-col gap-0.5 min-w-0">
+        <span className="text-[10px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">{label}</span>
+        <span className="text-[13px] text-[var(--text-primary)] font-medium break-all">{value}</span>
+      </div>
+      <button
+        onClick={handleCopy}
+        aria-label={`Copy ${label}`}
+        className="flex-shrink-0 p-1.5 text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors"
+      >
+        {copied ? <Check size={14} className="text-[var(--gold)]" /> : <Copy size={14} />}
+      </button>
+    </div>
+  );
+}
+
 export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const [step, setStep] = useState<Step>("select");
   const [isMonthly, setIsMonthly] = useState(true);
@@ -30,6 +70,8 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [bankOpen, setBankOpen] = useState(false);
+  const [bankTab, setBankTab] = useState<"us" | "intl">("us");
 
   const finalAmount = isCustom
     ? parseFloat(customAmount) || 0
@@ -85,7 +127,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
       onClick={handleClose}
     >
       <div
-        className="relative w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden"
+        className="relative w-full max-w-lg bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden max-h-[90dvh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -204,9 +246,58 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                 : `GIVE $${finalAmount > 0 ? finalAmount : "—"}${isMonthly ? "/MO" : ""}`}
             </button>
 
-            <p className="text-[11px] text-[var(--text-muted)] text-center leading-[1.5]">
-              Secure payment via Stripe. Roma Mission is a registered non-profit in Slovakia. US donors: donations are not tax-deductible at this time.
-            </p>
+            {/* Bank transfer */}
+            <div>
+              <button
+                onClick={() => setBankOpen((v) => !v)}
+                className="w-full flex items-center justify-center gap-1.5 py-3 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-bold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+              >
+                <span>OR GIVE BY BANK TRANSFER</span>
+                <span className={`transition-transform duration-200 text-[10px] ${bankOpen ? "rotate-180" : ""}`}>▾</span>
+              </button>
+
+              {bankOpen && (
+                <div className="mt-3 border border-[var(--border-default)] bg-[var(--bg-primary)]">
+                  {/* Tab toggle */}
+                  <div className="flex border-b border-[var(--border-default)]">
+                    <button
+                      onClick={() => setBankTab("us")}
+                      className={`flex-1 py-2.5 text-[11px] font-semibold tracking-[0.5px] transition-colors ${
+                        bankTab === "us"
+                          ? "text-[var(--gold)] border-b-2 border-[var(--gold)] -mb-px"
+                          : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                      }`}
+                    >
+                      US DOMESTIC
+                    </button>
+                    <button
+                      onClick={() => setBankTab("intl")}
+                      className={`flex-1 py-2.5 text-[11px] font-semibold tracking-[0.5px] transition-colors ${
+                        bankTab === "intl"
+                          ? "text-[var(--gold)] border-b-2 border-[var(--gold)] -mb-px"
+                          : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
+                      }`}
+                    >
+                      INTERNATIONAL
+                    </button>
+                  </div>
+
+                  {/* Fields */}
+                  <div className="px-4 py-1">
+                    {(bankTab === "us" ? US_BANK : INTL_BANK).map((f) => (
+                      <CopyField key={f.label} label={f.label} value={f.value} />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="border border-[var(--border-default)] bg-[var(--bg-primary)] px-4 py-3 flex gap-3 items-start">
+              <span className="text-[var(--gold)] text-[12px] flex-shrink-0 mt-0.5">ℹ</span>
+              <p className="text-[11px] text-[var(--text-secondary)] leading-[1.6]">
+                Roma Mission is a registered non-profit in <strong className="text-[var(--text-primary)] font-semibold">Slovakia</strong>. US donors: contributions are <strong className="text-[var(--text-primary)] font-semibold">not tax-deductible</strong> under US law. Secure payment via Stripe.
+              </p>
+            </div>
           </div>
         )}
 
