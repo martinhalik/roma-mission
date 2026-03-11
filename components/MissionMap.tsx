@@ -2,6 +2,7 @@
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRef, useEffect, useState } from "react";
+import { ROMA_COUNTRIES } from "@/lib/data/roma-countries";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -70,39 +71,37 @@ const MISSION_POINTS: MissionPoint[] = [
     coordinates: [19.783, 48.467],
   },
   {
-    id: "failed",
-    type: "failed",
-    name: "Hodejov",
-    subtitle: "Discontinued — 2021",
+    id: "zemjastrabie",
+    type: "planting",
+    name: "Zemplínske Jastrabie",
+    subtitle: "Planting Parish",
     description:
-      "A parish planting that could not be sustained without consistent funding and clergy presence. The community dispersed. This is what we are working to prevent everywhere else.",
-    coordinates: [20.133, 48.517],
+      "A settlement prayed over for years. We finally have a door open. Early outreach underway.",
+    coordinates: [21.95, 48.63],
+  },
+  {
+    id: "mutnik",
+    type: "failed",
+    name: "Mútnik",
+    subtitle: "Concluded — 2026",
+    description:
+      "Nine years of faithful presence. A community formed, believers were baptized, and local leaders emerged. This chapter concluded in 2026.",
+    coordinates: [19.95, 48.59],
+  },
+  {
+    id: "hacava",
+    type: "failed",
+    name: "Hačava",
+    subtitle: "Not continued — 2017",
+    description:
+      "A genuine open door with early fruit, but we could not sustain consistent missionary presence. Without someone going week after week, the community could not hold together.",
+    coordinates: [20.25, 48.42],
   },
 ];
 
-// ─── Roma Population by Country ───────────────────────────────────────────────
-
-const ROMA_DATA: Record<string, { name: string; pop: number }> = {
-  RO: { name: "Romania", pop: 1850000 },
-  ES: { name: "Spain", pop: 1125000 },
-  HU: { name: "Hungary", pop: 675000 },
-  BG: { name: "Bulgaria", pop: 650000 },
-  FR: { name: "France", pop: 500000 },
-  SK: { name: "Slovakia", pop: 475000 },
-  UA: { name: "Ukraine", pop: 400000 },
-  RS: { name: "Serbia", pop: 380000 },
-  CZ: { name: "Czechia", pop: 300000 },
-  GR: { name: "Greece", pop: 280000 },
-  MK: { name: "North Macedonia", pop: 260000 },
-  DE: { name: "Germany", pop: 200000 },
-  IT: { name: "Italy", pop: 170000 },
-  AL: { name: "Albania", pop: 100000 },
-  BA: { name: "Bosnia & Herz.", pop: 70000 },
-  PT: { name: "Portugal", pop: 60000 },
-  ME: { name: "Montenegro", pop: 20000 },
-  HR: { name: "Croatia", pop: 35000 },
-  SI: { name: "Slovenia", pop: 12000 },
-};
+function getPct(d: { pop: number; totalPop: number }): number {
+  return (d.pop / d.totalPop) * 100;
+}
 
 // ─── Style Config ─────────────────────────────────────────────────────────────
 
@@ -140,18 +139,51 @@ const LEGEND_ITEMS: MarkerType[] = [
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
+function formatPct(pct: number): string {
+  return pct >= 1 ? `${pct.toFixed(1)}%` : `${pct.toFixed(2)}%`;
+}
+
 function formatPop(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
   return `${Math.round(n / 1000)}K`;
 }
 
-function getCountryColor(pop: number): string {
-  if (pop >= 1_500_000) return "#6B1212";
-  if (pop >= 900_000) return "#8B1818";
-  if (pop >= 600_000) return "#A82222";
-  if (pop >= 400_000) return "#B84040";
-  if (pop >= 200_000) return "#C86040";
-  return "#9B7060";
+// Piecewise-linear color scale.
+// 0→1%: near-grey (almost invisible vs unlisted countries), steep jump at 7–9%.
+// Each stop: [percentage, [r, g, b]]
+const COLOR_STOPS: [number, [number, number, number]][] = [
+  [0,  [ 50, 35, 35]],  // faint warm grey — just visible against dark map
+  [1,  [ 65, 30, 30]],  // slightly warm — distinguishable from unlisted countries
+  [3,  [ 72, 16, 16]],  // now clearly dark red
+  [5,  [115, 18, 18]],
+  [7,  [162, 22, 22]],
+  [9,  [229, 57, 53]],  // steep jump — high-density countries pop
+  [13, [245, 95, 88]],
+];
+
+function getCountryColor(pct: number): string {
+  if (pct <= COLOR_STOPS[0][0]) {
+    const [r, g, b] = COLOR_STOPS[0][1];
+    return `rgb(${r},${g},${b})`;
+  }
+  const last = COLOR_STOPS[COLOR_STOPS.length - 1];
+  if (pct >= last[0]) {
+    const [r, g, b] = last[1];
+    return `rgb(${r},${g},${b})`;
+  }
+  for (let i = 0; i < COLOR_STOPS.length - 1; i++) {
+    const [p0, c0] = COLOR_STOPS[i];
+    const [p1, c1] = COLOR_STOPS[i + 1];
+    if (pct <= p1) {
+      const t = (pct - p0) / (p1 - p0);
+      const r = Math.round(c0[0] + (c1[0] - c0[0]) * t);
+      const g = Math.round(c0[1] + (c1[1] - c0[1]) * t);
+      const b = Math.round(c0[2] + (c1[2] - c0[2]) * t);
+      return `rgb(${r},${g},${b})`;
+    }
+  }
+  const [r, g, b] = last[1];
+  return `rgb(${r},${g},${b})`;
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -214,12 +246,12 @@ export default function MissionMap() {
           url: "mapbox://mapbox.country-boundaries-v1",
         });
 
-        const isoCodes = Object.keys(ROMA_DATA);
+        const isoCodes = ROMA_COUNTRIES.map((c) => c.iso);
 
         // Build match expression for fill color
         const colorEntries: (string | string[])[] = [];
-        for (const [iso, d] of Object.entries(ROMA_DATA)) {
-          colorEntries.push(iso, getCountryColor(d.pop));
+        for (const c of ROMA_COUNTRIES) {
+          colorEntries.push(c.iso, getCountryColor(getPct(c)));
         }
         const colorExpr = [
           "match",
@@ -228,18 +260,19 @@ export default function MissionMap() {
           "rgba(0,0,0,0)",
         ];
 
-        const worldviewFilter = [
-          "any",
-          ["==", ["get", "worldview"], "all"],
-          ["==", ["get", "worldview"], "US"],
-        ];
+        // Filter only by ISO code — worldview is intentionally omitted so that
+        // disputed-border countries (RS/Kosovo, UA/Crimea) are not excluded.
+        // These countries may only have worldview-specific features (e.g. "RU")
+        // in the tileset, meaning a worldview="all"/"US" constraint would hide them.
+        // Rendering duplicate features for the same country has no visual effect.
+        const layerFilter = ["in", ["get", "iso_3166_1"], ["literal", isoCodes]];
 
         mapInstance.addLayer({
           id: "roma-fill",
           type: "fill",
           source: "countries",
           "source-layer": "country_boundaries",
-          filter: ["all", ["in", "iso_3166_1", ...isoCodes], worldviewFilter],
+          filter: layerFilter,
           paint: {
             "fill-color": colorExpr,
             "fill-opacity": 0.65,
@@ -251,7 +284,7 @@ export default function MissionMap() {
           type: "line",
           source: "countries",
           "source-layer": "country_boundaries",
-          filter: ["all", ["in", "iso_3166_1", ...isoCodes], worldviewFilter],
+          filter: layerFilter,
           paint: {
             "line-color": "#D4AF3728",
             "line-width": 0.75,
@@ -263,7 +296,7 @@ export default function MissionMap() {
           type: "fill",
           source: "countries",
           "source-layer": "country_boundaries",
-          filter: ["==", "iso_3166_1", ""],
+          filter: ["==", ["get", "iso_3166_1"], ""],
           paint: {
             "fill-color": "#D4AF37",
             "fill-opacity": 0.18,
@@ -277,14 +310,14 @@ export default function MissionMap() {
             | string
             | undefined;
           if (iso) {
-            mapInstance.setFilter("roma-hover", ["==", "iso_3166_1", iso]);
+            mapInstance.setFilter("roma-hover", ["==", ["get", "iso_3166_1"], iso]);
             setHoveredISO(iso);
             mapInstance.getCanvas().style.cursor = "pointer";
           }
         });
 
         mapInstance.on("mouseleave", "roma-fill", () => {
-          mapInstance.setFilter("roma-hover", ["==", "iso_3166_1", ""]);
+          mapInstance.setFilter("roma-hover", ["==", ["get", "iso_3166_1"], ""]);
           setHoveredISO(null);
           mapInstance.getCanvas().style.cursor = "";
         });
@@ -338,7 +371,7 @@ export default function MissionMap() {
     };
   }, []);
 
-  const hovered = hoveredISO ? ROMA_DATA[hoveredISO] : null;
+  const hovered = hoveredISO ? ROMA_COUNTRIES.find((c) => c.iso === hoveredISO) ?? null : null;
 
   return (
     <div className="relative w-full h-[420px] md:h-[540px] bg-[#0D0D0D] overflow-hidden">
@@ -370,12 +403,12 @@ export default function MissionMap() {
       {hovered && (
         <div className="absolute top-4 left-4 bg-[#0D0D0DEE] border border-[#2A2A2A] px-4 py-3 pointer-events-none z-20">
           <p className="text-[9px] font-bold tracking-[1.5px] uppercase text-[#666]">
-            {hovered.name}
+            {hovered.country}
           </p>
-          <p className="text-[22px] font-bold text-[var(--gold)] leading-tight mt-0.5">
-            {formatPop(hovered.pop)}
+          <p className="text-[38px] font-bold text-[var(--gold)] leading-none mt-1">
+            {formatPct(getPct(hovered))}
           </p>
-          <p className="text-[9px] text-[#555]">Roma population</p>
+          <p className="text-[9px] text-[#555] mt-1">Roma · {formatPop(hovered.pop)} of {formatPop(hovered.totalPop)}</p>
         </div>
       )}
 
@@ -414,7 +447,7 @@ export default function MissionMap() {
               className={`block text-center text-[10px] font-bold tracking-[1px] py-3 transition-colors ${
                 selectedPoint.type === "failed"
                   ? "border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#111]"
-                  : "bg-[#D4AF37] text-[#111] hover:opacity-88"
+                  : "bg-[#D4AF37] text-[#111] hover:opacity-[88%]"
               }`}
             >
               {selectedPoint.type === "failed"
@@ -447,7 +480,7 @@ export default function MissionMap() {
               <div
                 className="w-12 h-2 rounded-sm flex-shrink-0"
                 style={{
-                  background: "linear-gradient(to right, #9B7060, #6B1212)",
+                  background: "linear-gradient(to right, rgb(30,30,30), rgb(72,16,16), rgb(229,57,53))",
                 }}
               />
               <span className="text-[10px] text-[#555]">Roma density</span>
