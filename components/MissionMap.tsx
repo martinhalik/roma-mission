@@ -40,16 +40,14 @@ function getMarkerType(locationType: LocationType): MarkerType {
 // ─── Convert Mission Locations to Mission Points ────────────────────────────
 
 function convertToMissionPoints(locations: MissionLocation[]): MissionPoint[] {
-  return locations
-    .filter((loc) => loc.subtitle && loc.description) // Only include locations with full details for the map
-    .map((loc) => ({
-      id: loc.id,
-      type: getMarkerType(loc.type),
-      name: loc.name,
-      subtitle: loc.subtitle || "",
-      description: loc.description || "",
-      coordinates: loc.coordinates,
-    }));
+  return locations.map((loc) => ({
+    id: loc.id,
+    type: getMarkerType(loc.type),
+    name: loc.name,
+    subtitle: loc.subtitle || loc.village,
+    description: loc.description || "",
+    coordinates: loc.coordinates,
+  }));
 }
 
 // Compute once at module load to ensure stability
@@ -290,38 +288,49 @@ export default function MissionMap() {
         // Only add markers if they haven't been added yet
         if (markersRef.current.length === 0) {
           missionPoints.forEach((pt) => {
-            const el = document.createElement("div");
             const color = MARKER_COLORS[pt.type];
             const size = MARKER_SIZES[pt.type];
             const isMain = pt.type === "mission-center";
 
+            // Outer wrapper: Mapbox applies its positioning transform here.
+            // Never touch el.style.transform — it would override Mapbox's placement.
+            const el = document.createElement("div");
             Object.assign(el.style, {
               width: `${size}px`,
               height: `${size}px`,
-              borderRadius: "50%",
-              backgroundColor: color,
-              border: "2px solid rgba(10,10,10,0.9)",
-              boxShadow: `0 0 0 ${isMain ? "2.5px" : "1.5px"} ${color}55, 0 0 ${isMain ? "14px" : "7px"} ${color}44`,
               cursor: "pointer",
-              transition: "transform 0.12s ease, box-shadow 0.12s ease",
-              position: "relative",
               zIndex: isMain ? "10" : "5",
             });
 
+            // Inner dot: all visual styles and hover effects go here.
+            const dot = document.createElement("div");
+            const normalShadow = `0 0 0 ${isMain ? "2.5px" : "1.5px"} ${color}55, 0 0 ${isMain ? "14px" : "7px"} ${color}44`;
+            Object.assign(dot.style, {
+              width: "100%",
+              height: "100%",
+              borderRadius: "50%",
+              backgroundColor: color,
+              border: "2px solid rgba(10,10,10,0.9)",
+              boxShadow: normalShadow,
+              transition: "transform 0.12s ease, box-shadow 0.12s ease",
+              transformOrigin: "center",
+            });
+            el.appendChild(dot);
+
             el.addEventListener("mouseenter", () => {
-              el.style.transform = "scale(1.55)";
-              el.style.boxShadow = `0 0 0 2.5px ${color}aa, 0 0 18px ${color}66`;
+              dot.style.transform = "scale(1.55)";
+              dot.style.boxShadow = `0 0 0 2.5px ${color}aa, 0 0 18px ${color}66`;
             });
             el.addEventListener("mouseleave", () => {
-              el.style.transform = "";
-              el.style.boxShadow = `0 0 0 ${isMain ? "2.5px" : "1.5px"} ${color}55, 0 0 ${isMain ? "14px" : "7px"} ${color}44`;
+              dot.style.transform = "";
+              dot.style.boxShadow = normalShadow;
             });
             el.addEventListener("click", (e) => {
               e.stopPropagation();
               setSelectedPoint(pt);
             });
 
-            const marker = new mapboxgl.Marker({ element: el })
+            const marker = new mapboxgl.Marker({ element: el, anchor: "center" })
               .setLngLat(pt.coordinates)
               .addTo(mapInstance);
 
@@ -336,6 +345,7 @@ export default function MissionMap() {
     return () => {
       isCleaned = true;
       resizeObserver?.disconnect();
+      markersRef.current.forEach((m) => m.remove());
       markersRef.current = [];
       mapInstanceRef.current = null;
       mapInstance?.remove();
