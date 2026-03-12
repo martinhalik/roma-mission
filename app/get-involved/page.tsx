@@ -83,7 +83,7 @@ const faqs = [
   },
   {
     q: "How can I reach someone directly?",
-    a: "You can contact Fr. Martin Halík, Director of Christian Roma Mission, at martin.halik@krm.sk or by phone at +421 951 230 015 (WhatsApp) or +1 (773) 796-8109. More at www.romamission.eu.",
+    a: "You can contact Fr. Martin Halík, Director of Christian Roma Mission, at martin@romamission.eu or by phone at +421 951 230 015 (WhatsApp) or +1 (773) 796-8109. More at www.romamission.eu.",
   },
 ];
 
@@ -213,10 +213,10 @@ export default function GetInvolvedPage() {
             <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6]">
               Can&apos;t find your answer? Contact Fr. Martin Halík directly at{" "}
               <a
-                href="mailto:martin.halik@krm.sk"
+                href="mailto:martin@romamission.eu"
                 className="text-[var(--gold)] hover:opacity-80 transition-opacity"
               >
-                martin.halik@krm.sk
+                martin@romamission.eu
               </a>
             </p>
           </div>

@@ -92,10 +92,10 @@ export default function Footer() {
                   www.romamission.eu
                 </a>
                 <a
-                  href="mailto:martin.halik@krm.sk"
+                  href="mailto:martin@romamission.eu"
                   className="text-[12px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                 >
-                  martin.halik@krm.sk
+                  martin@romamission.eu
                 </a>
                 <p className="text-[12px] text-[var(--text-secondary)]">+421 951 230 015 (WhatsApp)</p>
                 <p className="text-[12px] text-[var(--text-secondary)]">+1 (773) 796-8109</p>
@@ -193,7 +193,7 @@ export default function Footer() {
             <p className="text-[12px] font-semibold text-[var(--text-secondary)]">Fr. Martin Halík</p>
             <p className="text-[11px] text-[var(--text-muted)]">Director</p>
             <a href="https://www.romamission.eu" className="text-[12px] text-[var(--text-secondary)]">www.romamission.eu</a>
-            <a href="mailto:martin.halik@krm.sk" className="text-[12px] text-[var(--text-secondary)]">martin.halik@krm.sk</a>
+            <a href="mailto:martin@romamission.eu" className="text-[12px] text-[var(--text-secondary)]">martin@romamission.eu</a>
             <p className="text-[12px] text-[var(--text-secondary)]">+421 951 230 015 (WhatsApp)</p>
             <p className="text-[12px] text-[var(--text-secondary)]">+1 (773) 796-8109</p>
           </div>
