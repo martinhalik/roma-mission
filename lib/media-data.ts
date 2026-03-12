@@ -80,7 +80,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
       "A Roma man from Slovakia reflects on what changed when the mission came to his community.",
     fullDesc:
       "Laco grew up in a Roma settlement in Slovakia. In this personal testimony he speaks openly about the skepticism he once held, the change he witnessed in his community, and what it meant when the priest stayed.",
-    badges: [{ label: "Slovak Audio", variant: "audio" }],
+    badges: [{ label: "English Audio", variant: "audio" }],
     duration: "12 min",
     source: "Personal Testimony",
     guest: "Laco, Slovakia",
