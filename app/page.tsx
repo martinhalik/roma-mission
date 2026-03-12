@@ -28,7 +28,7 @@ function PlayButton({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
       className={`${dims} rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200 flex-shrink-0`}
     >
       <div
-        className={`w-0 h-0 border-t-transparent border-b-transparent border-l-[#111111] ml-1 ${arrow}`}
+        className={`w-0 h-0 border-t-transparent border-b-transparent border-l-[var(--on-accent)] ml-1 ${arrow}`}
       />
     </div>
   );
@@ -129,13 +129,13 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <Link
                 href="/get-involved"
-                className="px-6 md:px-8 py-4 bg-[var(--gold)] text-[#111111] text-[11px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
+                className="px-6 md:px-8 py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[11px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
               >
                 SUPPORT THE MISSION
               </Link>
               <Link
                 href="/get-involved"
-                className="px-6 md:px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-semibold tracking-[1px] text-center hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+                className="px-6 md:px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-semibold tracking-[1px] text-center hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
               >
                 VOLUNTEER
               </Link>
@@ -414,7 +414,7 @@ export default function HomePage() {
 
           <Link
             href="/locations"
-            className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+            className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
           >
             VIEW ALL LOCATIONS →
           </Link>
@@ -487,7 +487,7 @@ export default function HomePage() {
 
         <Link
           href="/media"
-          className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+          className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
         >
           EXPLORE MEDIA LIBRARY
         </Link>

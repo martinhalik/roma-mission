@@ -1,4 +1,73 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Sun, Moon } from "lucide-react";
+
+function useTheme() {
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const stored = localStorage.getItem("theme") as "dark" | "light" | null;
+    const initial =
+      stored ??
+      (window.matchMedia("(prefers-color-scheme: light)").matches
+        ? "light"
+        : "dark");
+    setTheme(initial);
+  }, []);
+
+  function toggle() {
+    const next = theme === "dark" ? "light" : "dark";
+    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.add(next);
+    localStorage.setItem("theme", next);
+    setTheme(next);
+  }
+
+  return { theme, toggle };
+}
+
+const LANG_OPTIONS = [
+  { label: "CZ", href: "https://krm.sk" },
+  { label: "SK", href: "https://krm.sk" },
+];
+
+function ThemeToggle({ className = "" }: { className?: string }) {
+  const { theme, toggle } = useTheme();
+  return (
+    <button
+      onClick={toggle}
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      suppressHydrationWarning
+      className={`flex items-center gap-1.5 text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors uppercase ${className}`}
+    >
+      {theme === "dark" ? <Sun size={13} /> : <Moon size={13} />}
+      {theme === "dark" ? "Light" : "Dark"}
+    </button>
+  );
+}
+
+function LangSwitcher({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex items-center gap-1 ${className}`}>
+      <span className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] opacity-40 uppercase">EN</span>
+      {LANG_OPTIONS.map((opt) => (
+        <span key={opt.label} className="flex items-center gap-1">
+          <span className="text-[var(--border-strong)] text-[10px]">|</span>
+          <a
+            href={opt.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors uppercase"
+          >
+            {opt.label}
+          </a>
+        </span>
+      ))}
+    </div>
+  );
+}
 
 export default function Footer() {
   return (
@@ -122,6 +191,9 @@ export default function Footer() {
               >
                 Terms of Use
               </Link>
+              <div className="w-px h-3 bg-[var(--border-strong)]" />
+              <ThemeToggle />
+              <LangSwitcher />
             </div>
           </div>
         </div>
@@ -205,18 +277,17 @@ export default function Footer() {
               © 2026 Christian Roma Mission.
             </p>
             <div className="flex items-center gap-5">
-              <Link
-                href="/privacy-policy"
-                className="text-[10px] text-[var(--text-muted)]"
-              >
+              <Link href="/privacy-policy" className="text-[10px] text-[var(--text-muted)]">
                 Privacy Policy
               </Link>
-              <Link
-                href="/terms-of-use"
-                className="text-[10px] text-[var(--text-muted)]"
-              >
+              <Link href="/terms-of-use" className="text-[10px] text-[var(--text-muted)]">
                 Terms of Use
               </Link>
+            </div>
+            <div className="flex items-center gap-4 pt-1">
+              <ThemeToggle />
+              <div className="w-px h-3 bg-[var(--border-strong)]" />
+              <LangSwitcher />
             </div>
           </div>
         </div>

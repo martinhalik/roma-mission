@@ -97,7 +97,7 @@ export default function MediaPage() {
           <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[18px] border-l-[#111111] ml-1" />
+              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[18px] border-l-[var(--on-accent)] ml-1" />
             </div>
           </div>
         </button>
@@ -120,7 +120,7 @@ export default function MediaPage() {
           </div>
           <button
             onClick={() => setActiveVideoId(DOCUMENTARY_VIDEO_ID)}
-            className="self-start px-8 py-4 bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
+            className="self-start px-8 py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
           >
             WATCH DOCUMENTARY
           </button>
@@ -157,7 +157,7 @@ export default function MediaPage() {
               >
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
                 <div className="relative w-12 h-12 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[14px] border-l-[#111111] ml-1" />
+                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[14px] border-l-[var(--on-accent)] ml-1" />
                 </div>
               </div>
 
@@ -226,7 +226,7 @@ export default function MediaPage() {
               >
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
                 <div className="relative w-12 h-12 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[14px] border-l-[#111111] ml-1" />
+                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[14px] border-l-[var(--on-accent)] ml-1" />
                 </div>
               </div>
 
@@ -283,7 +283,7 @@ export default function MediaPage() {
               <div className="w-full h-[160px] bg-[var(--bg-elevated)]" />
               <div className="flex flex-col gap-3 p-5 md:p-6">
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-semibold tracking-[1px] text-[var(--gold)] border border-[#D4AF3740] px-2 py-0.5">
+                  <span className="text-[10px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)]/25 px-2 py-0.5">
                     {n.tag.toUpperCase()}
                   </span>
                   <span className="text-[11px] text-[var(--text-muted)]">

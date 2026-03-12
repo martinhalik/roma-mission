@@ -178,7 +178,17 @@ export default function LocationsPage() {
               "linear-gradient(0deg, #111111F0 0%, #11111199 55%, #11111155 100%)",
           }}
         />
-        <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
+        {/* Force photo-appropriate colours regardless of light/dark theme */}
+        <div
+          className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16"
+          style={
+            {
+              "--text-primary": "#FFFFFF",
+              "--text-secondary": "rgba(255,255,255,0.72)",
+              "--gold": "#D4AF37",
+            } as React.CSSProperties
+          }
+        >
           <div className="flex flex-col gap-5 max-w-[680px]">
             <SectionLabel text="Our Field of Work" />
             <h1 className="text-[34px] md:text-[50px] font-bold tracking-[-1.5px] text-[var(--text-primary)] leading-[1.05]">
@@ -381,8 +391,8 @@ function MissionCenterCard({
           <span
             className={`text-[9px] font-semibold tracking-[1.5px] px-3 py-1 ${
               center.isDeveloping
-                ? "bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border-strong)]"
-                : "bg-[#D4AF3720] text-[var(--gold)] border border-[#D4AF3740]"
+                ? "bg-black/70 text-white/65 border border-white/20"
+                : "bg-black/70 text-[#D4AF37] border border-[#D4AF37]/40"
             }`}
           >
             {center.badge}
@@ -455,10 +465,10 @@ function PlantedChurchCard({
 }) {
   const statusStyle =
     church.status === "MISSION CENTER"
-      ? "bg-[#D4AF3720] text-[var(--gold)] border border-[#D4AF3740]"
+      ? "bg-black/70 text-[#D4AF37] border border-[#D4AF37]/40"
       : church.status === "FIRST CHAPEL"
-        ? "bg-[#14532D88] text-[#4ADE80] border border-[#166534]"
-        : "bg-[var(--bg-elevated)] text-[var(--text-muted)] border border-[var(--border-strong)]";
+        ? "bg-black/70 text-[#4ADE80] border border-[#4ADE80]/40"
+        : "bg-black/70 text-white/60 border border-white/20";
 
   return (
     <div
@@ -525,7 +535,7 @@ function ActivePlantCard({ plant }: { plant: (typeof ACTIVE_PLANTS)[number] }) {
       <div className="flex flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <span className="text-[9px] font-semibold tracking-[2px] text-[#4ADE80] bg-[#14532D88] border border-[#166534] px-2 py-1 uppercase inline-block mb-2">
+            <span className="text-[9px] font-semibold tracking-[2px] text-[var(--gold)] bg-[var(--gold)]/10 border border-[var(--gold)]/30 px-2 py-1 uppercase inline-block mb-2">
               Active
             </span>
             <h3 className="text-[15px] font-bold text-[var(--text-primary)]">{plant.name}</h3>

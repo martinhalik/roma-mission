@@ -117,7 +117,7 @@ export default function ApplicationModal({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setSubmitted(true)}
-                className="w-full py-4 bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
+                className="w-full py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
               >
                 SCHEDULE A CALL
               </a>

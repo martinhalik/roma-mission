@@ -17,13 +17,13 @@ export default function CTASection() {
       <div className="hidden md:flex items-center gap-4">
         <Link
           href="/get-involved"
-          className="px-9 py-[18px] bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
+          className="px-9 py-[18px] bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
         >
           SUPPORT THE MISSION
         </Link>
         <Link
           href="/get-involved"
-          className="px-9 py-[18px] border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+          className="px-9 py-[18px] border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
         >
           JOIN A MISSION TRIP
         </Link>
@@ -39,13 +39,13 @@ export default function CTASection() {
       <div className="flex md:hidden flex-col gap-3 w-full max-w-[353px]">
         <Link
           href="/get-involved"
-          className="py-4 bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
+          className="py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
         >
           SUPPORT THE MISSION
         </Link>
         <Link
           href="/get-involved"
-          className="py-4 border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] text-center hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+          className="py-4 border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] text-center hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
         >
           JOIN A MISSION TRIP
         </Link>

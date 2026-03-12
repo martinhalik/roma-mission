@@ -185,8 +185,8 @@ export default function GetInvolvedPage() {
                   onClick={() => setModal(w.action)}
                   className={`mt-4 py-4 text-[12px] font-bold tracking-[1px] transition-colors ${
                     w.primary
-                      ? "bg-[var(--gold)] text-[#111111] hover:opacity-90"
-                      : "border border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[#111111]"
+                      ? "bg-[var(--gold)] text-[var(--on-accent)] hover:opacity-90"
+                      : "border border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--on-accent)]"
                   }`}
                 >
                   {w.cta}

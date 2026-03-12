@@ -93,7 +93,7 @@ function TranslationBadge({
   const config: Record<TranslationStatus, { label: string; cls: string }> = {
     available: {
       label: "AVAILABLE",
-      cls: "text-[var(--gold)] bg-[#D4AF3712] border border-[var(--gold)]/30",
+      cls: "text-[var(--gold)] bg-[var(--gold)]/[0.07] border border-[var(--gold)]/30",
     },
     partial: {
       label: "PARTIAL",
@@ -660,7 +660,7 @@ export default function MissionPage() {
           text={SHARE_TEXT}
           url={SHARE_URL}
           label="SHARE THE MISSION"
-          className="flex-shrink-0 px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+          className="flex-shrink-0 px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
         />
       </section>
 

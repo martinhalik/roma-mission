@@ -157,7 +157,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                 onClick={() => { setIsMonthly(true); setSelectedAmount(MONTHLY_AMOUNTS[1]); setIsCustom(false); setCustomAmount(""); }}
                 className={`flex-1 py-2.5 text-[12px] font-semibold tracking-[0.5px] transition-colors ${
                   isMonthly
-                    ? "bg-[var(--gold)] text-[#111111]"
+                    ? "bg-[var(--gold)] text-[var(--on-accent)]"
                     : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 }`}
               >
@@ -167,7 +167,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                 onClick={() => { setIsMonthly(false); setSelectedAmount(ONETIME_AMOUNTS[1]); setIsCustom(false); setCustomAmount(""); }}
                 className={`flex-1 py-2.5 text-[12px] font-semibold tracking-[0.5px] transition-colors ${
                   !isMonthly
-                    ? "bg-[var(--gold)] text-[#111111]"
+                    ? "bg-[var(--gold)] text-[var(--on-accent)]"
                     : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 }`}
               >
@@ -187,7 +187,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                   }}
                   className={`py-3 text-[13px] font-semibold border transition-colors ${
                     !isCustom && selectedAmount === amt
-                      ? "bg-[var(--gold)] border-[var(--gold)] text-[#111111]"
+                      ? "bg-[var(--gold)] border-[var(--gold)] text-[var(--on-accent)]"
                       : "border-[var(--border-default)] text-[var(--text-secondary)] hover:border-[var(--gold)] hover:text-[var(--gold)]"
                   }`}
                 >
@@ -239,7 +239,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             <button
               onClick={fetchClientSecret}
               disabled={loading || finalAmount < 1}
-              className="w-full py-4 bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+              className="w-full py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {loading
                 ? "PREPARING..."

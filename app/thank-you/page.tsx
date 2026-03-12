@@ -96,7 +96,7 @@ export default function ThankYouPage() {
                 text={SHARE_TEXT}
                 url={SHARE_URL}
                 label="SHARE THIS MISSION"
-                className="w-full py-4 px-6 justify-center bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
+                className="w-full py-4 px-6 justify-center bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
               />
               <div className="flex gap-3">
                 <a
