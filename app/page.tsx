@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import VideoModal from "@/components/VideoModal";
+import MissionMap from "@/components/MissionMap";
 import Link from "next/link";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
 import { MEDIA_ITEMS, ytThumb } from "@/lib/media-data";
@@ -384,11 +385,7 @@ export default function HomePage() {
 
         {/* Interactive map — full width */}
         <div className="mb-8">
-          {/* TEMP: Replace MissionMap with placeholder while debugging hydration issues */}
-          <div className="relative w-full h-[420px] md:h-[540px] bg-[#0D0D0D] flex items-center justify-center">
-            <span className="text-[11px] font-semibold tracking-[2px] text-[#444]">MAP (placeholder)</span>
-          </div>
-          {/* <MissionMap /> */}
+          <MissionMap />
         </div>
 
         {/* Stats bar */}

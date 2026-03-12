@@ -2,7 +2,9 @@
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRef, useEffect, useState } from "react";
+import Link from "next/link";
 import { ROMA_COUNTRIES } from "@/lib/data/roma-countries";
+import { MISSION_LOCATIONS, type LocationType, type MissionLocation } from "@/lib/data/mission-locations";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -22,82 +24,36 @@ interface MissionPoint {
   coordinates: [number, number];
 }
 
-// ─── Mission Locations ────────────────────────────────────────────────────────
+// ─── Location Type to Marker Type Mapping ─────────────────────────────────────
 
-const MISSION_POINTS: MissionPoint[] = [
-  {
-    id: "klenovec",
-    type: "mission-center",
-    name: "Klenovec",
-    subtitle: "St. Nicholas Mission Center",
-    description:
-      "Our primary mission base in central Slovakia — the operational hub for training, community formation, and regional coordination.",
-    coordinates: [19.9097, 48.5433],
-  },
-  {
-    id: "markovce",
-    type: "parish",
-    name: "Markovce",
-    subtitle: "Roma Parish",
-    description:
-      "An active Orthodox Roma parish with regular Liturgy, youth programs, and growing local lay leadership.",
-    coordinates: [21.735, 48.878],
-  },
-  {
-    id: "varadka",
-    type: "collaborating",
-    name: "Varadka",
-    subtitle: "Collaborating Parish · Bardejov",
-    description:
-      "A partner parish in the Bardejov district supporting the mission network through shared resources and pastoral cooperation.",
-    coordinates: [21.283, 49.283],
-  },
-  {
-    id: "kacanov",
-    type: "planting",
-    name: "Kačanov",
-    subtitle: "Planting Parish",
-    description:
-      "A new church being established near Markovce. Services have begun. A permanent home and ongoing support are needed.",
-    coordinates: [21.783, 48.833],
-  },
-  {
-    id: "rimavska-pila",
-    type: "planting",
-    name: "Rimavská Pila",
-    subtitle: "Planting Parish",
-    description:
-      "A new parish taking root near Klenovec. Early-stage community formation is underway — needs sustained presence and funding.",
-    coordinates: [19.783, 48.467],
-  },
-  {
-    id: "zemjastrabie",
-    type: "planting",
-    name: "Zemplínske Jastrabie",
-    subtitle: "Planting Parish",
-    description:
-      "A settlement prayed over for years. We finally have a door open. Early outreach underway.",
-    coordinates: [21.95, 48.63],
-  },
-  {
-    id: "mutnik",
-    type: "failed",
-    name: "Mútnik",
-    subtitle: "Concluded — 2026",
-    description:
-      "Nine years of faithful presence. A community formed, believers were baptized, and local leaders emerged. This chapter concluded in 2026.",
-    coordinates: [19.95, 48.59],
-  },
-  {
-    id: "hacava",
-    type: "failed",
-    name: "Hačava",
-    subtitle: "Not continued — 2017",
-    description:
-      "A genuine open door with early fruit, but we could not sustain consistent missionary presence. Without someone going week after week, the community could not hold together.",
-    coordinates: [20.25, 48.42],
-  },
-];
+function getMarkerType(locationType: LocationType): MarkerType {
+  const typeMap: Record<LocationType, MarkerType> = {
+    "mission-center": "mission-center",
+    "planted-church": "parish",
+    "active-plant": "planting",
+    "supported-parish": "collaborating",
+    "ended-plant": "failed",
+  };
+  return typeMap[locationType];
+}
+
+// ─── Convert Mission Locations to Mission Points ────────────────────────────
+
+function convertToMissionPoints(locations: MissionLocation[]): MissionPoint[] {
+  return locations
+    .filter((loc) => loc.subtitle && loc.description) // Only include locations with full details for the map
+    .map((loc) => ({
+      id: loc.id,
+      type: getMarkerType(loc.type),
+      name: loc.name,
+      subtitle: loc.subtitle || "",
+      description: loc.description || "",
+      coordinates: loc.coordinates,
+    }));
+}
+
+// Compute once at module load to ensure stability
+const MISSION_POINTS_INITIAL = convertToMissionPoints(MISSION_LOCATIONS);
 
 function getPct(d: { pop: number; totalPop: number }): number {
   return (d.pop / d.totalPop) * 100;
@@ -190,10 +146,14 @@ function getCountryColor(pct: number): string {
 
 export default function MissionMap() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<any>(null);
+  const markersRef = useRef<any[]>([]);
   const [ready, setReady] = useState(false);
   const [selectedPoint, setSelectedPoint] = useState<MissionPoint | null>(null);
   const [hoveredISO, setHoveredISO] = useState<string | null>(null);
   const [noToken, setNoToken] = useState(false);
+
+  const missionPoints = MISSION_POINTS_INITIAL;
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -218,16 +178,20 @@ export default function MissionMap() {
       mapInstance = new mapboxgl.Map({
         container: containerRef.current,
         style: "mapbox://styles/mapbox/dark-v11",
-        center: [21.5, 49.2],
-        zoom: 5.6,
+        center: [10, 50],
+        zoom: 3.5,
         maxZoom: 12,
         minZoom: 3,
         attributionControl: false,
         cooperativeGestures: true,
       });
 
+      mapInstanceRef.current = mapInstance;
+
       resizeObserver = new ResizeObserver(() => {
-        mapInstance?.resize();
+        if (mapInstance && !isCleaned) {
+          mapInstance.resize();
+        }
       });
       resizeObserver.observe(containerRef.current);
 
@@ -236,8 +200,8 @@ export default function MissionMap() {
         "bottom-right"
       );
 
-      mapInstance.on("load", () => {
-        if (isCleaned) return;
+      mapInstance.once("load", () => {
+        if (isCleaned || !mapInstance) return;
         mapInstance.resize();
 
         // ── Country choropleth ───────────────────────────────────────────────
@@ -286,7 +250,7 @@ export default function MissionMap() {
           "source-layer": "country_boundaries",
           filter: layerFilter,
           paint: {
-            "line-color": "#D4AF3728",
+            "line-color": "rgba(212, 175, 55, 0.16)",
             "line-width": 0.75,
           },
         });
@@ -323,42 +287,47 @@ export default function MissionMap() {
         });
 
         // ── Mission markers ──────────────────────────────────────────────────
-        MISSION_POINTS.forEach((pt) => {
-          const el = document.createElement("div");
-          const color = MARKER_COLORS[pt.type];
-          const size = MARKER_SIZES[pt.type];
-          const isMain = pt.type === "mission-center";
+        // Only add markers if they haven't been added yet
+        if (markersRef.current.length === 0) {
+          missionPoints.forEach((pt) => {
+            const el = document.createElement("div");
+            const color = MARKER_COLORS[pt.type];
+            const size = MARKER_SIZES[pt.type];
+            const isMain = pt.type === "mission-center";
 
-          Object.assign(el.style, {
-            width: `${size}px`,
-            height: `${size}px`,
-            borderRadius: "50%",
-            backgroundColor: color,
-            border: "2px solid rgba(10,10,10,0.9)",
-            boxShadow: `0 0 0 ${isMain ? "2.5px" : "1.5px"} ${color}55, 0 0 ${isMain ? "14px" : "7px"} ${color}44`,
-            cursor: "pointer",
-            transition: "transform 0.12s ease, box-shadow 0.12s ease",
-            position: "relative",
-            zIndex: isMain ? "10" : "5",
-          });
+            Object.assign(el.style, {
+              width: `${size}px`,
+              height: `${size}px`,
+              borderRadius: "50%",
+              backgroundColor: color,
+              border: "2px solid rgba(10,10,10,0.9)",
+              boxShadow: `0 0 0 ${isMain ? "2.5px" : "1.5px"} ${color}55, 0 0 ${isMain ? "14px" : "7px"} ${color}44`,
+              cursor: "pointer",
+              transition: "transform 0.12s ease, box-shadow 0.12s ease",
+              position: "relative",
+              zIndex: isMain ? "10" : "5",
+            });
 
-          el.addEventListener("mouseenter", () => {
-            el.style.transform = "scale(1.55)";
-            el.style.boxShadow = `0 0 0 2.5px ${color}aa, 0 0 18px ${color}66`;
-          });
-          el.addEventListener("mouseleave", () => {
-            el.style.transform = "";
-            el.style.boxShadow = `0 0 0 ${isMain ? "2.5px" : "1.5px"} ${color}55, 0 0 ${isMain ? "14px" : "7px"} ${color}44`;
-          });
-          el.addEventListener("click", (e) => {
-            e.stopPropagation();
-            setSelectedPoint(pt);
-          });
+            el.addEventListener("mouseenter", () => {
+              el.style.transform = "scale(1.55)";
+              el.style.boxShadow = `0 0 0 2.5px ${color}aa, 0 0 18px ${color}66`;
+            });
+            el.addEventListener("mouseleave", () => {
+              el.style.transform = "";
+              el.style.boxShadow = `0 0 0 ${isMain ? "2.5px" : "1.5px"} ${color}55, 0 0 ${isMain ? "14px" : "7px"} ${color}44`;
+            });
+            el.addEventListener("click", (e) => {
+              e.stopPropagation();
+              setSelectedPoint(pt);
+            });
 
-          new mapboxgl.Marker({ element: el })
-            .setLngLat(pt.coordinates)
-            .addTo(mapInstance);
-        });
+            const marker = new mapboxgl.Marker({ element: el })
+              .setLngLat(pt.coordinates)
+              .addTo(mapInstance);
+
+            markersRef.current.push(marker);
+          });
+        }
 
         setReady(true);
       });
@@ -367,6 +336,8 @@ export default function MissionMap() {
     return () => {
       isCleaned = true;
       resizeObserver?.disconnect();
+      markersRef.current = [];
+      mapInstanceRef.current = null;
       mapInstance?.remove();
     };
   }, []);
@@ -376,7 +347,7 @@ export default function MissionMap() {
   return (
     <div className="relative w-full h-[420px] md:h-[540px] bg-[#0D0D0D] overflow-hidden">
       {/* Map container */}
-      <div ref={containerRef} className="w-full h-[420px] md:h-[540px]" />
+      <div ref={containerRef} className="w-full h-full" />
 
       {/* Loading state */}
       {!ready && !noToken && (
@@ -442,18 +413,18 @@ export default function MissionMap() {
             {selectedPoint.description}
           </p>
           <div className="px-5 pb-5">
-            <a
+            <Link
               href="/get-involved"
               className={`block text-center text-[10px] font-bold tracking-[1px] py-3 transition-colors ${
                 selectedPoint.type === "failed"
-                  ? "border border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#111]"
-                  : "bg-[#D4AF37] text-[#111] hover:opacity-[88%]"
+                  ? "border border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--bg-primary)]"
+                  : "bg-[var(--gold)] text-[var(--bg-primary)] hover:opacity-90"
               }`}
             >
               {selectedPoint.type === "failed"
                 ? "PREVENT THIS → GIVE NOW"
                 : "SUPPORT THIS PARISH →"}
-            </a>
+            </Link>
           </div>
         </div>
       )}
