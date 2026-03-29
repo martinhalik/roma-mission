@@ -1,183 +1,40 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "The Mission",
+  description:
+    "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
+  openGraph: {
+    title: "The Mission — Roma Mission",
+    description:
+      "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
+    url: "https://romamission.eu/mission",
+    images: [{ url: "/images/our-approach.jpg", width: 1200, height: 630, alt: "Roma Mission — Europe's Most Neglected People" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Mission — Roma Mission",
+    description:
+      "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
+    images: ["/images/our-approach.jpg"],
+  },
+};
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
-import Link from "next/link";
+import SectionLabel from "@/components/SectionLabel";
+import ShareButton from "@/components/ShareButton";
+import { ROMA_COUNTRIES, isMissionCountry, type MissionCountry, type Presence, type TranslationStatus } from "@/lib/data/roma-countries";
 
-function SectionLabel({ text }: { text: string }) {
-  return (
-    <div className="flex items-center gap-3">
-      <div className="w-[3px] h-[14px] bg-[var(--gold)]" />
-      <span className="text-[11px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
-        {text}
-      </span>
-    </div>
-  );
-}
-
-// ── Types ──────────────────────────────────────────────────────────────────────
-
-type Presence = "active" | "orthodox" | "opportunity" | "next-steps";
-type TranslationStatus = "available" | "partial" | "progress" | "needed";
-
-interface CountryData {
-  country: string;
-  flag: string;
-  officialPop: string;
-  unofficialPop: string;
-  sharePercent: string;
-  presence: Presence;
-  presenceLabel: string;
-  scripture: TranslationStatus;
-  scriptureNote: string;
-  liturgy: TranslationStatus;
-  liturgyNote: string;
-  knownWorkers: string;
-  sourceUrl: string;
-}
+const SHARE_URL = "https://romamission.eu/mission";
+const SHARE_TITLE = "Roma Mission — Europe's Most Neglected People";
+const SHARE_TEXT =
+  "Five million Roma in Europe. Most unreached. One Orthodox mission committed to staying until there's a parish. Worth knowing about:";
 
 // ── Data ───────────────────────────────────────────────────────────────────────
 
-const countryData: CountryData[] = [
-  // We're Here
-  {
-    country: "Slovakia",
-    flag: "🇸🇰",
-    officialPop: "~105,000",
-    unofficialPop: "~500,000",
-    sharePercent: "~9%",
-    presence: "active",
-    presenceLabel: "We're Here",
-    scripture: "partial",
-    scriptureNote: "Romani NT exists; Slovak Bible widely used in parishes",
-    liturgy: "partial",
-    liturgyNote: "Liturgical materials actively being developed by our mission",
-    knownWorkers: "KRM (our mission), Greek-Catholic Church missions",
-    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/slovakia_en",
-  },
-  // Next Steps
-  {
-    country: "Czechia",
-    flag: "🇨🇿",
-    officialPop: "~13,000",
-    unofficialPop: "200,000–300,000",
-    sharePercent: "2–3%",
-    presence: "next-steps",
-    presenceLabel: "Next Steps",
-    scripture: "partial",
-    scriptureNote: "Czech Bible widely available; very limited Romani Scripture",
-    liturgy: "needed",
-    liturgyNote: "No Roma-language liturgical materials exist",
-    knownWorkers: "Caritas Czech Republic, some evangelical outreach programs",
-    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/czech-republic_en",
-  },
-  // Orthodox Active — sorted by share of population descending
-  {
-    country: "Romania",
-    flag: "🇷🇴",
-    officialPop: "~621,000",
-    unofficialPop: "~1.85 million",
-    sharePercent: "~8%",
-    presence: "orthodox",
-    presenceLabel: "Orthodox Active",
-    scripture: "available",
-    scriptureNote: "Romanian Bible widely available; partial Romani translations",
-    liturgy: "partial",
-    liturgyNote: "Romanian Orthodox liturgy used; limited Roma-specific materials",
-    knownWorkers: "Romanian Orthodox Church, Romani CRISS, Romanian Bible Society",
-    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/romania_en",
-  },
-  {
-    country: "Moldova",
-    flag: "🇲🇩",
-    officialPop: "~107,000",
-    unofficialPop: "200,000–300,000",
-    sharePercent: "4–8%",
-    presence: "orthodox",
-    presenceLabel: "Orthodox Active",
-    scripture: "partial",
-    scriptureNote: "Romanian Bible widely used; no Romani Scripture translations",
-    liturgy: "needed",
-    liturgyNote: "Moldovan Orthodox liturgy used; no Roma-specific materials",
-    knownWorkers: "Moldovan Orthodox Church, some Protestant mission groups",
-    sourceUrl: "https://www.worldbank.org/en/country/moldova/brief/roma-in-moldova",
-  },
-  {
-    country: "Serbia",
-    flag: "🇷🇸",
-    officialPop: "~147,000",
-    unofficialPop: "400,000–600,000",
-    sharePercent: "2–8%",
-    presence: "orthodox",
-    presenceLabel: "Orthodox Active",
-    scripture: "partial",
-    scriptureNote: "Serbian Bible available; very limited Romani Scripture",
-    liturgy: "needed",
-    liturgyNote: "No dedicated Roma-language liturgy",
-    knownWorkers: "Serbian Orthodox Church (limited reach), Pentecostal missions",
-    sourceUrl: "https://minorityrights.org/communities/roma-14/",
-  },
-  {
-    country: "Greece",
-    flag: "🇬🇷",
-    officialPop: "~111,000",
-    unofficialPop: "250,000–350,000",
-    sharePercent: "2–3%",
-    presence: "orthodox",
-    presenceLabel: "Orthodox Active",
-    scripture: "partial",
-    scriptureNote: "Greek Bible widely available; limited Romani Scripture translations",
-    liturgy: "partial",
-    liturgyNote: "Greek Orthodox liturgy used; Roma-specific materials very limited",
-    knownWorkers: "Greek Orthodox Church, local parish outreach programs",
-    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/greece_en",
-  },
-  // Opportunity
-  {
-    country: "Hungary",
-    flag: "🇭🇺",
-    officialPop: "~315,000",
-    unofficialPop: "~700,000",
-    sharePercent: "~7%",
-    presence: "opportunity",
-    presenceLabel: "Opportunity",
-    scripture: "partial",
-    scriptureNote: "Hungarian Bible available; very limited Romani Scripture",
-    liturgy: "needed",
-    liturgyNote: "No Roma-language liturgical materials exist",
-    knownWorkers: "Hungarian Baptist Aid, Reformed Church of Hungary programs",
-    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/hungary_en",
-  },
-  {
-    country: "Bulgaria",
-    flag: "🇧🇬",
-    officialPop: "~325,000",
-    unofficialPop: "700,000–900,000",
-    sharePercent: "5–12%",
-    presence: "opportunity",
-    presenceLabel: "Opportunity",
-    scripture: "partial",
-    scriptureNote: "Bulgarian Bible available; very limited Romani Scripture",
-    liturgy: "needed",
-    liturgyNote: "No Roma-language liturgical materials exist",
-    knownWorkers: "Amalipe Center (Roma NGO), various evangelical groups",
-    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/bulgaria_en",
-  },
-  {
-    country: "North Macedonia",
-    flag: "🇲🇰",
-    officialPop: "~54,000",
-    unofficialPop: "200,000+",
-    sharePercent: "2–12%",
-    presence: "opportunity",
-    presenceLabel: "Opportunity",
-    scripture: "partial",
-    scriptureNote: "Macedonian Bible available; small Romani NT project ongoing",
-    liturgy: "progress",
-    liturgyNote: "Active Romani liturgical translation projects underway",
-    knownWorkers: "Roma NGOs in Shutka district, some Protestant missions",
-    sourceUrl: "https://minorityrights.org/country/macedonia/",
-  },
-];
+const countryData: MissionCountry[] = ROMA_COUNTRIES.filter(isMissionCountry);
 
 const beliefs = [
   {
@@ -236,7 +93,7 @@ function TranslationBadge({
   const config: Record<TranslationStatus, { label: string; cls: string }> = {
     available: {
       label: "AVAILABLE",
-      cls: "text-[var(--gold)] bg-[#D4AF3712] border border-[var(--gold)]/30",
+      cls: "text-[var(--gold)] bg-[var(--gold)]/[0.07] border border-[var(--gold)]/30",
     },
     partial: {
       label: "PARTIAL",
@@ -264,7 +121,7 @@ function TranslationBadge({
   );
 }
 
-function CountryCard({ data }: { data: CountryData }) {
+function CountryCard({ data }: { data: MissionCountry }) {
   return (
     <div className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden">
       {/* Header */}
@@ -360,13 +217,7 @@ export default function MissionPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/mission-hero.jpg')" }}
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(0deg, #111111F0 0%, #11111188 70%, #11111144 100%)",
-          }}
-        />
+        <div className="absolute inset-0 bg-[linear-gradient(0deg,color-mix(in_srgb,var(--bg-primary)_94%,transparent)_0%,color-mix(in_srgb,var(--bg-primary)_53%,transparent)_70%,color-mix(in_srgb,var(--bg-primary)_27%,transparent)_100%)]" />
         <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
           <div className="flex flex-col gap-5 md:gap-6 max-w-[720px]">
             <SectionLabel text="Our Mission" />
@@ -504,14 +355,6 @@ export default function MissionPage() {
               — Martin, Founder
             </p>
           </div>
-
-          <Link
-            href="/our-story"
-            className="group self-start flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] hover:opacity-80 transition-opacity mt-6"
-          >
-            READ THE FULL STORY
-            <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-          </Link>
         </div>
       </section>
 
@@ -707,10 +550,10 @@ export default function MissionPage() {
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className={`flex flex-col gap-2 py-8 px-5 md:px-8 ${
-                i < stats.length - 1
-                  ? "border-b md:border-b-0 md:border-r border-[var(--border-default)]"
-                  : ""
+              className={`flex flex-col gap-2 py-8 px-5 md:px-8 border-[var(--border-default)] ${
+                i % 2 === 0 ? "border-r" : "md:border-r"
+              } ${i < 2 ? "border-b md:border-b-0" : ""} ${
+                i === stats.length - 1 ? "md:border-r-0" : ""
               }`}
             >
               <span className="text-[36px] md:text-[48px] font-bold text-[var(--gold)]">
@@ -747,7 +590,7 @@ export default function MissionPage() {
           </span>
           {[
             { label: "We're Here", cls: "bg-[#22c55e20] text-[#22c55e] border border-[#22c55e]/40" },
-            { label: "Orthodox Active", cls: "bg-[#22c55e20] text-[#22c55e] border border-[#22c55e]/40" },
+            { label: "Orthodox Active", cls: "bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold)]/40" },
             { label: "Next Steps", cls: "bg-[#f9731620] text-[#f97316] border border-[#f97316]/40" },
             { label: "Opportunity", cls: "text-[var(--text-muted)] border border-[var(--border-default)]" },
           ].map((b) => (
@@ -805,6 +648,20 @@ export default function MissionPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* ── Share nudge ── */}
+      <section className="px-5 md:px-[120px] py-12 md:py-16 bg-[var(--bg-primary)] flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-[var(--border-default)]">
+        <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6] max-w-[520px]">
+          If this mission matters to you, share it. One conversation can bring a new supporter, volunteer, or partner.
+        </p>
+        <ShareButton
+          title={SHARE_TITLE}
+          text={SHARE_TEXT}
+          url={SHARE_URL}
+          label="SHARE THE MISSION"
+          className="flex-shrink-0 px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
+        />
       </section>
 
       <CTASection />

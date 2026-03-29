@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -9,9 +10,38 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Christian Roma Mission",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_URL ?? "https://romamission.eu"
+  ),
+  title: {
+    default: "Christian Roma Mission",
+    template: "%s — Roma Mission",
+  },
   description:
-    "Planting Orthodox parishes among the Roma people of Central and Eastern Europe.",
+    "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
+  openGraph: {
+    title: "Christian Roma Mission",
+    description:
+      "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
+    url: process.env.NEXT_PUBLIC_URL ?? "https://romamission.eu",
+    siteName: "Christian Roma Mission",
+    type: "website",
+    images: [
+      {
+        url: "/images/mission-about-us.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Christian Roma Mission — serving Roma communities in Eastern Europe",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Christian Roma Mission",
+    description:
+      "10 million Roma across Europe — without scripture in their language or an Orthodox parish in their community. We live among them, plant churches that last, and disciple the next generation.",
+    images: ["/images/mission-about-us.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -20,11 +50,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full" suppressHydrationWarning>
+      <head>
+        {/* Prevent flash of wrong theme — runs before paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.classList.add(t);})();`,
+          }}
+        />
+      </head>
       <body
         className={`${spaceGrotesk.variable} font-primary h-full bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );

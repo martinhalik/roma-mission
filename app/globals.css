@@ -1,17 +1,43 @@
 @import "tailwindcss";
 
-:root {
+/* ─── Dark mode (default) ──────────────────────────────────────────────────── */
+:root,
+html.dark {
   --bg-primary: #111111;
   --bg-card: #1C1C1C;
   --bg-elevated: #282828;
   --text-primary: #FFFFFF;
   --text-secondary: #A0A0A0;
   --text-muted: #666666;
-  --gold: #D4AF37;
+  --gold: #D4AF37;        /* original gold accent */
+  --on-accent: #111111;   /* text on top of --gold buttons */
   --border-default: #2A2A2A;
   --border-strong: #3A3A3A;
   --cream: #F5F0E8;
   --warm-bg: #1A1714;
+  --nav-bg: rgb(17 17 17 / 0.50);   /* semi-transparent — dark mode */
+}
+
+/* ─── Light mode — warm cream palette ─────────────────────────────────────── */
+/*
+ * Pure white + #D4AF37 = 2.1:1 contrast (fails WCAG AA).
+ * Using a warm cream base (#F5F0E8) + antique gold (#7A5A0E) = 5.5:1 (AA ✓).
+ * The parchment aesthetic also suits the brand.
+ */
+html.light {
+  --bg-primary: #F5F0E8;
+  --bg-card: #EDE8DE;
+  --bg-elevated: #E4DDD0;
+  --text-primary: #1A1410;
+  --text-secondary: #4A3E30;
+  --text-muted: #7A6E5E;
+  --gold: #7A5A0E;        /* antique gold — 5.5:1 on cream bg (AA ✓) */
+  --on-accent: #FFFFFF;   /* white text on antique gold button (5.5:1 ✓) */
+  --border-default: #D4C9B4;
+  --border-strong: #BFB39C;
+  --cream: #5C4A35;
+  --warm-bg: #EDE8DE;
+  --nav-bg: rgb(245 240 232 / 0.92); /* near-opaque — light mode needs legibility */
 }
 
 @layer base {

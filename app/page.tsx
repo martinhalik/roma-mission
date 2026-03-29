@@ -5,38 +5,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import VideoModal from "@/components/VideoModal";
+import MissionMap from "@/components/MissionMap";
 import Link from "next/link";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
-import MissionMap from "@/components/MissionMap";
-
 import { MEDIA_ITEMS, ytThumb } from "@/lib/media-data";
+import SectionLabel from "@/components/SectionLabel";
+import LangBadge from "@/components/LangBadge";
 
 const LACO_VIDEO_ID = "PNhKEQtCrVo";
-
-function SectionLabel({ text }: { text: string }) {
-  return (
-    <div className="flex items-center gap-3">
-      <div className="w-[3px] h-[14px] bg-[var(--gold)]" />
-      <span className="text-[11px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
-        {text}
-      </span>
-    </div>
-  );
-}
-
-function LangBadge({ label, variant }: { label: string; variant: "audio" | "sub" }) {
-  return (
-    <span
-      className={`text-[9px] font-semibold tracking-[0.5px] px-2 py-[3px] leading-none ${
-        variant === "audio"
-          ? "bg-[var(--gold)]/15 text-[var(--gold)] border border-[var(--gold)]/40"
-          : "text-[var(--text-muted)] border border-[var(--border-strong)]"
-      }`}
-    >
-      {label}
-    </span>
-  );
-}
 
 function PlayButton({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   const dims =
@@ -52,7 +28,7 @@ function PlayButton({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
       className={`${dims} rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200 flex-shrink-0`}
     >
       <div
-        className={`w-0 h-0 border-t-transparent border-b-transparent border-l-[#111111] ml-1 ${arrow}`}
+        className={`w-0 h-0 border-t-transparent border-b-transparent border-l-[var(--on-accent)] ml-1 ${arrow}`}
       />
     </div>
   );
@@ -94,7 +70,7 @@ const resultCards: { Icon: LucideIcon; text: string }[] = [
   { Icon: House, text: "Families reconcile." },
 ];
 
-const mediaItems = MEDIA_ITEMS.map((item) => ({
+const mediaItems = MEDIA_ITEMS.filter((item) => item.tag !== "TESTIMONY").slice(0, 3).map((item) => ({
   ...item,
   thumb: ytThumb(item.videoId),
   desc: item.shortDesc,
@@ -153,13 +129,13 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <Link
                 href="/get-involved"
-                className="px-6 md:px-8 py-4 bg-[var(--gold)] text-[#111111] text-[11px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
+                className="px-6 md:px-8 py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[11px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
               >
                 SUPPORT THE MISSION
               </Link>
               <Link
                 href="/get-involved"
-                className="px-6 md:px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-semibold tracking-[1px] text-center hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+                className="px-6 md:px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-semibold tracking-[1px] text-center hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
               >
                 VOLUNTEER
               </Link>
@@ -409,11 +385,7 @@ export default function HomePage() {
 
         {/* Interactive map — full width */}
         <div className="mb-8">
-          {/* TEMP: Replace MissionMap with placeholder while debugging hydration issues */}
-          <div className="relative w-full h-[420px] md:h-[540px] bg-[#0D0D0D] flex items-center justify-center">
-            <span className="text-[11px] font-semibold tracking-[2px] text-[#444]">MAP (placeholder)</span>
-          </div>
-          {/* <MissionMap /> */}
+          <MissionMap />
         </div>
 
         {/* Stats bar */}
@@ -440,12 +412,12 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* <Link
+          <Link
             href="/locations"
-            className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+            className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
           >
             VIEW ALL LOCATIONS →
-          </Link> */}
+          </Link>
         </div>
       </section>
 
@@ -515,7 +487,7 @@ export default function HomePage() {
 
         <Link
           href="/media"
-          className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[#111111] transition-colors"
+          className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
         >
           EXPLORE MEDIA LIBRARY
         </Link>

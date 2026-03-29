@@ -7,7 +7,7 @@ export interface MediaBadge {
 
 export interface MediaItem {
   id: string;
-  tag: "DOCUMENTARY" | "INTERVIEW";
+  tag: "DOCUMENTARY" | "INTERVIEW" | "TESTIMONY";
   videoId: string;
   title: string;
   /** Short description — used on homepage media grid */
@@ -23,6 +23,7 @@ export interface MediaItem {
 export const DOCUMENTARY_VIDEO_ID = "K-IDNefOa98";
 export const INTERVIEW_1_ID = "A3-IfJL_vt4";
 export const INTERVIEW_2_ID = "7tdFd08wUis";
+export const TESTIMONY_LACO_ID = "PNhKEQtCrVo";
 
 export function ytThumb(id: string) {
   return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
@@ -38,7 +39,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
       "Official Czech Television production. The director's journey from IT career to Orthodox priesthood among Roma communities in Slovakia.",
     fullDesc:
       "An official Czech Television documentary. The film follows the director of Christian Roma Mission on his personal journey from a career in IT to Orthodox priesthood in Roma communities across Slovakia — alongside his wife and children. It offers an honest look at daily parish life, family ministry on the mission field, and the long-term sacrifice behind a calling to communities shaped by poverty, exclusion, and deep spiritual need.",
-    badges: [{ label: "Working on EN Subtitles", variant: "sub" }],
+    badges: [{ label: "EN Subtitles", variant: "sub" }],
     duration: "30 min",
     source: "Czech Television",
   },
@@ -54,7 +55,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     badges: [{ label: "Slovak Audio", variant: "audio" }],
     duration: "48 min",
     source: "Orthodox Faculty Dean Podcast",
-    guest: "Fr. Nikolaj Petrov",
+    guest: "Martin Halik, Founder of Christian Roma Mission",
   },
   {
     id: "int-2",
@@ -68,6 +69,20 @@ export const MEDIA_ITEMS: MediaItem[] = [
     badges: [{ label: "Slovak Audio", variant: "audio" }],
     duration: "35 min",
     source: "Orthodox Faculty Dean Podcast",
-    guest: "Miroslava Horváth",
+    guest: "Family Missionaries Halikovi",
+  },
+  {
+    id: "testimony-laco",
+    tag: "TESTIMONY",
+    videoId: TESTIMONY_LACO_ID,
+    title: "Laco's Story",
+    shortDesc:
+      "A Roma man from Slovakia reflects on what changed when the mission came to his community.",
+    fullDesc:
+      "Laco grew up in a Roma settlement in Slovakia. In this personal testimony he speaks openly about the skepticism he once held, the change he witnessed in his community, and what it meant when the priest stayed.",
+    badges: [{ label: "English Audio", variant: "audio" }],
+    duration: "12 min",
+    source: "Personal Testimony",
+    guest: "Laco, Slovakia",
   },
 ];

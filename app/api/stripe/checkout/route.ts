@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     ui_mode: "embedded",
     mode: isMonthly ? "subscription" : "payment",
     line_items: [{ price_data: priceData, quantity: 1 }],
-    return_url: `${baseUrl}/get-involved?success=true`,
+    return_url: `${baseUrl}/thank-you`,
   });
 
   return NextResponse.json({ clientSecret: session.client_secret });

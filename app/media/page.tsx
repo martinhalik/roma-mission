@@ -5,37 +5,22 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import VideoModal from "@/components/VideoModal";
-import { MEDIA_ITEMS, DOCUMENTARY_VIDEO_ID, ytThumb, BadgeVariant } from "@/lib/media-data";
-
-function SectionLabel({ text }: { text: string }) {
-  return (
-    <div className="flex items-center gap-3">
-      <div className="w-[3px] h-[14px] bg-[var(--gold)]" />
-      <span className="text-[11px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
-        {text}
-      </span>
-    </div>
-  );
-}
-
-function LangBadge({ label, variant }: { label: string; variant: BadgeVariant }) {
-  return (
-    <span
-      className={`inline-flex items-center gap-1 text-[9px] font-semibold tracking-[0.5px] px-2 py-[3px] leading-none ${
-        variant === "audio"
-          ? "bg-[var(--gold)]/15 text-[var(--gold)] border border-[var(--gold)]/40"
-          : "text-[var(--text-muted)] border border-[var(--border-strong)]"
-      }`}
-    >
-      {label}
-    </span>
-  );
-}
+import { MEDIA_ITEMS, DOCUMENTARY_VIDEO_ID, ytThumb } from "@/lib/media-data";
+import SectionLabel from "@/components/SectionLabel";
+import LangBadge from "@/components/LangBadge";
 
 const documentary = MEDIA_ITEMS.find((item) => item.tag === "DOCUMENTARY")!;
 
 const interviews = MEDIA_ITEMS
   .filter((item) => item.tag === "INTERVIEW")
+  .map((item) => ({
+    ...item,
+    thumb: ytThumb(item.videoId),
+    desc: item.fullDesc,
+  }));
+
+const testimonies = MEDIA_ITEMS
+  .filter((item) => item.tag === "TESTIMONY")
   .map((item) => ({
     ...item,
     thumb: ytThumb(item.videoId),
@@ -81,13 +66,7 @@ export default function MediaPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/media-hero.jpg')" }}
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(0deg, #111111EE 0%, #11111188 70%, #11111144 100%)",
-          }}
-        />
+        <div className="absolute inset-0 bg-[linear-gradient(0deg,color-mix(in_srgb,var(--bg-primary)_93%,transparent)_0%,color-mix(in_srgb,var(--bg-primary)_53%,transparent)_70%,color-mix(in_srgb,var(--bg-primary)_27%,transparent)_100%)]" />
         <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
           <div className="flex flex-col gap-5 md:gap-6 max-w-[700px]">
             <SectionLabel text="Media" />
@@ -118,7 +97,7 @@ export default function MediaPage() {
           <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[18px] border-l-[#111111] ml-1" />
+              <div className="w-0 h-0 border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent border-l-[18px] border-l-[var(--on-accent)] ml-1" />
             </div>
           </div>
         </button>
@@ -141,7 +120,7 @@ export default function MediaPage() {
           </div>
           <button
             onClick={() => setActiveVideoId(DOCUMENTARY_VIDEO_ID)}
-            className="self-start px-8 py-4 bg-[var(--gold)] text-[#111111] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
+            className="self-start px-8 py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
           >
             WATCH DOCUMENTARY
           </button>
@@ -178,7 +157,7 @@ export default function MediaPage() {
               >
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
                 <div className="relative w-12 h-12 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[14px] border-l-[#111111] ml-1" />
+                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[14px] border-l-[var(--on-accent)] ml-1" />
                 </div>
               </div>
 
@@ -220,6 +199,70 @@ export default function MediaPage() {
 
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
 
+      {/* ── Testimonies ── */}
+      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
+        <div className="flex flex-col gap-4 max-w-[500px] mb-10 md:mb-12">
+          <SectionLabel text="Testimony" />
+          <h2 className="text-[28px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[0.95]">
+            Voices from the Mission
+          </h2>
+          <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6]">
+            Personal testimonies from Roma community members — in their own words.
+          </p>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+          {testimonies.map((ep) => (
+            <button
+              key={ep.id}
+              onClick={() => setActiveVideoId(ep.videoId)}
+              className="flex flex-col gap-0 bg-[var(--bg-card)] border border-[var(--border-default)] md:max-w-[480px] text-left group hover:border-[var(--gold)]/50 transition-colors duration-200 overflow-hidden"
+              aria-label={`Watch: ${ep.title}`}
+            >
+              {/* Thumbnail */}
+              <div
+                className="w-full h-[200px] bg-cover bg-center relative flex items-center justify-center"
+                style={{ backgroundImage: `url('${ep.thumb}')` }}
+              >
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
+                <div className="relative w-12 h-12 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[14px] border-l-[var(--on-accent)] ml-1" />
+                </div>
+              </div>
+
+              {/* Info */}
+              <div className="flex flex-col gap-4 p-6 md:p-7 flex-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  {ep.badges.map((badge) => (
+                    <LangBadge key={badge.label} label={badge.label} variant={badge.variant} />
+                  ))}
+                </div>
+
+                <div>
+                  <h3 className="text-[15px] md:text-[16px] font-bold text-[var(--text-primary)] leading-[1.3] group-hover:text-[var(--gold)] transition-colors duration-200 mb-2">
+                    {ep.title}
+                  </h3>
+                  <p className="text-[12px] md:text-[13px] text-[var(--text-secondary)] leading-[1.6]">
+                    {ep.desc}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between mt-auto pt-3 border-t border-[var(--border-default)]">
+                  <p className="text-[11px] text-[var(--text-muted)]">
+                    {ep.guest}
+                  </p>
+                  <span className="text-[11px] text-[var(--text-muted)]">
+                    {ep.duration}
+                  </span>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
+
       {/* ── Field Reports / News ── */}
       {/* <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-10 md:mb-12">
@@ -240,7 +283,7 @@ export default function MediaPage() {
               <div className="w-full h-[160px] bg-[var(--bg-elevated)]" />
               <div className="flex flex-col gap-3 p-5 md:p-6">
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-semibold tracking-[1px] text-[var(--gold)] border border-[#D4AF3740] px-2 py-0.5">
+                  <span className="text-[10px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)]/25 px-2 py-0.5">
                     {n.tag.toUpperCase()}
                   </span>
                   <span className="text-[11px] text-[var(--text-muted)]">
