@@ -1,35 +1,14 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Stories",
-  description:
-    "Real testimonies from Roma communities where the Orthodox Church has taken root. Lives changed through baptism, discipleship, and the presence of a local parish.",
-  openGraph: {
-    title: "Stories — Roma Mission",
-    description:
-      "Real testimonies from Roma communities where the Orthodox Church has taken root. Lives changed through baptism, discipleship, and the presence of a local parish.",
-    url: "https://romamission.eu/stories",
-    images: [{ url: "/images/testimony-lado.jpg", width: 1200, height: 630, alt: "Transformed lives — Roma Mission" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Stories — Roma Mission",
-    description:
-      "Real testimonies from Roma communities where the Orthodox Church has taken root. Lives changed through baptism, discipleship, and the presence of a local parish.",
-    images: ["/images/testimony-lado.jpg"],
-  },
-};
+"use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import Link from "next/link";
-import ShareButton from "@/components/ShareButton";
+import { useState } from "react";
+import VideoModal from "@/components/VideoModal";
+import { ArrowRight } from "lucide-react";
 
-const SHARE_URL = "https://romamission.eu/stories";
-const SHARE_TITLE = "Lives Transformed — Roma Mission";
-const SHARE_TEXT =
-  "These are real stories from Roma communities where the Orthodox Church has taken root. Worth reading.";
+const LACO_VIDEO_ID = "PNhKEQtCrVo";
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -42,143 +21,408 @@ function SectionLabel({ text }: { text: string }) {
   );
 }
 
-const moreStories = [
+function PlayButton() {
+  return (
+    <div className="w-14 h-14 rounded-full bg-white/10 border border-white/30 backdrop-blur-sm flex items-center justify-center">
+      <div className="w-0 h-0 border-t-[9px] border-t-transparent border-b-[9px] border-b-transparent border-l-[16px] border-l-white ml-1" />
+    </div>
+  );
+}
+
+interface Story {
+  image: string;
+  imagePosition?: string;
+  country: string;
+  name: string;
+  quote: string;
+  author: string;
+  context: string;
+}
+
+const featuredStory: Story = {
+  image: "miro-svetlana-cibul.jpeg",
+  imagePosition: "center 30%",
+  country: "Slovakia",
+  name: "Mirko & Svetlana Cibuľ",
+  quote:
+    "When we were quarantined with our eight children and had nothing to eat, they came with groceries and games. We couldn't reach anyone else. Only them.",
+  author: "Svetlana Cibuľová, Klenovec",
+  context:
+    "In the early weeks of COVID, nobody knew what the virus would do. People were afraid of death itself. Roma settlements were abandoned — too risky, too crowded, too unknown. Martin and Misha went anyway. Belief in the resurrection is not a metaphor for them. It is what gave them the courage to walk toward what everyone else was walking away from.",
+};
+
+const stories: Story[] = [
   {
-    image: "story-1.jpg",
+    image: "roma-fathers-working.jpg",
+    imagePosition: "center 25%",
     country: "Slovakia",
-    name: "Elena & her children",
+    name: "The fathers of Klenovec",
     quote:
-      "The priest started coming every week. My children began attending Sunday school. Now they can read. I never could.",
-    author: "Elena, Eastern Slovakia",
+      "I used to come here when I needed men for a day's work. After a few years I came again — and I couldn't find anyone. They were all already hired.",
+    author: "Local carpenter, Klenovec region",
+    context:
+      "When the mission arrived, around 30% of men in the settlement had any work. Four years later, a local carpenter who regularly hired from the settlement came looking — and left empty-handed. Not because men refused. Because there was nobody left to hire. They were all at work.",
   },
   {
-    image: "story-2.jpg",
-    country: "Romania",
-    name: "Gheorghe",
-    quote:
-      "I was ashamed to walk into any church. Father Nikolaj came to us. He baptized me in the river. That was three years ago. I haven't missed a Liturgy since.",
-    author: "Gheorghe, Bucharest region",
+    image: "dominik-and-adrian-learning-how-to-cook.jpeg",
+    imagePosition: "center 20%",
+    country: "Slovakia",
+    name: "Adrian & Dominik",
+    quote: "The others who weren't in the course didn't pass the test. We did.",
+    author: "Adrian, Klenovec",
+    context:
+      "Dominik came from a special school — the kind teachers write off. Through the mission's multimedia workshop, he sat the government exam for 9th grade completion. Something his teachers once called impossible. His brother Adrian prints t-shirts, including for those same teachers. One now got a job offer because he could pass skills test others couldn't.",
   },
   {
-    image: "story-3.jpg",
-    country: "Hungary",
-    name: "The Horváth family",
+    image: "miroslava.jpeg",
+    imagePosition: "center 15%",
+    country: "Slovakia",
+    name: "Miroslava",
     quote:
-      "We had four children and no structure. The parish became our structure. My husband stopped drinking. My children go to school.",
-    author: "Maria Horváth, Northern Hungary",
+      "I don't know, but since I am coming here, I stopped lying. I started helping home. I started behaving well. I started learning better.",
+    author: "Miroslava, Klenovec",
+    context:
+      "She cannot explain it theologically. She just knows something changed. Her parents confirm it — of all the children who attend, she is the most helpful. Grace is often like that: you don't understand it. You just live differently.",
+  },
+  {
+    // TODO: confirm name with him when he approves
+    image: "m-man-testimony.jpg",
+    imagePosition: "center 35%",
+    country: "Slovakia",
+    name: "A man from Gemer",
+    quote:
+      "I thought having children would change me. It didn't. Coming to the Eucharist every week — that did.",
+    author: "Roma man, Gemer region",
+    context:
+      "He is Roma, but not from a settlement — a regular house, a regular neighbourhood. Addiction had followed him for years. He thought becoming a father would be the turning point. It wasn't. When he began attending the parish and receiving Communion weekly, something shifted. He married his partner — to make it right before God. The addiction lost its hold. He still comes.",
   },
 ];
 
 export default function StoriesPage() {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
-      <Navbar activePage="mission" />
+      <Navbar activePage="stories" />
 
-      {/* ── Stories Hero (no image — text-based) ── */}
+      {/* ── Hero ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-5 md:gap-6 max-w-[700px]">
-          <SectionLabel text="Stories" />
-          <h1 className="text-[32px] md:text-[48px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            Lives Transformed by
+          <SectionLabel text="Testimonies" />
+          <h1 className="text-[32px] md:text-[52px] font-bold tracking-[-1.5px] text-[var(--text-primary)] leading-[1.05]">
+            Real People.
             <br />
-            Parish Life
+            Real Change.
           </h1>
-          <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.6]">
-            Real stories from Roma communities where the Church has taken root.
-            Every name and testimony is shared with permission.
+          <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.7] max-w-[560px]">
+            Every story here is a real person in a real settlement in Slovakia.
+            Not statistics. Not composites. People whose lives changed because
+            the Church showed up and stayed.
           </p>
         </div>
       </section>
 
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
 
-      {/* ── Featured Story ── */}
+      {/* ── Featured Story — Laco ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
-        <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start md:items-center">
-          <div className="w-full md:w-[480px] h-[240px] md:h-[420px] bg-[var(--bg-elevated)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden">
+        <div className="flex flex-col gap-4 mb-10 md:mb-14">
+          <SectionLabel text="Featured Testimony" />
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-10 md:gap-20 items-start md:items-center">
+          {/* Photo — click to play video */}
+          <button
+            onClick={() => setVideoOpen(true)}
+            className="w-full md:w-[440px] h-[260px] md:h-[500px] bg-[var(--bg-elevated)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden relative group cursor-pointer"
+            aria-label="Watch Laco's story"
+          >
             <div
-              className="w-full h-full bg-cover bg-center"
+              className="w-full h-full bg-cover transition-transform duration-500 group-hover:scale-105"
               style={{
-                backgroundImage: "url('/images/story-lado.jpg')",
+                backgroundImage: "url('/images/testimony-lado.jpg')",
+                backgroundPosition: "center 20%",
               }}
             />
-          </div>
-          <div className="flex flex-col gap-5 md:gap-6 flex-1">
-            <span className="text-[10px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
-              Featured Testimony
+            <div className="absolute inset-0 bg-black/25 group-hover:bg-black/45 transition-colors duration-300 flex items-center justify-center">
+              <PlayButton />
+            </div>
+            <div className="absolute bottom-4 left-4 right-4">
+              <span className="text-[10px] font-semibold tracking-[2px] text-white/60 uppercase">
+                Watch his testimony
+              </span>
+            </div>
+          </button>
+
+          <div className="flex flex-col gap-6 flex-1">
+            <span className="text-[var(--gold)] text-[100px] md:text-[120px] leading-[0.3] font-bold">
+              &ldquo;
             </span>
-            <blockquote className="text-[18px] md:text-[24px] font-medium text-[var(--text-primary)] leading-[1.5]">
-              &ldquo;Before the mission came, I had no reason to stop drinking.
-              No one expected anything from me. Now I serve in the altar. My
-              children see me pray. That changed everything.&rdquo;
+            <blockquote className="text-[20px] md:text-[26px] font-medium text-[var(--text-primary)] leading-[1.45] -mt-6">
+              That&rsquo;s why we were angry with him for not doing anything and
+              he left us.
             </blockquote>
-            <p className="text-[13px] md:text-[14px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
-              — Laco, Slovaki
+            <p className="text-[12px] font-semibold tracking-[1.5px] text-[var(--text-muted)] uppercase">
+              — Laco, about his father
             </p>
-            <p className="text-[13px] md:text-[15px] text-[var(--text-secondary)] leading-[1.7]">
-              Lado was one of the first men baptized when the mission arrived in
-              his settlement in 2012. Today he serves as a reader in the parish
-              and mentors younger men in the community.
+
+            <div className="h-px bg-[var(--border-default)] my-2" />
+
+            <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.75]">
+              Laco and his brother had been attending the mission&rsquo;s
+              lessons when their father abandoned the family. They were angry.
+              The priest listened, then told them: pray for him. He&rsquo;s
+              still your father. Don&rsquo;t hold the anger. Months later,
+              Robert went with his mother to ask his father to come back. That
+              is what the mission had taught him to do. His father came back. He
+              stopped drinking. He found work. Today he sits in the front row at
+              every school skit and theater performance his sons are in. The
+              whole family, together.
             </p>
+
+            <button
+              onClick={() => setVideoOpen(true)}
+              className="group self-start flex items-center gap-3 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] hover:opacity-80 transition-opacity cursor-pointer mt-2"
+            >
+              <div className="w-7 h-7 rounded-full border border-[var(--gold)] flex items-center justify-center flex-shrink-0">
+                <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[8px] border-l-[var(--gold)] ml-0.5" />
+              </div>
+              WATCH HIS STORY
+            </button>
           </div>
         </div>
       </section>
 
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
 
+      {/* ── Pull stat ── */}
+      <section className="px-5 md:px-[120px] py-12 md:py-16 bg-[var(--warm-bg)]">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-0 md:divide-x divide-[var(--border-strong)]">
+          {[
+            {
+              stat: "90%+",
+              label: "of settlement fathers now employed",
+              sub: "Was around 30% when the mission arrived",
+            },
+            {
+              stat: "10+",
+              label: "years of continuous presence",
+              sub: "Not a project. A permanent parish.",
+            },
+            {
+              stat: "2+",
+              label: "vocational workshops running",
+              sub: "Masonry, multimedia and cooking — real skills, real futures",
+            },
+          ].map((item) => (
+            <div
+              key={item.stat}
+              className="flex flex-col gap-2 md:px-12 first:pl-0 last:pr-0"
+            >
+              <span className="text-[36px] md:text-[44px] font-bold text-[var(--gold)] tracking-[-1px] leading-none">
+                {item.stat}
+              </span>
+              <span className="text-[14px] font-semibold text-[var(--text-primary)]">
+                {item.label}
+              </span>
+              <span className="text-[12px] text-[var(--text-muted)]">
+                {item.sub}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
+
+      {/* ── Founder's Story ── */}
+      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
+        <div className="flex flex-col gap-4 mb-10">
+          <SectionLabel text="The Founder's Story" />
+        </div>
+
+        <Link
+          href="/our-story"
+          className="group flex flex-col md:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden hover:border-[var(--gold)]/40 transition-colors"
+        >
+          <div
+            className="w-full md:w-[360px] h-[220px] md:h-[320px] bg-[var(--bg-elevated)] bg-cover flex-shrink-0 transition-transform duration-500 group-hover:scale-[1.02] origin-center overflow-hidden"
+            style={{
+              backgroundImage: "url('/images/mission-about-us.jpg')",
+              backgroundPosition: "center 30%",
+            }}
+          />
+          <div className="flex flex-col gap-4 p-6 md:p-10 justify-center">
+            <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
+              Slovakia · 2016 – 2020
+            </span>
+            <h3 className="text-[20px] md:text-[26px] font-bold tracking-[-0.5px] text-[var(--text-primary)] leading-[1.2]">
+              How a designer abandoned his career,
+              <br className="hidden md:block" /> moved into a Roma settlement,
+              <br className="hidden md:block" /> and stayed.
+            </h3>
+            <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.75] max-w-[500px]">
+              Martin was nineteen, working internationally, leading a design team at one of the fastest-growing Czech startups. Then a detour through Klenovec changed the direction of his life. He didn&apos;t send help from a distance. He moved in.
+            </p>
+            <div className="flex items-center gap-2 text-[11px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase mt-2 group-hover:gap-3 transition-all">
+              Read the full story <ArrowRight size={13} />
+            </div>
+          </div>
+        </Link>
+      </section>
+
+      <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
+
       {/* ── More Stories ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
-        <div className="flex flex-col gap-4 mb-10 md:mb-12">
-          <SectionLabel text="More Testimonies" />
-          <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[0.95]">
-            From the Communities
+        <div className="flex flex-col gap-4 mb-10 md:mb-14">
+          <SectionLabel text="From the Settlement" />
+          <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
+            More Voices From
+            <br />
+            Klenovec
           </h2>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-5 md:gap-6">
-          {moreStories.map((s) => (
+        {/* Featured family story — full width, large photo */}
+        <div className="flex flex-col md:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden mb-5 md:mb-6">
+          <div
+            className="w-full md:w-[520px] h-[280px] md:h-[420px] bg-[var(--bg-elevated)] bg-cover flex-shrink-0"
+            style={{
+              backgroundImage: `url('/images/${featuredStory.image}')`,
+              backgroundPosition: featuredStory.imagePosition ?? "center",
+            }}
+          />
+          <div className="flex flex-col gap-5 p-6 md:p-10 justify-center">
+            <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
+              {featuredStory.country}
+            </span>
+            <blockquote className="text-[15px] md:text-[17px] text-[var(--text-primary)] leading-[1.7] italic">
+              &ldquo;{featuredStory.quote}&rdquo;
+            </blockquote>
+            <p className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
+              — {featuredStory.author}
+            </p>
+            <div className="h-px bg-[var(--border-default)]" />
+            <p className="text-[13px] text-[var(--text-muted)] leading-[1.7]">
+              {featuredStory.context}
+            </p>
+          </div>
+        </div>
+
+        {/* Remaining stories — 2×2 grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+          {stories.map((s) => (
             <div
               key={s.name}
               className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex-1"
             >
               <div
-                className="w-full h-[180px] md:h-[200px] bg-[var(--bg-elevated)] bg-cover bg-center"
-                style={{ backgroundImage: `url('/images/${s.image}')` }}
+                className="w-full h-[200px] md:h-[220px] bg-[var(--bg-elevated)] bg-cover"
+                style={{
+                  backgroundImage: `url('/images/${s.image}')`,
+                  backgroundPosition: s.imagePosition ?? "center",
+                }}
               />
-              <div className="flex flex-col gap-4 p-5 md:p-6">
+              <div className="flex flex-col gap-4 p-5 md:p-6 flex-1">
                 <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
                   {s.country}
                 </span>
-                <blockquote className="text-[13px] md:text-[14px] text-[var(--text-primary)] leading-[1.6] italic">
+                <blockquote className="text-[13px] md:text-[14px] text-[var(--text-primary)] leading-[1.65] italic flex-1">
                   &ldquo;{s.quote}&rdquo;
                 </blockquote>
                 <p className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
                   — {s.author}
                 </p>
+                <div className="h-px bg-[var(--border-default)] mt-1" />
+                <p className="text-[12px] text-[var(--text-muted)] leading-[1.6]">
+                  {s.context}
+                </p>
               </div>
             </div>
           ))}
         </div>
+      </section>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <Link
-            href="/get-involved"
-            className="px-8 py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
-          >
-            SUPPORT THIS MISSION
-          </Link>
-          <ShareButton
-            title={SHARE_TITLE}
-            text={SHARE_TEXT}
-            url={SHARE_URL}
-            label="SHARE THESE STORIES"
-            className="px-8 py-4 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-bold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
-          />
+      <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
+
+      {/* ── Anonymous vignette ── */}
+      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
+        <div className="max-w-[640px] mx-auto flex flex-col gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-8 h-px bg-[var(--gold)]" />
+            <span className="text-[10px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
+              Not every story has a photo
+            </span>
+          </div>
+          <p className="text-[18px] md:text-[22px] font-medium text-[var(--text-primary)] leading-[1.6]">
+            There is a girl we visit three times a year.
+          </p>
+          <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.85]">
+            Her mother is in prison. Her grandmother — the one person who held
+            things together — died recently. She is now living with her aunt. We
+            cannot show her face. We will not share her name. But we will keep
+            coming back.
+          </p>
+          <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.85]">
+            Three visits a year is not much. But for her, it may be the only
+            consistent thing in her life right now. Someone who shows up. Not
+            because she asked. Not because it's convenient. Because she matters.
+          </p>
+          <p className="text-[14px] text-[var(--text-muted)] leading-[1.8] italic">
+            This is why we don't measure success in numbers. Some of the most
+            important work we do will never appear in a report.
+          </p>
+        </div>
+      </section>
+
+      <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
+
+      {/* ── Why Stories Matter ── */}
+      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
+        <div className="max-w-[680px]">
+          <SectionLabel text="The Work Continues" />
+          <h2 className="text-[26px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.1] mt-5 mb-6">
+            Every story here started with someone choosing to stay.
+          </h2>
+          <p className="text-[14px] md:text-[16px] text-[var(--text-secondary)] leading-[1.8] mb-4">
+            Martin and Misha moved to Klenovec permanently. Not as visitors, not
+            as NGO workers on a contract. They bought a house, raised children,
+            and built a parish — because the Roma communities they serve have
+            been let down by every initiative that eventually packed up and
+            left.
+          </p>
+          <p className="text-[14px] md:text-[16px] text-[var(--text-secondary)] leading-[1.8] mb-8">
+            In 2025, donors contributed roughly €3,000. Actual mission costs
+            were €16,900. The gap is covered from Martin's personal income.
+            Every euro you give goes directly to sustaining what you&rsquo;ve
+            just read.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link
+              href="/get-involved"
+              className="inline-flex items-center justify-center bg-[var(--gold)] text-black text-[12px] font-bold tracking-[1.5px] px-8 py-4 hover:opacity-90 transition-opacity uppercase"
+            >
+              Support This Mission
+            </Link>
+            <Link
+              href="/mission"
+              className="inline-flex items-center justify-center border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-semibold tracking-[1px] px-8 py-4 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors uppercase"
+            >
+              Learn How It Works
+            </Link>
+          </div>
         </div>
       </section>
 
       <CTASection />
       <Footer />
+
+      <VideoModal
+        videoId={LACO_VIDEO_ID}
+        isOpen={videoOpen}
+        onClose={() => setVideoOpen(false)}
+      />
     </main>
   );
 }
