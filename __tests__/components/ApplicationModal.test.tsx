@@ -103,7 +103,7 @@ describe("ApplicationModal", () => {
     render(
       <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
     );
-    await user.click(screen.getByRole("button", { name: "✕" }));
+    await user.click(screen.getByRole("button", { name: "Close" }));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 

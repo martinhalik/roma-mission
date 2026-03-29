@@ -34,10 +34,16 @@ describe("DonationModal", () => {
     expect(screen.getByText("Give to Roma Mission")).toBeInTheDocument();
   });
 
-  it("shows all preset amounts", () => {
+  it("shows all preset amounts", async () => {
     render(<DonationModal isOpen={true} onClose={onClose} />);
-    expect(screen.getByText("$30")).toBeInTheDocument();
+    // Monthly amounts shown by default
+    expect(screen.getByText("$10")).toBeInTheDocument();
+    expect(screen.getByText("$25")).toBeInTheDocument();
+    expect(screen.getByText("$50")).toBeInTheDocument();
     expect(screen.getByText("$100")).toBeInTheDocument();
+    // Switch to one-time to see those amounts
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    expect(screen.getByText("$30")).toBeInTheDocument();
     expect(screen.getByText("$250")).toBeInTheDocument();
     expect(screen.getByText("$500")).toBeInTheDocument();
   });
@@ -59,9 +65,9 @@ describe("DonationModal", () => {
 
   it("selects a different preset amount", async () => {
     render(<DonationModal isOpen={true} onClose={onClose} />);
-    await user.click(screen.getByRole("button", { name: "$250" }));
+    await user.click(screen.getByRole("button", { name: "$50" }));
     expect(
-      screen.getByRole("button", { name: "GIVE $250/MO" })
+      screen.getByRole("button", { name: "GIVE $50/MO" })
     ).toBeInTheDocument();
   });
 
@@ -166,7 +172,7 @@ describe("DonationModal", () => {
 
   it("closes when the X button is clicked", async () => {
     render(<DonationModal isOpen={true} onClose={onClose} />);
-    await user.click(screen.getByRole("button", { name: "✕" }));
+    await user.click(screen.getByRole("button", { name: "Close" }));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
