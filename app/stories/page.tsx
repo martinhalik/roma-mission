@@ -6,6 +6,7 @@ import CTASection from "@/components/CTASection";
 import Link from "next/link";
 import { useState } from "react";
 import VideoModal from "@/components/VideoModal";
+import { ArrowRight } from "lucide-react";
 
 const LACO_VIDEO_ID = "PNhKEQtCrVo";
 
@@ -230,6 +231,44 @@ export default function StoriesPage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
+
+      {/* ── Founder's Story ── */}
+      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
+        <div className="flex flex-col gap-4 mb-10">
+          <SectionLabel text="The Founder's Story" />
+        </div>
+
+        <Link
+          href="/our-story"
+          className="group flex flex-col md:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden hover:border-[var(--gold)]/40 transition-colors"
+        >
+          <div
+            className="w-full md:w-[360px] h-[220px] md:h-[320px] bg-[var(--bg-elevated)] bg-cover flex-shrink-0 transition-transform duration-500 group-hover:scale-[1.02] origin-center overflow-hidden"
+            style={{
+              backgroundImage: "url('/images/mission-about-us.jpg')",
+              backgroundPosition: "center 30%",
+            }}
+          />
+          <div className="flex flex-col gap-4 p-6 md:p-10 justify-center">
+            <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
+              Slovakia · 2016 – 2020
+            </span>
+            <h3 className="text-[20px] md:text-[26px] font-bold tracking-[-0.5px] text-[var(--text-primary)] leading-[1.2]">
+              How a designer abandoned his career,
+              <br className="hidden md:block" /> moved into a Roma settlement,
+              <br className="hidden md:block" /> and stayed.
+            </h3>
+            <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.75] max-w-[500px]">
+              Martin was nineteen, working internationally, leading a design team at one of the fastest-growing Czech startups. Then a detour through Klenovec changed the direction of his life. He didn&apos;t send help from a distance. He moved in.
+            </p>
+            <div className="flex items-center gap-2 text-[11px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase mt-2 group-hover:gap-3 transition-all">
+              Read the full story <ArrowRight size={13} />
+            </div>
+          </div>
+        </Link>
       </section>
 
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />

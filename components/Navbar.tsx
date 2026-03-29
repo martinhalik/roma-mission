@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, Share2, MessageCircle } from "lucide-react";
 
-type Page = "home" | "mission" | "locations" | "media" | "stories" | "get-involved";
+type Page = "home" | "mission" | "locations" | "media" | "stories" | "get-involved" | "our-story";
 
 interface NavbarProps {
   activePage?: Page;
