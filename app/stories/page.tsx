@@ -30,6 +30,7 @@ function PlayButton() {
 
 interface Story {
   image: string;
+  imagePosition?: string;
   country: string;
   name: string;
   quote: string;
@@ -39,6 +40,7 @@ interface Story {
 
 const featuredStory: Story = {
   image: "miro-svetlana-cibul.jpeg",
+  imagePosition: "center 30%",
   country: "Slovakia",
   name: "Mirko & Svetlana Cibuľ",
   quote:
@@ -51,6 +53,7 @@ const featuredStory: Story = {
 const stories: Story[] = [
   {
     image: "roma-fathers-working.jpg",
+    imagePosition: "center 25%",
     country: "Slovakia",
     name: "The fathers of Klenovec",
     quote:
@@ -60,36 +63,37 @@ const stories: Story[] = [
       "When the mission arrived, around 30% of men in the settlement had any work. Four years later, a local carpenter who regularly hired from the settlement came looking — and left empty-handed. Not because men refused. Because there was nobody left to hire. They were all at work.",
   },
   {
-    image: "transformed-via-education.jpeg",
+    image: "dominik-and-adrian-learning-how-to-cook.jpeg",
+    imagePosition: "center 20%",
     country: "Slovakia",
     name: "Adrian & Dominik",
-    quote:
-      "The others who weren't in the course didn't pass the test. We did.",
+    quote: "The others who weren't in the course didn't pass the test. We did.",
     author: "Adrian, Klenovec",
     context:
-      "Adrian came from a special school — the kind teachers write off. Through the mission's multimedia workshop, he sat the government exam for 9th grade completion. Something his teachers once called impossible. His brother Dominik prints t-shirts, including for those same teachers. One now works a job he got because he could pass a computer skills test others couldn't.",
+      "Dominik came from a special school — the kind teachers write off. Through the mission's multimedia workshop, he sat the government exam for 9th grade completion. Something his teachers once called impossible. His brother Adrian prints t-shirts, including for those same teachers. One now got a job offer because he could pass skills test others couldn't.",
   },
   {
-    // TODO: replace with Mirka's photo when provided
-    image: "future-church.jpg",
+    image: "miroslava.jpeg",
+    imagePosition: "center 15%",
     country: "Slovakia",
-    name: "Mirka",
+    name: "Miroslava",
     quote:
       "I don't know, but since I am coming here, I stopped lying. I started helping home. I started behaving well. I started learning better.",
-    author: "Mirka, Klenovec",
+    author: "Miroslava, Klenovec",
     context:
       "She cannot explain it theologically. She just knows something changed. Her parents confirm it — of all the children who attend, she is the most helpful. Grace is often like that: you don't understand it. You just live differently.",
   },
   {
-    // TODO: replace with his photo when provided + confirm name with him
-    image: "future.jpeg",
+    // TODO: confirm name with him when he approves
+    image: "m-man-testimony.jpg",
+    imagePosition: "center 35%",
     country: "Slovakia",
-    name: "A man from the settlement",
+    name: "A man from Gemer",
     quote:
       "I thought having children would change me. It didn't. Coming to the Eucharist every week — that did.",
-    author: "Community member, Klenovec",
+    author: "Roma man, Gemer region",
     context:
-      "He had struggled with addiction for years. He believed fatherhood would be the turning point. It wasn't. When he began attending the parish and receiving Communion regularly, something shifted. He got married — to make his relationship right before God. The addiction lost its hold. He still comes every week.",
+      "He is Roma, but not from a settlement — a regular house, a regular neighbourhood. Addiction had followed him for years. He thought becoming a father would be the turning point. It wasn't. When he began attending the parish and receiving Communion weekly, something shifted. He married his partner — to make it right before God. The addiction lost its hold. He still comes.",
   },
 ];
 
@@ -133,8 +137,11 @@ export default function StoriesPage() {
             aria-label="Watch Laco's story"
           >
             <div
-              className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-              style={{ backgroundImage: "url('/images/testimony-lado.jpg')" }}
+              className="w-full h-full bg-cover transition-transform duration-500 group-hover:scale-105"
+              style={{
+                backgroundImage: "url('/images/testimony-lado.jpg')",
+                backgroundPosition: "center 20%",
+              }}
             />
             <div className="absolute inset-0 bg-black/25 group-hover:bg-black/45 transition-colors duration-300 flex items-center justify-center">
               <PlayButton />
@@ -151,22 +158,25 @@ export default function StoriesPage() {
               &ldquo;
             </span>
             <blockquote className="text-[20px] md:text-[26px] font-medium text-[var(--text-primary)] leading-[1.45] -mt-6">
-              Before the mission came, I had no reason to stop drinking. No one
-              expected anything from me. Now I serve in the altar. My children
-              see me pray. That changed everything.
+              That&rsquo;s why we were angry with him for not doing anything and
+              he left us.
             </blockquote>
             <p className="text-[12px] font-semibold tracking-[1.5px] text-[var(--text-muted)] uppercase">
-              — Laco, Slovakia
+              — Laco, about his father
             </p>
 
             <div className="h-px bg-[var(--border-default)] my-2" />
 
             <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.75]">
-              Laco was among the first men baptized when the mission arrived in
-              his settlement. For years he had no structure, no community, no
-              sense of being needed. The parish gave him all three. Today he
-              serves as a reader, leads prayers with his family, and mentors
-              younger men navigating the same road he walked.
+              Laco and his brother had been attending the mission&rsquo;s
+              lessons when their father abandoned the family. They were angry.
+              The priest listened, then told them: pray for him. He&rsquo;s
+              still your father. Don&rsquo;t hold the anger. Months later,
+              Robert went with his mother to ask his father to come back. That
+              is what the mission had taught him to do. His father came back. He
+              stopped drinking. He found work. Today he sits in the front row at
+              every school skit and theater performance his sons are in. The
+              whole family, together.
             </p>
 
             <button
@@ -194,14 +204,14 @@ export default function StoriesPage() {
               sub: "Was around 30% when the mission arrived",
             },
             {
-              stat: "12+",
+              stat: "10+",
               label: "years of continuous presence",
               sub: "Not a project. A permanent parish.",
             },
             {
-              stat: "2",
+              stat: "2+",
               label: "vocational workshops running",
-              sub: "Masonry and multimedia — real skills, real futures",
+              sub: "Masonry, multimedia and cooking — real skills, real futures",
             },
           ].map((item) => (
             <div
@@ -238,16 +248,16 @@ export default function StoriesPage() {
         {/* Featured family story — full width, large photo */}
         <div className="flex flex-col md:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden mb-5 md:mb-6">
           <div
-            className="w-full md:w-[520px] h-[280px] md:h-[420px] bg-[var(--bg-elevated)] bg-cover bg-center flex-shrink-0"
-            style={{ backgroundImage: `url('/images/${featuredStory.image}')` }}
+            className="w-full md:w-[520px] h-[280px] md:h-[420px] bg-[var(--bg-elevated)] bg-cover flex-shrink-0"
+            style={{
+              backgroundImage: `url('/images/${featuredStory.image}')`,
+              backgroundPosition: featuredStory.imagePosition ?? "center",
+            }}
           />
           <div className="flex flex-col gap-5 p-6 md:p-10 justify-center">
             <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
               {featuredStory.country}
             </span>
-            <h3 className="text-[16px] md:text-[18px] font-bold text-[var(--text-primary)]">
-              {featuredStory.name}
-            </h3>
             <blockquote className="text-[15px] md:text-[17px] text-[var(--text-primary)] leading-[1.7] italic">
               &ldquo;{featuredStory.quote}&rdquo;
             </blockquote>
@@ -269,16 +279,16 @@ export default function StoriesPage() {
               className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex-1"
             >
               <div
-                className="w-full h-[200px] md:h-[220px] bg-[var(--bg-elevated)] bg-cover bg-center"
-                style={{ backgroundImage: `url('/images/${s.image}')` }}
+                className="w-full h-[200px] md:h-[220px] bg-[var(--bg-elevated)] bg-cover"
+                style={{
+                  backgroundImage: `url('/images/${s.image}')`,
+                  backgroundPosition: s.imagePosition ?? "center",
+                }}
               />
               <div className="flex flex-col gap-4 p-5 md:p-6 flex-1">
                 <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
                   {s.country}
                 </span>
-                <h3 className="text-[13px] font-bold text-[var(--text-primary)] tracking-[0.5px]">
-                  {s.name}
-                </h3>
                 <blockquote className="text-[13px] md:text-[14px] text-[var(--text-primary)] leading-[1.65] italic flex-1">
                   &ldquo;{s.quote}&rdquo;
                 </blockquote>
@@ -311,15 +321,14 @@ export default function StoriesPage() {
           </p>
           <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.85]">
             Her mother is in prison. Her grandmother — the one person who held
-            things together — died recently. She is now living with her aunt.
-            We cannot show her face. We will not share her name. But we will
-            keep coming back.
+            things together — died recently. She is now living with her aunt. We
+            cannot show her face. We will not share her name. But we will keep
+            coming back.
           </p>
           <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.85]">
             Three visits a year is not much. But for her, it may be the only
             consistent thing in her life right now. Someone who shows up. Not
-            because she asked. Not because it's convenient. Because she
-            matters.
+            because she asked. Not because it's convenient. Because she matters.
           </p>
           <p className="text-[14px] text-[var(--text-muted)] leading-[1.8] italic">
             This is why we don't measure success in numbers. Some of the most
@@ -341,7 +350,8 @@ export default function StoriesPage() {
             Martin and Misha moved to Klenovec permanently. Not as visitors, not
             as NGO workers on a contract. They bought a house, raised children,
             and built a parish — because the Roma communities they serve have
-            been let down by every initiative that eventually packed up and left.
+            been let down by every initiative that eventually packed up and
+            left.
           </p>
           <p className="text-[14px] md:text-[16px] text-[var(--text-secondary)] leading-[1.8] mb-8">
             In 2025, donors contributed roughly €3,000. Actual mission costs
