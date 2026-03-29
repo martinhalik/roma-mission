@@ -98,13 +98,18 @@ export default function Footer() {
                 Mission
               </p>
               <div className="flex flex-col gap-3">
-                {["Our Approach", "Locations"].map((item) => (
+                {[
+                  { label: "Our Mission", href: "/mission" },
+                  { label: "Our Story", href: "/our-story" },
+                  { label: "Stories", href: "/stories" },
+                  { label: "Media", href: "/media" },
+                ].map((item) => (
                   <Link
-                    key={item}
-                    href={`/${item.toLowerCase().replace(" ", "-")}`}
+                    key={item.href}
+                    href={item.href}
                     className="text-[13px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 ))}
               </div>
@@ -223,13 +228,17 @@ export default function Footer() {
               <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
                 Mission
               </p>
-              {["Our Approach", "Locations"].map((item) => (
+              {[
+                { label: "Our Mission", href: "/mission" },
+                { label: "Our Story", href: "/our-story" },
+                { label: "Stories", href: "/stories" },
+              ].map((item) => (
                 <Link
-                  key={item}
-                  href={`/${item.toLowerCase().replace(" ", "-")}`}
+                  key={item.href}
+                  href={item.href}
                   className="text-[12px] text-[var(--text-secondary)]"
                 >
-                  {item}
+                  {item.label}
                 </Link>
               ))}
             </div>

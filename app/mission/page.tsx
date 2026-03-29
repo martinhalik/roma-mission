@@ -23,6 +23,7 @@ export const metadata: Metadata = {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
+import Link from "next/link";
 import SectionLabel from "@/components/SectionLabel";
 import ShareButton from "@/components/ShareButton";
 import { ROMA_COUNTRIES, isMissionCountry, type MissionCountry, type Presence, type TranslationStatus } from "@/lib/data/roma-countries";
@@ -355,6 +356,14 @@ export default function MissionPage() {
               — Martin, Founder
             </p>
           </div>
+
+          <Link
+            href="/our-story"
+            className="group self-start flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] hover:opacity-80 transition-opacity mt-6"
+          >
+            READ THE FULL STORY
+            <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+          </Link>
         </div>
       </section>
 
