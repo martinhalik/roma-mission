@@ -140,19 +140,24 @@ export default function OurStoryPage() {
           <div className="flex flex-col gap-4 max-w-[680px]">
             <Link
               href="/mission"
-              className="text-[10px] font-semibold tracking-[1.5px] text-[var(--text-muted)] uppercase hover:text-[var(--gold)] transition-colors w-fit"
+              className="text-[10px] font-semibold tracking-[1.5px] text-white/70 hover:text-white transition-colors w-fit"
             >
               ← Back to Mission
             </Link>
-            <SectionLabel text="The Founder's Story" />
-            <h1 className="text-[32px] md:text-[50px] font-bold tracking-[-1.5px] text-[var(--text-primary)] leading-[1.05]">
+            <div className="flex items-center gap-3">
+              <div className="w-[3px] h-[14px] bg-[var(--gold)]" />
+              <span className="text-[11px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
+                The Founder's Story
+              </span>
+            </div>
+            <h1 className="text-[32px] md:text-[50px] font-bold tracking-[-1.5px] text-white leading-[1.05]">
               One Detour.
               <br />
               One Decision.
               <br />
               A Mission That Stayed.
             </h1>
-            <p className="text-[13px] md:text-[15px] text-[var(--text-muted)] leading-[1.6]">
+            <p className="text-[13px] md:text-[15px] text-white/80 leading-[1.6]">
               Klenovec, Slovakia · 2016 – 2020
             </p>
           </div>
