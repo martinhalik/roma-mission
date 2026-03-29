@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Share2, MessageCircle } from "lucide-react";
 
-type Page = "home" | "mission" | "locations" | "media" | "get-involved";
+type Page = "home" | "mission" | "locations" | "media" | "stories" | "get-involved";
 
 interface NavbarProps {
   activePage?: Page;
@@ -15,7 +15,7 @@ const navLinks: { label: string; href: string; page: Page }[] = [
   { label: "MISSION", href: "/mission", page: "mission" },
   // { label: "LOCATIONS", href: "/locations", page: "locations" },
   { label: "MEDIA", href: "/media", page: "media" },
-  { label: "GET INVOLVED", href: "/get-involved", page: "get-involved" },
+  { label: "STORIES", href: "/stories", page: "stories" },
 ];
 
 export default function Navbar({ activePage = "home" }: NavbarProps) {
@@ -50,13 +50,37 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           ))}
         </div>
 
-        {/* CTA */}
-        <Link
-          href="/get-involved"
-          className="px-6 py-3 bg-[var(--gold)] text-[#111111] text-[11px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
-        >
-          SUPPORT THE MISSION
-        </Link>
+        {/* Right actions */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => {
+              if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href });
+              } else {
+                navigator.clipboard.writeText(window.location.href);
+              }
+            }}
+            className="flex items-center gap-2 px-4 py-2 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-bold tracking-[1px] hover:bg-[var(--gold)]/10 transition-colors"
+          >
+            <Share2 size={13} />
+            SHARE
+          </button>
+          <a
+            href="https://wa.me/421951230015"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[11px] font-bold tracking-[1px] hover:border-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+          >
+            <MessageCircle size={13} />
+            CONTACT
+          </a>
+          <Link
+            href="/get-involved"
+            className="px-6 py-3 bg-[var(--gold)] text-[#111111] text-[11px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
+          >
+            SUPPORT THE MISSION
+          </Link>
+        </div>
       </nav>
 
       {/* Mobile Nav */}
@@ -95,6 +119,28 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
               {link.label}
             </Link>
           ))}
+          <button
+            onClick={() => {
+              setMenuOpen(false);
+              if (navigator.share) {
+                navigator.share({ title: document.title, url: window.location.href });
+              } else {
+                navigator.clipboard.writeText(window.location.href);
+              }
+            }}
+            className="px-5 py-4 text-[13px] tracking-[1.5px] border-b border-[var(--border-default)] text-[var(--text-secondary)] font-medium text-left"
+          >
+            SHARE
+          </button>
+          <a
+            href="https://wa.me/421951230015"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="px-5 py-4 text-[13px] tracking-[1.5px] border-b border-[var(--border-default)] text-[var(--text-secondary)] font-medium"
+          >
+            CONTACT
+          </a>
           <Link
             href="/get-involved"
             onClick={() => setMenuOpen(false)}

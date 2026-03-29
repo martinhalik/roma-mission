@@ -43,38 +43,22 @@ export default function Footer() {
 
             {/* Media */}
             <div className="flex flex-col gap-4">
-              <p className="text-[11px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
+              <Link
+                href="/media"
+                className="text-[11px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase hover:text-[var(--gold)] transition-colors"
+              >
                 Media
-              </p>
-              <div className="flex flex-col gap-3">
-                {["Documentary", "Podcast", "News"].map((item) => (
-                  <Link
-                    key={item}
-                    href="/media"
-                    className="text-[13px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                  >
-                    {item}
-                  </Link>
-                ))}
-              </div>
+              </Link>
             </div>
 
             {/* Get Involved */}
             <div className="flex flex-col gap-4">
-              <p className="text-[11px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
+              <Link
+                href="/get-involved"
+                className="text-[11px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase hover:text-[var(--gold)] transition-colors"
+              >
                 Get Involved
-              </p>
-              <div className="flex flex-col gap-3">
-                {["Support", "Volunteer", "Mission Trips"].map((item) => (
-                  <Link
-                    key={item}
-                    href="/get-involved"
-                    className="text-[13px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-                  >
-                    {item}
-                  </Link>
-                ))}
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -137,28 +121,20 @@ export default function Footer() {
               ))}
             </div>
             <div className="flex flex-col gap-3">
-              <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
+              <Link
+                href="/media"
+                className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase"
+              >
                 Media
-              </p>
-              {["Documentary", "Podcast", "News"].map((item) => (
-                <Link key={item} href="/media" className="text-[12px] text-[var(--text-secondary)]">
-                  {item}
-                </Link>
-              ))}
+              </Link>
             </div>
             <div className="flex flex-col gap-3">
-              <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
-                Involved
-              </p>
-              {["Support", "Volunteer", "Trips"].map((item) => (
-                <Link
-                  key={item}
-                  href="/get-involved"
-                  className="text-[12px] text-[var(--text-secondary)]"
-                >
-                  {item}
-                </Link>
-              ))}
+              <Link
+                href="/get-involved"
+                className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase"
+              >
+                Get Involved
+              </Link>
             </div>
           </div>
 
