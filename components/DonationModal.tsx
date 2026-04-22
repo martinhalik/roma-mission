@@ -1,10 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import type { PaymentRequest } from "@stripe/stripe-js";
 import {
   EmbeddedCheckout,
   EmbeddedCheckoutProvider,
+  Elements,
+  PaymentRequestButtonElement,
+  useStripe,
 } from "@stripe/react-stripe-js";
 import { Copy, Check } from "lucide-react";
 
@@ -58,6 +62,82 @@ function CopyField({ label, value }: { label: string; value: string }) {
         {copied ? <Check size={14} className="text-[var(--gold)]" /> : <Copy size={14} />}
       </button>
     </div>
+  );
+}
+
+function PaymentRequestButton({ amount }: { amount: number }) {
+  const stripe = useStripe();
+  const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
+  const amountRef = useRef(amount);
+  amountRef.current = amount;
+
+  useEffect(() => {
+    if (!stripe) return;
+
+    const pr = stripe.paymentRequest({
+      country: "US",
+      currency: "usd",
+      total: { label: "Donation — Roma Mission", amount: Math.round(amount * 100) },
+      requestPayerEmail: true,
+    });
+
+    pr.canMakePayment().then((result) => {
+      if (result) setPaymentRequest(pr);
+    });
+
+    pr.on("paymentmethod", async (ev) => {
+      try {
+        const res = await fetch("/api/stripe/payment-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount: amountRef.current }),
+        });
+        const { clientSecret } = await res.json();
+        const { error, paymentIntent } = await stripe.confirmCardPayment(
+          clientSecret,
+          { payment_method: ev.paymentMethod.id },
+          { handleActions: false }
+        );
+        if (error) { ev.complete("fail"); return; }
+        ev.complete("success");
+        if (paymentIntent.status === "requires_action") {
+          const { error: actionError } = await stripe.confirmCardPayment(clientSecret);
+          if (!actionError) window.location.href = "/thank-you";
+        } else {
+          window.location.href = "/thank-you";
+        }
+      } catch {
+        ev.complete("fail");
+      }
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stripe]);
+
+  useEffect(() => {
+    if (!paymentRequest || amount < 1) return;
+    paymentRequest.update({
+      total: { label: "Donation — Roma Mission", amount: Math.round(amount * 100) },
+    });
+  }, [paymentRequest, amount]);
+
+  if (!paymentRequest) return null;
+
+  return (
+    <>
+      <PaymentRequestButtonElement
+        options={{
+          paymentRequest,
+          style: {
+            paymentRequestButton: { type: "donate", theme: "light", height: "48px" },
+          },
+        }}
+      />
+      <div className="flex items-center gap-3">
+        <div className="flex-1 h-px bg-[var(--border-default)]" />
+        <span className="text-[11px] text-[var(--text-muted)] tracking-[1px]">OR</span>
+        <div className="flex-1 h-px bg-[var(--border-default)]" />
+      </div>
+    </>
   );
 }
 
@@ -150,6 +230,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
         </div>
 
         {step === "select" && (
+          <Elements stripe={stripePromise}>
           <div className="px-8 py-7 flex flex-col gap-6">
             {/* Frequency toggle */}
             <div className="flex bg-[var(--bg-primary)] border border-[var(--border-default)] p-1">
@@ -236,6 +317,10 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               <p className="text-[12px] text-red-400">{error}</p>
             )}
 
+            {!isMonthly && finalAmount >= 1 && (
+              <PaymentRequestButton amount={finalAmount} />
+            )}
+
             <button
               onClick={fetchClientSecret}
               disabled={loading || finalAmount < 1}
@@ -299,6 +384,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               </p>
             </div>
           </div>
+          </Elements>
         )}
 
         {step === "checkout" && clientSecret && (
