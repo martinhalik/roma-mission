@@ -164,6 +164,11 @@ function PaymentRequestButton({ amount, isMonthly }: { amount: number; isMonthly
   );
 }
 
+interface MethodAvailability {
+  card: boolean;
+  paypal: boolean;
+}
+
 export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const [step, setStep] = useState<Step>("select");
   const [isMonthly, setIsMonthly] = useState(true);
@@ -175,6 +180,15 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const [error, setError] = useState<string | null>(null);
   const [bankOpen, setBankOpen] = useState(false);
   const [bankTab, setBankTab] = useState<"us" | "intl">("us");
+  const [available, setAvailable] = useState<MethodAvailability>({ card: true, paypal: false });
+
+  useEffect(() => {
+    if (!isOpen) return;
+    fetch("/api/stripe/config")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => { if (data) setAvailable(data); })
+      .catch(() => {});
+  }, [isOpen]);
 
   const finalAmount = isCustom
     ? parseFloat(customAmount) || 0
@@ -211,7 +225,21 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: finalAmount, isMonthly, paymentMethod }),
       });
-      if (!res.ok) throw new Error("Failed to initiate checkout");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        if (data?.code === "method_unavailable") {
+          setError(
+            paymentMethod === "paypal"
+              ? "PayPal is temporarily unavailable. Please use another option."
+              : "This payment method is temporarily unavailable."
+          );
+          if (paymentMethod === "paypal") {
+            setAvailable((a) => ({ ...a, paypal: false }));
+          }
+          return;
+        }
+        throw new Error("Failed to initiate checkout");
+      }
       const data = await res.json();
       setClientSecret(data.clientSecret);
       setStep("checkout");
@@ -343,35 +371,41 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             {finalAmount >= 1 && (
               <div className="flex flex-col gap-2">
                 <PaymentRequestButton amount={finalAmount} isMonthly={isMonthly} />
-                <button
-                  onClick={() => fetchClientSecret("paypal")}
-                  disabled={loading || finalAmount < 1}
-                  aria-label="Pay with PayPal"
-                  className="w-full h-[48px] bg-[#ffc439] hover:bg-[#f5b824] text-[#003087] text-[14px] font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5"
-                >
-                  <span>Pay with</span>
-                  <span className="italic font-extrabold">
-                    <span className="text-[#003087]">Pay</span>
-                    <span className="text-[#009cde]">Pal</span>
-                  </span>
-                </button>
-                <div className="flex items-center gap-3 mt-1">
-                  <div className="flex-1 h-px bg-[var(--border-default)]" />
-                  <span className="text-[11px] text-[var(--text-muted)] tracking-[1px]">OR</span>
-                  <div className="flex-1 h-px bg-[var(--border-default)]" />
-                </div>
+                {available.paypal && (
+                  <button
+                    onClick={() => fetchClientSecret("paypal")}
+                    disabled={loading || finalAmount < 1}
+                    aria-label="Pay with PayPal"
+                    className="w-full h-[48px] bg-[#ffc439] hover:bg-[#f5b824] text-[#003087] text-[14px] font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5"
+                  >
+                    <span>Pay with</span>
+                    <span className="italic font-extrabold">
+                      <span className="text-[#003087]">Pay</span>
+                      <span className="text-[#009cde]">Pal</span>
+                    </span>
+                  </button>
+                )}
+                {available.card && (
+                  <div className="flex items-center gap-3 mt-1">
+                    <div className="flex-1 h-px bg-[var(--border-default)]" />
+                    <span className="text-[11px] text-[var(--text-muted)] tracking-[1px]">OR</span>
+                    <div className="flex-1 h-px bg-[var(--border-default)]" />
+                  </div>
+                )}
               </div>
             )}
 
-            <button
-              onClick={() => fetchClientSecret()}
-              disabled={loading || finalAmount < 1}
-              className="w-full py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              {loading
-                ? "PREPARING..."
-                : `GIVE $${finalAmount > 0 ? finalAmount : "—"}${isMonthly ? "/MO" : ""}`}
-            </button>
+            {available.card && (
+              <button
+                onClick={() => fetchClientSecret()}
+                disabled={loading || finalAmount < 1}
+                className="w-full py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {loading
+                  ? "PREPARING..."
+                  : `GIVE $${finalAmount > 0 ? finalAmount : "—"}${isMonthly ? "/MO" : ""}`}
+              </button>
+            )}
 
             {/* Bank transfer */}
             <div>

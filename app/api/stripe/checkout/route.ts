@@ -22,13 +22,20 @@ export async function POST(req: NextRequest) {
     ...(isMonthly ? { recurring: { interval: "month" } } : {}),
   };
 
-  const session = await stripe.checkout.sessions.create({
-    ui_mode: "embedded",
-    mode: isMonthly ? "subscription" : "payment",
-    ...(paymentMethod ? { payment_method_types: [paymentMethod] } : {}),
-    line_items: [{ price_data: priceData, quantity: 1 }],
-    return_url: `${baseUrl}/thank-you`,
-  });
-
-  return NextResponse.json({ clientSecret: session.client_secret });
+  try {
+    const session = await stripe.checkout.sessions.create({
+      ui_mode: "embedded",
+      mode: isMonthly ? "subscription" : "payment",
+      ...(paymentMethod ? { payment_method_types: [paymentMethod] } : {}),
+      line_items: [{ price_data: priceData, quantity: 1 }],
+      return_url: `${baseUrl}/thank-you`,
+    });
+    return NextResponse.json({ clientSecret: session.client_secret });
+  } catch (err) {
+    const message = err instanceof Stripe.errors.StripeError ? err.message : "Failed to create session";
+    const code = err instanceof Stripe.errors.StripeError && /not activated|payment_method/i.test(message)
+      ? "method_unavailable"
+      : "unknown";
+    return NextResponse.json({ error: message, code }, { status: 400 });
+  }
 }
