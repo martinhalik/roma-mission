@@ -65,11 +65,13 @@ function CopyField({ label, value }: { label: string; value: string }) {
   );
 }
 
-function PaymentRequestButton({ amount }: { amount: number }) {
+function PaymentRequestButton({ amount, isMonthly }: { amount: number; isMonthly: boolean }) {
   const stripe = useStripe();
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
   const amountRef = useRef(amount);
+  const isMonthlyRef = useRef(isMonthly);
   amountRef.current = amount;
+  isMonthlyRef.current = isMonthly;
 
   useEffect(() => {
     if (!stripe) return;
@@ -77,8 +79,12 @@ function PaymentRequestButton({ amount }: { amount: number }) {
     const pr = stripe.paymentRequest({
       country: "US",
       currency: "usd",
-      total: { label: "Donation — Roma Mission", amount: Math.round(amount * 100) },
+      total: {
+        label: isMonthly ? "Monthly Donation — Roma Mission" : "Donation — Roma Mission",
+        amount: Math.round(amount * 100),
+      },
       requestPayerEmail: true,
+      requestPayerName: true,
     });
 
     pr.canMakePayment().then((result) => {
@@ -87,24 +93,45 @@ function PaymentRequestButton({ amount }: { amount: number }) {
 
     pr.on("paymentmethod", async (ev) => {
       try {
-        const res = await fetch("/api/stripe/payment-intent", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ amount: amountRef.current }),
-        });
-        const { clientSecret } = await res.json();
-        const { error, paymentIntent } = await stripe.confirmCardPayment(
-          clientSecret,
-          { payment_method: ev.paymentMethod.id },
-          { handleActions: false }
+        const monthly = isMonthlyRef.current;
+        const res = await fetch(
+          monthly ? "/api/stripe/subscription" : "/api/stripe/payment-intent",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(
+              monthly
+                ? {
+                    amount: amountRef.current,
+                    paymentMethodId: ev.paymentMethod.id,
+                    email: ev.payerEmail,
+                    name: ev.payerName,
+                  }
+                : { amount: amountRef.current }
+            ),
+          }
         );
-        if (error) { ev.complete("fail"); return; }
-        ev.complete("success");
-        if (paymentIntent.status === "requires_action") {
-          const { error: actionError } = await stripe.confirmCardPayment(clientSecret);
-          if (!actionError) window.location.href = "/thank-you";
+        if (!res.ok) { ev.complete("fail"); return; }
+        const { clientSecret } = await res.json();
+
+        if (monthly) {
+          ev.complete("success");
+          const { error } = await stripe.confirmCardPayment(clientSecret);
+          if (!error) window.location.href = "/thank-you";
         } else {
-          window.location.href = "/thank-you";
+          const { error, paymentIntent } = await stripe.confirmCardPayment(
+            clientSecret,
+            { payment_method: ev.paymentMethod.id },
+            { handleActions: false }
+          );
+          if (error) { ev.complete("fail"); return; }
+          ev.complete("success");
+          if (paymentIntent.status === "requires_action") {
+            const { error: actionError } = await stripe.confirmCardPayment(clientSecret);
+            if (!actionError) window.location.href = "/thank-you";
+          } else {
+            window.location.href = "/thank-you";
+          }
         }
       } catch {
         ev.complete("fail");
@@ -116,9 +143,12 @@ function PaymentRequestButton({ amount }: { amount: number }) {
   useEffect(() => {
     if (!paymentRequest || amount < 1) return;
     paymentRequest.update({
-      total: { label: "Donation — Roma Mission", amount: Math.round(amount * 100) },
+      total: {
+        label: isMonthly ? "Monthly Donation — Roma Mission" : "Donation — Roma Mission",
+        amount: Math.round(amount * 100),
+      },
     });
-  }, [paymentRequest, amount]);
+  }, [paymentRequest, amount, isMonthly]);
 
   if (!paymentRequest) return null;
 
@@ -317,8 +347,8 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               <p className="text-[12px] text-red-400">{error}</p>
             )}
 
-            {!isMonthly && finalAmount >= 1 && (
-              <PaymentRequestButton amount={finalAmount} />
+            {finalAmount >= 1 && (
+              <PaymentRequestButton amount={finalAmount} isMonthly={isMonthly} />
             )}
 
             <button
