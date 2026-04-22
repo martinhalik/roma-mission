@@ -4,7 +4,7 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(req: NextRequest) {
-  const { amount, isMonthly } = await req.json();
+  const { amount, isMonthly, paymentMethod } = await req.json();
 
   if (!amount || amount < 1) {
     return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
   const session = await stripe.checkout.sessions.create({
     ui_mode: "embedded",
     mode: isMonthly ? "subscription" : "payment",
+    ...(paymentMethod ? { payment_method_types: [paymentMethod] } : {}),
     line_items: [{ price_data: priceData, quantity: 1 }],
     return_url: `${baseUrl}/thank-you`,
   });

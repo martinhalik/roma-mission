@@ -153,21 +153,14 @@ function PaymentRequestButton({ amount, isMonthly }: { amount: number; isMonthly
   if (!paymentRequest) return null;
 
   return (
-    <>
-      <PaymentRequestButtonElement
-        options={{
-          paymentRequest,
-          style: {
-            paymentRequestButton: { type: "donate", theme: "light", height: "48px" },
-          },
-        }}
-      />
-      <div className="flex items-center gap-3">
-        <div className="flex-1 h-px bg-[var(--border-default)]" />
-        <span className="text-[11px] text-[var(--text-muted)] tracking-[1px]">OR</span>
-        <div className="flex-1 h-px bg-[var(--border-default)]" />
-      </div>
-    </>
+    <PaymentRequestButtonElement
+      options={{
+        paymentRequest,
+        style: {
+          paymentRequestButton: { type: "donate", theme: "light", height: "48px" },
+        },
+      }}
+    />
   );
 }
 
@@ -209,14 +202,14 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
     onClose();
   };
 
-  const fetchClientSecret = useCallback(async () => {
+  const fetchClientSecret = useCallback(async (paymentMethod?: "paypal") => {
     setLoading(true);
     setError(null);
     try {
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: finalAmount, isMonthly }),
+        body: JSON.stringify({ amount: finalAmount, isMonthly, paymentMethod }),
       });
       if (!res.ok) throw new Error("Failed to initiate checkout");
       const data = await res.json();
@@ -348,11 +341,30 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             )}
 
             {finalAmount >= 1 && (
-              <PaymentRequestButton amount={finalAmount} isMonthly={isMonthly} />
+              <div className="flex flex-col gap-2">
+                <PaymentRequestButton amount={finalAmount} isMonthly={isMonthly} />
+                <button
+                  onClick={() => fetchClientSecret("paypal")}
+                  disabled={loading || finalAmount < 1}
+                  aria-label="Pay with PayPal"
+                  className="w-full h-[48px] bg-[#ffc439] hover:bg-[#f5b824] text-[#003087] text-[14px] font-bold transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5"
+                >
+                  <span>Pay with</span>
+                  <span className="italic font-extrabold">
+                    <span className="text-[#003087]">Pay</span>
+                    <span className="text-[#009cde]">Pal</span>
+                  </span>
+                </button>
+                <div className="flex items-center gap-3 mt-1">
+                  <div className="flex-1 h-px bg-[var(--border-default)]" />
+                  <span className="text-[11px] text-[var(--text-muted)] tracking-[1px]">OR</span>
+                  <div className="flex-1 h-px bg-[var(--border-default)]" />
+                </div>
+              </div>
             )}
 
             <button
-              onClick={fetchClientSecret}
+              onClick={() => fetchClientSecret()}
               disabled={loading || finalAmount < 1}
               className="w-full py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
             >
