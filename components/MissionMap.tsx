@@ -153,6 +153,14 @@ function getCountryColor(pct: number, isLight: boolean): string {
 
 // ─── Layer / source helpers ───────────────────────────────────────────────────
 
+// Filter to a single worldview so disputed-territory features (e.g. Kosovo)
+// don't render twice and stack opacity over Serbia.
+const WORLDVIEW_FILTER = [
+  "any",
+  ["==", ["get", "worldview"], "all"],
+  ["==", ["get", "worldview"], "US"],
+];
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function addLayersToMap(mapInstance: any, isLight: boolean) {
   const isoCodes = ROMA_COUNTRIES.map((c) => c.iso);
@@ -167,7 +175,11 @@ function addLayersToMap(mapInstance: any, isLight: boolean) {
     ...colorEntries,
     "rgba(0,0,0,0)",
   ];
-  const layerFilter = ["in", ["get", "iso_3166_1"], ["literal", isoCodes]];
+  const layerFilter = [
+    "all",
+    WORLDVIEW_FILTER,
+    ["in", ["get", "iso_3166_1"], ["literal", isoCodes]],
+  ];
 
   if (!mapInstance.getSource("countries")) {
     mapInstance.addSource("countries", {
@@ -202,7 +214,7 @@ function addLayersToMap(mapInstance: any, isLight: boolean) {
     type: "fill",
     source: "countries",
     "source-layer": "country_boundaries",
-    filter: ["==", ["get", "iso_3166_1"], ""],
+    filter: ["all", WORLDVIEW_FILTER, ["==", ["get", "iso_3166_1"], ""]],
     paint: { "fill-color": isLight ? "#7A5A0E" : "#D4AF37", "fill-opacity": 0.18 },
   });
 }
@@ -310,14 +322,22 @@ export default function MissionMap() {
         mapInstance.on("mousemove", "roma-fill", (e: any) => {
           const iso = e.features?.[0]?.properties?.iso_3166_1 as string | undefined;
           if (iso) {
-            mapInstance.setFilter("roma-hover", ["==", ["get", "iso_3166_1"], iso]);
+            mapInstance.setFilter("roma-hover", [
+              "all",
+              WORLDVIEW_FILTER,
+              ["==", ["get", "iso_3166_1"], iso],
+            ]);
             setHoveredISO(iso);
             mapInstance.getCanvas().style.cursor = "pointer";
           }
         });
 
         mapInstance.on("mouseleave", "roma-fill", () => {
-          mapInstance.setFilter("roma-hover", ["==", ["get", "iso_3166_1"], ""]);
+          mapInstance.setFilter("roma-hover", [
+            "all",
+            WORLDVIEW_FILTER,
+            ["==", ["get", "iso_3166_1"], ""],
+          ]);
           setHoveredISO(null);
           mapInstance.getCanvas().style.cursor = "";
         });
