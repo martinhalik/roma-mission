@@ -154,11 +154,13 @@ function getCountryColor(pct: number, isLight: boolean): string {
 // ─── Layer / source helpers ───────────────────────────────────────────────────
 
 // Filter to a single worldview so disputed-territory features (e.g. Kosovo)
-// don't render twice and stack opacity over Serbia.
+// don't render twice and stack opacity over Serbia. The `worldview` property
+// can be a comma-separated string (e.g. "US,CN,IN"), so use `in` for the
+// per-worldview match rather than `==`.
 const WORLDVIEW_FILTER = [
   "any",
   ["==", ["get", "worldview"], "all"],
-  ["==", ["get", "worldview"], "US"],
+  ["in", "US", ["get", "worldview"]],
 ];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
