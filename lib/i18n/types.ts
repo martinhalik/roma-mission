@@ -49,6 +49,80 @@ export interface Dictionary {
     shareOn: string;
     close: string;
   };
+  home: {
+    hero: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      subtitle: string;
+      ctaSupport: string;
+      ctaVolunteer: string;
+      ctaLearnMore: string;
+    };
+    urgency: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      body: string;
+      statement1: string;
+      statement2: string;
+      absentLead: string;
+      absentEmph: string;
+      presentLead: string;
+      presentEmph: string;
+    };
+    results: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      cardFathers: string;
+      cardChildren: string;
+      cardDignity: string;
+      cardAddiction: string;
+      cardFamilies: string;
+    };
+    approach: {
+      label: string;
+      title: string;
+      subtitle: string;
+      pillar1Title: string;
+      pillar1Desc: string;
+      pillar2Title: string;
+      pillar2Desc: string;
+      pillar3Title: string;
+      pillar3Desc: string;
+      pillar4Title: string;
+      pillar4Desc: string;
+      pillar5Title: string;
+      pillar5Desc: string;
+    };
+    testimony: {
+      label: string;
+      quote: string;
+      attribution: string;
+      watchLabel: string;
+      watchAria: string;
+    };
+    missionField: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      descriptionBefore: string;
+      descriptionHighlight: string;
+      descriptionAfter: string;
+      statParishes: string;
+      statChurches: string;
+      statSince: string;
+      cta: string;
+    };
+    featuredMedia: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      watchAria: string;
+      cta: string;
+    };
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;

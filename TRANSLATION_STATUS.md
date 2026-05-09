@@ -38,6 +38,7 @@ These already pull strings via `t()` and render correctly in all 9 languages:
 - `components/Footer.tsx` — column headings, link labels, tagline, copyright, privacy/terms, theme toggle, language switcher
 - `components/ShareModal.tsx` — title, subtitle, copy/copied states, "Share via", aria-labels
 - `components/LanguageSwitcher.tsx` — its own aria-labels
+- `app/page.tsx` — Home: hero, urgency, results, 5 pillars, testimony, mission map intro, featured media (`home.*` namespace)
 
 ## What Still Needs Translation ⚠️
 
@@ -47,7 +48,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 
 | File | LOC | Notes |
 |------|-----|-------|
-| `app/page.tsx` | 500 | Home: hero, urgency, results, 5 pillars, testimony, mission map intro, featured media |
+| `app/page.tsx` | 500 | ✅ Translated into all 9 locales (`home.*` namespace) |
 | `app/mission/page.tsx` | 680 | Largest page — full mission narrative |
 | `app/our-story/page.tsx` | 420 | Founder story, timeline |
 | `app/locations/page.tsx` | 572 | Location descriptions, stats |
