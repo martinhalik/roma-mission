@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Copy, Check, X, Mail } from "lucide-react";
+import { useTranslation } from "@/components/LanguageProvider";
 
 interface ShareModalProps {
   isOpen: boolean;
@@ -73,6 +74,7 @@ const socials = [
 export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
   const [copied, setCopied] = useState(false);
   const [shareUrl, setShareUrl] = useState(SHARE_URL);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (isOpen) setShareUrl(window.location.origin);
@@ -104,7 +106,7 @@ export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
-      aria-label="Share the mission"
+      aria-label={t("share.title")}
     >
       {/* Backdrop */}
       <div
@@ -118,16 +120,16 @@ export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-col gap-1">
             <h2 className="text-[20px] font-bold text-[var(--text-primary)] tracking-[-0.5px]">
-              Share the Mission
+              {t("share.title")}
             </h2>
             <p className="text-[13px] text-[var(--text-secondary)] leading-[1.5]">
-              Help others discover what God is doing among the Roma.
+              {t("share.subtitle")}
             </p>
           </div>
           <button
             onClick={onClose}
             className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors flex-shrink-0 mt-0.5"
-            aria-label="Close"
+            aria-label={t("share.close")}
           >
             <X className="w-5 h-5" />
           </button>
@@ -136,7 +138,7 @@ export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
         {/* Copy link */}
         <div className="flex flex-col gap-2">
           <p className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
-            Copy Link
+            {t("share.copyLinkLabel")}
           </p>
           <div className="flex items-center gap-0 border border-[var(--border-strong)]">
             <span className="flex-1 px-4 py-3 text-[13px] text-[var(--text-muted)] truncate select-all">
@@ -149,17 +151,17 @@ export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
                   ? "bg-[var(--gold)]/10 text-[var(--gold)]"
                   : "text-[var(--text-secondary)] hover:text-[var(--gold)] hover:bg-[var(--gold)]/5"
               }`}
-              aria-label="Copy link"
+              aria-label={t("share.copyLink")}
             >
               {copied ? (
                 <>
                   <Check className="w-4 h-4" />
-                  COPIED
+                  {t("share.copied")}
                 </>
               ) : (
                 <>
                   <Copy className="w-4 h-4" />
-                  COPY
+                  {t("share.copyAction")}
                 </>
               )}
             </button>
@@ -169,7 +171,7 @@ export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
         {/* Social sharing */}
         <div className="flex flex-col gap-2">
           <p className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
-            Share via
+            {t("share.shareVia")}
           </p>
           <div className="grid grid-cols-2 gap-2">
             {socials.map(({ label, Icon, href }) => (

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useTranslation } from "@/components/LanguageProvider";
 
 function useTheme() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -28,48 +30,48 @@ function useTheme() {
   return { theme, toggle };
 }
 
-const LANG_OPTIONS = [
-  { label: "CZ", href: "https://krm.sk" },
-  { label: "SK", href: "https://krm.sk" },
-];
-
 function ThemeToggle({ className = "" }: { className?: string }) {
   const { theme, toggle } = useTheme();
+  const { t } = useTranslation();
   return (
     <button
       onClick={toggle}
-      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      aria-label={theme === "dark" ? t("footer.switchToLight") : t("footer.switchToDark")}
       suppressHydrationWarning
       className={`flex items-center gap-1.5 text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors uppercase ${className}`}
     >
       {theme === "dark" ? <Sun size={13} /> : <Moon size={13} />}
-      {theme === "dark" ? "Light" : "Dark"}
+      {theme === "dark" ? t("footer.light") : t("footer.dark")}
     </button>
   );
 }
 
-function LangSwitcher({ className = "" }: { className?: string }) {
-  return (
-    <div className={`flex items-center gap-1 ${className}`}>
-      <span className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] opacity-40 uppercase">EN</span>
-      {LANG_OPTIONS.map((opt) => (
-        <span key={opt.label} className="flex items-center gap-1">
-          <span className="text-[var(--border-strong)] text-[10px]">|</span>
-          <a
-            href={opt.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors uppercase"
-          >
-            {opt.label}
-          </a>
-        </span>
-      ))}
-    </div>
-  );
-}
-
 export default function Footer() {
+  const { t } = useTranslation();
+
+  const missionLinks = [
+    { label: t("footer.linkOurMission"), href: "/mission" },
+    { label: t("footer.linkOurStory"), href: "/our-story" },
+    { label: t("footer.linkStories"), href: "/stories" },
+    { label: t("footer.linkMedia"), href: "/media" },
+  ];
+  const missionLinksMobile = [
+    { label: t("footer.linkOurMission"), href: "/mission" },
+    { label: t("footer.linkOurStory"), href: "/our-story" },
+    { label: t("footer.linkStories"), href: "/stories" },
+  ];
+  const mediaLinks = [t("footer.linkDocumentary"), t("footer.linkNews")];
+  const involvedLinks = [
+    t("footer.linkSupport"),
+    t("footer.linkVolunteer"),
+    t("footer.linkMissionTrips"),
+  ];
+  const involvedLinksMobile = [
+    t("footer.linkSupport"),
+    t("footer.linkVolunteer"),
+    t("footer.linkTrips"),
+  ];
+
   return (
     <>
       <div className="h-px bg-[var(--border-default)] w-full" />
@@ -85,25 +87,18 @@ export default function Footer() {
                   Christian Roma Mission
                 </span>
               </Link>
-              <p className="text-[var(--text-muted)] text-[13px] leading-[1.6]">
-                Planting parishes. Forming disciples.
-                <br />
-                Transforming communities.
+              <p className="text-[var(--text-muted)] text-[13px] leading-[1.6] whitespace-pre-line">
+                {t("footer.tagline")}
               </p>
             </div>
 
             {/* Mission */}
             <div className="flex flex-col gap-4">
               <p className="text-[11px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
-                Mission
+                {t("footer.colMission")}
               </p>
               <div className="flex flex-col gap-3">
-                {[
-                  { label: "Our Mission", href: "/mission" },
-                  { label: "Our Story", href: "/our-story" },
-                  { label: "Stories", href: "/stories" },
-                  { label: "Media", href: "/media" },
-                ].map((item) => (
+                {missionLinks.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -118,10 +113,10 @@ export default function Footer() {
             {/* Media */}
             <div className="flex flex-col gap-4">
               <p className="text-[11px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
-                Media
+                {t("footer.colMedia")}
               </p>
               <div className="flex flex-col gap-3">
-                {["Documentary", "News"].map((item) => (
+                {mediaLinks.map((item) => (
                   <Link
                     key={item}
                     href="/media"
@@ -136,10 +131,10 @@ export default function Footer() {
             {/* Get Involved */}
             <div className="flex flex-col gap-4">
               <p className="text-[11px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
-                Get Involved
+                {t("footer.colInvolved")}
               </p>
               <div className="flex flex-col gap-3">
-                {["Support", "Volunteer", "Mission Trips"].map((item) => (
+                {involvedLinks.map((item) => (
                   <Link
                     key={item}
                     href="/get-involved"
@@ -154,11 +149,11 @@ export default function Footer() {
             {/* Contact */}
             <div className="flex flex-col gap-4">
               <p className="text-[11px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
-                Contact
+                {t("footer.colContact")}
               </p>
               <div className="flex flex-col gap-1.5">
                 <p className="text-[13px] font-semibold text-[var(--text-secondary)]">Fr. Martin Halík</p>
-                <p className="text-[12px] text-[var(--text-muted)] mb-1">Director</p>
+                <p className="text-[12px] text-[var(--text-muted)] mb-1">{t("footer.director")}</p>
                 <a
                   href="https://www.romamission.eu"
                   className="text-[12px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
@@ -180,25 +175,23 @@ export default function Footer() {
           <div className="h-px bg-[var(--border-default)] mb-6" />
 
           <div className="flex items-center justify-between">
-            <p className="text-[11px] text-[var(--text-muted)]">
-              © 2026 Christian Roma Mission. All rights reserved.
-            </p>
+            <p className="text-[11px] text-[var(--text-muted)]">{t("footer.copyright")}</p>
             <div className="flex items-center gap-6">
               <Link
                 href="/privacy-policy"
                 className="text-[11px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
               >
-                Privacy Policy
+                {t("footer.privacyPolicy")}
               </Link>
               <Link
                 href="/terms-of-use"
                 className="text-[11px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
               >
-                Terms of Use
+                {t("footer.termsOfUse")}
               </Link>
               <div className="w-px h-3 bg-[var(--border-strong)]" />
               <ThemeToggle />
-              <LangSwitcher />
+              <LanguageSwitcher variant="footer" />
             </div>
           </div>
         </div>
@@ -215,10 +208,8 @@ export default function Footer() {
                 Mission
               </span>
             </Link>
-            <p className="text-[12px] text-[var(--text-muted)] leading-[1.6]">
-              Planting parishes. Forming disciples.
-              <br />
-              Transforming communities.
+            <p className="text-[12px] text-[var(--text-muted)] leading-[1.6] whitespace-pre-line">
+              {t("footer.tagline")}
             </p>
           </div>
 
@@ -226,13 +217,9 @@ export default function Footer() {
           <div className="flex justify-between">
             <div className="flex flex-col gap-3">
               <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
-                Mission
+                {t("footer.colMission")}
               </p>
-              {[
-                { label: "Our Mission", href: "/mission" },
-                { label: "Our Story", href: "/our-story" },
-                { label: "Stories", href: "/stories" },
-              ].map((item) => (
+              {missionLinksMobile.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -244,9 +231,9 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-3">
               <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
-                Media
+                {t("footer.colMedia")}
               </p>
-              {["Documentary", "News"].map((item) => (
+              {mediaLinks.map((item) => (
                 <Link key={item} href="/media" className="text-[12px] text-[var(--text-secondary)]">
                   {item}
                 </Link>
@@ -254,9 +241,9 @@ export default function Footer() {
             </div>
             <div className="flex flex-col gap-3">
               <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
-                Involved
+                {t("footer.colInvolvedShort")}
               </p>
-              {["Support", "Volunteer", "Trips"].map((item) => (
+              {involvedLinksMobile.map((item) => (
                 <Link
                   key={item}
                   href="/get-involved"
@@ -270,9 +257,11 @@ export default function Footer() {
 
           {/* Mobile Contact */}
           <div className="flex flex-col gap-2">
-            <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">Contact</p>
+            <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-primary)] uppercase">
+              {t("footer.colContact")}
+            </p>
             <p className="text-[12px] font-semibold text-[var(--text-secondary)]">Fr. Martin Halík</p>
-            <p className="text-[11px] text-[var(--text-muted)]">Director</p>
+            <p className="text-[11px] text-[var(--text-muted)]">{t("footer.director")}</p>
             <a href="https://www.romamission.eu" className="text-[12px] text-[var(--text-secondary)]">www.romamission.eu</a>
             <a href="mailto:martin@romamission.eu" className="text-[12px] text-[var(--text-secondary)]">martin@romamission.eu</a>
             <p className="text-[12px] text-[var(--text-secondary)]">+421 951 230 015 (WhatsApp)</p>
@@ -283,20 +272,20 @@ export default function Footer() {
 
           <div className="flex flex-col gap-3 items-center">
             <p className="text-[10px] text-[var(--text-muted)] text-center">
-              © 2026 Christian Roma Mission.
+              {t("footer.copyrightShort")}
             </p>
             <div className="flex items-center gap-5">
               <Link href="/privacy-policy" className="text-[10px] text-[var(--text-muted)]">
-                Privacy Policy
+                {t("footer.privacyPolicy")}
               </Link>
               <Link href="/terms-of-use" className="text-[10px] text-[var(--text-muted)]">
-                Terms of Use
+                {t("footer.termsOfUse")}
               </Link>
             </div>
             <div className="flex items-center gap-4 pt-1">
               <ThemeToggle />
               <div className="w-px h-3 bg-[var(--border-strong)]" />
-              <LangSwitcher />
+              <LanguageSwitcher variant="footer" />
             </div>
           </div>
         </div>
