@@ -7,8 +7,47 @@ import Link from "next/link";
 import { useState } from "react";
 import VideoModal from "@/components/VideoModal";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "@/components/LanguageProvider";
 
 const LACO_VIDEO_ID = "PNhKEQtCrVo";
+
+const TESTIMONY_KEYS = [
+  "cibul",
+  "fathers",
+  "adrianDominik",
+  "miroslava",
+  "gemer",
+] as const;
+
+type TestimonyKey = (typeof TESTIMONY_KEYS)[number];
+
+interface TestimonyMedia {
+  image: string;
+  imagePosition: string;
+}
+
+const TESTIMONY_MEDIA: Record<TestimonyKey, TestimonyMedia> = {
+  cibul: {
+    image: "miro-svetlana-cibul.jpeg",
+    imagePosition: "center 30%",
+  },
+  fathers: {
+    image: "roma-fathers-working.jpg",
+    imagePosition: "center 25%",
+  },
+  adrianDominik: {
+    image: "dominik-and-adrian-learning-how-to-cook.jpeg",
+    imagePosition: "center 20%",
+  },
+  miroslava: {
+    image: "miroslava.jpeg",
+    imagePosition: "center 15%",
+  },
+  gemer: {
+    image: "m-man-testimony.jpg",
+    imagePosition: "center 35%",
+  },
+};
 
 function SectionLabel({ text }: { text: string }) {
   return (
@@ -29,77 +68,35 @@ function PlayButton() {
   );
 }
 
-interface Story {
-  image: string;
-  imagePosition?: string;
-  country: string;
-  name: string;
-  quote: string;
-  author: string;
-  context: string;
+function TestimonyQuote({
+  source,
+  translation,
+  className,
+}: {
+  source: string;
+  translation: string;
+  className: string;
+}) {
+  const showTranslation = translation.length > 0 && translation !== source;
+  return (
+    <div className="flex flex-col gap-2">
+      <blockquote className={className}>&ldquo;{source}&rdquo;</blockquote>
+      {showTranslation && (
+        <p className="text-[12px] text-[var(--text-muted)] leading-[1.6]">
+          {translation}
+        </p>
+      )}
+    </div>
+  );
 }
-
-const featuredStory: Story = {
-  image: "miro-svetlana-cibul.jpeg",
-  imagePosition: "center 30%",
-  country: "Slovakia",
-  name: "Mirko & Svetlana Cibuľ",
-  quote:
-    "When we were quarantined with our eight children and had nothing to eat, they came with groceries and games. We couldn't reach anyone else. Only them.",
-  author: "Svetlana Cibuľová, Klenovec",
-  context:
-    "In the early weeks of COVID, nobody knew what the virus would do. People were afraid of death itself. Roma settlements were abandoned — too risky, too crowded, too unknown. Martin and Misha went anyway. Belief in the resurrection is not a metaphor for them. It is what gave them the courage to walk toward what everyone else was walking away from.",
-};
-
-const stories: Story[] = [
-  {
-    image: "roma-fathers-working.jpg",
-    imagePosition: "center 25%",
-    country: "Slovakia",
-    name: "The fathers of Klenovec",
-    quote:
-      "I used to come here when I needed men for a day's work. After a few years I came again — and I couldn't find anyone. They were all already hired.",
-    author: "Local carpenter, Klenovec region",
-    context:
-      "When the mission arrived, around 30% of men in the settlement had any work. Four years later, a local carpenter who regularly hired from the settlement came looking — and left empty-handed. Not because men refused. Because there was nobody left to hire. They were all at work.",
-  },
-  {
-    image: "dominik-and-adrian-learning-how-to-cook.jpeg",
-    imagePosition: "center 20%",
-    country: "Slovakia",
-    name: "Adrian & Dominik",
-    quote: "The others who weren't in the course didn't pass the test. We did.",
-    author: "Adrian, Klenovec",
-    context:
-      "Dominik came from a special school — the kind teachers write off. Through the mission's multimedia workshop, he sat the government exam for 9th grade completion. Something his teachers once called impossible. His brother Adrian prints t-shirts, including for those same teachers. One now got a job offer because he could pass skills test others couldn't.",
-  },
-  {
-    image: "miroslava.jpeg",
-    imagePosition: "center 15%",
-    country: "Slovakia",
-    name: "Miroslava",
-    quote:
-      "I don't know, but since I am coming here, I stopped lying. I started helping home. I started behaving well. I started learning better.",
-    author: "Miroslava, Klenovec",
-    context:
-      "She cannot explain it theologically. She just knows something changed. Her parents confirm it — of all the children who attend, she is the most helpful. Grace is often like that: you don't understand it. You just live differently.",
-  },
-  {
-    // TODO: confirm name with him when he approves
-    image: "m-man-testimony.jpg",
-    imagePosition: "center 35%",
-    country: "Slovakia",
-    name: "A man from Gemer",
-    quote:
-      "I thought having children would change me. It didn't. Coming to the Eucharist every week — that did.",
-    author: "Roma man, Gemer region",
-    context:
-      "He is Roma, but not from a settlement — a regular house, a regular neighbourhood. Addiction had followed him for years. He thought becoming a father would be the turning point. It wasn't. When he began attending the parish and receiving Communion weekly, something shifted. He married his partner — to make it right before God. The addiction lost its hold. He still comes.",
-  },
-];
 
 export default function StoriesPage() {
   const [videoOpen, setVideoOpen] = useState(false);
+  const { t } = useTranslation();
+
+  const featuredKey: TestimonyKey = "cibul";
+  const otherKeys = TESTIMONY_KEYS.filter((k) => k !== featuredKey);
+  const featuredMedia = TESTIMONY_MEDIA[featuredKey];
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
@@ -108,16 +105,14 @@ export default function StoriesPage() {
       {/* ── Hero ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-5 md:gap-6 max-w-[700px]">
-          <SectionLabel text="Testimonies" />
+          <SectionLabel text={t("stories.hero.label")} />
           <h1 className="text-[32px] md:text-[52px] font-bold tracking-[-1.5px] text-[var(--text-primary)] leading-[1.05]">
-            Real People.
+            {t("stories.hero.titleLine1")}
             <br />
-            Real Change.
+            {t("stories.hero.titleLine2")}
           </h1>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.7] max-w-[560px]">
-            Every story here is a real person in a real settlement in Slovakia.
-            Not statistics. Not composites. People whose lives changed because
-            the Church showed up and stayed.
+            {t("stories.hero.subtitle")}
           </p>
         </div>
       </section>
@@ -127,7 +122,7 @@ export default function StoriesPage() {
       {/* ── Featured Story — Laco ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
         <div className="flex flex-col gap-4 mb-10 md:mb-14">
-          <SectionLabel text="Featured Testimony" />
+          <SectionLabel text={t("stories.featured.label")} />
         </div>
 
         <div className="flex flex-col md:flex-row gap-10 md:gap-20 items-start md:items-center">
@@ -135,7 +130,7 @@ export default function StoriesPage() {
           <button
             onClick={() => setVideoOpen(true)}
             className="w-full md:w-[440px] h-[260px] md:h-[500px] bg-[var(--bg-elevated)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden relative group cursor-pointer"
-            aria-label="Watch Laco's story"
+            aria-label={t("stories.featured.watchAria")}
           >
             <div
               className="w-full h-full bg-cover transition-transform duration-500 group-hover:scale-105"
@@ -149,7 +144,7 @@ export default function StoriesPage() {
             </div>
             <div className="absolute bottom-4 left-4 right-4">
               <span className="text-[10px] font-semibold tracking-[2px] text-white/60 uppercase">
-                Watch his testimony
+                {t("stories.featured.watchOverlay")}
               </span>
             </div>
           </button>
@@ -159,25 +154,25 @@ export default function StoriesPage() {
               &ldquo;
             </span>
             <blockquote className="text-[20px] md:text-[26px] font-medium text-[var(--text-primary)] leading-[1.45] -mt-6">
-              That&rsquo;s why we were angry with him for not doing anything and
-              he left us.
+              {t("stories.featured.quoteSource")}
             </blockquote>
+            {(() => {
+              const tr = t("stories.featured.quoteTranslation");
+              if (!tr || tr === t("stories.featured.quoteSource")) return null;
+              return (
+                <p className="text-[14px] md:text-[15px] text-[var(--text-muted)] leading-[1.6] -mt-3 italic">
+                  {tr}
+                </p>
+              );
+            })()}
             <p className="text-[12px] font-semibold tracking-[1.5px] text-[var(--text-muted)] uppercase">
-              — Laco, about his father
+              {t("stories.featured.attribution")}
             </p>
 
             <div className="h-px bg-[var(--border-default)] my-2" />
 
             <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.75]">
-              Laco and his brother had been attending the mission&rsquo;s
-              lessons when their father abandoned the family. They were angry.
-              The priest listened, then told them: pray for him. He&rsquo;s
-              still your father. Don&rsquo;t hold the anger. Months later,
-              Robert went with his mother to ask his father to come back. That
-              is what the mission had taught him to do. His father came back. He
-              stopped drinking. He found work. Today he sits in the front row at
-              every school skit and theater performance his sons are in. The
-              whole family, together.
+              {t("stories.featured.context")}
             </p>
 
             <button
@@ -187,7 +182,7 @@ export default function StoriesPage() {
               <div className="w-7 h-7 rounded-full border border-[var(--gold)] flex items-center justify-center flex-shrink-0">
                 <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[8px] border-l-[var(--gold)] ml-0.5" />
               </div>
-              WATCH HIS STORY
+              {t("stories.featured.watchCta")}
             </button>
           </div>
         </div>
@@ -200,23 +195,23 @@ export default function StoriesPage() {
         <div className="flex flex-col md:flex-row gap-8 md:gap-0 md:divide-x divide-[var(--border-strong)]">
           {[
             {
-              stat: "90%+",
-              label: "of settlement fathers now employed",
-              sub: "Was around 30% when the mission arrived",
+              stat: t("stories.stats.fathersStat"),
+              label: t("stories.stats.fathersLabel"),
+              sub: t("stories.stats.fathersSub"),
             },
             {
-              stat: "10+",
-              label: "years of continuous presence",
-              sub: "Not a project. A permanent parish.",
+              stat: t("stories.stats.yearsStat"),
+              label: t("stories.stats.yearsLabel"),
+              sub: t("stories.stats.yearsSub"),
             },
             {
-              stat: "2+",
-              label: "vocational workshops running",
-              sub: "Masonry, multimedia and cooking — real skills, real futures",
+              stat: t("stories.stats.workshopsStat"),
+              label: t("stories.stats.workshopsLabel"),
+              sub: t("stories.stats.workshopsSub"),
             },
           ].map((item) => (
             <div
-              key={item.stat}
+              key={item.label}
               className="flex flex-col gap-2 md:px-12 first:pl-0 last:pr-0"
             >
               <span className="text-[36px] md:text-[44px] font-bold text-[var(--gold)] tracking-[-1px] leading-none">
@@ -238,7 +233,7 @@ export default function StoriesPage() {
       {/* ── Founder's Story ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-4 mb-10">
-          <SectionLabel text="The Founder's Story" />
+          <SectionLabel text={t("stories.founder.label")} />
         </div>
 
         <Link
@@ -254,18 +249,16 @@ export default function StoriesPage() {
           />
           <div className="flex flex-col gap-4 p-6 md:p-10 justify-center">
             <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
-              Slovakia · 2016 – 2020
+              {t("stories.founder.eyebrow")}
             </span>
             <h3 className="text-[20px] md:text-[26px] font-bold tracking-[-0.5px] text-[var(--text-primary)] leading-[1.2]">
-              How a designer abandoned his career,
-              <br className="hidden md:block" /> moved into a Roma settlement,
-              <br className="hidden md:block" /> and stayed.
+              {t("stories.founder.title")}
             </h3>
             <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.75] max-w-[500px]">
-              Martin was nineteen, working internationally, leading a design team at one of the fastest-growing Czech startups. Then a detour through Klenovec changed the direction of his life. He didn&apos;t send help from a distance. He moved in.
+              {t("stories.founder.body")}
             </p>
             <div className="flex items-center gap-2 text-[11px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase mt-2 group-hover:gap-3 transition-all">
-              Read the full story <ArrowRight size={13} />
+              {t("stories.founder.cta")} <ArrowRight size={13} />
             </div>
           </div>
         </Link>
@@ -276,11 +269,11 @@ export default function StoriesPage() {
       {/* ── More Stories ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-4 mb-10 md:mb-14">
-          <SectionLabel text="From the Settlement" />
+          <SectionLabel text={t("stories.more.label")} />
           <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
-            More Voices From
+            {t("stories.more.titleLine1")}
             <br />
-            Klenovec
+            {t("stories.more.titleLine2")}
           </h2>
         </div>
 
@@ -289,58 +282,69 @@ export default function StoriesPage() {
           <div
             className="w-full md:w-[520px] h-[280px] md:h-[420px] bg-[var(--bg-elevated)] bg-cover flex-shrink-0"
             style={{
-              backgroundImage: `url('/images/${featuredStory.image}')`,
-              backgroundPosition: featuredStory.imagePosition ?? "center",
+              backgroundImage: `url('/images/${featuredMedia.image}')`,
+              backgroundPosition: featuredMedia.imagePosition,
             }}
           />
           <div className="flex flex-col gap-5 p-6 md:p-10 justify-center">
             <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
-              {featuredStory.country}
+              {t(`stories.testimonies.${featuredKey}.country`)}
             </span>
-            <blockquote className="text-[15px] md:text-[17px] text-[var(--text-primary)] leading-[1.7] italic">
-              &ldquo;{featuredStory.quote}&rdquo;
-            </blockquote>
+            <TestimonyQuote
+              source={t(`stories.testimonies.${featuredKey}.quoteSource`)}
+              translation={t(
+                `stories.testimonies.${featuredKey}.quoteTranslation`
+              )}
+              className="text-[15px] md:text-[17px] text-[var(--text-primary)] leading-[1.7] italic"
+            />
             <p className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
-              — {featuredStory.author}
+              — {t(`stories.testimonies.${featuredKey}.author`)}
             </p>
             <div className="h-px bg-[var(--border-default)]" />
             <p className="text-[13px] text-[var(--text-muted)] leading-[1.7]">
-              {featuredStory.context}
+              {t(`stories.testimonies.${featuredKey}.context`)}
             </p>
           </div>
         </div>
 
         {/* Remaining stories — 2×2 grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-          {stories.map((s) => (
-            <div
-              key={s.name}
-              className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex-1"
-            >
+          {otherKeys.map((key) => {
+            const media = TESTIMONY_MEDIA[key];
+            return (
               <div
-                className="w-full h-[200px] md:h-[220px] bg-[var(--bg-elevated)] bg-cover"
-                style={{
-                  backgroundImage: `url('/images/${s.image}')`,
-                  backgroundPosition: s.imagePosition ?? "center",
-                }}
-              />
-              <div className="flex flex-col gap-4 p-5 md:p-6 flex-1">
-                <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
-                  {s.country}
-                </span>
-                <blockquote className="text-[13px] md:text-[14px] text-[var(--text-primary)] leading-[1.65] italic flex-1">
-                  &ldquo;{s.quote}&rdquo;
-                </blockquote>
-                <p className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
-                  — {s.author}
-                </p>
-                <div className="h-px bg-[var(--border-default)] mt-1" />
-                <p className="text-[12px] text-[var(--text-muted)] leading-[1.6]">
-                  {s.context}
-                </p>
+                key={key}
+                className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex-1"
+              >
+                <div
+                  className="w-full h-[200px] md:h-[220px] bg-[var(--bg-elevated)] bg-cover"
+                  style={{
+                    backgroundImage: `url('/images/${media.image}')`,
+                    backgroundPosition: media.imagePosition,
+                  }}
+                />
+                <div className="flex flex-col gap-4 p-5 md:p-6 flex-1">
+                  <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
+                    {t(`stories.testimonies.${key}.country`)}
+                  </span>
+                  <TestimonyQuote
+                    source={t(`stories.testimonies.${key}.quoteSource`)}
+                    translation={t(
+                      `stories.testimonies.${key}.quoteTranslation`
+                    )}
+                    className="text-[13px] md:text-[14px] text-[var(--text-primary)] leading-[1.65] italic flex-1"
+                  />
+                  <p className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
+                    — {t(`stories.testimonies.${key}.author`)}
+                  </p>
+                  <div className="h-px bg-[var(--border-default)] mt-1" />
+                  <p className="text-[12px] text-[var(--text-muted)] leading-[1.6]">
+                    {t(`stories.testimonies.${key}.context`)}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -352,26 +356,20 @@ export default function StoriesPage() {
           <div className="flex items-center gap-4">
             <div className="w-8 h-px bg-[var(--gold)]" />
             <span className="text-[10px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
-              Not every story has a photo
+              {t("stories.anonymous.eyebrow")}
             </span>
           </div>
           <p className="text-[18px] md:text-[22px] font-medium text-[var(--text-primary)] leading-[1.6]">
-            There is a girl we visit three times a year.
+            {t("stories.anonymous.lead")}
           </p>
           <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.85]">
-            Her mother is in prison. Her grandmother — the one person who held
-            things together — died recently. She is now living with her aunt. We
-            cannot show her face. We will not share her name. But we will keep
-            coming back.
+            {t("stories.anonymous.paragraph1")}
           </p>
           <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.85]">
-            Three visits a year is not much. But for her, it may be the only
-            consistent thing in her life right now. Someone who shows up. Not
-            because she asked. Not because it's convenient. Because she matters.
+            {t("stories.anonymous.paragraph2")}
           </p>
           <p className="text-[14px] text-[var(--text-muted)] leading-[1.8] italic">
-            This is why we don't measure success in numbers. Some of the most
-            important work we do will never appear in a report.
+            {t("stories.anonymous.closing")}
           </p>
         </div>
       </section>
@@ -381,35 +379,28 @@ export default function StoriesPage() {
       {/* ── Why Stories Matter ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
         <div className="max-w-[680px]">
-          <SectionLabel text="The Work Continues" />
+          <SectionLabel text={t("stories.closing.label")} />
           <h2 className="text-[26px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.1] mt-5 mb-6">
-            Every story here started with someone choosing to stay.
+            {t("stories.closing.title")}
           </h2>
           <p className="text-[14px] md:text-[16px] text-[var(--text-secondary)] leading-[1.8] mb-4">
-            Martin and Misha moved to Klenovec permanently. Not as visitors, not
-            as NGO workers on a contract. They bought a house, raised children,
-            and built a parish — because the Roma communities they serve have
-            been let down by every initiative that eventually packed up and
-            left.
+            {t("stories.closing.paragraph1")}
           </p>
           <p className="text-[14px] md:text-[16px] text-[var(--text-secondary)] leading-[1.8] mb-8">
-            In 2025, donors contributed roughly €3,000. Actual mission costs
-            were €16,900. The gap is covered from Martin's personal income.
-            Every euro you give goes directly to sustaining what you&rsquo;ve
-            just read.
+            {t("stories.closing.paragraph2")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/get-involved"
               className="inline-flex items-center justify-center bg-[var(--gold)] text-black text-[12px] font-bold tracking-[1.5px] px-8 py-4 hover:opacity-90 transition-opacity uppercase"
             >
-              Support This Mission
+              {t("stories.closing.ctaSupport")}
             </Link>
             <Link
               href="/mission"
               className="inline-flex items-center justify-center border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-semibold tracking-[1px] px-8 py-4 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors uppercase"
             >
-              Learn How It Works
+              {t("stories.closing.ctaLearn")}
             </Link>
           </div>
         </div>

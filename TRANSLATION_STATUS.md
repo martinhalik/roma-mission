@@ -39,6 +39,7 @@ These already pull strings via `t()` and render correctly in all 9 languages:
 - `components/ShareModal.tsx` — title, subtitle, copy/copied states, "Share via", aria-labels
 - `components/LanguageSwitcher.tsx` — its own aria-labels
 - `app/page.tsx` — Home: hero, urgency, results, 5 pillars, testimony, mission map intro, featured media (`home.*` namespace)
+- `app/stories/page.tsx` — Hero, featured Laco testimony, stats, founder card, 5 testimonies, anonymous vignette, closing CTAs (`stories.*` namespace). Direct first-person quotes use `quoteSource` (preserved in original language across all locales) + `quoteTranslation` (per-locale). See PR for per-quote source-language decisions.
 
 ## What Still Needs Translation ⚠️
 
@@ -52,7 +53,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | `app/mission/page.tsx` | 680 | Largest page — full mission narrative |
 | `app/our-story/page.tsx` | 420 | Founder story, timeline |
 | `app/locations/page.tsx` | 572 | Location descriptions, stats |
-| `app/stories/page.tsx` | 428 | Testimonies (note: original quotes may be Slovak — keep source language and translate framing only) |
+| `app/stories/page.tsx` | 428 | ✅ Translated into all 9 locales (`stories.*` namespace). First-person quotes preserved in source language (`quoteSource`) with optional per-locale translation (`quoteTranslation`). |
 | `app/get-involved/page.tsx` | 246 | Volunteer / donate / mission trip CTAs |
 | `app/media/page.tsx` | 309 | Media library, video descriptions |
 | `app/thank-you/page.tsx` | 151 | Donation thank-you |
