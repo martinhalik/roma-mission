@@ -227,6 +227,103 @@ export interface Dictionary {
       shareLabel: string;
     };
   };
+  ourStory: {
+    hero: {
+      backToMission: string;
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      titleLine3: string;
+      subtitle: string;
+    };
+    authorMartin: string;
+    authorMartinFounder: string;
+    timeline: {
+      yearLabel: {
+        before2016: string;
+        y2016: string;
+        y2017: string;
+        y2018: string;
+        y2019: string;
+        y2020: string;
+        today: string;
+      };
+      before2016: {
+        heading: string;
+        pullQuote: string;
+        pullQuoteOriginal: string;
+        body1: string;
+        body2: string;
+      };
+      year2016: {
+        heading: string;
+        body1: string;
+        body2: string;
+        photoAlt: string;
+        photoCaption: string;
+        pullQuote: string;
+        pullQuoteOriginal: string;
+        body3: string;
+      };
+      year2017: {
+        heading: string;
+        body1: string;
+        pullQuote: string;
+        pullQuoteOriginal: string;
+        videoCaptionUkulele: string;
+        photoAlt: string;
+        photoCaption: string;
+        videoCaptionSettlement: string;
+      };
+      movingIn: {
+        heading: string;
+        body1: string;
+        pullQuote: string;
+        pullQuoteOriginal: string;
+        body2: string;
+      };
+      year2018: {
+        heading: string;
+        body1: string;
+        bibleRef: string;
+        bibleQuote: string;
+        body2: string;
+        body3: string;
+        michalkaQuote: string;
+      };
+      year2019: {
+        photoAlt: string;
+        photoCaption: string;
+        body1: string;
+        body2: string;
+      };
+      year2020: {
+        heading: string;
+        photoAlt: string;
+        photoCaption: string;
+        body1: string;
+        body2: string;
+      };
+      today: {
+        heading: string;
+        body1: string;
+        body2: string;
+      };
+    };
+    documentary: {
+      label: string;
+      watchAria: string;
+      imageAlt: string;
+      tag: string;
+      title: string;
+      subtitle: string;
+    };
+    videoPlayAria: string;
+    cta: {
+      seeMission: string;
+      readStories: string;
+    };
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;
