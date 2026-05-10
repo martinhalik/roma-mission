@@ -123,6 +123,110 @@ export interface Dictionary {
       cta: string;
     };
   };
+  mission: {
+    hero: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      subtitle: string;
+    };
+    whyRoma: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      pullStatValue: string;
+      pullStatLabel: string;
+      aside: string;
+      reason1Title: string;
+      reason1Body: string;
+      reason2Title: string;
+      reason2Body: string;
+      reason3Title: string;
+      reason3Body: string;
+    };
+    ourStory: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      paragraph1: string;
+      paragraph2: string;
+      paragraph3: string;
+      quote: string;
+      attribution: string;
+      cta: string;
+    };
+    whatWeDo: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      intro: string;
+      plantingTitle: string;
+      plantingBody: string;
+      plantingStatPlanted: string;
+      plantingStatLost: string;
+      plantingStatProgress: string;
+      parishTitle: string;
+      parishBody: string;
+      parishStatSupported: string;
+      parishStatTransformed: string;
+      parishStatFathers: string;
+      childrenTitle: string;
+      childrenBody: string;
+      childrenStatReached: string;
+      childrenStatLearned: string;
+      childrenStatJoined: string;
+      centersTitle: string;
+      centersBody: string;
+      centersStatBuilt: string;
+      centersStatProgress: string;
+    };
+    vision: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      body: string;
+      statParishesSupported: string;
+      statChurchesActive: string;
+      statCenterBuilt: string;
+      statCenterInProgress: string;
+    };
+    countries: {
+      label: string;
+      title: string;
+      intro: string;
+      legendPrefix: string;
+      legendActive: string;
+      legendOrthodox: string;
+      legendNextSteps: string;
+      legendOpportunity: string;
+      cardOfficial: string;
+      cardEstimated: string;
+      cardOfPopulation: string;
+      cardScripture: string;
+      cardLiturgy: string;
+      cardKnownWorkers: string;
+      cardSource: string;
+      badgeAvailable: string;
+      badgePartial: string;
+      badgeProgress: string;
+      badgeNeeded: string;
+      footnote: string;
+    };
+    beliefs: {
+      label: string;
+      title: string;
+      sacramentalTitle: string;
+      sacramentalDesc: string;
+      longTermTitle: string;
+      longTermDesc: string;
+      communityTitle: string;
+      communityDesc: string;
+    };
+    shareNudge: {
+      text: string;
+      shareLabel: string;
+    };
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;
