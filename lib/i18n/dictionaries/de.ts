@@ -136,6 +136,256 @@ const de: Dictionary = {
       cta: "MEDIENBIBLIOTHEK ENTDECKEN",
     },
   },
+  mission: {
+    hero: {
+      label: "Unsere Mission",
+      titleLine1: "Roma zu Christus bringen.",
+      titleLine2: "Eine Gemeinde gründen. Bleiben.",
+      subtitle:
+        "Fünf Millionen Roma leben in Südost- und Mitteleuropa. Die meisten haben das Evangelium nie auf eine Weise gehört, die sie wirklich erreicht hat. Wir sind hier, um das zu ändern — eine Gemeinde nach der anderen.",
+    },
+    whyRoma: {
+      label: "Warum die Roma",
+      titleLine1: "Europas am meisten",
+      titleLine2: "vernachlässigtes Volk",
+      pullStatValue: "10M+",
+      pullStatLabel: "Roma in Europa",
+      aside: "Keine andere ethnische Gruppe in Europa lebt unter vergleichbaren Bedingungen.",
+      reason1Title: "Die ärmste Gruppe in Europa",
+      reason1Body:
+        "Roma-Gemeinschaften liegen kontinentweit konstant am Ende jeder Messung wirtschaftlichen Wohlergehens. In vielen Siedlungen gehen Familien hungrig zu Bett. Kinder wachsen ohne fließendes Wasser, verlässliche Heizung oder Zugang zu Bildung auf.",
+      reason2Title: "Traditionell orthodoxe Wurzeln",
+      reason2Body:
+        "Die Mehrheit der Roma in Südost- und Mitteleuropa stammt aus traditionell orthodoxem Hintergrund. Sie stehen nicht außerhalb der historischen Reichweite der Kirche — sie sind innerhalb, und warten darauf, nach Hause gerufen zu werden. Dies ist keine Mission zu Fremden. Es ist eine Rückkehr in eine Familie.",
+      reason3Title: "Die jüngste, am schnellsten wachsende Bevölkerung",
+      reason3Body:
+        "Roma-Gemeinschaften sind die jüngste demografische Gruppe Europas. Ihre Geburtenraten sind hoch, ihre Lebenserwartung niedrig. Die Generation, die jetzt geformt wird, wird Mittel- und Osteuropa für Jahrzehnte prägen. Das Fenster zum Investieren ist jetzt.",
+    },
+    ourStory: {
+      label: "Unsere Geschichte",
+      titleLine1: "Ein Mann, eine Hütte,",
+      titleLine2: "eine Entscheidung zu bleiben",
+      paragraph1:
+        "Die Mission begann mit einem Designer auf dem Höhepunkt seiner Karriere. Mit neunzehn arbeitete Martin bereits international — remote für Kiwi.com, mit internationalen Kunden, mit einer vielversprechenden Zukunft. Dann führte ihn ein zufälliger Umweg nach Klenovec, einem Dorf in der zentralen Slowakei, das mit Arbeitslosigkeit, Sucht und zerbrochenen Familien kämpft.",
+      paragraph2:
+        "Er kaufte mit Freunden ein Haus. Er versuchte sich im Geschäft. Dann betrat er eine Roma-Siedlung — und alles änderte sich. Er schickte keine Hilfe aus der Ferne. Er zog ein. Er fand eine Holzhütte mitten in der Gemeinschaft und machte sie zu seinem Zuhause, entschlossen, Armut nicht als Konzept, sondern als Nachbar zu verstehen.",
+      paragraph3:
+        "Über Jahre der Anwesenheit — Musik mit Kindern machen, unterrichten, Vertrauen Beziehung für Beziehung verdienen — formierte sich eine Gemeinschaft um den Glauben, den er trug. Er heiratete Michaela, eine Psychologin, die er in Brünn kennengelernt hatte. Gemeinsam formalisierten sie die Arbeit zu dem, was heute die Kresťanská rómska misia ist. Ihr Zuhause ist immer noch in der Gemeinschaft.",
+      quote: "Bis zu diesem Moment war ich der Armut nicht von Angesicht zu Angesicht begegnet.",
+      attribution: "— Martin, Gründer",
+      cta: "DIE GANZE GESCHICHTE LESEN",
+    },
+    whatWeDo: {
+      label: "Was wir tun",
+      titleLine1: "Zwei Arten von Arbeit.",
+      titleLine2: "Ein Ziel.",
+      intro:
+        "Wir gründen neue Gemeinden aus dem Nichts — und gehen mit bestehenden Gemeinden, die lernen, Roma zu integrieren. Das Ziel ist immer dasselbe: eine lebendige, sich selbst tragende Kirchengemeinschaft mit Roma vollständig in ihr.",
+      plantingTitle: "Gemeindegründung",
+      plantingBody:
+        "Wir betreten Gemeinschaften, in denen es weder Pfarrei noch Priester gibt — und bleiben, bis es sie gibt. Zwei von Grund auf gegründete Kirchen sind heute aktiv. Eine bestehende Pfarrei ist durch eine vollständige Verwandlung gegangen. Ein Versuch wurde durch Ablehnung begraben — die Gemeinschaft wandte sich ab. Wir trauern darüber und machen weiter. Zwei weitere Kirchen werden gerade gegründet.",
+      plantingStatPlanted: "Gegründet",
+      plantingStatLost: "Vorübergehend verloren",
+      plantingStatProgress: "In Arbeit",
+      parishTitle: "Unterstützung der Gemeindeumgestaltung",
+      parishBody:
+        "Viele traditionelle Pfarreien erleben einen raschen demografischen Wandel — Roma-Familien ziehen zu, besuchen Gottesdienste, suchen Gemeinschaft. Wir helfen diesen Pfarreien zu verstehen, wer ihre neuen Nachbarn sind, wie man über kulturelle und bildungsbezogene Unterschiede hinweg kommuniziert und wie man echte Integration übt, ohne jemandes Identität auszulöschen. Das ist langsame, notwendige Arbeit.",
+      parishStatSupported: "Unterstützte Gemeinden",
+      parishStatTransformed: "Verwandelt",
+      parishStatFathers: "Väter haben begonnen zu arbeiten",
+      childrenTitle: "Kinder- & Jugendformation",
+      childrenBody:
+        "Analphabetismus ist unter Roma-Kindern üblich. Wir führen Katechismusprogramme, Lese- und Schreibunterstützung und strukturierte Jugendaktivitäten, verankert im Kirchenkalender. Kinder, die durch die Kirche lesen lernen, wachsen mit ihrem Glauben und ihrer Würde unversehrt auf. Eltern, die ihre Kinder lernen sehen, beginnen der Gemeinschaft zu vertrauen, die sie unterrichtet hat.",
+      childrenStatReached: "Kinder mit dem Evangelium erreicht",
+      childrenStatLearned: "Kinder haben Lesen & Schreiben gelernt",
+      childrenStatJoined: "Sind regelmäßig zur Kirche gekommen",
+      centersTitle: "Missionszentren",
+      centersBody:
+        "Wir bauen physische Infrastruktur, wo keine existiert — Gemeinschaftszentren, Versammlungsräume und Gottesdienststätten, die der Mission ein dauerhaftes Zuhause geben. Ein Missionszentrum ist gebaut. Ein zweites befindet sich derzeit im Bau. Diese Räume dienen als Anker für alles andere, was wir tun. Jedes Zentrum bietet Unterkünfte für Missionsreisegruppen, sodass Teams leicht kommen, bleiben und an der Seite lokaler Mitarbeiter dienen können.",
+      centersStatBuilt: "Gebaut",
+      centersStatProgress: "Im Bau",
+    },
+    vision: {
+      label: "Unsere Vision",
+      titleLine1: "Eine sich selbst tragende Gemeinde",
+      titleLine2: "in jeder Roma-Gemeinschaft",
+      body:
+        "Wir gründen keine Projekte — wir gründen Pfarreien. Unser Ziel ist eine dauerhafte, selbstverwaltete Kirchengemeinschaft mit eigenem Priester, eigenem liturgischem Leben und eigener Identität innerhalb der orthodoxen Tradition.",
+      statParishesSupported: "Unterstützte Gemeinden",
+      statChurchesActive: "Aktive Kirchen",
+      statCenterBuilt: "Missionszentrum gebaut",
+      statCenterInProgress: "Missionszentrum im Bau",
+    },
+    countries: {
+      label: "Das Missionsfeld",
+      title: "Unsere Region",
+      intro:
+        "Die Roma-Bevölkerung in Südost- und Mitteleuropa — offizielle Zensuszahlen, geschätzte tatsächliche Zahlen, unsere Präsenz und der aktuelle Stand der Schrift- und liturgischen Übersetzungen.",
+      legendPrefix: "Präsenz:",
+      legendActive: "Wir sind hier",
+      legendOrthodox: "Orthodox aktiv",
+      legendNextSteps: "Nächste Schritte",
+      legendOpportunity: "Gelegenheit",
+      cardOfficial: "Offiziell",
+      cardEstimated: "Geschätzt",
+      cardOfPopulation: "Der Bevölkerung",
+      cardScripture: "Heilige Schrift",
+      cardLiturgy: "Liturgie",
+      cardKnownWorkers: "Bekannte Mitarbeiter",
+      cardSource: "Quelle ↗",
+      badgeAvailable: "VERFÜGBAR",
+      badgePartial: "TEILWEISE",
+      badgeProgress: "IN ARBEIT",
+      badgeNeeded: "BENÖTIGT",
+      footnote:
+        "Bevölkerungszahlen sind ungefähre Werte. Offizielle Zensuszahlen unterschätzen die Roma-Bevölkerung systematisch aufgrund von Inkonsistenzen bei der Selbstidentifikation und historischem Misstrauen gegenüber Behörden. Schätzungen spiegeln akademische und NGO-Forschung wider. Der Übersetzungsstatus basiert auf öffentlich verfügbaren Informationen Stand 2024.",
+    },
+    beliefs: {
+      label: "Was wir glauben",
+      title: "Leitende Grundsätze",
+      sacramentalTitle: "Sakramentales Leben zuerst",
+      sacramentalDesc:
+        "Die Pfarrei — mit ihrer Liturgie, Taufe, Firmung und Beichte — ist das primäre Instrument der Verwandlung. Programme und Dienste fließen vom Altar aus.",
+      longTermTitle: "Langfristige Verpflichtung",
+      longTermDesc:
+        "Wir führen keine Kurzzeitprogramme durch. Wir gründen und bleiben. Eine sich selbst tragende Gemeinde benötigt Jahre der Präsenz, Verantwortung und Beziehung.",
+      communityTitle: "Trägerschaft der Gemeinschaft",
+      communityDesc:
+        "Unser Ziel ist es immer, die Leitung an lokale Roma-Priester und Diakone zu übergeben. Die Kirche muss der Gemeinschaft gehören, der sie dient.",
+    },
+    shareNudge: {
+      text: "Wenn dir diese Mission am Herzen liegt, teile sie. Ein einziges Gespräch kann einen neuen Unterstützer, Freiwilligen oder Partner bringen.",
+      shareLabel: "DIE MISSION TEILEN",
+    },
+  },
+  ourStory: {
+    hero: {
+      backToMission: "← Zurück zur Mission",
+      label: "Die Geschichte des Gründers",
+      titleLine1: "Eine Abzweigung.",
+      titleLine2: "Eine Entscheidung.",
+      titleLine3: "Eine Mission, die blieb.",
+      subtitle: "Klenovec, Slowakei · 2016 – 2020",
+    },
+    authorMartin: "Martin",
+    authorMartinFounder: "Martin, Gründer",
+    timeline: {
+      yearLabel: {
+        before2016: "Vor 2016",
+        y2016: "2016",
+        y2017: "2017",
+        y2018: "2018",
+        y2019: "2019",
+        y2020: "2020",
+        today: "Heute",
+      },
+      before2016: {
+        heading: "Der Traum",
+        pullQuote:
+          "Mein Traum war es, ein berühmter Designer zu werden, viel Geld zu verdienen und auf der ganzen Welt Vorträge zu halten.",
+        pullQuoteOriginal:
+          "Mým snem bylo stát se slavným designerem, vydělávat hodně peněz a přednášet po celém světě.",
+        body1:
+          "Es schien aufzugehen. Er war noch nicht neunzehn, und schon kamen Aufträge aus aller Welt und von den größten tschechischen Unternehmen. Er wurde Lead Designer bei Kiwi.com — damals dem am schnellsten wachsenden tschechischen Start-up — und stellte das gesamte Designteam von Grund auf zusammen.",
+        body2:
+          "Remote-Arbeit, internationale Kunden, eine Karriere, die genau in die Richtung wies, die er geplant hatte. Die Zukunft stand offen.",
+      },
+      year2016: {
+        heading: "Die falsche Abzweigung",
+        body1:
+          "Gemeinsam mit Kollegen kaufte er ein Haus in Klenovec — einem Dorf in der Mitte der Slowakei. Die Region hatte ihn lange beschäftigt: hohe Arbeitslosigkeit, hohe Scheidungsraten, Drogen. Sie waren jung und dachten, sie könnten helfen.",
+        body2:
+          "Eines Tages, auf dem Weg zu einem Handwerker, nahm er eine Abkürzung — und bog in eine Sackgasse am Rand des Dorfes ein. Direkt in eine Roma-Siedlung.",
+        photoAlt: "Das Ents.co-Team in Klenovec nach dem Hauskauf, 2016",
+        photoCaption:
+          "Das Ents.co-Team in Klenovec nach dem Hauskauf, 2016. Von links nach rechts: Jan Henneberg, Milan Seitler, David Kotík, Martin und Filip Daniško.",
+        pullQuote:
+          "Bis zu diesem Moment war ich der Armut nie direkt begegnet. Es traf mich ins Herz — und obwohl ich keine Liebe für die Roma hatte, ganz im Gegenteil, wollte ich helfen.",
+        pullQuoteOriginal:
+          "Až do té doby jsem nehleděl chudobě tváří v tvář. Zasáhlo to moje srdce a ačkoli jsem neměl Romy v lásce, spíše naopak, chtěl jsem jim pomoci.",
+        body3:
+          "Er ist ehrlich über das Vorurteil. Die meisten Menschen in der Slowakei tragen es. Ebenso ehrlich gibt er zu, dass sich sofort etwas verschoben hat — nicht trotz, sondern durch die Begegnung selbst. Die Wirklichkeit war zu konkret, zu menschlich, um in die Kategorie zu passen.",
+      },
+      year2017: {
+        heading: "Luftballons, kaputte Gitarren und Beharrlichkeit",
+        body1:
+          "Mehrere Monate lang sammelte er Mut und betete einfach. Dann nahm er eine Handvoll Luftballons in der Hoffnung, die Kinder zu erreichen und mit dem Spielen zu beginnen. Es klappte. Doch was folgte, verlangte mehr als Begeisterung.",
+        pullQuote:
+          "Es brauchte Beharrlichkeit, viele Stunden auf den Knien, häufige heilige Kommunion, unzählige verlorene Luftballons, mehrere zerbrochene Gitarren und Skateboards, die zu Brennholz gespalten wurden — aber nach und nach gelang es mir, das Vertrauen der Gemeinschaft zu gewinnen.",
+        pullQuoteOriginal:
+          "Stálo to vytrvalost, mnohé chvíle na kolenou, časté svaté přijímání, nepočítaně ztracených balonů, několik rozbitých kytar a skateboardů rozštípaných na dříví, ale postupně se mi podařilo získat důvěru komunity.",
+        videoCaptionUkulele:
+          "Martin bringt Roma-Kindern das Ukulele-Spiel bei — Klenovec, 2017. Klicken zum Ansehen.",
+        photoAlt: "Kinder aus dem Sportclub der Grundschule Klenovec",
+        photoCaption: "Kinder aus dem Sportclub der Grundschule Klenovec.",
+        videoCaptionSettlement:
+          "Ein Mädchen in der Roma-Siedlung, vor der Hütte ihrer Eltern. Klicken zum Ansehen.",
+      },
+      movingIn: {
+        heading: "Einzug",
+        body1:
+          "Es gibt kleine Opfer und es gibt größere. Er verstand, dass er, wenn er ernsthaft helfen wollte, unter ihnen leben musste — sie von innen kennen. Das hieß, in eine Holzhütte in der Siedlung zu ziehen.",
+        pullQuote:
+          "Manchmal verlangt Gott kleine Opfer von uns, damit wir zu größeren heranreifen — denn Er hat sein ganzes Leben für uns gegeben. Ich wusste: Wenn ich diese Hilfe ernst meinte, musste ich unter ihnen leben, sie von innen kennen.",
+        pullQuoteOriginal:
+          "Někdy však od nás Bůh žádá drobné oběti, abychom dozráli do obětí větších... Věděl jsem, že pokud to chci s pomocí myslet vážně, potřebuju žít mezi nimi, poznat je zevnitř, jinými slovy přestěhovat se do dřevěné chatrče v osadě.",
+        body2:
+          "Im Rückblick sagt er, es sei eine der glücklichsten Zeiten seines Lebens gewesen. Er arbeitete weiterhin remote — noch immer bei Kiwi —, doch sein Herz war bereits in Klenovec geblieben. Die beiden Welten liefen parallel, und die Kluft wurde immer schwerer zu ignorieren.",
+      },
+      year2018: {
+        heading: "Michaela",
+        body1:
+          "Dann geschah etwas Unerwartetes. Im Gebet und beim Lesen der Heiligen Schrift fühlte er sich gedrängt, die wachsende Mission in Klenovec zu verlassen und nach Brno zurückzukehren. Logisch erklären konnte er es nicht.",
+        bibleRef: "Johannes 3,8",
+        bibleQuote:
+          "Der Wind weht, wo er will, und du hörst sein Sausen wohl; aber du weißt nicht, woher er kommt und wohin er fährt. So ist es mit jedem, der aus dem Geist geboren ist.",
+        body2:
+          "In Brno traf er Michaela — Michalka. Eine ausgebildete Psychologin. Als er ihr erzählte, was er in Klenovec tat, verstand sie es auf eine Weise, die Gewicht hatte. Am 25. August 2018 heirateten sie und sie zog mit ihm.",
+        body3:
+          "Michalka brachte etwas, das der Arbeit gefehlt hatte: Sanftheit, ein warmes Herz und jemanden, der mit den Mädchen in der Gemeinschaft arbeiten konnte. Sie kam nicht, um sein Projekt zu unterstützen. Es wurde zu ihrem.",
+        michalkaQuote:
+          "Michalka je vystudovaná psycholožka, ale teďka hlavně vzorná maminka a hospodyňka. Dala celé práci něhu a laskavé srdce, které jí před tím scházely. Také doplnila chybějící článek práce s děvčaty.",
+      },
+      year2019: {
+        photoAlt: "Michalka mit Kindern nach einem kleinen lokalen Spiel, 2019",
+        photoCaption:
+          "Michalka mit Kindern, nach der Preisverleihung eines kleinen lokalen Spiels — 2019.",
+        body1:
+          "Gemeinsam arbeiteten sie auf das hin, was sie als das Wichtigste erkannt hatten: Menschen zu Fleiß und Aufrichtigkeit zu führen, Kindern richtig lesen und schreiben beizubringen und sie in christlichem Glauben und in Sittlichkeit zu formen.",
+        body2: "Im Oktober 2019 wurde ihr Sohn Adam geboren.",
+      },
+      year2020: {
+        heading: "Formell gegründet",
+        photoAlt:
+          "Michalka verteilt Süßigkeiten an Kinder bei der Kreuzweihe, Mútnik 2020",
+        photoCaption:
+          "Michalka verteilt Süßigkeiten an Kinder bei der Kreuzweihe auf dem Mútnik — 2020.",
+        body1:
+          "Im Sommer 2020 gründeten sie offiziell die Kresťanská rómska misia — die Christliche Roma-Mission. Eine eingetragene Non-Profit-Organisation. Damit erhielt die Arbeit ihre offizielle Form: die Möglichkeit, Mitarbeitende anzustellen, Programme zur beruflichen Bildung zu starten und über die eigenen Absichten hinaus rechenschaftspflichtig zu sein.",
+        body2: "Im Mai 2021 wurde ihre Tochter Mária geboren.",
+      },
+      today: {
+        heading: "Im Osten — und weiter unterwegs",
+        body1:
+          "Martin und Michaela leben heute mit ihren vier Kindern im Osten der Slowakei. Die Arbeit hat sich ausgeweitet — neue Gemeinden, neue Pfarreien, neue Mitarbeitende in Ausbildung. Was mit einer Handvoll Luftballons in Klenovec begann, ist heute ein Netzwerk von Pfarreien, das Roma-Gemeinschaften in der ganzen Slowakei erreicht.",
+        body2:
+          "Was sich nicht geändert hat, ist der Grundsatz: Hilfe schickt man nicht aus der Ferne. Man geht. Man bleibt. Man lässt es einen wirklich etwas kosten.",
+      },
+    },
+    documentary: {
+      label: "Der Dokumentarfilm",
+      watchAria: "Dokumentarfilm ansehen: Vom IT-Designer zum Priester",
+      imageAlt: "Vom IT-Designer zum Priester — Dokumentarfilm des Tschechischen Fernsehens",
+      tag: "Tschechisches Fernsehen · 30 Min.",
+      title: "Vom IT-Designer zum Priester",
+      subtitle: "Die Geschichte, die Sie gerade gelesen haben — als Film.",
+    },
+    videoPlayAria: "Video abspielen",
+    cta: {
+      seeMission: "Mission ansehen",
+      readStories: "Geschichten der Gemeinschaft lesen",
+    },
+  },
   stories: {
     hero: {
       label: "Zeugnisse",
