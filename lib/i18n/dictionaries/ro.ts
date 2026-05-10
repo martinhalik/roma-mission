@@ -197,7 +197,7 @@ const ro: Dictionary = {
       fathers: {
         country: "Slovacia",
         quoteSource:
-          "Predtým som sem chodil, keď som potreboval chlapov na denný robotu. Po pár rokoch som prišiel znova — a nikoho som nenašiel. Všetci už pracovali.",
+          "Predtým som sem chodil, keď som potreboval chlapov na dennú robotu. Po pár rokoch som prišiel znova — a nikoho som nenašiel. Všetci už pracovali.",
         quoteTranslation:
           "Veneam aici când aveam nevoie de oameni pentru o zi de muncă. După câțiva ani am venit din nou — și n-am găsit pe nimeni. Erau toți deja angajați.",
         author: "Tâmplar local, regiunea Klenovec",

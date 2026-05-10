@@ -197,7 +197,7 @@ const el: Dictionary = {
       fathers: {
         country: "Σλοβακία",
         quoteSource:
-          "Predtým som sem chodil, keď som potreboval chlapov na denný robotu. Po pár rokoch som prišiel znova — a nikoho som nenašiel. Všetci už pracovali.",
+          "Predtým som sem chodil, keď som potreboval chlapov na dennú robotu. Po pár rokoch som prišiel znova — a nikoho som nenašiel. Všetci už pracovali.",
         quoteTranslation:
           "Παλιά ερχόμουν εδώ όταν χρειαζόμουν άντρες για μιας ημέρας δουλειά. Μετά από μερικά χρόνια ήρθα ξανά — και δεν βρήκα κανέναν. Όλοι ήταν ήδη πιασμένοι.",
         author: "Τοπικός μαραγκός, περιοχή Κλένοβετς",

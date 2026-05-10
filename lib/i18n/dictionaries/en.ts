@@ -196,7 +196,7 @@ const en: Dictionary = {
       fathers: {
         country: "Slovakia",
         quoteSource:
-          "Predtým som sem chodil, keď som potreboval chlapov na denný robotu. Po pár rokoch som prišiel znova — a nikoho som nenašiel. Všetci už pracovali.",
+          "Predtým som sem chodil, keď som potreboval chlapov na dennú robotu. Po pár rokoch som prišiel znova — a nikoho som nenašiel. Všetci už pracovali.",
         quoteTranslation:
           "I used to come here when I needed men for a day's work. After a few years I came again — and I couldn't find anyone. They were all already hired.",
         author: "Local carpenter, Klenovec region",

@@ -197,7 +197,7 @@ const mk: Dictionary = {
       fathers: {
         country: "Словачка",
         quoteSource:
-          "Predtým som sem chodil, keď som potreboval chlapov na denný robotu. Po pár rokoch som prišiel znova — a nikoho som nenašiel. Všetci už pracovali.",
+          "Predtým som sem chodil, keď som potreboval chlapov na dennú robotu. Po pár rokoch som prišiel znova — a nikoho som nenašiel. Všetci už pracovali.",
         quoteTranslation:
           "Порано доаѓав овде кога ми требаа луѓе за дневна работа. По неколку години повторно дојдов — и никого не најдов. Сите веќе беа вработени.",
         author: "Локален дрводелец, регионот на Кленовец",
