@@ -7,14 +7,14 @@ Tracks progress of multilingual support added in branch `claude/add-language-tra
 | Code | Flag | Language | Status (UI chrome) |
 |------|------|----------|--------------------|
 | `en` | 🇬🇧 | English (default) | ✅ complete (source language) |
-| `sk` | 🇸🇰 | Slovak / Slovenčina | ✅ Navbar + Footer + ShareModal — needs native review |
-| `cs` | 🇨🇿 | Czech / Čeština | ✅ Navbar + Footer + ShareModal — needs native review |
-| `ro` | 🇷🇴 | Romanian / Română | ✅ Navbar + Footer + ShareModal — needs native review |
-| `de` | 🇩🇪 | German / Deutsch | ✅ Navbar + Footer + ShareModal — needs native review |
-| `sr` | 🇷🇸 | Serbian / Srpski (Cyrillic) | ✅ Navbar + Footer + ShareModal — needs native review |
-| `ru` | 🇷🇺 | Russian / Русский | ✅ Navbar + Footer + ShareModal — needs native review |
-| `mk` | 🇲🇰 | Macedonian / Македонски | ✅ Navbar + Footer + ShareModal — needs native review |
-| `el` | 🇬🇷 | Greek / Ελληνικά | ✅ Navbar + Footer + ShareModal — needs native review |
+| `sk` | 🇸🇰 | Slovak / Slovenčina | ✅ Navbar + Footer + ShareModal + Home + Our Story — needs native review |
+| `cs` | 🇨🇿 | Czech / Čeština | ✅ Navbar + Footer + ShareModal + Home + Our Story — needs native review |
+| `ro` | 🇷🇴 | Romanian / Română | ✅ Navbar + Footer + ShareModal + Home + Our Story — needs native review |
+| `de` | 🇩🇪 | German / Deutsch | ✅ Navbar + Footer + ShareModal + Home + Our Story — needs native review |
+| `sr` | 🇷🇸 | Serbian / Srpski (Cyrillic) | ✅ Navbar + Footer + ShareModal + Home + Our Story — needs native review |
+| `ru` | 🇷🇺 | Russian / Русский | ✅ Navbar + Footer + ShareModal + Home + Our Story — needs native review |
+| `mk` | 🇲🇰 | Macedonian / Македонски | ✅ Navbar + Footer + ShareModal + Home + Our Story — needs native review |
+| `el` | 🇬🇷 | Greek / Ελληνικά | ✅ Navbar + Footer + ShareModal + Home + Our Story — needs native review |
 
 > **Note:** Initial translations are AI-generated from English. Each locale should be reviewed by a native speaker before going to production. Russian uses the term "цыганская" historically; if a community-preferred term (e.g. "ромская") is desired, update `ru.ts`. Serbian is in Cyrillic — a Latin variant (`sr-Latn`) can be added by duplicating `sr.ts`.
 
@@ -39,6 +39,7 @@ These already pull strings via `t()` and render correctly in all 9 languages:
 - `components/ShareModal.tsx` — title, subtitle, copy/copied states, "Share via", aria-labels
 - `components/LanguageSwitcher.tsx` — its own aria-labels
 - `app/page.tsx` — Home: hero, urgency, results, 5 pillars, testimony, mission map intro, featured media (`home.*` namespace)
+- `app/our-story/page.tsx` — Founder story: hero, year-by-year timeline (Before 2016 → Today), pull quotes, Bible quote, documentary tease, CTAs (`ourStory.*` namespace). Czech-language pull-quote originals are preserved verbatim across non-Czech locales as direct citation; in `cs.ts` the `pullQuoteOriginal` field is intentionally empty to avoid duplication.
 
 ## What Still Needs Translation ⚠️
 
@@ -50,7 +51,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 |------|-----|-------|
 | `app/page.tsx` | 500 | ✅ Translated into all 9 locales (`home.*` namespace) |
 | `app/mission/page.tsx` | 680 | Largest page — full mission narrative |
-| `app/our-story/page.tsx` | 420 | Founder story, timeline |
+| `app/our-story/page.tsx` | 420 | ✅ Translated into all 9 locales (`ourStory.*` namespace) |
 | `app/locations/page.tsx` | 572 | Location descriptions, stats |
 | `app/stories/page.tsx` | 428 | Testimonies (note: original quotes may be Slovak — keep source language and translate framing only) |
 | `app/get-involved/page.tsx` | 246 | Volunteer / donate / mission trip CTAs |
