@@ -39,6 +39,7 @@ These already pull strings via `t()` and render correctly in all 9 languages:
 - `components/ShareModal.tsx` — title, subtitle, copy/copied states, "Share via", aria-labels
 - `components/LanguageSwitcher.tsx` — its own aria-labels
 - `app/page.tsx` — Home: hero, urgency, results, 5 pillars, testimony, mission map intro, featured media (`home.*` namespace)
+- `app/mission/page.tsx` — Mission: hero, why-roma reasons, founder story, what-we-do (planting/parish/children/centers), vision stats, country grid labels & legend, guiding principles, share nudge (`mission.*` namespace)
 
 ## What Still Needs Translation ⚠️
 
@@ -49,7 +50,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | File | LOC | Notes |
 |------|-----|-------|
 | `app/page.tsx` | 500 | ✅ Translated into all 9 locales (`home.*` namespace) |
-| `app/mission/page.tsx` | 680 | Largest page — full mission narrative |
+| `app/mission/page.tsx` | 680 | ✅ Translated into all 9 locales (`mission.*` namespace) |
 | `app/our-story/page.tsx` | 420 | Founder story, timeline |
 | `app/locations/page.tsx` | 572 | Location descriptions, stats |
 | `app/stories/page.tsx` | 428 | Testimonies (note: original quotes may be Slovak — keep source language and translate framing only) |
