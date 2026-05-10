@@ -11,6 +11,7 @@ import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
 import { MEDIA_ITEMS, ytThumb } from "@/lib/media-data";
 import SectionLabel from "@/components/SectionLabel";
 import LangBadge from "@/components/LangBadge";
+import { useTranslation } from "@/components/LanguageProvider";
 
 const LACO_VIDEO_ID = "PNhKEQtCrVo";
 
@@ -34,40 +35,20 @@ function PlayButton({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
   );
 }
 
-const pillars = [
-  {
-    num: "01",
-    title: "YOUTH AND CHILDREN\nFORMATION",
-    desc: "Teaching young people through catechism, literacy, and structured programs rooted in the Church.",
-  },
-  {
-    num: "02",
-    title: "REMOVE SINS\nNOT CULTURE",
-    desc: "We learn their language, way of speaking, cooking and culture. They learn our faith.",
-  },
-  {
-    num: "03",
-    title: "PRAYERS AND \nCHURCH INTEGRATION",
-    desc: "We live a Eucharistic life, invite to church, and connect with other believers.",
-  },
-  {
-    num: "04",
-    title: "DISCIPLESHIP OF\nMEN AND FATHERS",
-    desc: "Forming male leadership within the community through accountability and mentorship.",
-  },
-  {
-    num: "05",
-    title: "CHURCH PLANTING WITH\nLONG-TERM PRESENCE",
-    desc: "Establishing permanent parishes, not short-term projects. We stay until the community owns its parish.",
-  },
+const pillars: { num: string; titleKey: string; descKey: string }[] = [
+  { num: "01", titleKey: "home.approach.pillar1Title", descKey: "home.approach.pillar1Desc" },
+  { num: "02", titleKey: "home.approach.pillar2Title", descKey: "home.approach.pillar2Desc" },
+  { num: "03", titleKey: "home.approach.pillar3Title", descKey: "home.approach.pillar3Desc" },
+  { num: "04", titleKey: "home.approach.pillar4Title", descKey: "home.approach.pillar4Desc" },
+  { num: "05", titleKey: "home.approach.pillar5Title", descKey: "home.approach.pillar5Desc" },
 ];
 
-const resultCards: { Icon: LucideIcon; text: string }[] = [
-  { Icon: Users, text: "Fathers begin working and providing for their families." },
-  { Icon: BookOpen, text: "Children learn to read and write through church programs." },
-  { Icon: Crown, text: "Public behavior changes — dignity returns." },
-  { Icon: Heart, text: "Addiction decreases." },
-  { Icon: House, text: "Families reconcile." },
+const resultCards: { Icon: LucideIcon; textKey: string }[] = [
+  { Icon: Users, textKey: "home.results.cardFathers" },
+  { Icon: BookOpen, textKey: "home.results.cardChildren" },
+  { Icon: Crown, textKey: "home.results.cardDignity" },
+  { Icon: Heart, textKey: "home.results.cardAddiction" },
+  { Icon: House, textKey: "home.results.cardFamilies" },
 ];
 
 const mediaItems = MEDIA_ITEMS.filter((item) => item.tag !== "TESTIMONY").slice(0, 3).map((item) => ({
@@ -79,6 +60,7 @@ const mediaItems = MEDIA_ITEMS.filter((item) => item.tag !== "TESTIMONY").slice(
 
 export default function HomePage() {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
@@ -116,34 +98,33 @@ export default function HomePage() {
         <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-[var(--bg-primary)] to-transparent" />
         <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
           <div className="flex flex-col gap-5 md:gap-8 max-w-[800px]">
-            <SectionLabel text="Orthodox Roma Mission Europe" />
+            <SectionLabel text={t("home.hero.label")} />
             <h1 className="text-[34px] md:text-[52px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-              When Christ Is Present,
+              {t("home.hero.titleLine1")}
               <br />
-              Everything Changes.
+              {t("home.hero.titleLine2")}
             </h1>
             <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.6] max-w-[600px]">
-              Serving Roma communities in Slovakia for 10 years through education, activities,
-              parish life, discipleship, and church planting.
+              {t("home.hero.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <Link
                 href="/get-involved"
                 className="px-6 md:px-8 py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[11px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
               >
-                SUPPORT THE MISSION
+                {t("home.hero.ctaSupport")}
               </Link>
               <Link
                 href="/get-involved"
                 className="px-6 md:px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-semibold tracking-[1px] text-center hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
               >
-                VOLUNTEER
+                {t("home.hero.ctaVolunteer")}
               </Link>
               <Link
                 href="/mission"
                 className="px-6 md:px-8 py-4 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[11px] font-semibold tracking-[1px] text-center hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
               >
-                LEARN MORE
+                {t("home.hero.ctaLearnMore")}
               </Link>
             </div>
           </div>
@@ -153,15 +134,14 @@ export default function HomePage() {
       {/* ── Urgency ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-6 md:gap-8 max-w-[700px] mb-12 md:mb-16">
-          <SectionLabel text="The Urgency" />
+          <SectionLabel text={t("home.urgency.label")} />
           <h2 className="text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            The Future Is Being
+            {t("home.urgency.titleLine1")}
             <br />
-            Formed Now
+            {t("home.urgency.titleLine2")}
           </h2>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.7]">
-            Roma communities are the youngest and fastest-growing population in
-            Europe — nearly 5 million people. Slovakia has the highest concentration in the world.
+            {t("home.urgency.body")}
           </p>
         </div>
 
@@ -174,27 +154,30 @@ export default function HomePage() {
 
         {/* Statements */}
         <div className="flex flex-col gap-4 mb-6">
-          {[
-            "In many areas, parish life is weak or absent. Children are graduating unable to read or write.",
-            "A generation is growing up without guidance.",
-          ].map((s) => (
-            <p
-              key={s}
-              className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.7] border-l-2 border-[var(--border-strong)] pl-4"
-            >
-              {s}
-            </p>
-          ))}
+          {[t("home.urgency.statement1"), t("home.urgency.statement2")].map(
+            (s) => (
+              <p
+                key={s}
+                className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.7] border-l-2 border-[var(--border-strong)] pl-4"
+              >
+                {s}
+              </p>
+            ),
+          )}
         </div>
 
         <div className="p-8 md:p-10 bg-[var(--bg-card)] border border-[var(--border-default)]">
           <p className="text-[15px] md:text-[17px] text-[var(--text-muted)] leading-[1.7]">
-            If Christ is absent,{" "}
-            <span className="text-[var(--text-secondary)]">instability grows.</span>
+            {t("home.urgency.absentLead")}{" "}
+            <span className="text-[var(--text-secondary)]">
+              {t("home.urgency.absentEmph")}
+            </span>
           </p>
           <p className="text-[15px] md:text-[17px] text-[var(--text-primary)] font-medium leading-[1.7] mt-2">
-            If Christ is present,{" "}
-            <span className="text-[var(--gold)]">families stabilize.</span>
+            {t("home.urgency.presentLead")}{" "}
+            <span className="text-[var(--gold)]">
+              {t("home.urgency.presentEmph")}
+            </span>
           </p>
         </div>
       </section>
@@ -204,10 +187,11 @@ export default function HomePage() {
       {/* ── Results ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-6 max-w-[700px] mb-12 md:mb-16">
-          <SectionLabel text="The Results" />
+          <SectionLabel text={t("home.results.label")} />
           <h2 className="text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            What Happens When
-            <br />a Parish Is Planted
+            {t("home.results.titleLine1")}
+            <br />
+            {t("home.results.titleLine2")}
           </h2>
         </div>
 
@@ -220,14 +204,14 @@ export default function HomePage() {
 
         {/* Results icon cards — Row 1 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-          {resultCards.slice(0, 3).map(({ Icon, text }, i) => (
+          {resultCards.slice(0, 3).map(({ Icon, textKey }, i) => (
             <div
               key={i}
               className="flex flex-col gap-4 p-7 bg-[var(--bg-card)] border border-[var(--border-default)]"
             >
               <Icon className="w-[22px] h-[22px] text-[var(--gold)]" />
               <p className="text-[14px] font-medium text-[var(--text-secondary)] leading-[1.5]">
-                {text}
+                {t(textKey)}
               </p>
             </div>
           ))}
@@ -235,14 +219,14 @@ export default function HomePage() {
 
         {/* Results icon cards — Row 2 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {resultCards.slice(3).map(({ Icon, text }, i) => (
+          {resultCards.slice(3).map(({ Icon, textKey }, i) => (
             <div
               key={i}
               className="flex flex-col gap-4 p-7 bg-[var(--bg-card)] border border-[var(--border-default)]"
             >
               <Icon className="w-[22px] h-[22px] text-[var(--gold)]" />
               <p className="text-[14px] font-medium text-[var(--text-secondary)] leading-[1.5]">
-                {text}
+                {t(textKey)}
               </p>
             </div>
           ))}
@@ -255,12 +239,12 @@ export default function HomePage() {
       {/* ── Our Approach ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
         <div className="flex flex-col gap-4 mb-10 md:mb-12">
-          <SectionLabel text="Our Approach" />
+          <SectionLabel text={t("home.approach.label")} />
           <h2 className="text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            Our Approach
+            {t("home.approach.title")}
           </h2>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.6] max-w-[600px]">
-            Five pillars that ground every mission parish we plant.
+            {t("home.approach.subtitle")}
           </p>
         </div>
 
@@ -278,10 +262,10 @@ export default function HomePage() {
                 {p.num}
               </span>
               <h3 className="text-[14px] font-bold tracking-[1px] text-[var(--text-primary)] whitespace-pre-line leading-[1.3]">
-                {p.title}
+                {t(p.titleKey)}
               </h3>
               <p className="text-[13px] text-[var(--text-secondary)] leading-[1.7]">
-                {p.desc}
+                {t(p.descKey)}
               </p>
             </div>
           ))}
@@ -298,10 +282,10 @@ export default function HomePage() {
                 {p.num}
               </span>
               <h3 className="text-[14px] font-bold tracking-[1px] text-[var(--text-primary)] whitespace-pre-line leading-[1.3]">
-                {p.title}
+                {t(p.titleKey)}
               </h3>
               <p className="text-[13px] text-[var(--text-secondary)] leading-[1.7]">
-                {p.desc}
+                {t(p.descKey)}
               </p>
             </div>
           ))}
@@ -317,7 +301,7 @@ export default function HomePage() {
           <button
             onClick={() => setActiveVideoId(LACO_VIDEO_ID)}
             className="w-full md:w-[380px] h-[240px] md:h-[480px] bg-[var(--bg-elevated)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden relative group cursor-pointer"
-            aria-label="Watch Laco's story"
+            aria-label={t("home.testimony.watchAria")}
           >
             <div
               className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
@@ -330,16 +314,16 @@ export default function HomePage() {
 
           <div className="flex flex-col gap-6">
             <div className="mb-[20px]">
-              <SectionLabel text="Testimony" />
+              <SectionLabel text={t("home.testimony.label")} />
             </div>
             <span className="text-[var(--gold)] text-[120px] leading-[0.4] font-bold">
               &ldquo;
             </span>
             <blockquote className="text-[18px] md:text-[22px] font-medium text-[var(--text-primary)] leading-[1.5] -mt-8">
-              That's why we were angry with him for not doing anything and he left us.
+              {t("home.testimony.quote")}
             </blockquote>
             <p className="text-[13px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
-              — Laco, Slovakia
+              {t("home.testimony.attribution")}
             </p>
             <div className="flex items-center gap-5 flex-wrap">
               <button
@@ -349,7 +333,7 @@ export default function HomePage() {
                 <div className="w-6 h-6 rounded-full border border-[var(--gold)] flex items-center justify-center flex-shrink-0">
                   <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[7px] border-l-[var(--gold)] ml-0.5" />
                 </div>
-                WATCH HIS STORY
+                {t("home.testimony.watchLabel")}
               </button>
               {/* <Link
                 href="/stories"
@@ -367,19 +351,18 @@ export default function HomePage() {
       {/* ── Where We Serve ── */}
       <section className="py-16 md:py-[100px] bg-[var(--bg-card)]">
         <div className="flex flex-col gap-4 mb-10 md:mb-12 px-5 md:px-[120px]">
-          <SectionLabel text="Mission Field" />
+          <SectionLabel text={t("home.missionField.label")} />
           <h2 className="text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            Where We Serve.
+            {t("home.missionField.titleLine1")}
             <br />
-            What&rsquo;s At Stake.
+            {t("home.missionField.titleLine2")}
           </h2>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.6] max-w-[600px]">
-            Slovakia has the highest Roma concentration per capita in Central
-            Europe. We operate{" "}
+            {t("home.missionField.descriptionBefore")}
             <span className="text-[var(--text-primary)] font-medium">
-              12 active locations
-            </span>{" "}
-            — 8 parishes supported, 3 planted, 1 mission center, and another being built.
+              {t("home.missionField.descriptionHighlight")}
+            </span>
+            {t("home.missionField.descriptionAfter")}
           </p>
         </div>
 
@@ -392,9 +375,9 @@ export default function HomePage() {
         <div className="px-5 md:px-[120px]">
           <div className="grid grid-cols-3 border border-[var(--border-default)] mb-8">
             {[
-              { value: "8", label: "Parishes supported" },
-              { value: "3", label: "Churches planted" },
-              { value: "2016", label: "Active in Slovakia" },
+              { value: "8", label: t("home.missionField.statParishes") },
+              { value: "3", label: t("home.missionField.statChurches") },
+              { value: "2016", label: t("home.missionField.statSince") },
             ].map((stat, i) => (
               <div
                 key={stat.label}
@@ -416,7 +399,7 @@ export default function HomePage() {
             href="/locations"
             className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
           >
-            VIEW ALL LOCATIONS →
+            {t("home.missionField.cta")}
           </Link>
         </div>
       </section>
@@ -426,11 +409,11 @@ export default function HomePage() {
       {/* ── Featured Media ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-4 mb-10 md:mb-12">
-          <SectionLabel text="Media Library" />
+          <SectionLabel text={t("home.featuredMedia.label")} />
           <h2 className="text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            Documented. Recorded.
+            {t("home.featuredMedia.titleLine1")}
             <br />
-            Transparent.
+            {t("home.featuredMedia.titleLine2")}
           </h2>
         </div>
 
@@ -440,7 +423,7 @@ export default function HomePage() {
               key={item.tag + item.title}
               onClick={() => setActiveVideoId(item.videoId)}
               className="bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex flex-col text-left group hover:border-[var(--gold)]/50 transition-colors duration-200 cursor-pointer"
-              aria-label={`Watch: ${item.title}`}
+              aria-label={t("home.featuredMedia.watchAria", { title: item.title })}
             >
               {/* Thumbnail with play button */}
               <div
@@ -489,7 +472,7 @@ export default function HomePage() {
           href="/media"
           className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
         >
-          EXPLORE MEDIA LIBRARY
+          {t("home.featuredMedia.cta")}
         </Link>
       </section>
 
