@@ -136,6 +136,128 @@ const en: Dictionary = {
       cta: "EXPLORE MEDIA LIBRARY",
     },
   },
+  mission: {
+    hero: {
+      label: "Our Mission",
+      titleLine1: "Bring Roma to Christ.",
+      titleLine2: "Plant a Parish. Stay.",
+      subtitle:
+        "Five million Roma people live across Southeast and Central Europe. Most have never heard the Gospel in a way that reached them. We are here to change that — one parish at a time.",
+    },
+    whyRoma: {
+      label: "Why the Roma",
+      titleLine1: "Europe's Most",
+      titleLine2: "Neglected People",
+      pullStatValue: "10M+",
+      pullStatLabel: "Roma in Europe",
+      aside: "No other ethnic group in Europe lives in comparable conditions.",
+      reason1Title: "The Poorest Group in Europe",
+      reason1Body:
+        "Roma communities consistently rank last on every measure of economic wellbeing across the continent. In many settlements, families go to bed hungry. Children grow up without running water, reliable heat, or educational access.",
+      reason2Title: "Traditional Orthodox Roots",
+      reason2Body:
+        "The majority of Roma in Southeast and Central Europe come from traditionally Orthodox backgrounds. They are not outside the Church's historical reach — they are inside it, waiting to be called home. This is not a mission to strangers. It is a return to a family.",
+      reason3Title: "The Youngest, Fastest-Growing Population",
+      reason3Body:
+        "Roma communities are the youngest demographic in Europe. Their birth rates are high; their life expectancy is low. The generation being formed right now will shape Central and Eastern Europe for decades. The window to invest is now.",
+    },
+    ourStory: {
+      label: "Our Story",
+      titleLine1: "One Man, One Hut,",
+      titleLine2: "One Decision to Stay",
+      paragraph1:
+        "The mission started with a designer at the peak of his career. At nineteen, Martin was already working internationally — remote work for Kiwi.com, international clients, a promising future. Then a chance detour brought him to Klenovec, a village in central Slovakia struggling with unemployment, addiction, and broken families.",
+      paragraph2:
+        "He bought a house with friends. He tried business. Then he walked into a Roma settlement — and everything changed. He didn't send help from a distance. He moved in. He found a wooden hut inside the community and made it his home, determined to understand poverty not as a concept, but as a neighbor.",
+      paragraph3:
+        "Over years of presence — playing music with children, teaching, earning trust one relationship at a time — a community began to form around the faith he carried. He married Michaela, a psychologist he met in Brno. Together they formalized the work into what is now the Kresťanská rómska misia. Their home is still in the community.",
+      quote: "Until that point, I had not faced poverty face-to-face.",
+      attribution: "— Martin, Founder",
+      cta: "READ THE FULL STORY",
+    },
+    whatWeDo: {
+      label: "What We Do",
+      titleLine1: "Two Kinds of Work.",
+      titleLine2: "One Goal.",
+      intro:
+        "We plant new parishes from nothing — and we walk alongside existing parishes learning to integrate Roma. The goal is always the same: a living, self-sustaining church community with Roma fully inside it.",
+      plantingTitle: "Church Planting",
+      plantingBody:
+        "We enter communities where there is no parish and no priest — and we stay until there is. Two churches planted from scratch are active today. One existing parish has gone through full transformation. One attempt was buried by rejection — the community turned away. We grieve that, and we keep going. Two more churches are being planted now.",
+      plantingStatPlanted: "Planted",
+      plantingStatLost: "Temporary lost",
+      plantingStatProgress: "In progress",
+      parishTitle: "Parish Transformation Support",
+      parishBody:
+        "Many traditional parishes are experiencing rapid demographic change — Roma families moving in, attending services, seeking community. We help those parishes understand who their new neighbors are, how to communicate across cultural and educational differences, and how to practice genuine integration without erasing anyone's identity. This is slow, necessary work.",
+      parishStatSupported: "Parishes supported",
+      parishStatTransformed: "Transformed",
+      parishStatFathers: "Fathers started working",
+      childrenTitle: "Children & Youth Formation",
+      childrenBody:
+        "Illiteracy is common among Roma children. We run catechism programs, literacy support, and structured youth activities anchored in the Church calendar. Children who learn to read through the Church grow up with their faith and their dignity intact. Parents who see their children learning come to trust the community that taught them.",
+      childrenStatReached: "Children reached with the Gospel",
+      childrenStatLearned: "Children learned to read & write",
+      childrenStatJoined: "Joined the Church regularly",
+      centersTitle: "Mission Centers",
+      centersBody:
+        "We build physical infrastructure where none exists — community centers, meeting spaces, and places of worship that give the mission a permanent home. One mission center is built. A second is currently under construction. These spaces serve as anchors for everything else we do. Each center includes accommodation for mission trip groups, making it easy for teams to come, stay, and serve alongside local workers.",
+      centersStatBuilt: "Built",
+      centersStatProgress: "In Progress",
+    },
+    vision: {
+      label: "Our Vision",
+      titleLine1: "A Self-Sustaining Parish",
+      titleLine2: "in Every Roma Community",
+      body:
+        "We don't plant projects — we plant parishes. Our goal is a permanent, self-governing church community with its own priest, its own liturgical life, and its own identity within the Orthodox tradition.",
+      statParishesSupported: "Parishes supported",
+      statChurchesActive: "Churches active",
+      statCenterBuilt: "Mission Center Built",
+      statCenterInProgress: "Mission Center in Progress",
+    },
+    countries: {
+      label: "The Mission Field",
+      title: "Our region",
+      intro:
+        "The Roma population across Southeast and Central Europe — official census numbers, estimated real numbers, our presence, and the current state of Scripture and liturgical translations.",
+      legendPrefix: "Presence:",
+      legendActive: "We're Here",
+      legendOrthodox: "Orthodox Active",
+      legendNextSteps: "Next Steps",
+      legendOpportunity: "Opportunity",
+      cardOfficial: "Official",
+      cardEstimated: "Estimated",
+      cardOfPopulation: "Of Population",
+      cardScripture: "Scripture",
+      cardLiturgy: "Liturgy",
+      cardKnownWorkers: "Known Workers",
+      cardSource: "Source ↗",
+      badgeAvailable: "AVAILABLE",
+      badgePartial: "PARTIAL",
+      badgeProgress: "IN PROGRESS",
+      badgeNeeded: "NEEDED",
+      footnote:
+        "Population figures are approximate. Official census numbers systematically undercount Roma due to self-identification inconsistencies and historical mistrust of authorities. Estimated figures reflect academic and NGO research. Translation status is based on publicly available information as of 2024.",
+    },
+    beliefs: {
+      label: "What We Believe",
+      title: "Guiding Principles",
+      sacramentalTitle: "Sacramental Life First",
+      sacramentalDesc:
+        "The parish — with its Liturgy, Baptism, Chrismation, and Confession — is the primary instrument of transformation. Programs and services flow from the altar.",
+      longTermTitle: "Long-Term Commitment",
+      longTermDesc:
+        "We do not run short-term programs. We plant and we stay. A self-sustaining parish requires years of presence, accountability, and relationship.",
+      communityTitle: "Community Ownership",
+      communityDesc:
+        "Our goal is always to transfer leadership to local Roma priests and deacons. The church must belong to the community it serves.",
+    },
+    shareNudge: {
+      text: "If this mission matters to you, share it. One conversation can bring a new supporter, volunteer, or partner.",
+      shareLabel: "SHARE THE MISSION",
+    },
+  },
   ourStory: {
     hero: {
       backToMission: "← Back to Mission",

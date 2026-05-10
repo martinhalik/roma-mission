@@ -136,6 +136,128 @@ const ro: Dictionary = {
       cta: "EXPLOREAZĂ BIBLIOTECA MEDIA",
     },
   },
+  mission: {
+    hero: {
+      label: "Misiunea noastră",
+      titleLine1: "Aducem romii la Hristos.",
+      titleLine2: "Înființăm o parohie. Rămânem.",
+      subtitle:
+        "Cinci milioane de romi trăiesc în Europa de Sud-Est și Centrală. Cei mai mulți nu au auzit niciodată Evanghelia într-un mod care să-i atingă. Suntem aici pentru a schimba acest lucru — o parohie pe rând.",
+    },
+    whyRoma: {
+      label: "De ce romii",
+      titleLine1: "Cel mai neglijat",
+      titleLine2: "popor al Europei",
+      pullStatValue: "10M+",
+      pullStatLabel: "Romi în Europa",
+      aside: "Niciun alt grup etnic din Europa nu trăiește în condiții comparabile.",
+      reason1Title: "Cel mai sărac grup din Europa",
+      reason1Body:
+        "Comunitățile de romi se clasează constant pe ultimul loc la fiecare indicator al bunăstării economice de pe continent. În multe așezări, familiile se culcă flămânde. Copiii cresc fără apă curentă, fără căldură de încredere sau fără acces la educație.",
+      reason2Title: "Rădăcini ortodoxe tradiționale",
+      reason2Body:
+        "Majoritatea romilor din Europa de Sud-Est și Centrală provin dintr-un mediu tradițional ortodox. Ei nu sunt în afara razei istorice a Bisericii — sunt în interiorul ei, așteptând să fie chemați acasă. Aceasta nu este o misiune pentru străini. Este o întoarcere într-o familie.",
+      reason3Title: "Cea mai tânără și cea mai rapid crescândă populație",
+      reason3Body:
+        "Comunitățile de romi sunt cea mai tânără demografie din Europa. Natalitatea este ridicată, iar speranța de viață este scăzută. Generația care se formează acum va modela Europa Centrală și de Est pentru decenii. Fereastra pentru a investi este acum.",
+    },
+    ourStory: {
+      label: "Povestea noastră",
+      titleLine1: "Un om, o colibă,",
+      titleLine2: "o decizie de a rămâne",
+      paragraph1:
+        "Misiunea a început cu un designer aflat la apogeul carierei sale. La nouăsprezece ani, Martin lucra deja internațional — de la distanță pentru Kiwi.com, cu clienți internaționali, cu un viitor promițător. Apoi un ocol întâmplător l-a adus la Klenovec, un sat din centrul Slovaciei care se luptă cu șomajul, dependențele și familiile destrămate.",
+      paragraph2:
+        "A cumpărat o casă cu prietenii. A încercat să facă afaceri. Apoi a intrat într-o așezare de romi — și totul s-a schimbat. Nu a trimis ajutor de la distanță. S-a mutat. A găsit o colibă de lemn în interiorul comunității și a făcut din ea casa lui, hotărât să înțeleagă sărăcia nu ca un concept, ci ca un vecin.",
+      paragraph3:
+        "De-a lungul anilor de prezență — făcând muzică cu copiii, predând, câștigând încredere o relație pe rând — o comunitate a început să se formeze în jurul credinței pe care o purta. S-a căsătorit cu Michaela, o psiholoagă pe care a cunoscut-o la Brno. Împreună au formalizat lucrarea în ceea ce este astăzi Kresťanská rómska misia. Casa lor este încă în comunitate.",
+      quote: "Până în acel moment, nu mă confruntasem cu sărăcia față în față.",
+      attribution: "— Martin, fondator",
+      cta: "CITEȘTE POVESTEA COMPLETĂ",
+    },
+    whatWeDo: {
+      label: "Ce facem",
+      titleLine1: "Două feluri de muncă.",
+      titleLine2: "Un singur scop.",
+      intro:
+        "Înființăm parohii noi de la zero — și mergem alături de parohii existente care învață să-i integreze pe romi. Scopul este întotdeauna același: o comunitate bisericească vie, autonomă, cu romii pe deplin parte din ea.",
+      plantingTitle: "Înființare de biserici",
+      plantingBody:
+        "Intrăm în comunități unde nu există nici parohie, nici preot — și rămânem până când există. Două biserici înființate de la zero sunt active astăzi. O parohie existentă a trecut printr-o transformare completă. O încercare a fost îngropată de respingere — comunitatea ne-a întors spatele. Plângem după aceasta și mergem mai departe. Alte două biserici sunt în curs de înființare.",
+      plantingStatPlanted: "Înființate",
+      plantingStatLost: "Pierdute temporar",
+      plantingStatProgress: "În curs",
+      parishTitle: "Sprijin pentru transformarea parohiilor",
+      parishBody:
+        "Multe parohii tradiționale trec printr-o schimbare demografică rapidă — familii de romi care se mută, participă la slujbe, caută comunitate. Ajutăm aceste parohii să înțeleagă cine sunt noii lor vecini, cum să comunice peste diferențe culturale și educaționale și cum să practice o integrare reală fără a șterge identitatea cuiva. Este o muncă lentă, dar necesară.",
+      parishStatSupported: "Parohii susținute",
+      parishStatTransformed: "Transformate",
+      parishStatFathers: "Tați au început să muncească",
+      childrenTitle: "Formarea copiilor și tinerilor",
+      childrenBody:
+        "Analfabetismul este obișnuit printre copiii romi. Conducem programe de catehism, sprijin pentru alfabetizare și activități pentru tineri structurate, ancorate în calendarul Bisericii. Copiii care învață să citească prin Biserică cresc cu credința și demnitatea intacte. Părinții care își văd copiii învățând ajung să aibă încredere în comunitatea care i-a învățat.",
+      childrenStatReached: "Copii întâlniți cu Evanghelia",
+      childrenStatLearned: "Copii au învățat să citească și să scrie",
+      childrenStatJoined: "Au intrat regulat în Biserică",
+      centersTitle: "Centre misionare",
+      centersBody:
+        "Construim infrastructură fizică acolo unde nu există nimic — centre comunitare, spații de întâlnire și locașuri de cult care dau misiunii o casă permanentă. Un centru misionar este construit. Un al doilea este în construcție. Aceste spații servesc drept ancoră pentru tot ce facem. Fiecare centru include cazare pentru grupurile de călătorii misionare, făcând ușor pentru echipe să vină, să rămână și să slujească alături de lucrătorii locali.",
+      centersStatBuilt: "Construit",
+      centersStatProgress: "În construcție",
+    },
+    vision: {
+      label: "Viziunea noastră",
+      titleLine1: "O parohie autonomă",
+      titleLine2: "în fiecare comunitate de romi",
+      body:
+        "Nu înființăm proiecte — înființăm parohii. Scopul nostru este o comunitate bisericească permanentă, autoguvernată, cu propriul preot, propria viață liturgică și propria identitate în tradiția ortodoxă.",
+      statParishesSupported: "Parohii susținute",
+      statChurchesActive: "Biserici active",
+      statCenterBuilt: "Centru misionar construit",
+      statCenterInProgress: "Centru misionar în construcție",
+    },
+    countries: {
+      label: "Câmpul de misiune",
+      title: "Regiunea noastră",
+      intro:
+        "Populația de romi din Europa de Sud-Est și Centrală — cifrele oficiale ale recensămintelor, cifrele estimate reale, prezența noastră și starea actuală a traducerilor Scripturii și liturghiei.",
+      legendPrefix: "Prezență:",
+      legendActive: "Suntem aici",
+      legendOrthodox: "Ortodoxie activă",
+      legendNextSteps: "Următorii pași",
+      legendOpportunity: "Oportunitate",
+      cardOfficial: "Oficial",
+      cardEstimated: "Estimat",
+      cardOfPopulation: "Din populație",
+      cardScripture: "Scriptură",
+      cardLiturgy: "Liturghie",
+      cardKnownWorkers: "Lucrători cunoscuți",
+      cardSource: "Sursă ↗",
+      badgeAvailable: "DISPONIBIL",
+      badgePartial: "PARȚIAL",
+      badgeProgress: "ÎN CURS",
+      badgeNeeded: "NECESAR",
+      footnote:
+        "Cifrele privind populația sunt aproximative. Recensămintele oficiale subestimează sistematic populația romă din cauza inconsecvențelor de auto-identificare și a neîncrederii istorice față de autorități. Estimările reflectă cercetarea academică și a ONG-urilor. Starea traducerilor se bazează pe informații disponibile public la nivelul anului 2024.",
+    },
+    beliefs: {
+      label: "Ce credem",
+      title: "Principii călăuzitoare",
+      sacramentalTitle: "Viața sacramentală pe primul loc",
+      sacramentalDesc:
+        "Parohia — cu Liturghia, Botezul, Mirungerea și Spovedania — este principalul instrument al transformării. Programele și serviciile pornesc de la altar.",
+      longTermTitle: "Angajament pe termen lung",
+      longTermDesc:
+        "Nu derulăm programe de scurtă durată. Înființăm și rămânem. O parohie autonomă necesită ani de prezență, responsabilitate și relații.",
+      communityTitle: "Apartenență comunitară",
+      communityDesc:
+        "Scopul nostru este întotdeauna să transferăm conducerea către preoții și diaconii romi locali. Biserica trebuie să aparțină comunității pe care o slujește.",
+    },
+    shareNudge: {
+      text: "Dacă această misiune contează pentru tine, distribuie-o. O singură conversație poate aduce un nou susținător, voluntar sau partener.",
+      shareLabel: "DISTRIBUIE MISIUNEA",
+    },
+  },
   ourStory: {
     hero: {
       backToMission: "← Înapoi la misiune",

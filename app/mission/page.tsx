@@ -1,24 +1,4 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "The Mission",
-  description:
-    "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
-  openGraph: {
-    title: "The Mission — Roma Mission",
-    description:
-      "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
-    url: "https://romamission.eu/mission",
-    images: [{ url: "/images/our-approach.jpg", width: 1200, height: 630, alt: "Roma Mission — Europe's Most Neglected People" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "The Mission — Roma Mission",
-    description:
-      "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
-    images: ["/images/our-approach.jpg"],
-  },
-};
+"use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -27,6 +7,7 @@ import Link from "next/link";
 import SectionLabel from "@/components/SectionLabel";
 import ShareButton from "@/components/ShareButton";
 import { ROMA_COUNTRIES, isMissionCountry, type MissionCountry, type Presence, type TranslationStatus } from "@/lib/data/roma-countries";
+import { useTranslation } from "@/components/LanguageProvider";
 
 const SHARE_URL = "https://romamission.eu/mission";
 const SHARE_TITLE = "Roma Mission — Europe's Most Neglected People";
@@ -37,30 +18,31 @@ const SHARE_TEXT =
 
 const countryData: MissionCountry[] = ROMA_COUNTRIES.filter(isMissionCountry);
 
-const beliefs = [
-  {
-    icon: "☦",
-    title: "Sacramental Life First",
-    desc: "The parish — with its Liturgy, Baptism, Chrismation, and Confession — is the primary instrument of transformation. Programs and services flow from the altar.",
-  },
-  {
-    icon: "✦",
-    title: "Long-Term Commitment",
-    desc: "We do not run short-term programs. We plant and we stay. A self-sustaining parish requires years of presence, accountability, and relationship.",
-  },
-  {
-    icon: "✦",
-    title: "Community Ownership",
-    desc: "Our goal is always to transfer leadership to local Roma priests and deacons. The church must belong to the community it serves.",
-  },
+const beliefKeys = [
+  { icon: "☦", titleKey: "mission.beliefs.sacramentalTitle", descKey: "mission.beliefs.sacramentalDesc" },
+  { icon: "✦", titleKey: "mission.beliefs.longTermTitle", descKey: "mission.beliefs.longTermDesc" },
+  { icon: "✦", titleKey: "mission.beliefs.communityTitle", descKey: "mission.beliefs.communityDesc" },
 ];
 
-const stats = [
-  { value: "8", label: "Parishes supported" },
-  { value: "2", label: "Churches active" },
-  { value: "1", label: "Mission Center Built" },
-  { value: "1", label: "Mission Center in Progress" },
+const visionStatKeys: { value: string; labelKey: string }[] = [
+  { value: "8", labelKey: "mission.vision.statParishesSupported" },
+  { value: "2", labelKey: "mission.vision.statChurchesActive" },
+  { value: "1", labelKey: "mission.vision.statCenterBuilt" },
+  { value: "1", labelKey: "mission.vision.statCenterInProgress" },
 ];
+
+const reasonKeys = [
+  { titleKey: "mission.whyRoma.reason1Title", bodyKey: "mission.whyRoma.reason1Body" },
+  { titleKey: "mission.whyRoma.reason2Title", bodyKey: "mission.whyRoma.reason2Body" },
+  { titleKey: "mission.whyRoma.reason3Title", bodyKey: "mission.whyRoma.reason3Body" },
+];
+
+const presenceLabelKey: Record<Presence, string> = {
+  active: "mission.countries.legendActive",
+  orthodox: "mission.countries.legendOrthodox",
+  opportunity: "mission.countries.legendOpportunity",
+  "next-steps": "mission.countries.legendNextSteps",
+};
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
@@ -91,29 +73,30 @@ function TranslationBadge({
   status: TranslationStatus;
   note: string;
 }) {
-  const config: Record<TranslationStatus, { label: string; cls: string }> = {
+  const { t } = useTranslation();
+  const config: Record<TranslationStatus, { labelKey: string; cls: string }> = {
     available: {
-      label: "AVAILABLE",
+      labelKey: "mission.countries.badgeAvailable",
       cls: "text-[var(--gold)] bg-[var(--gold)]/[0.07] border border-[var(--gold)]/30",
     },
     partial: {
-      label: "PARTIAL",
+      labelKey: "mission.countries.badgePartial",
       cls: "text-[var(--text-secondary)] bg-[var(--bg-elevated)] border border-[var(--border-default)]",
     },
     progress: {
-      label: "IN PROGRESS",
+      labelKey: "mission.countries.badgeProgress",
       cls: "text-[var(--text-secondary)] bg-[var(--bg-elevated)] border border-[var(--border-strong)]",
     },
     needed: {
-      label: "NEEDED",
+      labelKey: "mission.countries.badgeNeeded",
       cls: "text-[var(--text-muted)] bg-transparent border border-[var(--border-default)]",
     },
   };
-  const { label, cls } = config[status];
+  const { labelKey, cls } = config[status];
   return (
     <div className="flex flex-col gap-1.5">
       <span className={`text-[9px] font-bold tracking-[1px] px-2 py-[3px] w-fit ${cls}`}>
-        {label}
+        {t(labelKey)}
       </span>
       <span className="text-[11px] text-[var(--text-muted)] leading-[1.6]">
         {note}
@@ -123,6 +106,7 @@ function TranslationBadge({
 }
 
 function CountryCard({ data }: { data: MissionCountry }) {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden">
       {/* Header */}
@@ -133,7 +117,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
             {data.country}
           </h3>
         </div>
-        <PresenceBadge presence={data.presence} label={data.presenceLabel} />
+        <PresenceBadge presence={data.presence} label={t(presenceLabelKey[data.presence])} />
       </div>
 
       {/* Population stats */}
@@ -143,7 +127,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
             {data.officialPop}
           </span>
           <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-            Official
+            {t("mission.countries.cardOfficial")}
           </span>
         </div>
         <div className="flex flex-col gap-1 p-4 md:p-5">
@@ -151,7 +135,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
             {data.unofficialPop}
           </span>
           <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-            Estimated
+            {t("mission.countries.cardEstimated")}
           </span>
         </div>
         <div className="flex flex-col gap-1 p-4 md:p-5">
@@ -159,7 +143,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
             {data.sharePercent}
           </span>
           <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-            Of Population
+            {t("mission.countries.cardOfPopulation")}
           </span>
         </div>
       </div>
@@ -168,13 +152,13 @@ function CountryCard({ data }: { data: MissionCountry }) {
       <div className="grid grid-cols-2 gap-5 p-5 md:p-6 border-b border-[var(--border-default)]">
         <div className="flex flex-col gap-2">
           <span className="text-[9px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
-            Scripture
+            {t("mission.countries.cardScripture")}
           </span>
           <TranslationBadge status={data.scripture} note={data.scriptureNote} />
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-[9px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
-            Liturgy
+            {t("mission.countries.cardLiturgy")}
           </span>
           <TranslationBadge status={data.liturgy} note={data.liturgyNote} />
         </div>
@@ -183,7 +167,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
       {/* Known workers */}
       <div className="p-5 md:p-6 border-b border-[var(--border-default)]">
         <span className="text-[9px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase block mb-2">
-          Known Workers
+          {t("mission.countries.cardKnownWorkers")}
         </span>
         <p className="text-[12px] text-[var(--text-secondary)] leading-[1.6]">
           {data.knownWorkers}
@@ -198,7 +182,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
           rel="noopener noreferrer"
           className="text-[10px] tracking-[0.5px] text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors duration-150"
         >
-          Source ↗
+          {t("mission.countries.cardSource")}
         </a>
       </div>
     </div>
@@ -208,6 +192,15 @@ function CountryCard({ data }: { data: MissionCountry }) {
 // ── Page ───────────────────────────────────────────────────────────────────────
 
 export default function MissionPage() {
+  const { t } = useTranslation();
+
+  const legendItems: { labelKey: string; cls: string }[] = [
+    { labelKey: "mission.countries.legendActive", cls: "bg-[#22c55e20] text-[#22c55e] border border-[#22c55e]/40" },
+    { labelKey: "mission.countries.legendOrthodox", cls: "bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold)]/40" },
+    { labelKey: "mission.countries.legendNextSteps", cls: "bg-[#f9731620] text-[#f97316] border border-[#f97316]/40" },
+    { labelKey: "mission.countries.legendOpportunity", cls: "text-[var(--text-muted)] border border-[var(--border-default)]" },
+  ];
+
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
       <Navbar activePage="mission" />
@@ -221,16 +214,14 @@ export default function MissionPage() {
         <div className="absolute inset-0 bg-[linear-gradient(0deg,color-mix(in_srgb,var(--bg-primary)_94%,transparent)_0%,color-mix(in_srgb,var(--bg-primary)_53%,transparent)_70%,color-mix(in_srgb,var(--bg-primary)_27%,transparent)_100%)]" />
         <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
           <div className="flex flex-col gap-5 md:gap-6 max-w-[720px]">
-            <SectionLabel text="Our Mission" />
+            <SectionLabel text={t("mission.hero.label")} />
             <h1 className="text-[34px] md:text-[52px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-              Bring Roma to Christ.
+              {t("mission.hero.titleLine1")}
               <br />
-              Plant a Parish. Stay.
+              {t("mission.hero.titleLine2")}
             </h1>
             <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.6] max-w-[620px]">
-              Five million Roma people live across Southeast and Central Europe.
-              Most have never heard the Gospel in a way that reached them. We
-              are here to change that — one parish at a time.
+              {t("mission.hero.subtitle")}
             </p>
           </div>
         </div>
@@ -241,46 +232,33 @@ export default function MissionPage() {
         <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
           {/* Left — headline + pull stat */}
           <div className="flex flex-col gap-6 md:gap-8 md:w-[380px] flex-shrink-0">
-            <SectionLabel text="Why the Roma" />
+            <SectionLabel text={t("mission.whyRoma.label")} />
             <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
-              Europe&apos;s Most
+              {t("mission.whyRoma.titleLine1")}
               <br />
-              Neglected People
+              {t("mission.whyRoma.titleLine2")}
             </h2>
 
             {/* Pull stat */}
             <div className="border-l-2 border-[var(--gold)] pl-6 py-2">
               <span className="text-[48px] md:text-[64px] font-bold text-[var(--gold)] leading-none block">
-                10M+
+                {t("mission.whyRoma.pullStatValue")}
               </span>
               <span className="text-[13px] text-[var(--text-secondary)] tracking-[1px] uppercase">
-                Roma in Europe
+                {t("mission.whyRoma.pullStatLabel")}
               </span>
             </div>
 
             <p className="text-[14px] text-[var(--text-muted)] leading-[1.7]">
-              No other ethnic group in Europe lives in comparable conditions.
+              {t("mission.whyRoma.aside")}
             </p>
           </div>
 
           {/* Right — reasons */}
           <div className="flex flex-col gap-5 flex-1">
-            {[
-              {
-                label: "The Poorest Group in Europe",
-                body: "Roma communities consistently rank last on every measure of economic wellbeing across the continent. In many settlements, families go to bed hungry. Children grow up without running water, reliable heat, or educational access.",
-              },
-              {
-                label: "Traditional Orthodox Roots",
-                body: "The majority of Roma in Southeast and Central Europe come from traditionally Orthodox backgrounds. They are not outside the Church's historical reach — they are inside it, waiting to be called home. This is not a mission to strangers. It is a return to a family.",
-              },
-              {
-                label: "The Youngest, Fastest-Growing Population",
-                body: "Roma communities are the youngest demographic in Europe. Their birth rates are high; their life expectancy is low. The generation being formed right now will shape Central and Eastern Europe for decades. The window to invest is now.",
-              }
-            ].map((item, i) => (
+            {reasonKeys.map((item, i) => (
               <div
-                key={item.label}
+                key={item.titleKey}
                 className="flex gap-5 p-6 md:p-7 bg-[var(--bg-card)] border border-[var(--border-default)]"
               >
                 <span className="text-[var(--gold)] font-bold text-[13px] flex-shrink-0 pt-0.5">
@@ -288,10 +266,10 @@ export default function MissionPage() {
                 </span>
                 <div className="flex flex-col gap-2">
                   <h3 className="text-[14px] md:text-[15px] font-bold text-[var(--text-primary)]">
-                    {item.label}
+                    {t(item.titleKey)}
                   </h3>
                   <p className="text-[13px] text-[var(--text-secondary)] leading-[1.7]">
-                    {item.body}
+                    {t(item.bodyKey)}
                   </p>
                 </div>
               </div>
@@ -314,46 +292,32 @@ export default function MissionPage() {
 
         {/* Text */}
         <div className="flex flex-col gap-5 md:gap-7 flex-1">
-          <SectionLabel text="Our Story" />
+          <SectionLabel text={t("mission.ourStory.label")} />
           <h2 className="text-[28px] md:text-[38px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            One Man, One Hut,
+            {t("mission.ourStory.titleLine1")}
             <br />
-            One Decision to Stay
+            {t("mission.ourStory.titleLine2")}
           </h2>
 
           <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.8]">
-            The mission started with a designer at the peak of his career. At
-            nineteen, Martin was already working internationally — remote work
-            for Kiwi.com, international clients, a promising future. Then a
-            chance detour brought him to Klenovec, a village in central
-            Slovakia struggling with unemployment, addiction, and broken
-            families.
+            {t("mission.ourStory.paragraph1")}
           </p>
 
           <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.8]">
-            He bought a house with friends. He tried business. Then he walked
-            into a Roma settlement — and everything changed. He didn&apos;t
-            send help from a distance. He moved in. He found a wooden hut
-            inside the community and made it his home, determined to understand
-            poverty not as a concept, but as a neighbor.
+            {t("mission.ourStory.paragraph2")}
           </p>
 
           <p className="text-[15px] md:text-[16px] text-[var(--text-secondary)] leading-[1.8]">
-            Over years of presence — playing music with children, teaching,
-            earning trust one relationship at a time — a community began to
-            form around the faith he carried. He married Michaela, a
-            psychologist he met in Brno. Together they formalized the work into
-            what is now the Kresťanská rómska misia. Their home is still in
-            the community.
+            {t("mission.ourStory.paragraph3")}
           </p>
 
           {/* Quote */}
           <div className="border-l-2 border-[var(--gold)] pl-5 py-1 mt-2">
             <p className="text-[15px] md:text-[16px] font-georgia italic text-[var(--text-primary)] leading-[1.7]">
-              &ldquo;Until that point, I had not faced poverty face-to-face.&rdquo;
+              &ldquo;{t("mission.ourStory.quote")}&rdquo;
             </p>
             <p className="text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase mt-2">
-              — Martin, Founder
+              {t("mission.ourStory.attribution")}
             </p>
           </div>
 
@@ -361,7 +325,7 @@ export default function MissionPage() {
             href="/our-story"
             className="group self-start flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] hover:opacity-80 transition-opacity mt-6"
           >
-            READ THE FULL STORY
+            {t("mission.ourStory.cta")}
             <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
           </Link>
         </div>
@@ -372,17 +336,14 @@ export default function MissionPage() {
       {/* ── What We Do ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
         <div className="flex flex-col gap-5 md:gap-6 max-w-[680px] mb-12 md:mb-16">
-          <SectionLabel text="What We Do" />
+          <SectionLabel text={t("mission.whatWeDo.label")} />
           <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
-            Two Kinds of Work.
+            {t("mission.whatWeDo.titleLine1")}
             <br />
-            One Goal.
+            {t("mission.whatWeDo.titleLine2")}
           </h2>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.7]">
-            We plant new parishes from nothing — and we walk alongside existing
-            parishes learning to integrate Roma. The goal is
-            always the same: a living, self-sustaining church community with
-            Roma fully inside it.
+            {t("mission.whatWeDo.intro")}
           </p>
         </div>
 
@@ -391,15 +352,10 @@ export default function MissionPage() {
           <div className="flex flex-col gap-5 p-7 md:p-9 bg-[var(--bg-primary)] border border-[var(--border-default)]">
             <span className="font-georgia text-[32px] text-[var(--gold)]">✦</span>
             <h3 className="text-[18px] md:text-[20px] font-bold text-[var(--text-primary)]">
-              Church Planting
+              {t("mission.whatWeDo.plantingTitle")}
             </h3>
             <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.8]">
-              We enter communities where there is no parish and no priest — and
-              we stay until there is. Two churches planted from scratch are
-              active today. One existing parish has gone through full
-              transformation. One attempt was buried by rejection — the
-              community turned away. We grieve that, and we keep going. Two
-              more churches are being planted now.
+              {t("mission.whatWeDo.plantingBody")}
             </p>
             <div className="flex gap-6 pt-2 border-t border-[var(--border-default)]">
               <div className="flex flex-col gap-1">
@@ -407,7 +363,7 @@ export default function MissionPage() {
                   3
                 </span>
                 <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
-                  Planted
+                  {t("mission.whatWeDo.plantingStatPlanted")}
                 </span>
               </div>
               <div className="flex flex-col gap-1">
@@ -415,7 +371,7 @@ export default function MissionPage() {
                   1
                 </span>
                 <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
-                  Temporary lost
+                  {t("mission.whatWeDo.plantingStatLost")}
                 </span>
               </div>
               <div className="flex flex-col gap-1">
@@ -423,7 +379,7 @@ export default function MissionPage() {
                   +2
                 </span>
                 <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
-                  In progress
+                  {t("mission.whatWeDo.plantingStatProgress")}
                 </span>
               </div>
             </div>
@@ -433,15 +389,10 @@ export default function MissionPage() {
           <div className="flex flex-col gap-5 p-7 md:p-9 bg-[var(--bg-primary)] border border-[var(--border-default)]">
             <span className="font-georgia text-[32px] text-[var(--gold)]">☦</span>
             <h3 className="text-[18px] md:text-[20px] font-bold text-[var(--text-primary)]">
-              Parish Transformation Support
+              {t("mission.whatWeDo.parishTitle")}
             </h3>
             <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.8]">
-              Many traditional parishes are experiencing rapid demographic
-              change — Roma families moving in, attending services, seeking
-              community. We help those parishes understand who their new
-              neighbors are, how to communicate across cultural and educational
-              differences, and how to practice genuine integration without
-              erasing anyone&apos;s identity. This is slow, necessary work.
+              {t("mission.whatWeDo.parishBody")}
             </p>
             <div className="flex gap-6 pt-2 border-t border-[var(--border-default)]">
               <div className="flex flex-col gap-1">
@@ -449,7 +400,7 @@ export default function MissionPage() {
                   8
                 </span>
                 <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
-                  Parishes supported
+                  {t("mission.whatWeDo.parishStatSupported")}
                 </span>
               </div>
               <div className="flex flex-col gap-1">
@@ -457,7 +408,7 @@ export default function MissionPage() {
                   1
                 </span>
                 <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
-                  Transformed
+                  {t("mission.whatWeDo.parishStatTransformed")}
                 </span>
               </div>
               <div className="flex flex-col gap-1">
@@ -465,7 +416,7 @@ export default function MissionPage() {
                   50+
                 </span>
                 <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
-                  Fathers started working
+                  {t("mission.whatWeDo.parishStatFathers")}
                 </span>
               </div>
             </div>
@@ -475,28 +426,23 @@ export default function MissionPage() {
           <div className="flex flex-col gap-5 p-7 md:p-9 bg-[var(--bg-primary)] border border-[var(--border-default)]">
             <span className="font-georgia text-[32px] text-[var(--gold)]">✦</span>
             <h3 className="text-[18px] md:text-[20px] font-bold text-[var(--text-primary)]">
-              Children &amp; Youth Formation
+              {t("mission.whatWeDo.childrenTitle")}
             </h3>
             <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.8]">
-              Illiteracy is common among Roma children. We run catechism
-              programs, literacy support, and structured youth activities
-              anchored in the Church calendar. Children who learn to read
-              through the Church grow up with their faith and their dignity
-              intact. Parents who see their children learning come to trust the
-              community that taught them.
+              {t("mission.whatWeDo.childrenBody")}
             </p>
             <div className="grid grid-cols-3 gap-4 pt-2 border-t border-[var(--border-default)]">
               {[
-                { value: "1,000+", label: "Children reached with the Gospel" },
-                { value: "200", label: "Children learned to read & write" },
-                { value: "15", label: "Joined the Church regularly" },
+                { value: "1,000+", labelKey: "mission.whatWeDo.childrenStatReached" },
+                { value: "200", labelKey: "mission.whatWeDo.childrenStatLearned" },
+                { value: "15", labelKey: "mission.whatWeDo.childrenStatJoined" },
               ].map((s) => (
-                <div key={s.label} className="flex flex-col gap-1">
+                <div key={s.labelKey} className="flex flex-col gap-1">
                   <span className="text-[22px] md:text-[26px] font-bold text-[var(--gold)]">
                     {s.value}
                   </span>
                   <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase leading-[1.4]">
-                    {s.label}
+                    {t(s.labelKey)}
                   </span>
                 </div>
               ))}
@@ -507,28 +453,22 @@ export default function MissionPage() {
           <div className="flex flex-col gap-5 p-7 md:p-9 bg-[var(--bg-primary)] border border-[var(--border-default)]">
             <span className="font-georgia text-[32px] text-[var(--gold)]">✦</span>
             <h3 className="text-[18px] md:text-[20px] font-bold text-[var(--text-primary)]">
-              Mission Centers
+              {t("mission.whatWeDo.centersTitle")}
             </h3>
             <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.8]">
-              We build physical infrastructure where none exists — community
-              centers, meeting spaces, and places of worship that give the
-              mission a permanent home. One mission center is built. A second
-              is currently under construction. These spaces serve as anchors
-              for everything else we do. Each center includes accommodation
-              for mission trip groups, making it easy for teams to come,
-              stay, and serve alongside local workers.
+              {t("mission.whatWeDo.centersBody")}
             </p>
             <div className="flex gap-6 pt-2 border-t border-[var(--border-default)]">
               <div>
                 <span className="text-[28px] md:text-[34px] font-bold text-[var(--gold)]">1</span>
                 <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
-                  Built
+                  {t("mission.whatWeDo.centersStatBuilt")}
                 </span>
               </div>
               <div>
                 <span className="text-[28px] md:text-[34px] font-bold text-[var(--text-secondary)]">1</span>
                 <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
-                  In Progress
+                  {t("mission.whatWeDo.centersStatProgress")}
                 </span>
               </div>
             </div>
@@ -541,35 +481,32 @@ export default function MissionPage() {
       {/* ── Vision + Stats ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-5 md:gap-6 max-w-[680px] mb-12 md:mb-16">
-          <SectionLabel text="Our Vision" />
+          <SectionLabel text={t("mission.vision.label")} />
           <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
-            A Self-Sustaining Parish
+            {t("mission.vision.titleLine1")}
             <br />
-            in Every Roma Community
+            {t("mission.vision.titleLine2")}
           </h2>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.7]">
-            We don&apos;t plant projects — we plant parishes. Our goal is a
-            permanent, self-governing church community with its own priest, its
-            own liturgical life, and its own identity within the Orthodox
-            tradition.
+            {t("mission.vision.body")}
           </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[var(--border-default)]">
-          {stats.map((s, i) => (
+          {visionStatKeys.map((s, i) => (
             <div
-              key={s.label}
+              key={s.labelKey}
               className={`flex flex-col gap-2 py-8 px-5 md:px-8 border-[var(--border-default)] ${
                 i % 2 === 0 ? "border-r" : "md:border-r"
               } ${i < 2 ? "border-b md:border-b-0" : ""} ${
-                i === stats.length - 1 ? "md:border-r-0" : ""
+                i === visionStatKeys.length - 1 ? "md:border-r-0" : ""
               }`}
             >
               <span className="text-[36px] md:text-[48px] font-bold text-[var(--gold)]">
                 {s.value}
               </span>
               <span className="text-[11px] md:text-[12px] text-[var(--text-secondary)] tracking-[1px] uppercase leading-[1.4]">
-                {s.label}
+                {t(s.labelKey)}
               </span>
             </div>
           ))}
@@ -581,33 +518,26 @@ export default function MissionPage() {
       {/* ── Countries ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
         <div className="flex flex-col gap-5 md:gap-6 max-w-[680px] mb-10 md:mb-14">
-          <SectionLabel text="The Mission Field" />
+          <SectionLabel text={t("mission.countries.label")} />
           <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
-            Our region
+            {t("mission.countries.title")}
           </h2>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.7]">
-            The Roma population across Southeast and Central Europe — official
-            census numbers, estimated real numbers, our presence, and the
-            current state of Scripture and liturgical translations.
+            {t("mission.countries.intro")}
           </p>
         </div>
 
         {/* Legend */}
         <div className="flex flex-wrap gap-3 mb-8 md:mb-10">
           <span className="text-[10px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase mr-2 self-center">
-            Presence:
+            {t("mission.countries.legendPrefix")}
           </span>
-          {[
-            { label: "We're Here", cls: "bg-[#22c55e20] text-[#22c55e] border border-[#22c55e]/40" },
-            { label: "Orthodox Active", cls: "bg-[var(--gold)]/10 text-[var(--gold)] border border-[var(--gold)]/40" },
-            { label: "Next Steps", cls: "bg-[#f9731620] text-[#f97316] border border-[#f97316]/40" },
-            { label: "Opportunity", cls: "text-[var(--text-muted)] border border-[var(--border-default)]" },
-          ].map((b) => (
+          {legendItems.map((b) => (
             <span
-              key={b.label}
+              key={b.labelKey}
               className={`text-[9px] font-bold tracking-[1px] px-3 py-1.5 uppercase ${b.cls}`}
             >
-              {b.label}
+              {t(b.labelKey)}
             </span>
           ))}
         </div>
@@ -621,11 +551,7 @@ export default function MissionPage() {
 
         {/* Footnote */}
         <p className="text-[11px] text-[var(--text-muted)] leading-[1.6] mt-8 max-w-[680px]">
-          Population figures are approximate. Official census numbers
-          systematically undercount Roma due to self-identification
-          inconsistencies and historical mistrust of authorities. Estimated
-          figures reflect academic and NGO research. Translation status is
-          based on publicly available information as of 2024.
+          {t("mission.countries.footnote")}
         </p>
       </section>
 
@@ -634,25 +560,25 @@ export default function MissionPage() {
       {/* ── Guiding Principles ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-4 mb-10 md:mb-16">
-          <SectionLabel text="What We Believe" />
+          <SectionLabel text={t("mission.beliefs.label")} />
           <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
-            Guiding Principles
+            {t("mission.beliefs.title")}
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          {beliefs.map((b) => (
+          {beliefKeys.map((b) => (
             <div
-              key={b.title}
+              key={b.titleKey}
               className="flex flex-col gap-5 p-7 md:p-9 bg-[var(--bg-card)] border border-[var(--border-default)]"
             >
               <span className="font-georgia text-[28px] text-[var(--gold)]">
                 {b.icon}
               </span>
               <h3 className="text-[16px] md:text-[17px] font-bold text-[var(--text-primary)]">
-                {b.title}
+                {t(b.titleKey)}
               </h3>
               <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.7]">
-                {b.desc}
+                {t(b.descKey)}
               </p>
             </div>
           ))}
@@ -662,13 +588,13 @@ export default function MissionPage() {
       {/* ── Share nudge ── */}
       <section className="px-5 md:px-[120px] py-12 md:py-16 bg-[var(--bg-primary)] flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-[var(--border-default)]">
         <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6] max-w-[520px]">
-          If this mission matters to you, share it. One conversation can bring a new supporter, volunteer, or partner.
+          {t("mission.shareNudge.text")}
         </p>
         <ShareButton
           title={SHARE_TITLE}
           text={SHARE_TEXT}
           url={SHARE_URL}
-          label="SHARE THE MISSION"
+          label={t("mission.shareNudge.shareLabel")}
           className="flex-shrink-0 px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
         />
       </section>
