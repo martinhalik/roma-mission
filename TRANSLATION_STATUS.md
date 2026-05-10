@@ -41,6 +41,7 @@ These already pull strings via `t()` and render correctly in all 9 languages:
 - `app/page.tsx` — Home: hero, urgency, results, 5 pillars, testimony, mission map intro, featured media (`home.*` namespace)
 - `app/mission/page.tsx` — Mission: hero, why-roma reasons, founder story, what-we-do (planting/parish/children/centers), vision stats, country grid labels & legend, guiding principles, share nudge (`mission.*` namespace)
 - `app/our-story/page.tsx` — Founder story: hero, year-by-year timeline (Before 2016 → Today), pull quotes, Bible quote, documentary tease, CTAs (`ourStory.*` namespace). Czech-language pull-quote originals are preserved verbatim across non-Czech locales as direct citation; in `cs.ts` the `pullQuoteOriginal` field is intentionally empty to avoid duplication.
+- `app/stories/page.tsx` — Hero, featured Laco testimony, stats, founder card, 5 testimonies, anonymous vignette, closing CTAs (`stories.*` namespace). Direct first-person quotes use `quoteSource` (preserved in original language across all locales) + `quoteTranslation` (per-locale).
 
 ## What Still Needs Translation ⚠️
 
@@ -54,7 +55,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | `app/mission/page.tsx` | 680 | ✅ Translated into all 9 locales (`mission.*` namespace) |
 | `app/our-story/page.tsx` | 420 | ✅ Translated into all 9 locales (`ourStory.*` namespace) |
 | `app/locations/page.tsx` | 572 | Location descriptions, stats |
-| `app/stories/page.tsx` | 428 | Testimonies (note: original quotes may be Slovak — keep source language and translate framing only) |
+| `app/stories/page.tsx` | 428 | ✅ Translated into all 9 locales (`stories.*` namespace). First-person quotes preserved in source language (`quoteSource`) with optional per-locale translation (`quoteTranslation`). |
 | `app/get-involved/page.tsx` | 246 | Volunteer / donate / mission trip CTAs |
 | `app/media/page.tsx` | 309 | Media library, video descriptions |
 | `app/thank-you/page.tsx` | 151 | Donation thank-you |

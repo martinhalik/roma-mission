@@ -324,6 +324,99 @@ export interface Dictionary {
       readStories: string;
     };
   };
+  stories: {
+    hero: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      subtitle: string;
+    };
+    featured: {
+      label: string;
+      watchOverlay: string;
+      watchAria: string;
+      quoteSource: string;
+      quoteTranslation: string;
+      attribution: string;
+      context: string;
+      watchCta: string;
+    };
+    stats: {
+      fathersStat: string;
+      fathersLabel: string;
+      fathersSub: string;
+      yearsStat: string;
+      yearsLabel: string;
+      yearsSub: string;
+      workshopsStat: string;
+      workshopsLabel: string;
+      workshopsSub: string;
+    };
+    founder: {
+      label: string;
+      eyebrow: string;
+      title: string;
+      body: string;
+      cta: string;
+    };
+    more: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+    };
+    testimonies: {
+      cibul: {
+        country: string;
+        quoteSource: string;
+        quoteTranslation: string;
+        author: string;
+        context: string;
+      };
+      fathers: {
+        country: string;
+        quoteSource: string;
+        quoteTranslation: string;
+        author: string;
+        context: string;
+      };
+      adrianDominik: {
+        country: string;
+        quoteSource: string;
+        quoteTranslation: string;
+        author: string;
+        context: string;
+      };
+      miroslava: {
+        country: string;
+        quoteSource: string;
+        quoteTranslation: string;
+        author: string;
+        context: string;
+      };
+      gemer: {
+        country: string;
+        quoteSource: string;
+        quoteTranslation: string;
+        author: string;
+        context: string;
+      };
+    };
+    anonymous: {
+      eyebrow: string;
+      lead: string;
+      paragraph1: string;
+      paragraph2: string;
+      closing: string;
+    };
+    closing: {
+      label: string;
+      title: string;
+      paragraph1: string;
+      paragraph2: string;
+      ctaSupport: string;
+      ctaLearn: string;
+    };
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;

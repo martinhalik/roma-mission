@@ -386,6 +386,122 @@ const sk: Dictionary = {
       readStories: "Čítať príbehy komunity",
     },
   },
+  stories: {
+    hero: {
+      label: "Svedectvá",
+      titleLine1: "Skutoční ľudia.",
+      titleLine2: "Skutočná zmena.",
+      subtitle:
+        "Každý príbeh tu je o skutočnom človeku v skutočnej osade na Slovensku. Nie o štatistikách. Nie o vymyslených postavách. O ľuďoch, ktorých životy sa zmenili, pretože Cirkev prišla a zostala.",
+    },
+    featured: {
+      label: "Vybrané svedectvo",
+      watchOverlay: "Pozrite si jeho svedectvo",
+      watchAria: "Pozrieť Lacov príbeh",
+      quoteSource:
+        "That's why we were angry with him for not doing anything and he left us.",
+      quoteTranslation:
+        "Práve preto sme sa naňho hnevali, že nič nerobí, a nakoniec nás opustil.",
+      attribution: "— Laco, o svojom otcovi",
+      context:
+        "Laco a jeho brat chodievali na vyučovania misie, keď ich otec opustil rodinu. Boli nahnevaní. Kňaz ich vypočul a potom im povedal: modlite sa za neho. Stále je to váš otec. Nedržte v sebe hnev. O niekoľko mesiacov neskôr sa Robert vybral so svojou mamou poprosiť otca, aby sa vrátil. To je to, čo ho misia naučila. Otec sa vrátil. Prestal piť. Našiel si prácu. Dnes sedí v prvom rade na každom školskom predstavení a divadle, v ktorom hrajú jeho synovia. Celá rodina, spolu.",
+      watchCta: "POZRITE SI JEHO PRÍBEH",
+    },
+    stats: {
+      fathersStat: "90%+",
+      fathersLabel: "otcov z osady má dnes prácu",
+      fathersSub: "Pri príchode misie ich pracovalo asi 30 %",
+      yearsStat: "10+",
+      yearsLabel: "rokov nepretržitej prítomnosti",
+      yearsSub: "Nie projekt. Trvalá farnosť.",
+      workshopsStat: "2+",
+      workshopsLabel: "fungujúce remeselné dielne",
+      workshopsSub:
+        "Murárstvo, multimédiá a varenie — skutočné zručnosti, skutočná budúcnosť",
+    },
+    founder: {
+      label: "Príbeh zakladateľa",
+      eyebrow: "Slovensko · 2016 – 2020",
+      title:
+        "Ako dizajnér opustil svoju kariéru, presťahoval sa do rómskej osady a zostal.",
+      body:
+        "Martin mal devätnásť, pracoval medzinárodne a viedol dizajnérsky tím v jednom z najrýchlejšie rastúcich českých startupov. Potom mu odbočka cez Klenovec zmenila smer života. Neposielal pomoc na diaľku. Presťahoval sa.",
+      cta: "Prečítať celý príbeh",
+    },
+    more: {
+      label: "Z osady",
+      titleLine1: "Ďalšie hlasy",
+      titleLine2: "z Klenovca",
+    },
+    testimonies: {
+      cibul: {
+        country: "Slovensko",
+        quoteSource:
+          "Keď sme boli s ôsmimi deťmi v karanténe a nemali sme čo jesť, prišli s potravinami a hrami. K nikomu inému sme sa nedostali. Len k nim.",
+        quoteTranslation: "",
+        author: "Svetlana Cibuľová, Klenovec",
+        context:
+          "V prvých týždňoch covidu nikto nevedel, čo vírus dokáže. Ľudia sa báli samotnej smrti. Rómske osady ostali bokom — príliš rizikové, príliš preplnené, príliš neznáme. Martin a Miška tam aj tak išli. Viera vo vzkriesenie pre nich nie je metafora. Práve ona im dala odvahu kráčať tam, odkiaľ všetci ostatní ušli.",
+      },
+      fathers: {
+        country: "Slovensko",
+        quoteSource:
+          "Predtým som sem chodil, keď som potreboval chlapov na dennú robotu. Po pár rokoch som prišiel znova — a nikoho som nenašiel. Všetci už pracovali.",
+        quoteTranslation: "",
+        author: "Miestny tesár, okolie Klenovca",
+        context:
+          "Keď misia prišla, prácu malo len asi 30 % mužov v osade. O štyri roky neskôr sa miestny tesár, ktorý si tam pravidelne najímal robotníkov, vrátil — a odišiel s prázdnymi rukami. Nie preto, že by muži odmietli. Preto, že už nebolo koho najať. Všetci pracovali.",
+      },
+      adrianDominik: {
+        country: "Slovensko",
+        quoteSource:
+          "Tí ostatní, čo neboli v kurze, neurobili skúšku. My sme prešli.",
+        quoteTranslation: "",
+        author: "Adrian, Klenovec",
+        context:
+          "Dominik prišiel zo špeciálnej školy — z tej, na ktorej učitelia žiakov odpisujú. Cez multimediálnu dielňu misie zložil štátnu skúšku z deviateho ročníka. Niečo, čo jeho učitelia kedysi označovali za nemožné. Jeho brat Adrian tlačí tričká, aj pre tých istých učiteľov. Jeden z nich dnes dostal pracovnú ponuku, lebo zvládol skúšku zručností, ktorú iní nezvládli.",
+      },
+      miroslava: {
+        country: "Slovensko",
+        quoteSource:
+          "Neviem, ale odkedy sem chodím, prestala som klamať. Začala som pomáhať doma. Začala som sa správať dobre. Začala som sa lepšie učiť.",
+        quoteTranslation: "",
+        author: "Miroslava, Klenovec",
+        context:
+          "Teologicky to vysvetliť nevie. Len vie, že sa niečo zmenilo. Jej rodičia to potvrdzujú — zo všetkých detí, ktoré sem chodia, je najochotnejšia. Milosť býva často takáto: nerozumieš jej. Len žiješ inak.",
+      },
+      gemer: {
+        country: "Slovensko",
+        quoteSource:
+          "Myslel som si, že keď budem mať deti, zmení ma to. Nezmenilo. Až keď som začal každý týždeň chodiť na Eucharistiu — to ma zmenilo.",
+        quoteTranslation: "",
+        author: "Rómsky muž, Gemer",
+        context:
+          "Je Róm, ale nie z osady — z bežného domu, bežnej štvrti. Roky ho sprevádzala závislosť. Myslel si, že zlomovým bodom bude otcovstvo. Nebolo. Keď začal chodiť do farnosti a každý týždeň prijímať, niečo sa pohlo. Oženil sa so svojou družkou — aby to bolo pred Bohom v poriadku. Závislosť stratila moc. Stále prichádza.",
+      },
+    },
+    anonymous: {
+      eyebrow: "Nie každý príbeh má fotografiu",
+      lead: "Je tu jedno dievča, ktoré navštevujeme trikrát do roka.",
+      paragraph1:
+        "Mama je vo väzení. Stará mama — jediný človek, ktorý držal veci pokope — nedávno zomrela. Teraz žije u tety. Nemôžeme ukázať jej tvár. Nepovieme jej meno. Ale budeme sa stále vracať.",
+      paragraph2:
+        "Tri návštevy do roka nie je veľa. Pre ňu to však môže byť jediná stála vec v jej živote práve teraz. Niekto, kto príde. Nie preto, že o to požiadala. Nie preto, že je to pohodlné. Preto, že na nej záleží.",
+      closing:
+        "Práve preto úspech nemeráme číslami. Časť tej najdôležitejšej práce, ktorú robíme, sa nikdy neobjaví v žiadnej správe.",
+    },
+    closing: {
+      label: "Práca pokračuje",
+      title:
+        "Každý príbeh tu sa začal tým, že niekto sa rozhodol zostať.",
+      paragraph1:
+        "Martin a Miška sa do Klenovca presťahovali natrvalo. Nie ako návštevníci, nie ako pracovníci mimovládky na zmluvu. Kúpili dom, vychovali deti a vybudovali farnosť — pretože rómske komunity, ktorým slúžia, sklamala každá iniciatíva, ktorá si nakoniec zbalila a odišla.",
+      paragraph2:
+        "V roku 2025 darcovia prispeli zhruba 3 000 €. Skutočné náklady misie boli 16 900 €. Rozdiel pokrýva Martin z vlastného príjmu. Každé euro, ktoré darujete, smeruje priamo na to, aby všetko, čo ste práve čítali, mohlo pokračovať.",
+      ctaSupport: "Podporte túto misiu",
+      ctaLearn: "Zistite, ako to funguje",
+    },
+  },
 };
 
 export default sk;
