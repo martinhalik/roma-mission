@@ -39,6 +39,8 @@ These already pull strings via `t()` and render correctly in all 9 languages:
 - `components/ShareModal.tsx` — title, subtitle, copy/copied states, "Share via", aria-labels
 - `components/LanguageSwitcher.tsx` — its own aria-labels
 - `app/page.tsx` — Home: hero, urgency, results, 5 pillars, testimony, mission map intro, featured media (`home.*` namespace)
+- `app/locations/page.tsx` — Locations: hero, stats bar, map section, mission centers, planted churches, active plants, ended plant (Hačava), supported parishes (`locations.*` namespace)
+- `components/MissionMap.tsx` — Map legend, popup labels, status text, CTAs (reads `locations.map.*`, `locations.items.*`, `locations.statuses.*`)
 
 ## What Still Needs Translation ⚠️
 
@@ -51,7 +53,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | `app/page.tsx` | 500 | ✅ Translated into all 9 locales (`home.*` namespace) |
 | `app/mission/page.tsx` | 680 | Largest page — full mission narrative |
 | `app/our-story/page.tsx` | 420 | Founder story, timeline |
-| `app/locations/page.tsx` | 572 | Location descriptions, stats |
+| `app/locations/page.tsx` | 572 | ✅ Translated into all 9 locales (`locations.*` namespace). Per-location data lives in the dictionary keyed by location id (strategy **b** — see "How per-location data is stored" below). |
 | `app/stories/page.tsx` | 428 | Testimonies (note: original quotes may be Slovak — keep source language and translate framing only) |
 | `app/get-involved/page.tsx` | 246 | Volunteer / donate / mission trip CTAs |
 | `app/media/page.tsx` | 309 | Media library, video descriptions |
@@ -76,7 +78,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | File | Notes |
 |------|-------|
 | `lib/media-data.ts` | `title`, `shortDesc`, `fullDesc`, `source`, `guest`, badge `label` ("EN Subtitles", "Slovak Audio", etc.) — needs i18n strategy: either add a `translations` map per item, or move to dictionary keyed by item id |
-| `lib/data/mission-locations.ts` | Location names, descriptions, status |
+| `lib/data/mission-locations.ts` | ✅ Localizable fields (`subtitle`, `description`, `region`, `status`) moved to dictionary under `locations.items.<id>` and `locations.statuses.<key>`. Town/village proper names stay in original Slovak orthography. |
 | `lib/data/roma-countries.ts` | Country labels (likely just names) |
 
 ### Layout / metadata
@@ -113,6 +115,16 @@ YouTube IDs come from `lib/media-data.ts`. Subtitle work happens on YouTube dire
 - **Date / number formats:** No date or numeric formatting code exists yet; if added (e.g. donation amounts, event dates), use `Intl.NumberFormat` / `Intl.DateTimeFormat` keyed off `useTranslation().locale`.
 - **Currency:** Donations are in USD via Stripe. If localized currency is desired (EUR for SK/CZ/DE/RO/EL, RSD for SR, RUB for RU, MKD for MK), this requires Stripe price multi-currency setup and a pricing copy update.
 - **RTL:** None of the supported locales are RTL. No bidi work needed.
+
+## How per-location data is stored (strategy b)
+
+For the locations page + map, per-location strings (subtitle, description, region, status, programs) live in the dictionary, not in `lib/data/mission-locations.ts`. The data file only carries non-localizable fields (id, proper-name `name`/`village`, coordinates, type, `statusKey`, year ranges, congregation count). Consumers compose UI strings via:
+
+- `dict.locations.items.<dictKey>.{subtitle,description,region}` — used by `MissionMap` popup; falls back to `village` when no entry exists (e.g. supported parishes that only show status).
+- `dict.locations.statuses.<statusKey>` — shared label lookup for "MISSION CENTER", "PLANTING", "SUPPORTED" etc.
+- `dict.locations.{centers,planted,active,ended}.<dictKey>` — page-specific copy for `app/locations/page.tsx` cards, distinct from the popup copy because the page presents fuller narrative.
+
+The kebab-case id `rimavska-pila` maps to the camelCase dict key `rimavskaPila` (`zbudska-bela` → `zbudskaBela`). `LOCATION_DICT_KEY` in `lib/data/mission-locations.ts` records the mapping for items that have popup copy.
 
 ## How to Add a New String
 

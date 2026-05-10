@@ -1,10 +1,16 @@
 "use client";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { ROMA_COUNTRIES } from "@/lib/data/roma-countries";
-import { MISSION_LOCATIONS, type LocationType, type MissionLocation } from "@/lib/data/mission-locations";
+import {
+  LOCATION_DICT_KEY,
+  MISSION_LOCATIONS,
+  type LocationType,
+  type MissionLocation,
+} from "@/lib/data/mission-locations";
+import { useTranslation } from "@/components/LanguageProvider";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -39,18 +45,28 @@ function getMarkerType(locationType: LocationType): MarkerType {
 
 // ─── Convert Mission Locations to Mission Points ────────────────────────────
 
-function convertToMissionPoints(locations: MissionLocation[]): MissionPoint[] {
-  return locations.map((loc) => ({
-    id: loc.id,
-    type: getMarkerType(loc.type),
-    name: loc.name,
-    subtitle: loc.subtitle || loc.village,
-    description: loc.description || "",
-    coordinates: loc.coordinates,
-  }));
+function convertToMissionPoints(
+  locations: MissionLocation[],
+  t: (path: string) => string,
+): MissionPoint[] {
+  return locations.map((loc) => {
+    const dictKey = LOCATION_DICT_KEY[loc.id];
+    const subtitlePath = dictKey ? `locations.items.${dictKey}.subtitle` : "";
+    const descriptionPath = dictKey ? `locations.items.${dictKey}.description` : "";
+    const subtitle = subtitlePath ? t(subtitlePath) : "";
+    const description = descriptionPath ? t(descriptionPath) : "";
+    return {
+      id: loc.id,
+      type: getMarkerType(loc.type),
+      name: loc.name,
+      // Fall back to the village name when there is no translated subtitle
+      // (e.g. supported parishes that only have status="SUPPORTED").
+      subtitle: subtitle && subtitle !== subtitlePath ? subtitle : loc.village,
+      description: description && description !== descriptionPath ? description : "",
+      coordinates: loc.coordinates,
+    };
+  });
 }
-
-const MISSION_POINTS_INITIAL = convertToMissionPoints(MISSION_LOCATIONS);
 
 function getPct(d: { pop: number; totalPop: number }): number {
   return (d.pop / d.totalPop) * 100;
@@ -72,14 +88,6 @@ const MARKER_SIZES: Record<MarkerType, number> = {
   collaborating: 12,
   planting: 12,
   failed: 12,
-};
-
-const MARKER_LABELS: Record<MarkerType, string> = {
-  "mission-center": "Mission Center",
-  parish: "Active Parish",
-  collaborating: "Collaborating Parish",
-  planting: "Planting Parish",
-  failed: "Discontinued",
 };
 
 const LEGEND_ITEMS: MarkerType[] = [
@@ -224,6 +232,7 @@ function addLayersToMap(mapInstance: any, isLight: boolean) {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function MissionMap() {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mapInstanceRef = useRef<any>(null);
@@ -235,7 +244,18 @@ export default function MissionMap() {
   const [noToken, setNoToken] = useState(false);
   const [isLight, setIsLight] = useState(false);
 
-  const missionPoints = MISSION_POINTS_INITIAL;
+  const missionPoints = useMemo(
+    () => convertToMissionPoints(MISSION_LOCATIONS, t),
+    [t],
+  );
+
+  const markerLabels: Record<MarkerType, string> = {
+    "mission-center": t("locations.map.legendMissionCenter"),
+    parish: t("locations.map.legendParish"),
+    collaborating: t("locations.map.legendCollaborating"),
+    planting: t("locations.map.legendPlanting"),
+    failed: t("locations.map.legendFailed"),
+  };
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -426,7 +446,7 @@ export default function MissionMap() {
       {!ready && !noToken && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <span className="text-[11px] font-semibold tracking-[2px] text-[var(--text-muted)]">
-            LOADING MAP…
+            {t("locations.map.loading")}
           </span>
         </div>
       )}
@@ -435,10 +455,10 @@ export default function MissionMap() {
       {noToken && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 pointer-events-none">
           <span className="text-[11px] font-semibold tracking-[2px] text-[var(--text-muted)]">
-            MAP UNAVAILABLE
+            {t("locations.map.unavailable")}
           </span>
           <span className="text-[10px] text-[var(--text-secondary)]">
-            Add NEXT_PUBLIC_MAPBOX_TOKEN to .env.local
+            {t("locations.map.addToken")}
           </span>
         </div>
       )}
@@ -467,7 +487,7 @@ export default function MissionMap() {
                 className="text-[9px] font-bold tracking-[1.5px] uppercase"
                 style={{ color: MARKER_COLORS[selectedPoint.type] }}
               >
-                {MARKER_LABELS[selectedPoint.type]}
+                {markerLabels[selectedPoint.type]}
               </span>
               <h4 className="text-[17px] font-bold text-[var(--text-primary)] mt-1 leading-tight">
                 {selectedPoint.name}
@@ -478,7 +498,7 @@ export default function MissionMap() {
             </div>
             <button
               onClick={() => setSelectedPoint(null)}
-              aria-label="Close"
+              aria-label={t("locations.map.closeAria")}
               className="text-[var(--text-muted)] hover:text-[var(--text-primary)] text-xl leading-none flex-shrink-0 mt-0.5 transition-colors"
             >
               ×
@@ -497,8 +517,8 @@ export default function MissionMap() {
               }`}
             >
               {selectedPoint.type === "failed"
-                ? "PREVENT THIS → GIVE NOW"
-                : "SUPPORT THIS PARISH →"}
+                ? t("locations.map.preventCta")
+                : t("locations.map.supportCta")}
             </Link>
           </div>
         </div>
@@ -508,7 +528,7 @@ export default function MissionMap() {
       {ready && (
         <div className="absolute bottom-4 left-4 bg-[var(--bg-primary)]/95 border border-[var(--border-default)] px-4 py-3 z-20">
           <p className="text-[9px] font-bold tracking-[1.5px] uppercase text-[var(--text-muted)] mb-2.5">
-            Legend
+            {t("locations.map.legendTitle")}
           </p>
           <div className="flex flex-col gap-2">
             {LEGEND_ITEMS.map((type) => (
@@ -518,7 +538,7 @@ export default function MissionMap() {
                   style={{ backgroundColor: MARKER_COLORS[type] }}
                 />
                 <span className="text-[10px] text-[var(--text-secondary)]">
-                  {MARKER_LABELS[type]}
+                  {markerLabels[type]}
                 </span>
               </div>
             ))}
@@ -527,7 +547,9 @@ export default function MissionMap() {
                 className="w-12 h-2 rounded-sm flex-shrink-0"
                 style={{ background: densityGradient }}
               />
-              <span className="text-[10px] text-[var(--text-muted)]">Roma density</span>
+              <span className="text-[10px] text-[var(--text-muted)]">
+                {t("locations.map.legendDensity")}
+              </span>
             </div>
           </div>
         </div>

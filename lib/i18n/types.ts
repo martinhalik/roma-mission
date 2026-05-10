@@ -123,6 +123,117 @@ export interface Dictionary {
       cta: string;
     };
   };
+  locations: {
+    hero: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      subtitle: string;
+    };
+    stats: {
+      missionCenters: string;
+      plantedChurches: string;
+      activePlants: string;
+      parishesSupported: string;
+      primaryField: string;
+      primaryFieldValue: string;
+    };
+    map: {
+      label: string;
+      sectionTitle: string;
+      sectionSubtitle: string;
+      loading: string;
+      unavailable: string;
+      addToken: string;
+      legendTitle: string;
+      legendDensity: string;
+      legendMissionCenter: string;
+      legendParish: string;
+      legendCollaborating: string;
+      legendPlanting: string;
+      legendFailed: string;
+      closeAria: string;
+      supportCta: string;
+      preventCta: string;
+    };
+    centersSection: { label: string; title: string; subtitle: string };
+    plantedSection: { label: string; title: string; subtitle: string };
+    activeSection: { label: string; title: string; subtitle: string };
+    endedSection: {
+      label: string;
+      locationCountry: string;
+      carryForward: string;
+    };
+    supportedSection: {
+      label: string;
+      title: string;
+      subtitle: string;
+      more: string;
+    };
+    cards: {
+      capacity: string;
+      weeklyAvg: string;
+      established: string;
+      programsRunning: string;
+      yearsActive: string;
+      ongoing: string;
+      started: string;
+      inField: string;
+      badgeActive: string;
+    };
+    statuses: {
+      missionCenter: string;
+      developingCenter: string;
+      firstChapel: string;
+      concluded2026: string;
+      planting: string;
+      concluded: string;
+      supported: string;
+    };
+    centers: {
+      klenovec: {
+        subtitle: string;
+        region: string;
+        description: string;
+        badge: string;
+        programs: string[];
+      };
+      markovce: {
+        subtitle: string;
+        region: string;
+        description: string;
+        badge: string;
+        programs: string[];
+      };
+    };
+    planted: {
+      klenovec: { name: string; note: string };
+      kacanov: { name: string; note: string };
+      mutnik: { name: string; note: string };
+    };
+    active: {
+      rimavskaPila: { description: string };
+      zemjastrabie: { description: string };
+    };
+    ended: {
+      name: string;
+      years: string;
+      village: string;
+      description: string;
+      learned: string;
+    };
+    items: {
+      klenovec: { subtitle: string; description: string; region: string };
+      markovce: { subtitle: string; description: string; region: string };
+      kacanov: { subtitle: string; description: string };
+      mutnik: { subtitle: string; description: string };
+      rimavskaPila: { subtitle: string; description: string };
+      zemjastrabie: { subtitle: string; description: string };
+      hnusta: { subtitle: string; description: string };
+      hacava: { subtitle: string; description: string };
+      varadka: { subtitle: string; description: string };
+    };
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;
