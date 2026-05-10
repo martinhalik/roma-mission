@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { ROMA_COUNTRIES } from "@/lib/data/roma-countries";
 import { MISSION_LOCATIONS, type LocationType, type MissionLocation } from "@/lib/data/mission-locations";
+import { useTranslation } from "@/components/LanguageProvider";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -19,8 +20,7 @@ interface MissionPoint {
   id: string;
   type: MarkerType;
   name: string;
-  subtitle: string;
-  description: string;
+  village: string;
   coordinates: [number, number];
 }
 
@@ -44,13 +44,27 @@ function convertToMissionPoints(locations: MissionLocation[]): MissionPoint[] {
     id: loc.id,
     type: getMarkerType(loc.type),
     name: loc.name,
-    subtitle: loc.subtitle || loc.village,
-    description: loc.description || "",
+    village: loc.village,
     coordinates: loc.coordinates,
   }));
 }
 
 const MISSION_POINTS_INITIAL = convertToMissionPoints(MISSION_LOCATIONS);
+
+// Per-location ids that have translatable subtitle/description in the
+// `locations.map` dictionary namespace. Other ids (most supported parishes)
+// fall back to the village name as subtitle and have no description.
+const TRANSLATED_MAP_IDS = new Set([
+  "klenovec",
+  "markovce",
+  "kacanov",
+  "mutnik",
+  "rimavska-pila",
+  "zemjastrabie",
+  "hnusta",
+  "hacava",
+  "varadka",
+]);
 
 function getPct(d: { pop: number; totalPop: number }): number {
   return (d.pop / d.totalPop) * 100;
@@ -224,6 +238,7 @@ function addLayersToMap(mapInstance: any, isLight: boolean) {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function MissionMap() {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mapInstanceRef = useRef<any>(null);
@@ -473,7 +488,9 @@ export default function MissionMap() {
                 {selectedPoint.name}
               </h4>
               <p className="text-[11px] text-[var(--text-muted)] mt-0.5">
-                {selectedPoint.subtitle}
+                {TRANSLATED_MAP_IDS.has(selectedPoint.id)
+                  ? t(`locations.map.${selectedPoint.id}.subtitle`)
+                  : selectedPoint.village}
               </p>
             </div>
             <button
@@ -485,7 +502,9 @@ export default function MissionMap() {
             </button>
           </div>
           <p className="text-[12px] text-[var(--text-secondary)] leading-[1.65] px-5 pb-4">
-            {selectedPoint.description}
+            {TRANSLATED_MAP_IDS.has(selectedPoint.id)
+              ? t(`locations.map.${selectedPoint.id}.description`)
+              : ""}
           </p>
           <div className="px-5 pb-5">
             <Link

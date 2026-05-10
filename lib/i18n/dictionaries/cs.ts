@@ -136,6 +136,187 @@ const cs: Dictionary = {
       cta: "PROZKOUMAT MEDIÁLNÍ KNIHOVNU",
     },
   },
+  locations: {
+    hero: {
+      label: "Naše působiště",
+      titleLine1: "Každá vesnice na této mapě",
+      titleLine2: "je jméno, za které se modlíme.",
+      subtitle:
+        "Dvě misijní centra. Založené farnosti. Aktivně zakládaná společenství. Farnosti ve východním a jižním Slovensku, kde romské rodiny slyšely evangelium — mnohé poprvé ve svém rodu.",
+    },
+    stats: {
+      missionCenters: "Misijní centra",
+      plantedChurches: "Založené farnosti",
+      activePlants: "Aktivní zakládání",
+      parishesSupported: "Podporované farnosti",
+      primaryField: "Hlavní působiště",
+      primaryFieldValue: "Slovensko",
+    },
+    mapSection: {
+      label: "Misijní území",
+      title: "Slovensko — kde působíme",
+      intro:
+        "Jižní a východní Slovensko má nejvyšší koncentraci romských osad v zemi. Jdeme tam, kam etablované církve nedosáhly.",
+    },
+    centersSection: {
+      label: "Misijní centra",
+      title: "Dvě operační základny",
+      intro:
+        "Misijní centrum je trvalá, plnočasová přítomnost — nejen program, který vedeme, ale místo, kde naši lidé žijí, pracují a modlí se uprostřed romské komunity.",
+      capacity: "Kapacita",
+      weeklyAvg: "Týdenní průměr",
+      established: "Zal.",
+      programsLabel: "Běžící programy",
+    },
+    plantedSection: {
+      label: "Založené farnosti",
+      title: "Společenství, která jsme založili",
+      intro:
+        "Založená farnost je společenství, které před naším příchodem neexistovalo. Vstoupíme, učíme, vychováváme vedoucí, ustoupíme. Některé se stanou misijními centry. Některé běží roky a skončí. Oba výsledky mají smysl.",
+      yearsActive: "let aktivní",
+      ongoing: "pokračuje",
+      weeklyAvg: "týdenní průměr",
+    },
+    activeSection: {
+      label: "Právě zakládáme",
+      title: "Kde jsme právě teď",
+      intro:
+        "Toto nejsou programy. Toto jsou naši misionáři, kteří týden co týden přicházejí do vesnic, kde romské rodiny nemají kostel, nemají kněze a často nikoho, kdo by přišel jen kvůli nim. Vaše podpora je drží v chodu.",
+      activeBadge: "Aktivní",
+      started: "Začalo",
+      inField: "V terénu",
+      yearShort: "r.",
+      yearsShort: "r.",
+      yearLessThan: "<1",
+    },
+    endedSection: {
+      label: "Upřímné účtování",
+      countryLabel: "Slovensko",
+      carryForward: "Co si neseme dál:",
+    },
+    supportedSection: {
+      label: "Farnosti, které jsme podpořili",
+      title: "Sloužíme po boku místních kněží",
+      intro:
+        "Ne každé romské společenství potřebuje nový kostel. Někdy už místní farnost existuje, ale chybí jí lidé a nástroje, aby zasáhla romskou osadu vedle. Vstoupíme, sloužíme a podporujeme kněze, který tam už je. Níže jsou farnosti, kde jsme sloužili — některé krátce, některé roky.",
+      footnote: "a další — seznam roste, jak se otevírají nové dveře.",
+    },
+    map: {
+      klenovec: {
+        subtitle: "Misijní centrum sv. Mikuláše",
+        description:
+          "Naše hlavní misijní základna ve středním Slovensku — operační centrum pro formaci, vzdělávání a regionální koordinaci.",
+        status: "MISIJNÍ CENTRUM",
+      },
+      markovce: {
+        subtitle: "Romská farnost a rozvíjející se misijní centrum",
+        description:
+          "Aktivní pravoslavná romská farnost s pravidelnou liturgií, programy pro mládež a rostoucím místním laickým vedením. Přechází na plnohodnotné misijní centrum.",
+        status: "ROZVÍJEJÍCÍ SE CENTRUM",
+      },
+      kacanov: {
+        subtitle: "Zakládaná farnost",
+        description:
+          "Nový kostel, který vzniká u Markovců. Bohoslužby již začaly. Je třeba trvalé místo a pokračující podpora.",
+        status: "PRVNÍ KAPLE",
+      },
+      mutnik: {
+        subtitle: "Ukončeno — 2026",
+        description:
+          "Devět let věrné přítomnosti. Vzniklo společenství, věřící byli pokřtěni a vyrostli místní vedoucí. Tato kapitola se uzavřela v roce 2026.",
+        status: "UKONČENO 2026",
+      },
+      "rimavska-pila": {
+        subtitle: "Aktivní zakládání",
+        description:
+          "Nová farnost zapouští kořeny u Klenovce. Bohoslužby začaly. Je třeba trvalé místo a pokračující podpora.",
+        status: "ZAKLÁDÁNÍ",
+      },
+      zemjastrabie: {
+        subtitle: "Aktivní zakládání",
+        description:
+          "Osada, za kterou jsme se léta modlili. Konečně máme otevřené dveře. Začínáme s první službou.",
+        status: "ZAKLÁDÁNÍ",
+      },
+      hnusta: {
+        subtitle: "Nepokračovalo — 2017",
+        description:
+          "Rané misijní úsilí v oblasti Hnúšti, které nebylo možné udržet bez trvalé misijní přítomnosti v terénu.",
+        status: "UKONČENO",
+      },
+      hacava: {
+        subtitle: "Nepokračovalo — 2017",
+        description:
+          "Skutečně otevřené dveře a první ovoce, ale nedokázali jsme udržet trvalou misijní přítomnost. Bez někoho, kdo by chodil týden co týden, se společenství nemohlo udržet pohromadě.",
+        status: "UKONČENO",
+      },
+      varadka: {
+        subtitle: "Spolupracující farnost",
+        description:
+          "Partnerská farnost v okrese Bardejov, která podporuje misijní síť sdílením zdrojů a pastorační spoluprací.",
+        status: "PODPOROVANÁ",
+      },
+      supportedStatus: "PODPOROVANÁ",
+    },
+    centers: {
+      klenovec: {
+        subtitle: "Založená farnost · Postavené misijní centrum",
+        region: "Banskobystrický kraj, SK",
+        description:
+          "Klenovec je místo, kde misie zapustila kořeny. Romská rodina otevřela svůj dům pro modlitbu, byla založena farnost a během let na tomto základě vyrostlo plnohodnotné misijní centrum. Dnes slouží jako naše hlavní operační základna — kaple, komunitní prostor a každodenní práce být přítomen mezi lidmi.",
+        badge: "ZALOŽENÁ FARNOST · MISIJNÍ CENTRUM",
+        program1: "Nedělní liturgie",
+        program2: "Dětský biblický klub",
+        program3: "Formace vedoucích",
+        program4: "Návštěvy v rodinách",
+        program5: "Příprava na křest",
+      },
+      markovce: {
+        subtitle: "Farnost v proměně → Misijní centrum",
+        region: "Prešovský kraj, SK",
+        description:
+          "Markovce začaly jako podporovaná farnost — jedno z mnoha míst, kde se náš tým objevoval, vedl programy a pomáhal místnímu společenství oslovit jeho romské sousedy. Kořeny zapustily dost hluboko na to, abychom z tohoto místa budovali plnohodnotné misijní centrum. Proměna probíhá.",
+        badge: "ROZVÍJEJÍCÍ SE CENTRUM",
+        program1: "Práce s Romy",
+        program2: "Podpora nedělní služby",
+        program3: "Formování společenství",
+      },
+    },
+    planted: {
+      klenovec: {
+        name: "Romská pobočná farnost Klenovec",
+        note: "Založena jako farnost, později na stejném základě vyrostlo i fyzické misijní centrum. Dnes naše hlavní základna.",
+        status: "MISIJNÍ CENTRUM",
+      },
+      kacanov: {
+        name: "Romská komunita Kačanov",
+        note: "Společenství je silné a schází se pravidelně. Právě stavíme kostel — nejprve přišli lidé, budova následuje.",
+        status: "PRVNÍ KAPLE",
+      },
+      mutnik: {
+        name: "Romská komunita Mútnik",
+        note: "Devět let věrné přítomnosti. Vzniklo společenství, věřící byli pokřtěni a vyrostli místní vedoucí. Tato kapitola se uzavřela v roce 2026.",
+        status: "UKONČENO 2026",
+      },
+    },
+    activePlants: {
+      "rimavska-pila": {
+        description:
+          "Dva roky v terénu. Pravidelná setkání jsou zavedena, formuje se jádrová skupina. Nejzralejší ze současných zakládání.",
+      },
+      zemjastrabie: {
+        description:
+          "Osada, za kterou jsme se léta modlili. Konečně máme otevřené dveře. Začínáme s první službou.",
+      },
+    },
+    endedPlant: {
+      years: "2017 — nepokračovalo",
+      description:
+        "Do Hačavy jsme vstoupili se skutečně otevřenými dveřmi a prvním ovocem. Nedokázali jsme však udržet trvalou misijní přítomnost — náš tým v Klenovci prostě neměl dost dobrovolníků, aby kromě všeho ostatního pokrýval i tuto vesnici. Bez někoho, kdo by tam chodil týden co týden, se společenství nedalo udržet pohromadě. Museli jsme přestat.",
+      learned:
+        "Pokud uvažujete o připojení k našemu dobrovolnickému týmu v Klenovci, Hačava je důvod, proč na tom záleží. Každý člověk, kterého přidáme k naší základně, rozšiřuje, jak daleko můžeme dosáhnout. Vesnice jako tato čeká na někoho, kdo má dost času jít.",
+    },
+  },
   mission: {
     hero: {
       label: "Naše misie",

@@ -40,6 +40,7 @@ These already pull strings via `t()` and render correctly in all 9 languages:
 - `components/LanguageSwitcher.tsx` — its own aria-labels
 - `app/page.tsx` — Home: hero, urgency, results, 5 pillars, testimony, mission map intro, featured media (`home.*` namespace)
 - `app/mission/page.tsx` — Mission: hero, why-roma reasons, founder story, what-we-do (planting/parish/children/centers), vision stats, country grid labels & legend, guiding principles, share nudge (`mission.*` namespace)
+- `app/locations/page.tsx` — Locations: hero, stat pills, map intro, mission centers (subtitle/region/description/badge/programs), planted churches (name/note/status), active plants, ended plant (Hačava) narrative, supported parishes intro & footnote (`locations.*` namespace). `components/MissionMap.tsx` popup also reads `locations.map.<id>.{subtitle,description}` for the 9 ids that have unique copy.
 
 ## What Still Needs Translation ⚠️
 
@@ -52,7 +53,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | `app/page.tsx` | 500 | ✅ Translated into all 9 locales (`home.*` namespace) |
 | `app/mission/page.tsx` | 680 | ✅ Translated into all 9 locales (`mission.*` namespace) |
 | `app/our-story/page.tsx` | 420 | Founder story, timeline |
-| `app/locations/page.tsx` | 572 | Location descriptions, stats |
+| `app/locations/page.tsx` | 572 | ✅ Translated into all 9 locales (`locations.*` namespace). Strategy (b): per-location text moved into the dictionary keyed by id (`locations.map.<id>`, `locations.centers.<id>`, `locations.planted.<id>`, `locations.activePlants.<id>`, `locations.endedPlant`). Town/village proper names (Klenovec, Markovce, Kačanov, Mútnik, Rimavská Pila, Zemplínske Jastrabie, Hnúšťa, Hačava, Varadka …) stay in original Slovak orthography across all languages. Translatable `subtitle`/`description`/`status` fields removed from `lib/data/mission-locations.ts`; `components/MissionMap.tsx` now resolves them via `t("locations.map.<id>.…")`. |
 | `app/stories/page.tsx` | 428 | Testimonies (note: original quotes may be Slovak — keep source language and translate framing only) |
 | `app/get-involved/page.tsx` | 246 | Volunteer / donate / mission trip CTAs |
 | `app/media/page.tsx` | 309 | Media library, video descriptions |
@@ -77,7 +78,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | File | Notes |
 |------|-------|
 | `lib/media-data.ts` | `title`, `shortDesc`, `fullDesc`, `source`, `guest`, badge `label` ("EN Subtitles", "Slovak Audio", etc.) — needs i18n strategy: either add a `translations` map per item, or move to dictionary keyed by item id |
-| `lib/data/mission-locations.ts` | Location names, descriptions, status |
+| `lib/data/mission-locations.ts` | ✅ Translatable `subtitle`/`description`/`status` moved to dictionary (`locations.map.<id>`); proper-noun `name`/`village` remain on the data object |
 | `lib/data/roma-countries.ts` | Country labels (likely just names) |
 
 ### Layout / metadata
