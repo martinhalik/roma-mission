@@ -275,7 +275,7 @@ const ro: Dictionary = {
     },
     ended: {
       name: "Hačava",
-      years: "2017 — neContinuat",
+      years: "2017 — nu a continuat",
       village: "Hačava",
       description:
         "Am intrat în Hačava cu o ușă deschisă și primele roade reale. Dar nu am putut susține o prezență misionară constantă — echipa noastră din Klenovec pur și simplu nu a avut suficienți voluntari pentru a acoperi acest sat în plus față de toate celelalte. Fără cineva care să meargă săptămână de săptămână, comunitatea nu a putut rămâne unită. A trebuit să ne oprim.",
@@ -316,12 +316,12 @@ const ro: Dictionary = {
           "O așezare pentru care ne-am rugat ani de zile. În sfârșit avem o ușă deschisă. Începe lucrarea de pionierat.",
       },
       hnusta: {
-        subtitle: "Neîncontinuat — 2017",
+        subtitle: "Nu a continuat — 2017",
         description:
           "Un efort timpuriu de evanghelizare în zona Hnúšťa care nu a putut fi susținut fără o prezență misionară constantă pe teren.",
       },
       hacava: {
-        subtitle: "Neîncontinuat — 2017",
+        subtitle: "Nu a continuat — 2017",
         description:
           "O ușă cu adevărat deschisă, cu primele roade, dar nu am putut susține o prezență misionară constantă. Fără cineva care să meargă săptămână de săptămână, comunitatea nu a putut rămâne unită.",
       },
