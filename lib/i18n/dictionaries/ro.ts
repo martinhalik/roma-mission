@@ -688,6 +688,77 @@ const ro: Dictionary = {
       ctaLearn: "Vezi cum funcționează",
     },
   },
+  media: {
+    hero: {
+      label: "Media",
+      titleLine1: "Documentat. Înregistrat.",
+      titleLine2: "Transparent.",
+      subtitle:
+        "Credem în transparență totală. Fiecare poveste, fiecare provocare, fiecare moment — documentate și împărtășite deschis.",
+    },
+    documentarySection: {
+      label: "Documentar",
+      watchAria: "Vizionează documentarul",
+      watchCta: "VEZI DOCUMENTARUL",
+    },
+    interviewsSection: {
+      label: "Interviuri",
+      title: "Conversații despre misiune",
+      intro:
+        "Conversații aprofundate despre misiune — înregistrate în slovacă, cu subtitrare engleză disponibilă la episoade selectate.",
+    },
+    testimoniesSection: {
+      label: "Mărturie",
+      title: "Voci din misiune",
+      intro:
+        "Mărturii personale ale membrilor comunității rome — cu propriile cuvinte.",
+    },
+    card: {
+      watchAria: "Vezi: {title}",
+      withGuest: "cu invitatul {guest}",
+    },
+    items: {
+      documentary: {
+        title: "De la IT la preoție",
+        shortDesc:
+          "Producție oficială a Televiziunii Cehe. Călătoria directorului de la cariera în IT la preoția ortodoxă printre comunitățile rome din Slovacia.",
+        fullDesc:
+          "Un documentar oficial al Televiziunii Cehe. Filmul îl urmărește pe directorul Misiunii Creștine Rome în călătoria sa personală de la o carieră în IT la preoția ortodoxă în comunitățile rome din toată Slovacia — alături de soția și copiii săi. Oferă o privire onestă asupra vieții parohiale de zi cu zi, slujirii familiei pe câmpul de misiune și sacrificiului pe termen lung din spatele unei chemări către comunități marcate de sărăcie, excludere și nevoie spirituală profundă.",
+        source: "Televiziunea Cehă",
+        badgeLabel: "Subtitrare EN",
+      },
+      "int-1": {
+        title: "De ce romii? De ce acum?",
+        shortDesc:
+          "Un interviu în limba slovacă despre originile misiunii și de ce contează plantarea de biserici ortodoxe printre romi.",
+        fullDesc:
+          "Băieți din mahalale — învățând să-și plece capul, să-și ridice glasul și să-L cheme pe Dumnezeul cel viu. Această conversație intră în ritmul zilnic al misiunii rome: cum se roagă, cum se închină și cum arată când Evanghelia prinde rădăcini acolo unde nimeni nu se aștepta.",
+        source: "Podcastul Decanului Facultății Ortodoxe",
+        guest: "Martin Halík, fondatorul Misiunii Creștine Rome",
+        badgeLabel: "Audio slovac",
+      },
+      "int-2": {
+        title: "Prezență de durată în locul programelor",
+        shortDesc:
+          "De ce eșuează modelele de misiune pe termen scurt și cum arată un angajament generațional față de o comunitate.",
+        fullDesc:
+          "Cât costă cu adevărat să răspunzi unei chemări? Acest interviu urmărește primii patru ani ai misiunii din Klenovec — o familie care și-a smuls viața și s-a mutat în Slovacia, învățând să aparțină unei comunități uitate și descoperind ce înseamnă să rămâi.",
+        source: "Podcastul Decanului Facultății Ortodoxe",
+        guest: "Misionarii Halík, o familie",
+        badgeLabel: "Audio slovac",
+      },
+      "testimony-laco": {
+        title: "Povestea lui Laco",
+        shortDesc:
+          "Un bărbat rom din Slovacia reflectează asupra a ceea ce s-a schimbat când misiunea a venit în comunitatea sa.",
+        fullDesc:
+          "Laco a crescut într-o așezare romă din Slovacia. În această mărturie personală vorbește deschis despre scepticismul pe care îl avea cândva, despre schimbarea pe care a văzut-o în comunitatea sa și despre ce a însemnat faptul că preotul a rămas.",
+        source: "Mărturie personală",
+        guest: "Laco, Slovacia",
+        badgeLabel: "Audio englez",
+      },
+    },
+  },
   getInvolved: {
     hero: {
       label: "Implică-te",

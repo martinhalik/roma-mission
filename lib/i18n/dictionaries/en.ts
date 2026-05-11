@@ -686,6 +686,77 @@ const en: Dictionary = {
       ctaLearn: "Learn How It Works",
     },
   },
+  media: {
+    hero: {
+      label: "Media",
+      titleLine1: "Documented. Recorded.",
+      titleLine2: "Transparent.",
+      subtitle:
+        "We believe in full transparency. Every story, every challenge, every breakthrough — documented and shared openly.",
+    },
+    documentarySection: {
+      label: "Documentary",
+      watchAria: "Watch documentary",
+      watchCta: "WATCH DOCUMENTARY",
+    },
+    interviewsSection: {
+      label: "Interviews",
+      title: "Mission Conversations",
+      intro:
+        "In-depth conversations about the mission — recorded in Slovak with English subtitles available on select episodes.",
+    },
+    testimoniesSection: {
+      label: "Testimony",
+      title: "Voices from the Mission",
+      intro:
+        "Personal testimonies from Roma community members — in their own words.",
+    },
+    card: {
+      watchAria: "Watch: {title}",
+      withGuest: "with {guest}",
+    },
+    items: {
+      documentary: {
+        title: "From IT to Priesthood",
+        shortDesc:
+          "Official Czech Television production. The director's journey from IT career to Orthodox priesthood among Roma communities in Slovakia.",
+        fullDesc:
+          "An official Czech Television documentary. The film follows the director of Christian Roma Mission on his personal journey from a career in IT to Orthodox priesthood in Roma communities across Slovakia — alongside his wife and children. It offers an honest look at daily parish life, family ministry on the mission field, and the long-term sacrifice behind a calling to communities shaped by poverty, exclusion, and deep spiritual need.",
+        source: "Czech Television",
+        badgeLabel: "EN Subtitles",
+      },
+      "int-1": {
+        title: "Why the Roma? Why Now?",
+        shortDesc:
+          "A Slovak-language interview on the origins of the mission and why Orthodox Church planting among Roma matters.",
+        fullDesc:
+          "Boys from the slums — learning to bow their heads, lift their voices, and call on the living God. This conversation goes inside the daily rhythm of Roma mission: how they pray, how they worship, and what it looks like when the Gospel takes root where no one expected it.",
+        source: "Orthodox Faculty Dean Podcast",
+        guest: "Martin Halik, Founder of Christian Roma Mission",
+        badgeLabel: "Slovak Audio",
+      },
+      "int-2": {
+        title: "Long-Term Presence Over Programs",
+        shortDesc:
+          "Why short-term mission models fail, and what a generational commitment to a community looks like.",
+        fullDesc:
+          "What does it actually cost to answer a call? This interview traces the first four years of the Klenovec mission — a family uprooting their life and moving to Slovakia, learning to belong to a community that had been forgotten, and discovering what it means to stay.",
+        source: "Orthodox Faculty Dean Podcast",
+        guest: "Family Missionaries Halikovi",
+        badgeLabel: "Slovak Audio",
+      },
+      "testimony-laco": {
+        title: "Laco's Story",
+        shortDesc:
+          "A Roma man from Slovakia reflects on what changed when the mission came to his community.",
+        fullDesc:
+          "Laco grew up in a Roma settlement in Slovakia. In this personal testimony he speaks openly about the skepticism he once held, the change he witnessed in his community, and what it meant when the priest stayed.",
+        source: "Personal Testimony",
+        guest: "Laco, Slovakia",
+        badgeLabel: "English Audio",
+      },
+    },
+  },
   getInvolved: {
     hero: {
       label: "Get Involved",

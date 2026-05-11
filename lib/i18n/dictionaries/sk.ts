@@ -683,6 +683,77 @@ const sk: Dictionary = {
       ctaLearn: "Zistite, ako to funguje",
     },
   },
+  media: {
+    hero: {
+      label: "Médiá",
+      titleLine1: "Zdokumentované. Nahrané.",
+      titleLine2: "Transparentne.",
+      subtitle:
+        "Veríme v úplnú transparentnosť. Každý príbeh, každá výzva, každý prelom — zdokumentovaný a otvorene zdieľaný.",
+    },
+    documentarySection: {
+      label: "Dokument",
+      watchAria: "Pozrieť dokument",
+      watchCta: "POZRIEŤ DOKUMENT",
+    },
+    interviewsSection: {
+      label: "Rozhovory",
+      title: "Misijné rozhovory",
+      intro:
+        "Hĺbkové rozhovory o misii — natočené v slovenčine, s anglickými titulkami pri vybraných epizódach.",
+    },
+    testimoniesSection: {
+      label: "Svedectvo",
+      title: "Hlasy z misie",
+      intro:
+        "Osobné svedectvá členov rómskej komunity — ich vlastnými slovami.",
+    },
+    card: {
+      watchAria: "Pozrieť: {title}",
+      withGuest: "s hosťom {guest}",
+    },
+    items: {
+      documentary: {
+        title: "Z IT do kňazstva",
+        shortDesc:
+          "Oficiálna produkcia Českej televízie. Cesta riaditeľa od kariéry v IT k pravoslávnemu kňazstvu medzi rómskymi komunitami na Slovensku.",
+        fullDesc:
+          "Oficiálny dokument Českej televízie. Film sleduje riaditeľa Kresťanskej rómskej misie na jeho osobnej ceste od kariéry v IT k pravoslávnemu kňazstvu v rómskych komunitách po celom Slovensku — spolu s manželkou a deťmi. Ponúka úprimný pohľad na každodenný farský život, rodinnú službu v misijnom poli a dlhodobú obetu, ktorá stojí za povolaním do komunít poznačených chudobou, vylúčením a hlbokou duchovnou núdzou.",
+        source: "Česká televízia",
+        badgeLabel: "EN titulky",
+      },
+      "int-1": {
+        title: "Prečo Rómovia? Prečo teraz?",
+        shortDesc:
+          "Rozhovor v slovenčine o pôvode misie a o tom, prečo má zakladanie pravoslávnych farností medzi Rómami zmysel.",
+        fullDesc:
+          "Chlapci z osád — učia sa skláňať hlavy, pozdvihovať svoje hlasy a vzývať živého Boha. Tento rozhovor vstupuje do každodenného rytmu rómskej misie: ako sa modlia, ako uctievajú a ako to vyzerá, keď evanjelium zapustí korene tam, kde to nikto nečakal.",
+        source: "Podcast dekana pravoslávnej fakulty",
+        guest: "Martin Halík, zakladateľ Kresťanskej rómskej misie",
+        badgeLabel: "Slovenský zvuk",
+      },
+      "int-2": {
+        title: "Dlhodobá prítomnosť pred programami",
+        shortDesc:
+          "Prečo krátkodobé misijné modely zlyhávajú a ako vyzerá generačný záväzok voči komunite.",
+        fullDesc:
+          "Čo v skutočnosti stojí odpovedať na povolanie? Tento rozhovor sleduje prvé štyri roky klenoveckej misie — rodinu, ktorá vytrhla svoj život a presťahovala sa na Slovensko, učila sa patriť do komunity, na ktorú sa zabudlo, a objavovala, čo znamená zostať.",
+        source: "Podcast dekana pravoslávnej fakulty",
+        guest: "Rodinní misionári Halíkovci",
+        badgeLabel: "Slovenský zvuk",
+      },
+      "testimony-laco": {
+        title: "Lacov príbeh",
+        shortDesc:
+          "Rómsky muž zo Slovenska sa zamýšľa nad tým, čo sa zmenilo, keď do jeho komunity prišla misia.",
+        fullDesc:
+          "Laco vyrastal v rómskej osade na Slovensku. V tomto osobnom svedectve otvorene hovorí o skepse, ktorú kedysi mal, o zmene, ktorú videl vo svojej komunite, a o tom, čo znamenalo, keď kňaz zostal.",
+        source: "Osobné svedectvo",
+        guest: "Laco, Slovensko",
+        badgeLabel: "Anglický zvuk",
+      },
+    },
+  },
   getInvolved: {
     hero: {
       label: "Zapojte sa",

@@ -525,6 +525,66 @@ export interface Dictionary {
       ctaLearn: string;
     };
   };
+  media: {
+    hero: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      subtitle: string;
+    };
+    documentarySection: {
+      label: string;
+      watchAria: string;
+      watchCta: string;
+    };
+    interviewsSection: {
+      label: string;
+      title: string;
+      intro: string;
+    };
+    testimoniesSection: {
+      label: string;
+      title: string;
+      intro: string;
+    };
+    card: {
+      watchAria: string;
+      withGuest: string;
+    };
+    items: {
+      documentary: {
+        title: string;
+        shortDesc: string;
+        fullDesc: string;
+        source: string;
+        badgeLabel: string;
+      };
+      "int-1": {
+        title: string;
+        shortDesc: string;
+        fullDesc: string;
+        source: string;
+        guest: string;
+        badgeLabel: string;
+      };
+      "int-2": {
+        title: string;
+        shortDesc: string;
+        fullDesc: string;
+        source: string;
+        guest: string;
+        badgeLabel: string;
+      };
+      "testimony-laco": {
+        title: string;
+        shortDesc: string;
+        fullDesc: string;
+        source: string;
+        guest: string;
+        badgeLabel: string;
+      };
+    };
+  };
   getInvolved: {
     hero: {
       label: string;

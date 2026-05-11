@@ -51,12 +51,7 @@ const resultCards: { Icon: LucideIcon; textKey: string }[] = [
   { Icon: House, textKey: "home.results.cardFamilies" },
 ];
 
-const mediaItems = MEDIA_ITEMS.filter((item) => item.tag !== "TESTIMONY").slice(0, 3).map((item) => ({
-  ...item,
-  thumb: ytThumb(item.videoId),
-  desc: item.shortDesc,
-  meta: `${item.duration} · ${item.source}`,
-}));
+const mediaItems = MEDIA_ITEMS.filter((item) => item.tag !== "TESTIMONY").slice(0, 3);
 
 export default function HomePage() {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
@@ -418,54 +413,54 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          {mediaItems.map((item) => (
-            <button
-              key={item.tag + item.title}
-              onClick={() => setActiveVideoId(item.videoId)}
-              className="bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex flex-col text-left group hover:border-[var(--gold)]/50 transition-colors duration-200 cursor-pointer"
-              aria-label={t("home.featuredMedia.watchAria", { title: item.title })}
-            >
-              {/* Thumbnail with play button */}
-              <div
-                className="w-full h-[160px] md:h-[200px] bg-cover bg-center relative flex items-center justify-center"
-                style={{ backgroundImage: `url('${item.thumb}')` }}
+          {mediaItems.map((item) => {
+            const title = t(`media.items.${item.id}.title`);
+            const desc = t(`media.items.${item.id}.shortDesc`);
+            const source = t(`media.items.${item.id}.source`);
+            const badgeLabel = t(`media.items.${item.id}.badgeLabel`);
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveVideoId(item.videoId)}
+                className="bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden flex flex-col text-left group hover:border-[var(--gold)]/50 transition-colors duration-200 cursor-pointer"
+                aria-label={t("home.featuredMedia.watchAria", { title })}
               >
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
-                <div className="relative">
-                  <PlayButton size="md" />
-                </div>
-              </div>
-
-              {/* Info */}
-              <div className="flex flex-col gap-3 p-5 md:p-6 flex-1">
-                {/* Tag + language badges */}
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)]">
-                    {item.tag}
-                  </span>
-                  {item.badges.map((badge) => (
-                    <LangBadge
-                      key={badge.label}
-                      label={badge.label}
-                      variant={badge.variant}
-                    />
-                  ))}
+                {/* Thumbnail with play button */}
+                <div
+                  className="w-full h-[160px] md:h-[200px] bg-cover bg-center relative flex items-center justify-center"
+                  style={{ backgroundImage: `url('${ytThumb(item.videoId)}')` }}
+                >
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
+                  <div className="relative">
+                    <PlayButton size="md" />
+                  </div>
                 </div>
 
-                <h3 className="text-[15px] md:text-[17px] font-bold text-[var(--text-primary)] leading-[1.2] group-hover:text-[var(--gold)] transition-colors duration-200">
-                  {item.title}
-                </h3>
-                <p className="text-[13px] text-[var(--text-secondary)] leading-[1.5]">
-                  {item.desc}
-                </p>
+                {/* Info */}
+                <div className="flex flex-col gap-3 p-5 md:p-6 flex-1">
+                  {/* Tag + language badges */}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)]">
+                      {item.tag}
+                    </span>
+                    <LangBadge label={badgeLabel} variant={item.badgeVariant} />
+                  </div>
 
-                {/* Meta footer */}
-                <p className="text-[11px] text-[var(--text-muted)] mt-auto pt-3 border-t border-[var(--border-default)]">
-                  {item.meta}
-                </p>
-              </div>
-            </button>
-          ))}
+                  <h3 className="text-[15px] md:text-[17px] font-bold text-[var(--text-primary)] leading-[1.2] group-hover:text-[var(--gold)] transition-colors duration-200">
+                    {title}
+                  </h3>
+                  <p className="text-[13px] text-[var(--text-secondary)] leading-[1.5]">
+                    {desc}
+                  </p>
+
+                  {/* Meta footer */}
+                  <p className="text-[11px] text-[var(--text-muted)] mt-auto pt-3 border-t border-[var(--border-default)]">
+                    {item.duration} · {source}
+                  </p>
+                </div>
+              </button>
+            );
+          })}
         </div>
 
         <Link

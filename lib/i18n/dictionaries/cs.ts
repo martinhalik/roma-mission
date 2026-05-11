@@ -684,6 +684,77 @@ const cs: Dictionary = {
       ctaLearn: "Zjistěte, jak to funguje",
     },
   },
+  media: {
+    hero: {
+      label: "Média",
+      titleLine1: "Zdokumentované. Nahrané.",
+      titleLine2: "Transparentně.",
+      subtitle:
+        "Věříme v plnou transparentnost. Každý příběh, každá výzva, každý průlom — zdokumentován a otevřeně sdílen.",
+    },
+    documentarySection: {
+      label: "Dokument",
+      watchAria: "Sledovat dokument",
+      watchCta: "PŘEHRÁT DOKUMENT",
+    },
+    interviewsSection: {
+      label: "Rozhovory",
+      title: "Misijní rozhovory",
+      intro:
+        "Hloubkové rozhovory o misii — natočené ve slovenštině s anglickými titulky u vybraných dílů.",
+    },
+    testimoniesSection: {
+      label: "Svědectví",
+      title: "Hlasy z misie",
+      intro:
+        "Osobní svědectví členů romské komunity — jejich vlastními slovy.",
+    },
+    card: {
+      watchAria: "Sledovat: {title}",
+      withGuest: "s hostem {guest}",
+    },
+    items: {
+      documentary: {
+        title: "Z IT do kněžství",
+        shortDesc:
+          "Oficiální produkce České televize. Cesta ředitele od kariéry v IT k pravoslavnému kněžství mezi romskými komunitami na Slovensku.",
+        fullDesc:
+          "Oficiální dokument České televize. Film sleduje ředitele Křesťanské romské misie na jeho osobní cestě od kariéry v IT k pravoslavnému kněžství v romských komunitách po celém Slovensku — spolu s manželkou a dětmi. Nabízí upřímný pohled na každodenní farní život, rodinnou službu v misijním poli a dlouhodobou oběť, která stojí za povoláním do komunit poznamenaných chudobou, vyloučením a hlubokou duchovní nouzí.",
+        source: "Česká televize",
+        badgeLabel: "EN titulky",
+      },
+      "int-1": {
+        title: "Proč Romové? Proč nyní?",
+        shortDesc:
+          "Rozhovor ve slovenštině o vzniku misie a o tom, proč má zakládání pravoslavných farností mezi Romy smysl.",
+        fullDesc:
+          "Chlapci ze slumů — učí se sklánět hlavy, pozvedat své hlasy a vzývat živého Boha. Tento rozhovor vstupuje do každodenního rytmu romské misie: jak se modlí, jak uctívají a jak to vypadá, když evangelium zapustí kořeny tam, kde to nikdo nečekal.",
+        source: "Podcast děkana pravoslavné fakulty",
+        guest: "Martin Halík, zakladatel Křesťanské romské misie",
+        badgeLabel: "Slovenský zvuk",
+      },
+      "int-2": {
+        title: "Dlouhodobá přítomnost před programy",
+        shortDesc:
+          "Proč krátkodobé misijní modely selhávají a jak vypadá generační závazek vůči komunitě.",
+        fullDesc:
+          "Co ve skutečnosti stojí odpovědět na povolání? Tento rozhovor sleduje první čtyři roky klenovecké misie — rodinu, která vytrhla svůj život a přestěhovala se na Slovensko, učila se patřit do komunity, na kterou se zapomnělo, a objevovala, co znamená zůstat.",
+        source: "Podcast děkana pravoslavné fakulty",
+        guest: "Rodinní misionáři Halíkovi",
+        badgeLabel: "Slovenský zvuk",
+      },
+      "testimony-laco": {
+        title: "Lacův příběh",
+        shortDesc:
+          "Romský muž ze Slovenska se zamýšlí nad tím, co se změnilo, když do jeho komunity přišla misie.",
+        fullDesc:
+          "Laco vyrůstal v romské osadě na Slovensku. V tomto osobním svědectví otevřeně hovoří o skepsi, kterou kdysi měl, o změně, kterou viděl ve své komunitě, a o tom, co znamenalo, když kněz zůstal.",
+        source: "Osobní svědectví",
+        guest: "Laco, Slovensko",
+        badgeLabel: "Anglický zvuk",
+      },
+    },
+  },
   getInvolved: {
     hero: {
       label: "Zapojte se",
