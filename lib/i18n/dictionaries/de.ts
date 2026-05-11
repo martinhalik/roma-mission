@@ -688,6 +688,77 @@ const de: Dictionary = {
       ctaLearn: "Wie sie funktioniert",
     },
   },
+  media: {
+    hero: {
+      label: "Medien",
+      titleLine1: "Dokumentiert. Aufgezeichnet.",
+      titleLine2: "Transparent.",
+      subtitle:
+        "Wir glauben an volle Transparenz. Jede Geschichte, jede Herausforderung, jeder Durchbruch — dokumentiert und offen geteilt.",
+    },
+    documentarySection: {
+      label: "Dokumentation",
+      watchAria: "Dokumentation ansehen",
+      watchCta: "DOKUMENTATION ANSEHEN",
+    },
+    interviewsSection: {
+      label: "Interviews",
+      title: "Missionsgespräche",
+      intro:
+        "Tiefgehende Gespräche über die Mission — auf Slowakisch aufgenommen, mit englischen Untertiteln bei ausgewählten Folgen.",
+    },
+    testimoniesSection: {
+      label: "Zeugnis",
+      title: "Stimmen aus der Mission",
+      intro:
+        "Persönliche Zeugnisse von Mitgliedern der Roma-Gemeinschaft — in ihren eigenen Worten.",
+    },
+    card: {
+      watchAria: "Ansehen: {title}",
+      withGuest: "mit Gast {guest}",
+    },
+    items: {
+      documentary: {
+        title: "Vom IT zum Priestertum",
+        shortDesc:
+          "Offizielle Produktion des Tschechischen Fernsehens. Der Weg des Direktors von einer IT-Karriere zum orthodoxen Priestertum unter den Roma-Gemeinschaften in der Slowakei.",
+        fullDesc:
+          "Eine offizielle Dokumentation des Tschechischen Fernsehens. Der Film begleitet den Direktor der Christlichen Roma-Mission auf seinem persönlichen Weg von einer IT-Karriere zum orthodoxen Priestertum in Roma-Gemeinschaften in der ganzen Slowakei — zusammen mit seiner Frau und seinen Kindern. Er bietet einen ehrlichen Blick auf das tägliche Pfarrleben, den Familiendienst auf dem Missionsfeld und das langfristige Opfer hinter der Berufung in Gemeinschaften, die von Armut, Ausgrenzung und tiefer geistlicher Not geprägt sind.",
+        source: "Tschechisches Fernsehen",
+        badgeLabel: "EN-Untertitel",
+      },
+      "int-1": {
+        title: "Warum die Roma? Warum jetzt?",
+        shortDesc:
+          "Ein slowakischsprachiges Interview über die Ursprünge der Mission und warum der orthodoxe Gemeindebau unter den Roma wichtig ist.",
+        fullDesc:
+          "Jungen aus den Elendsvierteln — sie lernen, ihre Köpfe zu beugen, ihre Stimmen zu erheben und den lebendigen Gott anzurufen. Dieses Gespräch dringt in den täglichen Rhythmus der Roma-Mission ein: wie sie beten, wie sie anbeten und wie es aussieht, wenn das Evangelium dort Wurzeln schlägt, wo niemand es erwartet hätte.",
+        source: "Podcast des Dekans der Orthodoxen Fakultät",
+        guest: "Martin Halík, Gründer der Christlichen Roma-Mission",
+        badgeLabel: "Slowakischer Ton",
+      },
+      "int-2": {
+        title: "Langfristige Präsenz statt Programme",
+        shortDesc:
+          "Warum kurzfristige Missionsmodelle scheitern und wie ein generationsübergreifendes Engagement für eine Gemeinschaft aussieht.",
+        fullDesc:
+          "Was kostet es tatsächlich, einer Berufung zu folgen? Dieses Interview verfolgt die ersten vier Jahre der Klenovec-Mission — eine Familie, die ihr Leben aufgibt und in die Slowakei umzieht, lernt, einer vergessenen Gemeinschaft anzugehören, und entdeckt, was es bedeutet zu bleiben.",
+        source: "Podcast des Dekans der Orthodoxen Fakultät",
+        guest: "Familienmissionare Halík",
+        badgeLabel: "Slowakischer Ton",
+      },
+      "testimony-laco": {
+        title: "Lacos Geschichte",
+        shortDesc:
+          "Ein Roma-Mann aus der Slowakei reflektiert darüber, was sich änderte, als die Mission in seine Gemeinschaft kam.",
+        fullDesc:
+          "Laco wuchs in einer Roma-Siedlung in der Slowakei auf. In diesem persönlichen Zeugnis spricht er offen über die Skepsis, die er einst hatte, über die Veränderung, die er in seiner Gemeinschaft erlebte, und darüber, was es bedeutete, dass der Priester blieb.",
+        source: "Persönliches Zeugnis",
+        guest: "Laco, Slowakei",
+        badgeLabel: "Englischer Ton",
+      },
+    },
+  },
   getInvolved: {
     hero: {
       label: "Mitmachen",
