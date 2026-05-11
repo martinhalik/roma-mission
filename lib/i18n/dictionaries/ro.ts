@@ -688,6 +688,82 @@ const ro: Dictionary = {
       ctaLearn: "Vezi cum funcționează",
     },
   },
+  getInvolved: {
+    hero: {
+      label: "Implică-te",
+      titleLine1: "Alătură-te lucrării",
+      titleLine2: "Bisericii",
+    },
+    waysSection: {
+      label: "Cum să ajuți",
+      title: "Alege cum să ajuți",
+      intro:
+        "Fiecare parohie întemeiată are nevoie de oameni care dăruiesc, se roagă și slujesc. Iată cum poți face parte din această misiune.",
+    },
+    ways: {
+      financial: {
+        title: "Sprijin financiar",
+        subtitle: "Lunar sau o singură dată",
+        desc: "Darurile tale finanțează direct salariile preoților, clădirile parohiale, programele pentru copii și deplasările echipei misionare. Orice sumă contează.",
+        point1: "25 $/lună — Acoperă materialele didactice pentru o lună",
+        point2: "50 $/lună — Finanțează cateheza unui copil timp de un an",
+        point3: "100 $/lună — Acoperă materialele parohiale săptămânale",
+        cta: "DĂRUIEȘTE ACUM",
+      },
+      volunteer: {
+        title: "Voluntariat",
+        subtitle: "Folosește-ți abilitățile",
+        desc: "Avem nevoie de oameni cu abilități în traducere, educație, construcții, administrație și nu numai. Sunt disponibile oportunități atât de la distanță, cât și la fața locului.",
+        point1: "Traducere și sprijin lingvistic",
+        point2: "Predare și meditații",
+        point3: "Administrație și comunicare",
+        cta: "APLICĂ CA VOLUNTAR",
+      },
+      share: {
+        title: "Răspândește misiunea",
+        subtitle: "Vorbește despre ea",
+        desc: "Ajută-i și pe alții să descopere ce face Dumnezeu printre romi. Distribuie videoclipuri, invită-ți parohia să se roage și vorbește oamenilor despre această lucrare.",
+        point1: "Distribuie mărturii și videoclipuri în comunitatea ta",
+        point2: "Invită-ți biserica să sprijine această misiune prin rugăciune",
+        point3: "Ajută-ne să ajungem la noi susținători și voluntari",
+        cta: "DISTRIBUIE",
+      },
+      trip: {
+        title: "Participă la o călătorie misionară",
+        subtitle: "Vino să vezi lucrarea",
+        desc: "Alătură-te unei echipe pentru 1–2 săptămâni și lucrează împreună cu preoții locali și liderii comunității. Nu este nevoie de experiență — doar de disponibilitate.",
+        point1: "Călătorii disponibile primăvara și vara",
+        point2: "Echipe de 4–8 persoane",
+        point3: "Programe pentru copii, construcții și implicare în comunitate",
+        cta: "ALĂTURĂ-TE UNEI CĂLĂTORII",
+      },
+    },
+    faq: {
+      label: "Întrebări frecvente",
+      titleLine1: "Întrebări",
+      titleLine2: "frecvente",
+      contactIntro:
+        "Nu ai găsit răspunsul? Contactează-l direct pe pr. Martin Halík la",
+      items: {
+        donation: {
+          q: "Unde merge donația mea?",
+          a: "Donațiile finanțează direct, în principal, spațiile centrelor misionare, programele pentru copii și traducerea materialelor.",
+        },
+        volunteer: {
+          q: "Ce calificări îmi trebuie ca să fiu voluntar?",
+          a: "Niciuna anume — potrivim voluntarii cu roluri care se potrivesc abilităților lor. Sunt necesari profesori de limbi, constructori, administratori și oameni dispuși să ajute la programele pentru copii.",
+        },
+        parish: {
+          q: "Pot sprijini o anumită parohie?",
+          a: "Da. Oferim pachete de sponsorizare a parohiilor care asigură sprijin direct, nominal, pentru o singură locație. Scrie-ne la misia@krm.sk pentru detalii.",
+        },
+        contact: {
+          q: "Cum pot lua legătura direct cu cineva?",
+          a: "Îl poți contacta pe pr. Martin Halík, directorul Misiunii Creștine Rome, la martin@romamission.eu sau la telefon +421 951 230 015 (WhatsApp) ori +1 (773) 796-8109. Mai multe pe www.romamission.eu.",
+        },
+      },
+    },
+  },
 };
 
 export default ro;

@@ -686,6 +686,82 @@ const en: Dictionary = {
       ctaLearn: "Learn How It Works",
     },
   },
+  getInvolved: {
+    hero: {
+      label: "Get Involved",
+      titleLine1: "Join the Work of",
+      titleLine2: "the Church",
+    },
+    waysSection: {
+      label: "Ways to Help",
+      title: "Choose How to Help",
+      intro:
+        "Every parish planted needs people who give, pray, and serve. Here's how you can be part of this mission.",
+    },
+    ways: {
+      financial: {
+        title: "Financial Support",
+        subtitle: "Give Monthly or One-Time",
+        desc: "Your giving directly funds priest salaries, parish buildings, children's programs, and mission team travel. Every amount makes a difference.",
+        point1: "$25/mo — Provides teaching materials for a month",
+        point2: "$50/mo — Funds one child's catechism for a year",
+        point3: "$100/mo — Covers weekly parish materials",
+        cta: "GIVE NOW",
+      },
+      volunteer: {
+        title: "Volunteer",
+        subtitle: "Use Your Skills",
+        desc: "We need people with skills in translation, education, construction, administration, and more. Remote and on-site opportunities available.",
+        point1: "Translation and language support",
+        point2: "Teaching and tutoring",
+        point3: "Administrative and communications",
+        cta: "APPLY TO VOLUNTEER",
+      },
+      share: {
+        title: "Share the Mission",
+        subtitle: "Spread the Word",
+        desc: "Help others discover what God is doing among the Roma. Share videos, invite your parish to pray, and tell people about this work.",
+        point1: "Share testimonies and videos with your community",
+        point2: "Invite your church to adopt this mission in prayer",
+        point3: "Help us reach new supporters and volunteers",
+        cta: "SHARE",
+      },
+      trip: {
+        title: "Join a Mission Trip",
+        subtitle: "Come See the Work",
+        desc: "Join a team for 1–2 weeks to work alongside local priests and community leaders. No experience necessary — just willingness.",
+        point1: "Spring and Summer trips available",
+        point2: "Teams of 4–8 people",
+        point3: "Kids' programs, construction, and community outreach",
+        cta: "JOIN A TRIP",
+      },
+    },
+    faq: {
+      label: "FAQ",
+      titleLine1: "Common",
+      titleLine2: "Questions",
+      contactIntro:
+        "Can't find your answer? Contact Fr. Martin Halík directly at",
+      items: {
+        donation: {
+          q: "Where does my donation go?",
+          a: "Donations directly fund primarily mission center facilities, children's programs and materials translation.",
+        },
+        volunteer: {
+          q: "What qualifications do I need to volunteer?",
+          a: "None specific — we match volunteers with roles that fit their skills. Language teachers, builders, administrators, and people willing to help with children's programs are all needed.",
+        },
+        parish: {
+          q: "Can I sponsor a specific parish?",
+          a: "Yes. We offer parish sponsorship packages that provide direct, named support to a single location. Contact us at misia@krm.sk to learn more.",
+        },
+        contact: {
+          q: "How can I reach someone directly?",
+          a: "You can contact Fr. Martin Halík, Director of Christian Roma Mission, at martin@romamission.eu or by phone at +421 951 230 015 (WhatsApp) or +1 (773) 796-8109. More at www.romamission.eu.",
+        },
+      },
+    },
+  },
 };
 
 export default en;

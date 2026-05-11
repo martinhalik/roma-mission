@@ -688,6 +688,82 @@ const de: Dictionary = {
       ctaLearn: "Wie sie funktioniert",
     },
   },
+  getInvolved: {
+    hero: {
+      label: "Mitmachen",
+      titleLine1: "Beteiligen Sie sich am Werk",
+      titleLine2: "der Kirche",
+    },
+    waysSection: {
+      label: "Wie Sie helfen können",
+      title: "Wählen Sie, wie Sie helfen",
+      intro:
+        "Jede gegründete Pfarrei braucht Menschen, die geben, beten und dienen. So können Sie Teil dieser Mission werden.",
+    },
+    ways: {
+      financial: {
+        title: "Finanzielle Unterstützung",
+        subtitle: "Monatlich oder einmalig spenden",
+        desc: "Ihre Spende finanziert direkt Priestergehälter, Pfarrgebäude, Kinderprogramme und Reisen des Missionsteams. Jeder Betrag macht einen Unterschied.",
+        point1: "25 $/Monat — Deckt Unterrichtsmaterial für einen Monat",
+        point2: "50 $/Monat — Finanziert die Katechese eines Kindes für ein Jahr",
+        point3: "100 $/Monat — Deckt wöchentliche Pfarrmaterialien",
+        cta: "JETZT SPENDEN",
+      },
+      volunteer: {
+        title: "Freiwillig mitarbeiten",
+        subtitle: "Bringen Sie Ihre Fähigkeiten ein",
+        desc: "Wir brauchen Menschen mit Fähigkeiten in Übersetzung, Bildung, Bauwesen, Verwaltung und mehr. Einsätze aus der Ferne und vor Ort sind möglich.",
+        point1: "Übersetzung und Sprachunterstützung",
+        point2: "Unterricht und Nachhilfe",
+        point3: "Verwaltung und Kommunikation",
+        cta: "ALS FREIWILLIGER BEWERBEN",
+      },
+      share: {
+        title: "Die Mission teilen",
+        subtitle: "Erzählen Sie davon",
+        desc: "Helfen Sie anderen zu entdecken, was Gott unter den Roma tut. Teilen Sie Videos, laden Sie Ihre Pfarrei zum Gebet ein und sprechen Sie mit Menschen über diese Arbeit.",
+        point1: "Zeugnisse und Videos in Ihrer Gemeinschaft teilen",
+        point2: "Laden Sie Ihre Kirche ein, diese Mission im Gebet zu tragen",
+        point3: "Helfen Sie uns, neue Unterstützer und Freiwillige zu erreichen",
+        cta: "TEILEN",
+      },
+      trip: {
+        title: "An einer Missionsreise teilnehmen",
+        subtitle: "Sehen Sie das Werk vor Ort",
+        desc: "Schließen Sie sich für 1–2 Wochen einem Team an und arbeiten Sie zusammen mit den örtlichen Priestern und Gemeindeleitern. Keine Erfahrung nötig — nur Bereitschaft.",
+        point1: "Reisen im Frühling und Sommer verfügbar",
+        point2: "Teams von 4–8 Personen",
+        point3: "Kinderprogramme, Bauarbeiten und Gemeindearbeit",
+        cta: "AN EINER REISE TEILNEHMEN",
+      },
+    },
+    faq: {
+      label: "FAQ",
+      titleLine1: "Häufige",
+      titleLine2: "Fragen",
+      contactIntro:
+        "Antwort nicht gefunden? Wenden Sie sich direkt an P. Martin Halík unter",
+      items: {
+        donation: {
+          q: "Wohin geht meine Spende?",
+          a: "Spenden finanzieren in erster Linie die Räumlichkeiten der Missionszentren, Kinderprogramme und die Übersetzung von Materialien.",
+        },
+        volunteer: {
+          q: "Welche Qualifikationen brauche ich, um freiwillig mitzuarbeiten?",
+          a: "Keine bestimmten — wir vermitteln Freiwillige in Rollen, die zu ihren Fähigkeiten passen. Wir brauchen Sprachlehrer, Handwerker, Verwaltungsfachleute und Menschen, die bei Kinderprogrammen helfen wollen.",
+        },
+        parish: {
+          q: "Kann ich eine bestimmte Pfarrei unterstützen?",
+          a: "Ja. Wir bieten Patenschaftspakete an, die einer einzelnen Pfarrei direkte, namentlich zugeordnete Unterstützung gewähren. Schreiben Sie uns an misia@krm.sk, um mehr zu erfahren.",
+        },
+        contact: {
+          q: "Wie kann ich jemanden direkt erreichen?",
+          a: "Sie können P. Martin Halík, Direktor der Christlichen Roma-Mission, unter martin@romamission.eu erreichen oder telefonisch unter +421 951 230 015 (WhatsApp) bzw. +1 (773) 796-8109. Mehr unter www.romamission.eu.",
+        },
+      },
+    },
+  },
 };
 
 export default de;
