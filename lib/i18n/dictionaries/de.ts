@@ -136,6 +136,187 @@ const de: Dictionary = {
       cta: "MEDIENBIBLIOTHEK ENTDECKEN",
     },
   },
+  locations: {
+    hero: {
+      label: "Unser Wirkungsfeld",
+      titleLine1: "Jedes Dorf auf dieser Karte",
+      titleLine2: "ist ein Name, für den wir beten.",
+      subtitle:
+        "Zwei Missionszentren. Gegründete Gemeinden. Aktive Gemeindegründungen. Pfarreien in der Ost- und Südslowakei, in denen Roma-Familien das Evangelium gehört haben — viele zum ersten Mal in ihrer Familienlinie.",
+    },
+    stats: {
+      missionCenters: "Missionszentren",
+      plantedChurches: "Gegründete Gemeinden",
+      activePlants: "Aktive Gemeindegründungen",
+      parishesSupported: "Unterstützte Pfarreien",
+      primaryField: "Hauptwirkungsfeld",
+      primaryFieldValue: "Slowakei",
+    },
+    mapSection: {
+      label: "Missionsfeld",
+      title: "Slowakei — wo wir arbeiten",
+      intro:
+        "In der Süd- und Ostslowakei liegt die höchste Konzentration von Roma-Siedlungen des Landes. Wir gehen dorthin, wo etablierte Kirchen nicht hinkommen.",
+    },
+    centersSection: {
+      label: "Missionszentren",
+      title: "Zwei operative Stützpunkte",
+      intro:
+        "Ein Missionszentrum ist eine dauerhafte, hauptamtliche Präsenz — nicht nur ein Programm, das wir durchführen, sondern ein Ort, an dem unsere Leute leben, arbeiten und mitten in der Roma-Gemeinschaft Gottesdienst feiern.",
+      capacity: "Kapazität",
+      weeklyAvg: "Wochendurchschnitt",
+      established: "Gegr.",
+      programsLabel: "Laufende Programme",
+    },
+    plantedSection: {
+      label: "Gegründete Gemeinden",
+      title: "Gemeinschaften, die wir gegründet haben",
+      intro:
+        "Eine gegründete Gemeinde ist eine Gemeinschaft, die es vor unserer Ankunft nicht gab. Wir kommen, lehren, bilden Leiter aus, treten zurück. Manche werden zu Missionszentren. Manche laufen Jahre und enden dann. Beide Ergebnisse zählen.",
+      yearsActive: "Jahre aktiv",
+      ongoing: "läuft",
+      weeklyAvg: "Wochenschnitt",
+    },
+    activeSection: {
+      label: "Aktuell im Aufbau",
+      title: "Wo wir gerade jetzt sind",
+      intro:
+        "Das sind keine Programme. Das sind unsere Missionare, die Woche für Woche in Dörfer kommen, in denen Roma-Familien keine Kirche, keinen Priester und oft niemanden haben, der nur ihretwegen kommt. Eure Unterstützung hält sie in Bewegung.",
+      activeBadge: "Aktiv",
+      started: "Begonnen",
+      inField: "Im Einsatz",
+      yearShort: "J.",
+      yearsShort: "J.",
+      yearLessThan: "<1",
+    },
+    endedSection: {
+      label: "Ehrliche Bilanz",
+      countryLabel: "Slowakei",
+      carryForward: "Was wir mitnehmen:",
+    },
+    supportedSection: {
+      label: "Pfarreien, die wir unterstützt haben",
+      title: "Dienst an der Seite örtlicher Priester",
+      intro:
+        "Nicht jede Roma-Gemeinschaft braucht eine neue Kirche. Manchmal gibt es schon eine örtliche Pfarrei, aber ihr fehlen die Menschen und Mittel, um die Roma-Siedlung nebenan zu erreichen. Wir gehen hinein, leisten den Dienst und unterstützen den Priester, der bereits dort ist. Unten stehen die Pfarreien, in denen wir gedient haben — manche kurz, manche jahrelang.",
+      footnote: "und mehr — die Liste wächst, sobald sich neue Türen öffnen.",
+    },
+    map: {
+      klenovec: {
+        subtitle: "Missionszentrum Hl. Nikolaus",
+        description:
+          "Unser Hauptmissionsstützpunkt in der Mittelslowakei — operatives Zentrum für Schulung, Gemeindebildung und regionale Koordination.",
+        status: "MISSIONSZENTRUM",
+      },
+      markovce: {
+        subtitle: "Roma-Pfarrei & entstehendes Missionszentrum",
+        description:
+          "Eine aktive orthodoxe Roma-Pfarrei mit regelmäßiger Liturgie, Jugendprogrammen und wachsender lokaler Laienleitung. Im Übergang zu einem vollwertigen Missionszentrum.",
+        status: "ENTSTEHENDES ZENTRUM",
+      },
+      kacanov: {
+        subtitle: "Gemeindegründung",
+        description:
+          "Eine neue Kirche entsteht in der Nähe von Markovce. Die Gottesdienste haben begonnen. Ein dauerhafter Ort und fortlaufende Unterstützung sind nötig.",
+        status: "ERSTE KAPELLE",
+      },
+      mutnik: {
+        subtitle: "Abgeschlossen — 2026",
+        description:
+          "Neun Jahre treuer Präsenz. Eine Gemeinschaft entstand, Gläubige wurden getauft, lokale Leiter sind gewachsen. Dieses Kapitel wurde 2026 abgeschlossen.",
+        status: "ABGESCHLOSSEN 2026",
+      },
+      "rimavska-pila": {
+        subtitle: "Aktive Gemeindegründung",
+        description:
+          "Eine neue Pfarrei schlägt in der Nähe von Klenovec Wurzeln. Die Gottesdienste haben begonnen. Ein dauerhafter Ort und fortlaufende Unterstützung sind nötig.",
+        status: "GRÜNDUNG",
+      },
+      zemjastrabie: {
+        subtitle: "Aktive Gemeindegründung",
+        description:
+          "Eine Siedlung, für die wir jahrelang gebetet haben. Endlich ist eine Tür offen. Erste Schritte laufen.",
+        status: "GRÜNDUNG",
+      },
+      hnusta: {
+        subtitle: "Nicht fortgeführt — 2017",
+        description:
+          "Ein früher Missionseinsatz im Raum Hnúšťa, der ohne kontinuierliche missionarische Präsenz vor Ort nicht aufrechterhalten werden konnte.",
+        status: "BEENDET",
+      },
+      hacava: {
+        subtitle: "Nicht fortgeführt — 2017",
+        description:
+          "Eine wirklich offene Tür mit ersten Früchten, aber wir konnten keine kontinuierliche missionarische Präsenz halten. Ohne jemanden, der Woche für Woche kommt, konnte die Gemeinschaft nicht zusammenbleiben.",
+        status: "BEENDET",
+      },
+      varadka: {
+        subtitle: "Kooperierende Pfarrei",
+        description:
+          "Eine Partnergemeinde im Bezirk Bardejov, die das Missionsnetzwerk durch geteilte Ressourcen und pastorale Zusammenarbeit unterstützt.",
+        status: "UNTERSTÜTZT",
+      },
+      supportedStatus: "UNTERSTÜTZT",
+    },
+    centers: {
+      klenovec: {
+        subtitle: "Pfarrei gegründet · Missionszentrum gebaut",
+        region: "Region Banská Bystrica, SK",
+        description:
+          "Klenovec ist der Ort, an dem die Mission Wurzeln schlug. Eine Roma-Familie öffnete ihr Haus für das Gebet, eine Pfarrei wurde gegründet, und im Laufe der Jahre entstand auf diesem Fundament ein vollwertiges Missionszentrum. Heute dient es als unsere zentrale operative Basis — Kapelle, Gemeinschaftsraum und die tägliche Arbeit, mitten unter den Menschen präsent zu sein.",
+        badge: "GEGRÜNDETE PFARREI · MISSIONSZENTRUM",
+        program1: "Sonntagsliturgie",
+        program2: "Bibelkreis für Kinder",
+        program3: "Leiterausbildung",
+        program4: "Hausbesuche",
+        program5: "Taufvorbereitung",
+      },
+      markovce: {
+        subtitle: "Pfarrei im Übergang → Missionszentrum",
+        region: "Region Prešov, SK",
+        description:
+          "Markovce begann als unterstützte Pfarrei — einer von vielen Orten, an denen unser Team auftauchte, Programme durchführte und einer örtlichen Gemeinde half, ihre Roma-Nachbarn zu erreichen. Die Wurzeln sind tief genug gewachsen, dass wir diesen Ort jetzt zu einem vollwertigen Missionszentrum ausbauen. Der Übergang ist im Gange.",
+        badge: "ENTSTEHENDES ZENTRUM",
+        program1: "Roma-Arbeit",
+        program2: "Unterstützung des Sonntagsdienstes",
+        program3: "Gemeinschaftsbildung",
+      },
+    },
+    planted: {
+      klenovec: {
+        name: "Roma-Tochterpfarrei Klenovec",
+        note: "Als Pfarrei gegründet, später wurde auf demselben Fundament auch ein physisches Missionszentrum gebaut. Heute unsere Hauptbasis.",
+        status: "MISSIONSZENTRUM",
+      },
+      kacanov: {
+        name: "Roma-Gemeinschaft Kačanov",
+        note: "Die Gemeinschaft ist stark und versammelt sich regelmäßig. Wir bauen jetzt eine Kirche — die Menschen kamen zuerst, das Gebäude folgt.",
+        status: "ERSTE KAPELLE",
+      },
+      mutnik: {
+        name: "Roma-Gemeinschaft Mútnik",
+        note: "Neun Jahre treuer Präsenz. Eine Gemeinschaft entstand, Gläubige wurden getauft, lokale Leiter sind gewachsen. Dieses Kapitel wurde 2026 abgeschlossen.",
+        status: "ABGESCHLOSSEN 2026",
+      },
+    },
+    activePlants: {
+      "rimavska-pila": {
+        description:
+          "Zwei Jahre vor Ort. Regelmäßige Treffen sind etabliert, eine Kerngruppe formiert sich. Die reifste unserer aktuellen Gemeindegründungen.",
+      },
+      zemjastrabie: {
+        description:
+          "Eine Siedlung, für die wir jahrelang gebetet haben. Endlich ist eine Tür offen. Erste Schritte laufen.",
+      },
+    },
+    endedPlant: {
+      years: "2017 — nicht fortgeführt",
+      description:
+        "Wir kamen nach Hačava mit einer wirklich offenen Tür und ersten Früchten. Aber wir konnten keine kontinuierliche missionarische Präsenz halten — unser Team in Klenovec hatte schlicht nicht genug Freiwillige, um zusätzlich auch dieses Dorf abzudecken. Ohne jemanden, der Woche für Woche hingeht, konnte die Gemeinschaft nicht zusammenbleiben. Wir mussten aufhören.",
+      learned:
+        "Wer überlegt, sich unserem Freiwilligenteam in Klenovec anzuschließen: Hačava ist der Grund, warum es zählt. Jeder Mensch, den wir hinzufügen, erweitert unsere Reichweite. Ein Dorf wie dieses wartet auf jemanden, der genug Zeit hat, hinzugehen.",
+    },
+  },
   mission: {
     hero: {
       label: "Unsere Mission",

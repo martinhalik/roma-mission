@@ -136,6 +136,187 @@ const sk: Dictionary = {
       cta: "PRESKÚMAŤ MEDIÁLNU KNIŽNICU",
     },
   },
+  locations: {
+    hero: {
+      label: "Naše pôsobisko",
+      titleLine1: "Každá obec na tejto mape",
+      titleLine2: "je meno, za ktoré sa modlíme.",
+      subtitle:
+        "Dve misijné centrá. Založené farnosti. Aktívne zakladané spoločenstvá. Farnosti vo východnom a južnom Slovensku, kde rómske rodiny počuli evanjelium — mnohé po prvý raz vo svojej rodovej línii.",
+    },
+    stats: {
+      missionCenters: "Misijné centrá",
+      plantedChurches: "Založené farnosti",
+      activePlants: "Aktívne zakladania",
+      parishesSupported: "Podporované farnosti",
+      primaryField: "Hlavné pôsobisko",
+      primaryFieldValue: "Slovensko",
+    },
+    mapSection: {
+      label: "Misijné územie",
+      title: "Slovensko — kde pôsobíme",
+      intro:
+        "Južné a východné Slovensko má najvyššiu koncentráciu rómskych osád v krajine. Ideme tam, kam zavedené cirkvi nedosiahli.",
+    },
+    centersSection: {
+      label: "Misijné centrá",
+      title: "Dve operatívne základne",
+      intro:
+        "Misijné centrum je trvalá, plnočasová prítomnosť — nielen program, ktorý vedieme, ale miesto, kde naši ľudia žijú, pracujú a modlia sa uprostred rómskej komunity.",
+      capacity: "Kapacita",
+      weeklyAvg: "Týždenný priemer",
+      established: "Zal.",
+      programsLabel: "Bežiace programy",
+    },
+    plantedSection: {
+      label: "Založené farnosti",
+      title: "Spoločenstvá, ktoré sme založili",
+      intro:
+        "Založená farnosť je spoločenstvo, ktoré pred naším príchodom neexistovalo. Vstúpime, učeníme, vychovávame vedúcich, ustúpime. Niektoré sa stanú misijnými centrami. Niektoré bežia roky a skončia. Oba výsledky majú zmysel.",
+      yearsActive: "rokov aktívne",
+      ongoing: "pokračuje",
+      weeklyAvg: "týždenný priemer",
+    },
+    activeSection: {
+      label: "Práve zakladáme",
+      title: "Kde sme práve teraz",
+      intro:
+        "Toto nie sú programy. Toto sú naši misionári, ktorí týždeň čo týždeň prichádzajú do dedín, kde rómske rodiny nemajú kostol, nemajú kňaza a často nikoho, kto by prišiel iba kvôli nim. Vaša podpora ich drží v pohybe.",
+      activeBadge: "Aktívne",
+      started: "Začalo sa",
+      inField: "V teréne",
+      yearShort: "r.",
+      yearsShort: "r.",
+      yearLessThan: "<1",
+    },
+    endedSection: {
+      label: "Úprimné účtovanie",
+      countryLabel: "Slovensko",
+      carryForward: "Čo si nesieme ďalej:",
+    },
+    supportedSection: {
+      label: "Farnosti, ktoré sme podporili",
+      title: "Slúžime po boku miestnych kňazov",
+      intro:
+        "Nie každá rómska komunita potrebuje nový kostol. Niekedy už miestna farnosť existuje, ale chýbajú jej ľudia a nástroje, aby zasiahla rómsku osadu vedľa. Vstúpime, slúžime a podporujeme kňaza, ktorý tam už je. Nižšie sú farnosti, kde sme slúžili — niektoré krátko, niektoré roky.",
+      footnote: "a ďalšie — zoznam rastie, ako sa otvárajú nové dvere.",
+    },
+    map: {
+      klenovec: {
+        subtitle: "Misijné centrum sv. Mikuláša",
+        description:
+          "Naša hlavná misijná základňa v strednom Slovensku — operatívne centrum pre formáciu, vzdelávanie a regionálnu koordináciu.",
+        status: "MISIJNÉ CENTRUM",
+      },
+      markovce: {
+        subtitle: "Rómska farnosť a rozvíjajúce sa misijné centrum",
+        description:
+          "Aktívna pravoslávna rómska farnosť s pravidelnou liturgiou, programami pre mládež a rastúcim miestnym laickým vedením. Prechádza na plnohodnotné misijné centrum.",
+        status: "ROZVÍJAJÚCE SA CENTRUM",
+      },
+      kacanov: {
+        subtitle: "Zakladaná farnosť",
+        description:
+          "Nový kostol, ktorý vzniká pri Markovciach. Bohoslužby sa už začali. Potrebné je trvalé miesto a pokračujúca podpora.",
+        status: "PRVÁ KAPLNKA",
+      },
+      mutnik: {
+        subtitle: "Ukončené — 2026",
+        description:
+          "Deväť rokov vernej prítomnosti. Vzniklo spoločenstvo, veriaci boli pokrstení a vyrástli miestni vedúci. Táto kapitola sa uzavrela v roku 2026.",
+        status: "UKONČENÉ 2026",
+      },
+      "rimavska-pila": {
+        subtitle: "Aktívne zakladanie",
+        description:
+          "Nová farnosť zapúšťa korene pri Klenovci. Bohoslužby sa začali. Potrebné je trvalé miesto a pokračujúca podpora.",
+        status: "ZAKLADANIE",
+      },
+      zemjastrabie: {
+        subtitle: "Aktívne zakladanie",
+        description:
+          "Osada, za ktorú sme sa modlili roky. Konečne máme otvorené dvere. Začíname s prvou službou.",
+        status: "ZAKLADANIE",
+      },
+      hnusta: {
+        subtitle: "Nepokračovalo — 2017",
+        description:
+          "Skoré misijné úsilie v oblasti Hnúšte, ktoré sa nedalo udržať bez stálej misijnej prítomnosti v teréne.",
+        status: "UKONČENÉ",
+      },
+      hacava: {
+        subtitle: "Nepokračovalo — 2017",
+        description:
+          "Skutočne otvorené dvere a prvé ovocie, ale nedokázali sme udržať stálu misijnú prítomnosť. Bez niekoho, kto by chodil týždeň čo týždeň, sa spoločenstvo nemohlo udržať pohromade.",
+        status: "UKONČENÉ",
+      },
+      varadka: {
+        subtitle: "Spolupracujúca farnosť",
+        description:
+          "Partnerská farnosť v okrese Bardejov, ktorá podporuje misijnú sieť spoločnými zdrojmi a pastoračnou spoluprácou.",
+        status: "PODPOROVANÁ",
+      },
+      supportedStatus: "PODPOROVANÁ",
+    },
+    centers: {
+      klenovec: {
+        subtitle: "Založená farnosť · Postavené misijné centrum",
+        region: "Banskobystrický kraj, SK",
+        description:
+          "Klenovec je miesto, kde misia zapustila korene. Rómska rodina otvorila svoj domov pre modlitbu, založila sa farnosť a v priebehu rokov bolo na tomto základe postavené plnohodnotné misijné centrum. Dnes slúži ako naša hlavná operatívna základňa — kaplnka, komunitný priestor a každodenná práca byť prítomný medzi ľuďmi.",
+        badge: "ZALOŽENÁ FARNOSŤ · MISIJNÉ CENTRUM",
+        program1: "Nedeľná liturgia",
+        program2: "Detský biblický klub",
+        program3: "Formácia vedúcich",
+        program4: "Návštevy v rodinách",
+        program5: "Príprava na krst",
+      },
+      markovce: {
+        subtitle: "Farnosť v premene → Misijné centrum",
+        region: "Prešovský kraj, SK",
+        description:
+          "Markovce začali ako podporovaná farnosť — jedno z mnohých miest, kde náš tím prichádzal, viedol programy a pomáhal miestnemu spoločenstvu osloviť svojich rómskych susedov. Korene zapustili dosť hlboko na to, aby sme z tohto miesta budovali plnohodnotné misijné centrum. Premena prebieha.",
+        badge: "ROZVÍJAJÚCE SA CENTRUM",
+        program1: "Práca s Rómami",
+        program2: "Podpora nedeľnej služby",
+        program3: "Formovanie spoločenstva",
+      },
+    },
+    planted: {
+      klenovec: {
+        name: "Rómska podfarnosť Klenovec",
+        note: "Založená ako farnosť, neskôr na rovnakom základe vyrástlo aj fyzické misijné centrum. Dnes naša hlavná základňa.",
+        status: "MISIJNÉ CENTRUM",
+      },
+      kacanov: {
+        name: "Rómska komunita Kačanov",
+        note: "Spoločenstvo je silné a stretáva sa pravidelne. Práve staviame kostol — najprv prišli ľudia, budova nasleduje.",
+        status: "PRVÁ KAPLNKA",
+      },
+      mutnik: {
+        name: "Rómska komunita Mútnik",
+        note: "Deväť rokov vernej prítomnosti. Vzniklo spoločenstvo, veriaci boli pokrstení a vyrástli miestni vedúci. Táto kapitola sa uzavrela v roku 2026.",
+        status: "UKONČENÉ 2026",
+      },
+    },
+    activePlants: {
+      "rimavska-pila": {
+        description:
+          "Dva roky v teréne. Pravidelné stretnutia sú zavedené, formuje sa hlavná skupina. Najzrelšie zo súčasných zakladaní.",
+      },
+      zemjastrabie: {
+        description:
+          "Osada, za ktorú sme sa modlili roky. Konečne máme otvorené dvere. Začíname s prvou službou.",
+      },
+    },
+    endedPlant: {
+      years: "2017 — nepokračovalo",
+      description:
+        "Do Hačavy sme vstúpili so skutočne otvorenými dverami a prvým ovocím. Nedokázali sme však udržať stálu misijnú prítomnosť — náš tím v Klenovci jednoducho nemal dosť dobrovoľníkov, aby popri všetkom ostatnom pokrýval aj túto dedinu. Bez niekoho, kto by tam chodil týždeň čo týždeň, sa spoločenstvo nedalo udržať pohromade. Museli sme prestať.",
+      learned:
+        "Ak uvažujete o pripojení k nášmu dobrovoľníckemu tímu v Klenovci, Hačava je dôvod, prečo na tom záleží. Každý človek, ktorého pridáme k našej základni, rozširuje, ako ďaleko môžeme dosiahnuť. Dedina ako táto čaká na niekoho, kto má dosť času ísť.",
+    },
+  },
   mission: {
     hero: {
       label: "Naša misia",

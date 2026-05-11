@@ -136,6 +136,187 @@ const ro: Dictionary = {
       cta: "EXPLOREAZĂ BIBLIOTECA MEDIA",
     },
   },
+  locations: {
+    hero: {
+      label: "Câmpul nostru de lucrare",
+      titleLine1: "Fiecare sat de pe această hartă",
+      titleLine2: "este un nume pentru care ne rugăm.",
+      subtitle:
+        "Două centre de misiune. Parohii înființate. Comunități în curs de plantare. Parohii din estul și sudul Slovaciei, unde familii rome au auzit Evanghelia — multe pentru prima dată în istoria neamului lor.",
+    },
+    stats: {
+      missionCenters: "Centre de misiune",
+      plantedChurches: "Biserici înființate",
+      activePlants: "Plantări active",
+      parishesSupported: "Parohii sprijinite",
+      primaryField: "Câmp principal",
+      primaryFieldValue: "Slovacia",
+    },
+    mapSection: {
+      label: "Câmpul de misiune",
+      title: "Slovacia — unde lucrăm",
+      intro:
+        "Sudul și estul Slovaciei concentrează cele mai multe așezări rome din țară. Mergem acolo unde bisericile deja existente nu au ajuns.",
+    },
+    centersSection: {
+      label: "Centre de misiune",
+      title: "Două baze operaționale",
+      intro:
+        "Un centru de misiune este o prezență permanentă, cu normă întreagă — nu doar un program pe care îl derulăm, ci un loc unde oamenii noștri trăiesc, lucrează și se închină în mijlocul comunității rome.",
+      capacity: "Capacitate",
+      weeklyAvg: "Medie săptămânală",
+      established: "Înf.",
+      programsLabel: "Programe în desfășurare",
+    },
+    plantedSection: {
+      label: "Biserici înființate",
+      title: "Comunități pe care le-am înființat",
+      intro:
+        "O biserică înființată este o comunitate care nu exista înainte să venim. Intrăm, ucenicim, formăm lideri, ne retragem. Unele devin centre de misiune. Altele funcționează ani de zile și se încheie. Ambele rezultate contează.",
+      yearsActive: "ani activi",
+      ongoing: "în desfășurare",
+      weeklyAvg: "medie săptămânală",
+    },
+    activeSection: {
+      label: "Plantăm acum",
+      title: "Unde suntem chiar acum",
+      intro:
+        "Nu sunt doar programe. Sunt misionarii noștri care vin săptămână de săptămână în sate unde familiile rome nu au biserică, nu au preot și adesea pe nimeni care să vină doar pentru ei. Sprijinul vostru îi ține în mișcare.",
+      activeBadge: "Activ",
+      started: "A început",
+      inField: "Pe teren",
+      yearShort: "an",
+      yearsShort: "ani",
+      yearLessThan: "<1",
+    },
+    endedSection: {
+      label: "Bilanț onest",
+      countryLabel: "Slovacia",
+      carryForward: "Ce ducem mai departe:",
+    },
+    supportedSection: {
+      label: "Parohii pe care le-am sprijinit",
+      title: "Slujim alături de preoții locali",
+      intro:
+        "Nu fiecare comunitate romă are nevoie de o biserică nouă. Uneori parohia locală există deja, dar nu are oamenii și instrumentele pentru a ajunge la așezarea romă de alături. Intrăm, slujim și sprijinim preotul care este deja acolo. Mai jos sunt parohii unde am slujit — unele pe scurt, altele ani de zile.",
+      footnote: "și altele — lista crește pe măsură ce se deschid noi uși.",
+    },
+    map: {
+      klenovec: {
+        subtitle: "Centrul de misiune Sf. Nicolae",
+        description:
+          "Baza noastră principală de misiune din centrul Slovaciei — centrul operațional pentru formare, construirea comunității și coordonare regională.",
+        status: "CENTRU DE MISIUNE",
+      },
+      markovce: {
+        subtitle: "Parohie romă & centru de misiune în dezvoltare",
+        description:
+          "O parohie ortodoxă romă activă, cu Liturghie regulată, programe pentru tineri și o conducere laică locală în creștere. Trece la statutul de centru de misiune complet.",
+        status: "CENTRU ÎN DEZVOLTARE",
+      },
+      kacanov: {
+        subtitle: "Parohie în plantare",
+        description:
+          "O biserică nouă, înființată lângă Markovce. Slujbele au început deja. Sunt necesare un loc permanent și sprijin continuu.",
+        status: "PRIMA CAPELĂ",
+      },
+      mutnik: {
+        subtitle: "Încheiat — 2026",
+        description:
+          "Nouă ani de prezență credincioasă. S-a format o comunitate, credincioșii au fost botezați și au apărut lideri locali. Acest capitol s-a încheiat în 2026.",
+        status: "ÎNCHEIAT 2026",
+      },
+      "rimavska-pila": {
+        subtitle: "Plantare activă",
+        description:
+          "O parohie nouă prinde rădăcini lângă Klenovec. Slujbele au început. Sunt necesare un loc permanent și sprijin continuu.",
+        status: "PLANTARE",
+      },
+      zemjastrabie: {
+        subtitle: "Plantare activă",
+        description:
+          "O așezare pentru care ne-am rugat ani de zile. În sfârșit avem o ușă deschisă. Începem primele acțiuni.",
+        status: "PLANTARE",
+      },
+      hnusta: {
+        subtitle: "Nu a continuat — 2017",
+        description:
+          "Un efort timpuriu de misiune în zona Hnúšťa, care nu a putut fi susținut fără o prezență misionară constantă pe teren.",
+        status: "ÎNCHEIAT",
+      },
+      hacava: {
+        subtitle: "Nu a continuat — 2017",
+        description:
+          "O ușă cu adevărat deschisă și roade timpurii, dar nu am putut susține o prezență misionară constantă. Fără cineva care să vină săptămână de săptămână, comunitatea nu s-a putut menține.",
+        status: "ÎNCHEIAT",
+      },
+      varadka: {
+        subtitle: "Parohie colaboratoare",
+        description:
+          "O parohie parteneră din districtul Bardejov care sprijină rețeaua misionară prin resurse comune și cooperare pastorală.",
+        status: "SPRIJINITĂ",
+      },
+      supportedStatus: "SPRIJINITĂ",
+    },
+    centers: {
+      klenovec: {
+        subtitle: "Parohie înființată · Centru de misiune construit",
+        region: "Regiunea Banská Bystrica, SK",
+        description:
+          "Klenovec este locul unde misiunea a prins rădăcini. O familie romă și-a deschis casa pentru rugăciune, s-a înființat o parohie și, de-a lungul anilor, pe această temelie s-a construit un centru de misiune complet. Astăzi este baza noastră operațională principală — capelă, spațiu comunitar și munca zilnică de a fi prezenți printre oameni.",
+        badge: "PAROHIE ÎNFIINȚATĂ · CENTRU DE MISIUNE",
+        program1: "Liturghie duminicală",
+        program2: "Cerc biblic pentru copii",
+        program3: "Formare de lideri",
+        program4: "Vizite la domiciliu",
+        program5: "Pregătire pentru botez",
+      },
+      markovce: {
+        subtitle: "Parohie în tranziție → Centru de misiune",
+        region: "Regiunea Prešov, SK",
+        description:
+          "Markovce a început ca o parohie sprijinită — unul dintre numeroasele locuri unde echipa noastră a apărut, a derulat programe și a ajutat o comunitate locală să își întâmpine vecinii romi. Rădăcinile au mers destul de adânc pentru ca acum să transformăm această locație într-un centru de misiune complet. Tranziția este în curs.",
+        badge: "CENTRU ÎN DEZVOLTARE",
+        program1: "Lucrare cu romii",
+        program2: "Sprijin pentru slujirea de duminică",
+        program3: "Formarea comunității",
+      },
+    },
+    planted: {
+      klenovec: {
+        name: "Sub-parohia romă Klenovec",
+        note: "Înființată ca parohie, ulterior pe aceeași temelie s-a construit un centru de misiune fizic. Astăzi baza noastră principală.",
+        status: "CENTRU DE MISIUNE",
+      },
+      kacanov: {
+        name: "Comunitatea romă Kačanov",
+        note: "Comunitatea este puternică și se adună regulat. Construim acum o biserică — oamenii au venit primii, clădirea urmează.",
+        status: "PRIMA CAPELĂ",
+      },
+      mutnik: {
+        name: "Comunitatea romă Mútnik",
+        note: "Nouă ani de prezență credincioasă. S-a format o comunitate, credincioșii au fost botezați și au apărut lideri locali. Acest capitol s-a încheiat în 2026.",
+        status: "ÎNCHEIAT 2026",
+      },
+    },
+    activePlants: {
+      "rimavska-pila": {
+        description:
+          "Doi ani pe teren. Întâlniri regulate stabilite, un grup de bază se formează. Cea mai matură dintre eforturile noastre actuale de plantare.",
+      },
+      zemjastrabie: {
+        description:
+          "O așezare pentru care ne-am rugat ani de zile. În sfârșit avem o ușă deschisă. Începem primele acțiuni.",
+      },
+    },
+    endedPlant: {
+      years: "2017 — nu a continuat",
+      description:
+        "Am intrat în Hačava cu o ușă cu adevărat deschisă și roade timpurii. Dar nu am putut susține o prezență misionară constantă — echipa noastră din Klenovec pur și simplu nu avea destui voluntari pentru a acoperi și acest sat pe lângă tot restul. Fără cineva care să vină săptămână de săptămână, comunitatea nu s-a putut menține. A trebuit să oprim.",
+      learned:
+        "Dacă te gândești să te alături echipei noastre de voluntari din Klenovec, Hačava este motivul pentru care contează. Fiecare persoană pe care o adăugăm la baza noastră extinde cât de departe putem ajunge. Un sat ca acesta așteaptă pe cineva care are destul timp pentru a merge.",
+    },
+  },
   mission: {
     hero: {
       label: "Misiunea noastră",

@@ -123,6 +123,114 @@ export interface Dictionary {
       cta: string;
     };
   };
+  locations: {
+    hero: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      subtitle: string;
+    };
+    stats: {
+      missionCenters: string;
+      plantedChurches: string;
+      activePlants: string;
+      parishesSupported: string;
+      primaryField: string;
+      primaryFieldValue: string;
+    };
+    mapSection: {
+      label: string;
+      title: string;
+      intro: string;
+    };
+    centersSection: {
+      label: string;
+      title: string;
+      intro: string;
+      capacity: string;
+      weeklyAvg: string;
+      established: string;
+      programsLabel: string;
+    };
+    plantedSection: {
+      label: string;
+      title: string;
+      intro: string;
+      yearsActive: string;
+      ongoing: string;
+      weeklyAvg: string;
+    };
+    activeSection: {
+      label: string;
+      title: string;
+      intro: string;
+      activeBadge: string;
+      started: string;
+      inField: string;
+      yearShort: string;
+      yearsShort: string;
+      yearLessThan: string;
+    };
+    endedSection: {
+      label: string;
+      countryLabel: string;
+      carryForward: string;
+    };
+    supportedSection: {
+      label: string;
+      title: string;
+      intro: string;
+      footnote: string;
+    };
+    map: {
+      klenovec: { subtitle: string; description: string; status: string };
+      markovce: { subtitle: string; description: string; status: string };
+      kacanov: { subtitle: string; description: string; status: string };
+      mutnik: { subtitle: string; description: string; status: string };
+      "rimavska-pila": { subtitle: string; description: string; status: string };
+      zemjastrabie: { subtitle: string; description: string; status: string };
+      hnusta: { subtitle: string; description: string; status: string };
+      hacava: { subtitle: string; description: string; status: string };
+      varadka: { subtitle: string; description: string; status: string };
+      supportedStatus: string;
+    };
+    centers: {
+      klenovec: {
+        subtitle: string;
+        region: string;
+        description: string;
+        badge: string;
+        program1: string;
+        program2: string;
+        program3: string;
+        program4: string;
+        program5: string;
+      };
+      markovce: {
+        subtitle: string;
+        region: string;
+        description: string;
+        badge: string;
+        program1: string;
+        program2: string;
+        program3: string;
+      };
+    };
+    planted: {
+      klenovec: { name: string; note: string; status: string };
+      kacanov: { name: string; note: string; status: string };
+      mutnik: { name: string; note: string; status: string };
+    };
+    activePlants: {
+      "rimavska-pila": { description: string };
+      zemjastrabie: { description: string };
+    };
+    endedPlant: {
+      years: string;
+      description: string;
+      learned: string;
+    };
+  };
   mission: {
     hero: {
       label: string;

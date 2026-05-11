@@ -136,6 +136,187 @@ const en: Dictionary = {
       cta: "EXPLORE MEDIA LIBRARY",
     },
   },
+  locations: {
+    hero: {
+      label: "Our Field of Work",
+      titleLine1: "Every village on this map",
+      titleLine2: "is a name we pray.",
+      subtitle:
+        "Two mission centers. Planted churches. Active church plants. Parishes across eastern and southern Slovakia where Roma families have heard the Gospel — many for the first time in their family line.",
+    },
+    stats: {
+      missionCenters: "Mission Centers",
+      plantedChurches: "Planted Churches",
+      activePlants: "Active Church Plants",
+      parishesSupported: "Parishes Supported",
+      primaryField: "Primary Field",
+      primaryFieldValue: "Slovakia",
+    },
+    mapSection: {
+      label: "Mission Field",
+      title: "Slovakia — Where We Work",
+      intro:
+        "Southern and eastern Slovakia holds the highest concentration of Roma settlements in the country. We go where established churches do not.",
+    },
+    centersSection: {
+      label: "Mission Centers",
+      title: "Two operational bases",
+      intro:
+        "A mission center is a permanent, full-time presence — not just a program we run, but a place where our people live, work, and worship among the Roma community.",
+      capacity: "Capacity",
+      weeklyAvg: "Weekly Avg",
+      established: "Est.",
+      programsLabel: "Programs Running",
+    },
+    plantedSection: {
+      label: "Planted Churches",
+      title: "Communities we planted",
+      intro:
+        "A planted church is a congregation that did not exist before we arrived. We enter, we disciple, we raise leadership, we step back. Some become mission centers. Some run for years and conclude. Both outcomes matter.",
+      yearsActive: "years active",
+      ongoing: "ongoing",
+      weeklyAvg: "weekly avg",
+    },
+    activeSection: {
+      label: "Currently Planting",
+      title: "Where we are right now",
+      intro:
+        "These are not programs. These are our missionaries showing up week after week in villages where Roma families have no church, no pastor, and often no one who comes just for them. Your support keeps them going.",
+      activeBadge: "Active",
+      started: "Started",
+      inField: "In field",
+      yearShort: "yr",
+      yearsShort: "yrs",
+      yearLessThan: "<1",
+    },
+    endedSection: {
+      label: "Honest Accounting",
+      countryLabel: "Slovakia",
+      carryForward: "What we carry forward:",
+    },
+    supportedSection: {
+      label: "Parishes We Have Supported",
+      title: "Serving alongside local priests",
+      intro:
+        "Not every Roma community needs a new church. Sometimes a local parish already exists but lacks the people and tools to reach the Roma settlement next door. We go in, do the ministry, and support the priest who is already there. Below are the parishes where we have served — some briefly, some for years.",
+      footnote: "and more — the list grows as new doors open.",
+    },
+    map: {
+      klenovec: {
+        subtitle: "St. Nicholas Mission Center",
+        description:
+          "Our primary mission base in central Slovakia — the operational hub for training, community formation, and regional coordination.",
+        status: "MISSION CENTER",
+      },
+      markovce: {
+        subtitle: "Roma Parish & Developing Mission Center",
+        description:
+          "An active Orthodox Roma parish with regular Liturgy, youth programs, and growing local lay leadership. Transitioning into a full mission center.",
+        status: "DEVELOPING CENTER",
+      },
+      kacanov: {
+        subtitle: "Planting Parish",
+        description:
+          "A new church being established near Markovce. Services have begun. A permanent home and ongoing support are needed.",
+        status: "FIRST CHAPEL",
+      },
+      mutnik: {
+        subtitle: "Concluded — 2026",
+        description:
+          "Nine years of faithful presence. A community formed, believers were baptized, and local leaders emerged. This chapter concluded in 2026.",
+        status: "CONCLUDED 2026",
+      },
+      "rimavska-pila": {
+        subtitle: "Active Church Plant",
+        description:
+          "A new parish taking root near Klenovec. Services have begun. A permanent home and ongoing support are needed.",
+        status: "PLANTING",
+      },
+      zemjastrabie: {
+        subtitle: "Active Church Plant",
+        description:
+          "A settlement prayed over for years. We finally have a door open. Early outreach underway.",
+        status: "PLANTING",
+      },
+      hnusta: {
+        subtitle: "Not continued — 2017",
+        description:
+          "An early outreach effort in the Hnúšťa area that could not be sustained without consistent missionary presence on the ground.",
+        status: "CONCLUDED",
+      },
+      hacava: {
+        subtitle: "Not continued — 2017",
+        description:
+          "A genuine open door with early fruit, but we could not sustain consistent missionary presence. Without someone going week after week, the community could not hold together.",
+        status: "CONCLUDED",
+      },
+      varadka: {
+        subtitle: "Collaborating Parish",
+        description:
+          "A partner parish in the Bardejov district supporting the mission network through shared resources and pastoral cooperation.",
+        status: "SUPPORTED",
+      },
+      supportedStatus: "SUPPORTED",
+    },
+    centers: {
+      klenovec: {
+        subtitle: "Parish Planted · Mission Center Built",
+        region: "Banská Bystrica Region, SK",
+        description:
+          "Klenovec is where the mission took root. A Roma family opened their home for prayer, a parish was planted, and over the years a full mission center was built on that foundation. Today it serves as our primary operational base — chapel, community space, and the daily work of being present among the people.",
+        badge: "PLANTED PARISH · MISSION CENTER",
+        program1: "Sunday Liturgy",
+        program2: "Children's Bible club",
+        program3: "Leadership training",
+        program4: "Home visits",
+        program5: "Baptism prep",
+      },
+      markovce: {
+        subtitle: "Parish in Transition → Mission Center",
+        region: "Prešov Region, SK",
+        description:
+          "Markovce began as a supported parish — one of many places where our team showed up, ran programs, and helped a local congregation reach its Roma neighbors. The roots have gone deep enough that we are now building this location into a full mission center. The transition is underway.",
+        badge: "DEVELOPING CENTER",
+        program1: "Roma outreach",
+        program2: "Sunday ministry support",
+        program3: "Community formation",
+      },
+    },
+    planted: {
+      klenovec: {
+        name: "Klenovec Roma Sub-parish",
+        note: "Planted as a parish, a physical mission center was later built on the same foundation. Now our primary base.",
+        status: "MISSION CENTER",
+      },
+      kacanov: {
+        name: "Kačanov Roma Community",
+        note: "The community is strong and gathering regularly. We are now building a church — the people came first, the building follows.",
+        status: "FIRST CHAPEL",
+      },
+      mutnik: {
+        name: "Mútnik Roma Community",
+        note: "Nine years of faithful presence. A community formed, believers were baptized, and local leaders emerged. This chapter concluded in 2026.",
+        status: "CONCLUDED 2026",
+      },
+    },
+    activePlants: {
+      "rimavska-pila": {
+        description:
+          "Two years in. Regular gatherings established, a core group forming. The most mature of our current planting efforts.",
+      },
+      zemjastrabie: {
+        description:
+          "A settlement we've prayed over for years. We finally have a door open. Early outreach underway.",
+      },
+    },
+    endedPlant: {
+      years: "2017 — not continued",
+      description:
+        "We entered Hačava with a genuine open door and early fruit. But we could not sustain a consistent missionary presence — our team in Klenovec simply did not have enough volunteers to keep covering this village on top of everything else. Without someone going week after week, the community could not hold together. We had to stop.",
+      learned:
+        "If you are considering joining our volunteer team in Klenovec, Hačava is why it matters. Every person we add to our base expands how far we can reach. A village like this is waiting for someone with enough time to go.",
+    },
+  },
   mission: {
     hero: {
       label: "Our Mission",

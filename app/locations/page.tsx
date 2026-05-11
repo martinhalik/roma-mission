@@ -1,128 +1,113 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Locations",
-  description:
-    "Our active mission centers in Slovakia — Klenovec, Markovce, Kacanov, and Mutnik — where Orthodox parishes are being planted among Roma communities.",
-  openGraph: {
-    title: "Locations — Roma Mission",
-    description:
-      "Our active mission centers in Slovakia — Klenovec, Markovce, Kacanov, and Mutnik — where Orthodox parishes are being planted among Roma communities.",
-    url: "https://romamission.eu/locations",
-    images: [{ url: "/images/klenovec-chapel.jpeg", width: 1200, height: 630, alt: "Klenovec — Roma Mission Center" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Locations — Roma Mission",
-    description:
-      "Our active mission centers in Slovakia — Klenovec, Markovce, Kacanov, and Mutnik — where Orthodox parishes are being planted among Roma communities.",
-    images: ["/images/klenovec-chapel.jpeg"],
-  },
-};
+"use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import MissionMap from "@/components/MissionMap";
 import SectionLabel from "@/components/SectionLabel";
-import { Users, MapPin, Church, Sprout, Heart, AlertTriangle, Building2 } from "lucide-react";
+import { useTranslation } from "@/components/LanguageProvider";
+import { Users, MapPin, Church, Sprout, Heart, AlertTriangle } from "lucide-react";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
+//
+// Translatable text (subtitle, region, description, badge, programs, status,
+// notes) lives in the i18n dictionary under `locations.*`. Keep only data that
+// is either a proper noun (village name) or non-textual (image, year, capacity).
 
-const MISSION_CENTERS = [
+type CenterId = "klenovec" | "markovce";
+type PlantedId = "klenovec" | "kacanov" | "mutnik";
+type ActiveId = "rimavska-pila" | "zemjastrabie";
+
+interface MissionCenter {
+  id: CenterId;
+  name: string;
+  image: string;
+  established: number | null;
+  capacity: number;
+  weeklyAttendance: number;
+  programCount: 5 | 3;
+  isDeveloping: boolean;
+}
+
+const MISSION_CENTERS: MissionCenter[] = [
   {
     id: "klenovec",
     name: "Klenovec",
-    subtitle: "Parish Planted · Mission Center Built",
-    region: "Banská Bystrica Region, SK",
+    image: "klenovec outside.jpeg",
     established: 2012,
     capacity: 35,
     weeklyAttendance: 55,
-    image: "klenovec outside.jpeg",
-    description:
-      "Klenovec is where the mission took root. A Roma family opened their home for prayer, a parish was planted, and over the years a full mission center was built on that foundation. Today it serves as our primary operational base — chapel, community space, and the daily work of being present among the people.",
-    programs: ["Sunday Liturgy", "Children's Bible club", "Leadership training", "Home visits", "Baptism prep"],
-    badge: "PLANTED PARISH · MISSION CENTER",
+    programCount: 5,
+    isDeveloping: false,
   },
   {
     id: "markovce",
     name: "Markovce",
-    subtitle: "Parish in Transition → Mission Center",
-    region: "Prešov Region, SK",
+    image: "markovce-with-our-bishop.jpg",
     established: null,
     capacity: 100,
     weeklyAttendance: 30,
-    image: "markovce-with-our-bishop.jpg",
-    description:
-      "Markovce began as a supported parish — one of many places where our team showed up, ran programs, and helped a local congregation reach its Roma neighbors. The roots have gone deep enough that we are now building this location into a full mission center. The transition is underway.",
-    programs: ["Roma outreach", "Sunday ministry support", "Community formation"],
-    badge: "DEVELOPING CENTER",
+    programCount: 3,
     isDeveloping: true,
   },
 ];
 
-const PLANTED_CHURCHES = [
+interface PlantedChurch {
+  id: PlantedId;
+  village: string;
+  yearStart: number;
+  yearEnd: number | null;
+  congregation: number;
+  isActive: boolean;
+  image: string;
+}
+
+const PLANTED_CHURCHES: PlantedChurch[] = [
   {
-    name: "Klenovec Roma Sub-parish",
+    id: "klenovec",
     village: "Klenovec",
     yearStart: 2012,
     yearEnd: null,
     congregation: 55,
-    note: "Planted as a parish, a physical mission center was later built on the same foundation. Now our primary base.",
-    status: "MISSION CENTER",
     isActive: true,
     image: "klenovec-chapel-day.jpeg",
   },
   {
-    name: "Kačanov Roma Community",
+    id: "kacanov",
     village: "Kačanov",
     yearStart: 2025,
     yearEnd: null,
     congregation: 20,
-    note: "The community is strong and gathering regularly. We are now building a church — the people came first, the building follows.",
-    status: "FIRST CHAPEL",
     isActive: true,
     image: "kacanov-learning.jpeg",
   },
   {
-    name: "Mútnik Roma Community",
+    id: "mutnik",
     village: "Mútnik (Hnúšťa)",
     yearStart: 2017,
     yearEnd: 2026,
     congregation: 20,
-    note: "Nine years of faithful presence. A community formed, believers were baptized, and local leaders emerged. This chapter concluded in 2026.",
-    status: "CONCLUDED 2026",
     isActive: false,
     image: "mutnik-closed.jpeg",
   },
 ];
 
-const ACTIVE_PLANTS = [
-  {
-    name: "Rimavská Pila",
-    village: "Rimavská Pila",
-    since: 2023,
-    description:
-      "Two years in. Regular gatherings established, a core group forming. The most mature of our current planting efforts.",
-  },
-  {
-    name: "Zemplínske Jastrabie",
-    village: "Zemplínske Jastrabie",
-    since: 2025,
-    description:
-      "A settlement we've prayed over for years. We finally have a door open. Early outreach underway.",
-  },
+interface ActivePlant {
+  id: ActiveId;
+  name: string;
+  village: string;
+  since: number;
+}
+
+const ACTIVE_PLANTS: ActivePlant[] = [
+  { id: "rimavska-pila", name: "Rimavská Pila", village: "Rimavská Pila", since: 2023 },
+  { id: "zemjastrabie", name: "Zemplínske Jastrabie", village: "Zemplínske Jastrabie", since: 2025 },
 ];
 
 const ENDED_PLANT = {
   name: "Hačava",
   village: "Hačava",
-  years: "2017 — not continued",
   image: "hacava.jpeg",
-  description:
-    "We entered Hačava with a genuine open door and early fruit. But we could not sustain a consistent missionary presence — our team in Klenovec simply did not have enough volunteers to keep covering this village on top of everything else. Without someone going week after week, the community could not hold together. We had to stop.",
-  learned:
-    "If you are considering joining our volunteer team in Klenovec, Hačava is why it matters. Every person we add to our base expands how far we can reach. A village like this is waiting for someone with enough time to go.",
 };
 
 const SUPPORTED_PARISHES = [
@@ -161,6 +146,8 @@ function StatPill({
 // ─── Page ────────────────────────────────────────────────────────────────────
 
 export default function LocationsPage() {
+  const { t } = useTranslation();
+
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
       <Navbar activePage="locations" />
@@ -190,14 +177,12 @@ export default function LocationsPage() {
           }
         >
           <div className="flex flex-col gap-5 max-w-[680px]">
-            <SectionLabel text="Our Field of Work" />
+            <SectionLabel text={t("locations.hero.label")} />
             <h1 className="text-[34px] md:text-[50px] font-bold tracking-[-1.5px] text-[var(--text-primary)] leading-[1.05]">
-              Every village on this map<br className="hidden md:block" /> is a name we pray.
+              {t("locations.hero.titleLine1")}<br className="hidden md:block" /> {t("locations.hero.titleLine2")}
             </h1>
             <p className="text-[15px] md:text-[17px] text-[var(--text-secondary)] leading-[1.65] max-w-[560px]">
-              Two mission centers. Planted churches. Active church plants. Parishes across
-              eastern and southern Slovakia where Roma families have heard the Gospel —
-              many for the first time in their family line.
+              {t("locations.hero.subtitle")}
             </p>
           </div>
         </div>
@@ -206,24 +191,23 @@ export default function LocationsPage() {
       {/* ── Quick Stats Bar ── */}
       <div className="bg-[var(--bg-card)] border-b border-[var(--border-default)]">
         <div className="px-5 md:px-[120px] py-6 flex flex-wrap gap-8 md:gap-12">
-          <StatPill icon={<Church size={18} />} value={MISSION_CENTERS.length} label="Mission Centers" />
-          <StatPill icon={<Heart size={18} />} value={PLANTED_CHURCHES.length} label="Planted Churches" />
-          <StatPill icon={<Sprout size={18} />} value={ACTIVE_PLANTS.length} label="Active Church Plants" />
-          <StatPill icon={<Users size={18} />} value={`${SUPPORTED_PARISHES.length}+`} label="Parishes Supported" />
-          <StatPill icon={<MapPin size={18} />} value="Slovakia" label="Primary Field" />
+          <StatPill icon={<Church size={18} />} value={MISSION_CENTERS.length} label={t("locations.stats.missionCenters")} />
+          <StatPill icon={<Heart size={18} />} value={PLANTED_CHURCHES.length} label={t("locations.stats.plantedChurches")} />
+          <StatPill icon={<Sprout size={18} />} value={ACTIVE_PLANTS.length} label={t("locations.stats.activePlants")} />
+          <StatPill icon={<Users size={18} />} value={`${SUPPORTED_PARISHES.length}+`} label={t("locations.stats.parishesSupported")} />
+          <StatPill icon={<MapPin size={18} />} value={t("locations.stats.primaryFieldValue")} label={t("locations.stats.primaryField")} />
         </div>
       </div>
 
       {/* ── Mission Map ── */}
       <section className="bg-[var(--bg-card)]">
         <div className="px-5 md:px-[120px] pt-16 md:pt-[80px] pb-8">
-          <SectionLabel text="Mission Field" />
+          <SectionLabel text={t("locations.mapSection.label")} />
           <h2 className="text-[26px] md:text-[34px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05] mt-4 mb-3">
-            Slovakia — Where We Work
+            {t("locations.mapSection.title")}
           </h2>
           <p className="text-[14px] text-[var(--text-secondary)] leading-[1.6] max-w-[540px]">
-            Southern and eastern Slovakia holds the highest concentration of Roma settlements
-            in the country. We go where established churches do not.
+            {t("locations.mapSection.intro")}
           </p>
         </div>
         <MissionMap />
@@ -235,13 +219,12 @@ export default function LocationsPage() {
       {/* ── Mission Centers ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-3 mb-12">
-          <SectionLabel text="Mission Centers" />
+          <SectionLabel text={t("locations.centersSection.label")} />
           <h2 className="text-[26px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)]">
-            Two operational bases
+            {t("locations.centersSection.title")}
           </h2>
           <p className="text-[14px] text-[var(--text-secondary)] leading-[1.65] max-w-[540px]">
-            A mission center is a permanent, full-time presence — not just a program we run,
-            but a place where our people live, work, and worship among the Roma community.
+            {t("locations.centersSection.intro")}
           </p>
         </div>
 
@@ -257,20 +240,18 @@ export default function LocationsPage() {
       {/* ── Planted Churches ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
         <div className="flex flex-col gap-3 mb-3">
-          <SectionLabel text="Planted Churches" />
+          <SectionLabel text={t("locations.plantedSection.label")} />
           <h2 className="text-[26px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)]">
-            Communities we planted
+            {t("locations.plantedSection.title")}
           </h2>
         </div>
         <p className="text-[14px] text-[var(--text-secondary)] leading-[1.65] max-w-[560px] mb-12">
-          A planted church is a congregation that did not exist before we arrived.
-          We enter, we disciple, we raise leadership, we step back. Some become
-          mission centers. Some run for years and conclude. Both outcomes matter.
+          {t("locations.plantedSection.intro")}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {PLANTED_CHURCHES.map((church) => (
-            <PlantedChurchCard key={church.name} church={church} />
+            <PlantedChurchCard key={church.id} church={church} />
           ))}
         </div>
       </section>
@@ -280,20 +261,18 @@ export default function LocationsPage() {
       {/* ── Active Church Plants ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-3 mb-3">
-          <SectionLabel text="Currently Planting" />
+          <SectionLabel text={t("locations.activeSection.label")} />
           <h2 className="text-[26px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)]">
-            Where we are right now
+            {t("locations.activeSection.title")}
           </h2>
         </div>
         <p className="text-[14px] text-[var(--text-secondary)] leading-[1.65] max-w-[560px] mb-12">
-          These are not programs. These are our missionaries showing up week after week in villages
-          where Roma families have no church, no pastor, and often no one who comes just for them.
-          Your support keeps them going.
+          {t("locations.activeSection.intro")}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {ACTIVE_PLANTS.map((plant) => (
-            <ActivePlantCard key={plant.name} plant={plant} />
+            <ActivePlantCard key={plant.id} plant={plant} />
           ))}
         </div>
       </section>
@@ -307,23 +286,23 @@ export default function LocationsPage() {
             <div className="flex items-center gap-3 mb-6">
               <AlertTriangle size={15} className="text-[var(--text-muted)]" />
               <span className="text-[11px] font-semibold tracking-[2px] text-[var(--text-muted)] uppercase">
-                Honest Accounting
+                {t("locations.endedSection.label")}
               </span>
             </div>
             <h2 className="text-[22px] md:text-[30px] font-bold tracking-[-0.5px] text-[var(--text-primary)] mb-2">
-              {ENDED_PLANT.name} — {ENDED_PLANT.years}
+              {ENDED_PLANT.name} — {t("locations.endedPlant.years")}
             </h2>
             <p className="text-[11px] tracking-[1px] text-[var(--text-muted)] uppercase mb-6 flex items-center gap-1">
               <MapPin size={10} className="inline" />
-              {ENDED_PLANT.village}, Slovakia
+              {ENDED_PLANT.village}, {t("locations.endedSection.countryLabel")}
             </p>
             <p className="text-[15px] text-[var(--text-secondary)] leading-[1.75] mb-5">
-              {ENDED_PLANT.description}
+              {t("locations.endedPlant.description")}
             </p>
             <div className="border-l-2 border-[var(--border-strong)] pl-5">
               <p className="text-[13px] text-[var(--text-muted)] leading-[1.7] italic">
-                <strong className="text-[var(--text-secondary)] not-italic">What we carry forward: </strong>
-                {ENDED_PLANT.learned}
+                <strong className="text-[var(--text-secondary)] not-italic">{t("locations.endedSection.carryForward")} </strong>
+                {t("locations.endedPlant.learned")}
               </p>
             </div>
           </div>
@@ -339,16 +318,13 @@ export default function LocationsPage() {
       {/* ── Parishes Supported ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
         <div className="flex flex-col gap-3 mb-3">
-          <SectionLabel text="Parishes We Have Supported" />
+          <SectionLabel text={t("locations.supportedSection.label")} />
           <h2 className="text-[26px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)]">
-            Serving alongside local priests
+            {t("locations.supportedSection.title")}
           </h2>
         </div>
         <p className="text-[14px] text-[var(--text-secondary)] leading-[1.65] max-w-[580px] mb-12">
-          Not every Roma community needs a new church. Sometimes a local parish already exists
-          but lacks the people and tools to reach the Roma settlement next door.
-          We go in, do the ministry, and support the priest who is already there.
-          Below are the parishes where we have served — some briefly, some for years.
+          {t("locations.supportedSection.intro")}
         </p>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
@@ -360,11 +336,9 @@ export default function LocationsPage() {
         <div className="flex items-center gap-3 mt-4">
           <div className="h-px flex-1 bg-[var(--border-default)] max-w-[40px]" />
           <p className="text-[12px] text-[var(--text-muted)] italic">
-            and more — the list grows as new doors open.
+            {t("locations.supportedSection.footnote")}
           </p>
         </div>
-
-        
       </section>
 
       <CTASection />
@@ -375,11 +349,10 @@ export default function LocationsPage() {
 
 // ─── Card Components ──────────────────────────────────────────────────────────
 
-function MissionCenterCard({
-  center,
-}: {
-  center: (typeof MISSION_CENTERS)[number];
-}) {
+function MissionCenterCard({ center }: { center: MissionCenter }) {
+  const { t } = useTranslation();
+  const programIndices = Array.from({ length: center.programCount }, (_, i) => i + 1);
+
   return (
     <div className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden">
       <div
@@ -395,7 +368,7 @@ function MissionCenterCard({
                 : "bg-black/70 text-[#D4AF37] border border-[#D4AF37]/40"
             }`}
           >
-            {center.badge}
+            {t(`locations.centers.${center.id}.badge`)}
           </span>
         </div>
       </div>
@@ -406,49 +379,49 @@ function MissionCenterCard({
             {center.name}
           </h3>
           <p className="text-[12px] text-[var(--gold)] tracking-[0.5px] mt-0.5">
-            {center.subtitle}
+            {t(`locations.centers.${center.id}.subtitle`)}
           </p>
           <p className="text-[11px] text-[var(--text-muted)] mt-1 flex items-center gap-1">
-            <MapPin size={10} /> {center.region}
+            <MapPin size={10} /> {t(`locations.centers.${center.id}.region`)}
           </p>
         </div>
 
         <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.75]">
-          {center.description}
+          {t(`locations.centers.${center.id}.description`)}
         </p>
 
         {!center.isDeveloping && (
           <div className="grid grid-cols-3 gap-4 py-4 border-t border-b border-[var(--border-default)]">
             <div className="flex flex-col gap-1">
               <span className="text-[20px] font-bold text-[var(--gold)]">{center.capacity}</span>
-              <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase">Capacity</span>
+              <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase">{t("locations.centersSection.capacity")}</span>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-[20px] font-bold text-[var(--text-primary)]">
                 {center.weeklyAttendance}
               </span>
-              <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase">Weekly Avg</span>
+              <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase">{t("locations.centersSection.weeklyAvg")}</span>
             </div>
             <div className="flex flex-col gap-1">
               <span className="text-[20px] font-bold text-[var(--text-primary)]">
                 {center.established}
               </span>
-              <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase">Est.</span>
+              <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase">{t("locations.centersSection.established")}</span>
             </div>
           </div>
         )}
 
         <div>
           <p className="text-[10px] tracking-[1.5px] text-[var(--text-muted)] uppercase mb-3">
-            Programs Running
+            {t("locations.centersSection.programsLabel")}
           </p>
           <div className="flex flex-wrap gap-2">
-            {center.programs.map((prog) => (
+            {programIndices.map((n) => (
               <span
-                key={prog}
+                key={n}
                 className="text-[11px] text-[var(--text-secondary)] bg-[var(--bg-elevated)] px-3 py-1"
               >
-                {prog}
+                {t(`locations.centers.${center.id}.program${n}`)}
               </span>
             ))}
           </div>
@@ -458,15 +431,13 @@ function MissionCenterCard({
   );
 }
 
-function PlantedChurchCard({
-  church,
-}: {
-  church: (typeof PLANTED_CHURCHES)[number];
-}) {
+function PlantedChurchCard({ church }: { church: PlantedChurch }) {
+  const { t } = useTranslation();
+  const status = t(`locations.planted.${church.id}.status`);
   const statusStyle =
-    church.status === "MISSION CENTER"
+    church.id === "klenovec"
       ? "bg-black/70 text-[#D4AF37] border border-[#D4AF37]/40"
-      : church.status === "FIRST CHAPEL"
+      : church.id === "kacanov"
         ? "bg-black/70 text-[#4ADE80] border border-[#4ADE80]/40"
         : "bg-black/70 text-white/60 border border-white/20";
 
@@ -484,12 +455,12 @@ function PlantedChurchCard({
         <div className="absolute inset-0 bg-gradient-to-t from-[#000000CC] via-[#00000044] to-[#00000022]" />
         <div className="absolute top-4 left-4">
           <span className={`text-[9px] font-semibold tracking-[1.5px] px-2.5 py-1 uppercase ${statusStyle}`}>
-            {church.status}
+            {status}
           </span>
         </div>
         <div className="absolute bottom-4 left-4 right-4">
           <h3 className="text-[19px] font-bold text-white tracking-[-0.5px] leading-[1.15]">
-            {church.name}
+            {t(`locations.planted.${church.id}.name`)}
           </h3>
           <p className="text-[11px] text-white/55 flex items-center gap-1 mt-1">
             <MapPin size={9} /> {church.village}
@@ -500,7 +471,7 @@ function PlantedChurchCard({
       {/* Body */}
       <div className="flex flex-col gap-4 p-5 flex-1">
         <p className="text-[13px] text-[var(--text-secondary)] leading-[1.75] flex-1">
-          {church.note}
+          {t(`locations.planted.${church.id}.note`)}
         </p>
 
         {/* Footer */}
@@ -511,14 +482,14 @@ function PlantedChurchCard({
               {church.yearEnd ? ` – ${church.yearEnd}` : " —"}
             </span>
             <span className="block text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase mt-0.5">
-              {church.yearEnd ? "years active" : "ongoing"}
+              {church.yearEnd ? t("locations.plantedSection.yearsActive") : t("locations.plantedSection.ongoing")}
             </span>
           </div>
           {church.congregation && (
             <div className="text-right">
               <span className="text-[16px] font-bold text-[var(--gold)]">{church.congregation}</span>
               <span className="block text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase mt-0.5">
-                weekly avg
+                {t("locations.plantedSection.weeklyAvg")}
               </span>
             </div>
           )}
@@ -528,15 +499,21 @@ function PlantedChurchCard({
   );
 }
 
-function ActivePlantCard({ plant }: { plant: (typeof ACTIVE_PLANTS)[number] }) {
+function ActivePlantCard({ plant }: { plant: ActivePlant }) {
+  const { t } = useTranslation();
   const yearsIn = 2026 - plant.since;
+  const yearsLabel =
+    yearsIn < 1
+      ? `${t("locations.activeSection.yearLessThan")}${t("locations.activeSection.yearShort")}`
+      : `${yearsIn}${yearsIn === 1 ? t("locations.activeSection.yearShort") : t("locations.activeSection.yearsShort")}`;
+
   return (
     <div className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden">
       <div className="flex flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-3">
           <div>
             <span className="text-[9px] font-semibold tracking-[2px] text-[var(--gold)] bg-[var(--gold)]/10 border border-[var(--gold)]/30 px-2 py-1 uppercase inline-block mb-2">
-              Active
+              {t("locations.activeSection.activeBadge")}
             </span>
             <h3 className="text-[15px] font-bold text-[var(--text-primary)]">{plant.name}</h3>
             <p className="text-[11px] text-[var(--text-muted)] flex items-center gap-1 mt-0.5">
@@ -544,17 +521,19 @@ function ActivePlantCard({ plant }: { plant: (typeof ACTIVE_PLANTS)[number] }) {
             </p>
           </div>
         </div>
-        <p className="text-[12px] text-[var(--text-secondary)] leading-[1.7]">{plant.description}</p>
+        <p className="text-[12px] text-[var(--text-secondary)] leading-[1.7]">
+          {t(`locations.activePlants.${plant.id}.description`)}
+        </p>
         <div className="flex gap-4 pt-3 border-t border-[var(--border-default)]">
           <div className="flex flex-col gap-0.5">
             <span className="text-[16px] font-bold text-[var(--gold)]">{plant.since}</span>
-            <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">Started</span>
+            <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">{t("locations.activeSection.started")}</span>
           </div>
           <div className="flex flex-col gap-0.5">
             <span className="text-[16px] font-bold text-[var(--text-primary)]">
-              {yearsIn < 1 ? "<1" : yearsIn}yr{yearsIn !== 1 ? "s" : ""}
+              {yearsLabel}
             </span>
-            <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">In field</span>
+            <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">{t("locations.activeSection.inField")}</span>
           </div>
         </div>
       </div>
