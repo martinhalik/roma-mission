@@ -439,6 +439,255 @@ const de: Dictionary = {
       shareLabel: "DIE MISSION TEILEN",
     },
   },
+  ourStory: {
+    hero: {
+      backToMission: "← Zurück zur Mission",
+      label: "Die Geschichte des Gründers",
+      titleLine1: "Eine Abzweigung.",
+      titleLine2: "Eine Entscheidung.",
+      titleLine3: "Eine Mission, die blieb.",
+      subtitle: "Klenovec, Slowakei · 2016 – 2020",
+    },
+    authorMartin: "Martin",
+    authorMartinFounder: "Martin, Gründer",
+    timeline: {
+      yearLabel: {
+        before2016: "Vor 2016",
+        y2016: "2016",
+        y2017: "2017",
+        y2018: "2018",
+        y2019: "2019",
+        y2020: "2020",
+        today: "Heute",
+      },
+      before2016: {
+        heading: "Der Traum",
+        pullQuote:
+          "Mein Traum war es, ein berühmter Designer zu werden, viel Geld zu verdienen und auf der ganzen Welt Vorträge zu halten.",
+        pullQuoteOriginal:
+          "Mým snem bylo stát se slavným designerem, vydělávat hodně peněz a přednášet po celém světě.",
+        body1:
+          "Es schien aufzugehen. Er war noch nicht neunzehn, und schon kamen Aufträge aus aller Welt und von den größten tschechischen Unternehmen. Er wurde Lead Designer bei Kiwi.com — damals dem am schnellsten wachsenden tschechischen Start-up — und stellte das gesamte Designteam von Grund auf zusammen.",
+        body2:
+          "Remote-Arbeit, internationale Kunden, eine Karriere, die genau in die Richtung wies, die er geplant hatte. Die Zukunft stand offen.",
+      },
+      year2016: {
+        heading: "Die falsche Abzweigung",
+        body1:
+          "Gemeinsam mit Kollegen kaufte er ein Haus in Klenovec — einem Dorf in der Mitte der Slowakei. Die Region hatte ihn lange beschäftigt: hohe Arbeitslosigkeit, hohe Scheidungsraten, Drogen. Sie waren jung und dachten, sie könnten helfen.",
+        body2:
+          "Eines Tages, auf dem Weg zu einem Handwerker, nahm er eine Abkürzung — und bog in eine Sackgasse am Rand des Dorfes ein. Direkt in eine Roma-Siedlung.",
+        photoAlt: "Das Ents.co-Team in Klenovec nach dem Hauskauf, 2016",
+        photoCaption:
+          "Das Ents.co-Team in Klenovec nach dem Hauskauf, 2016. Von links nach rechts: Jan Henneberg, Milan Seitler, David Kotík, Martin und Filip Daniško.",
+        pullQuote:
+          "Bis zu diesem Moment war ich der Armut nie direkt begegnet. Es traf mich ins Herz — und obwohl ich keine Liebe für die Roma hatte, ganz im Gegenteil, wollte ich helfen.",
+        pullQuoteOriginal:
+          "Až do té doby jsem nehleděl chudobě tváří v tvář. Zasáhlo to moje srdce a ačkoli jsem neměl Romy v lásce, spíše naopak, chtěl jsem jim pomoci.",
+        body3:
+          "Er ist ehrlich über das Vorurteil. Die meisten Menschen in der Slowakei tragen es. Ebenso ehrlich gibt er zu, dass sich sofort etwas verschoben hat — nicht trotz, sondern durch die Begegnung selbst. Die Wirklichkeit war zu konkret, zu menschlich, um in die Kategorie zu passen.",
+      },
+      year2017: {
+        heading: "Luftballons, kaputte Gitarren und Beharrlichkeit",
+        body1:
+          "Mehrere Monate lang sammelte er Mut und betete einfach. Dann nahm er eine Handvoll Luftballons in der Hoffnung, die Kinder zu erreichen und mit dem Spielen zu beginnen. Es klappte. Doch was folgte, verlangte mehr als Begeisterung.",
+        pullQuote:
+          "Es brauchte Beharrlichkeit, viele Stunden auf den Knien, häufige heilige Kommunion, unzählige verlorene Luftballons, mehrere zerbrochene Gitarren und Skateboards, die zu Brennholz gespalten wurden — aber nach und nach gelang es mir, das Vertrauen der Gemeinschaft zu gewinnen.",
+        pullQuoteOriginal:
+          "Stálo to vytrvalost, mnohé chvíle na kolenou, časté svaté přijímání, nepočítaně ztracených balonů, několik rozbitých kytar a skateboardů rozštípaných na dříví, ale postupně se mi podařilo získat důvěru komunity.",
+        videoCaptionUkulele:
+          "Martin bringt Roma-Kindern das Ukulele-Spiel bei — Klenovec, 2017. Klicken zum Ansehen.",
+        photoAlt: "Kinder aus dem Sportclub der Grundschule Klenovec",
+        photoCaption: "Kinder aus dem Sportclub der Grundschule Klenovec.",
+        videoCaptionSettlement:
+          "Ein Mädchen in der Roma-Siedlung, vor der Hütte ihrer Eltern. Klicken zum Ansehen.",
+      },
+      movingIn: {
+        heading: "Einzug",
+        body1:
+          "Es gibt kleine Opfer und es gibt größere. Er verstand, dass er, wenn er ernsthaft helfen wollte, unter ihnen leben musste — sie von innen kennen. Das hieß, in eine Holzhütte in der Siedlung zu ziehen.",
+        pullQuote:
+          "Manchmal verlangt Gott kleine Opfer von uns, damit wir zu größeren heranreifen — denn Er hat sein ganzes Leben für uns gegeben. Ich wusste: Wenn ich diese Hilfe ernst meinte, musste ich unter ihnen leben, sie von innen kennen.",
+        pullQuoteOriginal:
+          "Někdy však od nás Bůh žádá drobné oběti, abychom dozráli do obětí větších... Věděl jsem, že pokud to chci s pomocí myslet vážně, potřebuju žít mezi nimi, poznat je zevnitř, jinými slovy přestěhovat se do dřevěné chatrče v osadě.",
+        body2:
+          "Im Rückblick sagt er, es sei eine der glücklichsten Zeiten seines Lebens gewesen. Er arbeitete weiterhin remote — noch immer bei Kiwi —, doch sein Herz war bereits in Klenovec geblieben. Die beiden Welten liefen parallel, und die Kluft wurde immer schwerer zu ignorieren.",
+      },
+      year2018: {
+        heading: "Michaela",
+        body1:
+          "Dann geschah etwas Unerwartetes. Im Gebet und beim Lesen der Heiligen Schrift fühlte er sich gedrängt, die wachsende Mission in Klenovec zu verlassen und nach Brno zurückzukehren. Logisch erklären konnte er es nicht.",
+        bibleRef: "Johannes 3,8",
+        bibleQuote:
+          "Der Wind weht, wo er will, und du hörst sein Sausen wohl; aber du weißt nicht, woher er kommt und wohin er fährt. So ist es mit jedem, der aus dem Geist geboren ist.",
+        body2:
+          "In Brno traf er Michaela — Michalka. Eine ausgebildete Psychologin. Als er ihr erzählte, was er in Klenovec tat, verstand sie es auf eine Weise, die Gewicht hatte. Am 25. August 2018 heirateten sie und sie zog mit ihm.",
+        body3:
+          "Michalka brachte etwas, das der Arbeit gefehlt hatte: Sanftheit, ein warmes Herz und jemanden, der mit den Mädchen in der Gemeinschaft arbeiten konnte. Sie kam nicht, um sein Projekt zu unterstützen. Es wurde zu ihrem.",
+        michalkaQuote:
+          "Michalka je vystudovaná psycholožka, ale teďka hlavně vzorná maminka a hospodyňka. Dala celé práci něhu a laskavé srdce, které jí před tím scházely. Také doplnila chybějící článek práce s děvčaty.",
+      },
+      year2019: {
+        photoAlt: "Michalka mit Kindern nach einem kleinen lokalen Spiel, 2019",
+        photoCaption:
+          "Michalka mit Kindern, nach der Preisverleihung eines kleinen lokalen Spiels — 2019.",
+        body1:
+          "Gemeinsam arbeiteten sie auf das hin, was sie als das Wichtigste erkannt hatten: Menschen zu Fleiß und Aufrichtigkeit zu führen, Kindern richtig lesen und schreiben beizubringen und sie in christlichem Glauben und in Sittlichkeit zu formen.",
+        body2: "Im Oktober 2019 wurde ihr Sohn Adam geboren.",
+      },
+      year2020: {
+        heading: "Formell gegründet",
+        photoAlt:
+          "Michalka verteilt Süßigkeiten an Kinder bei der Kreuzweihe, Mútnik 2020",
+        photoCaption:
+          "Michalka verteilt Süßigkeiten an Kinder bei der Kreuzweihe auf dem Mútnik — 2020.",
+        body1:
+          "Im Sommer 2020 gründeten sie offiziell die Kresťanská rómska misia — die Christliche Roma-Mission. Eine eingetragene Non-Profit-Organisation. Damit erhielt die Arbeit ihre offizielle Form: die Möglichkeit, Mitarbeitende anzustellen, Programme zur beruflichen Bildung zu starten und über die eigenen Absichten hinaus rechenschaftspflichtig zu sein.",
+        body2: "Im Mai 2021 wurde ihre Tochter Mária geboren.",
+      },
+      today: {
+        heading: "Im Osten — und weiter unterwegs",
+        body1:
+          "Martin und Michaela leben heute mit ihren vier Kindern im Osten der Slowakei. Die Arbeit hat sich ausgeweitet — neue Gemeinden, neue Pfarreien, neue Mitarbeitende in Ausbildung. Was mit einer Handvoll Luftballons in Klenovec begann, ist heute ein Netzwerk von Pfarreien, das Roma-Gemeinschaften in der ganzen Slowakei erreicht.",
+        body2:
+          "Was sich nicht geändert hat, ist der Grundsatz: Hilfe schickt man nicht aus der Ferne. Man geht. Man bleibt. Man lässt es einen wirklich etwas kosten.",
+      },
+    },
+    documentary: {
+      label: "Der Dokumentarfilm",
+      watchAria: "Dokumentarfilm ansehen: Vom IT-Designer zum Priester",
+      imageAlt: "Vom IT-Designer zum Priester — Dokumentarfilm des Tschechischen Fernsehens",
+      tag: "Tschechisches Fernsehen · 30 Min.",
+      title: "Vom IT-Designer zum Priester",
+      subtitle: "Die Geschichte, die Sie gerade gelesen haben — als Film.",
+    },
+    videoPlayAria: "Video abspielen",
+    cta: {
+      seeMission: "Mission ansehen",
+      readStories: "Geschichten der Gemeinschaft lesen",
+    },
+  },
+  stories: {
+    hero: {
+      label: "Zeugnisse",
+      titleLine1: "Echte Menschen.",
+      titleLine2: "Echte Veränderung.",
+      subtitle:
+        "Jede Geschichte hier handelt von einem echten Menschen in einer echten Siedlung in der Slowakei. Keine Statistiken. Keine Zusammenfassungen. Menschen, deren Leben sich verändert hat, weil die Kirche kam und blieb.",
+    },
+    featured: {
+      label: "Ausgewähltes Zeugnis",
+      watchOverlay: "Sehen Sie sein Zeugnis",
+      watchAria: "Lacos Geschichte ansehen",
+      quoteSource:
+        "That's why we were angry with him for not doing anything and he left us.",
+      quoteTranslation:
+        "Deshalb waren wir wütend auf ihn, weil er nichts tat — und dann verließ er uns.",
+      attribution: "— Laco, über seinen Vater",
+      context:
+        "Laco und sein Bruder besuchten die Unterrichtseinheiten der Mission, als ihr Vater die Familie verließ. Sie waren wütend. Der Priester hörte zu und sagte ihnen dann: Betet für ihn. Er ist immer noch euer Vater. Haltet die Wut nicht fest. Monate später ging Robert mit seiner Mutter, um den Vater zu bitten zurückzukommen. Das war es, was die Mission ihn gelehrt hatte. Sein Vater kam zurück. Er hörte auf zu trinken. Er fand Arbeit. Heute sitzt er in der ersten Reihe bei jedem Schulstück und Theaterauftritt seiner Söhne. Die ganze Familie, zusammen.",
+      watchCta: "SEINE GESCHICHTE ANSEHEN",
+    },
+    stats: {
+      fathersStat: "90%+",
+      fathersLabel: "der Väter aus der Siedlung haben heute Arbeit",
+      fathersSub: "Bei Ankunft der Mission waren es etwa 30 %",
+      yearsStat: "10+",
+      yearsLabel: "Jahre ununterbrochene Präsenz",
+      yearsSub: "Kein Projekt. Eine bleibende Pfarrei.",
+      workshopsStat: "2+",
+      workshopsLabel: "laufende Berufswerkstätten",
+      workshopsSub:
+        "Maurerhandwerk, Multimedia und Kochen — echte Fähigkeiten, echte Zukunft",
+    },
+    founder: {
+      label: "Die Geschichte des Gründers",
+      eyebrow: "Slowakei · 2016 – 2020",
+      title:
+        "Wie ein Designer seine Karriere aufgab, in eine Roma-Siedlung zog und blieb.",
+      body:
+        "Martin war neunzehn, arbeitete international und leitete ein Designteam in einem der am schnellsten wachsenden tschechischen Startups. Dann veränderte ein Umweg über Klenovec die Richtung seines Lebens. Er schickte keine Hilfe aus der Ferne. Er zog ein.",
+      cta: "Die ganze Geschichte lesen",
+    },
+    more: {
+      label: "Aus der Siedlung",
+      titleLine1: "Weitere Stimmen",
+      titleLine2: "aus Klenovec",
+    },
+    testimonies: {
+      cibul: {
+        country: "Slowakei",
+        quoteSource:
+          "Keď sme boli s ôsmimi deťmi v karanténe a nemali sme čo jesť, prišli s potravinami a hrami. K nikomu inému sme sa nedostali. Len k nim.",
+        quoteTranslation:
+          "Als wir mit unseren acht Kindern in Quarantäne waren und nichts zu essen hatten, kamen sie mit Lebensmitteln und Spielen. Wir konnten niemand anderen erreichen. Nur sie.",
+        author: "Svetlana Cibuľová, Klenovec",
+        context:
+          "In den ersten Wochen der Pandemie wusste niemand, was das Virus anrichten würde. Die Menschen fürchteten den Tod selbst. Roma-Siedlungen wurden gemieden — zu riskant, zu eng, zu unbekannt. Martin und Mischa gingen trotzdem hin. Der Glaube an die Auferstehung ist für sie keine Metapher. Er gab ihnen den Mut, dorthin zu gehen, wovor alle anderen flohen.",
+      },
+      fathers: {
+        country: "Slowakei",
+        quoteSource:
+          "Predtým som sem chodil, keď som potreboval chlapov na dennú robotu. Po pár rokoch som prišiel znova — a nikoho som nenašiel. Všetci už pracovali.",
+        quoteTranslation:
+          "Früher kam ich her, wenn ich Männer für einen Tag Arbeit brauchte. Ein paar Jahre später kam ich wieder — und fand niemanden. Alle hatten schon Arbeit.",
+        author: "Lokaler Zimmermann, Region Klenovec",
+        context:
+          "Als die Mission kam, hatten nur etwa 30 % der Männer in der Siedlung überhaupt Arbeit. Vier Jahre später kam ein lokaler Zimmermann, der dort regelmäßig Arbeiter einstellte, zurück — und ging mit leeren Händen. Nicht weil die Männer ablehnten. Sondern weil niemand mehr da war, den man hätte einstellen können. Sie waren alle bei der Arbeit.",
+      },
+      adrianDominik: {
+        country: "Slowakei",
+        quoteSource:
+          "Tí ostatní, čo neboli v kurze, neurobili skúšku. My sme prešli.",
+        quoteTranslation:
+          "Die anderen, die nicht im Kurs waren, haben die Prüfung nicht bestanden. Wir schon.",
+        author: "Adrian, Klenovec",
+        context:
+          "Dominik kam aus einer Sonderschule — der Art Schule, deren Schüler von Lehrern abgeschrieben werden. Über die Multimedia-Werkstatt der Mission legte er die staatliche Abschlussprüfung der 9. Klasse ab. Etwas, das seine Lehrer einmal für unmöglich erklärt hatten. Sein Bruder Adrian druckt T-Shirts, auch für eben diese Lehrer. Einer von ihnen erhielt jetzt ein Jobangebot, weil er einen Eignungstest bestand, den andere nicht bestehen konnten.",
+      },
+      miroslava: {
+        country: "Slowakei",
+        quoteSource:
+          "Neviem, ale odkedy sem chodím, prestala som klamať. Začala som pomáhať doma. Začala som sa správať dobre. Začala som sa lepšie učiť.",
+        quoteTranslation:
+          "Ich weiß nicht, aber seit ich hierherkomme, habe ich aufgehört zu lügen. Ich habe angefangen, zu Hause zu helfen. Ich habe angefangen, mich gut zu benehmen. Ich habe angefangen, besser zu lernen.",
+        author: "Miroslava, Klenovec",
+        context:
+          "Sie kann es theologisch nicht erklären. Sie weiß nur, dass sich etwas verändert hat. Ihre Eltern bestätigen es — von allen Kindern, die teilnehmen, ist sie die hilfsbereiteste. Gnade ist oft so: Du verstehst sie nicht. Du lebst einfach anders.",
+      },
+      gemer: {
+        country: "Slowakei",
+        quoteSource:
+          "Myslel som si, že keď budem mať deti, zmení ma to. Nezmenilo. Až keď som začal každý týždeň chodiť na Eucharistiu — to ma zmenilo.",
+        quoteTranslation:
+          "Ich dachte, Kinder zu haben würde mich verändern. Hat es nicht. Jede Woche zur Eucharistie zu gehen — das hat es.",
+        author: "Roma-Mann, Region Gemer",
+        context:
+          "Er ist Roma, aber nicht aus einer Siedlung — ein normales Haus, eine normale Nachbarschaft. Sucht hatte ihn jahrelang verfolgt. Er dachte, Vater zu werden würde der Wendepunkt sein. War es nicht. Als er anfing, in die Pfarrei zu gehen und wöchentlich die Kommunion zu empfangen, veränderte sich etwas. Er heiratete seine Partnerin — um es vor Gott in Ordnung zu bringen. Die Sucht verlor ihren Halt. Er kommt immer noch.",
+      },
+    },
+    anonymous: {
+      eyebrow: "Nicht jede Geschichte hat ein Foto",
+      lead: "Es gibt ein Mädchen, das wir dreimal im Jahr besuchen.",
+      paragraph1:
+        "Ihre Mutter ist im Gefängnis. Ihre Großmutter — die einzige Person, die alles zusammenhielt — ist kürzlich gestorben. Sie lebt jetzt bei ihrer Tante. Wir können ihr Gesicht nicht zeigen. Wir nennen ihren Namen nicht. Aber wir kommen weiterhin zurück.",
+      paragraph2:
+        "Drei Besuche im Jahr sind nicht viel. Aber für sie könnten sie das einzig Beständige in ihrem Leben gerade sein. Jemand, der erscheint. Nicht weil sie darum gebeten hat. Nicht weil es bequem ist. Weil sie wichtig ist.",
+      closing:
+        "Deshalb messen wir Erfolg nicht in Zahlen. Ein Teil der wichtigsten Arbeit, die wir tun, wird in keinem Bericht je auftauchen.",
+    },
+    closing: {
+      label: "Die Arbeit geht weiter",
+      title:
+        "Jede Geschichte hier begann damit, dass jemand sich entschied zu bleiben.",
+      paragraph1:
+        "Martin und Mischa sind dauerhaft nach Klenovec gezogen. Nicht als Besucher, nicht als NGO-Mitarbeiter mit Vertrag. Sie kauften ein Haus, zogen Kinder groß und bauten eine Pfarrei — weil die Roma-Gemeinschaften, denen sie dienen, von jeder Initiative enttäuscht wurden, die irgendwann zusammenpackte und ging.",
+      paragraph2:
+        "Im Jahr 2025 spendeten die Spender etwa 3.000 €. Die tatsächlichen Missionskosten betrugen 16.900 €. Die Lücke wird aus Martins privatem Einkommen gedeckt. Jeder Euro, den Sie geben, fließt direkt in das, was Sie gerade gelesen haben.",
+      ctaSupport: "Diese Mission unterstützen",
+      ctaLearn: "Wie sie funktioniert",
+    },
+  },
 };
 
 export default de;

@@ -335,6 +335,196 @@ export interface Dictionary {
       shareLabel: string;
     };
   };
+  ourStory: {
+    hero: {
+      backToMission: string;
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      titleLine3: string;
+      subtitle: string;
+    };
+    authorMartin: string;
+    authorMartinFounder: string;
+    timeline: {
+      yearLabel: {
+        before2016: string;
+        y2016: string;
+        y2017: string;
+        y2018: string;
+        y2019: string;
+        y2020: string;
+        today: string;
+      };
+      before2016: {
+        heading: string;
+        pullQuote: string;
+        pullQuoteOriginal: string;
+        body1: string;
+        body2: string;
+      };
+      year2016: {
+        heading: string;
+        body1: string;
+        body2: string;
+        photoAlt: string;
+        photoCaption: string;
+        pullQuote: string;
+        pullQuoteOriginal: string;
+        body3: string;
+      };
+      year2017: {
+        heading: string;
+        body1: string;
+        pullQuote: string;
+        pullQuoteOriginal: string;
+        videoCaptionUkulele: string;
+        photoAlt: string;
+        photoCaption: string;
+        videoCaptionSettlement: string;
+      };
+      movingIn: {
+        heading: string;
+        body1: string;
+        pullQuote: string;
+        pullQuoteOriginal: string;
+        body2: string;
+      };
+      year2018: {
+        heading: string;
+        body1: string;
+        bibleRef: string;
+        bibleQuote: string;
+        body2: string;
+        body3: string;
+        michalkaQuote: string;
+      };
+      year2019: {
+        photoAlt: string;
+        photoCaption: string;
+        body1: string;
+        body2: string;
+      };
+      year2020: {
+        heading: string;
+        photoAlt: string;
+        photoCaption: string;
+        body1: string;
+        body2: string;
+      };
+      today: {
+        heading: string;
+        body1: string;
+        body2: string;
+      };
+    };
+    documentary: {
+      label: string;
+      watchAria: string;
+      imageAlt: string;
+      tag: string;
+      title: string;
+      subtitle: string;
+    };
+    videoPlayAria: string;
+    cta: {
+      seeMission: string;
+      readStories: string;
+    };
+  };
+  stories: {
+    hero: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      subtitle: string;
+    };
+    featured: {
+      label: string;
+      watchOverlay: string;
+      watchAria: string;
+      quoteSource: string;
+      quoteTranslation: string;
+      attribution: string;
+      context: string;
+      watchCta: string;
+    };
+    stats: {
+      fathersStat: string;
+      fathersLabel: string;
+      fathersSub: string;
+      yearsStat: string;
+      yearsLabel: string;
+      yearsSub: string;
+      workshopsStat: string;
+      workshopsLabel: string;
+      workshopsSub: string;
+    };
+    founder: {
+      label: string;
+      eyebrow: string;
+      title: string;
+      body: string;
+      cta: string;
+    };
+    more: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+    };
+    testimonies: {
+      cibul: {
+        country: string;
+        quoteSource: string;
+        quoteTranslation: string;
+        author: string;
+        context: string;
+      };
+      fathers: {
+        country: string;
+        quoteSource: string;
+        quoteTranslation: string;
+        author: string;
+        context: string;
+      };
+      adrianDominik: {
+        country: string;
+        quoteSource: string;
+        quoteTranslation: string;
+        author: string;
+        context: string;
+      };
+      miroslava: {
+        country: string;
+        quoteSource: string;
+        quoteTranslation: string;
+        author: string;
+        context: string;
+      };
+      gemer: {
+        country: string;
+        quoteSource: string;
+        quoteTranslation: string;
+        author: string;
+        context: string;
+      };
+    };
+    anonymous: {
+      eyebrow: string;
+      lead: string;
+      paragraph1: string;
+      paragraph2: string;
+      closing: string;
+    };
+    closing: {
+      label: string;
+      title: string;
+      paragraph1: string;
+      paragraph2: string;
+      ctaSupport: string;
+      ctaLearn: string;
+    };
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;
