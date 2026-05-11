@@ -8,89 +8,30 @@ import DonationModal from "@/components/DonationModal";
 import ApplicationModal from "@/components/ApplicationModal";
 import ShareModal from "@/components/ShareModal";
 import SectionLabel from "@/components/SectionLabel";
+import { useTranslation } from "@/components/LanguageProvider";
 
-const ways = [
-  {
-    icon: "✦",
-    title: "Financial Support",
-    subtitle: "Give Monthly or One-Time",
-    desc: "Your giving directly funds priest salaries, parish buildings, children's programs, and mission team travel. Every amount makes a difference.",
-    points: [
-      "$25/mo — Provides teaching materials for a month",
-      "$50/mo — Funds one child's catechism for a year",
-      "$100/mo — Covers weekly parish materials",
-    ],
-    cta: "GIVE NOW",
-    primary: true,
-    action: "donate" as const,
-  },
-  {
-    icon: "✦",
-    title: "Volunteer",
-    subtitle: "Use Your Skills",
-    desc: "We need people with skills in translation, education, construction, administration, and more. Remote and on-site opportunities available.",
-    points: [
-      "Translation and language support",
-      "Teaching and tutoring",
-      "Administrative and communications",
-    ],
-    cta: "APPLY TO VOLUNTEER",
-    primary: false,
-    action: "volunteer" as const,
-  },
-  {
-    icon: "✦",
-    title: "Share the Mission",
-    subtitle: "Spread the Word",
-    desc: "Help others discover what God is doing among the Roma. Share videos, invite your parish to pray, and tell people about this work.",
-    points: [
-      "Share testimonies and videos with your community",
-      "Invite your church to adopt this mission in prayer",
-      "Help us reach new supporters and volunteers",
-    ],
-    cta: "SHARE",
-    primary: false,
-    action: "share" as const,
-  },
-  {
-    icon: "✦",
-    title: "Join a Mission Trip",
-    subtitle: "Come See the Work",
-    desc: "Join a team for 1–2 weeks to work alongside local priests and community leaders. No experience necessary — just willingness.",
-    points: [
-      "Spring and Summer trips available",
-      "Teams of 4–8 people",
-      "Kids' programs, construction, and community outreach",
-    ],
-    cta: "JOIN A TRIP",
-    primary: false,
-    action: "trip" as const,
-  },
-];
-
-const faqs = [
-  {
-    q: "Where does my donation go?",
-    a: "Donations directly fund primarily mission center facilities, children's programs and materials translation.",
-  },
-  {
-    q: "What qualifications do I need to volunteer?",
-    a: "None specific — we match volunteers with roles that fit their skills. Language teachers, builders, administrators, and people willing to help with children's programs are all needed.",
-  },
-  {
-    q: "Can I sponsor a specific parish?",
-    a: "Yes. We offer parish sponsorship packages that provide direct, named support to a single location. Contact us at misia@krm.sk to learn more.",
-  },
-  {
-    q: "How can I reach someone directly?",
-    a: "You can contact Fr. Martin Halík, Director of Christian Roma Mission, at martin@romamission.eu or by phone at +421 951 230 015 (WhatsApp) or +1 (773) 796-8109. More at www.romamission.eu.",
-  },
-];
-
+type WayKey = "financial" | "volunteer" | "share" | "trip";
+type FaqKey = "donation" | "volunteer" | "parish" | "contact";
 type ModalState = "closed" | "donate" | "volunteer" | "share" | "trip";
+
+interface Way {
+  key: WayKey;
+  primary: boolean;
+  action: Exclude<ModalState, "closed">;
+}
+
+const WAYS: Way[] = [
+  { key: "financial", primary: true, action: "donate" },
+  { key: "volunteer", primary: false, action: "volunteer" },
+  { key: "share", primary: false, action: "share" },
+  { key: "trip", primary: false, action: "trip" },
+];
+
+const FAQ_KEYS: FaqKey[] = ["donation", "volunteer", "parish", "contact"];
 
 export default function GetInvolvedPage() {
   const [modal, setModal] = useState<ModalState>("closed");
+  const { t } = useTranslation();
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
@@ -126,11 +67,11 @@ export default function GetInvolvedPage() {
           <div className="absolute inset-0 bg-[linear-gradient(0deg,var(--bg-primary)_0%,color-mix(in_srgb,var(--bg-primary)_60%,transparent)_50%,color-mix(in_srgb,var(--bg-primary)_27%,transparent)_100%)]" />
           <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-10 md:pb-12">
             <div className="flex flex-col gap-4 md:gap-5 max-w-[700px]">
-              <SectionLabel text="Get Involved" />
+              <SectionLabel text={t("getInvolved.hero.label")} />
               <h1 className="text-[34px] md:text-[48px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-                Join the Work of
+                {t("getInvolved.hero.titleLine1")}
                 <br />
-                the Church
+                {t("getInvolved.hero.titleLine2")}
               </h1>
             </div>
           </div>
@@ -139,60 +80,68 @@ export default function GetInvolvedPage() {
         {/* Choose how to help — flows directly from hero */}
         <div className="px-5 md:px-[120px] pt-10 md:pt-14 pb-16 md:pb-[100px]">
           <div className="flex flex-col gap-2 mb-8 md:mb-12">
-            <p className="text-[13px] font-semibold tracking-[1.5px] text-[var(--text-muted)] uppercase">Ways to Help</p>
+            <p className="text-[13px] font-semibold tracking-[1.5px] text-[var(--text-muted)] uppercase">
+              {t("getInvolved.waysSection.label")}
+            </p>
             <h2 className="text-[28px] md:text-[38px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
-              Choose How to Help
+              {t("getInvolved.waysSection.title")}
             </h2>
             <p className="text-[15px] md:text-[17px] text-[var(--text-secondary)] leading-[1.6] max-w-[560px] mt-1">
-              Every parish planted needs people who give, pray, and serve.
-              Here&apos;s how you can be part of this mission.
+              {t("getInvolved.waysSection.intro")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-            {ways.map((w) => (
-              <div
-                key={w.title}
-                className="flex flex-col gap-5 md:gap-6 bg-[var(--bg-card)] border border-[var(--border-default)] p-6 md:p-8"
-              >
-                <span className="font-georgia text-[28px] text-[var(--gold)]">
-                  {w.icon}
-                </span>
-                <div className="flex flex-col gap-1">
-                  <h3 className="text-[18px] md:text-[20px] font-bold text-[var(--text-primary)]">
-                    {w.title}
-                  </h3>
-                  <p className="text-[12px] font-semibold tracking-[1px] text-[var(--gold)] uppercase">
-                    {w.subtitle}
-                  </p>
-                </div>
-                <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.7]">
-                  {w.desc}
-                </p>
-                <ul className="flex flex-col gap-2 mt-auto">
-                  {w.points.map((p) => (
-                    <li
-                      key={p}
-                      className="flex items-start gap-2 text-[12px] md:text-[13px] text-[var(--text-secondary)]"
-                    >
-                      <span className="text-[var(--gold)] mt-0.5 flex-shrink-0">
-                        ·
-                      </span>
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => setModal(w.action)}
-                  className={`mt-4 py-4 text-[12px] font-bold tracking-[1px] transition-colors ${
-                    w.primary
-                      ? "bg-[var(--gold)] text-[var(--on-accent)] hover:opacity-90"
-                      : "border border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--on-accent)]"
-                  }`}
+            {WAYS.map((w) => {
+              const points = [
+                t(`getInvolved.ways.${w.key}.point1`),
+                t(`getInvolved.ways.${w.key}.point2`),
+                t(`getInvolved.ways.${w.key}.point3`),
+              ];
+              return (
+                <div
+                  key={w.key}
+                  className="flex flex-col gap-5 md:gap-6 bg-[var(--bg-card)] border border-[var(--border-default)] p-6 md:p-8"
                 >
-                  {w.cta}
-                </button>
-              </div>
-            ))}
+                  <span className="font-georgia text-[28px] text-[var(--gold)]">
+                    ✦
+                  </span>
+                  <div className="flex flex-col gap-1">
+                    <h3 className="text-[18px] md:text-[20px] font-bold text-[var(--text-primary)]">
+                      {t(`getInvolved.ways.${w.key}.title`)}
+                    </h3>
+                    <p className="text-[12px] font-semibold tracking-[1px] text-[var(--gold)] uppercase">
+                      {t(`getInvolved.ways.${w.key}.subtitle`)}
+                    </p>
+                  </div>
+                  <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.7]">
+                    {t(`getInvolved.ways.${w.key}.desc`)}
+                  </p>
+                  <ul className="flex flex-col gap-2 mt-auto">
+                    {points.map((p) => (
+                      <li
+                        key={p}
+                        className="flex items-start gap-2 text-[12px] md:text-[13px] text-[var(--text-secondary)]"
+                      >
+                        <span className="text-[var(--gold)] mt-0.5 flex-shrink-0">
+                          ·
+                        </span>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    onClick={() => setModal(w.action)}
+                    className={`mt-4 py-4 text-[12px] font-bold tracking-[1px] transition-colors ${
+                      w.primary
+                        ? "bg-[var(--gold)] text-[var(--on-accent)] hover:opacity-90"
+                        : "border border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--on-accent)]"
+                    }`}
+                  >
+                    {t(`getInvolved.ways.${w.key}.cta`)}
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -204,14 +153,14 @@ export default function GetInvolvedPage() {
         <div className="flex flex-col md:flex-row gap-10 md:gap-20">
           {/* Left */}
           <div className="flex flex-col gap-5 md:w-[400px] flex-shrink-0">
-            <SectionLabel text="FAQ" />
+            <SectionLabel text={t("getInvolved.faq.label")} />
             <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[0.95]">
-              Common
+              {t("getInvolved.faq.titleLine1")}
               <br />
-              Questions
+              {t("getInvolved.faq.titleLine2")}
             </h2>
             <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6]">
-              Can&apos;t find your answer? Contact Fr. Martin Halík directly at{" "}
+              {t("getInvolved.faq.contactIntro")}{" "}
               <a
                 href="mailto:martin@romamission.eu"
                 className="text-[var(--gold)] hover:opacity-80 transition-opacity"
@@ -222,16 +171,16 @@ export default function GetInvolvedPage() {
           </div>
           {/* Right */}
           <div className="flex flex-col flex-1">
-            {faqs.map((faq, i) => (
+            {FAQ_KEYS.map((key) => (
               <div
-                key={i}
+                key={key}
                 className="flex flex-col gap-3 py-6 border-b border-[var(--border-default)] last:border-b-0"
               >
                 <h3 className="text-[15px] md:text-[16px] font-semibold text-[var(--text-primary)]">
-                  {faq.q}
+                  {t(`getInvolved.faq.items.${key}.q`)}
                 </h3>
                 <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.7]">
-                  {faq.a}
+                  {t(`getInvolved.faq.items.${key}.a`)}
                 </p>
               </div>
             ))}

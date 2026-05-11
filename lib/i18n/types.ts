@@ -525,6 +525,68 @@ export interface Dictionary {
       ctaLearn: string;
     };
   };
+  getInvolved: {
+    hero: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+    };
+    waysSection: {
+      label: string;
+      title: string;
+      intro: string;
+    };
+    ways: {
+      financial: {
+        title: string;
+        subtitle: string;
+        desc: string;
+        point1: string;
+        point2: string;
+        point3: string;
+        cta: string;
+      };
+      volunteer: {
+        title: string;
+        subtitle: string;
+        desc: string;
+        point1: string;
+        point2: string;
+        point3: string;
+        cta: string;
+      };
+      share: {
+        title: string;
+        subtitle: string;
+        desc: string;
+        point1: string;
+        point2: string;
+        point3: string;
+        cta: string;
+      };
+      trip: {
+        title: string;
+        subtitle: string;
+        desc: string;
+        point1: string;
+        point2: string;
+        point3: string;
+        cta: string;
+      };
+    };
+    faq: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      contactIntro: string;
+      items: {
+        donation: { q: string; a: string };
+        volunteer: { q: string; a: string };
+        parish: { q: string; a: string };
+        contact: { q: string; a: string };
+      };
+    };
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;

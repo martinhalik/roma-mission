@@ -684,6 +684,82 @@ const cs: Dictionary = {
       ctaLearn: "Zjistěte, jak to funguje",
     },
   },
+  getInvolved: {
+    hero: {
+      label: "Zapojte se",
+      titleLine1: "Připojte se k dílu",
+      titleLine2: "Církve",
+    },
+    waysSection: {
+      label: "Jak pomoci",
+      title: "Vyberte si, jak pomůžete",
+      intro:
+        "Každá založená farnost potřebuje lidi, kteří dávají, modlí se a slouží. Takto se můžete stát součástí této misie.",
+    },
+    ways: {
+      financial: {
+        title: "Finanční podpora",
+        subtitle: "Pravidelně nebo jednorázově",
+        desc: "Vaše dary přímo financují platy kněží, farní budovy, programy pro děti a cesty misijních týmů. Každá částka má smysl.",
+        point1: "25 $/měs. — Pokryje výukové materiály na měsíc",
+        point2: "50 $/měs. — Financuje katechezi jednoho dítěte na rok",
+        point3: "100 $/měs. — Pokryje týdenní farní materiály",
+        cta: "DAROVAT NYNÍ",
+      },
+      volunteer: {
+        title: "Dobrovolnictví",
+        subtitle: "Využijte své dovednosti",
+        desc: "Potřebujeme lidi se zkušenostmi v překladu, vzdělávání, stavebnictví, administrativě a dalších oblastech. K dispozici jsou online i prezenční možnosti.",
+        point1: "Překlad a jazyková podpora",
+        point2: "Výuka a doučování",
+        point3: "Administrativa a komunikace",
+        cta: "PŘIHLÁSIT SE JAKO DOBROVOLNÍK",
+      },
+      share: {
+        title: "Šiřte misii",
+        subtitle: "Mluvte o ní",
+        desc: "Pomozte druhým objevit, co Bůh koná mezi Romy. Sdílejte videa, pozvěte svou farnost k modlitbě a vyprávějte lidem o této práci.",
+        point1: "Sdílejte svědectví a videa se svým společenstvím",
+        point2: "Pozvěte svou církev, aby tuto misii přijala v modlitbě",
+        point3: "Pomozte nám oslovit nové podporovatele a dobrovolníky",
+        cta: "SDÍLET",
+      },
+      trip: {
+        title: "Vyjeďte na misijní cestu",
+        subtitle: "Přijďte se podívat na dílo",
+        desc: "Připojte se k týmu na 1–2 týdny a pracujte po boku místních kněží a vůdců společenství. Žádné zkušenosti nejsou potřeba — stačí ochota.",
+        point1: "Jarní a letní výjezdy",
+        point2: "Týmy 4–8 lidí",
+        point3: "Programy pro děti, stavební práce a komunitní služba",
+        cta: "VYJET NA CESTU",
+      },
+    },
+    faq: {
+      label: "Časté dotazy",
+      titleLine1: "Časté",
+      titleLine2: "dotazy",
+      contactIntro:
+        "Nenašli jste odpověď? Kontaktujte přímo o. Martina Halíka na",
+      items: {
+        donation: {
+          q: "Kam jde můj dar?",
+          a: "Dary přímo financují především prostory misijních center, programy pro děti a překlad materiálů.",
+        },
+        volunteer: {
+          q: "Jakou kvalifikaci potřebuji jako dobrovolník?",
+          a: "Žádnou konkrétní — dobrovolníky přiřadíme k úkolům, které odpovídají jejich dovednostem. Potřebujeme jazykáře, stavbaře, administrativní pracovníky i lidi ochotné pomoci s programy pro děti.",
+        },
+        parish: {
+          q: "Mohu podpořit konkrétní farnost?",
+          a: "Ano. Nabízíme balíčky farního sponzorství, které poskytují přímou, adresnou podporu jednomu místu. Napište nám na misia@krm.sk a dozvíte se víc.",
+        },
+        contact: {
+          q: "Jak se s někým spojím přímo?",
+          a: "Můžete kontaktovat o. Martina Halíka, ředitele Křesťanské romské misie, na martin@romamission.eu nebo telefonicky na +421 951 230 015 (WhatsApp) nebo +1 (773) 796-8109. Více na www.romamission.eu.",
+        },
+      },
+    },
+  },
 };
 
 export default cs;
