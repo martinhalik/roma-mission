@@ -774,9 +774,9 @@ const en: Dictionary = {
         title: "Financial Support",
         subtitle: "Give Monthly or One-Time",
         desc: "Your giving directly funds priest salaries, parish buildings, children's programs, and mission team travel. Every amount makes a difference.",
-        point1: "$25/mo — Provides teaching materials for a month",
-        point2: "$50/mo — Funds one child's catechism for a year",
-        point3: "$100/mo — Covers weekly parish materials",
+        point1: "{amount}/mo — Provides teaching materials for a month",
+        point2: "{amount}/mo — Funds one child's catechism for a year",
+        point3: "{amount}/mo — Covers weekly parish materials",
         cta: "GIVE NOW",
       },
       volunteer: {

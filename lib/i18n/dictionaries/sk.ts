@@ -771,9 +771,9 @@ const sk: Dictionary = {
         title: "Finančná podpora",
         subtitle: "Pravidelne alebo jednorazovo",
         desc: "Vaše dary priamo financujú mzdy kňazov, farské budovy, programy pre deti a cesty misijných tímov. Každá suma má význam.",
-        point1: "25 $/mes. — Pokryje učebné materiály na mesiac",
-        point2: "50 $/mes. — Financuje katechézu jedného dieťaťa na rok",
-        point3: "100 $/mes. — Pokrýva týždenné farské materiály",
+        point1: "{amount}/mes. — Pokryje učebné materiály na mesiac",
+        point2: "{amount}/mes. — Financuje katechézu jedného dieťaťa na rok",
+        point3: "{amount}/mes. — Pokrýva týždenné farské materiály",
         cta: "DAROVAŤ TERAZ",
       },
       volunteer: {

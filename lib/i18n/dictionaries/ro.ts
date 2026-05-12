@@ -776,9 +776,9 @@ const ro: Dictionary = {
         title: "Sprijin financiar",
         subtitle: "Lunar sau o singură dată",
         desc: "Darurile tale finanțează direct salariile preoților, clădirile parohiale, programele pentru copii și deplasările echipei misionare. Orice sumă contează.",
-        point1: "25 $/lună — Acoperă materialele didactice pentru o lună",
-        point2: "50 $/lună — Finanțează cateheza unui copil timp de un an",
-        point3: "100 $/lună — Acoperă materialele parohiale săptămânale",
+        point1: "{amount}/lună — Acoperă materialele didactice pentru o lună",
+        point2: "{amount}/lună — Finanțează cateheza unui copil timp de un an",
+        point3: "{amount}/lună — Acoperă materialele parohiale săptămânale",
         cta: "DĂRUIEȘTE ACUM",
       },
       volunteer: {

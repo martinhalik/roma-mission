@@ -772,9 +772,9 @@ const cs: Dictionary = {
         title: "Finanční podpora",
         subtitle: "Pravidelně nebo jednorázově",
         desc: "Vaše dary přímo financují platy kněží, farní budovy, programy pro děti a cesty misijních týmů. Každá částka má smysl.",
-        point1: "25 $/měs. — Pokryje výukové materiály na měsíc",
-        point2: "50 $/měs. — Financuje katechezi jednoho dítěte na rok",
-        point3: "100 $/měs. — Pokryje týdenní farní materiály",
+        point1: "{amount}/měs. — Pokryje výukové materiály na měsíc",
+        point2: "{amount}/měs. — Financuje katechezi jednoho dítěte na rok",
+        point3: "{amount}/měs. — Pokryje týdenní farní materiály",
         cta: "DAROVAT NYNÍ",
       },
       volunteer: {
