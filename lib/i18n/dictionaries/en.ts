@@ -833,6 +833,35 @@ const en: Dictionary = {
       },
     },
   },
+  thankYou: {
+    eyebrow: "Donation Received",
+    headlineLine1: "Thank You for",
+    headlineLine2: "Your Gift",
+    intro:
+      "Your generosity directly supports Orthodox mission work among Roma communities in Eastern Europe — funding parish life, children's programs, and the people doing this work on the ground.",
+    taxNoticeCountryPrefix: "Roma Mission is a registered non-profit in ",
+    taxNoticeCountry: "Slovakia",
+    taxNoticeCountrySuffix: ". ",
+    taxNoticeDeductPrefix: "US donors: contributions are ",
+    taxNoticeDeductBold: "not tax-deductible",
+    taxNoticeDeductSuffix: " under US law.",
+    scripture:
+      "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.",
+    scriptureRef: "— 2 Corinthians 9:7",
+    oneMoreThing: "One More Thing",
+    helpSpread: "Help Spread the Word",
+    helpSpreadDesc:
+      "Sharing this mission takes one tap and could reach someone whose support changes everything.",
+    shareText:
+      "I just gave to Roma Mission — Orthodox missionaries bringing the Church to Europe's most overlooked communities. Five million Roma, mostly unreached. Worth learning about:",
+    shareTitle: "Roma Mission",
+    shareCta: "SHARE THIS MISSION",
+    postX: "POST ON X",
+    whatsapp: "WHATSAPP",
+    facebook: "FACEBOOK",
+    backHome: "BACK TO HOME",
+    learnMission: "LEARN ABOUT THE MISSION",
+  },
 };
 
 export default en;

@@ -835,6 +835,35 @@ const de: Dictionary = {
       },
     },
   },
+  thankYou: {
+    eyebrow: "Spende eingegangen",
+    headlineLine1: "Danke für",
+    headlineLine2: "Ihre Gabe",
+    intro:
+      "Ihre Großzügigkeit unterstützt unmittelbar die orthodoxe Missionsarbeit unter den Roma in Osteuropa — sie finanziert das Pfarrleben, Kinderprogramme und die Menschen, die diese Arbeit vor Ort tun.",
+    taxNoticeCountryPrefix: "Roma Mission ist eine eingetragene gemeinnützige Organisation in der ",
+    taxNoticeCountry: "Slowakei",
+    taxNoticeCountrySuffix: ". ",
+    taxNoticeDeductPrefix: "Spender aus den USA: Beiträge sind nach US-Recht ",
+    taxNoticeDeductBold: "nicht steuerlich absetzbar",
+    taxNoticeDeductSuffix: ".",
+    scripture:
+      "Jeder gebe, wie er es in seinem Herzen sich vorgenommen hat, nicht mit Verdruss oder aus Zwang; denn einen fröhlichen Geber liebt Gott.",
+    scriptureRef: "— 2. Korinther 9,7",
+    oneMoreThing: "Noch eines",
+    helpSpread: "Helfen Sie, die Botschaft zu verbreiten",
+    helpSpreadDesc:
+      "Diese Mission zu teilen kostet eine Berührung und kann jemanden erreichen, dessen Unterstützung alles verändert.",
+    shareText:
+      "Ich habe gerade an Roma Mission gespendet — orthodoxe Missionare, die die Kirche zu den am meisten übersehenen Gemeinschaften Europas bringen. Fünf Millionen Roma, die meisten unerreicht. Es lohnt sich, mehr zu erfahren:",
+    shareTitle: "Roma Mission",
+    shareCta: "DIESE MISSION TEILEN",
+    postX: "AUF X TEILEN",
+    whatsapp: "WHATSAPP",
+    facebook: "FACEBOOK",
+    backHome: "ZURÜCK ZUR STARTSEITE",
+    learnMission: "MEHR ÜBER DIE MISSION",
+  },
 };
 
 export default de;

@@ -835,6 +835,35 @@ const ro: Dictionary = {
       },
     },
   },
+  thankYou: {
+    eyebrow: "Donație primită",
+    headlineLine1: "Mulțumim pentru",
+    headlineLine2: "darul tău",
+    intro:
+      "Generozitatea ta sprijină direct lucrarea misionară ortodoxă în comunitățile rome din Europa de Est — finanțează viața parohială, programele pentru copii și oamenii care fac această lucrare pe teren.",
+    taxNoticeCountryPrefix: "Roma Mission este o organizație non-profit înregistrată în ",
+    taxNoticeCountry: "Slovacia",
+    taxNoticeCountrySuffix: ". ",
+    taxNoticeDeductPrefix: "Donatorii din SUA: contribuțiile ",
+    taxNoticeDeductBold: "nu sunt deductibile fiscal",
+    taxNoticeDeductSuffix: " conform legislației SUA.",
+    scripture:
+      "Fiecare să dea după cum a hotărât în inima sa, nu cu părere de rău sau de silă, căci pe cel ce dă cu bucurie îl iubește Dumnezeu.",
+    scriptureRef: "— 2 Corinteni 9:7",
+    oneMoreThing: "Încă un lucru",
+    helpSpread: "Ajută-ne să răspândim vestea",
+    helpSpreadDesc:
+      "Distribuirea acestei misiuni durează o atingere și poate ajunge la cineva al cărui sprijin schimbă totul.",
+    shareText:
+      "Tocmai am donat pentru Roma Mission — misionari ortodocși care duc Biserica la cele mai trecute cu vederea comunități din Europa. Cinci milioane de romi, în mare parte neevanghelizați. Merită cunoscut:",
+    shareTitle: "Roma Mission",
+    shareCta: "DISTRIBUIE ACEASTĂ MISIUNE",
+    postX: "POSTEAZĂ PE X",
+    whatsapp: "WHATSAPP",
+    facebook: "FACEBOOK",
+    backHome: "ÎNAPOI ACASĂ",
+    learnMission: "AFLĂ DESPRE MISIUNE",
+  },
 };
 
 export default ro;

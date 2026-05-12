@@ -835,6 +835,35 @@ const sr: Dictionary = {
       },
     },
   },
+  thankYou: {
+    eyebrow: "Прилог примљен",
+    headlineLine1: "Хвала вам за",
+    headlineLine2: "ваш дар",
+    intro:
+      "Ваша великодушност директно подржава православни мисионарски рад у ромским заједницама источне Европе — финансира парохијски живот, програме за децу и људе који овај посао раде на терену.",
+    taxNoticeCountryPrefix: "Roma Mission је регистрована непрофитна организација у ",
+    taxNoticeCountry: "Словачкој",
+    taxNoticeCountrySuffix: ". ",
+    taxNoticeDeductPrefix: "Дародавцима из САД: прилози ",
+    taxNoticeDeductBold: "нису пореско одбитни",
+    taxNoticeDeductSuffix: " према закону САД.",
+    scripture:
+      "Сваки нека да како је одлучио у срцу, не са жалошћу или из принуде, јер Бог љуби радосног дародавца.",
+    scriptureRef: "— 2. Коринћанима 9,7",
+    oneMoreThing: "Још једна ствар",
+    helpSpread: "Помозите да реч стигне даље",
+    helpSpreadDesc:
+      "Дељење ове мисије траје један додир и може стићи до некога чија подршка све мења.",
+    shareText:
+      "Управо сам приложио/ла за Roma Mission — православне мисионаре који доносе Цркву међу најзанемареније заједнице Европе. Пет милиона Рома, већина још неевангелизована. Вреди упознати:",
+    shareTitle: "Roma Mission",
+    shareCta: "ПОДЕЛИТЕ ОВУ МИСИЈУ",
+    postX: "ПОДЕЛИТЕ НА X",
+    whatsapp: "WHATSAPP",
+    facebook: "FACEBOOK",
+    backHome: "НАЗАД НА ПОЧЕТНУ",
+    learnMission: "САЗНАЈТЕ ВИШЕ О МИСИЈИ",
+  },
 };
 
 export default sr;

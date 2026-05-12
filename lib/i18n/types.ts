@@ -647,6 +647,31 @@ export interface Dictionary {
       };
     };
   };
+  thankYou: {
+    eyebrow: string;
+    headlineLine1: string;
+    headlineLine2: string;
+    intro: string;
+    taxNoticeCountryPrefix: string;
+    taxNoticeCountry: string;
+    taxNoticeCountrySuffix: string;
+    taxNoticeDeductPrefix: string;
+    taxNoticeDeductBold: string;
+    taxNoticeDeductSuffix: string;
+    scripture: string;
+    scriptureRef: string;
+    oneMoreThing: string;
+    helpSpread: string;
+    helpSpreadDesc: string;
+    shareText: string;
+    shareTitle: string;
+    shareCta: string;
+    postX: string;
+    whatsapp: string;
+    facebook: string;
+    backHome: string;
+    learnMission: string;
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;

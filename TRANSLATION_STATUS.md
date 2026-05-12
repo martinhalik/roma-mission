@@ -7,14 +7,14 @@ Tracks progress of multilingual support added in branch `claude/add-language-tra
 | Code | Flag | Language | Status (UI chrome) |
 |------|------|----------|--------------------|
 | `en` | 🇬🇧 | English (default) | ✅ complete (source language) |
-| `sk` | 🇸🇰 | Slovak / Slovenčina | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media — needs native review |
-| `cs` | 🇨🇿 | Czech / Čeština | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media — needs native review |
-| `ro` | 🇷🇴 | Romanian / Română | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media — needs native review |
-| `de` | 🇩🇪 | German / Deutsch | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media — needs native review |
-| `sr` | 🇷🇸 | Serbian / Srpski (Cyrillic) | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media — needs native review |
-| `ru` | 🇷🇺 | Russian / Русский | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media — needs native review |
-| `mk` | 🇲🇰 | Macedonian / Македонски | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media — needs native review |
-| `el` | 🇬🇷 | Greek / Ελληνικά | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media — needs native review |
+| `sk` | 🇸🇰 | Slovak / Slovenčina | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
+| `cs` | 🇨🇿 | Czech / Čeština | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
+| `ro` | 🇷🇴 | Romanian / Română | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
+| `de` | 🇩🇪 | German / Deutsch | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
+| `sr` | 🇷🇸 | Serbian / Srpski (Cyrillic) | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
+| `ru` | 🇷🇺 | Russian / Русский | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
+| `mk` | 🇲🇰 | Macedonian / Македонски | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
+| `el` | 🇬🇷 | Greek / Ελληνικά | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
 
 > **Note:** Initial translations are AI-generated from English. Each locale should be reviewed by a native speaker before going to production. Russian uses the term "цыганская" historically; if a community-preferred term (e.g. "ромская") is desired, update `ru.ts`. Serbian is in Cyrillic — a Latin variant (`sr-Latn`) can be added by duplicating `sr.ts`.
 
@@ -43,6 +43,7 @@ These already pull strings via `t()` and render correctly in all 9 languages:
 - `app/our-story/page.tsx` — Founder story: hero, year-by-year timeline (Before 2016 → Today), pull quotes, Bible quote, documentary tease, CTAs (`ourStory.*` namespace). Czech-language pull-quote originals are preserved verbatim across non-Czech locales as direct citation; in `cs.ts` the `pullQuoteOriginal` field is intentionally empty to avoid duplication.
 - `app/stories/page.tsx` — Hero, featured Laco testimony, stats, founder card, 5 testimonies, anonymous vignette, closing CTAs (`stories.*` namespace). Direct first-person quotes use `quoteSource` (preserved in original language across all locales) + `quoteTranslation` (per-locale).
 - `app/locations/page.tsx` — Locations: hero, stat pills, map intro, mission centers (subtitle/region/description/badge/programs), planted churches (name/note/status), active plants, ended plant (Hačava) narrative, supported parishes intro & footnote (`locations.*` namespace). `components/MissionMap.tsx` popup also reads `locations.map.<id>.{subtitle,description}` for the 9 ids that have unique copy.
+- `app/thank-you/page.tsx` — Donation thank-you: eyebrow, headline, intro, tax notice (Slovakia non-profit / US not tax-deductible), 2 Corinthians 9:7 scripture, share section copy, share/X/WhatsApp/Facebook buttons, BACK TO HOME / LEARN ABOUT THE MISSION CTAs (`thankYou.*` namespace). Metadata moved to a new `app/thank-you/layout.tsx`; the page is now a `"use client"` component so it can read `useTranslation()`. SEO metadata kept in English (consistent with current static-locale approach).
 
 ## What Still Needs Translation ⚠️
 
@@ -59,7 +60,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | `app/stories/page.tsx` | 428 | ✅ Translated into all 9 locales (`stories.*` namespace). First-person quotes preserved in source language (`quoteSource`) with optional per-locale translation (`quoteTranslation`). |
 | `app/get-involved/page.tsx` | 246 | ✅ Translated into all 9 locales (`getInvolved.*` namespace) — hero, 4 way-to-help cards (financial / volunteer / share / trip), and 4 FAQs. Donation amounts (`$25/mo`, `$50/mo`, `$100/mo`) kept numeric in USD across all locales; localized only the surrounding copy. The `DonationModal`, `ApplicationModal`, and `CTASection` that this page mounts are still hardcoded English — separate translation chunks. |
 | `app/media/page.tsx` | 309 | ✅ Translated into all 9 locales (`media.*` namespace). Strategy (b): per-item video metadata (`title`, `shortDesc`, `fullDesc`, `source`, `guest`, badge `label`) moved into the dictionary keyed by id (`media.items.documentary`, `media.items.int-1`, `media.items.int-2`, `media.items.testimony-laco`); structural fields (`videoId`, `tag`, `duration`, `badgeVariant`, `hasGuest`) remain on the data object in `lib/media-data.ts`. Subtitle/audio badge labels are translated to describe the video itself in each language (e.g. SK: "EN titulky" / "Slovenský zvuk" / "Anglický zvuk"). Home page (`app/page.tsx`) featured-media grid was updated to read titles/descs from the same dictionary keys. |
-| `app/thank-you/page.tsx` | 151 | Donation thank-you |
+| `app/thank-you/page.tsx` | 151 | ✅ Translated into all 9 locales (`thankYou.*` namespace) |
 | `app/privacy-policy/page.tsx` | 152 | Legal — must be reviewed by counsel before localizing |
 | `app/terms-of-use/page.tsx` | 137 | Legal — must be reviewed by counsel before localizing |
 
