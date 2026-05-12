@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useTranslation } from "./LanguageProvider";
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface VideoModalProps {
 }
 
 export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps) {
+  const { t } = useTranslation();
   useEffect(() => {
     if (!isOpen) return;
     const handleKey = (e: KeyboardEvent) => {
@@ -37,7 +39,7 @@ export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps
           onClick={onClose}
           className="absolute -top-10 right-0 text-white/70 hover:text-white text-[13px] tracking-[1px] font-semibold transition-colors"
         >
-          CLOSE ✕
+          {t("video.close")}
         </button>
         <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
           <iframe

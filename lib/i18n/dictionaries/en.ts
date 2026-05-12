@@ -1035,6 +1035,9 @@ const en: Dictionary = {
       "Complete your booking in the new tab. We look forward to speaking with you.",
     closeButton: "CLOSE",
   },
+  video: {
+    close: "CLOSE ✕",
+  },
 };
 
 export default en;

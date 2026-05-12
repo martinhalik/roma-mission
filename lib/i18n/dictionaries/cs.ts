@@ -1033,6 +1033,9 @@ const cs: Dictionary = {
       "Dokončete rezervaci v nové kartě. Těšíme se na rozhovor s vámi.",
     closeButton: "ZAVŘÍT",
   },
+  video: {
+    close: "ZAVŘÍT ✕",
+  },
 };
 
 export default cs;

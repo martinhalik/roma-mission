@@ -1038,6 +1038,9 @@ const de: Dictionary = {
       "Schließen Sie die Buchung im neuen Tab ab. Wir freuen uns auf das Gespräch mit Ihnen.",
     closeButton: "SCHLIESSEN",
   },
+  video: {
+    close: "SCHLIESSEN ✕",
+  },
 };
 
 export default de;

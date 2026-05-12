@@ -1039,6 +1039,9 @@ const ro: Dictionary = {
       "Finalizează rezervarea în noua filă. Așteptăm cu nerăbdare să vorbim cu tine.",
     closeButton: "ÎNCHIDE",
   },
+  video: {
+    close: "ÎNCHIDE ✕",
+  },
 };
 
 export default ro;
