@@ -50,6 +50,7 @@ The reviewer for each locale should diff their locale's file against `en.ts` and
 | `video` | Video modal close affordance |
 | `map` | MissionMap chrome (legend, density gradient label, marker labels, loading/unavailable states, popup CTAs, hover-tooltip interpolation) |
 | `countries` | ISO-2-keyed country exonyms used by the country hover tooltip in MissionMap |
+| `metadata` | Per-route `title` + `description` rendered into `<title>`, `<meta description>`, OpenGraph, Twitter card, and `hreflang` alternates. 10 entries keyed by RouteKey (`home`, `mission`, `ourStory`, `locations`, `stories`, `media`, `getInvolved`, `thankYou`, `privacy`, `terms`). Titles 40–60 chars; descriptions 150–160 chars. |
 
 ## Per-locale reviewer checklist
 
@@ -139,9 +140,9 @@ These are leftover untranslated strings found while auditing this branch. None b
 | `components/DonationModal.tsx` | `${amt}` preset buttons + `` `GIVE $${finalAmount}` `` CTA | ✅ Resolved — both render via `formatCurrency(…, locale)`; the `donation.give*` dictionary values were stripped of literal `$` since `formatCurrency` supplies it. The standalone `$` input prefix on the custom-amount field is kept literal (static UI element). |
 | `app/api/stripe/payment-intent/route.ts` (line 10) | `"Invalid amount"` JSON error | Server-side, never user-rendered — left as-is |
 
-### Non-trivial — could justify a separate issue if/when revisited
+### SEO metadata — review surface
 
-- **SEO metadata (`<title>`, OpenGraph, Twitter card across `app/layout.tsx` and per-route `<route>/layout.tsx`):** intentionally English per the Path B decision in PR #22 / TRANSLATION_STATUS.md. Migrating to localized metadata requires the `app/[locale]/…` routing refactor.
+- **`metadata.*` namespace** (`metadata.<routeKey>.{title, description, ogTitle?, ogDescription?}` for 10 route keys) is now part of the per-locale review. These are server-rendered into `<title>`, `<meta name="description">`, `<meta property="og:*">`, and `<meta name="twitter:*">` per page. Length conventions: title 40–60 chars including the localized "Roma Mission" form; description 150–160 chars. Per-locale reviewers should sanity-check both length and naturalness.
 
 ### Dictionary completeness — TS-enforced ✅
 

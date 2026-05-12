@@ -23,14 +23,21 @@ Tracks progress of multilingual support added in branch `claude/add-language-tra
 ## Architecture
 
 - **Locale registry:** `lib/i18n/locales.ts`
+- **Route slug map + helpers:** `lib/i18n/routes.ts` — `ROUTE_SLUGS[locale][routeKey]`, `resolveRoute(locale, urlSlug)`, `buildPath(locale, routeKey)`
 - **Type-safe dictionary shape:** `lib/i18n/types.ts`
 - **Per-locale dictionaries:** `lib/i18n/dictionaries/{en,sk,cs,ro,de,sr,ru,mk,el}.ts`
 - **Aggregator:** `lib/i18n/index.ts`
+- **Metadata helper:** `lib/i18n/metadata.ts` — builds the `Metadata` object (title / description / og / twitter / canonical / hreflang) given a locale + route key
 - **Provider + hook:** `components/LanguageProvider.tsx` (exports `useTranslation`)
+- **Locale-aware Link wrapper:** `components/LocaleLink.tsx` — used by every internal nav site
 - **Flag dropdown UI:** `components/LanguageSwitcher.tsx`
-- **Mounted in:** `app/layout.tsx` wraps all routes
-- **Persistence:** `localStorage["locale"]`, falls back to `navigator.language`, then English
-- **Fallback chain:** `t(key)` → current locale → English → key string
+- **Routing:**
+  - `app/[locale]/page.tsx` — home
+  - `app/[locale]/[slug]/page.tsx` — catch-all, switches over RouteKey
+  - `app/[locale]/_components/<RouteKey>Page.tsx` — page bodies
+  - `middleware.ts` — locale detection (Accept-Language), `/` → `/<locale>` (302), English-slug alias → canonical (301), unknown top-level path → `/<locale>/<same-path>` (302). Excludes `/api`, static assets.
+- **Locale source of truth:** URL only. The `LanguageProvider` reads the URL locale from its parent layout; there is no `localStorage["locale"]`, no `navigator.language` fallback in the client. `<html lang>` is server-rendered per request from the `x-roma-locale` header middleware attaches.
+- **Fallback chain:** `t(key)` → current locale → English → key string.
 
 ## What Is Translated ✅
 
@@ -86,26 +93,32 @@ The following pages and components still contain hardcoded English strings. **Ea
 | `lib/data/mission-locations.ts` | ✅ Translatable `subtitle`/`description`/`status` moved to dictionary (`locations.map.<id>`); proper-noun `name`/`village` remain on the data object |
 | `lib/data/roma-countries.ts` | ✅ Country names now translated via the `countries.<ISO>` namespace consumed by `components/MissionMap.tsx`. The original English `country` field stays on the data object (used as fallback and for the unchanged mission-page country grid — see below). |
 
-### Layout / metadata — DECISION: Path B (English metadata, no subpath routing)
+### Layout / metadata — subpath routing under `/[locale]/<slug>`
 
-`app/layout.tsx` and the per-route `<route>/layout.tsx` files render `metadata.title`, `metadata.description`, OpenGraph, and Twitter card strings. These are emitted server-side from a single static `Metadata` object and therefore cannot read `useTranslation()` (a client-only hook). To localize SEO metadata, App Router requires either `generateMetadata` with a per-locale segment param, or a separate language site under each locale path. After weighing both, we are going with **Path B**:
+Every page lives under a locale prefix with an ASCII-transliterated slug per locale:
 
-**Path B — Accept English metadata, document the trade-off, dynamic `<html lang>`.** *(chosen)*
+| Route key | en | sk | cs | ro | de | sr | ru | mk | el |
+|---|---|---|---|---|---|---|---|---|---|
+| home | `/en` | `/sk` | `/cs` | `/ro` | `/de` | `/sr` | `/ru` | `/mk` | `/el` |
+| mission | `/en/mission` | `/sk/misia` | `/cs/mise` | `/ro/misiune` | `/de/mission` | `/sr/misija` | `/ru/missiya` | `/mk/misija` | `/el/apostoli` |
+| ourStory | `/en/our-story` | `/sk/nas-pribeh` | `/cs/nas-pribeh` | `/ro/povestea-noastra` | `/de/unsere-geschichte` | `/sr/nasa-prica` | `/ru/nasha-istoriya` | `/mk/nasata-prikazna` | `/el/i-istoria-mas` |
+| locations | `/en/locations` | `/sk/lokality` | `/cs/lokality` | `/ro/locatii` | `/de/standorte` | `/sr/lokacije` | `/ru/mesta` | `/mk/lokacii` | `/el/topothesies` |
+| stories | `/en/stories` | `/sk/pribehy` | `/cs/pribehy` | `/ro/marturii` | `/de/geschichten` | `/sr/price` | `/ru/istorii` | `/mk/prikazni` | `/el/martyries` |
+| media | `/en/media` | `/sk/media` | `/cs/media` | `/ro/media` | `/de/medien` | `/sr/mediji` | `/ru/media` | `/mk/mediumi` | `/el/mesa` |
+| getInvolved | `/en/get-involved` | `/sk/zapojte-sa` | `/cs/zapojte-se` | `/ro/implica-te` | `/de/mitmachen` | `/sr/prikljuci-se` | `/ru/uchastvovat` | `/mk/vklucise` | `/el/symmetechete` |
+| thankYou | `/en/thank-you` | `/sk/dakujeme` | `/cs/dekujeme` | `/ro/multumesc` | `/de/danke` | `/sr/hvala` | `/ru/spasibo` | `/mk/blagodaram` | `/el/efcharistoume` |
+| privacy | `/en/privacy-policy` | `/sk/ochrana-udajov` | `/cs/ochrana-udaju` | `/ro/confidentialitate` | `/de/datenschutz` | `/sr/privatnost` | `/ru/konfidentsialnost` | `/mk/privatnost` | `/el/aporrito` |
+| terms | `/en/terms-of-use` | `/sk/podmienky` | `/cs/podminky` | `/ro/termeni` | `/de/nutzungsbedingungen` | `/sr/uslovi` | `/ru/usloviya` | `/mk/uslovi` | `/el/oroi-chrisis` |
 
-What this means in practice:
-- The `<title>`, OpenGraph, and Twitter card stay in English for every visitor, regardless of the in-page language toggle. Visible page copy is fully localized via `useTranslation()`; only crawler-facing metadata stays English.
-- A small inline script in `<head>` (added in this PR) reads `localStorage["locale"]` (or `navigator.language` fallback) and sets `document.documentElement.lang` *before paint* so the `<html lang>` attribute matches the user's chosen locale on first render, not just after hydration. This helps screen readers immediately and gives Google a per-document language signal even though the URL doesn't change.
-- No `hreflang` alternates are emitted. Without distinct per-locale URLs, hreflang pointing to the same URL would either be ignored or treated as a duplicate-content signal — strictly worse than omitting it.
+What this gives us:
 
-Why not Path A — the full migration to `app/[locale]/…` subpath routing:
-- The site is 10 pages × 9 locales = 90 statically-prerendered routes. Building the routing skeleton, middleware-based locale detection, a locale-aware `<Link>` wrapper, a `LanguageSwitcher` that navigates rather than mutates client state, and migrating every route is a multi-day refactor with high churn across every page and component that uses `<Link>`.
-- The current donor flow is primarily direct links + social shares + word of mouth, not organic search. The SEO returns from localized metadata on a small mission site are modest, and likely to be smaller still in the short term than the work cost.
-- Path A remains available later: if the maintainer ever has search-console data showing English titles are blocking non-English organic reach, the migration is a contained piece of work and the dictionary architecture (`Dictionary` is keyed by `Locale`, already typed for it) supports it cleanly.
+- **Per-locale `<title>`, `description`, OpenGraph, Twitter card.** Built by `lib/i18n/metadata.ts` from the `metadata` namespace in each dictionary. Native-speaker review covers this namespace alongside the visible UI copy.
+- **`hreflang` alternates per page** — every route emits `<link rel="alternate" hrefLang="…" href="…">` for all 9 locales plus an `x-default` pointing at the English canonical. Plus `<link rel="canonical">` for the current localized URL.
+- **`<html lang>` is server-rendered** per request based on the locale segment. No more FOUC script swapping `lang` on the client.
+- **Alias redirects** — `/<locale>/<english-slug>` 301s to `/<locale>/<canonical-slug>` (e.g. `/ro/mission` → `/ro/misiune`), so any stray English-slug links in the wild keep working.
+- **No-locale paths** — `/mission`, `/locations`, etc. 302 to `/<detected-locale>/<canonical-slug>` so old direct links + crawlers + bookmarks land on the right localized canonical.
 
-When to revisit:
-- Search Console data shows meaningful non-English search impressions but poor CTR (suggesting English titles are losing the click).
-- A donor base in a particular country grows large enough to justify dedicated `/sk/`, `/de/`, etc. landing pages.
-- The site adds blog/news content that benefits from per-language indexing.
+This supersedes the earlier "Path B" decision documented during the PR #22 rollout. The `<html lang>` FOUC script and the `localStorage["locale"]` persistence have been removed — the URL is the single source of truth for locale.
 
 ## Videos / Subtitles Needed 🎥
 
@@ -147,7 +160,7 @@ Full per-file list and per-locale checklist in [`REVIEW_CHECKLIST.md`](./REVIEW_
 - **Dictionary completeness:** TypeScript-enforced; no missing keys possible. Spot-greps for English fragments in non-English dictionaries returned only the intentionally-preserved English `quoteSource` strings under `stories.testimonies.*` — no accidental English leaks.
 - **Trivial English strings left in code:** ✅ resolved in the audit-cleanup PR. `Navbar` WhatsApp aria-label now reads `t("nav.contactWhatsapp")`; 7 decorative `alt=""` image attributes in `app/page.tsx` now read from `home.imageAlt.*`; `app/mission/page.tsx:117` country-grid card reads `t(\`countries.${data.iso}\`)`; `DonationModal` preset buttons (`${amt}`) and CTA (`GIVE $${finalAmount}`) now render via `formatCurrency(…, locale)` (dictionary values for `donation.giveMonthly/giveOnce/giveInvalid` are stripped of the literal `$` since `formatCurrency` supplies it). The custom-amount input `$` prefix is kept literal — it's a static UI element, not a formatted amount. `app/api/stripe/payment-intent/route.ts:10` server-side `"Invalid amount"` error remains English (never user-rendered).
 - **Render check:** not performed headlessly. Layout-overflow audit should happen during native-speaker review — German strings often run +25–35% longer than English, and dense UI (button rows, stat pills) is the most likely failure point.
-- **SEO metadata:** intentionally English per Path B decision (see "Layout / metadata" section above).
+- **SEO metadata:** fully localized per route per locale via `lib/i18n/metadata.ts` and the `metadata.*` dictionary namespace (see "Layout / metadata" section above). Hreflang alternates emitted for all 9 locales plus `x-default`.
 
 ## How to Add a New String
 
