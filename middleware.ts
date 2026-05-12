@@ -31,9 +31,12 @@ export function middleware(req: NextRequest) {
   const segments = pathname.split("/").filter(Boolean);
   const first = segments[0];
 
-  // If first segment is a supported locale, pass through.
   if (first && isSupportedLocaleSegment(first)) {
-    return NextResponse.next();
+    // Pass through, but surface the active locale + path to server components.
+    const res = NextResponse.next();
+    res.headers.set("x-roma-locale", first);
+    res.headers.set("x-roma-pathname", pathname);
+    return res;
   }
 
   // Non-locale top-level path: prepend the detected locale and redirect.
@@ -46,7 +49,6 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // Exclude API routes, Next internals, and static assets.
   matcher: [
     "/((?!api|_next/static|_next/image|images|icon.svg|favicon.ico|robots.txt|sitemap.xml|.*\\..*).*)",
   ],

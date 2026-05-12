@@ -1105,52 +1105,54 @@ const ru: Dictionary = {
   },
   metadata: {
     home: {
-      title: "Christian Roma Mission",
+      title: "Христианская цыганская миссия",
       description:
-        "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
+        "10 миллионов цыган в Европе. Мы живём среди них, основываем долговечные приходы и наставляем следующее поколение.",
     },
     mission: {
-      title: "The Mission — Roma Mission",
+      title: "Миссия — Христианская цыганская миссия",
       description:
-        "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
+        "Пять миллионов цыган в Европе — большинство не достигнуто Евангелием. Узнайте о масштабе нужды, состоянии православного присутствия и работе по созданию приходов.",
     },
     ourStory: {
-      title: "Our Story — Roma Mission",
+      title: "Наша история — Христианская цыганская миссия",
       description:
-        "From a chance encounter in Klenovec in 2016 to a network of Orthodox parishes among Roma — Fr. Martin Halík's path and the work that has grown around it.",
+        "От случайной встречи в Кленовце в 2016 году к сети православных приходов среди цыган — путь отца Мартина Галика и дело, выросшее вокруг него.",
     },
     locations: {
-      title: "Locations — Roma Mission",
+      title: "Места служения — Христианская цыганская миссия",
       description:
-        "Our active mission centers in Slovakia — Klenovec, Markovce, Kačanov, Mútnik — where Orthodox parishes are being planted among Roma communities.",
+        "Наши действующие миссионерские центры в Словакии — Кленовец, Марковце, Качанов, Мутник — где основываются православные приходы среди цыган.",
     },
     stories: {
-      title: "Stories — Roma Mission",
+      title: "Истории — Христианская цыганская миссия",
       description:
-        "First-person testimonies from Roma men, women, and families whose lives have been changed by the Gospel through the work of the mission.",
+        "Личные свидетельства цыган мужчин, женщин и семей, чьи жизни изменило Евангелие через служение миссии.",
     },
     media: {
-      title: "Media — Roma Mission",
+      title: "Медиа — Христианская цыганская миссия",
       description:
-        "Documentaries, interviews, and testimonies about Orthodox mission among the Roma — bringing the Gospel to Europe's largest unreached minority.",
+        "Документальные фильмы, интервью и свидетельства о православной миссии среди цыган — несение Евангелия крупнейшему недостигнутому меньшинству Европы.",
     },
     getInvolved: {
-      title: "Get Involved — Roma Mission",
+      title: "Участвовать — Христианская цыганская миссия",
       description:
-        "Support the Roma Mission through financial giving, volunteering your skills, joining a mission trip, or prayer. Join the work of planting Orthodox parishes in Roma communities.",
+        "Поддержите цыганскую миссию финансовым пожертвованием, волонтёрством, миссионерской поездкой или молитвой. Присоединяйтесь к основанию православных приходов.",
     },
     thankYou: {
-      title: "Thank God for Your Support — Roma Mission",
+      title: "Слава Богу за вашу поддержку — Цыганская миссия",
       description:
-        "Your gift supports Orthodox missionaries living and working among the Roma. Thank you for investing in this work.",
+        "Ваше пожертвование поддерживает православных миссионеров, живущих и работающих среди цыган. Спасибо за вашу инвестицию в это дело.",
     },
     privacy: {
-      title: "Privacy Policy — Roma Mission",
-      description: "Privacy Policy for the Christian Roma Mission website.",
+      title: "Политика конфиденциальности — Цыганская миссия",
+      description:
+        "Политика конфиденциальности сайта Христианской цыганской миссии.",
     },
     terms: {
-      title: "Terms of Use — Roma Mission",
-      description: "Terms of Use for the Christian Roma Mission website.",
+      title: "Условия использования — Цыганская миссия",
+      description:
+        "Условия использования сайта Христианской цыганской миссии.",
     },
   },
 };

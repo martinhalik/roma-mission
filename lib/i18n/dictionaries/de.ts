@@ -1106,52 +1106,54 @@ const de: Dictionary = {
   },
   metadata: {
     home: {
-      title: "Christian Roma Mission",
+      title: "Christliche Roma-Mission",
       description:
-        "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
+        "10 Millionen Roma in Europa. Wir leben mitten unter ihnen, gründen bleibende Gemeinden und begleiten die nächste Generation.",
     },
     mission: {
-      title: "The Mission — Roma Mission",
+      title: "Die Mission — Christliche Roma-Mission",
       description:
-        "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
+        "Fünf Millionen Roma in Europa — die meisten ohne Zugang zum Evangelium. Lernen Sie das Ausmaß, die orthodoxe Präsenz und unsere Arbeit kennen.",
     },
     ourStory: {
-      title: "Our Story — Roma Mission",
+      title: "Unsere Geschichte — Christliche Roma-Mission",
       description:
-        "From a chance encounter in Klenovec in 2016 to a network of Orthodox parishes among Roma — Fr. Martin Halík's path and the work that has grown around it.",
+        "Von einer Begegnung in Klenovec 2016 zu einem Netzwerk orthodoxer Gemeinden unter Roma — der Weg von Pfarrer Martin Halík und das daraus gewachsene Werk.",
     },
     locations: {
-      title: "Locations — Roma Mission",
+      title: "Standorte — Christliche Roma-Mission",
       description:
-        "Our active mission centers in Slovakia — Klenovec, Markovce, Kačanov, Mútnik — where Orthodox parishes are being planted among Roma communities.",
+        "Unsere aktiven Missionszentren in der Slowakei — Klenovec, Markovce, Kačanov, Mútnik — wo orthodoxe Gemeinden in Roma-Gemeinschaften gegründet werden.",
     },
     stories: {
-      title: "Stories — Roma Mission",
+      title: "Geschichten — Christliche Roma-Mission",
       description:
-        "First-person testimonies from Roma men, women, and families whose lives have been changed by the Gospel through the work of the mission.",
+        "Persönliche Zeugnisse von Roma-Männern, -Frauen und -Familien, deren Leben durch das Evangelium und die Arbeit der Mission verändert wurden.",
     },
     media: {
-      title: "Media — Roma Mission",
+      title: "Medien — Christliche Roma-Mission",
       description:
-        "Documentaries, interviews, and testimonies about Orthodox mission among the Roma — bringing the Gospel to Europe's largest unreached minority.",
+        "Dokumentationen, Interviews und Zeugnisse über orthodoxe Mission unter Roma — das Evangelium zu Europas größter unerreichter Minderheit.",
     },
     getInvolved: {
-      title: "Get Involved — Roma Mission",
+      title: "Mitmachen — Christliche Roma-Mission",
       description:
-        "Support the Roma Mission through financial giving, volunteering your skills, joining a mission trip, or prayer. Join the work of planting Orthodox parishes in Roma communities.",
+        "Unterstützen Sie die Roma-Mission durch Spenden, ehrenamtliche Mitarbeit, eine Missionsreise oder Gebet. Pflanzen Sie mit orthodoxe Gemeinden.",
     },
     thankYou: {
-      title: "Thank God for Your Support — Roma Mission",
+      title: "Gott sei Dank für Ihre Unterstützung — Roma-Mission",
       description:
-        "Your gift supports Orthodox missionaries living and working among the Roma. Thank you for investing in this work.",
+        "Ihre Spende unterstützt orthodoxe Missionare, die mitten unter Roma leben und arbeiten. Vielen Dank für Ihre Investition in dieses Werk.",
     },
     privacy: {
-      title: "Privacy Policy — Roma Mission",
-      description: "Privacy Policy for the Christian Roma Mission website.",
+      title: "Datenschutz — Roma-Mission",
+      description:
+        "Datenschutzerklärung für die Website der Christlichen Roma-Mission.",
     },
     terms: {
-      title: "Terms of Use — Roma Mission",
-      description: "Terms of Use for the Christian Roma Mission website.",
+      title: "Nutzungsbedingungen — Roma-Mission",
+      description:
+        "Nutzungsbedingungen der Website der Christlichen Roma-Mission.",
     },
   },
 };

@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/lib/i18n";
 import { resolveRoute } from "@/lib/i18n/routes";
+import { buildLocaleMetadata } from "@/lib/i18n/metadata";
 import MissionPage from "../_components/MissionPage";
 import OurStoryPage from "../_components/OurStoryPage";
 import LocationsPage from "../_components/LocationsPage";
@@ -10,6 +12,18 @@ import GetInvolvedPage from "../_components/GetInvolvedPage";
 import ThankYouPage from "../_components/ThankYouPage";
 import PrivacyPolicyPage from "../_components/PrivacyPolicyPage";
 import TermsOfUsePage from "../_components/TermsOfUsePage";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  if (!isLocale(locale)) return {};
+  const routeKey = resolveRoute(locale, slug);
+  if (!routeKey || routeKey === "home") return {};
+  return buildLocaleMetadata(locale, routeKey);
+}
 
 export default async function LocaleSlugPage({
   params,
@@ -24,8 +38,6 @@ export default async function LocaleSlugPage({
 
   switch (routeKey) {
     case "home":
-      // Home is served by [locale]/page.tsx (empty slug), this branch is
-      // unreachable but kept for exhaustiveness.
       notFound();
     case "mission":
       return <MissionPage />;
