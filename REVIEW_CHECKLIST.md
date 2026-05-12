@@ -129,15 +129,15 @@ These are leftover untranslated strings found while auditing this branch. None b
 
 ### Trivial — fix in a follow-up dictionary PR
 
-| File | Line(s) | What | Why deferred |
-|---|---|---|---|
-| `components/Navbar.tsx` | 72, 112 | `aria-label="Contact us on WhatsApp"` (desktop + mobile) | Adding to `nav.*` would touch the shared navbar barrel; deferred to keep this audit PR scoped to docs |
-| `app/page.tsx` | 145, 146, 147 | 3 × `alt="Future"` decorative image alt | Should be added to `home.imageAlt.*` (the `mission.imageAlt` namespace is the precedent) |
-| `app/page.tsx` | 195, 196, 197 | `alt="Roma population growing"`, `alt="Roma children transformed via education"`, `alt="Dignity returns"` | Same |
-| `app/page.tsx` | 247 | `alt="Our approach"` | Same |
-| `app/mission/page.tsx` | 117 | `{data.country}` renders English country name in the country-grid card header | Fix is `t(\`countries.${data.iso}\`)` once the `countries.*` namespace from PR #20 lands; the namespace + ISO data already exist |
-| `components/DonationModal.tsx` | 275, 288, 331 | `${amt}`, `$` input prefix, `` `GIVE $${finalAmount}` `` | Swap to `formatCurrency(amt, locale)` once both PR #17 (DonationModal translation) and PR #21 (formatting helper) merge |
-| `app/api/stripe/payment-intent/route.ts` | 10 | `"Invalid amount"` JSON error | Server-side error string, never rendered as user copy — low priority |
+| File | What | Status |
+|---|---|---|
+| `components/Navbar.tsx` (lines 72, 112) | `aria-label="Contact us on WhatsApp"` (desktop + mobile) | ✅ Resolved — reads `t("nav.contactWhatsapp")` |
+| `app/page.tsx` (lines 145–147) | 3 × `alt="Future"` decorative image alt | ✅ Resolved — reads `t("home.imageAlt.urgencyFuture")` |
+| `app/page.tsx` (lines 195–197) | `alt` for population-growing / education / dignity images | ✅ Resolved — reads `home.imageAlt.populationGrowing` / `education` / `dignity` |
+| `app/page.tsx` (line 247) | `alt="Our approach"` | ✅ Resolved — reads `t("home.imageAlt.approach")` |
+| `app/mission/page.tsx` (line 117) | `{data.country}` country-grid card header | ✅ Resolved — reads `` t(`countries.${data.iso}`) `` |
+| `components/DonationModal.tsx` | `${amt}` preset buttons + `` `GIVE $${finalAmount}` `` CTA | ✅ Resolved — both render via `formatCurrency(…, locale)`; the `donation.give*` dictionary values were stripped of literal `$` since `formatCurrency` supplies it. The standalone `$` input prefix on the custom-amount field is kept literal (static UI element). |
+| `app/api/stripe/payment-intent/route.ts` (line 10) | `"Invalid amount"` JSON error | Server-side, never user-rendered — left as-is |
 
 ### Non-trivial — could justify a separate issue if/when revisited
 

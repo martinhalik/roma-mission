@@ -69,7 +69,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             href="https://wa.me/421951230015"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Contact us on WhatsApp"
+            aria-label={t("nav.contactWhatsapp")}
             className="flex items-center gap-2 px-3 xl:px-6 py-3 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[11px] font-bold tracking-[1px] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)] transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -109,7 +109,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             href="https://wa.me/421951230015"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Contact us on WhatsApp"
+            aria-label={t("nav.contactWhatsapp")}
             className="p-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
