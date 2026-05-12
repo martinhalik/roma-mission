@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslation } from "./LanguageProvider";
 
 const GOOGLE_CALENDAR_URL = "https://calendar.app.google/cTPpM8EAg5QiMKpz6";
 
@@ -15,6 +16,7 @@ export default function ApplicationModal({
   onClose,
   type,
 }: ApplicationModalProps) {
+  const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
@@ -40,13 +42,21 @@ export default function ApplicationModal({
 
   const isVolunteer = type === "volunteer";
 
-  const title = isVolunteer ? "Apply to Volunteer" : "Join a Mission Trip";
+  const title = isVolunteer
+    ? t("application.titleVolunteer")
+    : t("application.titleTrip");
   const subtitle = isVolunteer
-    ? "Use your skills to serve Roma communities"
-    : "Come see the work first-hand";
+    ? t("application.subtitleVolunteer")
+    : t("application.subtitleTrip");
   const description = isVolunteer
-    ? "We match volunteers with roles that fit their background — translation, education, construction, admin, and more. Let's find a good fit together on a short call."
-    : "Mission trips run in Spring and Summer. Teams of 6–12 people travel to Romania, Slovakia, and Hungary to work alongside local priests and community leaders.";
+    ? t("application.descriptionVolunteer")
+    : t("application.descriptionTrip");
+
+  const steps = [
+    t("application.step1"),
+    t("application.step2"),
+    t("application.step3"),
+  ];
 
   return (
     <div
@@ -61,7 +71,7 @@ export default function ApplicationModal({
         <div className="flex items-center justify-between px-8 pt-8 pb-6 border-b border-[var(--border-default)]">
           <div>
             <p className="text-[10px] font-semibold tracking-[2px] text-[var(--gold)] uppercase mb-1">
-              Get Involved
+              {t("application.eyebrow")}
             </p>
             <h2 className="text-[20px] font-bold text-[var(--text-primary)] tracking-[-0.5px]">
               {title}
@@ -69,7 +79,7 @@ export default function ApplicationModal({
           </div>
           <button
             onClick={handleClose}
-            aria-label="Close"
+            aria-label={t("application.close")}
             className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors text-[20px] leading-none"
           >
             ✕
@@ -91,14 +101,10 @@ export default function ApplicationModal({
               {/* What to expect */}
               <div className="flex flex-col gap-3 border-l-2 border-[var(--gold)] pl-4">
                 <p className="text-[12px] font-semibold text-[var(--text-primary)] tracking-[0.5px]">
-                  WHAT HAPPENS NEXT
+                  {t("application.whatHappensNext")}
                 </p>
                 <ol className="flex flex-col gap-2">
-                  {[
-                    "Book a 20-minute intro call below",
-                    "We learn about your background & availability",
-                    "We match you with the right opportunity",
-                  ].map((step, i) => (
+                  {steps.map((step, i) => (
                     <li
                       key={i}
                       className="flex items-start gap-3 text-[13px] text-[var(--text-secondary)]"
@@ -119,11 +125,11 @@ export default function ApplicationModal({
                 onClick={() => setSubmitted(true)}
                 className="w-full py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
               >
-                SCHEDULE A CALL
+                {t("application.scheduleCall")}
               </a>
 
               <p className="text-[11px] text-[var(--text-muted)] text-center">
-                Takes less than 2 minutes. No commitment required.
+                {t("application.takesLittleTime")}
               </p>
             </>
           ) : (
@@ -133,17 +139,17 @@ export default function ApplicationModal({
               </div>
               <div>
                 <h3 className="text-[18px] font-bold text-[var(--text-primary)] mb-2">
-                  Booking link opened
+                  {t("application.bookingOpenedTitle")}
                 </h3>
                 <p className="text-[13px] text-[var(--text-secondary)] leading-[1.6]">
-                  Complete your booking in the new tab. We look forward to speaking with you.
+                  {t("application.bookingOpenedBody")}
                 </p>
               </div>
               <button
                 onClick={handleClose}
                 className="px-8 py-3 border border-[var(--border-default)] text-[var(--text-secondary)] text-[12px] font-semibold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
               >
-                CLOSE
+                {t("application.closeButton")}
               </button>
             </div>
           )}

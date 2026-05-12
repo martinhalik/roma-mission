@@ -822,6 +822,25 @@ export interface Dictionary {
     taxNoticeBold: string;
     taxNoticeTail: string;
   };
+  application: {
+    eyebrow: string;
+    close: string;
+    titleVolunteer: string;
+    titleTrip: string;
+    subtitleVolunteer: string;
+    subtitleTrip: string;
+    descriptionVolunteer: string;
+    descriptionTrip: string;
+    whatHappensNext: string;
+    step1: string;
+    step2: string;
+    step3: string;
+    scheduleCall: string;
+    takesLittleTime: string;
+    bookingOpenedTitle: string;
+    bookingOpenedBody: string;
+    closeButton: string;
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;

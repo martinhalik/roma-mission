@@ -3,8 +3,13 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import ApplicationModal from "../../components/ApplicationModal";
+import LanguageProvider from "../../components/LanguageProvider";
 
 const GOOGLE_CALENDAR_URL = "https://calendar.app.google/cTPpM8EAg5QiMKpz6";
+
+function renderWithI18n(ui: React.ReactElement) {
+  return render(<LanguageProvider>{ui}</LanguageProvider>);
+}
 
 describe("ApplicationModal", () => {
   const onClose = vi.fn();
@@ -15,7 +20,7 @@ describe("ApplicationModal", () => {
   });
 
   it("renders nothing when closed", () => {
-    render(
+    renderWithI18n(
       <ApplicationModal isOpen={false} onClose={onClose} type="volunteer" />
     );
     expect(screen.queryByText("Apply to Volunteer")).not.toBeInTheDocument();
@@ -23,7 +28,7 @@ describe("ApplicationModal", () => {
 
   describe("volunteer type", () => {
     it("shows volunteer title and subtitle", () => {
-      render(
+      renderWithI18n(
         <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
       );
       expect(screen.getByText("Apply to Volunteer")).toBeInTheDocument();
@@ -33,7 +38,7 @@ describe("ApplicationModal", () => {
     });
 
     it("shows volunteer-specific description", () => {
-      render(
+      renderWithI18n(
         <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
       );
       expect(
@@ -44,7 +49,7 @@ describe("ApplicationModal", () => {
 
   describe("trip type", () => {
     it("shows trip title and subtitle", () => {
-      render(
+      renderWithI18n(
         <ApplicationModal isOpen={true} onClose={onClose} type="trip" />
       );
       expect(screen.getByText("Join a Mission Trip")).toBeInTheDocument();
@@ -52,7 +57,7 @@ describe("ApplicationModal", () => {
     });
 
     it("shows trip-specific description", () => {
-      render(
+      renderWithI18n(
         <ApplicationModal isOpen={true} onClose={onClose} type="trip" />
       );
       expect(screen.getByText(/Spring and Summer/)).toBeInTheDocument();
@@ -60,7 +65,7 @@ describe("ApplicationModal", () => {
   });
 
   it("schedule button links to Google Calendar and opens in a new tab", () => {
-    render(
+    renderWithI18n(
       <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
     );
     const link = screen.getByRole("link", { name: "SCHEDULE A CALL" });
@@ -70,7 +75,7 @@ describe("ApplicationModal", () => {
   });
 
   it("shows success state after clicking schedule", async () => {
-    render(
+    renderWithI18n(
       <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
     );
     await user.click(screen.getByRole("link", { name: "SCHEDULE A CALL" }));
@@ -81,7 +86,7 @@ describe("ApplicationModal", () => {
   });
 
   it("hides schedule button after clicking", async () => {
-    render(
+    renderWithI18n(
       <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
     );
     await user.click(screen.getByRole("link", { name: "SCHEDULE A CALL" }));
@@ -91,7 +96,7 @@ describe("ApplicationModal", () => {
   });
 
   it("closes via CLOSE button in success state", async () => {
-    render(
+    renderWithI18n(
       <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
     );
     await user.click(screen.getByRole("link", { name: "SCHEDULE A CALL" }));
@@ -100,7 +105,7 @@ describe("ApplicationModal", () => {
   });
 
   it("closes when the X button is clicked", async () => {
-    render(
+    renderWithI18n(
       <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
     );
     await user.click(screen.getByRole("button", { name: "Close" }));
@@ -108,7 +113,7 @@ describe("ApplicationModal", () => {
   });
 
   it("closes when the backdrop is clicked", () => {
-    const { container } = render(
+    const { container } = renderWithI18n(
       <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
     );
     fireEvent.click(container.firstChild!);
@@ -116,7 +121,7 @@ describe("ApplicationModal", () => {
   });
 
   it("does not close when modal content is clicked", async () => {
-    render(
+    renderWithI18n(
       <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
     );
     await user.click(screen.getByText("Apply to Volunteer"));
@@ -124,7 +129,7 @@ describe("ApplicationModal", () => {
   });
 
   it("closes on Escape key press", async () => {
-    render(
+    renderWithI18n(
       <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
     );
     await user.keyboard("{Escape}");
@@ -132,7 +137,7 @@ describe("ApplicationModal", () => {
   });
 
   it("resets to initial state after closing via the CLOSE button", async () => {
-    render(
+    renderWithI18n(
       <ApplicationModal isOpen={true} onClose={onClose} type="volunteer" />
     );
     await user.click(screen.getByRole("link", { name: "SCHEDULE A CALL" }));

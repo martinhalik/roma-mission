@@ -1010,6 +1010,28 @@ const sk: Dictionary = {
     taxNoticeBold: "nie sú odpočítateľné z dane",
     taxNoticeTail: " podľa amerického práva. Bezpečná platba cez Stripe.",
   },
+  application: {
+    eyebrow: "Zapojte sa",
+    close: "Zavrieť",
+    titleVolunteer: "Prihláška na dobrovoľníctvo",
+    titleTrip: "Pridajte sa na misijnú cestu",
+    subtitleVolunteer: "Využite svoje zručnosti v službe rómskym komunitám",
+    subtitleTrip: "Príďte vidieť dielo na vlastné oči",
+    descriptionVolunteer:
+      "Dobrovoľníkom priraďujeme úlohy podľa ich zázemia — preklad, vzdelávanie, stavebné práce, administratíva a ďalšie. Spoločne nájdeme správne miesto pre vás počas krátkeho rozhovoru.",
+    descriptionTrip:
+      "Misijné cesty prebiehajú na jar a v lete. Tímy 6 – 12 ľudí cestujú do Rumunska, na Slovensko a do Maďarska, aby pracovali po boku miestnych kňazov a vedúcich komunít.",
+    whatHappensNext: "AKO TO PREBIEHA",
+    step1: "Rezervujte si nižšie 20-minútový úvodný hovor",
+    step2: "Dozvieme sa o vašom zázemí a dostupnosti",
+    step3: "Nájdeme pre vás vhodnú príležitosť",
+    scheduleCall: "REZERVOVAŤ HOVOR",
+    takesLittleTime: "Zaberie menej ako 2 minúty. Bez záväzku.",
+    bookingOpenedTitle: "Rezervačný odkaz otvorený",
+    bookingOpenedBody:
+      "Dokončite rezerváciu v novej karte. Tešíme sa na rozhovor s vami.",
+    closeButton: "ZAVRIEŤ",
+  },
 };
 
 export default sk;
