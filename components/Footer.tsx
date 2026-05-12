@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import LocaleLink from "@/components/LocaleLink";
 import { useTranslation } from "@/components/LanguageProvider";
+import type { RouteKey } from "@/lib/i18n/routes";
 
 function useTheme() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -49,16 +50,16 @@ function ThemeToggle({ className = "" }: { className?: string }) {
 export default function Footer() {
   const { t } = useTranslation();
 
-  const missionLinks = [
-    { label: t("footer.linkOurMission"), href: "/mission" },
-    { label: t("footer.linkOurStory"), href: "/our-story" },
-    { label: t("footer.linkStories"), href: "/stories" },
-    { label: t("footer.linkMedia"), href: "/media" },
+  const missionLinks: { label: string; routeKey: RouteKey }[] = [
+    { label: t("footer.linkOurMission"), routeKey: "mission" },
+    { label: t("footer.linkOurStory"), routeKey: "ourStory" },
+    { label: t("footer.linkStories"), routeKey: "stories" },
+    { label: t("footer.linkMedia"), routeKey: "media" },
   ];
-  const missionLinksMobile = [
-    { label: t("footer.linkOurMission"), href: "/mission" },
-    { label: t("footer.linkOurStory"), href: "/our-story" },
-    { label: t("footer.linkStories"), href: "/stories" },
+  const missionLinksMobile: { label: string; routeKey: RouteKey }[] = [
+    { label: t("footer.linkOurMission"), routeKey: "mission" },
+    { label: t("footer.linkOurStory"), routeKey: "ourStory" },
+    { label: t("footer.linkStories"), routeKey: "stories" },
   ];
   const mediaLinks = [t("footer.linkDocumentary"), t("footer.linkNews")];
   const involvedLinks = [
@@ -81,12 +82,12 @@ export default function Footer() {
           <div className="flex justify-between mb-12">
             {/* Brand */}
             <div className="w-[300px] flex flex-col gap-4">
-              <Link href="/" className="flex items-center gap-2">
+              <LocaleLink routeKey="home" className="flex items-center gap-2">
                 <span className="font-georgia text-[28px] text-[var(--gold)]">☦</span>
                 <span className="text-[14px] font-bold tracking-[2px] text-[var(--text-primary)] uppercase">
                   Christian Roma Mission
                 </span>
-              </Link>
+              </LocaleLink>
               <p className="text-[var(--text-muted)] text-[13px] leading-[1.6] whitespace-pre-line">
                 {t("footer.tagline")}
               </p>
@@ -99,13 +100,13 @@ export default function Footer() {
               </p>
               <div className="flex flex-col gap-3">
                 {missionLinks.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
+                  <LocaleLink
+                    key={item.routeKey}
+                    routeKey={item.routeKey}
                     className="text-[13px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                   >
                     {item.label}
-                  </Link>
+                  </LocaleLink>
                 ))}
               </div>
             </div>
@@ -117,13 +118,13 @@ export default function Footer() {
               </p>
               <div className="flex flex-col gap-3">
                 {mediaLinks.map((item) => (
-                  <Link
+                  <LocaleLink
                     key={item}
-                    href="/media"
+                    routeKey="media"
                     className="text-[13px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                   >
                     {item}
-                  </Link>
+                  </LocaleLink>
                 ))}
               </div>
             </div>
@@ -135,13 +136,13 @@ export default function Footer() {
               </p>
               <div className="flex flex-col gap-3">
                 {involvedLinks.map((item) => (
-                  <Link
+                  <LocaleLink
                     key={item}
-                    href="/get-involved"
+                    routeKey="getInvolved"
                     className="text-[13px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
                   >
                     {item}
-                  </Link>
+                  </LocaleLink>
                 ))}
               </div>
             </div>
@@ -177,18 +178,18 @@ export default function Footer() {
           <div className="flex items-center justify-between">
             <p className="text-[11px] text-[var(--text-muted)]">{t("footer.copyright")}</p>
             <div className="flex items-center gap-6">
-              <Link
-                href="/privacy-policy"
+              <LocaleLink
+                routeKey="privacy"
                 className="text-[11px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
               >
                 {t("footer.privacyPolicy")}
-              </Link>
-              <Link
-                href="/terms-of-use"
+              </LocaleLink>
+              <LocaleLink
+                routeKey="terms"
                 className="text-[11px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
               >
                 {t("footer.termsOfUse")}
-              </Link>
+              </LocaleLink>
               <div className="w-px h-3 bg-[var(--border-strong)]" />
               <ThemeToggle />
               <LanguageSwitcher variant="footer" />
@@ -200,14 +201,14 @@ export default function Footer() {
         <div className="flex md:hidden flex-col gap-10 px-5 pt-12 pb-8">
           {/* Brand */}
           <div className="flex flex-col gap-3">
-            <Link href="/" className="flex items-center gap-2">
+            <LocaleLink routeKey="home" className="flex items-center gap-2">
               <span className="font-georgia text-[24px] text-[var(--gold)]">☦</span>
               <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--text-primary)] leading-[1.3] uppercase">
                 Christian Roma
                 <br />
                 Mission
               </span>
-            </Link>
+            </LocaleLink>
             <p className="text-[12px] text-[var(--text-muted)] leading-[1.6] whitespace-pre-line">
               {t("footer.tagline")}
             </p>
@@ -220,13 +221,13 @@ export default function Footer() {
                 {t("footer.colMission")}
               </p>
               {missionLinksMobile.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
+                <LocaleLink
+                  key={item.routeKey}
+                  routeKey={item.routeKey}
                   className="text-[12px] text-[var(--text-secondary)]"
                 >
                   {item.label}
-                </Link>
+                </LocaleLink>
               ))}
             </div>
             <div className="flex flex-col gap-3">
@@ -234,9 +235,9 @@ export default function Footer() {
                 {t("footer.colMedia")}
               </p>
               {mediaLinks.map((item) => (
-                <Link key={item} href="/media" className="text-[12px] text-[var(--text-secondary)]">
+                <LocaleLink key={item} routeKey="media" className="text-[12px] text-[var(--text-secondary)]">
                   {item}
-                </Link>
+                </LocaleLink>
               ))}
             </div>
             <div className="flex flex-col gap-3">
@@ -244,13 +245,13 @@ export default function Footer() {
                 {t("footer.colInvolvedShort")}
               </p>
               {involvedLinksMobile.map((item) => (
-                <Link
+                <LocaleLink
                   key={item}
-                  href="/get-involved"
+                  routeKey="getInvolved"
                   className="text-[12px] text-[var(--text-secondary)]"
                 >
                   {item}
-                </Link>
+                </LocaleLink>
               ))}
             </div>
           </div>
@@ -275,12 +276,12 @@ export default function Footer() {
               {t("footer.copyrightShort")}
             </p>
             <div className="flex items-center gap-5">
-              <Link href="/privacy-policy" className="text-[10px] text-[var(--text-muted)]">
+              <LocaleLink routeKey="privacy" className="text-[10px] text-[var(--text-muted)]">
                 {t("footer.privacyPolicy")}
-              </Link>
-              <Link href="/terms-of-use" className="text-[10px] text-[var(--text-muted)]">
+              </LocaleLink>
+              <LocaleLink routeKey="terms" className="text-[10px] text-[var(--text-muted)]">
                 {t("footer.termsOfUse")}
-              </Link>
+              </LocaleLink>
             </div>
             <div className="flex items-center gap-4 pt-1">
               <ThemeToggle />

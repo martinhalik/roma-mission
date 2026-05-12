@@ -4,10 +4,9 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useState,
 } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import {
   DEFAULT_LOCALE,
   DICTIONARIES,
@@ -15,11 +14,16 @@ import {
   type Dictionary,
   type Locale,
 } from "@/lib/i18n";
-
-const STORAGE_KEY = "locale";
+import {
+  ROUTE_KEYS,
+  ROUTE_SLUGS,
+  buildPath,
+  type RouteKey,
+} from "@/lib/i18n/routes";
 
 interface LanguageContextValue {
   locale: Locale;
+  routeKey: RouteKey;
   setLocale: (locale: Locale) => void;
   dict: Dictionary;
   t: (path: string, vars?: Record<string, string | number>) => string;
@@ -47,38 +51,54 @@ function interpolate(template: string, vars?: Record<string, string | number>) {
   );
 }
 
+function inferRouteKey(pathname: string, locale: Locale): RouteKey {
+  const segments = pathname.split("/").filter(Boolean);
+  // Drop the locale segment if present
+  const rest = isLocale(segments[0]) ? segments.slice(1) : segments;
+  if (rest.length === 0) return "home";
+  const slug = rest[0];
+  const map = ROUTE_SLUGS[locale];
+  for (const key of ROUTE_KEYS) {
+    if (map[key] === slug) return key;
+  }
+  // Fall back: try matching English slugs (helpful when an old top-level path
+  // is still served from app/<route>/page.tsx during the migration).
+  const en = ROUTE_SLUGS.en;
+  for (const key of ROUTE_KEYS) {
+    if (en[key] === slug) return key;
+  }
+  return "home";
+}
+
 export default function LanguageProvider({
+  locale: localeProp,
   children,
 }: {
+  locale?: Locale;
   children: React.ReactNode;
 }) {
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
+  const router = useRouter();
+  const pathname = usePathname() ?? "/";
 
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (isLocale(stored)) {
-      setLocaleState(stored);
-      return;
-    }
-    const browser = navigator.language?.slice(0, 2).toLowerCase();
-    if (isLocale(browser)) setLocaleState(browser);
-  }, []);
+  const locale: Locale = localeProp ?? DEFAULT_LOCALE;
+  const routeKey = useMemo(
+    () => inferRouteKey(pathname, locale),
+    [pathname, locale]
+  );
 
-  const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-    localStorage.setItem(STORAGE_KEY, next);
-    document.documentElement.lang = next;
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
+  const setLocale = useCallback(
+    (next: Locale) => {
+      router.push(buildPath(next, routeKey));
+    },
+    [router, routeKey]
+  );
 
   const value = useMemo<LanguageContextValue>(() => {
     const dict = DICTIONARIES[locale] ?? DICTIONARIES[DEFAULT_LOCALE];
     const fallback = DICTIONARIES[DEFAULT_LOCALE];
     return {
       locale,
+      routeKey,
       setLocale,
       dict,
       t: (path, vars) => {
@@ -89,7 +109,7 @@ export default function LanguageProvider({
         return interpolate(found, vars);
       },
     };
-  }, [locale, setLocale]);
+  }, [locale, routeKey, setLocale]);
 
   return (
     <LanguageContext.Provider value={value}>
