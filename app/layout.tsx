@@ -53,10 +53,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <head>
-        {/* Prevent flash of wrong theme — runs before paint */}
+        {/* Prevent flash of wrong theme + sync <html lang> with saved locale — runs before paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.classList.add(t);})();`,
+            __html: `(function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.classList.add(t);var supported=['en','sk','cs','ro','de','sr','ru','mk','el'];var l=localStorage.getItem('locale');if(!l){var b=(navigator.language||'').slice(0,2).toLowerCase();if(supported.indexOf(b)!==-1)l=b;}if(l&&supported.indexOf(l)!==-1)document.documentElement.lang=l;})();`,
           }}
         />
       </head>

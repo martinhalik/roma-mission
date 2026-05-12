@@ -86,9 +86,26 @@ The following pages and components still contain hardcoded English strings. **Ea
 | `lib/data/mission-locations.ts` | ✅ Translatable `subtitle`/`description`/`status` moved to dictionary (`locations.map.<id>`); proper-noun `name`/`village` remain on the data object |
 | `lib/data/roma-countries.ts` | ✅ Country names now translated via the `countries.<ISO>` namespace consumed by `components/MissionMap.tsx`. The original English `country` field stays on the data object (used as fallback and for the unchanged mission-page country grid — see below). |
 
-### Layout / metadata
+### Layout / metadata — DECISION: Path B (English metadata, no subpath routing)
 
-- `app/layout.tsx` — `metadata.title`, `metadata.description`, OpenGraph, Twitter card. Localizing SEO metadata in App Router requires the `generateMetadata` async API + per-locale routing, which the current static-locale-toggle approach does not provide. **Recommendation:** keep English metadata for now; revisit if/when migrating to subpath routing (`/sk/...`).
+`app/layout.tsx` and the per-route `<route>/layout.tsx` files render `metadata.title`, `metadata.description`, OpenGraph, and Twitter card strings. These are emitted server-side from a single static `Metadata` object and therefore cannot read `useTranslation()` (a client-only hook). To localize SEO metadata, App Router requires either `generateMetadata` with a per-locale segment param, or a separate language site under each locale path. After weighing both, we are going with **Path B**:
+
+**Path B — Accept English metadata, document the trade-off, dynamic `<html lang>`.** *(chosen)*
+
+What this means in practice:
+- The `<title>`, OpenGraph, and Twitter card stay in English for every visitor, regardless of the in-page language toggle. Visible page copy is fully localized via `useTranslation()`; only crawler-facing metadata stays English.
+- A small inline script in `<head>` (added in this PR) reads `localStorage["locale"]` (or `navigator.language` fallback) and sets `document.documentElement.lang` *before paint* so the `<html lang>` attribute matches the user's chosen locale on first render, not just after hydration. This helps screen readers immediately and gives Google a per-document language signal even though the URL doesn't change.
+- No `hreflang` alternates are emitted. Without distinct per-locale URLs, hreflang pointing to the same URL would either be ignored or treated as a duplicate-content signal — strictly worse than omitting it.
+
+Why not Path A — the full migration to `app/[locale]/…` subpath routing:
+- The site is 10 pages × 9 locales = 90 statically-prerendered routes. Building the routing skeleton, middleware-based locale detection, a locale-aware `<Link>` wrapper, a `LanguageSwitcher` that navigates rather than mutates client state, and migrating every route is a multi-day refactor with high churn across every page and component that uses `<Link>`.
+- The current donor flow is primarily direct links + social shares + word of mouth, not organic search. The SEO returns from localized metadata on a small mission site are modest, and likely to be smaller still in the short term than the work cost.
+- Path A remains available later: if the maintainer ever has search-console data showing English titles are blocking non-English organic reach, the migration is a contained piece of work and the dictionary architecture (`Dictionary` is keyed by `Locale`, already typed for it) supports it cleanly.
+
+When to revisit:
+- Search Console data shows meaningful non-English search impressions but poor CTR (suggesting English titles are losing the click).
+- A donor base in a particular country grows large enough to justify dedicated `/sk/`, `/de/`, etc. landing pages.
+- The site adds blog/news content that benefits from per-language indexing.
 
 ## Videos / Subtitles Needed 🎥
 
