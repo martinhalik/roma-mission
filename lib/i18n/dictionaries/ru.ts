@@ -1037,6 +1037,9 @@ const ru: Dictionary = {
       "Завершите запись в новой вкладке. Будем рады поговорить с вами.",
     closeButton: "ЗАКРЫТЬ",
   },
+  video: {
+    close: "ЗАКРЫТЬ ✕",
+  },
 };
 
 export default ru;

@@ -1037,6 +1037,9 @@ const mk: Dictionary = {
       "Завршете ја резервацијата во новиот таб. Се радуваме на разговорот со вас.",
     closeButton: "ЗАТВОРИ",
   },
+  video: {
+    close: "ЗАТВОРИ ✕",
+  },
 };
 
 export default mk;

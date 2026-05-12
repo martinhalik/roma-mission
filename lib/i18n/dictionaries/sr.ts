@@ -1037,6 +1037,9 @@ const sr: Dictionary = {
       "Довршите заказивање у новом језичку. Радујемо се разговору с вама.",
     closeButton: "ЗАТВОРИ",
   },
+  video: {
+    close: "ЗАТВОРИ ✕",
+  },
 };
 
 export default sr;

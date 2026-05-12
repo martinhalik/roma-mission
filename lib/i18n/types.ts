@@ -841,6 +841,9 @@ export interface Dictionary {
     bookingOpenedBody: string;
     closeButton: string;
   };
+  video: {
+    close: string;
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;

@@ -1032,6 +1032,9 @@ const sk: Dictionary = {
       "Dokončite rezerváciu v novej karte. Tešíme sa na rozhovor s vami.",
     closeButton: "ZAVRIEŤ",
   },
+  video: {
+    close: "ZAVRIEŤ ✕",
+  },
 };
 
 export default sk;
