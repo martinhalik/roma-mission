@@ -907,6 +907,25 @@ export interface Dictionary {
     EE: string;
     SI: string;
   };
+  metadata: {
+    home: MetadataEntry;
+    mission: MetadataEntry;
+    ourStory: MetadataEntry;
+    locations: MetadataEntry;
+    stories: MetadataEntry;
+    media: MetadataEntry;
+    getInvolved: MetadataEntry;
+    thankYou: MetadataEntry;
+    privacy: MetadataEntry;
+    terms: MetadataEntry;
+  };
+}
+
+export interface MetadataEntry {
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;

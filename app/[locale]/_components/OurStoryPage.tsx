@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import VideoModal from "@/components/VideoModal";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import { useTranslation } from "@/components/LanguageProvider";
 
 const DOCUMENTARY_VIDEO_ID = "K-IDNefOa98";
@@ -141,12 +141,12 @@ export default function OurStoryPage() {
         />
         <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
           <div className="flex flex-col gap-4 max-w-[680px]">
-            <Link
-              href="/mission"
+            <LocaleLink
+              routeKey="mission"
               className="text-[10px] font-semibold tracking-[1.5px] text-white/70 hover:text-white transition-colors w-fit"
             >
               {t("ourStory.hero.backToMission")}
-            </Link>
+            </LocaleLink>
             <div className="flex items-center gap-3">
               <div className="w-[3px] h-[14px] bg-[var(--gold)]" />
               <span className="text-[11px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
@@ -396,18 +396,18 @@ export default function OurStoryPage() {
 
           {/* Navigation */}
           <div className="flex flex-col sm:flex-row gap-4 mt-12 pt-10 border-t border-[var(--border-default)]">
-            <Link
-              href="/mission"
+            <LocaleLink
+              routeKey="mission"
               className="inline-flex items-center justify-center bg-[var(--gold)] text-black text-[12px] font-bold tracking-[1.5px] px-8 py-4 hover:opacity-90 transition-opacity uppercase"
             >
               {t("ourStory.cta.seeMission")}
-            </Link>
-            <Link
-              href="/stories"
+            </LocaleLink>
+            <LocaleLink
+              routeKey="stories"
               className="inline-flex items-center justify-center border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-semibold tracking-[1px] px-8 py-4 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors uppercase"
             >
               {t("ourStory.cta.readStories")}
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </section>

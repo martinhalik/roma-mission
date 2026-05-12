@@ -3,7 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import { useState } from "react";
 import VideoModal from "@/components/VideoModal";
 import { ArrowRight } from "lucide-react";
@@ -236,8 +236,8 @@ export default function StoriesPage() {
           <SectionLabel text={t("stories.founder.label")} />
         </div>
 
-        <Link
-          href="/our-story"
+        <LocaleLink
+          routeKey="ourStory"
           className="group flex flex-col md:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden hover:border-[var(--gold)]/40 transition-colors"
         >
           <div
@@ -261,7 +261,7 @@ export default function StoriesPage() {
               {t("stories.founder.cta")} <ArrowRight size={13} />
             </div>
           </div>
-        </Link>
+        </LocaleLink>
       </section>
 
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
@@ -390,18 +390,18 @@ export default function StoriesPage() {
             {t("stories.closing.paragraph2")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link
-              href="/get-involved"
+            <LocaleLink
+              routeKey="getInvolved"
               className="inline-flex items-center justify-center bg-[var(--gold)] text-black text-[12px] font-bold tracking-[1.5px] px-8 py-4 hover:opacity-90 transition-opacity uppercase"
             >
               {t("stories.closing.ctaSupport")}
-            </Link>
-            <Link
-              href="/mission"
+            </LocaleLink>
+            <LocaleLink
+              routeKey="mission"
               className="inline-flex items-center justify-center border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-semibold tracking-[1px] px-8 py-4 hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors uppercase"
             >
               {t("stories.closing.ctaLearn")}
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </section>
