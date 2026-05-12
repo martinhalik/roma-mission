@@ -2,7 +2,7 @@
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRef, useEffect, useState } from "react";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import { ROMA_COUNTRIES } from "@/lib/data/roma-countries";
 import { MISSION_LOCATIONS, type LocationType, type MissionLocation } from "@/lib/data/mission-locations";
 import { useTranslation } from "@/components/LanguageProvider";
@@ -510,8 +510,8 @@ export default function MissionMap() {
               : ""}
           </p>
           <div className="px-5 pb-5">
-            <Link
-              href="/get-involved"
+            <LocaleLink
+              routeKey="getInvolved"
               className={`block text-center text-[10px] font-bold tracking-[1px] py-3 transition-colors ${
                 selectedPoint.type === "failed"
                   ? "border border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--on-accent)]"
@@ -521,7 +521,7 @@ export default function MissionMap() {
               {selectedPoint.type === "failed"
                 ? t("map.popup.preventThis")
                 : t("map.popup.supportThisParish")}
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       )}

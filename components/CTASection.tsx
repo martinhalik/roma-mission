@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import { useTranslation } from "./LanguageProvider";
 
 export default function CTASection() {
@@ -20,40 +20,40 @@ export default function CTASection() {
 
       {/* Desktop buttons */}
       <div className="hidden md:flex items-center gap-4">
-        <Link
-          href="/get-involved"
+        <LocaleLink
+          routeKey="getInvolved"
           className="px-9 py-[18px] bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
         >
           {t("cta.supportMission")}
-        </Link>
-        <Link
-          href="/get-involved"
+        </LocaleLink>
+        <LocaleLink
+          routeKey="getInvolved"
           className="px-9 py-[18px] border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
         >
           {t("cta.joinMissionTrip")}
-        </Link>
-        <Link
-          href="/get-involved"
+        </LocaleLink>
+        <LocaleLink
+          routeKey="getInvolved"
           className="px-9 py-[18px] border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-semibold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
         >
           {t("cta.becomeVolunteer")}
-        </Link>
+        </LocaleLink>
       </div>
 
       {/* Mobile buttons */}
       <div className="flex md:hidden flex-col gap-3 w-full max-w-[353px]">
-        <Link
-          href="/get-involved"
+        <LocaleLink
+          routeKey="getInvolved"
           className="py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
         >
           {t("cta.supportMission")}
-        </Link>
-        <Link
-          href="/get-involved"
+        </LocaleLink>
+        <LocaleLink
+          routeKey="getInvolved"
           className="py-4 border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] text-center hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
         >
           {t("cta.joinMissionTrip")}
-        </Link>
+        </LocaleLink>
       </div>
     </section>
   );

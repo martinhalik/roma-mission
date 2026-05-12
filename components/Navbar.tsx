@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Menu, X, Share2 } from "lucide-react";
 import ShareModal from "@/components/ShareModal";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import LocaleLink from "@/components/LocaleLink";
 import { useTranslation } from "@/components/LanguageProvider";
+import type { RouteKey } from "@/lib/i18n/routes";
 
 type Page = "home" | "mission" | "locations" | "media" | "stories" | "get-involved" | "our-story";
 
@@ -13,11 +14,11 @@ interface NavbarProps {
   activePage?: Page;
 }
 
-const navLinks: { key: "mission" | "locations" | "media" | "stories"; href: string; page: Page }[] = [
-  { key: "mission", href: "/mission", page: "mission" },
-  { key: "locations", href: "/locations", page: "locations" },
-  { key: "media", href: "/media", page: "media" },
-  { key: "stories", href: "/stories", page: "stories" },
+const navLinks: { key: "mission" | "locations" | "media" | "stories"; routeKey: RouteKey; page: Page }[] = [
+  { key: "mission", routeKey: "mission", page: "mission" },
+  { key: "locations", routeKey: "locations", page: "locations" },
+  { key: "media", routeKey: "media", page: "media" },
+  { key: "stories", routeKey: "stories", page: "stories" },
 ];
 
 export default function Navbar({ activePage = "home" }: NavbarProps) {
@@ -30,19 +31,19 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       {/* Desktop Nav */}
       <nav className="hidden lg:flex items-center justify-between px-8 xl:px-20 py-5 bg-[var(--nav-bg)] backdrop-blur-xl w-full border-b border-[var(--border-default)]">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity shrink-0">
+        <LocaleLink routeKey="home" className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity shrink-0">
           <span className="font-georgia text-[28px] text-[var(--gold)]">☦</span>
           <span className="text-[14px] font-bold tracking-[2px] text-[var(--text-primary)] uppercase">
             Christian Roma Mission
           </span>
-        </Link>
+        </LocaleLink>
 
         {/* Links */}
         <div className="flex items-center gap-6 xl:gap-10">
           {navLinks.map((link) => (
-            <Link
+            <LocaleLink
               key={link.page}
-              href={link.href}
+              routeKey={link.routeKey}
               className={`text-[11px] tracking-[1.5px] transition-colors ${
                 activePage === link.page
                   ? "text-[var(--gold)] font-semibold"
@@ -50,7 +51,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
               }`}
             >
               {t(`nav.${link.key}`)}
-            </Link>
+            </LocaleLink>
           ))}
         </div>
 
@@ -77,25 +78,25 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             </svg>
             <span className="hidden xl:inline">{t("nav.contact")}</span>
           </a>
-          <Link
-            href="/get-involved"
+          <LocaleLink
+            routeKey="getInvolved"
             className="px-4 xl:px-6 py-3 bg-[var(--gold)] text-[var(--on-accent)] text-[11px] font-bold tracking-[1px] hover:opacity-90 transition-opacity whitespace-nowrap"
           >
             {t("nav.supportMission")}
-          </Link>
+          </LocaleLink>
         </div>
       </nav>
 
       {/* Mobile Nav */}
       <nav className="flex lg:hidden items-center justify-between px-5 py-4 bg-[var(--nav-bg)] backdrop-blur-xl w-full border-b border-[var(--border-default)]">
-        <Link href="/" className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity">
+        <LocaleLink routeKey="home" className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity">
           <span className="font-georgia text-[24px] text-[var(--gold)]">☦</span>
           <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--text-primary)] leading-[1.3] uppercase">
             Christian Roma
             <br />
             Mission
           </span>
-        </Link>
+        </LocaleLink>
         <div className="flex items-center gap-1">
           <LanguageSwitcher variant="header" />
           <button
@@ -130,9 +131,9 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       {menuOpen && (
         <div className="flex lg:hidden flex-col bg-[var(--nav-bg)] backdrop-blur-xl border-t border-[var(--border-default)]">
           {navLinks.map((link) => (
-            <Link
+            <LocaleLink
               key={link.page}
-              href={link.href}
+              routeKey={link.routeKey}
               onClick={() => setMenuOpen(false)}
               className={`px-5 py-4 text-[13px] tracking-[1.5px] border-b border-[var(--border-default)] ${
                 activePage === link.page
@@ -141,7 +142,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
               }`}
             >
               {t(`nav.${link.key}`)}
-            </Link>
+            </LocaleLink>
           ))}
           <div className="flex gap-3 mx-5 mt-4">
             <button
@@ -163,13 +164,13 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
               {t("nav.contact")}
             </a>
           </div>
-          <Link
-            href="/get-involved"
+          <LocaleLink
+            routeKey="getInvolved"
             onClick={() => setMenuOpen(false)}
             className="mx-5 my-4 py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[11px] font-bold tracking-[1px] text-center"
           >
             {t("nav.supportMission")}
-          </Link>
+          </LocaleLink>
         </div>
       )}
 

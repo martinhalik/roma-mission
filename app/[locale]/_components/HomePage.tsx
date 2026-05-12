@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import VideoModal from "@/components/VideoModal";
 import MissionMap from "@/components/MissionMap";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
 import { MEDIA_ITEMS, ytThumb } from "@/lib/media-data";
 import SectionLabel from "@/components/SectionLabel";
@@ -103,24 +103,24 @@ export default function HomePage() {
               {t("home.hero.subtitle")}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
-              <Link
-                href="/get-involved"
+              <LocaleLink
+                routeKey="getInvolved"
                 className="px-6 md:px-8 py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[11px] font-bold tracking-[1px] text-center hover:opacity-90 transition-opacity"
               >
                 {t("home.hero.ctaSupport")}
-              </Link>
-              <Link
-                href="/get-involved"
+              </LocaleLink>
+              <LocaleLink
+                routeKey="getInvolved"
                 className="px-6 md:px-8 py-4 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-semibold tracking-[1px] text-center hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
               >
                 {t("home.hero.ctaVolunteer")}
-              </Link>
-              <Link
-                href="/mission"
+              </LocaleLink>
+              <LocaleLink
+                routeKey="mission"
                 className="px-6 md:px-8 py-4 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[11px] font-semibold tracking-[1px] text-center hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
               >
                 {t("home.hero.ctaLearnMore")}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </div>
@@ -330,12 +330,7 @@ export default function HomePage() {
                 </div>
                 {t("home.testimony.watchLabel")}
               </button>
-              {/* <Link
-                href="/stories"
-                className="text-[12px] font-semibold tracking-[1px] text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors"
-              >
-                Read more stories →
-              </Link> */}
+              {/* Stories CTA omitted */}
             </div>
           </div>
         </div>
@@ -390,12 +385,12 @@ export default function HomePage() {
             ))}
           </div>
 
-          <Link
-            href="/locations"
+          <LocaleLink
+            routeKey="locations"
             className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
           >
             {t("home.missionField.cta")}
-          </Link>
+          </LocaleLink>
         </div>
       </section>
 
@@ -463,12 +458,12 @@ export default function HomePage() {
           })}
         </div>
 
-        <Link
-          href="/media"
+        <LocaleLink
+          routeKey="media"
           className="inline-flex items-center gap-2 text-[12px] font-semibold tracking-[1px] text-[var(--gold)] border border-[var(--gold)] px-8 py-4 hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
         >
           {t("home.featuredMedia.cta")}
-        </Link>
+        </LocaleLink>
       </section>
 
       <CTASection />
