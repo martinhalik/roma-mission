@@ -74,7 +74,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | `components/DonationModal.tsx` | ✅ Translated into all 9 locales (`donation.*` namespace) — modal eyebrow/title, monthly/one-time toggle, custom-amount placeholder, 4 impact lines, error + preparing states, "GIVE ${amount}/MO" / "GIVE ${amount}" / "GIVE $—" CTA, bank-transfer toggle + US/INTL tabs, 8 bank-field labels, tax notice. `$` and numeric amounts kept inline; locale-aware currency formatting deferred to PR 6. Bank field values (account names, numbers, addresses) are not translatable. |
 | `components/ApplicationModal.tsx` | ✅ Translated into all 9 locales (`application.*` namespace). The modal is a calendar-booking flow (not a form) shared by volunteer + trip variants: eyebrow, close aria-label, per-variant title/subtitle/description, "WHAT HAPPENS NEXT" heading + 3 steps, "SCHEDULE A CALL" CTA, helper caption, success-state title/body/CLOSE. No form fields or validation errors exist in this component. `__tests__/components/ApplicationModal.test.tsx` wraps each render in `<LanguageProvider>` so the English-text assertions continue to pass. |
 | `components/VideoModal.tsx` | ✅ Translated into all 9 locales (`video.close` key). Note: the component's CLOSE affordance is visible text (not an aria-label) — the dictionary value preserves the ✕ glyph. The YouTube iframe's own UI language (`?hl=en`) and the `title="Documentary"` attribute remain English; YouTube localizes its own player chrome based on the viewer's account language. |
-| `components/MissionMap.tsx` | Map legend, popup labels, country/parish status text |
+| `components/MissionMap.tsx` | ✅ Translated into all 9 locales (`map.*` namespace) — legend heading, "Roma density" gradient label, 5 marker labels (Mission Center / Active Parish / Collaborating Parish / Planting Parish / Discontinued), loading + unavailable states, popup close aria-label, "Roma · {pop} of {total}" hover interpolation, "SUPPORT THIS PARISH →" / "PREVENT THIS → GIVE NOW" CTAs. Country names now use a separate `countries.*` namespace keyed by ISO-2 — 33 entries covering every country in `lib/data/roma-countries.ts`, translated to the localized exonym (e.g. SK → Slovensko / Slovakia / Slowakei / Словачка / Σλοβακία). Town/village proper names in MissionMap continue to render in original Slovak orthography. |
 | `components/SectionLabel.tsx` | None — pure presentation |
 | `components/LangBadge.tsx` | Labels come from `lib/media-data.ts` (see below) |
 
@@ -84,7 +84,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 |------|-------|
 | `lib/media-data.ts` | ✅ Translatable fields (`title`, `shortDesc`, `fullDesc`, `source`, `guest`, badge `label`) moved to dictionary (`media.items.<id>`). Structural fields (`id`, `tag`, `videoId`, `duration`, `badgeVariant`, `hasGuest`) remain on the data object. |
 | `lib/data/mission-locations.ts` | ✅ Translatable `subtitle`/`description`/`status` moved to dictionary (`locations.map.<id>`); proper-noun `name`/`village` remain on the data object |
-| `lib/data/roma-countries.ts` | Country labels (likely just names) |
+| `lib/data/roma-countries.ts` | ✅ Country names now translated via the `countries.<ISO>` namespace consumed by `components/MissionMap.tsx`. The original English `country` field stays on the data object (used as fallback and for the unchanged mission-page country grid — see below). |
 
 ### Layout / metadata
 

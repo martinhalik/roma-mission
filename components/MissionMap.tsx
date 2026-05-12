@@ -88,12 +88,12 @@ const MARKER_SIZES: Record<MarkerType, number> = {
   failed: 12,
 };
 
-const MARKER_LABELS: Record<MarkerType, string> = {
-  "mission-center": "Mission Center",
-  parish: "Active Parish",
-  collaborating: "Collaborating Parish",
-  planting: "Planting Parish",
-  failed: "Discontinued",
+const MARKER_LABEL_KEYS: Record<MarkerType, string> = {
+  "mission-center": "map.markers.missionCenter",
+  parish: "map.markers.parish",
+  collaborating: "map.markers.collaborating",
+  planting: "map.markers.planting",
+  failed: "map.markers.failed",
 };
 
 const LEGEND_ITEMS: MarkerType[] = [
@@ -441,7 +441,7 @@ export default function MissionMap() {
       {!ready && !noToken && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <span className="text-[11px] font-semibold tracking-[2px] text-[var(--text-muted)]">
-            LOADING MAP…
+            {t("map.loading")}
           </span>
         </div>
       )}
@@ -450,10 +450,10 @@ export default function MissionMap() {
       {noToken && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 pointer-events-none">
           <span className="text-[11px] font-semibold tracking-[2px] text-[var(--text-muted)]">
-            MAP UNAVAILABLE
+            {t("map.unavailable")}
           </span>
           <span className="text-[10px] text-[var(--text-secondary)]">
-            Add NEXT_PUBLIC_MAPBOX_TOKEN to .env.local
+            {t("map.unavailableHint")}
           </span>
         </div>
       )}
@@ -462,13 +462,16 @@ export default function MissionMap() {
       {hovered && (
         <div className="absolute top-4 left-4 bg-[var(--bg-primary)]/95 border border-[var(--border-default)] px-4 py-3 pointer-events-none z-20">
           <p className="text-[9px] font-bold tracking-[1.5px] uppercase text-[var(--text-muted)]">
-            {hovered.country}
+            {t(`countries.${hovered.iso}`)}
           </p>
           <p className="text-[38px] font-bold text-[var(--gold)] leading-none mt-1">
             {formatPct(getPct(hovered))}
           </p>
           <p className="text-[9px] text-[var(--text-muted)] mt-1">
-            Roma · {formatPop(hovered.pop)} of {formatPop(hovered.totalPop)}
+            {t("map.hoverPopulation", {
+              pop: formatPop(hovered.pop),
+              total: formatPop(hovered.totalPop),
+            })}
           </p>
         </div>
       )}
@@ -482,7 +485,7 @@ export default function MissionMap() {
                 className="text-[9px] font-bold tracking-[1.5px] uppercase"
                 style={{ color: MARKER_COLORS[selectedPoint.type] }}
               >
-                {MARKER_LABELS[selectedPoint.type]}
+                {t(MARKER_LABEL_KEYS[selectedPoint.type])}
               </span>
               <h4 className="text-[17px] font-bold text-[var(--text-primary)] mt-1 leading-tight">
                 {selectedPoint.name}
@@ -495,7 +498,7 @@ export default function MissionMap() {
             </div>
             <button
               onClick={() => setSelectedPoint(null)}
-              aria-label="Close"
+              aria-label={t("map.close")}
               className="text-[var(--text-muted)] hover:text-[var(--text-primary)] text-xl leading-none flex-shrink-0 mt-0.5 transition-colors"
             >
               ×
@@ -516,8 +519,8 @@ export default function MissionMap() {
               }`}
             >
               {selectedPoint.type === "failed"
-                ? "PREVENT THIS → GIVE NOW"
-                : "SUPPORT THIS PARISH →"}
+                ? t("map.popup.preventThis")
+                : t("map.popup.supportThisParish")}
             </Link>
           </div>
         </div>
@@ -527,7 +530,7 @@ export default function MissionMap() {
       {ready && (
         <div className="absolute bottom-4 left-4 bg-[var(--bg-primary)]/95 border border-[var(--border-default)] px-4 py-3 z-20">
           <p className="text-[9px] font-bold tracking-[1.5px] uppercase text-[var(--text-muted)] mb-2.5">
-            Legend
+            {t("map.legend")}
           </p>
           <div className="flex flex-col gap-2">
             {LEGEND_ITEMS.map((type) => (
@@ -537,7 +540,7 @@ export default function MissionMap() {
                   style={{ backgroundColor: MARKER_COLORS[type] }}
                 />
                 <span className="text-[10px] text-[var(--text-secondary)]">
-                  {MARKER_LABELS[type]}
+                  {t(MARKER_LABEL_KEYS[type])}
                 </span>
               </div>
             ))}
@@ -546,7 +549,7 @@ export default function MissionMap() {
                 className="w-12 h-2 rounded-sm flex-shrink-0"
                 style={{ background: densityGradient }}
               />
-              <span className="text-[10px] text-[var(--text-muted)]">Roma density</span>
+              <span className="text-[10px] text-[var(--text-muted)]">{t("map.romaDensity")}</span>
             </div>
           </div>
         </div>
