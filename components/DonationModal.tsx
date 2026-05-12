@@ -11,6 +11,7 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { Copy, Check } from "lucide-react";
+import { useTranslation } from "./LanguageProvider";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -26,22 +27,8 @@ interface DonationModalProps {
 
 type Step = "select" | "checkout";
 
-const US_BANK = [
-  { label: "Account name", value: "Martin Halík" },
-  { label: "Account type", value: "Checking" },
-  { label: "Routing number (ACH & wire)", value: "026073150" },
-  { label: "Account number", value: "8310735508" },
-  { label: "Bank", value: "Community Federal Savings Bank" },
-];
-
-const INTL_BANK = [
-  { label: "Account name", value: "Martin Halík" },
-  { label: "Swift / BIC", value: "CMFGUS33" },
-  { label: "Account number", value: "8310735508" },
-  { label: "Bank address", value: "89-16 Jamaica Ave, Woodhaven, NY 11421, US" },
-];
-
 function CopyField({ label, value }: { label: string; value: string }) {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const handleCopy = () => {
     navigator.clipboard.writeText(value);
@@ -56,7 +43,7 @@ function CopyField({ label, value }: { label: string; value: string }) {
       </div>
       <button
         onClick={handleCopy}
-        aria-label={`Copy ${label}`}
+        aria-label={t("donation.copyField", { field: label })}
         className="flex-shrink-0 p-1.5 text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors"
       >
         {copied ? <Check size={14} className="text-[var(--gold)]" /> : <Copy size={14} />}
@@ -66,10 +53,12 @@ function CopyField({ label, value }: { label: string; value: string }) {
 }
 
 function PaymentRequestButton({ amount }: { amount: number }) {
+  const { t } = useTranslation();
   const stripe = useStripe();
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
   const amountRef = useRef(amount);
   amountRef.current = amount;
+  const paymentLabel = t("donation.paymentLabel");
 
   useEffect(() => {
     if (!stripe) return;
@@ -77,7 +66,7 @@ function PaymentRequestButton({ amount }: { amount: number }) {
     const pr = stripe.paymentRequest({
       country: "US",
       currency: "usd",
-      total: { label: "Donation — Roma Mission", amount: Math.round(amount * 100) },
+      total: { label: paymentLabel, amount: Math.round(amount * 100) },
       requestPayerEmail: true,
     });
 
@@ -116,9 +105,9 @@ function PaymentRequestButton({ amount }: { amount: number }) {
   useEffect(() => {
     if (!paymentRequest || amount < 1) return;
     paymentRequest.update({
-      total: { label: "Donation — Roma Mission", amount: Math.round(amount * 100) },
+      total: { label: paymentLabel, amount: Math.round(amount * 100) },
     });
-  }, [paymentRequest, amount]);
+  }, [paymentRequest, amount, paymentLabel]);
 
   if (!paymentRequest) return null;
 
@@ -134,7 +123,7 @@ function PaymentRequestButton({ amount }: { amount: number }) {
       />
       <div className="flex items-center gap-3">
         <div className="flex-1 h-px bg-[var(--border-default)]" />
-        <span className="text-[11px] text-[var(--text-muted)] tracking-[1px]">OR</span>
+        <span className="text-[11px] text-[var(--text-muted)] tracking-[1px]">{t("donation.or")}</span>
         <div className="flex-1 h-px bg-[var(--border-default)]" />
       </div>
     </>
@@ -142,6 +131,7 @@ function PaymentRequestButton({ amount }: { amount: number }) {
 }
 
 export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
+  const { t } = useTranslation();
   const [step, setStep] = useState<Step>("select");
   const [isMonthly, setIsMonthly] = useState(true);
   const [selectedAmount, setSelectedAmount] = useState(100);
@@ -156,6 +146,21 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const finalAmount = isCustom
     ? parseFloat(customAmount) || 0
     : selectedAmount;
+
+  const US_BANK = [
+    { label: t("donation.bankFields.accountName"), value: "Martin Halík" },
+    { label: t("donation.bankFields.accountType"), value: t("donation.bankFields.accountTypeValue") },
+    { label: t("donation.bankFields.routingNumber"), value: "026073150" },
+    { label: t("donation.bankFields.accountNumber"), value: "8310735508" },
+    { label: t("donation.bankFields.bank"), value: "Community Federal Savings Bank" },
+  ];
+
+  const INTL_BANK = [
+    { label: t("donation.bankFields.accountName"), value: "Martin Halík" },
+    { label: t("donation.bankFields.swiftBic"), value: "CMFGUS33" },
+    { label: t("donation.bankFields.accountNumber"), value: "8310735508" },
+    { label: t("donation.bankFields.bankAddress"), value: "89-16 Jamaica Ave, Woodhaven, NY 11421, US" },
+  ];
 
   useEffect(() => {
     if (!isOpen) return;
@@ -193,13 +198,19 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
       setClientSecret(data.clientSecret);
       setStep("checkout");
     } catch {
-      setError("Something went wrong. Please try again.");
+      setError(t("donation.error"));
     } finally {
       setLoading(false);
     }
-  }, [finalAmount, isMonthly]);
+  }, [finalAmount, isMonthly, t]);
 
   if (!isOpen) return null;
+
+  const giveLabel = (() => {
+    if (finalAmount <= 0) return t("donation.giveInvalid");
+    if (isMonthly) return t("donation.giveMonthly", { amount: finalAmount });
+    return t("donation.giveOnce", { amount: finalAmount });
+  })();
 
   return (
     <div
@@ -214,15 +225,15 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
         <div className="flex items-center justify-between px-8 pt-8 pb-6 border-b border-[var(--border-default)]">
           <div>
             <p className="text-[10px] font-semibold tracking-[2px] text-[var(--gold)] uppercase mb-1">
-              Support the Mission
+              {t("donation.eyebrow")}
             </p>
             <h2 className="text-[20px] font-bold text-[var(--text-primary)] tracking-[-0.5px]">
-              Give to Roma Mission
+              {t("donation.title")}
             </h2>
           </div>
           <button
             onClick={handleClose}
-            aria-label="Close"
+            aria-label={t("donation.close")}
             className="text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors text-[20px] leading-none"
           >
             ✕
@@ -242,7 +253,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                     : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 }`}
               >
-                MONTHLY
+                {t("donation.monthly")}
               </button>
               <button
                 onClick={() => { setIsMonthly(false); setSelectedAmount(ONETIME_AMOUNTS[1]); setIsCustom(false); setCustomAmount(""); }}
@@ -252,7 +263,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                     : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
                 }`}
               >
-                ONE-TIME
+                {t("donation.oneTime")}
               </button>
             </div>
 
@@ -289,7 +300,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               <input
                 type="number"
                 min="1"
-                placeholder="Custom amount"
+                placeholder={t("donation.customPlaceholder")}
                 value={customAmount}
                 onChange={(e) => {
                   setCustomAmount(e.target.value);
@@ -304,12 +315,12 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             {isMonthly && (
               <p className="text-[12px] text-[var(--text-muted)] leading-[1.5]">
                 {finalAmount >= 100
-                  ? "Covers weekly parish materials and programs."
+                  ? t("donation.impactHigh")
                   : finalAmount >= 50
-                  ? "Funds one child's catechism for a full year."
+                  ? t("donation.impactMid")
                   : finalAmount >= 25
-                  ? "Provides teaching materials for a month."
-                  : "Every dollar goes directly to the field."}
+                  ? t("donation.impactLow")
+                  : t("donation.impactBase")}
               </p>
             )}
 
@@ -326,9 +337,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               disabled={loading || finalAmount < 1}
               className="w-full py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              {loading
-                ? "PREPARING..."
-                : `GIVE $${finalAmount > 0 ? finalAmount : "—"}${isMonthly ? "/MO" : ""}`}
+              {loading ? t("donation.preparing") : giveLabel}
             </button>
 
             {/* Bank transfer */}
@@ -337,7 +346,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                 onClick={() => setBankOpen((v) => !v)}
                 className="w-full flex items-center justify-center gap-1.5 py-3 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-bold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
               >
-                <span>OR GIVE BY BANK TRANSFER</span>
+                <span>{t("donation.bankToggle")}</span>
                 <span className={`transition-transform duration-200 text-[10px] ${bankOpen ? "rotate-180" : ""}`}>▾</span>
               </button>
 
@@ -353,7 +362,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                           : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
                       }`}
                     >
-                      US DOMESTIC
+                      {t("donation.bankUs")}
                     </button>
                     <button
                       onClick={() => setBankTab("intl")}
@@ -363,7 +372,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                           : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
                       }`}
                     >
-                      INTERNATIONAL
+                      {t("donation.bankIntl")}
                     </button>
                   </div>
 
@@ -380,7 +389,11 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             <div className="border border-[var(--border-default)] bg-[var(--bg-primary)] px-4 py-3 flex gap-3 items-start">
               <span className="text-[var(--gold)] text-[12px] flex-shrink-0 mt-0.5">ℹ</span>
               <p className="text-[11px] text-[var(--text-secondary)] leading-[1.6]">
-                Roma Mission is a registered non-profit in <strong className="text-[var(--text-primary)] font-semibold">Slovakia</strong>. US donors: contributions are <strong className="text-[var(--text-primary)] font-semibold">not tax-deductible</strong> under US law. Secure payment via Stripe.
+                {t("donation.taxNoticePrefix")}
+                <strong className="text-[var(--text-primary)] font-semibold">{t("donation.taxNoticeCountry")}</strong>
+                {t("donation.taxNoticeMid")}
+                <strong className="text-[var(--text-primary)] font-semibold">{t("donation.taxNoticeBold")}</strong>
+                {t("donation.taxNoticeTail")}
               </p>
             </div>
           </div>

@@ -71,7 +71,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | File | Strings | Notes |
 |------|---------|-------|
 | `components/CTASection.tsx` | ✅ Translated into all 9 locales (`cta.*` namespace) — title, subtitle, support/mission-trip/volunteer buttons. Component is now `"use client"`. |
-| `components/DonationModal.tsx` | Amount labels, frequency toggle, error/loading messages, "Continue", "Pay $X" | Stripe-driven |
+| `components/DonationModal.tsx` | ✅ Translated into all 9 locales (`donation.*` namespace) — modal eyebrow/title, monthly/one-time toggle, custom-amount placeholder, 4 impact lines, error + preparing states, "GIVE ${amount}/MO" / "GIVE ${amount}" / "GIVE $—" CTA, bank-transfer toggle + US/INTL tabs, 8 bank-field labels, tax notice. `$` and numeric amounts kept inline; locale-aware currency formatting deferred to PR 6. Bank field values (account names, numbers, addresses) are not translatable. |
 | `components/ApplicationModal.tsx` | Volunteer application form labels, validation errors |
 | `components/VideoModal.tsx` | Close button aria-label only |
 | `components/MissionMap.tsx` | Map legend, popup labels, country/parish status text |

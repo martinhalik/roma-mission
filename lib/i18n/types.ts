@@ -784,6 +784,44 @@ export interface Dictionary {
     joinMissionTrip: string;
     becomeVolunteer: string;
   };
+  donation: {
+    eyebrow: string;
+    title: string;
+    close: string;
+    monthly: string;
+    oneTime: string;
+    customPlaceholder: string;
+    impactHigh: string;
+    impactMid: string;
+    impactLow: string;
+    impactBase: string;
+    error: string;
+    preparing: string;
+    giveMonthly: string;
+    giveOnce: string;
+    giveInvalid: string;
+    bankToggle: string;
+    bankUs: string;
+    bankIntl: string;
+    or: string;
+    copyField: string;
+    paymentLabel: string;
+    bankFields: {
+      accountName: string;
+      accountType: string;
+      accountTypeValue: string;
+      routingNumber: string;
+      accountNumber: string;
+      bank: string;
+      swiftBic: string;
+      bankAddress: string;
+    };
+    taxNoticePrefix: string;
+    taxNoticeCountry: string;
+    taxNoticeMid: string;
+    taxNoticeBold: string;
+    taxNoticeTail: string;
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;
