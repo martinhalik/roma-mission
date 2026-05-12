@@ -844,6 +844,61 @@ export interface Dictionary {
   video: {
     close: string;
   };
+  map: {
+    legend: string;
+    romaDensity: string;
+    loading: string;
+    unavailable: string;
+    unavailableHint: string;
+    close: string;
+    hoverPopulation: string;
+    markers: {
+      missionCenter: string;
+      parish: string;
+      collaborating: string;
+      planting: string;
+      failed: string;
+    };
+    popup: {
+      supportThisParish: string;
+      preventThis: string;
+    };
+  };
+  countries: {
+    SK: string;
+    CZ: string;
+    RO: string;
+    MD: string;
+    RS: string;
+    GR: string;
+    HU: string;
+    BG: string;
+    MK: string;
+    AL: string;
+    ME: string;
+    ES: string;
+    TR: string;
+    FR: string;
+    UA: string;
+    GB: string;
+    DE: string;
+    IT: string;
+    SE: string;
+    BA: string;
+    XK: string;
+    AT: string;
+    PT: string;
+    NL: string;
+    BE: string;
+    CH: string;
+    BY: string;
+    HR: string;
+    PL: string;
+    LV: string;
+    LT: string;
+    EE: string;
+    SI: string;
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;
