@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ShareButton from "@/components/ShareButton";
@@ -121,18 +121,18 @@ export default function ThankYouPage() {
 
           {/* Navigation */}
           <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-            <Link
-              href="/"
+            <LocaleLink
+              routeKey="home"
               className="px-8 py-4 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-bold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors text-center"
             >
               {t("thankYou.backHome")}
-            </Link>
-            <Link
-              href="/mission"
+            </LocaleLink>
+            <LocaleLink
+              routeKey="mission"
               className="px-8 py-4 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[12px] font-bold tracking-[1px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors text-center"
             >
               {t("thankYou.learnMission")}
-            </Link>
+            </LocaleLink>
           </div>
         </div>
       </div>

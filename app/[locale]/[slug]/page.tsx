@@ -2,14 +2,14 @@ import { notFound } from "next/navigation";
 import { isLocale } from "@/lib/i18n";
 import { resolveRoute } from "@/lib/i18n/routes";
 import MissionPage from "../_components/MissionPage";
-import OurStoryPage from "@/app/our-story/page";
-import LocationsPage from "@/app/locations/page";
-import StoriesPage from "@/app/stories/page";
-import MediaPage from "@/app/media/page";
-import GetInvolvedPage from "@/app/get-involved/page";
-import ThankYouPage from "@/app/thank-you/page";
-import PrivacyPolicyPage from "@/app/privacy-policy/page";
-import TermsOfUsePage from "@/app/terms-of-use/page";
+import OurStoryPage from "../_components/OurStoryPage";
+import LocationsPage from "../_components/LocationsPage";
+import StoriesPage from "../_components/StoriesPage";
+import MediaPage from "../_components/MediaPage";
+import GetInvolvedPage from "../_components/GetInvolvedPage";
+import ThankYouPage from "../_components/ThankYouPage";
+import PrivacyPolicyPage from "../_components/PrivacyPolicyPage";
+import TermsOfUsePage from "../_components/TermsOfUsePage";
 
 export default async function LocaleSlugPage({
   params,
@@ -22,14 +22,10 @@ export default async function LocaleSlugPage({
   const routeKey = resolveRoute(locale, slug);
   if (!routeKey) notFound();
 
-  // PR 1: only `mission` lives under [locale]/_components.
-  // The remaining routes are temporarily rendered from the old top-level
-  // page components — PR 2 moves them into _components and deletes the
-  // old route directories.
   switch (routeKey) {
     case "home":
-      // Home has its own page at [locale]/page.tsx; this branch should not
-      // be reachable because the empty slug doesn't match this segment.
+      // Home is served by [locale]/page.tsx (empty slug), this branch is
+      // unreachable but kept for exhaustiveness.
       notFound();
     case "mission":
       return <MissionPage />;

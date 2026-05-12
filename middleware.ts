@@ -36,20 +36,13 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // For PR 1 we only redirect the migrated proof routes (everything maps to the
-  // new tree). The catch-all + home are the only handlers wired up under
-  // [locale]/ in this PR; for other top-level paths we leave the old per-route
-  // files to serve directly until PR 2 migrates them.
-  // Migrated routes in PR 1: just `mission`.
-  if (first === "mission") {
-    const locale = detectLocale(req);
-    const url = req.nextUrl.clone();
-    url.pathname = `/${locale}${pathname}`;
-    url.search = search;
-    return NextResponse.redirect(url, 302);
-  }
-
-  return NextResponse.next();
+  // Non-locale top-level path: prepend the detected locale and redirect.
+  // PR 4 adds alias resolution (e.g. /ro/mission → /ro/misiune).
+  const locale = detectLocale(req);
+  const url = req.nextUrl.clone();
+  url.pathname = `/${locale}${pathname}`;
+  url.search = search;
+  return NextResponse.redirect(url, 302);
 }
 
 export const config = {
