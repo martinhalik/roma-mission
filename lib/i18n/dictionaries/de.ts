@@ -776,9 +776,9 @@ const de: Dictionary = {
         title: "Finanzielle Unterstützung",
         subtitle: "Monatlich oder einmalig spenden",
         desc: "Ihre Spende finanziert direkt Priestergehälter, Pfarrgebäude, Kinderprogramme und Reisen des Missionsteams. Jeder Betrag macht einen Unterschied.",
-        point1: "25 $/Monat — Deckt Unterrichtsmaterial für einen Monat",
-        point2: "50 $/Monat — Finanziert die Katechese eines Kindes für ein Jahr",
-        point3: "100 $/Monat — Deckt wöchentliche Pfarrmaterialien",
+        point1: "{amount}/Monat — Deckt Unterrichtsmaterial für einen Monat",
+        point2: "{amount}/Monat — Finanziert die Katechese eines Kindes für ein Jahr",
+        point3: "{amount}/Monat — Deckt wöchentliche Pfarrmaterialien",
         cta: "JETZT SPENDEN",
       },
       volunteer: {

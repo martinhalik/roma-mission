@@ -9,6 +9,7 @@ import ApplicationModal from "@/components/ApplicationModal";
 import ShareModal from "@/components/ShareModal";
 import SectionLabel from "@/components/SectionLabel";
 import { useTranslation } from "@/components/LanguageProvider";
+import { formatCurrency } from "@/lib/i18n/format";
 
 type WayKey = "financial" | "volunteer" | "share" | "trip";
 type FaqKey = "donation" | "volunteer" | "parish" | "contact";
@@ -29,9 +30,11 @@ const WAYS: Way[] = [
 
 const FAQ_KEYS: FaqKey[] = ["donation", "volunteer", "parish", "contact"];
 
+const FINANCIAL_AMOUNTS = [25, 50, 100] as const;
+
 export default function GetInvolvedPage() {
   const [modal, setModal] = useState<ModalState>("closed");
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
@@ -92,11 +95,17 @@ export default function GetInvolvedPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
             {WAYS.map((w) => {
-              const points = [
-                t(`getInvolved.ways.${w.key}.point1`),
-                t(`getInvolved.ways.${w.key}.point2`),
-                t(`getInvolved.ways.${w.key}.point3`),
-              ];
+              const points = w.key === "financial"
+                ? FINANCIAL_AMOUNTS.map((amt, i) =>
+                    t(`getInvolved.ways.financial.point${i + 1}`, {
+                      amount: formatCurrency(amt, locale),
+                    })
+                  )
+                : [
+                    t(`getInvolved.ways.${w.key}.point1`),
+                    t(`getInvolved.ways.${w.key}.point2`),
+                    t(`getInvolved.ways.${w.key}.point3`),
+                  ];
               return (
                 <div
                   key={w.key}
