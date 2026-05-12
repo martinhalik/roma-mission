@@ -647,6 +647,61 @@ export interface Dictionary {
       };
     };
   };
+  privacyPolicy: {
+    eyebrow: string;
+    title: string;
+    lastUpdated: string;
+    intro: {
+      heading: string;
+      body: string;
+    };
+    dataCollected: {
+      heading: string;
+      lead: string;
+      item1: string;
+      item2: string;
+      item3: string;
+      item4: string;
+    };
+    dataUse: {
+      heading: string;
+      lead: string;
+      item1: string;
+      item2: string;
+      item3: string;
+      item4: string;
+      item5: string;
+    };
+    sharing: {
+      heading: string;
+      body: string;
+    };
+    retention: {
+      heading: string;
+      body: string;
+    };
+    rights: {
+      heading: string;
+      bodyBefore: string;
+      bodyAfter: string;
+    };
+    cookies: {
+      heading: string;
+      body: string;
+    };
+    security: {
+      heading: string;
+      body: string;
+    };
+    changes: {
+      heading: string;
+      body: string;
+    };
+    contact: {
+      heading: string;
+      bodyBefore: string;
+    };
+  };
   thankYou: {
     eyebrow: string;
     headlineLine1: string;

@@ -830,6 +830,61 @@ const sk: Dictionary = {
       },
     },
   },
+  privacyPolicy: {
+    eyebrow: "Právne informácie",
+    title: "Zásady ochrany osobných údajov",
+    lastUpdated: "Posledná aktualizácia: január 2026",
+    intro: {
+      heading: "1. Úvod",
+      body: "Christian Roma Mission (ďalej „my“, „nás“ alebo „naše“) sa zaväzuje chrániť vaše súkromie. Tieto Zásady ochrany osobných údajov vysvetľujú, ako zhromažďujeme, používame, sprístupňujeme a chránime vaše informácie, keď navštívite našu webovú stránku alebo poskytnete dar.",
+    },
+    dataCollected: {
+      heading: "2. Aké údaje zhromažďujeme",
+      lead: "Môžeme zhromažďovať nasledujúce kategórie údajov:",
+      item1: "Identifikačné údaje (meno, e-mailová adresa, korešpondenčná adresa)",
+      item2: "Platobné údaje spracúvané bezpečne prostredníctvom našich poskytovateľov platobných služieb",
+      item3: "Informácie, ktoré nám dobrovoľne poskytnete prostredníctvom kontaktných formulárov alebo prihlášok dobrovoľníkov",
+      item4: "Technické údaje, ako sú IP adresa, typ prehliadača a navštívené stránky",
+    },
+    dataUse: {
+      heading: "3. Ako vaše údaje používame",
+      lead: "Zhromaždené údaje používame na:",
+      item1: "Spracovanie darov a zasielanie potvrdení o daroch",
+      item2: "Komunikáciu o aktualitách a správach z misie",
+      item3: "Odpovedanie na vaše otázky a prihlášky dobrovoľníkov",
+      item4: "Zlepšovanie našej webovej stránky a služieb",
+      item5: "Plnenie zákonných povinností",
+    },
+    sharing: {
+      heading: "4. Poskytovanie údajov tretím stranám",
+      body: "Vaše osobné údaje nepredávame, nevymieňame ani neprenajímame tretím stranám. Vaše údaje môžeme zdieľať s dôveryhodnými poskytovateľmi služieb, ktorí nám pomáhajú prevádzkovať webovú stránku a vykonávať našu prácu, pokiaľ sa títo poskytovatelia zaviazali zachovávať dôvernosť týchto údajov.",
+    },
+    retention: {
+      heading: "5. Uchovávanie údajov",
+      body: "Vaše osobné údaje uchovávame tak dlho, ako je to potrebné na splnenie účelov, na ktoré boli zhromaždené, vrátane plnenia právnych, účtovných alebo vykazovacích povinností.",
+    },
+    rights: {
+      heading: "6. Vaše práva",
+      bodyBefore: "V závislosti od krajiny, v ktorej sa nachádzate, môžete mať podľa všeobecného nariadenia o ochrane údajov (GDPR) právo na prístup k svojim osobným údajom, ich opravu alebo vymazanie. Tieto práva si môžete uplatniť na adrese ",
+      bodyAfter: ".",
+    },
+    cookies: {
+      heading: "7. Súbory cookie",
+      body: "Naša webová stránka používa nevyhnutné súbory cookie potrebné na jej správne fungovanie. Nepoužívame sledovacie ani reklamné cookies. Súbory cookie môžete vypnúť v nastaveniach svojho prehliadača, môže to však ovplyvniť funkčnosť stránky.",
+    },
+    security: {
+      heading: "8. Bezpečnosť",
+      body: "Prijímame primerané technické a organizačné opatrenia na ochranu vašich osobných údajov pred neoprávneným prístupom, zmenou, sprístupnením alebo zničením.",
+    },
+    changes: {
+      heading: "9. Zmeny týchto zásad",
+      body: "Tieto Zásady ochrany osobných údajov môžeme z času na čas aktualizovať. O významných zmenách vás budeme informovať zverejnením nového znenia na tejto stránke spolu s aktualizovaným dátumom.",
+    },
+    contact: {
+      heading: "10. Kontaktujte nás",
+      bodyBefore: "Ak máte otázky k týmto Zásadám ochrany osobných údajov, kontaktujte nás na: ",
+    },
+  },
   thankYou: {
     eyebrow: "Dar prijatý",
     headlineLine1: "Ďakujeme za",

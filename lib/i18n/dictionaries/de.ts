@@ -835,6 +835,61 @@ const de: Dictionary = {
       },
     },
   },
+  privacyPolicy: {
+    eyebrow: "Rechtliches",
+    title: "Datenschutzerklärung",
+    lastUpdated: "Zuletzt aktualisiert: Januar 2026",
+    intro: {
+      heading: "1. Einleitung",
+      body: "Die Christian Roma Mission („wir“, „uns“ oder „unser“) verpflichtet sich, Ihre Privatsphäre zu schützen. Diese Datenschutzerklärung erläutert, wie wir Ihre Daten erheben, verwenden, weitergeben und schützen, wenn Sie unsere Website besuchen oder eine Spende tätigen.",
+    },
+    dataCollected: {
+      heading: "2. Welche Daten wir erheben",
+      lead: "Wir können folgende Arten von Daten erheben:",
+      item1: "Personenbezogene Identifikationsdaten (Name, E-Mail-Adresse, Postanschrift)",
+      item2: "Zahlungsinformationen, die sicher über unsere Zahlungsdienstleister verarbeitet werden",
+      item3: "Freiwillig übermittelte Angaben aus Kontaktformularen oder Bewerbungen für ehrenamtliche Tätigkeiten",
+      item4: "Technische Daten wie IP-Adresse, Browsertyp und besuchte Seiten",
+    },
+    dataUse: {
+      heading: "3. Wie wir Ihre Daten verwenden",
+      lead: "Wir verwenden die erhobenen Daten, um:",
+      item1: "Spenden zu verarbeiten und Spendenbescheinigungen zu versenden",
+      item2: "Sie über Neuigkeiten und Berichte aus der Mission zu informieren",
+      item3: "Auf Ihre Anfragen und Bewerbungen für ehrenamtliche Tätigkeiten zu antworten",
+      item4: "Unsere Website und unsere Dienste zu verbessern",
+      item5: "Gesetzlichen Verpflichtungen nachzukommen",
+    },
+    sharing: {
+      heading: "4. Weitergabe von Daten",
+      body: "Wir verkaufen, tauschen oder vermieten Ihre personenbezogenen Daten nicht an Dritte. Wir können Ihre Daten an vertrauenswürdige Dienstleister weitergeben, die uns beim Betrieb unserer Website und bei der Durchführung unserer Arbeit unterstützen, sofern sich diese verpflichten, die Daten vertraulich zu behandeln.",
+    },
+    retention: {
+      heading: "5. Speicherdauer",
+      body: "Wir speichern Ihre personenbezogenen Daten so lange, wie es zur Erfüllung der Zwecke, für die sie erhoben wurden, erforderlich ist, einschließlich gesetzlicher, buchhalterischer oder berichterstattungsbezogener Anforderungen.",
+    },
+    rights: {
+      heading: "6. Ihre Rechte",
+      bodyBefore: "Abhängig von Ihrem Standort haben Sie nach der Datenschutz-Grundverordnung (DSGVO) gegebenenfalls das Recht auf Auskunft, Berichtigung oder Löschung Ihrer personenbezogenen Daten. Zur Ausübung dieser Rechte wenden Sie sich bitte an ",
+      bodyAfter: ".",
+    },
+    cookies: {
+      heading: "7. Cookies",
+      body: "Unsere Website verwendet ausschließlich notwendige Cookies, um ordnungsgemäß zu funktionieren. Wir verwenden keine Tracking- oder Werbe-Cookies. Sie können Cookies in den Einstellungen Ihres Browsers deaktivieren; dies kann jedoch die Funktionsfähigkeit der Website beeinträchtigen.",
+    },
+    security: {
+      heading: "8. Sicherheit",
+      body: "Wir treffen geeignete technische und organisatorische Maßnahmen, um Ihre personenbezogenen Daten vor unbefugtem Zugriff, Veränderung, Offenlegung oder Zerstörung zu schützen.",
+    },
+    changes: {
+      heading: "9. Änderungen dieser Erklärung",
+      body: "Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Über wesentliche Änderungen informieren wir Sie, indem wir die neue Fassung mit aktualisiertem Datum auf dieser Seite veröffentlichen.",
+    },
+    contact: {
+      heading: "10. Kontakt",
+      bodyBefore: "Bei Fragen zu dieser Datenschutzerklärung wenden Sie sich bitte an: ",
+    },
+  },
   thankYou: {
     eyebrow: "Spende eingegangen",
     headlineLine1: "Danke für",

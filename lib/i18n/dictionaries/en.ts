@@ -833,6 +833,61 @@ const en: Dictionary = {
       },
     },
   },
+  privacyPolicy: {
+    eyebrow: "Legal",
+    title: "Privacy Policy",
+    lastUpdated: "Last updated: January 2026",
+    intro: {
+      heading: "1. Introduction",
+      body: "Christian Roma Mission (“we,” “our,” or “us”) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or make a donation.",
+    },
+    dataCollected: {
+      heading: "2. Information We Collect",
+      lead: "We may collect the following types of information:",
+      item1: "Personal identification information (name, email address, mailing address)",
+      item2: "Payment information processed securely through our payment providers",
+      item3: "Voluntary information you provide through contact forms or volunteer applications",
+      item4: "Technical data such as IP address, browser type, and pages visited",
+    },
+    dataUse: {
+      heading: "3. How We Use Your Information",
+      lead: "We use the information we collect to:",
+      item1: "Process donations and send donation receipts",
+      item2: "Communicate with you about mission updates and reports",
+      item3: "Respond to your inquiries and volunteer applications",
+      item4: "Improve our website and services",
+      item5: "Comply with legal obligations",
+    },
+    sharing: {
+      heading: "4. Data Sharing",
+      body: "We do not sell, trade, or rent your personal information to third parties. We may share your information with trusted service providers who assist us in operating our website and conducting our work, provided that those parties agree to keep this information confidential.",
+    },
+    retention: {
+      heading: "5. Data Retention",
+      body: "We retain your personal information for as long as necessary to fulfill the purposes for which it was collected, including legal, accounting, or reporting requirements.",
+    },
+    rights: {
+      heading: "6. Your Rights",
+      bodyBefore: "Depending on your location, you may have the right to access, correct, or delete your personal data. To exercise these rights, contact us at ",
+      bodyAfter: ".",
+    },
+    cookies: {
+      heading: "7. Cookies",
+      body: "Our website uses essential cookies to function properly. We do not use tracking or advertising cookies. You may disable cookies through your browser settings, though this may affect website functionality.",
+    },
+    security: {
+      heading: "8. Security",
+      body: "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+    },
+    changes: {
+      heading: "9. Changes to This Policy",
+      body: "We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on this page with an updated date.",
+    },
+    contact: {
+      heading: "10. Contact Us",
+      bodyBefore: "If you have questions about this Privacy Policy, please contact us at: ",
+    },
+  },
   thankYou: {
     eyebrow: "Donation Received",
     headlineLine1: "Thank You for",
