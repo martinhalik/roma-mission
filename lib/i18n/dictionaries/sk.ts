@@ -1100,52 +1100,54 @@ const sk: Dictionary = {
   },
   metadata: {
     home: {
-      title: "Christian Roma Mission",
+      title: "Christianská rómska misia",
       description:
-        "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
+        "10 miliónov Rómov v Európe. Žijeme medzi nimi, sadíme trvalé cirkvi a vychovávame ďalšiu generáciu.",
     },
     mission: {
-      title: "The Mission — Roma Mission",
+      title: "Misia — Christianská rómska misia",
       description:
-        "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
+        "Päť miliónov Rómov v Európe — väčšina je bez evanjelia. Pozrite si rozsah potreby, stav pravoslávnej prítomnosti a prácu pri sadení trvalých farností.",
     },
     ourStory: {
-      title: "Our Story — Roma Mission",
+      title: "Náš príbeh — Christianská rómska misia",
       description:
-        "From a chance encounter in Klenovec in 2016 to a network of Orthodox parishes among Roma — Fr. Martin Halík's path and the work that has grown around it.",
+        "Od náhodného stretnutia v Klenovci v roku 2016 po sieť pravoslávnych farností medzi Rómami — cesta otca Martina Halíka a dielo, ktoré okolo neho vyrástlo.",
     },
     locations: {
-      title: "Locations — Roma Mission",
+      title: "Lokality — Christianská rómska misia",
       description:
-        "Our active mission centers in Slovakia — Klenovec, Markovce, Kačanov, Mútnik — where Orthodox parishes are being planted among Roma communities.",
+        "Naše aktívne misijné centrá na Slovensku — Klenovec, Markovce, Kačanov, Mútnik — kde sa medzi rómskymi komunitami sadia pravoslávne farnosti.",
     },
     stories: {
-      title: "Stories — Roma Mission",
+      title: "Príbehy — Christianská rómska misia",
       description:
-        "First-person testimonies from Roma men, women, and families whose lives have been changed by the Gospel through the work of the mission.",
+        "Osobné svedectvá rómskych mužov, žien a rodín, ktorých životy zmenilo evanjelium prostredníctvom práce misie.",
     },
     media: {
-      title: "Media — Roma Mission",
+      title: "Médiá — Christianská rómska misia",
       description:
-        "Documentaries, interviews, and testimonies about Orthodox mission among the Roma — bringing the Gospel to Europe's largest unreached minority.",
+        "Dokumenty, rozhovory a svedectvá o pravoslávnej misii medzi Rómami — prinesenie evanjelia najväčšej nedosiahnutej menšine v Európe.",
     },
     getInvolved: {
-      title: "Get Involved — Roma Mission",
+      title: "Zapojte sa — Christianská rómska misia",
       description:
-        "Support the Roma Mission through financial giving, volunteering your skills, joining a mission trip, or prayer. Join the work of planting Orthodox parishes in Roma communities.",
+        "Podporte rómsku misiu finančným darom, dobrovoľníckou prácou, misijnou cestou alebo modlitbou. Pripojte sa k sadeniu pravoslávnych farností v rómskych komunitách.",
     },
     thankYou: {
-      title: "Thank God for Your Support — Roma Mission",
+      title: "Ďakujeme Bohu za vašu podporu — Rómska misia",
       description:
-        "Your gift supports Orthodox missionaries living and working among the Roma. Thank you for investing in this work.",
+        "Váš dar podporuje pravoslávnych misionárov žijúcich a pracujúcich medzi Rómami. Ďakujeme, že do tejto práce investujete.",
     },
     privacy: {
-      title: "Privacy Policy — Roma Mission",
-      description: "Privacy Policy for the Christian Roma Mission website.",
+      title: "Ochrana osobných údajov — Rómska misia",
+      description:
+        "Zásady ochrany osobných údajov pre stránku Christianskej rómskej misie.",
     },
     terms: {
-      title: "Terms of Use — Roma Mission",
-      description: "Terms of Use for the Christian Roma Mission website.",
+      title: "Podmienky používania — Rómska misia",
+      description:
+        "Podmienky používania webovej stránky Christianskej rómskej misie.",
     },
   },
 };

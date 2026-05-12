@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import LanguageProvider from "@/components/LanguageProvider";
+import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -16,19 +18,23 @@ export const metadata: Metadata = {
   ),
   title: {
     default: "Christian Roma Mission",
-    template: "%s — Roma Mission",
+    template: "%s",
   },
   description:
     "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const h = await headers();
+  const headerLocale = h.get("x-roma-locale");
+  const lang = isLocale(headerLocale) ? headerLocale : DEFAULT_LOCALE;
+
   return (
-    <html lang="en" className="h-full" suppressHydrationWarning>
+    <html lang={lang} className="h-full" suppressHydrationWarning>
       <head>
         {/* Prevent flash of wrong theme — runs before paint */}
         <script

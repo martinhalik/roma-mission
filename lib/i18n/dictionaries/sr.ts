@@ -1105,52 +1105,54 @@ const sr: Dictionary = {
   },
   metadata: {
     home: {
-      title: "Christian Roma Mission",
+      title: "Хришћанска ромска мисија",
       description:
-        "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
+        "10 милиона Рома у Европи. Живимо међу њима, садимо цркве које трају и васпитавамо следећу генерацију.",
     },
     mission: {
-      title: "The Mission — Roma Mission",
+      title: "Мисија — Хришћанска ромска мисија",
       description:
-        "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
+        "Пет милиона Рома у Европи — већина није достигнута Јеванђељем. Истражите размере потребе, стање православног присуства и рад на оснивању трајних парохија.",
     },
     ourStory: {
-      title: "Our Story — Roma Mission",
+      title: "Наша прича — Хришћанска ромска мисија",
       description:
-        "From a chance encounter in Klenovec in 2016 to a network of Orthodox parishes among Roma — Fr. Martin Halík's path and the work that has grown around it.",
+        "Од случајног сусрета у Кленовцу 2016. до мреже православних парохија међу Ромима — пут оца Мартина Халика и дело које је око њега израсло.",
     },
     locations: {
-      title: "Locations — Roma Mission",
+      title: "Локације — Хришћанска ромска мисија",
       description:
-        "Our active mission centers in Slovakia — Klenovec, Markovce, Kačanov, Mútnik — where Orthodox parishes are being planted among Roma communities.",
+        "Наши активни мисионарски центри у Словачкој — Кленовец, Марковце, Качанов, Мутник — где се међу ромским заједницама оснивају православне парохије.",
     },
     stories: {
-      title: "Stories — Roma Mission",
+      title: "Приче — Хришћанска ромска мисија",
       description:
-        "First-person testimonies from Roma men, women, and families whose lives have been changed by the Gospel through the work of the mission.",
+        "Лична сведочанства ромских мушкараца, жена и породица чије су животе променили Јеванђеље и рад мисије.",
     },
     media: {
-      title: "Media — Roma Mission",
+      title: "Медији — Хришћанска ромска мисија",
       description:
-        "Documentaries, interviews, and testimonies about Orthodox mission among the Roma — bringing the Gospel to Europe's largest unreached minority.",
+        "Документарни филмови, интервјуи и сведочанства о православној мисији међу Ромима — доношење Јеванђеља највећој недостигнутој мањини у Европи.",
     },
     getInvolved: {
-      title: "Get Involved — Roma Mission",
+      title: "Прикључите се — Хришћанска ромска мисија",
       description:
-        "Support the Roma Mission through financial giving, volunteering your skills, joining a mission trip, or prayer. Join the work of planting Orthodox parishes in Roma communities.",
+        "Подржите ромску мисију финансијским прилогом, волонтирањем, мисионарским путовањем или молитвом. Придружите се оснивању православних парохија.",
     },
     thankYou: {
-      title: "Thank God for Your Support — Roma Mission",
+      title: "Хвала Богу за вашу подршку — Ромска мисија",
       description:
-        "Your gift supports Orthodox missionaries living and working among the Roma. Thank you for investing in this work.",
+        "Ваш прилог подржава православне мисионаре који живе и раде међу Ромима. Хвала вам што улажете у ово дело.",
     },
     privacy: {
-      title: "Privacy Policy — Roma Mission",
-      description: "Privacy Policy for the Christian Roma Mission website.",
+      title: "Политика приватности — Ромска мисија",
+      description:
+        "Политика приватности веб-сајта Хришћанске ромске мисије.",
     },
     terms: {
-      title: "Terms of Use — Roma Mission",
-      description: "Terms of Use for the Christian Roma Mission website.",
+      title: "Услови коришћења — Ромска мисија",
+      description:
+        "Услови коришћења веб-сајта Хришћанске ромске мисије.",
     },
   },
 };

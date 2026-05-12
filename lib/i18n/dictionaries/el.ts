@@ -1108,52 +1108,54 @@ const el: Dictionary = {
   },
   metadata: {
     home: {
-      title: "Christian Roma Mission",
+      title: "Χριστιανική Ιεραποστολή Ρομά",
       description:
-        "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
+        "10 εκατομμύρια Ρομά στην Ευρώπη. Ζούμε ανάμεσά τους, φυτεύουμε ενορίες που διαρκούν και μαθητεύουμε τη νέα γενιά.",
     },
     mission: {
-      title: "The Mission — Roma Mission",
+      title: "Η Αποστολή — Χριστιανική Ιεραποστολή Ρομά",
       description:
-        "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
+        "Πέντε εκατομμύρια Ρομά στην Ευρώπη — οι περισσότεροι ανέγγιχτοι από το Ευαγγέλιο. Δείτε την έκταση της ανάγκης, την ορθόδοξη παρουσία και το έργο μας.",
     },
     ourStory: {
-      title: "Our Story — Roma Mission",
+      title: "Η ιστορία μας — Χριστιανική Ιεραποστολή Ρομά",
       description:
-        "From a chance encounter in Klenovec in 2016 to a network of Orthodox parishes among Roma — Fr. Martin Halík's path and the work that has grown around it.",
+        "Από μια τυχαία συνάντηση στο Klenovec το 2016 σε ένα δίκτυο ορθόδοξων ενοριών ανάμεσα στους Ρομά — η πορεία του π. Μαρτίνου Halík και το έργο που γεννήθηκε γύρω της.",
     },
     locations: {
-      title: "Locations — Roma Mission",
+      title: "Τοποθεσίες — Χριστιανική Ιεραποστολή Ρομά",
       description:
-        "Our active mission centers in Slovakia — Klenovec, Markovce, Kačanov, Mútnik — where Orthodox parishes are being planted among Roma communities.",
+        "Τα ενεργά ιεραποστολικά μας κέντρα στη Σλοβακία — Klenovec, Markovce, Kačanov, Mútnik — όπου ιδρύονται ορθόδοξες ενορίες στις κοινότητες Ρομά.",
     },
     stories: {
-      title: "Stories — Roma Mission",
+      title: "Μαρτυρίες — Χριστιανική Ιεραποστολή Ρομά",
       description:
-        "First-person testimonies from Roma men, women, and families whose lives have been changed by the Gospel through the work of the mission.",
+        "Προσωπικές μαρτυρίες ανδρών, γυναικών και οικογενειών Ρομά των οποίων οι ζωές μεταμορφώθηκαν από το Ευαγγέλιο μέσω του έργου της ιεραποστολής.",
     },
     media: {
-      title: "Media — Roma Mission",
+      title: "Μέσα — Χριστιανική Ιεραποστολή Ρομά",
       description:
-        "Documentaries, interviews, and testimonies about Orthodox mission among the Roma — bringing the Gospel to Europe's largest unreached minority.",
+        "Ντοκιμαντέρ, συνεντεύξεις και μαρτυρίες για την ορθόδοξη ιεραποστολή ανάμεσα στους Ρομά — μεταφορά του Ευαγγελίου στη μεγαλύτερη ανέγγιχτη μειονότητα της Ευρώπης.",
     },
     getInvolved: {
-      title: "Get Involved — Roma Mission",
+      title: "Συμμετέχετε — Χριστιανική Ιεραποστολή Ρομά",
       description:
-        "Support the Roma Mission through financial giving, volunteering your skills, joining a mission trip, or prayer. Join the work of planting Orthodox parishes in Roma communities.",
+        "Στηρίξτε την ιεραποστολή Ρομά με οικονομική προσφορά, εθελοντισμό, ιεραποστολικό ταξίδι ή προσευχή. Συμμετάσχετε στην ίδρυση ορθόδοξων ενοριών.",
     },
     thankYou: {
-      title: "Thank God for Your Support — Roma Mission",
+      title: "Δόξα τω Θεώ για τη στήριξή σας — Ιεραποστολή Ρομά",
       description:
-        "Your gift supports Orthodox missionaries living and working among the Roma. Thank you for investing in this work.",
+        "Η δωρεά σας στηρίζει ορθόδοξους ιεραποστόλους που ζουν και εργάζονται ανάμεσα στους Ρομά. Σας ευχαριστούμε που επενδύετε σε αυτό το έργο.",
     },
     privacy: {
-      title: "Privacy Policy — Roma Mission",
-      description: "Privacy Policy for the Christian Roma Mission website.",
+      title: "Πολιτική απορρήτου — Ιεραποστολή Ρομά",
+      description:
+        "Πολιτική απορρήτου για τον ιστότοπο της Χριστιανικής Ιεραποστολής Ρομά.",
     },
     terms: {
-      title: "Terms of Use — Roma Mission",
-      description: "Terms of Use for the Christian Roma Mission website.",
+      title: "Όροι χρήσης — Ιεραποστολή Ρομά",
+      description:
+        "Όροι χρήσης του ιστότοπου της Χριστιανικής Ιεραποστολής Ρομά.",
     },
   },
 };

@@ -1107,52 +1107,54 @@ const ro: Dictionary = {
   },
   metadata: {
     home: {
-      title: "Christian Roma Mission",
+      title: "Misiunea Creștină Romă",
       description:
-        "10 million Roma across Europe. We live among them, plant churches that last, and disciple the next generation.",
+        "10 milioane de romi în Europa. Trăim printre ei, plantăm biserici care durează și formăm generația următoare.",
     },
     mission: {
-      title: "The Mission — Roma Mission",
+      title: "Misiunea — Misiunea Creștină Romă",
       description:
-        "Five million Roma across Europe — most unreached by the Gospel. Explore the scale of the need, the state of Orthodox presence, and the work of planting lasting parishes.",
+        "Cinci milioane de romi în Europa — cei mai mulți neatinși de Evanghelie. Vedeți amploarea nevoii, prezența ortodoxă și lucrarea de plantare a parohiilor durabile.",
     },
     ourStory: {
-      title: "Our Story — Roma Mission",
+      title: "Povestea noastră — Misiunea Creștină Romă",
       description:
-        "From a chance encounter in Klenovec in 2016 to a network of Orthodox parishes among Roma — Fr. Martin Halík's path and the work that has grown around it.",
+        "De la o întâlnire întâmplătoare la Klenovec în 2016 la o rețea de parohii ortodoxe printre romi — drumul părintelui Martin Halík și lucrarea născută în jurul lui.",
     },
     locations: {
-      title: "Locations — Roma Mission",
+      title: "Locații — Misiunea Creștină Romă",
       description:
-        "Our active mission centers in Slovakia — Klenovec, Markovce, Kačanov, Mútnik — where Orthodox parishes are being planted among Roma communities.",
+        "Centrele noastre active de misiune din Slovacia — Klenovec, Markovce, Kačanov, Mútnik — unde se plantează parohii ortodoxe în comunitățile rome.",
     },
     stories: {
-      title: "Stories — Roma Mission",
+      title: "Mărturii — Misiunea Creștină Romă",
       description:
-        "First-person testimonies from Roma men, women, and families whose lives have been changed by the Gospel through the work of the mission.",
+        "Mărturii personale ale unor bărbați, femei și familii rome ale căror vieți au fost transformate de Evanghelie prin lucrarea misiunii.",
     },
     media: {
-      title: "Media — Roma Mission",
+      title: "Media — Misiunea Creștină Romă",
       description:
-        "Documentaries, interviews, and testimonies about Orthodox mission among the Roma — bringing the Gospel to Europe's largest unreached minority.",
+        "Documentare, interviuri și mărturii despre misiunea ortodoxă printre romi — aducerea Evangheliei celei mai mari minorități neatinse din Europa.",
     },
     getInvolved: {
-      title: "Get Involved — Roma Mission",
+      title: "Implică-te — Misiunea Creștină Romă",
       description:
-        "Support the Roma Mission through financial giving, volunteering your skills, joining a mission trip, or prayer. Join the work of planting Orthodox parishes in Roma communities.",
+        "Sprijiniți misiunea romă prin daruri financiare, voluntariat, călătorii misionare sau rugăciune. Alăturați-vă plantării parohiilor ortodoxe în comunitățile rome.",
     },
     thankYou: {
-      title: "Thank God for Your Support — Roma Mission",
+      title: "Mulțumim lui Dumnezeu pentru sprijinul tău — Misiunea Romă",
       description:
-        "Your gift supports Orthodox missionaries living and working among the Roma. Thank you for investing in this work.",
+        "Darul dumneavoastră susține misionari ortodocși care trăiesc și lucrează printre romi. Vă mulțumim că investiți în această lucrare.",
     },
     privacy: {
-      title: "Privacy Policy — Roma Mission",
-      description: "Privacy Policy for the Christian Roma Mission website.",
+      title: "Politica de confidențialitate — Misiunea Romă",
+      description:
+        "Politica de confidențialitate pentru site-ul Misiunii Creștine Rome.",
     },
     terms: {
-      title: "Terms of Use — Roma Mission",
-      description: "Terms of Use for the Christian Roma Mission website.",
+      title: "Termeni de utilizare — Misiunea Romă",
+      description:
+        "Termenii de utilizare ai site-ului Misiunii Creștine Rome.",
     },
   },
 };
