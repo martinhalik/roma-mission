@@ -702,6 +702,56 @@ export interface Dictionary {
       bodyBefore: string;
     };
   };
+  termsOfUse: {
+    eyebrow: string;
+    title: string;
+    lastUpdated: string;
+    acceptance: {
+      heading: string;
+      body: string;
+    };
+    use: {
+      heading: string;
+      lead: string;
+      item1: string;
+      item2: string;
+      item3: string;
+      item4: string;
+    };
+    intellectualProperty: {
+      heading: string;
+      body: string;
+    };
+    donations: {
+      heading: string;
+      body: string;
+    };
+    thirdParty: {
+      heading: string;
+      body: string;
+    };
+    disclaimer: {
+      heading: string;
+      body: string;
+    };
+    liability: {
+      heading: string;
+      body: string;
+    };
+    governingLaw: {
+      heading: string;
+      body: string;
+    };
+    changes: {
+      heading: string;
+      body: string;
+    };
+    contact: {
+      heading: string;
+      bodyBefore: string;
+      bodyAfter: string;
+    };
+  };
   thankYou: {
     eyebrow: string;
     headlineLine1: string;

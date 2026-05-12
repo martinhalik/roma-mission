@@ -890,6 +890,56 @@ const ro: Dictionary = {
       bodyBefore: "Dacă aveți întrebări despre această Politică de confidențialitate, vă rugăm să ne contactați la: ",
     },
   },
+  termsOfUse: {
+    eyebrow: "Informații juridice",
+    title: "Termeni de utilizare",
+    lastUpdated: "Ultima actualizare: ianuarie 2026",
+    acceptance: {
+      heading: "1. Acceptarea termenilor",
+      body: "Prin accesarea și utilizarea site-ului web Christian Roma Mission (romamission.eu), acceptați să fiți obligat de prezenții Termeni de utilizare. Dacă nu sunteți de acord cu acești termeni, vă rugăm să nu utilizați site-ul nostru.",
+    },
+    use: {
+      heading: "2. Utilizarea site-ului web",
+      lead: "Puteți utiliza acest site web exclusiv în scopuri legale. Sunteți de acord să nu:",
+      item1: "utilizați site-ul în orice mod care încalcă legile sau reglementările aplicabile;",
+      item2: "reproduceți, multiplicați sau copiați conținutul fără autorizare;",
+      item3: "transmiteți publicitate sau materiale promoționale nesolicitate ori neautorizate;",
+      item4: "încercați să obțineți acces neautorizat la orice parte a site-ului web.",
+    },
+    intellectualProperty: {
+      heading: "3. Proprietate intelectuală",
+      body: "Întregul conținut al acestui site web — incluzând texte, fotografii, materiale video și grafice — este proprietatea Christian Roma Mission sau a furnizorilor săi de conținut și este protejat de legile aplicabile privind proprietatea intelectuală. Puteți distribui conținutul în scopuri necomerciale, educaționale, cu menționarea sursei.",
+    },
+    donations: {
+      heading: "4. Donații",
+      body: "Donațiile efectuate prin intermediul acestui site web sunt contribuții voluntare către Christian Roma Mission. Toate donațiile sunt nerambursabile, cu excepția cazului în care se prevede altfel. Ne angajăm să utilizăm donațiile în conformitate cu misiunea declarată și cu rapoartele noastre de transparență financiară.",
+    },
+    thirdParty: {
+      heading: "5. Linkuri către terți",
+      body: "Site-ul nostru poate conține linkuri către site-uri ale unor terți. Aceste linkuri sunt furnizate exclusiv pentru comoditate. Nu avem niciun control asupra conținutului acelor site-uri și nu ne asumăm nicio răspundere pentru acesta.",
+    },
+    disclaimer: {
+      heading: "6. Excluderea garanțiilor",
+      body: "Acest site web este furnizat „ca atare”, fără nicio garanție, expresă sau implicită. Nu garantăm că site-ul va funcționa neîntrerupt, fără erori sau fără viruși ori alte componente dăunătoare.",
+    },
+    liability: {
+      heading: "7. Limitarea răspunderii",
+      body: "În limita maximă permisă de lege, Christian Roma Mission nu va fi răspunzătoare pentru niciun fel de daune indirecte, incidentale, speciale sau pe cale de consecință rezultate din utilizarea acestui site web sau a serviciilor noastre.",
+    },
+    governingLaw: {
+      heading: "8. Legea aplicabilă",
+      body: "Prezenții Termeni de utilizare sunt guvernați și interpretați în conformitate cu legislația Republicii Slovace, fără a ține seama de normele sale privind conflictul de legi.",
+    },
+    changes: {
+      heading: "9. Modificarea termenilor",
+      body: "Ne rezervăm dreptul de a modifica oricând acești Termeni de utilizare. Modificările vor fi publicate pe această pagină împreună cu data actualizată. Continuarea utilizării site-ului după publicarea modificărilor constituie acceptarea noilor termeni.",
+    },
+    contact: {
+      heading: "10. Contact",
+      bodyBefore: "Pentru întrebări privind acești Termeni de utilizare, vă rugăm să ne contactați la ",
+      bodyAfter: ".",
+    },
+  },
   thankYou: {
     eyebrow: "Donație primită",
     headlineLine1: "Mulțumim pentru",

@@ -888,6 +888,56 @@ const en: Dictionary = {
       bodyBefore: "If you have questions about this Privacy Policy, please contact us at: ",
     },
   },
+  termsOfUse: {
+    eyebrow: "Legal",
+    title: "Terms of Use",
+    lastUpdated: "Last updated: January 2026",
+    acceptance: {
+      heading: "1. Acceptance of Terms",
+      body: "By accessing and using the Christian Roma Mission website (romamission.eu), you accept and agree to be bound by these Terms of Use. If you do not agree to these terms, please do not use our website.",
+    },
+    use: {
+      heading: "2. Use of the Website",
+      lead: "You may use this website for lawful purposes only. You agree not to:",
+      item1: "Use the site in any way that violates applicable laws or regulations",
+      item2: "Reproduce, duplicate, or copy content without permission",
+      item3: "Transmit any unsolicited or unauthorized advertising or promotional material",
+      item4: "Attempt to gain unauthorized access to any part of the website",
+    },
+    intellectualProperty: {
+      heading: "3. Intellectual Property",
+      body: "All content on this website — including text, photographs, video, and graphics — is the property of Christian Roma Mission or its content suppliers and is protected by applicable intellectual property laws. You may share content for non-commercial, educational purposes with attribution.",
+    },
+    donations: {
+      heading: "4. Donations",
+      body: "Donations made through this website are voluntary contributions to Christian Roma Mission. All donations are non-refundable unless otherwise stated. We are committed to using donations in accordance with our stated mission and financial transparency reports.",
+    },
+    thirdParty: {
+      heading: "5. Third-Party Links",
+      body: "Our website may contain links to third-party websites. These links are provided for convenience only. We have no control over the content of those sites and accept no responsibility for them.",
+    },
+    disclaimer: {
+      heading: "6. Disclaimer of Warranties",
+      body: "This website is provided “as is” without any warranties, express or implied. We do not warrant that the website will be uninterrupted, error-free, or free of viruses or other harmful components.",
+    },
+    liability: {
+      heading: "7. Limitation of Liability",
+      body: "To the fullest extent permitted by law, Christian Roma Mission shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of this website or our services.",
+    },
+    governingLaw: {
+      heading: "8. Governing Law",
+      body: "These Terms of Use shall be governed by and construed in accordance with the laws of the Slovak Republic, without regard to its conflict of law provisions.",
+    },
+    changes: {
+      heading: "9. Changes to Terms",
+      body: "We reserve the right to modify these Terms of Use at any time. Changes will be posted on this page with an updated date. Continued use of the website after changes constitutes acceptance of the new terms.",
+    },
+    contact: {
+      heading: "10. Contact",
+      bodyBefore: "For questions about these Terms of Use, please contact us at ",
+      bodyAfter: ".",
+    },
+  },
   thankYou: {
     eyebrow: "Donation Received",
     headlineLine1: "Thank You for",

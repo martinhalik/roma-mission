@@ -890,6 +890,56 @@ const de: Dictionary = {
       bodyBefore: "Bei Fragen zu dieser Datenschutzerklärung wenden Sie sich bitte an: ",
     },
   },
+  termsOfUse: {
+    eyebrow: "Rechtliche Hinweise",
+    title: "Nutzungsbedingungen",
+    lastUpdated: "Zuletzt aktualisiert: Januar 2026",
+    acceptance: {
+      heading: "1. Annahme der Bedingungen",
+      body: "Mit dem Zugriff auf die Website der Christian Roma Mission (romamission.eu) und ihrer Nutzung erklären Sie sich mit diesen Nutzungsbedingungen einverstanden und akzeptieren deren Verbindlichkeit. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie unsere Website bitte nicht.",
+    },
+    use: {
+      heading: "2. Nutzung der Website",
+      lead: "Sie dürfen diese Website ausschließlich zu rechtmäßigen Zwecken nutzen. Sie verpflichten sich, Folgendes zu unterlassen:",
+      item1: "die Nutzung der Website in einer Weise, die gegen geltende Gesetze oder Vorschriften verstößt;",
+      item2: "die Vervielfältigung, Verdopplung oder das Kopieren von Inhalten ohne Genehmigung;",
+      item3: "das Versenden unaufgeforderter oder unbefugter Werbung oder Werbematerialien;",
+      item4: "den Versuch, sich unbefugten Zugang zu einem beliebigen Teil der Website zu verschaffen.",
+    },
+    intellectualProperty: {
+      heading: "3. Geistiges Eigentum",
+      body: "Sämtliche Inhalte dieser Website — einschließlich Texte, Fotografien, Videos und Grafiken — sind Eigentum der Christian Roma Mission oder ihrer Inhaltslieferanten und durch das geltende Recht des geistigen Eigentums geschützt. Sie dürfen Inhalte zu nicht-kommerziellen, bildungsbezogenen Zwecken unter Angabe der Quelle weitergeben.",
+    },
+    donations: {
+      heading: "4. Spenden",
+      body: "Über diese Website geleistete Spenden sind freiwillige Zuwendungen an die Christian Roma Mission. Alle Spenden sind unwiderruflich, sofern nicht ausdrücklich anders angegeben. Wir verpflichten uns, Spenden im Einklang mit unserer erklärten Mission und unseren Berichten zur finanziellen Transparenz zu verwenden.",
+    },
+    thirdParty: {
+      heading: "5. Links zu Websites Dritter",
+      body: "Unsere Website kann Links zu Websites Dritter enthalten. Diese Links werden lediglich der Bequemlichkeit halber bereitgestellt. Wir haben keinen Einfluss auf die Inhalte dieser Websites und übernehmen dafür keine Verantwortung.",
+    },
+    disclaimer: {
+      heading: "6. Gewährleistungsausschluss",
+      body: "Diese Website wird „wie besehen“ ohne jegliche ausdrückliche oder stillschweigende Gewährleistung bereitgestellt. Wir gewährleisten nicht, dass die Website ununterbrochen, fehlerfrei oder frei von Viren oder sonstigen schädlichen Bestandteilen sein wird.",
+    },
+    liability: {
+      heading: "7. Haftungsbeschränkung",
+      body: "Soweit gesetzlich zulässig, haftet die Christian Roma Mission nicht für indirekte, zufällige, besondere oder Folgeschäden, die aus der Nutzung dieser Website oder unserer Dienste entstehen.",
+    },
+    governingLaw: {
+      heading: "8. Anwendbares Recht",
+      body: "Diese Nutzungsbedingungen unterliegen dem Recht der Slowakischen Republik und sind nach diesem auszulegen, unter Ausschluss seiner Kollisionsnormen.",
+    },
+    changes: {
+      heading: "9. Änderungen der Bedingungen",
+      body: "Wir behalten uns das Recht vor, diese Nutzungsbedingungen jederzeit zu ändern. Änderungen werden auf dieser Seite mit aktualisiertem Datum veröffentlicht. Die fortgesetzte Nutzung der Website nach Änderungen gilt als Annahme der neuen Bedingungen.",
+    },
+    contact: {
+      heading: "10. Kontakt",
+      bodyBefore: "Bei Fragen zu diesen Nutzungsbedingungen kontaktieren Sie uns bitte unter ",
+      bodyAfter: ".",
+    },
+  },
   thankYou: {
     eyebrow: "Spende eingegangen",
     headlineLine1: "Danke für",
