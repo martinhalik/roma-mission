@@ -835,6 +835,61 @@ const ro: Dictionary = {
       },
     },
   },
+  privacyPolicy: {
+    eyebrow: "Informații juridice",
+    title: "Politica de confidențialitate",
+    lastUpdated: "Ultima actualizare: ianuarie 2026",
+    intro: {
+      heading: "1. Introducere",
+      body: "Christian Roma Mission („noi”, „al nostru” sau „nouă”) se angajează să vă protejeze confidențialitatea. Această Politică de confidențialitate explică modul în care colectăm, utilizăm, divulgăm și protejăm informațiile dumneavoastră atunci când vizitați site-ul nostru sau faceți o donație.",
+    },
+    dataCollected: {
+      heading: "2. Informațiile pe care le colectăm",
+      lead: "Putem colecta următoarele categorii de informații:",
+      item1: "Informații de identificare personală (nume, adresă de e-mail, adresă poștală)",
+      item2: "Informații de plată prelucrate în siguranță prin intermediul furnizorilor noștri de servicii de plată",
+      item3: "Informații pe care le furnizați în mod voluntar prin formularele de contact sau cererile de voluntariat",
+      item4: "Date tehnice, precum adresa IP, tipul de browser și paginile vizitate",
+    },
+    dataUse: {
+      heading: "3. Cum utilizăm informațiile dumneavoastră",
+      lead: "Utilizăm informațiile colectate pentru a:",
+      item1: "Procesa donațiile și trimite chitanțe pentru acestea",
+      item2: "Comunica actualizări și rapoarte despre misiune",
+      item3: "Răspunde la întrebările și la cererile dumneavoastră de voluntariat",
+      item4: "Îmbunătăți site-ul și serviciile noastre",
+      item5: "Respecta obligațiile legale",
+    },
+    sharing: {
+      heading: "4. Partajarea datelor",
+      body: "Nu vindem, nu schimbăm și nu închiriem informațiile dumneavoastră personale către terți. Putem partaja informațiile dumneavoastră cu furnizori de servicii de încredere care ne sprijină în operarea site-ului și în desfășurarea activității noastre, cu condiția ca aceștia să fie de acord să păstreze confidențialitatea acestor informații.",
+    },
+    retention: {
+      heading: "5. Păstrarea datelor",
+      body: "Păstrăm informațiile dumneavoastră personale atât timp cât este necesar pentru îndeplinirea scopurilor pentru care au fost colectate, inclusiv pentru obligații legale, contabile sau de raportare.",
+    },
+    rights: {
+      heading: "6. Drepturile dumneavoastră",
+      bodyBefore: "În funcție de țara în care vă aflați, este posibil să aveți, conform Regulamentului general privind protecția datelor (GDPR), dreptul de a accesa, rectifica sau șterge datele cu caracter personal. Pentru a vă exercita aceste drepturi, contactați-ne la ",
+      bodyAfter: ".",
+    },
+    cookies: {
+      heading: "7. Cookie-uri",
+      body: "Site-ul nostru utilizează cookie-uri esențiale pentru a funcționa corect. Nu folosim cookie-uri de urmărire sau de publicitate. Puteți dezactiva cookie-urile din setările browserului, însă acest lucru poate afecta funcționalitatea site-ului.",
+    },
+    security: {
+      heading: "8. Securitate",
+      body: "Implementăm măsuri tehnice și organizatorice adecvate pentru a proteja informațiile dumneavoastră personale împotriva accesului neautorizat, modificării, divulgării sau distrugerii.",
+    },
+    changes: {
+      heading: "9. Modificări ale acestei politici",
+      body: "Putem actualiza periodic această Politică de confidențialitate. Vă vom informa despre modificările semnificative prin publicarea noii politici pe această pagină, însoțită de o dată actualizată.",
+    },
+    contact: {
+      heading: "10. Contactați-ne",
+      bodyBefore: "Dacă aveți întrebări despre această Politică de confidențialitate, vă rugăm să ne contactați la: ",
+    },
+  },
   thankYou: {
     eyebrow: "Donație primită",
     headlineLine1: "Mulțumim pentru",

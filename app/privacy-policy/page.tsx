@@ -1,15 +1,27 @@
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Privacy Policy for the Christian Roma Mission website.",
-  robots: { index: false },
-};
+"use client";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useTranslation } from "@/components/LanguageProvider";
 
 export default function PrivacyPolicyPage() {
+  const { t } = useTranslation();
+
+  const collectedItems = [
+    t("privacyPolicy.dataCollected.item1"),
+    t("privacyPolicy.dataCollected.item2"),
+    t("privacyPolicy.dataCollected.item3"),
+    t("privacyPolicy.dataCollected.item4"),
+  ];
+
+  const useItems = [
+    t("privacyPolicy.dataUse.item1"),
+    t("privacyPolicy.dataUse.item2"),
+    t("privacyPolicy.dataUse.item3"),
+    t("privacyPolicy.dataUse.item4"),
+    t("privacyPolicy.dataUse.item5"),
+  ];
+
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
       <Navbar />
@@ -18,33 +30,25 @@ export default function PrivacyPolicyPage() {
         <div className="flex items-center gap-3 mb-8">
           <div className="w-[3px] h-[14px] bg-[var(--gold)]" />
           <span className="text-[11px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
-            Legal
+            {t("privacyPolicy.eyebrow")}
           </span>
         </div>
         <h1 className="text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] mb-4 leading-[1.05]">
-          Privacy Policy
+          {t("privacyPolicy.title")}
         </h1>
         <p className="text-[13px] text-[var(--text-muted)] mb-12">
-          Last updated: January 2026
+          {t("privacyPolicy.lastUpdated")}
         </p>
 
         <div className="flex flex-col gap-10 text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.8]">
-          <Section title="1. Introduction">
-            Christian Roma Mission (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or
-            &ldquo;us&rdquo;) is committed to protecting your privacy. This
-            Privacy Policy explains how we collect, use, disclose, and safeguard
-            your information when you visit our website or make a donation.
+          <Section title={t("privacyPolicy.intro.heading")}>
+            {t("privacyPolicy.intro.body")}
           </Section>
 
-          <Section title="2. Information We Collect">
-            We may collect the following types of information:
+          <Section title={t("privacyPolicy.dataCollected.heading")}>
+            {t("privacyPolicy.dataCollected.lead")}
             <ul className="mt-4 flex flex-col gap-2 list-none">
-              {[
-                "Personal identification information (name, email address, mailing address)",
-                "Payment information processed securely through our payment providers",
-                "Voluntary information you provide through contact forms or volunteer applications",
-                "Technical data such as IP address, browser type, and pages visited",
-              ].map((item) => (
+              {collectedItems.map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="text-[var(--gold)] mt-1 flex-shrink-0">·</span>
                   {item}
@@ -53,16 +57,10 @@ export default function PrivacyPolicyPage() {
             </ul>
           </Section>
 
-          <Section title="3. How We Use Your Information">
-            We use the information we collect to:
+          <Section title={t("privacyPolicy.dataUse.heading")}>
+            {t("privacyPolicy.dataUse.lead")}
             <ul className="mt-4 flex flex-col gap-2 list-none">
-              {[
-                "Process donations and send donation receipts",
-                "Communicate with you about mission updates and reports",
-                "Respond to your inquiries and volunteer applications",
-                "Improve our website and services",
-                "Comply with legal obligations",
-              ].map((item) => (
+              {useItems.map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="text-[var(--gold)] mt-1 flex-shrink-0">·</span>
                   {item}
@@ -71,54 +69,39 @@ export default function PrivacyPolicyPage() {
             </ul>
           </Section>
 
-          <Section title="4. Data Sharing">
-            We do not sell, trade, or rent your personal information to third
-            parties. We may share your information with trusted service providers
-            who assist us in operating our website and conducting our work,
-            provided that those parties agree to keep this information
-            confidential.
+          <Section title={t("privacyPolicy.sharing.heading")}>
+            {t("privacyPolicy.sharing.body")}
           </Section>
 
-          <Section title="5. Data Retention">
-            We retain your personal information for as long as necessary to
-            fulfill the purposes for which it was collected, including legal,
-            accounting, or reporting requirements.
+          <Section title={t("privacyPolicy.retention.heading")}>
+            {t("privacyPolicy.retention.body")}
           </Section>
 
-          <Section title="6. Your Rights">
-            Depending on your location, you may have the right to access,
-            correct, or delete your personal data. To exercise these rights,
-            contact us at{" "}
+          <Section title={t("privacyPolicy.rights.heading")}>
+            {t("privacyPolicy.rights.bodyBefore")}
             <a
               href="mailto:privacy@romamission.eu"
               className="text-[var(--gold)] hover:opacity-80 transition-opacity"
             >
               privacy@romamission.eu
             </a>
-            .
+            {t("privacyPolicy.rights.bodyAfter")}
           </Section>
 
-          <Section title="7. Cookies">
-            Our website uses essential cookies to function properly. We do not
-            use tracking or advertising cookies. You may disable cookies through
-            your browser settings, though this may affect website functionality.
+          <Section title={t("privacyPolicy.cookies.heading")}>
+            {t("privacyPolicy.cookies.body")}
           </Section>
 
-          <Section title="8. Security">
-            We implement appropriate technical and organizational measures to
-            protect your personal information against unauthorized access,
-            alteration, disclosure, or destruction.
+          <Section title={t("privacyPolicy.security.heading")}>
+            {t("privacyPolicy.security.body")}
           </Section>
 
-          <Section title="9. Changes to This Policy">
-            We may update this Privacy Policy from time to time. We will notify
-            you of significant changes by posting the new policy on this page
-            with an updated date.
+          <Section title={t("privacyPolicy.changes.heading")}>
+            {t("privacyPolicy.changes.body")}
           </Section>
 
-          <Section title="10. Contact Us">
-            If you have questions about this Privacy Policy, please contact us
-            at:{" "}
+          <Section title={t("privacyPolicy.contact.heading")}>
+            {t("privacyPolicy.contact.bodyBefore")}
             <a
               href="mailto:privacy@romamission.eu"
               className="text-[var(--gold)] hover:opacity-80 transition-opacity"

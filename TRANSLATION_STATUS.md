@@ -18,6 +18,8 @@ Tracks progress of multilingual support added in branch `claude/add-language-tra
 
 > **Note:** Initial translations are AI-generated from English. Each locale should be reviewed by a native speaker before going to production. Russian uses the term "цыганская" historically; if a community-preferred term (e.g. "ромская") is desired, update `ru.ts`. Serbian is in Cyrillic — a Latin variant (`sr-Latn`) can be added by duplicating `sr.ts`.
 
+> **⚠️ LEGAL CONTENT — TRANSLATIONS REQUIRE LEGAL REVIEW.** The `privacyPolicy.*` namespace (and any future legal namespaces such as terms of use) is AI-generated and carries liability if relied upon. **Before publishing in any locale, the translation MUST be reviewed by counsel familiar with the relevant jurisdiction** (GDPR for EU member states — SK, CS, RO, DE, EL; national data-protection law for non-EU jurisdictions — SR, RU, MK; UK GDPR for English readers in the UK). Do not assume parity with the English source: certain rights wording (e.g., right to erasure, right to object, supervisory authority) varies by jurisdiction. English remains the authoritative reference until legal review is complete.
+
 ## Architecture
 
 - **Locale registry:** `lib/i18n/locales.ts`
@@ -61,7 +63,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 | `app/get-involved/page.tsx` | 246 | ✅ Translated into all 9 locales (`getInvolved.*` namespace) — hero, 4 way-to-help cards (financial / volunteer / share / trip), and 4 FAQs. Donation amounts (`$25/mo`, `$50/mo`, `$100/mo`) kept numeric in USD across all locales; localized only the surrounding copy. The `DonationModal`, `ApplicationModal`, and `CTASection` that this page mounts are still hardcoded English — separate translation chunks. |
 | `app/media/page.tsx` | 309 | ✅ Translated into all 9 locales (`media.*` namespace). Strategy (b): per-item video metadata (`title`, `shortDesc`, `fullDesc`, `source`, `guest`, badge `label`) moved into the dictionary keyed by id (`media.items.documentary`, `media.items.int-1`, `media.items.int-2`, `media.items.testimony-laco`); structural fields (`videoId`, `tag`, `duration`, `badgeVariant`, `hasGuest`) remain on the data object in `lib/media-data.ts`. Subtitle/audio badge labels are translated to describe the video itself in each language (e.g. SK: "EN titulky" / "Slovenský zvuk" / "Anglický zvuk"). Home page (`app/page.tsx`) featured-media grid was updated to read titles/descs from the same dictionary keys. |
 | `app/thank-you/page.tsx` | 151 | ✅ Translated into all 9 locales (`thankYou.*` namespace) |
-| `app/privacy-policy/page.tsx` | 152 | Legal — must be reviewed by counsel before localizing |
+| `app/privacy-policy/page.tsx` | 152 | ⚠️ **AI-translated into all 9 locales (`privacyPolicy.*` namespace) — TRANSLATIONS REQUIRE LEGAL REVIEW BY COUNSEL FAMILIAR WITH EACH JURISDICTION BEFORE RELYING ON THEM.** Metadata moved into `app/privacy-policy/layout.tsx`; the page is now a `"use client"` component reading `useTranslation()`. Email link (`privacy@romamission.eu`) preserved across all locales. GDPR terminology localized to official forms (DE: „Datenschutz-Grundverordnung (DSGVO)“; RO: „Regulamentul general privind protecția datelor (GDPR)“; SK/CS: „všeobecné nariadenie/obecné nařízení o ochraně osobných/osobních údajů (GDPR)“; SR/RU/MK/EL: GDPR retained as international acronym alongside localized name). |
 | `app/terms-of-use/page.tsx` | 137 | Legal — must be reviewed by counsel before localizing |
 
 ### Components with hardcoded text
