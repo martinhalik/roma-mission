@@ -830,6 +830,35 @@ const sk: Dictionary = {
       },
     },
   },
+  thankYou: {
+    eyebrow: "Dar prijatý",
+    headlineLine1: "Ďakujeme za",
+    headlineLine2: "váš dar",
+    intro:
+      "Vaša štedrosť priamo podporuje pravoslávnu misijnú prácu v rómskych komunitách vo východnej Európe — financuje farský život, programy pre deti a ľudí, ktorí túto prácu robia priamo v teréne.",
+    taxNoticeCountryPrefix: "Roma Mission je registrovaná nezisková organizácia na ",
+    taxNoticeCountry: "Slovensku",
+    taxNoticeCountrySuffix: ". ",
+    taxNoticeDeductPrefix: "Darcovia z USA: príspevky ",
+    taxNoticeDeductBold: "nie sú odpočítateľné z daní",
+    taxNoticeDeductSuffix: " podľa zákonov USA.",
+    scripture:
+      "Každý nech dá, ako si umienil v srdci, nie zo žiaľu alebo z donútenia, lebo veselého darcu miluje Boh.",
+    scriptureRef: "— 2. Korinťanom 9:7",
+    oneMoreThing: "Ešte jedna vec",
+    helpSpread: "Pomôžte to rozšíriť",
+    helpSpreadDesc:
+      "Zdieľanie tejto misie zaberie jeden klik a môže osloviť niekoho, koho podpora zmení všetko.",
+    shareText:
+      "Práve som prispel/a na Roma Mission — pravoslávnych misionárov, ktorí prinášajú Cirkev do najprehliadanejších komunít Európy. Päť miliónov Rómov, väčšina nezasiahnutá. Stojí za to spoznať to:",
+    shareTitle: "Roma Mission",
+    shareCta: "ZDIEĽAŤ TÚTO MISIU",
+    postX: "ZDIEĽAŤ NA X",
+    whatsapp: "WHATSAPP",
+    facebook: "FACEBOOK",
+    backHome: "SPÄŤ NA HLAVNÚ",
+    learnMission: "ZISTITE VIAC O MISII",
+  },
 };
 
 export default sk;
