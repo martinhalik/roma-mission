@@ -72,7 +72,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 |------|---------|-------|
 | `components/CTASection.tsx` | ✅ Translated into all 9 locales (`cta.*` namespace) — title, subtitle, support/mission-trip/volunteer buttons. Component is now `"use client"`. |
 | `components/DonationModal.tsx` | ✅ Translated into all 9 locales (`donation.*` namespace) — modal eyebrow/title, monthly/one-time toggle, custom-amount placeholder, 4 impact lines, error + preparing states, "GIVE ${amount}/MO" / "GIVE ${amount}" / "GIVE $—" CTA, bank-transfer toggle + US/INTL tabs, 8 bank-field labels, tax notice. `$` and numeric amounts kept inline; locale-aware currency formatting deferred to PR 6. Bank field values (account names, numbers, addresses) are not translatable. |
-| `components/ApplicationModal.tsx` | Volunteer application form labels, validation errors |
+| `components/ApplicationModal.tsx` | ✅ Translated into all 9 locales (`application.*` namespace). The modal is a calendar-booking flow (not a form) shared by volunteer + trip variants: eyebrow, close aria-label, per-variant title/subtitle/description, "WHAT HAPPENS NEXT" heading + 3 steps, "SCHEDULE A CALL" CTA, helper caption, success-state title/body/CLOSE. No form fields or validation errors exist in this component. `__tests__/components/ApplicationModal.test.tsx` wraps each render in `<LanguageProvider>` so the English-text assertions continue to pass. |
 | `components/VideoModal.tsx` | Close button aria-label only |
 | `components/MissionMap.tsx` | Map legend, popup labels, country/parish status text |
 | `components/SectionLabel.tsx` | None — pure presentation |

@@ -1015,6 +1015,29 @@ const de: Dictionary = {
     taxNoticeBold: "nicht steuerlich absetzbar",
     taxNoticeTail: " nach US-Recht. Sichere Zahlung über Stripe.",
   },
+  application: {
+    eyebrow: "Mitmachen",
+    close: "Schließen",
+    titleVolunteer: "Als Freiwillige(r) bewerben",
+    titleTrip: "An einer Missionsreise teilnehmen",
+    subtitleVolunteer:
+      "Bringen Sie Ihre Fähigkeiten in den Dienst an Roma-Gemeinschaften ein",
+    subtitleTrip: "Erleben Sie die Arbeit vor Ort mit eigenen Augen",
+    descriptionVolunteer:
+      "Wir bringen Freiwillige mit Aufgaben zusammen, die zu ihrem Hintergrund passen — Übersetzung, Bildung, Bauarbeiten, Verwaltung und mehr. Lassen Sie uns in einem kurzen Gespräch gemeinsam das Richtige finden.",
+    descriptionTrip:
+      "Missionsreisen finden im Frühling und Sommer statt. Teams aus 6–12 Personen reisen nach Rumänien, in die Slowakei und nach Ungarn, um an der Seite der örtlichen Priester und Gemeindeleiter zu arbeiten.",
+    whatHappensNext: "WIE ES ABLÄUFT",
+    step1: "Buchen Sie unten ein 20-minütiges Kennenlerngespräch",
+    step2: "Wir erfahren mehr über Ihren Hintergrund und Ihre Verfügbarkeit",
+    step3: "Wir vermitteln Ihnen die passende Aufgabe",
+    scheduleCall: "GESPRÄCH BUCHEN",
+    takesLittleTime: "Dauert weniger als 2 Minuten. Keine Verpflichtung.",
+    bookingOpenedTitle: "Buchungslink geöffnet",
+    bookingOpenedBody:
+      "Schließen Sie die Buchung im neuen Tab ab. Wir freuen uns auf das Gespräch mit Ihnen.",
+    closeButton: "SCHLIESSEN",
+  },
 };
 
 export default de;

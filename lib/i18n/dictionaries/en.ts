@@ -1013,6 +1013,28 @@ const en: Dictionary = {
     taxNoticeBold: "not tax-deductible",
     taxNoticeTail: " under US law. Secure payment via Stripe.",
   },
+  application: {
+    eyebrow: "Get Involved",
+    close: "Close",
+    titleVolunteer: "Apply to Volunteer",
+    titleTrip: "Join a Mission Trip",
+    subtitleVolunteer: "Use your skills to serve Roma communities",
+    subtitleTrip: "Come see the work first-hand",
+    descriptionVolunteer:
+      "We match volunteers with roles that fit their background — translation, education, construction, admin, and more. Let's find a good fit together on a short call.",
+    descriptionTrip:
+      "Mission trips run in Spring and Summer. Teams of 6–12 people travel to Romania, Slovakia, and Hungary to work alongside local priests and community leaders.",
+    whatHappensNext: "WHAT HAPPENS NEXT",
+    step1: "Book a 20-minute intro call below",
+    step2: "We learn about your background & availability",
+    step3: "We match you with the right opportunity",
+    scheduleCall: "SCHEDULE A CALL",
+    takesLittleTime: "Takes less than 2 minutes. No commitment required.",
+    bookingOpenedTitle: "Booking link opened",
+    bookingOpenedBody:
+      "Complete your booking in the new tab. We look forward to speaking with you.",
+    closeButton: "CLOSE",
+  },
 };
 
 export default en;

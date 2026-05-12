@@ -1015,6 +1015,30 @@ const ro: Dictionary = {
     taxNoticeBold: "nu sunt deductibile fiscal",
     taxNoticeTail: " conform legislației SUA. Plată securizată prin Stripe.",
   },
+  application: {
+    eyebrow: "Implică-te",
+    close: "Închide",
+    titleVolunteer: "Aplică pentru voluntariat",
+    titleTrip: "Alătură-te unei călătorii misionare",
+    subtitleVolunteer:
+      "Folosește-ți abilitățile pentru a sluji comunităților rome",
+    subtitleTrip: "Vino să vezi lucrarea cu ochii tăi",
+    descriptionVolunteer:
+      "Asociem voluntarii cu roluri potrivite experienței lor — traducere, educație, construcții, administrație și altele. Hai să găsim împreună locul potrivit pentru tine printr-o scurtă convorbire.",
+    descriptionTrip:
+      "Călătoriile misionare au loc primăvara și vara. Echipe de 6–12 persoane călătoresc în România, Slovacia și Ungaria pentru a lucra alături de preoții și liderii comunităților locale.",
+    whatHappensNext: "CUM SE DESFĂȘOARĂ",
+    step1: "Rezervă mai jos o convorbire introductivă de 20 de minute",
+    step2: "Aflăm despre experiența și disponibilitatea ta",
+    step3: "Te conectăm cu oportunitatea potrivită",
+    scheduleCall: "PROGRAMEAZĂ O CONVORBIRE",
+    takesLittleTime:
+      "Durează mai puțin de 2 minute. Fără angajament.",
+    bookingOpenedTitle: "Linkul de rezervare s-a deschis",
+    bookingOpenedBody:
+      "Finalizează rezervarea în noua filă. Așteptăm cu nerăbdare să vorbim cu tine.",
+    closeButton: "ÎNCHIDE",
+  },
 };
 
 export default ro;
