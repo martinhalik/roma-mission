@@ -16,7 +16,7 @@ Tracks progress of multilingual support added in branch `claude/add-language-tra
 | `mk` | 🇲🇰 | Macedonian / Македонски | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You + CTASection — needs native review |
 | `el` | 🇬🇷 | Greek / Ελληνικά | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You + CTASection — needs native review |
 
-> **Note:** Initial translations are AI-generated from English. Each locale should be reviewed by a native speaker before going to production. Russian uses the term "цыганская" historically; if a community-preferred term (e.g. "ромская") is desired, update `ru.ts`. Serbian is in Cyrillic — a Latin variant (`sr-Latn`) can be added by duplicating `sr.ts`.
+> **Note:** Initial translations are AI-generated from English. Each locale should be reviewed by a native speaker before going to production — see [`REVIEW_CHECKLIST.md`](./REVIEW_CHECKLIST.md) for the per-locale checklist. Russian uses the term "цыганская" historically; if a community-preferred term (e.g. "ромская") is desired, update `ru.ts`. Serbian is in Cyrillic — a Latin variant (`sr-Latn`) can be added by duplicating `sr.ts`.
 
 > **⚠️ LEGAL CONTENT — TRANSLATIONS REQUIRE LEGAL REVIEW.** The `privacyPolicy.*` and `termsOfUse.*` namespaces are AI-generated and carry liability if relied upon. **Before publishing in any locale, the translation MUST be reviewed by counsel familiar with the relevant jurisdiction** (GDPR for EU member states — SK, CS, RO, DE, EL; national data-protection law for non-EU jurisdictions — SR, RU, MK; UK GDPR for English readers in the UK). Do not assume parity with the English source: certain rights wording (e.g., right to erasure, right to object, supervisory authority, limitation-of-liability formulations, governing-law clauses, consumer-protection carve-outs) varies by jurisdiction. The `termsOfUse.governingLaw` clause specifies Slovak law for all locales; counsel should confirm enforceability against consumers domiciled in other jurisdictions (in the EU, mandatory consumer-protection rules of the consumer's habitual residence typically override a choice-of-law clause). English remains the authoritative reference until legal review is complete.
 
@@ -122,6 +122,15 @@ YouTube IDs come from `lib/media-data.ts`. Subtitle work happens on YouTube dire
 - **Where `formatCurrency` is wired today:** `app/get-involved/page.tsx`'s three monthly-impact bullets (`$25/mo`, `$50/mo`, `$100/mo`). The amount lives in the page; the dictionary keys (`getInvolved.ways.financial.point1/2/3`) carry the suffix copy with an `{amount}` interpolation slot.
 - **Where `$` still appears literally:** `components/DonationModal.tsx` renders the `${amt}` preset buttons, the `$` input prefix, and the `GIVE $${finalAmount}` CTA with raw template literals. That component is being translated in parallel (`donation.*` namespace); once that PR merges, swap those four sites to `formatCurrency(amt, locale)` / `formatCurrency(finalAmount, locale)`. The amount remains numeric; only the formatting changes.
 - **RTL:** None of the supported locales are RTL. No bidi work needed.
+
+## Audit Findings (recorded after audit pass)
+
+Full per-file list and per-locale checklist in [`REVIEW_CHECKLIST.md`](./REVIEW_CHECKLIST.md). Summary:
+
+- **Dictionary completeness:** TypeScript-enforced; no missing keys possible. Spot-greps for English fragments in non-English dictionaries returned only the intentionally-preserved English `quoteSource` strings under `stories.testimonies.*` — no accidental English leaks.
+- **Trivial English strings left in code (deferred for follow-up):** `components/Navbar.tsx` WhatsApp aria-label (lines 72, 112); 7 decorative `alt=""` image attributes in `app/page.tsx` (lines 145–147, 195–197, 247); `app/mission/page.tsx:117` renders `{data.country}` (English country name in country-grid cards — fix is `t(\`countries.${data.iso}\`)` once the `countries.*` namespace lands); the `${amt}`, `$` prefix, and `GIVE $${finalAmount}` literals in `components/DonationModal.tsx` (swap to `formatCurrency(…, locale)` once both DonationModal-translation + formatting-helper PRs merge); `app/api/stripe/payment-intent/route.ts:10` server-side error string `"Invalid amount"` (low priority — never user-rendered).
+- **Render check:** not performed headlessly. Layout-overflow audit should happen during native-speaker review — German strings often run +25–35% longer than English, and dense UI (button rows, stat pills) is the most likely failure point.
+- **SEO metadata:** intentionally English per Path B decision (see "Layout / metadata" section above).
 
 ## How to Add a New String
 
