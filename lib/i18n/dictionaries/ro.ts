@@ -969,6 +969,14 @@ const ro: Dictionary = {
     backHome: "ÎNAPOI ACASĂ",
     learnMission: "AFLĂ DESPRE MISIUNE",
   },
+  cta: {
+    title: "Ajutați la întemeierea următoarei parohii.",
+    subtitle:
+      "Sprijinul dumneavoastră întemeiază parohii, formează lideri și transformă comunități.",
+    supportMission: "SUSȚINE MISIUNEA",
+    joinMissionTrip: "ALĂTURĂ-TE UNEI CĂLĂTORII MISIONARE",
+    becomeVolunteer: "DEVINO VOLUNTAR",
+  },
 };
 
 export default ro;

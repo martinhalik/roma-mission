@@ -969,6 +969,14 @@ const ru: Dictionary = {
     backHome: "НА ГЛАВНУЮ",
     learnMission: "УЗНАТЬ О МИССИИ",
   },
+  cta: {
+    title: "Помогите основать следующий приход.",
+    subtitle:
+      "Ваша поддержка основывает приходы, готовит руководителей и преображает общины.",
+    supportMission: "ПОДДЕРЖАТЬ МИССИЮ",
+    joinMissionTrip: "ПРИСОЕДИНИТЬСЯ К МИССИОНЕРСКОЙ ПОЕЗДКЕ",
+    becomeVolunteer: "СТАТЬ ВОЛОНТЁРОМ",
+  },
 };
 
 export default ru;

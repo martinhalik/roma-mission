@@ -969,6 +969,14 @@ const de: Dictionary = {
     backHome: "ZURÜCK ZUR STARTSEITE",
     learnMission: "MEHR ÜBER DIE MISSION",
   },
+  cta: {
+    title: "Helfen Sie, die nächste Pfarrei zu gründen.",
+    subtitle:
+      "Ihre Unterstützung gründet Pfarreien, bildet Verantwortliche aus und verändert Gemeinschaften.",
+    supportMission: "MISSION UNTERSTÜTZEN",
+    joinMissionTrip: "AN EINER MISSIONSREISE TEILNEHMEN",
+    becomeVolunteer: "EHRENAMTLICH MITARBEITEN",
+  },
 };
 
 export default de;

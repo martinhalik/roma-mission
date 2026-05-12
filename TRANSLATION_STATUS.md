@@ -7,14 +7,14 @@ Tracks progress of multilingual support added in branch `claude/add-language-tra
 | Code | Flag | Language | Status (UI chrome) |
 |------|------|----------|--------------------|
 | `en` | 🇬🇧 | English (default) | ✅ complete (source language) |
-| `sk` | 🇸🇰 | Slovak / Slovenčina | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
-| `cs` | 🇨🇿 | Czech / Čeština | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
-| `ro` | 🇷🇴 | Romanian / Română | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
-| `de` | 🇩🇪 | German / Deutsch | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
-| `sr` | 🇷🇸 | Serbian / Srpski (Cyrillic) | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
-| `ru` | 🇷🇺 | Russian / Русский | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
-| `mk` | 🇲🇰 | Macedonian / Македонски | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
-| `el` | 🇬🇷 | Greek / Ελληνικά | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You — needs native review |
+| `sk` | 🇸🇰 | Slovak / Slovenčina | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You + CTASection — needs native review |
+| `cs` | 🇨🇿 | Czech / Čeština | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You + CTASection — needs native review |
+| `ro` | 🇷🇴 | Romanian / Română | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You + CTASection — needs native review |
+| `de` | 🇩🇪 | German / Deutsch | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You + CTASection — needs native review |
+| `sr` | 🇷🇸 | Serbian / Srpski (Cyrillic) | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You + CTASection — needs native review |
+| `ru` | 🇷🇺 | Russian / Русский | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You + CTASection — needs native review |
+| `mk` | 🇲🇰 | Macedonian / Македонски | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You + CTASection — needs native review |
+| `el` | 🇬🇷 | Greek / Ελληνικά | ✅ Navbar + Footer + ShareModal + Home + Our Story + Stories + Locations + Get Involved + Media + Thank-You + CTASection — needs native review |
 
 > **Note:** Initial translations are AI-generated from English. Each locale should be reviewed by a native speaker before going to production. Russian uses the term "цыганская" historically; if a community-preferred term (e.g. "ромская") is desired, update `ru.ts`. Serbian is in Cyrillic — a Latin variant (`sr-Latn`) can be added by duplicating `sr.ts`.
 
@@ -70,7 +70,7 @@ The following pages and components still contain hardcoded English strings. **Ea
 
 | File | Strings | Notes |
 |------|---------|-------|
-| `components/CTASection.tsx` | Donate / Volunteer headings & buttons | Reused on every page |
+| `components/CTASection.tsx` | ✅ Translated into all 9 locales (`cta.*` namespace) — title, subtitle, support/mission-trip/volunteer buttons. Component is now `"use client"`. |
 | `components/DonationModal.tsx` | Amount labels, frequency toggle, error/loading messages, "Continue", "Pay $X" | Stripe-driven |
 | `components/ApplicationModal.tsx` | Volunteer application form labels, validation errors |
 | `components/VideoModal.tsx` | Close button aria-label only |

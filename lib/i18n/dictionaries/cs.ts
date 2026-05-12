@@ -965,6 +965,14 @@ const cs: Dictionary = {
     backHome: "ZPĚT NA ÚVOD",
     learnMission: "ZJISTĚTE VÍCE O MISII",
   },
+  cta: {
+    title: "Pomozte založit další farnost.",
+    subtitle:
+      "Vaše podpora zakládá farnosti, formuje vedoucí a proměňuje komunity.",
+    supportMission: "PODPOŘTE MISI",
+    joinMissionTrip: "PŘIDEJTE SE NA MISIJNÍ CESTU",
+    becomeVolunteer: "STAŇTE SE DOBROVOLNÍKEM",
+  },
 };
 
 export default cs;

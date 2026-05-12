@@ -964,6 +964,14 @@ const sk: Dictionary = {
     backHome: "SPÄŤ NA HLAVNÚ",
     learnMission: "ZISTITE VIAC O MISII",
   },
+  cta: {
+    title: "Pomôžte založiť ďalšiu farnosť.",
+    subtitle:
+      "Vaša podpora zakladá farnosti, formuje vedúcich a premieňa komunity.",
+    supportMission: "PODPORTE MISIU",
+    joinMissionTrip: "PRIDAJTE SA NA MISIJNÚ CESTU",
+    becomeVolunteer: "STAŇTE SA DOBROVOĽNÍKOM",
+  },
 };
 
 export default sk;
