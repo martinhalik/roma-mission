@@ -967,6 +967,14 @@ const en: Dictionary = {
     backHome: "BACK TO HOME",
     learnMission: "LEARN ABOUT THE MISSION",
   },
+  cta: {
+    title: "Help Plant the Next Parish.",
+    subtitle:
+      "Your support plants parishes, trains leaders, and transforms communities.",
+    supportMission: "SUPPORT THE MISSION",
+    joinMissionTrip: "JOIN A MISSION TRIP",
+    becomeVolunteer: "BECOME A VOLUNTEER",
+  },
 };
 
 export default en;

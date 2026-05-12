@@ -777,6 +777,13 @@ export interface Dictionary {
     backHome: string;
     learnMission: string;
   };
+  cta: {
+    title: string;
+    subtitle: string;
+    supportMission: string;
+    joinMissionTrip: string;
+    becomeVolunteer: string;
+  };
 }
 
 export type DictionaryKeyPath = NestedKeyOf<Dictionary>;
