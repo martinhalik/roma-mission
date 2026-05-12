@@ -6,6 +6,7 @@ export interface Dictionary {
     stories: string;
     share: string;
     contact: string;
+    contactWhatsapp: string;
     supportMission: string;
     toggleMenu: string;
     selectLanguage: string;
@@ -121,6 +122,13 @@ export interface Dictionary {
       titleLine2: string;
       watchAria: string;
       cta: string;
+    };
+    imageAlt: {
+      urgencyFuture: string;
+      populationGrowing: string;
+      education: string;
+      dignity: string;
+      approach: string;
     };
   };
   locations: {

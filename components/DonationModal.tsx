@@ -12,6 +12,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { Copy, Check } from "lucide-react";
 import { useTranslation } from "./LanguageProvider";
+import { formatCurrency } from "@/lib/i18n/format";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
@@ -131,7 +132,7 @@ function PaymentRequestButton({ amount }: { amount: number }) {
 }
 
 export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const [step, setStep] = useState<Step>("select");
   const [isMonthly, setIsMonthly] = useState(true);
   const [selectedAmount, setSelectedAmount] = useState(100);
@@ -208,8 +209,9 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
 
   const giveLabel = (() => {
     if (finalAmount <= 0) return t("donation.giveInvalid");
-    if (isMonthly) return t("donation.giveMonthly", { amount: finalAmount });
-    return t("donation.giveOnce", { amount: finalAmount });
+    const amount = formatCurrency(finalAmount, locale);
+    if (isMonthly) return t("donation.giveMonthly", { amount });
+    return t("donation.giveOnce", { amount });
   })();
 
   return (
@@ -283,7 +285,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                       : "border-[var(--border-default)] text-[var(--text-secondary)] hover:border-[var(--gold)] hover:text-[var(--gold)]"
                   }`}
                 >
-                  ${amt}
+                  {formatCurrency(amt, locale)}
                 </button>
               ))}
             </div>

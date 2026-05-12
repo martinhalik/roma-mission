@@ -142,9 +142,9 @@ export default function HomePage() {
 
         {/* Urgency photos — 3-col row */}
         <div className="grid grid-cols-3 gap-3 md:gap-4 mb-8 md:mb-12">
-          <div className="h-[120px] md:h-[280px] overflow-hidden"><img src="/images/dolinka-od-mili-nov-2020-poster-00001.jpg" alt="Future" className="w-full h-full object-cover" /></div>
-          <div className="h-[120px] md:h-[280px] overflow-hidden"><img src="/images/future.jpeg" alt="Future" className="w-full h-full object-cover" /></div>
-          <div className="h-[120px] md:h-[280px] overflow-hidden"><img src="/images/future-church.jpg" alt="Future" className="w-full h-full object-cover" /></div>
+          <div className="h-[120px] md:h-[280px] overflow-hidden"><img src="/images/dolinka-od-mili-nov-2020-poster-00001.jpg" alt={t("home.imageAlt.urgencyFuture")} className="w-full h-full object-cover" /></div>
+          <div className="h-[120px] md:h-[280px] overflow-hidden"><img src="/images/future.jpeg" alt={t("home.imageAlt.urgencyFuture")} className="w-full h-full object-cover" /></div>
+          <div className="h-[120px] md:h-[280px] overflow-hidden"><img src="/images/future-church.jpg" alt={t("home.imageAlt.urgencyFuture")} className="w-full h-full object-cover" /></div>
         </div>
 
         {/* Statements */}
@@ -192,9 +192,9 @@ export default function HomePage() {
 
         {/* Results photos — 3-col row */}
         <div className="grid grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
-          <div className="h-[100px] md:h-[240px] overflow-hidden"><img src="/images/roma-population-growing.jpeg" alt="Roma population growing" className="w-full h-full object-cover" /></div>
-          <div className="h-[100px] md:h-[240px] overflow-hidden"><img src="/images/transformed-via-education.jpeg" alt="Roma children transformed via education" className="w-full h-full object-cover" /></div>
-          <div className="h-[100px] md:h-[240px] overflow-hidden"><img src="/images/dignity-returns.jpg" alt="Dignity returns" className="w-full h-full object-cover" /></div>
+          <div className="h-[100px] md:h-[240px] overflow-hidden"><img src="/images/roma-population-growing.jpeg" alt={t("home.imageAlt.populationGrowing")} className="w-full h-full object-cover" /></div>
+          <div className="h-[100px] md:h-[240px] overflow-hidden"><img src="/images/transformed-via-education.jpeg" alt={t("home.imageAlt.education")} className="w-full h-full object-cover" /></div>
+          <div className="h-[100px] md:h-[240px] overflow-hidden"><img src="/images/dignity-returns.jpg" alt={t("home.imageAlt.dignity")} className="w-full h-full object-cover" /></div>
         </div>
 
         {/* Results icon cards — Row 1 */}
@@ -244,7 +244,7 @@ export default function HomePage() {
         </div>
 
         {/* Approach photo */}
-        <div className="w-full h-[180px] md:h-[360px] mb-8 md:mb-12 overflow-hidden rounded-sm"><img src="/images/our-approach.jpg" alt="Our approach" className="w-full h-full object-cover" /></div>
+        <div className="w-full h-[180px] md:h-[360px] mb-8 md:mb-12 overflow-hidden rounded-sm"><img src="/images/our-approach.jpg" alt={t("home.imageAlt.approach")} className="w-full h-full object-cover" /></div>
 
         {/* Pillars Row 1 — 2 columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">

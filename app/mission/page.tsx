@@ -114,7 +114,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
         <div className="flex items-center gap-3">
           <span className="text-[22px] leading-none">{data.flag}</span>
           <h3 className="text-[16px] md:text-[18px] font-bold text-[var(--text-primary)]">
-            {data.country}
+            {t(`countries.${data.iso}`)}
           </h3>
         </div>
         <PresenceBadge presence={data.presence} label={t(presenceLabelKey[data.presence])} />
