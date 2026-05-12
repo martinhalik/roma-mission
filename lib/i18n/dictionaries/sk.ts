@@ -885,6 +885,56 @@ const sk: Dictionary = {
       bodyBefore: "Ak máte otázky k týmto Zásadám ochrany osobných údajov, kontaktujte nás na: ",
     },
   },
+  termsOfUse: {
+    eyebrow: "Právne informácie",
+    title: "Podmienky používania",
+    lastUpdated: "Posledná aktualizácia: január 2026",
+    acceptance: {
+      heading: "1. Súhlas s podmienkami",
+      body: "Prístupom na webovú stránku Christian Roma Mission (romamission.eu) a jej používaním súhlasíte s tým, že ste viazaní týmito Podmienkami používania. Ak s týmito podmienkami nesúhlasíte, prosíme, našu webovú stránku nepoužívajte.",
+    },
+    use: {
+      heading: "2. Používanie webovej stránky",
+      lead: "Túto webovú stránku môžete používať výlučne na zákonné účely. Zaväzujete sa, že nebudete:",
+      item1: "používať stránku spôsobom, ktorý porušuje platné zákony alebo iné právne predpisy,",
+      item2: "rozmnožovať, duplikovať ani kopírovať obsah bez predchádzajúceho súhlasu,",
+      item3: "rozosielať akúkoľvek nevyžiadanú alebo neoprávnenú reklamu či propagačný materiál,",
+      item4: "pokúšať sa o neoprávnený prístup k akejkoľvek časti webovej stránky.",
+    },
+    intellectualProperty: {
+      heading: "3. Duševné vlastníctvo",
+      body: "Všetok obsah tejto webovej stránky — vrátane textov, fotografií, videí a grafiky — je vlastníctvom Christian Roma Mission alebo jej dodávateľov obsahu a je chránený platnými právnymi predpismi v oblasti duševného vlastníctva. Obsah môžete zdieľať na nekomerčné, vzdelávacie účely s uvedením zdroja.",
+    },
+    donations: {
+      heading: "4. Dary",
+      body: "Dary poskytnuté prostredníctvom tejto webovej stránky sú dobrovoľnými príspevkami v prospech Christian Roma Mission. Všetky dary sú nevratné, pokiaľ nie je výslovne uvedené inak. Zaväzujeme sa používať dary v súlade s naším poslaním a so správami o finančnej transparentnosti.",
+    },
+    thirdParty: {
+      heading: "5. Odkazy na stránky tretích strán",
+      body: "Naša webová stránka môže obsahovať odkazy na webové stránky tretích strán. Tieto odkazy sú poskytované len pre vaše pohodlie. Nemáme žiadnu kontrolu nad obsahom týchto stránok a neprijímame zaň žiadnu zodpovednosť.",
+    },
+    disclaimer: {
+      heading: "6. Vylúčenie záruk",
+      body: "Táto webová stránka je poskytovaná „tak, ako je“, bez akýchkoľvek záruk, výslovných ani implicitných. Nezaručujeme, že webová stránka bude fungovať neprerušene, bez chýb alebo bez vírusov či iných škodlivých prvkov.",
+    },
+    liability: {
+      heading: "7. Obmedzenie zodpovednosti",
+      body: "V najširšom rozsahu povolenom zákonom Christian Roma Mission nezodpovedá za žiadne nepriame, náhodné, osobitné ani následné škody vzniknuté v dôsledku používania tejto webovej stránky alebo našich služieb.",
+    },
+    governingLaw: {
+      heading: "8. Rozhodné právo",
+      body: "Tieto Podmienky používania sa riadia a vykladajú v súlade s právnym poriadkom Slovenskej republiky, bez ohľadu na jeho kolízne normy.",
+    },
+    changes: {
+      heading: "9. Zmeny podmienok",
+      body: "Vyhradzujeme si právo tieto Podmienky používania kedykoľvek upraviť. Zmeny budú zverejnené na tejto stránke spolu s aktualizovaným dátumom. Pokračovaním v používaní webovej stránky po vykonaní zmien vyjadrujete súhlas s novými podmienkami.",
+    },
+    contact: {
+      heading: "10. Kontakt",
+      bodyBefore: "Ak máte otázky k týmto Podmienkam používania, kontaktujte nás na ",
+      bodyAfter: ".",
+    },
+  },
   thankYou: {
     eyebrow: "Dar prijatý",
     headlineLine1: "Ďakujeme za",
