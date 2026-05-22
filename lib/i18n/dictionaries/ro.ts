@@ -10,6 +10,7 @@ const ro: Dictionary = {
     contact: "CONTACT",
     contactWhatsapp: "Contactați-ne pe WhatsApp",
     supportMission: "SUSȚINE MISIUNEA",
+    donate: "DONEAZĂ",
     toggleMenu: "Deschide meniul",
     selectLanguage: "Selectează limba",
   },

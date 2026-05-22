@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Globe } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useTranslation } from "@/components/LanguageProvider";
 import { LOCALES, getLocaleMeta, type Locale } from "@/lib/i18n";
 
@@ -51,7 +51,7 @@ export default function LanguageSwitcher({
   const triggerClass =
     variant === "header"
       ? compact
-        ? "flex items-center justify-center p-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+        ? "flex items-center gap-1.5 px-2 py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
         : "flex items-center gap-1.5 px-2 xl:px-3 py-3 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[11px] font-bold tracking-[1px] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)] transition-colors"
       : "flex items-center gap-1.5 text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors uppercase";
 
@@ -65,17 +65,13 @@ export default function LanguageSwitcher({
         aria-expanded={open}
         className={triggerClass}
       >
-        {compact ? (
-          <Globe size={18} strokeWidth={1.75} />
-        ) : (
-          <>
-            <span className="text-[14px] leading-none" aria-hidden="true">
-              {current.flag}
-            </span>
-            <span>{current.short}</span>
-            <ChevronDown size={12} className={`transition-transform ${open ? "rotate-180" : ""}`} />
-          </>
+        <span className="text-[18px] leading-none" aria-hidden="true">
+          {current.flag}
+        </span>
+        {!compact && (
+          <span className="text-[11px] font-bold tracking-[1px]">{current.short}</span>
         )}
+        <ChevronDown size={12} className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
 
       {open && (

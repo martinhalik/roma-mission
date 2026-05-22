@@ -10,6 +10,7 @@ const mk: Dictionary = {
     contact: "КОНТАКТ",
     contactWhatsapp: "Контактирајте нѐ на WhatsApp",
     supportMission: "ПОДДРЖИ ЈА МИСИЈАТА",
+    donate: "ДОНИРАЈ",
     toggleMenu: "Отвори мени",
     selectLanguage: "Изберете јазик",
   },

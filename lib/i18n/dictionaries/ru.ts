@@ -10,6 +10,7 @@ const ru: Dictionary = {
     contact: "КОНТАКТ",
     contactWhatsapp: "Свяжитесь с нами в WhatsApp",
     supportMission: "ПОДДЕРЖАТЬ МИССИЮ",
+    donate: "ПОДДЕРЖАТЬ",
     toggleMenu: "Открыть меню",
     selectLanguage: "Выберите язык",
   },

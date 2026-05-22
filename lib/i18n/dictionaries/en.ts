@@ -10,6 +10,7 @@ const en: Dictionary = {
     contact: "CONTACT",
     contactWhatsapp: "Contact us on WhatsApp",
     supportMission: "SUPPORT THE MISSION",
+    donate: "DONATE",
     toggleMenu: "Toggle menu",
     selectLanguage: "Select language",
   },

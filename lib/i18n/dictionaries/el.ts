@@ -10,6 +10,7 @@ const el: Dictionary = {
     contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
     contactWhatsapp: "Επικοινωνήστε μαζί μας στο WhatsApp",
     supportMission: "ΣΤΗΡΙΞΤΕ ΤΗΝ ΑΠΟΣΤΟΛΗ",
+    donate: "ΔΩΡΙΣΤΕ",
     toggleMenu: "Άνοιγμα μενού",
     selectLanguage: "Επιλέξτε γλώσσα",
   },

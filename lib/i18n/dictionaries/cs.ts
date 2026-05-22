@@ -10,6 +10,7 @@ const cs: Dictionary = {
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktujte nás na WhatsApp",
     supportMission: "PODPOŘTE MISI",
+    donate: "DAROVAT",
     toggleMenu: "Otevřít menu",
     selectLanguage: "Vyberte jazyk",
   },

@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Share2 } from "lucide-react";
-import ShareModal from "@/components/ShareModal";
+import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import LocaleLink from "@/components/LocaleLink";
 import { useTranslation } from "@/components/LanguageProvider";
@@ -21,32 +20,9 @@ const navLinks: { key: "mission" | "locations" | "media" | "stories"; routeKey: 
   { key: "stories", routeKey: "stories", page: "stories" },
 ];
 
-// Defined as a module-level type because Clarity is loaded via tag/script
-// outside React; this lets us fire a custom event without throwing if it's
-// not yet on the page.
-type ClarityWindow = Window & {
-  clarity?: (...args: unknown[]) => void;
-};
-
-function trackShareClick(source: "desktop" | "mobile") {
-  if (typeof window === "undefined") return;
-  (window as ClarityWindow).clarity?.("event", "header_share_click", source);
-}
-
 export default function Navbar({ activePage = "home" }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [shareOpen, setShareOpen] = useState(false);
   const { t } = useTranslation();
-
-  function handleDesktopShare() {
-    trackShareClick("desktop");
-    setShareOpen(true);
-  }
-
-  function handleMobileShare() {
-    trackShareClick("mobile");
-    setShareOpen(true);
-  }
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
@@ -78,18 +54,11 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
         </div>
 
         {/* CTA */}
-        <div className="flex items-center gap-1 xl:gap-2 shrink-0">
+        <div className="flex items-center gap-2 xl:gap-3 shrink-0">
           <LanguageSwitcher variant="header" compact />
-          <button
-            onClick={handleDesktopShare}
-            aria-label={t("nav.share")}
-            className="flex items-center justify-center p-3 text-[var(--gold)] hover:opacity-75 transition-opacity"
-          >
-            <Share2 size={18} strokeWidth={1.75} />
-          </button>
           <LocaleLink
             routeKey="getInvolved"
-            className="ml-1 px-4 xl:px-6 py-3 bg-[var(--gold)] text-[var(--on-accent)] text-[11px] font-bold tracking-[1px] hover:opacity-90 transition-opacity whitespace-nowrap"
+            className="px-4 xl:px-6 py-3 bg-[var(--gold)] text-[var(--on-accent)] text-[11px] font-bold tracking-[1px] hover:opacity-90 transition-opacity whitespace-nowrap"
           >
             {t("nav.supportMission")}
           </LocaleLink>
@@ -106,17 +75,16 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             Mission
           </span>
         </LocaleLink>
-        <div className="flex items-center gap-1">
-          <button
-            onClick={handleMobileShare}
-            aria-label={t("nav.share")}
-            className="p-3 text-[var(--gold)] hover:opacity-75 transition-opacity"
+        <div className="flex items-center gap-2">
+          <LocaleLink
+            routeKey="getInvolved"
+            className="px-3 py-2.5 bg-[var(--gold)] text-[var(--on-accent)] text-[10px] font-bold tracking-[1px] hover:opacity-90 transition-opacity whitespace-nowrap"
           >
-            <Share2 size={20} />
-          </button>
+            {t("nav.donate")}
+          </LocaleLink>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="p-3 text-[var(--text-primary)]"
+            className="p-2 text-[var(--text-primary)]"
             aria-label={t("nav.toggleMenu")}
             aria-expanded={menuOpen}
           >
@@ -159,8 +127,6 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           </LocaleLink>
         </div>
       )}
-
-      <ShareModal isOpen={shareOpen} onClose={() => setShareOpen(false)} />
     </div>
   );
 }
