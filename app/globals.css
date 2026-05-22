@@ -53,4 +53,15 @@ html.light {
   .font-georgia {
     font-family: Georgia, "Times New Roman", serif;
   }
+
+  /* Tailwind v4 dropped the default `cursor: pointer` on <button>.
+     Restore it for every interactive element so the affordance is
+     consistent across the app. Disabled controls keep the default. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  label[for],
+  select:not(:disabled) {
+    cursor: pointer;
+  }
 }
