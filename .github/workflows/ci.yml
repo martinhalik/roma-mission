@@ -27,9 +27,5 @@ jobs:
       - name: TypeScript
         run: npm run typecheck
 
-      # `test:ci` runs the suite minus the DonationModal/checkout files,
-      # which fail today on the existing Stripe + i18n mocks. See
-      # package.json for the file list — broaden it as those tests are
-      # fixed in follow-up PRs.
       - name: Vitest
         run: npm run test:ci
