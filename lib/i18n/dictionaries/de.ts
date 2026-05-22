@@ -883,7 +883,7 @@ const de: Dictionary = {
     },
     cookies: {
       heading: "7. Cookies",
-      body: "Unsere Website verwendet ausschließlich notwendige Cookies, um ordnungsgemäß zu funktionieren. Wir verwenden keine Tracking- oder Werbe-Cookies. Sie können Cookies in den Einstellungen Ihres Browsers deaktivieren; dies kann jedoch die Funktionsfähigkeit der Website beeinträchtigen.",
+      body: "Unsere Website verwendet notwendige Cookies, um ordnungsgemäß zu funktionieren. Wir nutzen außerdem Microsoft Clarity und Vercel Analytics, um zu verstehen, wie Besucher die Website verwenden; diese Dienste können Cookies setzen und anonymisierte Nutzungsdaten wie Seitenaufrufe, Klicks und Sitzungsaufzeichnungen erfassen. Wir verwenden keine Werbe-Cookies und verkaufen Ihre Daten nicht. Sie können Cookies in den Einstellungen Ihres Browsers deaktivieren; dies kann jedoch die Funktionsfähigkeit der Website beeinträchtigen.",
     },
     security: {
       heading: "8. Sicherheit",

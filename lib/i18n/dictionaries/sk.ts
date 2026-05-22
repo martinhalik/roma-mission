@@ -878,7 +878,7 @@ const sk: Dictionary = {
     },
     cookies: {
       heading: "7. Súbory cookie",
-      body: "Naša webová stránka používa nevyhnutné súbory cookie potrebné na jej správne fungovanie. Nepoužívame sledovacie ani reklamné cookies. Súbory cookie môžete vypnúť v nastaveniach svojho prehliadača, môže to však ovplyvniť funkčnosť stránky.",
+      body: "Naša webová stránka používa nevyhnutné súbory cookie potrebné na jej správne fungovanie. Používame aj nástroje Microsoft Clarity a Vercel Analytics, ktoré nám pomáhajú pochopiť, ako návštevníci stránku používajú; tieto nástroje môžu nastavovať súbory cookie a zaznamenávať anonymizované údaje o používaní, ako sú zobrazenia stránok, kliknutia a záznamy relácií. Nepoužívame reklamné cookies a vaše údaje nepredávame. Súbory cookie môžete vypnúť v nastaveniach svojho prehliadača, môže to však ovplyvniť funkčnosť stránky.",
     },
     security: {
       heading: "8. Bezpečnosť",
