@@ -6,10 +6,12 @@ import CTASection from "@/components/CTASection";
 import SectionLabel from "@/components/SectionLabel";
 import ShareButton from "@/components/ShareButton";
 import { useTranslation } from "@/components/LanguageProvider";
-import { ArrowRight, Bell, Eye, HandHeart, Play, Share2 } from "lucide-react";
-import type { TelegramPost, TelegramChannelStats } from "@/lib/telegram";
+import { ArrowRight, Bell, Eye, HandHeart, Heart, Instagram, MessageCircle, Play, Share2 } from "lucide-react";
+import type { TelegramChannelStats } from "@/lib/telegram";
+import type { SocialPost } from "@/lib/social-feed";
 
 const TELEGRAM_URL = "https://t.me/romamissioneu";
+const INSTAGRAM_URL = "https://www.instagram.com/bohjezivy/";
 
 const POST_KEYS = ["post1", "post2", "post3", "post4", "post5", "post6"] as const;
 type PostKey = (typeof POST_KEYS)[number];
@@ -73,11 +75,14 @@ function formatRelativeDate(iso: string, locale: string): string {
   return new Date(then).toLocaleDateString(locale, { month: "short", day: "numeric" });
 }
 
-function TelegramPostCard({ post }: { post: TelegramPost }) {
+function SocialPostCard({ post }: { post: SocialPost }) {
   const { locale } = useTranslation();
-  const primaryMedia = post.media[0];
-  const extraMedia = Math.max(0, post.media.length - 1);
   const relative = formatRelativeDate(post.datetime, locale);
+  const handle = post.source === "telegram" ? "@romamissioneu" : "@bohjezivy";
+  const SourceIcon = post.source === "telegram" ? TelegramIcon : InstagramIconLucide;
+  const extraMedia =
+    post.source === "telegram" ? post.extraMediaCount : 0;
+  const hasImage = !!post.imageUrl;
 
   return (
     <a
@@ -86,16 +91,16 @@ function TelegramPostCard({ post }: { post: TelegramPost }) {
       rel="noopener noreferrer"
       className="group flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] hover:border-[var(--gold)] transition-colors overflow-hidden"
     >
-      {primaryMedia && (
+      {hasImage && (
         <div className="relative aspect-[4/3] overflow-hidden bg-[var(--bg-elevated)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={primaryMedia.kind === "photo" ? primaryMedia.url : primaryMedia.poster}
+            src={post.imageUrl}
             alt=""
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          {primaryMedia.kind === "video" && (
+          {post.isVideo && (
             <>
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -110,14 +115,18 @@ function TelegramPostCard({ post }: { post: TelegramPost }) {
               +{extraMedia}
             </div>
           )}
+          <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2 py-1 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold tracking-[1px] rounded uppercase">
+            <SourceIcon size={12} />
+            {post.source}
+          </div>
         </div>
       )}
 
-      <div className={`flex-1 flex flex-col gap-3 p-5 ${!primaryMedia ? "md:p-7" : ""}`}>
+      <div className={`flex-1 flex flex-col gap-3 p-5 ${!hasImage ? "md:p-7" : ""}`}>
         <div className="flex items-center gap-2">
-          <TelegramIcon size={12} />
+          {!hasImage && <SourceIcon size={12} />}
           <span className="text-[10px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase">
-            @romamissioneu
+            {handle}
           </span>
           {relative && (
             <>
@@ -131,28 +140,45 @@ function TelegramPostCard({ post }: { post: TelegramPost }) {
         {post.text && (
           <p
             className={`text-[14px] md:text-[15px] text-[var(--text-primary)] leading-[1.6] whitespace-pre-line ${
-              primaryMedia ? "line-clamp-4" : "line-clamp-6"
+              hasImage ? "line-clamp-4" : "line-clamp-6"
             }`}
           >
             {post.text}
           </p>
         )}
         <div className="flex items-center justify-between mt-auto pt-3 border-t border-[var(--border-default)]">
-          {post.views ? (
-            <span className="flex items-center gap-1.5 text-[11px] text-[var(--text-muted)]">
-              <Eye size={12} />
-              {post.views}
-            </span>
-          ) : (
-            <span />
-          )}
-          <span className="flex items-center gap-1 text-[10px] font-bold tracking-[1px] text-[var(--gold)] uppercase">
-            <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
-          </span>
+          <div className="flex items-center gap-3 text-[11px] text-[var(--text-muted)]">
+            {post.source === "telegram" && post.views && (
+              <span className="flex items-center gap-1.5">
+                <Eye size={12} />
+                {post.views}
+              </span>
+            )}
+            {post.source === "instagram" && typeof post.likes === "number" && (
+              <span className="flex items-center gap-1.5">
+                <Heart size={12} />
+                {post.likes.toLocaleString()}
+              </span>
+            )}
+            {post.source === "instagram" && typeof post.comments === "number" && (
+              <span className="flex items-center gap-1.5">
+                <MessageCircle size={12} />
+                {post.comments.toLocaleString()}
+              </span>
+            )}
+          </div>
+          <ArrowRight
+            size={12}
+            className="text-[var(--gold)] transition-transform group-hover:translate-x-0.5"
+          />
         </div>
       </div>
     </a>
   );
+}
+
+function InstagramIconLucide({ size = 18 }: { size?: number }) {
+  return <Instagram size={size} aria-hidden="true" />;
 }
 
 function StaticPostCard({ postKey }: { postKey: PostKey }) {
@@ -181,10 +207,10 @@ function StaticPostCard({ postKey }: { postKey: PostKey }) {
   );
 }
 
-function HeroPreviewPost({ post }: { post: TelegramPost }) {
+function HeroPreviewPost({ post }: { post: SocialPost }) {
   const { locale } = useTranslation();
-  const primaryMedia = post.media[0];
   const relative = formatRelativeDate(post.datetime, locale);
+  const SourceIcon = post.source === "telegram" ? TelegramIcon : InstagramIconLucide;
 
   return (
     <a
@@ -193,24 +219,27 @@ function HeroPreviewPost({ post }: { post: TelegramPost }) {
       rel="noopener noreferrer"
       className="flex gap-3 p-3 border-b border-[var(--border-default)] last:border-b-0 hover:bg-[var(--bg-elevated)] transition-colors"
     >
-      {primaryMedia ? (
+      {post.imageUrl ? (
         <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden bg-[var(--bg-elevated)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={primaryMedia.kind === "photo" ? primaryMedia.url : primaryMedia.poster}
+            src={post.imageUrl}
             alt=""
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover"
           />
-          {primaryMedia.kind === "video" && (
+          {post.isVideo && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/30">
               <Play size={14} className="text-white ml-0.5" fill="currentColor" />
             </div>
           )}
+          <div className="absolute bottom-0.5 right-0.5 w-4 h-4 bg-black/70 flex items-center justify-center text-white">
+            <SourceIcon size={8} />
+          </div>
         </div>
       ) : (
         <div className="w-16 h-16 flex-shrink-0 bg-[var(--bg-elevated)] flex items-center justify-center">
-          <TelegramIcon size={20} />
+          <SourceIcon size={20} />
         </div>
       )}
       <div className="flex-1 min-w-0 flex flex-col gap-1">
@@ -220,7 +249,7 @@ function HeroPreviewPost({ post }: { post: TelegramPost }) {
           </span>
         )}
         <p className="text-[12px] text-[var(--text-primary)] leading-[1.4] line-clamp-3">
-          {post.text || "Photo from the field"}
+          {post.text || (post.source === "instagram" ? "Photo on Instagram" : "Photo from the field")}
         </p>
       </div>
     </a>
@@ -268,7 +297,7 @@ function WitnessCard({ witnessKey }: { witnessKey: WitnessKey }) {
 }
 
 interface ActivityPageProps {
-  posts?: TelegramPost[];
+  posts?: SocialPost[];
   stats?: TelegramChannelStats;
 }
 
@@ -324,7 +353,7 @@ export default function ActivityPage({ posts = [], stats }: ActivityPageProps) {
               </span>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 mt-2">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-2">
               <a
                 href={TELEGRAM_URL}
                 target="_blank"
@@ -333,6 +362,15 @@ export default function ActivityPage({ posts = [], stats }: ActivityPageProps) {
               >
                 <TelegramIcon size={18} />
                 {t("activity.hero.ctaJoin")}
+              </a>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-4 border border-[var(--gold)] text-[var(--gold)] text-[12px] font-bold tracking-[1px] hover:bg-[var(--gold)] hover:text-[var(--on-accent)] transition-colors"
+              >
+                <Instagram size={18} />
+                @bohjezivy
               </a>
               <a
                 href="#feed"
@@ -375,15 +413,26 @@ export default function ActivityPage({ posts = [], stats }: ActivityPageProps) {
                     ))}
               </div>
 
-              <a
-                href={TELEGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 py-3.5 bg-[var(--bg-elevated)] text-[var(--gold)] text-[11px] font-bold tracking-[1px] hover:opacity-80 transition-opacity"
-              >
-                <TelegramIcon size={14} />
-                {t("activity.channel.openInTelegram")}
-              </a>
+              <div className="grid grid-cols-2 bg-[var(--bg-elevated)] border-t border-[var(--border-default)]">
+                <a
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 py-3.5 text-[var(--gold)] text-[11px] font-bold tracking-[1px] hover:opacity-80 transition-opacity border-r border-[var(--border-default)]"
+                >
+                  <TelegramIcon size={14} />
+                  Telegram
+                </a>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 py-3.5 text-[var(--gold)] text-[11px] font-bold tracking-[1px] hover:opacity-80 transition-opacity"
+                >
+                  <Instagram size={14} />
+                  Instagram
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -405,7 +454,7 @@ export default function ActivityPage({ posts = [], stats }: ActivityPageProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {hasRealPosts
-            ? feedPosts.map((p) => <TelegramPostCard key={p.id} post={p} />)
+            ? feedPosts.map((p) => <SocialPostCard key={p.id} post={p} />)
             : POST_KEYS.map((k) => <StaticPostCard key={k} postKey={k} />)}
         </div>
 
