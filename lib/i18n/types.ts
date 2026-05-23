@@ -5,6 +5,7 @@ export interface Dictionary {
     media: string;
     stories: string;
     heritage: string;
+    activity: string;
     share: string;
     contact: string;
     contactWhatsapp: string;
@@ -1041,10 +1042,94 @@ export interface Dictionary {
     stories: MetadataEntry;
     media: MetadataEntry;
     heritage: MetadataEntry;
+    activity: MetadataEntry;
     getInvolved: MetadataEntry;
     thankYou: MetadataEntry;
     privacy: MetadataEntry;
     terms: MetadataEntry;
+  };
+  activity: {
+    nav: string;
+    hero: {
+      eyebrow: string;
+      titleLine1: string;
+      titleLine2: string;
+      subtitle: string;
+      ctaJoin: string;
+      ctaFeed: string;
+      subscriberBadge: string;
+      channelHandle: string;
+    };
+    channel: {
+      label: string;
+      title: string;
+      intro: string;
+      liveDot: string;
+      channelName: string;
+      channelTagline: string;
+      memberCount: string;
+      openInTelegram: string;
+      viewLabel: string;
+      seeAllOnTelegram: string;
+      posts: {
+        post1: { date: string; place: string; body: string; views: string };
+        post2: { date: string; place: string; body: string; views: string };
+        post3: { date: string; place: string; body: string; views: string };
+        post4: { date: string; place: string; body: string; views: string };
+        post5: { date: string; place: string; body: string; views: string };
+        post6: { date: string; place: string; body: string; views: string };
+      };
+    };
+    why: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      intro: string;
+      pillarPrayTitle: string;
+      pillarPrayBody: string;
+      pillarWitnessTitle: string;
+      pillarWitnessBody: string;
+      pillarShareTitle: string;
+      pillarShareBody: string;
+    };
+    stats: {
+      label: string;
+      title: string;
+      stat1Value: string;
+      stat1Label: string;
+      stat1Sub: string;
+      stat2Value: string;
+      stat2Label: string;
+      stat2Sub: string;
+      stat3Value: string;
+      stat3Label: string;
+      stat3Sub: string;
+      stat4Value: string;
+      stat4Label: string;
+      stat4Sub: string;
+    };
+    witnesses: {
+      label: string;
+      title: string;
+      intro: string;
+      items: {
+        anna: { quote: string; author: string; context: string };
+        thomas: { quote: string; author: string; context: string };
+        eleni: { quote: string; author: string; context: string };
+      };
+    };
+    cta: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      body: string;
+      primary: string;
+      shareLabel: string;
+      shareWhatsapp: string;
+      shareTelegram: string;
+      scripture: string;
+      scriptureRef: string;
+    };
   };
 }
 

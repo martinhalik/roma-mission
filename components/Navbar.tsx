@@ -7,18 +7,33 @@ import LocaleLink from "@/components/LocaleLink";
 import { useTranslation } from "@/components/LanguageProvider";
 import type { RouteKey } from "@/lib/i18n/routes";
 
-type Page = "home" | "mission" | "locations" | "media" | "stories" | "heritage" | "get-involved" | "our-story";
+type Page =
+  | "home"
+  | "mission"
+  | "locations"
+  | "media"
+  | "stories"
+  | "heritage"
+  | "activity"
+  | "get-involved"
+  | "our-story";
 
 interface NavbarProps {
   activePage?: Page;
 }
 
-const navLinks: { key: "mission" | "locations" | "media" | "stories" | "heritage"; routeKey: RouteKey; page: Page }[] = [
+const navLinks: {
+  key: "mission" | "locations" | "media" | "stories" | "heritage" | "activity";
+  routeKey: RouteKey;
+  page: Page;
+  liveDot?: boolean;
+}[] = [
   { key: "mission", routeKey: "mission", page: "mission" },
   { key: "locations", routeKey: "locations", page: "locations" },
   { key: "heritage", routeKey: "heritage", page: "heritage" },
   { key: "media", routeKey: "media", page: "media" },
   { key: "stories", routeKey: "stories", page: "stories" },
+  { key: "activity", routeKey: "activity", page: "activity", liveDot: true },
 ];
 
 export default function Navbar({ activePage = "home" }: NavbarProps) {
@@ -43,12 +58,18 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             <LocaleLink
               key={link.page}
               routeKey={link.routeKey}
-              className={`text-[11px] tracking-[1.5px] whitespace-nowrap transition-colors ${
+              className={`inline-flex items-center gap-1.5 text-[11px] tracking-[1.5px] whitespace-nowrap transition-colors ${
                 activePage === link.page
                   ? "text-[var(--gold)] font-semibold"
                   : "text-[var(--text-secondary)] font-medium hover:text-[var(--text-primary)]"
               }`}
             >
+              {link.liveDot && (
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
+                </span>
+              )}
               {t(`nav.${link.key}`)}
             </LocaleLink>
           ))}
@@ -102,12 +123,18 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
               key={link.page}
               routeKey={link.routeKey}
               onClick={() => setMenuOpen(false)}
-              className={`px-5 py-4 text-[13px] tracking-[1.5px] border-b border-[var(--border-default)] ${
+              className={`flex items-center gap-2 px-5 py-4 text-[13px] tracking-[1.5px] border-b border-[var(--border-default)] ${
                 activePage === link.page
                   ? "text-[var(--gold)] font-semibold"
                   : "text-[var(--text-secondary)] font-medium"
               }`}
             >
+              {link.liveDot && (
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
+                </span>
+              )}
               {t(`nav.${link.key}`)}
             </LocaleLink>
           ))}

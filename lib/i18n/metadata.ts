@@ -13,6 +13,7 @@ const OG_IMAGE: Record<RouteKey, string> = {
   stories: "/images/testimony-lado.jpg",
   media: "/images/dolinka-od-mili-nov-2020-poster-00001.jpg",
   heritage: "/images/heritage/hero.jpg",
+  activity: "/images/klenovec-chapel.jpeg",
   getInvolved: "/images/mission-about-us.jpg",
   thankYou: "/images/mission-about-us.jpg",
   privacy: "/images/mission-about-us.jpg",

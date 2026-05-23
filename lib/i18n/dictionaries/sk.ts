@@ -7,6 +7,7 @@ const sk: Dictionary = {
     media: "MÉDIÁ",
     stories: "PRÍBEHY",
     heritage: "DEDIČSTVO",
+    activity: "NAŽIVO",
     share: "ZDIEĽAŤ",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktujte nás na WhatsApp",
@@ -1434,6 +1435,10 @@ const sk: Dictionary = {
       ogTitle: "1 000 rokov rómskej a pravoslávnej histórie — interaktívne múzeum",
       ogDescription:
         "Od Byzantskej ríše po dnešné slávovské sviečky a krsty vo farnostiach: dlhá spoločná cesta Rómov ako pravoslávnych katechumenov.",
+    activity: {
+      title: "Naživo z terénu — Rómska misia",
+      description:
+        "Sledujte @romamissioneu na Telegrame. Denné správy z farností — krsty, katechézy, prosby o modlitbu, životy, ktoré Pán mení. Príďte a pozrite.",
     },
     getInvolved: {
       title: "Zapojte sa — Christianská rómska misia",
@@ -1454,6 +1459,149 @@ const sk: Dictionary = {
       title: "Podmienky používania — Rómska misia",
       description:
         "Podmienky používania webovej stránky Christianskej rómskej misie.",
+    },
+  },
+  activity: {
+    nav: "NAŽIVO",
+    hero: {
+      eyebrow: "Naživo z terénu",
+      titleLine1: "Príďte a pozrite, čo",
+      titleLine2: "Pán koná.",
+      subtitle:
+        "Každý týždeň správy z dedín — krst v Klenovci, dieťa, ktoré v Markovciach číta svoj prvý žalm, otec, ktorý sa vracia domov. Sledujte náš telegramový kanál a modlite sa s nami.",
+      ctaJoin: "PRIDAJTE SA NA TELEGRAME",
+      ctaFeed: "POZRIEŤ TENTO TÝŽDEŇ",
+      subscriberBadge: "1 200+ svedkov už sleduje",
+      channelHandle: "@romamissioneu",
+    },
+    channel: {
+      label: "@romamissioneu — Živý kanál",
+      title: "Tento týždeň vo farnostiach",
+      intro:
+        "Pohľad na nedávne príspevky. Celý kanál — fotografie, hlasové správy, prosby o modlitbu — žije na Telegrame.",
+      liveDot: "NAŽIVO",
+      channelName: "Roma Mission EU",
+      channelTagline: "Denne z rómskych dedín Slovenska",
+      memberCount: "1 247 odberateľov",
+      openInTelegram: "Otvoriť v Telegrame",
+      viewLabel: "zobrazení",
+      seeAllOnTelegram: "OTVORIŤ @ROMAMISSIONEU NA TELEGRAME",
+      posts: {
+        post1: {
+          date: "Dnes",
+          place: "Klenovec",
+          body:
+            "Prvá katechéza nového obdobia. Dvanásť detí, dvaja krstní rodičia, jeden unavený, ale veľmi šťastný otec kňaz. Modlite sa za nich tento týždeň po mene — Marek, Sofia, Ján, Lívia… Pane, zmiluj sa.",
+          views: "1,1 tis.",
+        },
+        post2: {
+          date: "Včera",
+          place: "Markovce",
+          body:
+            "Krst troch detí z rodiny Horváth. Ich stará mama prešla dve dediny, aby tam mohla byť. „Modlila som sa štyridsať rokov za tento deň,“ povedala. Sláva Bohu.",
+          views: "2,3 tis.",
+        },
+        post3: {
+          date: "Pred 3 dňami",
+          place: "Mútnik",
+          body:
+            "Muži dokončili liatie základov nového misijného centra. Celé ráno studený dážď, celé popoludnie horúci čaj. Fotografie v kanáli. Vďaka každému, kto prispel.",
+          views: "1,8 tis.",
+        },
+        post4: {
+          date: "Minulý týždeň",
+          place: "Kačanov",
+          body:
+            "Prosba o modlitbu — otec Andrej prosí o modlitby za rodinu Lakatošovcov. Dlhý príbeh, bolestivý týždeň. Pán je blízko zlomeným srdcom.",
+          views: "3,1 tis.",
+        },
+        post5: {
+          date: "Minulý týždeň",
+          place: "Rimavská Píla",
+          body:
+            "Nedeľná liturgia v novej kaplnke — prvýkrát v živej pamäti zazvonil v tejto doline malý zvon. Deti spievali „Svätý Bože“ hlasnejšie než ktokoľvek z nás.",
+          views: "2,7 tis.",
+        },
+        post6: {
+          date: "Pred 2 týždňami",
+          place: "Na ceste",
+          body:
+            "Vraciame sa o polnoci z Hnúšte. Tri rodiny chcú katechézu, jedna svadba sa pripravuje, dva domy sa majú požehnať. Žatva je veľká — modlite sa, nech Pán pošle robotníkov.",
+          views: "1,5 tis.",
+        },
+      },
+    },
+    why: {
+      label: "Prečo sledovať",
+      titleLine1: "Tri dôvody,",
+      titleLine2: "prečo sa prihlásiť",
+      intro:
+        "Telegram je spôsob, akým misia žije zo dňa na deň — nie marketingový kanál, ale farský oznamník priamo z terénu.",
+      pillarPrayTitle: "MODLITE SA S NAMI",
+      pillarPrayBody:
+        "Skutočné mená. Skutočné potreby. Každý príspevok je prosbou o modlitbu, ktorú môžete vziať do svojho ranného pravidla.",
+      pillarWitnessTitle: "BUĎTE SVEDKOM DIELA",
+      pillarWitnessBody:
+        "Pozrite farnosti, ktoré podporujete — krsty, liturgie, učebne, liate základy.",
+      pillarShareTitle: "ŠÍRTE EVANJELIUM",
+      pillarShareBody:
+        "Pošlite príspevok ďalej. Povedzte priateľovi. Rómska misia rastie ústnym podaním a modlitbami veriacich.",
+    },
+    stats: {
+      label: "Svedkovia",
+      title: "Nie ste sami",
+      stat1Value: "1 247",
+      stat1Label: "Odberateľov",
+      stat1Sub: "modlí sa a zdieľa",
+      stat2Value: "320+",
+      stat2Label: "Príspevkov tento rok",
+      stat2Sub: "z 9 dedín",
+      stat3Value: "47",
+      stat3Label: "Krstov v roku 2025",
+      stat3Sub: "naprieč farnosťami",
+      stat4Value: "10",
+      stat4Label: "Rokov v teréne",
+      stat4Sub: "od roku 2016",
+    },
+    witnesses: {
+      label: "Čo hovoria odberatelia",
+      title: "Hlasy z kanála",
+      intro:
+        "Prečo si ľudia ponechávajú zapnuté notifikácie.",
+      items: {
+        anna: {
+          quote:
+            "Každé ráno otvorím Telegram a pomodlím sa cez aktualizácie otca Martina ešte skôr, ako vstanem z postele. Zmenilo to môj pohľad na Európu.",
+          author: "Anna",
+          context: "Bratislava · Odberateľka od 2023",
+        },
+        thomas: {
+          quote:
+            "Finančne podporujeme jednu farnosť. Teraz vidím deti, ktoré podporujeme, po mene. To mení všetko.",
+          author: "Thomas a Klára",
+          context: "Viedeň · Mesační partneri",
+        },
+        eleni: {
+          quote:
+            "Je to najautentickejší misijný účet, ktorý sledujem. Žiadny marketing — len liturgia, dedina, deti. Sláva Bohu.",
+          author: "Eleni",
+          context: "Solún · Odberateľka",
+        },
+      },
+    },
+    cta: {
+      label: "Pridajte sa k svedkom",
+      titleLine1: "Príďte a pozrite.",
+      titleLine2: "Potom sa modlite. Potom šírte.",
+      body:
+        "Jedno klepnutie. Notifikácie, ktoré budete radi prijímať. Miesto v prvom rade na to, čo Boh koná medzi Rómami.",
+      primary: "SLEDOVAŤ @ROMAMISSIONEU",
+      shareLabel: "ALEBO POZVITE PRIATEĽA",
+      shareWhatsapp: "Zdieľať cez WhatsApp",
+      shareTelegram: "Zdieľať cez Telegram",
+      scripture:
+        "„Poďte a viďte skutky Božie, hrozný je v skutkoch svojich nad synmi ľudskými.“",
+      scriptureRef: "Žalm 66:5",
     },
   },
 };
