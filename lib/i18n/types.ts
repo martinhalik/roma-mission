@@ -8,6 +8,7 @@ export interface Dictionary {
     contact: string;
     contactWhatsapp: string;
     supportMission: string;
+    donate: string;
     toggleMenu: string;
     selectLanguage: string;
   };

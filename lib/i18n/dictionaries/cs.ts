@@ -10,6 +10,7 @@ const cs: Dictionary = {
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktujte nás na WhatsApp",
     supportMission: "PODPOŘTE MISI",
+    donate: "DAROVAT",
     toggleMenu: "Otevřít menu",
     selectLanguage: "Vyberte jazyk",
   },
@@ -879,7 +880,7 @@ const cs: Dictionary = {
     },
     cookies: {
       heading: "7. Soubory cookie",
-      body: "Naše webové stránky používají nezbytné soubory cookie potřebné k jejich správnému fungování. Nepoužíváme sledovací ani reklamní cookies. Soubory cookie můžete zakázat v nastavení svého prohlížeče, což však může ovlivnit funkčnost stránek.",
+      body: "Naše webové stránky používají nezbytné soubory cookie potřebné k jejich správnému fungování. Používáme také nástroje Microsoft Clarity a Vercel Analytics, abychom porozuměli tomu, jak návštěvníci stránky používají; tyto nástroje mohou nastavovat soubory cookie a zaznamenávat anonymizovaná data o používání, jako jsou zobrazení stránek, kliknutí a záznamy relací. Nepoužíváme reklamní cookies a vaše údaje neprodáváme. Soubory cookie můžete zakázat v nastavení svého prohlížeče, což však může ovlivnit funkčnost stránek.",
     },
     security: {
       heading: "8. Bezpečnost",

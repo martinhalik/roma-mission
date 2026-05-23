@@ -10,6 +10,7 @@ const en: Dictionary = {
     contact: "CONTACT",
     contactWhatsapp: "Contact us on WhatsApp",
     supportMission: "SUPPORT THE MISSION",
+    donate: "DONATE",
     toggleMenu: "Toggle menu",
     selectLanguage: "Select language",
   },
@@ -881,7 +882,7 @@ const en: Dictionary = {
     },
     cookies: {
       heading: "7. Cookies",
-      body: "Our website uses essential cookies to function properly. We do not use tracking or advertising cookies. You may disable cookies through your browser settings, though this may affect website functionality.",
+      body: "Our website uses essential cookies to function properly. We also use Microsoft Clarity and Vercel Analytics to understand how visitors interact with the site; these tools may set cookies and record anonymized usage data such as page views, clicks, and session replays. We do not use advertising cookies and do not sell your data. You may disable cookies through your browser settings, though this may affect website functionality.",
     },
     security: {
       heading: "8. Security",

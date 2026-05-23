@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Share2 } from "lucide-react";
-import ShareModal from "@/components/ShareModal";
+import { Menu, X } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import LocaleLink from "@/components/LocaleLink";
 import { useTranslation } from "@/components/LanguageProvider";
@@ -23,7 +22,6 @@ const navLinks: { key: "mission" | "locations" | "media" | "stories"; routeKey: 
 
 export default function Navbar({ activePage = "home" }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [shareOpen, setShareOpen] = useState(false);
   const { t } = useTranslation();
 
   return (
@@ -44,7 +42,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             <LocaleLink
               key={link.page}
               routeKey={link.routeKey}
-              className={`text-[11px] tracking-[1.5px] transition-colors ${
+              className={`text-[11px] tracking-[1.5px] whitespace-nowrap transition-colors ${
                 activePage === link.page
                   ? "text-[var(--gold)] font-semibold"
                   : "text-[var(--text-secondary)] font-medium hover:text-[var(--text-primary)]"
@@ -57,27 +55,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
         {/* CTA */}
         <div className="flex items-center gap-2 xl:gap-3 shrink-0">
-          <LanguageSwitcher variant="header" />
-          <button
-            onClick={() => setShareOpen(true)}
-            aria-label={t("nav.share")}
-            className="flex items-center gap-2 px-3 xl:px-6 py-3 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-bold tracking-[1px] hover:opacity-80 transition-opacity"
-          >
-            <Share2 size={14} />
-            <span className="hidden xl:inline">{t("nav.share")}</span>
-          </button>
-          <a
-            href="https://wa.me/421951230015"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t("nav.contactWhatsapp")}
-            className="flex items-center gap-2 px-3 xl:px-6 py-3 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[11px] font-bold tracking-[1px] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)] transition-colors"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            <span className="hidden xl:inline">{t("nav.contact")}</span>
-          </a>
+          <LanguageSwitcher variant="header" compact />
           <LocaleLink
             routeKey="getInvolved"
             className="px-4 xl:px-6 py-3 bg-[var(--gold)] text-[var(--on-accent)] text-[11px] font-bold tracking-[1px] hover:opacity-90 transition-opacity whitespace-nowrap"
@@ -97,30 +75,18 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             Mission
           </span>
         </LocaleLink>
-        <div className="flex items-center gap-1">
-          <LanguageSwitcher variant="header" />
-          <button
-            onClick={() => setShareOpen(true)}
-            aria-label={t("nav.share")}
-            className="p-3 text-[var(--gold)] hover:opacity-75 transition-opacity"
+        <div className="flex items-center gap-2">
+          <LocaleLink
+            routeKey="getInvolved"
+            className="px-3 py-2.5 bg-[var(--gold)] text-[var(--on-accent)] text-[10px] font-bold tracking-[1px] hover:opacity-90 transition-opacity whitespace-nowrap"
           >
-            <Share2 size={20} />
-          </button>
-          <a
-            href="https://wa.me/421951230015"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t("nav.contactWhatsapp")}
-            className="p-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-          </a>
+            {t("nav.donate")}
+          </LocaleLink>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="p-3 text-[var(--text-primary)]"
+            className="p-2 text-[var(--text-primary)]"
             aria-label={t("nav.toggleMenu")}
+            aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -144,26 +110,14 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
               {t(`nav.${link.key}`)}
             </LocaleLink>
           ))}
-          <div className="flex gap-3 mx-5 mt-4">
-            <button
-              onClick={() => { setMenuOpen(false); setShareOpen(true); }}
-              className="flex-1 flex items-center justify-center gap-2 py-3 border border-[var(--gold)] text-[var(--gold)] text-[11px] font-bold tracking-[1px] hover:opacity-80 transition-opacity"
-            >
-              <Share2 size={13} />
-              {t("nav.share")}
-            </button>
-            <a
-              href="https://wa.me/421951230015"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 py-3 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[11px] font-bold tracking-[1px] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)] transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-              {t("nav.contact")}
-            </a>
+
+          <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--border-default)]">
+            <span className="text-[10px] tracking-[2px] text-[var(--text-muted)] uppercase font-semibold">
+              {t("nav.selectLanguage")}
+            </span>
+            <LanguageSwitcher variant="header" />
           </div>
+
           <LocaleLink
             routeKey="getInvolved"
             onClick={() => setMenuOpen(false)}
@@ -173,8 +127,6 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           </LocaleLink>
         </div>
       )}
-
-      <ShareModal isOpen={shareOpen} onClose={() => setShareOpen(false)} />
     </div>
   );
 }

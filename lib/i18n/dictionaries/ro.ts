@@ -10,6 +10,7 @@ const ro: Dictionary = {
     contact: "CONTACT",
     contactWhatsapp: "Contactați-ne pe WhatsApp",
     supportMission: "SUSȚINE MISIUNEA",
+    donate: "DONEAZĂ",
     toggleMenu: "Deschide meniul",
     selectLanguage: "Selectează limba",
   },
@@ -883,7 +884,7 @@ const ro: Dictionary = {
     },
     cookies: {
       heading: "7. Cookie-uri",
-      body: "Site-ul nostru utilizează cookie-uri esențiale pentru a funcționa corect. Nu folosim cookie-uri de urmărire sau de publicitate. Puteți dezactiva cookie-urile din setările browserului, însă acest lucru poate afecta funcționalitatea site-ului.",
+      body: "Site-ul nostru utilizează cookie-uri esențiale pentru a funcționa corect. Folosim, de asemenea, Microsoft Clarity și Vercel Analytics pentru a înțelege modul în care vizitatorii interacționează cu site-ul; aceste instrumente pot seta cookie-uri și pot înregistra date de utilizare anonimizate, precum vizualizări de pagină, clicuri și înregistrări de sesiune. Nu folosim cookie-uri publicitare și nu vindem datele dumneavoastră. Puteți dezactiva cookie-urile din setările browserului, însă acest lucru poate afecta funcționalitatea site-ului.",
     },
     security: {
       heading: "8. Securitate",

@@ -7,11 +7,13 @@ import { LOCALES, getLocaleMeta, type Locale } from "@/lib/i18n";
 
 interface LanguageSwitcherProps {
   variant?: "header" | "footer";
+  compact?: boolean;
   className?: string;
 }
 
 export default function LanguageSwitcher({
   variant = "header",
+  compact = false,
   className = "",
 }: LanguageSwitcherProps) {
   const { locale, setLocale, t } = useTranslation();
@@ -48,7 +50,9 @@ export default function LanguageSwitcher({
 
   const triggerClass =
     variant === "header"
-      ? "flex items-center gap-1.5 px-2 xl:px-3 py-3 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[11px] font-bold tracking-[1px] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)] transition-colors"
+      ? compact
+        ? "flex items-center gap-1.5 px-2 py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+        : "flex items-center gap-1.5 px-2 xl:px-3 py-3 border border-[var(--border-strong)] text-[var(--text-secondary)] text-[11px] font-bold tracking-[1px] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)] transition-colors"
       : "flex items-center gap-1.5 text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors uppercase";
 
   return (
@@ -61,10 +65,12 @@ export default function LanguageSwitcher({
         aria-expanded={open}
         className={triggerClass}
       >
-        <span className="text-[14px] leading-none" aria-hidden="true">
+        <span className="text-[18px] leading-none" aria-hidden="true">
           {current.flag}
         </span>
-        <span>{current.short}</span>
+        {!compact && (
+          <span className="text-[11px] font-bold tracking-[1px]">{current.short}</span>
+        )}
         <ChevronDown size={12} className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
 
