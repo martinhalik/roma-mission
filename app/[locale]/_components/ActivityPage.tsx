@@ -6,7 +6,8 @@ import CTASection from "@/components/CTASection";
 import SectionLabel from "@/components/SectionLabel";
 import ShareButton from "@/components/ShareButton";
 import { useTranslation } from "@/components/LanguageProvider";
-import { ArrowRight, Bell, Eye, HandHeart, Share2 } from "lucide-react";
+import { ArrowRight, Bell, Eye, HandHeart, Play, Share2 } from "lucide-react";
+import type { TelegramPost } from "@/lib/telegram";
 
 const TELEGRAM_URL = "https://t.me/romamissioneu";
 
@@ -32,26 +33,10 @@ const PILLARS = [
 ] as const;
 
 const STAT_TILES = [
-  {
-    valueKey: "activity.stats.stat1Value",
-    labelKey: "activity.stats.stat1Label",
-    subKey: "activity.stats.stat1Sub",
-  },
-  {
-    valueKey: "activity.stats.stat2Value",
-    labelKey: "activity.stats.stat2Label",
-    subKey: "activity.stats.stat2Sub",
-  },
-  {
-    valueKey: "activity.stats.stat3Value",
-    labelKey: "activity.stats.stat3Label",
-    subKey: "activity.stats.stat3Sub",
-  },
-  {
-    valueKey: "activity.stats.stat4Value",
-    labelKey: "activity.stats.stat4Label",
-    subKey: "activity.stats.stat4Sub",
-  },
+  { valueKey: "activity.stats.stat1Value", labelKey: "activity.stats.stat1Label", subKey: "activity.stats.stat1Sub" },
+  { valueKey: "activity.stats.stat2Value", labelKey: "activity.stats.stat2Label", subKey: "activity.stats.stat2Sub" },
+  { valueKey: "activity.stats.stat3Value", labelKey: "activity.stats.stat3Label", subKey: "activity.stats.stat3Sub" },
+  { valueKey: "activity.stats.stat4Value", labelKey: "activity.stats.stat4Label", subKey: "activity.stats.stat4Sub" },
 ] as const;
 
 const WITNESS_KEYS = ["anna", "thomas", "eleni"] as const;
@@ -72,11 +57,109 @@ function TelegramIcon({ size = 18 }: { size?: number }) {
   );
 }
 
-function PostCard({ postKey }: { postKey: PostKey }) {
+function formatRelativeDate(iso: string, locale: string): string {
+  if (!iso) return "";
+  const then = new Date(iso).getTime();
+  if (Number.isNaN(then)) return "";
+  const diffMs = Date.now() - then;
+  const minutes = Math.round(diffMs / 60_000);
+  const hours = Math.round(diffMs / 3_600_000);
+  const days = Math.round(diffMs / 86_400_000);
+
+  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
+  if (minutes < 60) return rtf.format(-minutes, "minute");
+  if (hours < 24) return rtf.format(-hours, "hour");
+  if (days < 30) return rtf.format(-days, "day");
+  return new Date(then).toLocaleDateString(locale, { month: "short", day: "numeric" });
+}
+
+function TelegramPostCard({ post }: { post: TelegramPost }) {
+  const { locale } = useTranslation();
+  const primaryMedia = post.media[0];
+  const extraMedia = Math.max(0, post.media.length - 1);
+  const relative = formatRelativeDate(post.datetime, locale);
+
+  return (
+    <a
+      href={post.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] hover:border-[var(--gold)] transition-colors overflow-hidden"
+    >
+      {primaryMedia && (
+        <div className="relative aspect-[4/3] overflow-hidden bg-[var(--bg-elevated)]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={primaryMedia.kind === "photo" ? primaryMedia.url : primaryMedia.poster}
+            alt=""
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          {primaryMedia.kind === "video" && (
+            <>
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Play size={22} className="text-[var(--on-accent)] ml-0.5" fill="currentColor" />
+                </div>
+              </div>
+            </>
+          )}
+          {extraMedia > 0 && (
+            <div className="absolute top-3 right-3 px-2 py-1 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold tracking-[1px] rounded">
+              +{extraMedia}
+            </div>
+          )}
+        </div>
+      )}
+
+      <div className={`flex-1 flex flex-col gap-3 p-5 ${!primaryMedia ? "md:p-7" : ""}`}>
+        <div className="flex items-center gap-2">
+          <TelegramIcon size={12} />
+          <span className="text-[10px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase">
+            @romamissioneu
+          </span>
+          {relative && (
+            <>
+              <span className="text-[var(--border-strong)]">·</span>
+              <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase">
+                {relative}
+              </span>
+            </>
+          )}
+        </div>
+        {post.text && (
+          <p
+            className={`text-[14px] md:text-[15px] text-[var(--text-primary)] leading-[1.6] whitespace-pre-line ${
+              primaryMedia ? "line-clamp-4" : "line-clamp-6"
+            }`}
+          >
+            {post.text}
+          </p>
+        )}
+        <div className="flex items-center justify-between mt-auto pt-3 border-t border-[var(--border-default)]">
+          {post.views ? (
+            <span className="flex items-center gap-1.5 text-[11px] text-[var(--text-muted)]">
+              <Eye size={12} />
+              {post.views}
+            </span>
+          ) : (
+            <span />
+          )}
+          <span className="flex items-center gap-1 text-[10px] font-bold tracking-[1px] text-[var(--gold)] uppercase">
+            <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+function StaticPostCard({ postKey }: { postKey: PostKey }) {
   const { t } = useTranslation();
   return (
-    <article className="bg-[var(--bg-card)] border border-[var(--border-default)] p-5 md:p-6 hover:border-[var(--gold)] transition-colors">
-      <div className="flex items-center gap-2 mb-3">
+    <article className="bg-[var(--bg-card)] border border-[var(--border-default)] p-5 md:p-6 hover:border-[var(--gold)] transition-colors flex flex-col gap-3">
+      <div className="flex items-center gap-2">
         <span className="text-[10px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase">
           {t(`activity.channel.posts.${postKey}.place`)}
         </span>
@@ -88,13 +171,79 @@ function PostCard({ postKey }: { postKey: PostKey }) {
       <p className="text-[14px] md:text-[15px] text-[var(--text-primary)] leading-[1.65]">
         {t(`activity.channel.posts.${postKey}.body`)}
       </p>
-      <div className="flex items-center gap-2 mt-4 pt-4 border-t border-[var(--border-default)]">
+      <div className="flex items-center gap-2 mt-auto pt-4 border-t border-[var(--border-default)]">
         <Eye size={12} className="text-[var(--text-muted)]" />
         <span className="text-[11px] text-[var(--text-muted)]">
           {t(`activity.channel.posts.${postKey}.views`)} {t("activity.channel.viewLabel")}
         </span>
       </div>
     </article>
+  );
+}
+
+function HeroPreviewPost({ post }: { post: TelegramPost }) {
+  const { locale } = useTranslation();
+  const primaryMedia = post.media[0];
+  const relative = formatRelativeDate(post.datetime, locale);
+
+  return (
+    <a
+      href={post.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex gap-3 p-3 border-b border-[var(--border-default)] last:border-b-0 hover:bg-[var(--bg-elevated)] transition-colors"
+    >
+      {primaryMedia ? (
+        <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden bg-[var(--bg-elevated)]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={primaryMedia.kind === "photo" ? primaryMedia.url : primaryMedia.poster}
+            alt=""
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {primaryMedia.kind === "video" && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+              <Play size={14} className="text-white ml-0.5" fill="currentColor" />
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="w-16 h-16 flex-shrink-0 bg-[var(--bg-elevated)] flex items-center justify-center">
+          <TelegramIcon size={20} />
+        </div>
+      )}
+      <div className="flex-1 min-w-0 flex flex-col gap-1">
+        {relative && (
+          <span className="text-[9px] tracking-[1px] text-[var(--gold)] uppercase font-bold">
+            {relative}
+          </span>
+        )}
+        <p className="text-[12px] text-[var(--text-primary)] leading-[1.4] line-clamp-3">
+          {post.text || "Photo from the field"}
+        </p>
+      </div>
+    </a>
+  );
+}
+
+function StaticHeroPreviewItem({ postKey }: { postKey: PostKey }) {
+  const { t } = useTranslation();
+  return (
+    <div className="p-4 border-b border-[var(--border-default)] last:border-b-0">
+      <div className="flex items-center gap-2 mb-1.5">
+        <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase">
+          {t(`activity.channel.posts.${postKey}.place`)}
+        </span>
+        <span className="text-[var(--border-strong)] text-[10px]">·</span>
+        <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
+          {t(`activity.channel.posts.${postKey}.date`)}
+        </span>
+      </div>
+      <p className="text-[12px] text-[var(--text-primary)] leading-[1.5] line-clamp-3">
+        {t(`activity.channel.posts.${postKey}.body`)}
+      </p>
+    </div>
   );
 }
 
@@ -118,8 +267,15 @@ function WitnessCard({ witnessKey }: { witnessKey: WitnessKey }) {
   );
 }
 
-export default function ActivityPage() {
+interface ActivityPageProps {
+  posts?: TelegramPost[];
+}
+
+export default function ActivityPage({ posts = [] }: ActivityPageProps) {
   const { t } = useTranslation();
+  const hasRealPosts = posts.length > 0;
+  const heroPosts = posts.slice(0, 3);
+  const feedPosts = posts;
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
@@ -127,7 +283,6 @@ export default function ActivityPage() {
 
       {/* ── Hero ── */}
       <section className="relative w-full pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden bg-[var(--bg-primary)]">
-        {/* Decorative gradient */}
         <div
           aria-hidden="true"
           className="absolute inset-0 opacity-60"
@@ -137,7 +292,6 @@ export default function ActivityPage() {
           }}
         />
         <div className="relative px-5 md:px-[120px] flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
-          {/* Left: copy */}
           <div className="flex-1 flex flex-col gap-5 md:gap-7 max-w-[640px]">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2.5 w-2.5">
@@ -155,7 +309,6 @@ export default function ActivityPage() {
               {t("activity.hero.subtitle")}
             </p>
 
-            {/* Subscriber badge */}
             <div className="inline-flex items-center gap-3 self-start px-4 py-2.5 bg-[var(--bg-card)] border border-[var(--border-default)] rounded-full">
               <div className="flex -space-x-2">
                 <div className="w-6 h-6 rounded-full bg-[var(--gold)] border-2 border-[var(--bg-card)]" />
@@ -167,7 +320,6 @@ export default function ActivityPage() {
               </span>
             </div>
 
-            {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 mt-2">
               <a
                 href={TELEGRAM_URL}
@@ -191,7 +343,6 @@ export default function ActivityPage() {
           {/* Right: phone-style channel preview */}
           <div className="w-full lg:w-[380px] flex-shrink-0">
             <div className="bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
-              {/* Channel header */}
               <div className="flex items-center gap-3 p-4 bg-[var(--bg-elevated)] border-b border-[var(--border-default)]">
                 <div className="w-12 h-12 rounded-full bg-[var(--gold)] flex items-center justify-center flex-shrink-0">
                   <span className="font-georgia text-[24px] text-[var(--on-accent)]">☦</span>
@@ -212,30 +363,14 @@ export default function ActivityPage() {
                 </div>
               </div>
 
-              {/* Mini-preview posts */}
               <div className="flex flex-col">
-                {POST_KEYS.slice(0, 3).map((k) => (
-                  <div
-                    key={k}
-                    className="p-4 border-b border-[var(--border-default)] last:border-b-0"
-                  >
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase">
-                        {t(`activity.channel.posts.${k}.place`)}
-                      </span>
-                      <span className="text-[var(--border-strong)] text-[10px]">·</span>
-                      <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-                        {t(`activity.channel.posts.${k}.date`)}
-                      </span>
-                    </div>
-                    <p className="text-[12px] text-[var(--text-primary)] leading-[1.5] line-clamp-3">
-                      {t(`activity.channel.posts.${k}.body`)}
-                    </p>
-                  </div>
-                ))}
+                {hasRealPosts
+                  ? heroPosts.map((p) => <HeroPreviewPost key={p.id} post={p} />)
+                  : POST_KEYS.slice(0, 3).map((k) => (
+                      <StaticHeroPreviewItem key={k} postKey={k} />
+                    ))}
               </div>
 
-              {/* Footer */}
               <a
                 href={TELEGRAM_URL}
                 target="_blank"
@@ -265,9 +400,9 @@ export default function ActivityPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-          {POST_KEYS.map((k) => (
-            <PostCard key={k} postKey={k} />
-          ))}
+          {hasRealPosts
+            ? feedPosts.map((p) => <TelegramPostCard key={p.id} post={p} />)
+            : POST_KEYS.map((k) => <StaticPostCard key={k} postKey={k} />)}
         </div>
 
         <div className="flex justify-center mt-10 md:mt-12">
@@ -362,7 +497,7 @@ export default function ActivityPage() {
         </div>
       </section>
 
-      {/* ── Final CTA — preacher-style invitation ── */}
+      {/* ── Final CTA ── */}
       <section className="relative px-5 md:px-[120px] py-20 md:py-[120px] bg-[linear-gradient(180deg,var(--warm-bg)_0%,var(--bg-primary)_100%)] overflow-hidden">
         <div
           aria-hidden="true"
@@ -394,7 +529,6 @@ export default function ActivityPage() {
             {t("activity.cta.primary")}
           </a>
 
-          {/* Share invite */}
           <div className="flex flex-col items-center gap-4 pt-2">
             <p className="text-[10px] font-semibold tracking-[2px] text-[var(--text-muted)] uppercase flex items-center gap-2">
               <Bell size={12} />
@@ -431,7 +565,6 @@ export default function ActivityPage() {
             </div>
           </div>
 
-          {/* Scripture */}
           <div className="flex flex-col items-center gap-2 mt-6 pt-8 border-t border-[var(--border-default)] w-full max-w-[480px]">
             <blockquote className="font-georgia italic text-[16px] md:text-[18px] text-[var(--text-secondary)] leading-[1.6]">
               {t("activity.cta.scripture")}
