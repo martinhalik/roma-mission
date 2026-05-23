@@ -8,6 +8,7 @@ import ShareButton from "@/components/ShareButton";
 import { useTranslation } from "@/components/LanguageProvider";
 import { ArrowRight, Bell, Eye, HandHeart, Heart, Instagram, MessageCircle, Play, Share2 } from "lucide-react";
 import type { TelegramChannelStats } from "@/lib/telegram";
+import type { InstagramChannelStats } from "@/lib/instagram";
 import type { SocialPost } from "@/lib/social-feed";
 
 const TELEGRAM_URL = "https://t.me/romamissioneu";
@@ -298,17 +299,30 @@ function WitnessCard({ witnessKey }: { witnessKey: WitnessKey }) {
 
 interface ActivityPageProps {
   posts?: SocialPost[];
-  stats?: TelegramChannelStats;
+  telegramStats?: TelegramChannelStats;
+  instagramStats?: InstagramChannelStats;
 }
 
 const FALLBACK_SUBSCRIBER_COUNT = "1,200+";
 
-export default function ActivityPage({ posts = [], stats }: ActivityPageProps) {
+function formatCount(n: number | null): string | null {
+  if (n === null || n === undefined) return null;
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
+  if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
+  return n.toLocaleString();
+}
+
+export default function ActivityPage({
+  posts = [],
+  telegramStats,
+  instagramStats,
+}: ActivityPageProps) {
   const { t } = useTranslation();
   const hasRealPosts = posts.length > 0;
   const heroPosts = posts.slice(0, 3);
   const feedPosts = posts;
-  const subscriberCount = stats?.subscribers ?? FALLBACK_SUBSCRIBER_COUNT;
+  const subscriberCount = telegramStats?.subscribers ?? FALLBACK_SUBSCRIBER_COUNT;
+  const instagramFollowers = formatCount(instagramStats?.followers ?? null);
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
@@ -438,7 +452,62 @@ export default function ActivityPage({ posts = [], stats }: ActivityPageProps) {
         </div>
       </section>
 
-      <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
+      {/* ── Two channels (follower social proof) ── */}
+      <section className="px-5 md:px-[120px] py-12 md:py-16 bg-[var(--bg-card)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+          <a
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-5 md:gap-6 p-6 md:p-8 bg-[var(--bg-primary)] border border-[var(--border-default)] hover:border-[var(--gold)] transition-colors"
+          >
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[var(--gold)] flex items-center justify-center flex-shrink-0">
+              <TelegramIcon size={28} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-muted)] uppercase">
+                Telegram
+              </p>
+              <p className="font-georgia text-[32px] md:text-[40px] text-[var(--gold)] leading-none mt-1">
+                {subscriberCount}
+              </p>
+              <p className="text-[11px] md:text-[12px] text-[var(--text-secondary)] mt-1.5 truncate">
+                @romamissioneu · {t("activity.stats.stat1Sub")}
+              </p>
+            </div>
+            <ArrowRight
+              size={18}
+              className="text-[var(--gold)] flex-shrink-0 transition-transform group-hover:translate-x-1"
+            />
+          </a>
+
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-5 md:gap-6 p-6 md:p-8 bg-[var(--bg-primary)] border border-[var(--border-default)] hover:border-[var(--gold)] transition-colors"
+          >
+            <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-[#feda75] via-[#d62976] to-[#4f5bd5] flex items-center justify-center flex-shrink-0">
+              <Instagram size={26} className="text-white" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] font-bold tracking-[1.5px] text-[var(--text-muted)] uppercase">
+                Instagram
+              </p>
+              <p className="font-georgia text-[32px] md:text-[40px] text-[var(--gold)] leading-none mt-1">
+                {instagramFollowers ?? "—"}
+              </p>
+              <p className="text-[11px] md:text-[12px] text-[var(--text-secondary)] mt-1.5 truncate">
+                @bohjezivy · photos & reels from the field
+              </p>
+            </div>
+            <ArrowRight
+              size={18}
+              className="text-[var(--gold)] flex-shrink-0 transition-transform group-hover:translate-x-1"
+            />
+          </a>
+        </div>
+      </section>
 
       {/* ── Channel feed ── */}
       <section id="feed" className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)] scroll-mt-24">
@@ -513,7 +582,7 @@ export default function ActivityPage({ posts = [], stats }: ActivityPageProps) {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {STAT_TILES.map(({ valueKey, labelKey, subKey }, i) => {
-            const overrideValue = i === 0 && stats?.subscribers ? stats.subscribers : null;
+            const overrideValue = i === 0 && telegramStats?.subscribers ? telegramStats.subscribers : null;
             return (
               <div
                 key={valueKey}
