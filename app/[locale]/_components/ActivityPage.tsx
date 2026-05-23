@@ -76,14 +76,225 @@ function formatRelativeDate(iso: string, locale: string): string {
   return new Date(then).toLocaleDateString(locale, { month: "short", day: "numeric" });
 }
 
+function SourceBadge({ source, size = 12 }: { source: SocialPost["source"]; size?: number }) {
+  const Icon = source === "telegram" ? TelegramIcon : InstagramIconLucide;
+  return (
+    <div className="inline-flex items-center gap-1.5 px-2 py-1 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold tracking-[1px] rounded uppercase">
+      <Icon size={size} />
+      {source}
+    </div>
+  );
+}
+
+function PostEngagement({ post }: { post: SocialPost }) {
+  return (
+    <div className="flex items-center gap-3 text-[11px] text-[var(--text-muted)]">
+      {post.source === "telegram" && post.views && (
+        <span className="flex items-center gap-1.5">
+          <Eye size={12} />
+          {post.views}
+        </span>
+      )}
+      {post.source === "instagram" && typeof post.likes === "number" && (
+        <span className="flex items-center gap-1.5">
+          <Heart size={12} />
+          {post.likes.toLocaleString()}
+        </span>
+      )}
+      {post.source === "instagram" && typeof post.comments === "number" && (
+        <span className="flex items-center gap-1.5">
+          <MessageCircle size={12} />
+          {post.comments.toLocaleString()}
+        </span>
+      )}
+    </div>
+  );
+}
+
+function PostImage({
+  src,
+  isVideo,
+  aspect = "square",
+  rounded = false,
+}: {
+  src: string;
+  isVideo?: boolean;
+  aspect?: "square" | "wide" | "tall";
+  rounded?: boolean;
+}) {
+  const aspectClass =
+    aspect === "wide" ? "aspect-[16/9]" : aspect === "tall" ? "aspect-[3/4]" : "aspect-square";
+  return (
+    <div className={`relative ${aspectClass} overflow-hidden bg-[var(--bg-elevated)] ${rounded ? "rounded-sm" : ""}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt=""
+        loading="lazy"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+      />
+      {isVideo && (
+        <>
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-14 h-14 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Play size={22} className="text-[var(--on-accent)] ml-0.5" fill="currentColor" />
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+function FeaturedPostCard({ post }: { post: SocialPost }) {
+  const { locale, t } = useTranslation();
+  const relative = formatRelativeDate(post.datetime, locale);
+  const handle = post.source === "telegram" ? "@romamissioneu" : "@bohjezivy";
+
+  return (
+    <a
+      href={post.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group grid grid-cols-1 lg:grid-cols-2 bg-[var(--bg-card)] border border-[var(--border-default)] hover:border-[var(--gold)] transition-colors overflow-hidden mb-6 md:mb-10"
+    >
+      {post.imageUrl && (
+        <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden bg-[var(--bg-elevated)]">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={post.imageUrl}
+            alt=""
+            loading="eager"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          />
+          {post.isVideo && (
+            <>
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Play size={32} className="text-[var(--on-accent)] ml-1" fill="currentColor" />
+                </div>
+              </div>
+            </>
+          )}
+          <div className="absolute top-4 left-4">
+            <SourceBadge source={post.source} />
+          </div>
+          {post.source === "telegram" && post.extraMediaCount > 0 && (
+            <div className="absolute bottom-4 right-4 px-3 py-1.5 bg-black/70 backdrop-blur-sm text-white text-[11px] font-bold tracking-[1px] rounded">
+              +{post.extraMediaCount} more
+            </div>
+          )}
+        </div>
+      )}
+
+      <div className="flex flex-col justify-center gap-4 p-6 md:p-10">
+        <div className="flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
+          </span>
+          <span className="text-[10px] font-bold tracking-[2px] text-[var(--gold)] uppercase">
+            {t("activity.channel.liveDot")} · {handle}
+          </span>
+          {relative && (
+            <>
+              <span className="text-[var(--border-strong)]">·</span>
+              <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase">
+                {relative}
+              </span>
+            </>
+          )}
+        </div>
+        {post.text && (
+          <p className="text-[16px] md:text-[18px] text-[var(--text-primary)] leading-[1.6] whitespace-pre-line line-clamp-6">
+            {post.text}
+          </p>
+        )}
+        <div className="flex items-center justify-between pt-4 mt-2 border-t border-[var(--border-default)]">
+          <PostEngagement post={post} />
+          <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase">
+            View post
+            <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+function TelegramTextCard({ post }: { post: SocialPost & { source: "telegram" } }) {
+  const { locale, t } = useTranslation();
+  const relative = formatRelativeDate(post.datetime, locale);
+
+  return (
+    <a
+      href={post.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] hover:border-[var(--gold)] transition-colors overflow-hidden aspect-square"
+    >
+      {/* Decorative gradient */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--gold) 25%, transparent) 0%, transparent 60%)",
+        }}
+      />
+      {/* Watermark cross */}
+      <span
+        aria-hidden="true"
+        className="font-georgia absolute -top-4 -right-2 text-[140px] text-[var(--gold)]/15 leading-none select-none pointer-events-none"
+      >
+        ☦
+      </span>
+
+      <div className="relative flex flex-col h-full justify-between p-5 md:p-6 gap-3">
+        <div className="flex items-center gap-2">
+          <TelegramIcon size={12} />
+          <span className="text-[10px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase">
+            @romamissioneu
+          </span>
+          {relative && (
+            <>
+              <span className="text-[var(--border-strong)]">·</span>
+              <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase">
+                {relative}
+              </span>
+            </>
+          )}
+        </div>
+        {post.text && (
+          <p className="flex-1 font-georgia italic text-[15px] md:text-[17px] text-[var(--text-primary)] leading-[1.5] line-clamp-8 md:line-clamp-10">
+            {post.text}
+          </p>
+        )}
+        <div className="flex items-center justify-between pt-3 border-t border-[var(--border-default)]">
+          <PostEngagement post={post} />
+          <ArrowRight
+            size={12}
+            className="text-[var(--gold)] transition-transform group-hover:translate-x-0.5"
+          />
+        </div>
+      </div>
+    </a>
+  );
+}
+
 function SocialPostCard({ post }: { post: SocialPost }) {
   const { locale } = useTranslation();
   const relative = formatRelativeDate(post.datetime, locale);
   const handle = post.source === "telegram" ? "@romamissioneu" : "@bohjezivy";
-  const SourceIcon = post.source === "telegram" ? TelegramIcon : InstagramIconLucide;
-  const extraMedia =
-    post.source === "telegram" ? post.extraMediaCount : 0;
   const hasImage = !!post.imageUrl;
+  const telegramExtras =
+    post.source === "telegram" ? post.additionalImages.slice(0, 3) : [];
+
+  if (post.source === "telegram" && !hasImage) {
+    return <TelegramTextCard post={post} />;
+  }
 
   return (
     <a
@@ -93,39 +304,37 @@ function SocialPostCard({ post }: { post: SocialPost }) {
       className="group flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] hover:border-[var(--gold)] transition-colors overflow-hidden"
     >
       {hasImage && (
-        <div className="relative aspect-[4/3] overflow-hidden bg-[var(--bg-elevated)]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={post.imageUrl}
-            alt=""
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          {post.isVideo && (
-            <>
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-14 h-14 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Play size={22} className="text-[var(--on-accent)] ml-0.5" fill="currentColor" />
-                </div>
-              </div>
-            </>
-          )}
-          {extraMedia > 0 && (
+        <div className="relative">
+          <PostImage src={post.imageUrl!} isVideo={post.isVideo} aspect="square" />
+          <div className="absolute top-3 left-3">
+            <SourceBadge source={post.source} />
+          </div>
+          {post.source === "telegram" && post.extraMediaCount > 0 && (
             <div className="absolute top-3 right-3 px-2 py-1 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold tracking-[1px] rounded">
-              +{extraMedia}
+              +{post.extraMediaCount}
             </div>
           )}
-          <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2 py-1 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold tracking-[1px] rounded uppercase">
-            <SourceIcon size={12} />
-            {post.source}
-          </div>
         </div>
       )}
 
-      <div className={`flex-1 flex flex-col gap-3 p-5 ${!hasImage ? "md:p-7" : ""}`}>
-        <div className="flex items-center gap-2">
-          {!hasImage && <SourceIcon size={12} />}
+      {/* Multi-image strip for Telegram (the post's other photos) */}
+      {telegramExtras.length > 0 && (
+        <div className="grid grid-cols-3 gap-1 p-1 bg-[var(--bg-card)]">
+          {telegramExtras.map((url, i) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={i}
+              src={url}
+              alt=""
+              loading="lazy"
+              className="w-full aspect-square object-cover"
+            />
+          ))}
+        </div>
+      )}
+
+      <div className="flex-1 flex flex-col gap-3 p-5">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="text-[10px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase">
             {handle}
           </span>
@@ -139,35 +348,12 @@ function SocialPostCard({ post }: { post: SocialPost }) {
           )}
         </div>
         {post.text && (
-          <p
-            className={`text-[14px] md:text-[15px] text-[var(--text-primary)] leading-[1.6] whitespace-pre-line ${
-              hasImage ? "line-clamp-4" : "line-clamp-6"
-            }`}
-          >
+          <p className="text-[14px] md:text-[15px] text-[var(--text-primary)] leading-[1.55] whitespace-pre-line line-clamp-3">
             {post.text}
           </p>
         )}
         <div className="flex items-center justify-between mt-auto pt-3 border-t border-[var(--border-default)]">
-          <div className="flex items-center gap-3 text-[11px] text-[var(--text-muted)]">
-            {post.source === "telegram" && post.views && (
-              <span className="flex items-center gap-1.5">
-                <Eye size={12} />
-                {post.views}
-              </span>
-            )}
-            {post.source === "instagram" && typeof post.likes === "number" && (
-              <span className="flex items-center gap-1.5">
-                <Heart size={12} />
-                {post.likes.toLocaleString()}
-              </span>
-            )}
-            {post.source === "instagram" && typeof post.comments === "number" && (
-              <span className="flex items-center gap-1.5">
-                <MessageCircle size={12} />
-                {post.comments.toLocaleString()}
-              </span>
-            )}
-          </div>
+          <PostEngagement post={post} />
           <ArrowRight
             size={12}
             className="text-[var(--gold)] transition-transform group-hover:translate-x-0.5"
@@ -320,7 +506,10 @@ export default function ActivityPage({
   const { t } = useTranslation();
   const hasRealPosts = posts.length > 0;
   const heroPosts = posts.slice(0, 3);
-  const feedPosts = posts;
+  const featuredPost = posts.find(
+    (p) => p.source === "telegram" && !!p.imageUrl
+  );
+  const feedPosts = featuredPost ? posts.filter((p) => p.id !== featuredPost.id) : posts;
   const subscriberCount = telegramStats?.subscribers ?? FALLBACK_SUBSCRIBER_COUNT;
   const instagramFollowers = formatCount(instagramStats?.followers ?? null);
 
@@ -521,7 +710,9 @@ export default function ActivityPage({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        {featuredPost && <FeaturedPostCard post={featuredPost} />}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {hasRealPosts
             ? feedPosts.map((p) => <SocialPostCard key={p.id} post={p} />)
             : POST_KEYS.map((k) => <StaticPostCard key={k} postKey={k} />)}

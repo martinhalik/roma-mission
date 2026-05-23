@@ -9,6 +9,7 @@ export type SocialPost =
       datetime: string;
       text: string;
       imageUrl?: string;
+      additionalImages: string[];
       isVideo: boolean;
       views?: string;
       extraMediaCount: number;
@@ -29,6 +30,10 @@ export function telegramToSocial(p: TelegramPost): SocialPost {
   const primary = p.media[0];
   const imageUrl =
     primary?.kind === "photo" ? primary.url : primary?.kind === "video" ? primary.poster : undefined;
+  const additionalImages = p.media
+    .slice(1)
+    .map((m) => (m.kind === "photo" ? m.url : m.poster))
+    .filter((u): u is string => !!u);
   return {
     source: "telegram",
     id: `tg-${p.id}`,
@@ -36,6 +41,7 @@ export function telegramToSocial(p: TelegramPost): SocialPost {
     datetime: p.datetime,
     text: p.text,
     imageUrl,
+    additionalImages,
     isVideo: primary?.kind === "video",
     views: p.views,
     extraMediaCount: Math.max(0, p.media.length - 1),
