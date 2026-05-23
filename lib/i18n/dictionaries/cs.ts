@@ -1472,7 +1472,7 @@ const cs: Dictionary = {
         "Každý týden zprávy z vesnic — křest v Klenovci, dítě, které v Markovcích čte svůj první žalm, otec, který se vrací domů. Sledujte náš telegramový kanál a modlete se s námi.",
       ctaJoin: "PŘIDAT SE NA TELEGRAMU",
       ctaFeed: "ZOBRAZIT TENTO TÝDEN",
-      subscriberBadge: "1 200+ svědků již sleduje",
+      subscriberBadge: "{count} svědků již sleduje",
       channelHandle: "@romamissioneu",
     },
     channel: {
@@ -1483,7 +1483,7 @@ const cs: Dictionary = {
       liveDot: "ŽIVĚ",
       channelName: "Roma Mission EU",
       channelTagline: "Denně z romských vesnic Slovenska",
-      memberCount: "1 247 odběratelů",
+      memberCount: "{count} odběratelů",
       openInTelegram: "Otevřít v Telegramu",
       viewLabel: "zobrazení",
       seeAllOnTelegram: "OTEVŘÍT @ROMAMISSIONEU NA TELEGRAMU",

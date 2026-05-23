@@ -11,7 +11,7 @@ import MediaPage from "../_components/MediaPage";
 import HeritagePage from "../_components/HeritagePage";
 import ActivityPage from "../_components/ActivityPage";
 import GetInvolvedPage from "../_components/GetInvolvedPage";
-import { fetchTelegramPosts } from "@/lib/telegram";
+import { fetchTelegramFeed } from "@/lib/telegram";
 import ThankYouPage from "../_components/ThankYouPage";
 import PrivacyPolicyPage from "../_components/PrivacyPolicyPage";
 import TermsOfUsePage from "../_components/TermsOfUsePage";
@@ -55,8 +55,8 @@ export default async function LocaleSlugPage({
     case "heritage":
       return <HeritagePage />;
     case "activity": {
-      const posts = await fetchTelegramPosts();
-      return <ActivityPage posts={posts} />;
+      const feed = await fetchTelegramFeed();
+      return <ActivityPage posts={feed.posts} stats={feed.stats} />;
     }
     case "getInvolved":
       return <GetInvolvedPage />;

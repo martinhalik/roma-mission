@@ -1479,7 +1479,7 @@ const el: Dictionary = {
         "Κάθε εβδομάδα, νέα από τα χωριά — μια βάπτιση στο Klenovec, ένα παιδί που διαβάζει τον πρώτο του ψαλμό στο Markovce, ένας πατέρας που επιστρέφει σπίτι. Ακολουθήστε το κανάλι μας στο Telegram και προσευχηθείτε μαζί μας.",
       ctaJoin: "ΕΓΓΡΑΦΗ ΣΤΟ TELEGRAM",
       ctaFeed: "ΔΕΙΤΕ ΑΥΤΗ ΤΗΝ ΕΒΔΟΜΑΔΑ",
-      subscriberBadge: "Πάνω από 1.200 μάρτυρες ήδη παρακολουθούν",
+      subscriberBadge: "{count} μάρτυρες ήδη παρακολουθούν",
       channelHandle: "@romamissioneu",
     },
     channel: {
@@ -1490,7 +1490,7 @@ const el: Dictionary = {
       liveDot: "ΖΩΝΤΑΝΑ",
       channelName: "Roma Mission EU",
       channelTagline: "Καθημερινά από τα ρομά χωριά της Σλοβακίας",
-      memberCount: "1.247 συνδρομητές",
+      memberCount: "{count} συνδρομητές",
       openInTelegram: "Άνοιγμα στο Telegram",
       viewLabel: "προβολές",
       seeAllOnTelegram: "ΑΝΟΙΞΤΕ ΤΟ @ROMAMISSIONEU ΣΤΟ TELEGRAM",

@@ -21,6 +21,17 @@ export interface TelegramPost {
   media: TelegramMedia[];
 }
 
+export interface TelegramChannelStats {
+  subscribers: string | null;
+  photos: string | null;
+  videos: string | null;
+}
+
+export interface TelegramFeed {
+  posts: TelegramPost[];
+  stats: TelegramChannelStats;
+}
+
 const CHANNEL = "romamissioneu";
 const FEED_URL = `https://t.me/s/${CHANNEL}`;
 
@@ -139,20 +150,40 @@ function parseDuration(s: string): number {
   return parts[0] ?? 0;
 }
 
-export async function fetchTelegramPosts(): Promise<TelegramPost[]> {
+function parseChannelStats(html: string): TelegramChannelStats {
+  const stats: TelegramChannelStats = { subscribers: null, photos: null, videos: null };
+  const re = /<div class="tgme_channel_info_counter">\s*<span class="counter_value">([^<]+)<\/span>\s*<span class="counter_type">([^<]+)<\/span>\s*<\/div>/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html)) !== null) {
+    const value = m[1].trim();
+    const type = m[2].trim().toLowerCase();
+    if (type.startsWith("subscriber") || type.startsWith("member")) stats.subscribers = value;
+    else if (type.startsWith("photo")) stats.photos = value;
+    else if (type.startsWith("video")) stats.videos = value;
+  }
+  return stats;
+}
+
+export async function fetchTelegramFeed(): Promise<TelegramFeed> {
   try {
     const res = await fetch(FEED_URL, FETCH_OPTS);
-    if (!res.ok) return [];
+    if (!res.ok) return { posts: [], stats: { subscribers: null, photos: null, videos: null } };
     const html = await res.text();
     const blocks = extractMessageBlocks(html);
     const posts = blocks
       .map(parsePost)
-      .filter((p): p is TelegramPost => p !== null);
-    // Telegram returns oldest-first in /s/ — reverse to newest-first.
-    return posts.reverse();
+      .filter((p): p is TelegramPost => p !== null)
+      .reverse();
+    const stats = parseChannelStats(html);
+    return { posts, stats };
   } catch {
-    return [];
+    return { posts: [], stats: { subscribers: null, photos: null, videos: null } };
   }
+}
+
+export async function fetchTelegramPosts(): Promise<TelegramPost[]> {
+  const feed = await fetchTelegramFeed();
+  return feed.posts;
 }
 
 export const TELEGRAM_CHANNEL_URL = `https://t.me/${CHANNEL}`;

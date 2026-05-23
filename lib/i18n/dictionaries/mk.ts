@@ -1476,7 +1476,7 @@ const mk: Dictionary = {
         "Секоја седмица вести од селата — крштевка во Кленовец, дете што чита свој прв псалм во Марковце, татко што се враќа дома. Следете го нашиот Телеграм канал и молете се со нас.",
       ctaJoin: "ПРИДРУЖИ СЕ НА ТЕЛЕГРАМ",
       ctaFeed: "ВИДИ ЈА ОВАА СЕДМИЦА",
-      subscriberBadge: "Над 1.200 сведоци веќе следат",
+      subscriberBadge: "{count} сведоци веќе следат",
       channelHandle: "@romamissioneu",
     },
     channel: {
@@ -1487,7 +1487,7 @@ const mk: Dictionary = {
       liveDot: "ВО ЖИВО",
       channelName: "Roma Mission EU",
       channelTagline: "Секојдневно од ромските села во Словачка",
-      memberCount: "1.247 претплатници",
+      memberCount: "{count} претплатници",
       openInTelegram: "Отвори во Телеграм",
       viewLabel: "прегледи",
       seeAllOnTelegram: "ОТВОРИ @ROMAMISSIONEU НА ТЕЛЕГРАМ",

@@ -1476,7 +1476,7 @@ const ru: Dictionary = {
         "Каждую неделю — вести из сёл: крещение в Кленовце, ребёнок, читающий свой первый псалом в Марковцах, отец, возвращающийся домой. Подпишитесь на наш телеграм-канал и молитесь с нами.",
       ctaJoin: "ПРИСОЕДИНИТЬСЯ В TELEGRAM",
       ctaFeed: "СМОТРЕТЬ НА ЭТОЙ НЕДЕЛЕ",
-      subscriberBadge: "Более 1 200 свидетелей уже подписаны",
+      subscriberBadge: "{count} свидетелей уже подписаны",
       channelHandle: "@romamissioneu",
     },
     channel: {
@@ -1487,7 +1487,7 @@ const ru: Dictionary = {
       liveDot: "В ЭФИРЕ",
       channelName: "Roma Mission EU",
       channelTagline: "Ежедневно из цыганских сёл Словакии",
-      memberCount: "1 247 подписчиков",
+      memberCount: "{count} подписчиков",
       openInTelegram: "Открыть в Telegram",
       viewLabel: "просмотров",
       seeAllOnTelegram: "ОТКРЫТЬ @ROMAMISSIONEU В TELEGRAM",

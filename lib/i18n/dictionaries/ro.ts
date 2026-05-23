@@ -1478,7 +1478,7 @@ const ro: Dictionary = {
         "În fiecare săptămână, vești din sate — un botez la Klenovec, un copil care citește primul său psalm la Markovce, un tată care se întoarce acasă. Urmăriți canalul nostru de Telegram și rugați-vă cu noi.",
       ctaJoin: "ALĂTURĂ-TE PE TELEGRAM",
       ctaFeed: "VEZI SĂPTĂMÂNA ACEASTA",
-      subscriberBadge: "Peste 1.200 de martori urmăresc deja",
+      subscriberBadge: "{count} de martori urmăresc deja",
       channelHandle: "@romamissioneu",
     },
     channel: {
@@ -1489,7 +1489,7 @@ const ro: Dictionary = {
       liveDot: "ÎN DIRECT",
       channelName: "Roma Mission EU",
       channelTagline: "Zilnic din satele rome ale Slovaciei",
-      memberCount: "1.247 de abonați",
+      memberCount: "{count} de abonați",
       openInTelegram: "Deschide în Telegram",
       viewLabel: "vizualizări",
       seeAllOnTelegram: "DESCHIDE @ROMAMISSIONEU PE TELEGRAM",

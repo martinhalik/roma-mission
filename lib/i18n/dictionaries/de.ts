@@ -1477,7 +1477,7 @@ const de: Dictionary = {
         "Jede Woche Nachrichten aus den Dörfern — eine Taufe in Klenovec, ein Kind, das in Markovce seinen ersten Psalm liest, ein Vater, der nach Hause zurückkehrt. Folgen Sie unserem Telegram-Kanal und beten Sie mit uns.",
       ctaJoin: "AUF TELEGRAM BEITRETEN",
       ctaFeed: "DIESE WOCHE ANSEHEN",
-      subscriberBadge: "Über 1.200 Zeugen folgen bereits",
+      subscriberBadge: "{count} Zeugen folgen bereits",
       channelHandle: "@romamissioneu",
     },
     channel: {
@@ -1488,7 +1488,7 @@ const de: Dictionary = {
       liveDot: "LIVE",
       channelName: "Roma Mission EU",
       channelTagline: "Täglich aus den Roma-Dörfern der Slowakei",
-      memberCount: "1.247 Abonnenten",
+      memberCount: "{count} Abonnenten",
       openInTelegram: "In Telegram öffnen",
       viewLabel: "Aufrufe",
       seeAllOnTelegram: "@ROMAMISSIONEU AUF TELEGRAM ÖFFNEN",

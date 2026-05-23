@@ -7,7 +7,7 @@ import SectionLabel from "@/components/SectionLabel";
 import ShareButton from "@/components/ShareButton";
 import { useTranslation } from "@/components/LanguageProvider";
 import { ArrowRight, Bell, Eye, HandHeart, Play, Share2 } from "lucide-react";
-import type { TelegramPost } from "@/lib/telegram";
+import type { TelegramPost, TelegramChannelStats } from "@/lib/telegram";
 
 const TELEGRAM_URL = "https://t.me/romamissioneu";
 
@@ -269,13 +269,17 @@ function WitnessCard({ witnessKey }: { witnessKey: WitnessKey }) {
 
 interface ActivityPageProps {
   posts?: TelegramPost[];
+  stats?: TelegramChannelStats;
 }
 
-export default function ActivityPage({ posts = [] }: ActivityPageProps) {
+const FALLBACK_SUBSCRIBER_COUNT = "1,200+";
+
+export default function ActivityPage({ posts = [], stats }: ActivityPageProps) {
   const { t } = useTranslation();
   const hasRealPosts = posts.length > 0;
   const heroPosts = posts.slice(0, 3);
   const feedPosts = posts;
+  const subscriberCount = stats?.subscribers ?? FALLBACK_SUBSCRIBER_COUNT;
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
@@ -316,7 +320,7 @@ export default function ActivityPage({ posts = [] }: ActivityPageProps) {
                 <div className="w-6 h-6 rounded-full bg-[var(--bg-elevated)] border-2 border-[var(--bg-card)]" />
               </div>
               <span className="text-[12px] text-[var(--text-secondary)]">
-                {t("activity.hero.subscriberBadge")}
+                {t("activity.hero.subscriberBadge", { count: subscriberCount })}
               </span>
             </div>
 
@@ -352,7 +356,7 @@ export default function ActivityPage({ posts = [] }: ActivityPageProps) {
                     {t("activity.channel.channelName")}
                   </p>
                   <p className="text-[11px] text-[var(--text-muted)] truncate">
-                    {t("activity.channel.memberCount")}
+                    {t("activity.channel.memberCount", { count: subscriberCount })}
                   </p>
                 </div>
                 <div className="flex items-center gap-1 px-2 py-1 bg-[var(--gold)]/15 rounded">
@@ -459,22 +463,25 @@ export default function ActivityPage({ posts = [] }: ActivityPageProps) {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-          {STAT_TILES.map(({ valueKey, labelKey, subKey }) => (
-            <div
-              key={valueKey}
-              className="bg-[var(--bg-card)] border border-[var(--border-default)] p-6 md:p-8 flex flex-col gap-2"
-            >
-              <p className="font-georgia text-[40px] md:text-[56px] text-[var(--gold)] leading-none">
-                {t(valueKey)}
-              </p>
-              <p className="text-[12px] md:text-[13px] font-bold tracking-[1px] text-[var(--text-primary)] uppercase mt-2">
-                {t(labelKey)}
-              </p>
-              <p className="text-[11px] md:text-[12px] text-[var(--text-muted)]">
-                {t(subKey)}
-              </p>
-            </div>
-          ))}
+          {STAT_TILES.map(({ valueKey, labelKey, subKey }, i) => {
+            const overrideValue = i === 0 && stats?.subscribers ? stats.subscribers : null;
+            return (
+              <div
+                key={valueKey}
+                className="bg-[var(--bg-card)] border border-[var(--border-default)] p-6 md:p-8 flex flex-col gap-2"
+              >
+                <p className="font-georgia text-[40px] md:text-[56px] text-[var(--gold)] leading-none">
+                  {overrideValue ?? t(valueKey)}
+                </p>
+                <p className="text-[12px] md:text-[13px] font-bold tracking-[1px] text-[var(--text-primary)] uppercase mt-2">
+                  {t(labelKey)}
+                </p>
+                <p className="text-[11px] md:text-[12px] text-[var(--text-muted)]">
+                  {t(subKey)}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </section>
 
