@@ -85,7 +85,7 @@ export default function Footer() {
               <LocaleLink routeKey="home" className="flex items-center gap-2">
                 <span className="font-georgia text-[28px] text-[var(--gold)]">☦</span>
                 <span className="text-[14px] font-bold tracking-[2px] text-[var(--text-primary)] uppercase">
-                  Christian Roma Mission
+                  {t("footer.brand")}
                 </span>
               </LocaleLink>
               <p className="text-[var(--text-muted)] text-[13px] leading-[1.6] whitespace-pre-line">
@@ -203,10 +203,8 @@ export default function Footer() {
           <div className="flex flex-col gap-3">
             <LocaleLink routeKey="home" className="flex items-center gap-2">
               <span className="font-georgia text-[24px] text-[var(--gold)]">☦</span>
-              <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--text-primary)] leading-[1.3] uppercase">
-                Christian Roma
-                <br />
-                Mission
+              <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--text-primary)] leading-[1.3] uppercase max-w-[120px]">
+                {t("footer.brand")}
               </span>
             </LocaleLink>
             <p className="text-[12px] text-[var(--text-muted)] leading-[1.6] whitespace-pre-line">

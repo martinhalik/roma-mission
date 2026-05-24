@@ -32,7 +32,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
         <LocaleLink routeKey="home" className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity shrink-0">
           <span className="font-georgia text-[28px] text-[var(--gold)]">☦</span>
           <span className="text-[14px] font-bold tracking-[2px] text-[var(--text-primary)] uppercase">
-            Christian Roma Mission
+            {t("footer.brand")}
           </span>
         </LocaleLink>
 
@@ -69,10 +69,8 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       <nav className="flex lg:hidden items-center justify-between px-5 py-4 bg-[var(--nav-bg)] backdrop-blur-xl w-full border-b border-[var(--border-default)]">
         <LocaleLink routeKey="home" className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity">
           <span className="font-georgia text-[24px] text-[var(--gold)]">☦</span>
-          <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--text-primary)] leading-[1.3] uppercase">
-            Christian Roma
-            <br />
-            Mission
+          <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--text-primary)] leading-[1.3] uppercase max-w-[120px]">
+            {t("footer.brand")}
           </span>
         </LocaleLink>
         <div className="flex items-center gap-2">

@@ -58,7 +58,7 @@ export function buildLocaleMetadata(
       title: ogTitle,
       description: ogDescription,
       url: `${SITE_URL}${canonical}`,
-      siteName: "Christian Roma Mission",
+      siteName: dict.footer.brand,
       type: "website",
       locale,
       images: [
