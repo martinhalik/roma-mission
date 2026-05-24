@@ -7,6 +7,7 @@ const en: Dictionary = {
     media: "MEDIA",
     stories: "STORIES",
     heritage: "HERITAGE",
+    activity: "LIVE",
     share: "SHARE",
     contact: "CONTACT",
     contactWhatsapp: "Contact us on WhatsApp",
@@ -1438,6 +1439,11 @@ const en: Dictionary = {
       ogDescription:
         "From the Byzantine Empire to today's Slava candles and parish baptisms: the long, shared road of the Roma as Orthodox catechumens.",
     },
+    activity: {
+      title: "Live from the Field — Roma Mission",
+      description:
+        "Follow @romamissioneu on Telegram. Daily updates from the parishes — baptisms, catechism, prayer requests, lives the Lord is changing. Come and see.",
+    },
     getInvolved: {
       title: "Get Involved — Roma Mission",
       description:
@@ -1455,6 +1461,154 @@ const en: Dictionary = {
     terms: {
       title: "Terms of Use — Roma Mission",
       description: "Terms of Use for the Christian Roma Mission website.",
+    },
+  },
+  activity: {
+    nav: "LIVE",
+    hero: {
+      eyebrow: "Live from the Field",
+      titleLine1: "Come and See What",
+      titleLine2: "the Lord Is Doing.",
+      subtitle:
+        "Every week, updates from the villages — a baptism in Klenovec, a child reading her first psalm in Markovce, a father returning home. Follow our Telegram channel and pray with us.",
+      ctaJoin: "JOIN ON TELEGRAM",
+      ctaFeed: "SEE THIS WEEK",
+      subscriberBadge: "{count} witnesses already follow",
+      channelHandle: "@romamissioneu",
+    },
+    channel: {
+      label: "@romamissioneu — Live Channel",
+      title: "This Week in the Parishes",
+      intro:
+        "A glimpse of recent posts. The full feed — photos, voice notes, prayer requests — lives on Telegram.",
+      liveDot: "LIVE",
+      channelName: "Roma Mission EU",
+      channelTagline: "Daily from the Roma villages of Slovakia",
+      memberCount: "{count} subscribers",
+      openInTelegram: "Open in Telegram",
+      viewLabel: "views",
+      seeAllOnTelegram: "OPEN @ROMAMISSIONEU ON TELEGRAM",
+      viewPost: "View post",
+      morePhotos: "more",
+      instagramTagline: "photos & reels from the field",
+      photoFallbackTelegram: "Photo from the field",
+      photoFallbackInstagram: "Photo on Instagram",
+      posts: {
+        post1: {
+          date: "Today",
+          place: "Klenovec",
+          body:
+            "First catechism class of the new term. Twelve children, two godparents, one tired but very happy father priest. Pray for them by name this week — Marek, Sofia, Ján, Lívia… Lord, have mercy.",
+          views: "1.1K",
+        },
+        post2: {
+          date: "Yesterday",
+          place: "Markovce",
+          body:
+            "Baptism of three children from the Horváth family. Their grandmother walked two villages to be there. \"I prayed forty years for this day,\" she said. Glory to God.",
+          views: "2.3K",
+        },
+        post3: {
+          date: "3 days ago",
+          place: "Mútnik",
+          body:
+            "The men finished pouring the foundation for the new mission center. Cold rain all morning, hot tea all afternoon. Photos in the channel. Thank you to everyone who gave.",
+          views: "1.8K",
+        },
+        post4: {
+          date: "Last week",
+          place: "Kačanov",
+          body:
+            "Prayer request — Father Andrej is asking for prayers for the Lakatoš family. Long story, painful week. The Lord is near to the brokenhearted.",
+          views: "3.1K",
+        },
+        post5: {
+          date: "Last week",
+          place: "Rimavská Píla",
+          body:
+            "Sunday Liturgy in the new chapel — first time the small bell rang over this valley in living memory. The children sang \"Holy God\" louder than any of us.",
+          views: "2.7K",
+        },
+        post6: {
+          date: "2 weeks ago",
+          place: "On the road",
+          body:
+            "Driving back from Hnúšťa at midnight. Three families want catechism, one wedding to plan, two homes to bless. The harvest is plentiful — pray the Lord sends workers.",
+          views: "1.5K",
+        },
+      },
+    },
+    why: {
+      label: "Why Follow",
+      titleLine1: "Three Reasons to",
+      titleLine2: "Subscribe Today",
+      intro:
+        "Telegram is how the mission lives day to day — not a marketing channel, a parish bulletin from the field.",
+      pillarPrayTitle: "PRAY WITH US",
+      pillarPrayBody:
+        "Real names. Real needs. Each post is a prayer request you can carry to your morning rule.",
+      pillarWitnessTitle: "WITNESS THE WORK",
+      pillarWitnessBody:
+        "See the parishes you support — baptisms, liturgies, classrooms, foundations being poured.",
+      pillarShareTitle: "SHARE THE GOSPEL",
+      pillarShareBody:
+        "Forward a post. Tell a friend. The Roma mission grows by word of mouth and the prayers of the faithful.",
+    },
+    stats: {
+      label: "The Witnesses",
+      title: "You Are Not Alone",
+      stat1Value: "1,247",
+      stat1Label: "Subscribers",
+      stat1Sub: "praying & sharing",
+      stat2Value: "320+",
+      stat2Label: "Updates this year",
+      stat2Sub: "from 9 villages",
+      stat3Value: "47",
+      stat3Label: "Baptisms in 2025",
+      stat3Sub: "across the parishes",
+      stat4Value: "10",
+      stat4Label: "Years on the ground",
+      stat4Sub: "since 2016",
+    },
+    witnesses: {
+      label: "What Subscribers Say",
+      title: "Voices from the Channel",
+      intro:
+        "Why people keep the notifications on.",
+      items: {
+        anna: {
+          quote:
+            "I open Telegram every morning and pray through Father Martin's updates before I get out of bed. It has changed how I see Europe.",
+          author: "Anna",
+          context: "Bratislava · Subscriber since 2023",
+        },
+        thomas: {
+          quote:
+            "We support one parish financially. Now I see the children we support by name. That changes everything.",
+          author: "Thomas & Klára",
+          context: "Vienna · Monthly partners",
+        },
+        eleni: {
+          quote:
+            "It is the most authentic mission account I follow. No marketing — just the Liturgy, the village, the children. Glory to God.",
+          author: "Eleni",
+          context: "Thessaloniki · Subscriber",
+        },
+      },
+    },
+    cta: {
+      label: "Join the Witnesses",
+      titleLine1: "Come and See.",
+      titleLine2: "Then Pray. Then Share.",
+      body:
+        "One tap. Notifications you'll be glad to receive. A front-row seat to what God is doing among the Roma.",
+      primary: "FOLLOW @ROMAMISSIONEU",
+      shareLabel: "OR INVITE A FRIEND",
+      shareWhatsapp: "Share on WhatsApp",
+      shareTelegram: "Share on Telegram",
+      scripture:
+        "\"Come and see what God has done; he is awesome in his deeds toward the children of man.\"",
+      scriptureRef: "Psalm 66:5",
     },
   },
 };

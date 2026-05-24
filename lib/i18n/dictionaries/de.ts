@@ -7,6 +7,7 @@ const de: Dictionary = {
     media: "MEDIEN",
     stories: "GESCHICHTEN",
     heritage: "ERBE",
+    activity: "LIVE",
     share: "TEILEN",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktieren Sie uns auf WhatsApp",
@@ -1441,6 +1442,11 @@ const de: Dictionary = {
       ogDescription:
         "Vom Byzantinischen Reich bis zu den heutigen Slava-Kerzen und Pfarrtaufen: der lange, gemeinsame Weg der Roma als orthodoxe Katechumenen.",
     },
+    activity: {
+      title: "Live aus dem Missionsfeld — Roma-Mission",
+      description:
+        "Folgen Sie @romamissioneu auf Telegram. Tägliche Berichte aus den Gemeinden — Taufen, Katechese, Gebetsanliegen, Leben, die der Herr verändert. Kommt und seht.",
+    },
     getInvolved: {
       title: "Mitmachen — Christliche Roma-Mission",
       description:
@@ -1460,6 +1466,154 @@ const de: Dictionary = {
       title: "Nutzungsbedingungen — Roma-Mission",
       description:
         "Nutzungsbedingungen der Website der Christlichen Roma-Mission.",
+    },
+  },
+  activity: {
+    nav: "LIVE",
+    hero: {
+      eyebrow: "Live aus dem Missionsfeld",
+      titleLine1: "Kommt und seht, was",
+      titleLine2: "der Herr tut.",
+      subtitle:
+        "Jede Woche Nachrichten aus den Dörfern — eine Taufe in Klenovec, ein Kind, das in Markovce seinen ersten Psalm liest, ein Vater, der nach Hause zurückkehrt. Folgen Sie unserem Telegram-Kanal und beten Sie mit uns.",
+      ctaJoin: "AUF TELEGRAM BEITRETEN",
+      ctaFeed: "DIESE WOCHE ANSEHEN",
+      subscriberBadge: "{count} Zeugen folgen bereits",
+      channelHandle: "@romamissioneu",
+    },
+    channel: {
+      label: "@romamissioneu — Live-Kanal",
+      title: "Diese Woche in den Gemeinden",
+      intro:
+        "Ein Einblick in jüngste Beiträge. Der vollständige Kanal — Fotos, Sprachnachrichten, Gebetsanliegen — lebt auf Telegram.",
+      liveDot: "LIVE",
+      channelName: "Roma Mission EU",
+      channelTagline: "Täglich aus den Roma-Dörfern der Slowakei",
+      memberCount: "{count} Abonnenten",
+      openInTelegram: "In Telegram öffnen",
+      viewLabel: "Aufrufe",
+      seeAllOnTelegram: "@ROMAMISSIONEU AUF TELEGRAM ÖFFNEN",
+      viewPost: "Beitrag öffnen",
+      morePhotos: "weitere",
+      instagramTagline: "Fotos & Reels von der Mission",
+      photoFallbackTelegram: "Foto von der Mission",
+      photoFallbackInstagram: "Foto auf Instagram",
+      posts: {
+        post1: {
+          date: "Heute",
+          place: "Klenovec",
+          body:
+            "Erste Katechese der neuen Periode. Zwölf Kinder, zwei Paten, ein müder, aber sehr glücklicher Vaterpriester. Betet diese Woche namentlich für sie — Marek, Sofia, Ján, Lívia… Herr, erbarme dich.",
+          views: "1,1 Tsd.",
+        },
+        post2: {
+          date: "Gestern",
+          place: "Markovce",
+          body:
+            "Taufe von drei Kindern aus der Familie Horváth. Ihre Großmutter ging zwei Dörfer weit, um dabei zu sein. „Vierzig Jahre habe ich für diesen Tag gebetet“, sagte sie. Ehre sei Gott.",
+          views: "2,3 Tsd.",
+        },
+        post3: {
+          date: "Vor 3 Tagen",
+          place: "Mútnik",
+          body:
+            "Die Männer haben das Fundament für das neue Missionszentrum gegossen. Den ganzen Morgen kalter Regen, den ganzen Nachmittag heißer Tee. Fotos im Kanal. Danke allen, die gespendet haben.",
+          views: "1,8 Tsd.",
+        },
+        post4: {
+          date: "Letzte Woche",
+          place: "Kačanov",
+          body:
+            "Gebetsanliegen — Vater Andrej bittet um Gebete für die Familie Lakatoš. Lange Geschichte, schmerzhafte Woche. Der Herr ist nahe denen, die zerbrochenen Herzens sind.",
+          views: "3,1 Tsd.",
+        },
+        post5: {
+          date: "Letzte Woche",
+          place: "Rimavská Píla",
+          body:
+            "Sonntagsliturgie in der neuen Kapelle — zum ersten Mal in lebendiger Erinnerung läutete die kleine Glocke über diesem Tal. Die Kinder sangen „Heiliger Gott“ lauter als wir alle.",
+          views: "2,7 Tsd.",
+        },
+        post6: {
+          date: "Vor 2 Wochen",
+          place: "Unterwegs",
+          body:
+            "Um Mitternacht von Hnúšťa zurück. Drei Familien wollen Katechese, eine Hochzeit ist zu planen, zwei Häuser zu segnen. Die Ernte ist groß — betet, dass der Herr Arbeiter sende.",
+          views: "1,5 Tsd.",
+        },
+      },
+    },
+    why: {
+      label: "Warum folgen",
+      titleLine1: "Drei Gründe,",
+      titleLine2: "heute zu abonnieren",
+      intro:
+        "Telegram ist, wie die Mission Tag für Tag lebt — kein Marketingkanal, sondern ein Gemeindebrief direkt aus dem Feld.",
+      pillarPrayTitle: "BETET MIT UNS",
+      pillarPrayBody:
+        "Echte Namen. Echte Anliegen. Jeder Beitrag ist ein Gebetsanliegen, das ihr in eure Morgenregel tragen könnt.",
+      pillarWitnessTitle: "SEHT DAS WERK",
+      pillarWitnessBody:
+        "Seht die Gemeinden, die ihr unterstützt — Taufen, Liturgien, Klassenräume, gegossene Fundamente.",
+      pillarShareTitle: "TEILT DAS EVANGELIUM",
+      pillarShareBody:
+        "Leitet einen Beitrag weiter. Erzählt einem Freund. Die Roma-Mission wächst durch Mundpropaganda und das Gebet der Gläubigen.",
+    },
+    stats: {
+      label: "Die Zeugen",
+      title: "Ihr seid nicht allein",
+      stat1Value: "1.247",
+      stat1Label: "Abonnenten",
+      stat1Sub: "beten und teilen",
+      stat2Value: "320+",
+      stat2Label: "Beiträge dieses Jahr",
+      stat2Sub: "aus 9 Dörfern",
+      stat3Value: "47",
+      stat3Label: "Taufen 2025",
+      stat3Sub: "in den Gemeinden",
+      stat4Value: "10",
+      stat4Label: "Jahre vor Ort",
+      stat4Sub: "seit 2016",
+    },
+    witnesses: {
+      label: "Was Abonnenten sagen",
+      title: "Stimmen aus dem Kanal",
+      intro:
+        "Warum Menschen die Benachrichtigungen anlassen.",
+      items: {
+        anna: {
+          quote:
+            "Ich öffne jeden Morgen Telegram und bete durch die Berichte von Vater Martin, bevor ich aus dem Bett aufstehe. Es hat verändert, wie ich Europa sehe.",
+          author: "Anna",
+          context: "Bratislava · Abonnentin seit 2023",
+        },
+        thomas: {
+          quote:
+            "Wir unterstützen eine Gemeinde finanziell. Jetzt sehe ich die Kinder, die wir unterstützen, mit Namen. Das verändert alles.",
+          author: "Thomas und Klára",
+          context: "Wien · Monatliche Partner",
+        },
+        eleni: {
+          quote:
+            "Es ist der authentischste Missionsaccount, dem ich folge. Kein Marketing — nur die Liturgie, das Dorf, die Kinder. Ehre sei Gott.",
+          author: "Eleni",
+          context: "Thessaloniki · Abonnentin",
+        },
+      },
+    },
+    cta: {
+      label: "Werdet Zeugen",
+      titleLine1: "Kommt und seht.",
+      titleLine2: "Dann betet. Dann teilt.",
+      body:
+        "Ein Tippen. Benachrichtigungen, die ihr gern empfangen werdet. Ein Platz in der ersten Reihe für das, was Gott unter den Roma tut.",
+      primary: "@ROMAMISSIONEU FOLGEN",
+      shareLabel: "ODER EINEN FREUND EINLADEN",
+      shareWhatsapp: "Auf WhatsApp teilen",
+      shareTelegram: "Auf Telegram teilen",
+      scripture:
+        "„Kommt und seht die Werke Gottes, der so wunderbar handelt an den Menschenkindern.“",
+      scriptureRef: "Psalm 66:5",
     },
   },
 };

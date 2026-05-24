@@ -7,6 +7,7 @@ const ro: Dictionary = {
     media: "MEDIA",
     stories: "POVEȘTI",
     heritage: "MOȘTENIRE",
+    activity: "ÎN DIRECT",
     share: "DISTRIBUIE",
     contact: "CONTACT",
     contactWhatsapp: "Contactați-ne pe WhatsApp",
@@ -1442,6 +1443,11 @@ const ro: Dictionary = {
       ogDescription:
         "De la Imperiul Bizantin până la lumânările de Slavă și botezurile parohiale de astăzi: drumul lung și comun al romilor ca catehumeni ortodocși.",
     },
+    activity: {
+      title: "În direct de pe teren — Misiunea Romă",
+      description:
+        "Urmăriți @romamissioneu pe Telegram. Actualizări zilnice din parohii — botezuri, cateheză, cereri de rugăciune, vieți pe care Domnul le schimbă. Veniți și vedeți.",
+    },
     getInvolved: {
       title: "Implică-te — Misiunea Creștină Romă",
       description:
@@ -1461,6 +1467,154 @@ const ro: Dictionary = {
       title: "Termeni de utilizare — Misiunea Romă",
       description:
         "Termenii de utilizare ai site-ului Misiunii Creștine Rome.",
+    },
+  },
+  activity: {
+    nav: "ÎN DIRECT",
+    hero: {
+      eyebrow: "În direct de pe teren",
+      titleLine1: "Veniți și vedeți ce",
+      titleLine2: "face Domnul.",
+      subtitle:
+        "În fiecare săptămână, vești din sate — un botez la Klenovec, un copil care citește primul său psalm la Markovce, un tată care se întoarce acasă. Urmăriți canalul nostru de Telegram și rugați-vă cu noi.",
+      ctaJoin: "ALĂTURĂ-TE PE TELEGRAM",
+      ctaFeed: "VEZI SĂPTĂMÂNA ACEASTA",
+      subscriberBadge: "{count} de martori urmăresc deja",
+      channelHandle: "@romamissioneu",
+    },
+    channel: {
+      label: "@romamissioneu — Canal live",
+      title: "Săptămâna aceasta în parohii",
+      intro:
+        "O privire asupra postărilor recente. Fluxul complet — fotografii, mesaje vocale, cereri de rugăciune — trăiește pe Telegram.",
+      liveDot: "ÎN DIRECT",
+      channelName: "Roma Mission EU",
+      channelTagline: "Zilnic din satele rome ale Slovaciei",
+      memberCount: "{count} de abonați",
+      openInTelegram: "Deschide în Telegram",
+      viewLabel: "vizualizări",
+      seeAllOnTelegram: "DESCHIDE @ROMAMISSIONEU PE TELEGRAM",
+      viewPost: "Vezi postarea",
+      morePhotos: "în plus",
+      instagramTagline: "fotografii și clipuri din misiune",
+      photoFallbackTelegram: "Fotografie din misiune",
+      photoFallbackInstagram: "Fotografie pe Instagram",
+      posts: {
+        post1: {
+          date: "Astăzi",
+          place: "Klenovec",
+          body:
+            "Prima oră de cateheză a noului trimestru. Doisprezece copii, doi nași, un părinte preot obosit, dar foarte fericit. Rugați-vă pentru ei nominal săptămâna aceasta — Marek, Sofia, Ján, Lívia… Doamne, miluiește.",
+          views: "1,1 K",
+        },
+        post2: {
+          date: "Ieri",
+          place: "Markovce",
+          body:
+            "Botezul a trei copii din familia Horváth. Bunica lor a mers pe jos prin două sate ca să fie prezentă. „Patruzeci de ani m-am rugat pentru ziua aceasta”, a spus. Slavă lui Dumnezeu.",
+          views: "2,3 K",
+        },
+        post3: {
+          date: "Acum 3 zile",
+          place: "Mútnik",
+          body:
+            "Bărbații au terminat turnarea fundației pentru noul centru misionar. Ploaie rece toată dimineața, ceai fierbinte toată după-amiaza. Fotografii pe canal. Mulțumim tuturor celor care au dăruit.",
+          views: "1,8 K",
+        },
+        post4: {
+          date: "Săptămâna trecută",
+          place: "Kačanov",
+          body:
+            "Cerere de rugăciune — părintele Andrej cere rugăciuni pentru familia Lakatoš. Poveste lungă, săptămână dureroasă. Aproape este Domnul de cei zdrobiți cu inima.",
+          views: "3,1 K",
+        },
+        post5: {
+          date: "Săptămâna trecută",
+          place: "Rimavská Píla",
+          body:
+            "Sfânta Liturghie de duminică în noua capelă — pentru prima oară în memoria celor vii, clopoțelul a sunat peste această vale. Copiii au cântat „Sfinte Dumnezeule” mai tare decât oricine dintre noi.",
+          views: "2,7 K",
+        },
+        post6: {
+          date: "Acum 2 săptămâni",
+          place: "Pe drum",
+          body:
+            "Întorcându-ne de la Hnúšťa la miezul nopții. Trei familii vor cateheză, o nuntă de organizat, două case de binecuvântat. Secerișul este mult — rugați-vă Domnului să trimită lucrători.",
+          views: "1,5 K",
+        },
+      },
+    },
+    why: {
+      label: "De ce să urmărești",
+      titleLine1: "Trei motive pentru",
+      titleLine2: "a te abona astăzi",
+      intro:
+        "Telegram este modul în care misiunea trăiește zi de zi — nu un canal de marketing, ci un buletin parohial direct din teren.",
+      pillarPrayTitle: "ROAGĂ-TE CU NOI",
+      pillarPrayBody:
+        "Nume reale. Nevoi reale. Fiecare postare este o cerere de rugăciune pe care o puteți duce în pravila de dimineață.",
+      pillarWitnessTitle: "VEZI LUCRAREA",
+      pillarWitnessBody:
+        "Vedeți parohiile pe care le susțineți — botezuri, liturghii, săli de clasă, fundații turnate.",
+      pillarShareTitle: "RĂSPÂNDEȘTE EVANGHELIA",
+      pillarShareBody:
+        "Trimiteți o postare mai departe. Spuneți unui prieten. Misiunea romă crește prin vorbă din gură în gură și prin rugăciunile credincioșilor.",
+    },
+    stats: {
+      label: "Martorii",
+      title: "Nu sunteți singuri",
+      stat1Value: "1.247",
+      stat1Label: "Abonați",
+      stat1Sub: "se roagă și împărtășesc",
+      stat2Value: "320+",
+      stat2Label: "Actualizări anul acesta",
+      stat2Sub: "din 9 sate",
+      stat3Value: "47",
+      stat3Label: "Botezuri în 2025",
+      stat3Sub: "în toate parohiile",
+      stat4Value: "10",
+      stat4Label: "Ani pe teren",
+      stat4Sub: "din 2016",
+    },
+    witnesses: {
+      label: "Ce spun abonații",
+      title: "Voci de pe canal",
+      intro:
+        "De ce oamenii țin notificările pornite.",
+      items: {
+        anna: {
+          quote:
+            "Deschid Telegram în fiecare dimineață și mă rog prin actualizările părintelui Martin înainte să mă dau jos din pat. Mi-a schimbat felul în care văd Europa.",
+          author: "Anna",
+          context: "Bratislava · Abonată din 2023",
+        },
+        thomas: {
+          quote:
+            "Sprijinim financiar o parohie. Acum văd copiii pe care îi susținem pe nume. Asta schimbă totul.",
+          author: "Thomas și Klára",
+          context: "Viena · Parteneri lunari",
+        },
+        eleni: {
+          quote:
+            "Este cel mai autentic cont de misiune pe care îl urmăresc. Niciun marketing — doar Liturghia, satul, copiii. Slavă lui Dumnezeu.",
+          author: "Eleni",
+          context: "Tesalonic · Abonată",
+        },
+      },
+    },
+    cta: {
+      label: "Alătură-te martorilor",
+      titleLine1: "Veniți și vedeți.",
+      titleLine2: "Apoi rugați-vă. Apoi răspândiți.",
+      body:
+        "O atingere. Notificări pe care veți fi bucuroși să le primiți. Un loc în primul rând la ceea ce face Dumnezeu printre romi.",
+      primary: "URMĂREȘTE @ROMAMISSIONEU",
+      shareLabel: "SAU INVITĂ UN PRIETEN",
+      shareWhatsapp: "Distribuie pe WhatsApp",
+      shareTelegram: "Distribuie pe Telegram",
+      scripture:
+        "„Veniți și vedeți lucrurile lui Dumnezeu, Cel înfricoșător în sfaturi mai mult decât fiii oamenilor.”",
+      scriptureRef: "Psalmul 65:5",
     },
   },
 };
