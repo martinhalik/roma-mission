@@ -14,9 +14,6 @@ import type { SocialPost } from "@/lib/social-feed";
 const TELEGRAM_URL = "https://t.me/romamissioneu";
 const INSTAGRAM_URL = "https://www.instagram.com/bohjezivy/";
 
-const POST_KEYS = ["post1", "post2", "post3", "post4", "post5", "post6"] as const;
-type PostKey = (typeof POST_KEYS)[number];
-
 const PILLARS = [
   {
     Icon: HandHeart,
@@ -34,16 +31,6 @@ const PILLARS = [
     bodyKey: "activity.why.pillarShareBody",
   },
 ] as const;
-
-const STAT_TILES = [
-  { valueKey: "activity.stats.stat1Value", labelKey: "activity.stats.stat1Label", subKey: "activity.stats.stat1Sub" },
-  { valueKey: "activity.stats.stat2Value", labelKey: "activity.stats.stat2Label", subKey: "activity.stats.stat2Sub" },
-  { valueKey: "activity.stats.stat3Value", labelKey: "activity.stats.stat3Label", subKey: "activity.stats.stat3Sub" },
-  { valueKey: "activity.stats.stat4Value", labelKey: "activity.stats.stat4Label", subKey: "activity.stats.stat4Sub" },
-] as const;
-
-const WITNESS_KEYS = ["anna", "thomas", "eleni"] as const;
-type WitnessKey = (typeof WITNESS_KEYS)[number];
 
 function TelegramIcon({ size = 18 }: { size?: number }) {
   return (
@@ -390,31 +377,6 @@ function InstagramIconLucide({ size = 18 }: { size?: number }) {
   return <Instagram size={size} aria-hidden="true" />;
 }
 
-function StaticPostCard({ postKey }: { postKey: PostKey }) {
-  const { t } = useTranslation();
-  return (
-    <article className="bg-[var(--bg-card)] border border-[var(--border-default)] p-5 md:p-6 hover:border-[var(--gold)] transition-colors flex flex-col gap-3">
-      <div className="flex items-center gap-2">
-        <span className="text-[10px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase">
-          {t(`activity.channel.posts.${postKey}.place`)}
-        </span>
-        <span className="text-[var(--border-strong)]">·</span>
-        <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase">
-          {t(`activity.channel.posts.${postKey}.date`)}
-        </span>
-      </div>
-      <p className="text-[14px] md:text-[15px] text-[var(--text-primary)] leading-[1.65]">
-        {t(`activity.channel.posts.${postKey}.body`)}
-      </p>
-      <div className="flex items-center gap-2 mt-auto pt-4 border-t border-[var(--border-default)]">
-        <Eye size={12} className="text-[var(--text-muted)]" />
-        <span className="text-[11px] text-[var(--text-muted)]">
-          {t(`activity.channel.posts.${postKey}.views`)} {t("activity.channel.viewLabel")}
-        </span>
-      </div>
-    </article>
-  );
-}
 
 function HeroPreviewPost({ post }: { post: SocialPost }) {
   const { locale, t } = useTranslation();
@@ -468,53 +430,11 @@ function HeroPreviewPost({ post }: { post: SocialPost }) {
   );
 }
 
-function StaticHeroPreviewItem({ postKey }: { postKey: PostKey }) {
-  const { t } = useTranslation();
-  return (
-    <div className="p-4 border-b border-[var(--border-default)] last:border-b-0">
-      <div className="flex items-center gap-2 mb-1.5">
-        <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--gold)] uppercase">
-          {t(`activity.channel.posts.${postKey}.place`)}
-        </span>
-        <span className="text-[var(--border-strong)] text-[10px]">·</span>
-        <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-          {t(`activity.channel.posts.${postKey}.date`)}
-        </span>
-      </div>
-      <p className="text-[12px] text-[var(--text-primary)] leading-[1.5] line-clamp-3">
-        {t(`activity.channel.posts.${postKey}.body`)}
-      </p>
-    </div>
-  );
-}
-
-function WitnessCard({ witnessKey }: { witnessKey: WitnessKey }) {
-  const { t } = useTranslation();
-  return (
-    <div className="bg-[var(--bg-card)] border border-[var(--border-default)] p-6 md:p-8 flex flex-col gap-4">
-      <span className="font-georgia text-[40px] text-[var(--gold)] leading-none">&ldquo;</span>
-      <blockquote className="font-georgia text-[16px] md:text-[17px] text-[var(--text-primary)] leading-[1.55] italic">
-        {t(`activity.witnesses.items.${witnessKey}.quote`)}
-      </blockquote>
-      <div className="mt-2 pt-4 border-t border-[var(--border-default)]">
-        <p className="text-[13px] font-bold text-[var(--text-primary)]">
-          {t(`activity.witnesses.items.${witnessKey}.author`)}
-        </p>
-        <p className="text-[11px] text-[var(--text-muted)] mt-1">
-          {t(`activity.witnesses.items.${witnessKey}.context`)}
-        </p>
-      </div>
-    </div>
-  );
-}
-
 interface ActivityPageProps {
   posts?: SocialPost[];
   telegramStats?: TelegramChannelStats;
   instagramStats?: InstagramChannelStats;
 }
-
-const FALLBACK_SUBSCRIBER_COUNT = "1,200+";
 
 function formatCount(n: number | null): string | null {
   if (n === null || n === undefined) return null;
@@ -535,7 +455,7 @@ export default function ActivityPage({
     (p) => p.source === "telegram" && !!p.imageUrl
   );
   const feedPosts = featuredPost ? posts.filter((p) => p.id !== featuredPost.id) : posts;
-  const subscriberCount = telegramStats?.subscribers ?? FALLBACK_SUBSCRIBER_COUNT;
+  const subscriberCount = telegramStats?.subscribers ?? null;
   const instagramFollowers = formatCount(instagramStats?.followers ?? null);
 
   return (
@@ -570,16 +490,18 @@ export default function ActivityPage({
               {t("activity.hero.subtitle")}
             </p>
 
-            <div className="inline-flex items-center gap-3 self-start px-4 py-2.5 bg-[var(--bg-card)] border border-[var(--border-default)] rounded-full">
-              <div className="flex -space-x-2">
-                <div className="w-6 h-6 rounded-full bg-[var(--gold)] border-2 border-[var(--bg-card)]" />
-                <div className="w-6 h-6 rounded-full bg-[var(--cream)] border-2 border-[var(--bg-card)]" />
-                <div className="w-6 h-6 rounded-full bg-[var(--bg-elevated)] border-2 border-[var(--bg-card)]" />
+            {subscriberCount && (
+              <div className="inline-flex items-center gap-3 self-start px-4 py-2.5 bg-[var(--bg-card)] border border-[var(--border-default)] rounded-full">
+                <div className="flex -space-x-2">
+                  <div className="w-6 h-6 rounded-full bg-[var(--gold)] border-2 border-[var(--bg-card)]" />
+                  <div className="w-6 h-6 rounded-full bg-[var(--cream)] border-2 border-[var(--bg-card)]" />
+                  <div className="w-6 h-6 rounded-full bg-[var(--bg-elevated)] border-2 border-[var(--bg-card)]" />
+                </div>
+                <span className="text-[12px] text-[var(--text-secondary)]">
+                  {t("activity.hero.subscriberBadge", { count: subscriberCount })}
+                </span>
               </div>
-              <span className="text-[12px] text-[var(--text-secondary)]">
-                {t("activity.hero.subscriberBadge", { count: subscriberCount })}
-              </span>
-            </div>
+            )}
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 mt-2">
               <a
@@ -621,9 +543,11 @@ export default function ActivityPage({
                   <p className="text-[14px] font-bold text-[var(--text-primary)] truncate">
                     {t("activity.channel.channelName")}
                   </p>
-                  <p className="text-[11px] text-[var(--text-muted)] truncate">
-                    {t("activity.channel.memberCount", { count: subscriberCount })}
-                  </p>
+                  {subscriberCount && (
+                    <p className="text-[11px] text-[var(--text-muted)] truncate">
+                      {t("activity.channel.memberCount", { count: subscriberCount })}
+                    </p>
+                  )}
                 </div>
                 <div className="flex items-center gap-1 px-2 py-1 bg-[var(--gold)]/15 rounded">
                   <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
@@ -634,11 +558,16 @@ export default function ActivityPage({
               </div>
 
               <div className="flex flex-col">
-                {hasRealPosts
-                  ? heroPosts.map((p) => <HeroPreviewPost key={p.id} post={p} />)
-                  : POST_KEYS.slice(0, 3).map((k) => (
-                      <StaticHeroPreviewItem key={k} postKey={k} />
-                    ))}
+                {hasRealPosts ? (
+                  heroPosts.map((p) => <HeroPreviewPost key={p.id} post={p} />)
+                ) : (
+                  <div className="p-6 flex flex-col items-center gap-3 text-center">
+                    <TelegramIcon size={24} />
+                    <p className="text-[12px] text-[var(--text-muted)] leading-[1.5]">
+                      {t("activity.channel.intro")}
+                    </p>
+                  </div>
+                )}
               </div>
 
               <div className="grid grid-cols-2 bg-[var(--bg-elevated)] border-t border-[var(--border-default)]">
@@ -683,7 +612,7 @@ export default function ActivityPage({
                 Telegram
               </p>
               <p className="font-georgia text-[32px] md:text-[40px] text-[var(--gold)] leading-none mt-1">
-                {subscriberCount}
+                {subscriberCount ?? "—"}
               </p>
               <p className="text-[11px] md:text-[12px] text-[var(--text-secondary)] mt-1.5 truncate">
                 @romamissioneu · {t("activity.stats.stat1Sub")}
@@ -737,11 +666,29 @@ export default function ActivityPage({
 
         {featuredPost && <FeaturedPostCard post={featuredPost} />}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-          {hasRealPosts
-            ? feedPosts.map((p) => <SocialPostCard key={p.id} post={p} />)
-            : POST_KEYS.map((k) => <StaticPostCard key={k} postKey={k} />)}
-        </div>
+        {hasRealPosts ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+            {feedPosts.map((p) => (
+              <SocialPostCard key={p.id} post={p} />
+            ))}
+          </div>
+        ) : (
+          <div className="bg-[var(--bg-card)] border border-[var(--border-default)] p-10 md:p-16 flex flex-col items-center text-center gap-5">
+            <span className="font-georgia text-[48px] text-[var(--gold)] leading-none">☦</span>
+            <p className="text-[16px] md:text-[18px] text-[var(--text-secondary)] leading-[1.6] max-w-[480px]">
+              {t("activity.channel.intro")}
+            </p>
+            <a
+              href={TELEGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
+            >
+              <TelegramIcon size={18} />
+              {t("activity.hero.ctaJoin")}
+            </a>
+          </div>
+        )}
 
         <div className="flex justify-center mt-10 md:mt-12">
           <a
@@ -787,56 +734,9 @@ export default function ActivityPage({
         </div>
       </section>
 
-      {/* ── Stats ── */}
-      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
-        <div className="flex flex-col gap-4 items-center text-center max-w-[640px] mx-auto mb-10 md:mb-14">
-          <SectionLabel text={t("activity.stats.label")} />
-          <h2 className="text-[30px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            {t("activity.stats.title")}
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-          {STAT_TILES.map(({ valueKey, labelKey, subKey }, i) => {
-            const overrideValue = i === 0 && telegramStats?.subscribers ? telegramStats.subscribers : null;
-            return (
-              <div
-                key={valueKey}
-                className="bg-[var(--bg-card)] border border-[var(--border-default)] p-6 md:p-8 flex flex-col gap-2"
-              >
-                <p className="font-georgia text-[40px] md:text-[56px] text-[var(--gold)] leading-none">
-                  {overrideValue ?? t(valueKey)}
-                </p>
-                <p className="text-[12px] md:text-[13px] font-bold tracking-[1px] text-[var(--text-primary)] uppercase mt-2">
-                  {t(labelKey)}
-                </p>
-                <p className="text-[11px] md:text-[12px] text-[var(--text-muted)]">
-                  {t(subKey)}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ── Witnesses ── */}
-      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
-        <div className="flex flex-col gap-4 max-w-[640px] mb-10 md:mb-14">
-          <SectionLabel text={t("activity.witnesses.label")} />
-          <h2 className="text-[30px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            {t("activity.witnesses.title")}
-          </h2>
-          <p className="text-[15px] md:text-[17px] text-[var(--text-secondary)] leading-[1.6]">
-            {t("activity.witnesses.intro")}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-          {WITNESS_KEYS.map((k) => (
-            <WitnessCard key={k} witnessKey={k} />
-          ))}
-        </div>
-      </section>
+      {/* Stats and witness sections intentionally omitted — only verified
+          content shipped to /live. Re-add when real subscriber testimonials
+          or verifiable counts are provided. */}
 
       {/* ── Final CTA ── */}
       <section className="relative px-5 md:px-[120px] py-20 md:py-[120px] bg-[linear-gradient(180deg,var(--warm-bg)_0%,var(--bg-primary)_100%)] overflow-hidden">
