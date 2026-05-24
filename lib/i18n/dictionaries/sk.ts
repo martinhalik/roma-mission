@@ -6,6 +6,7 @@ const sk: Dictionary = {
     locations: "LOKALITY",
     media: "MÉDIÁ",
     stories: "PRÍBEHY",
+    heritage: "DEDIČSTVO",
     share: "ZDIEĽAŤ",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktujte nás na WhatsApp",
@@ -763,6 +764,180 @@ const sk: Dictionary = {
       },
     },
   },
+  heritage: {
+    hero: {
+      label: "Interaktívne múzeum",
+      titleLine1: "Spoločný",
+      titleLine2: "tisícročný príbeh",
+      subtitle:
+        "Rómovia neprišli do Európy ako cudzinci pre vieru. Vkročili do kresťanského sveta — a kresťanský svet kráčal s nimi. Toto je dlhý, ešte neuzavretý príbeh o tom, ako sa Rómovia stali pravoslávnymi katechumenmi a čo si dodnes nesú so sebou.",
+      shareLabel: "Zdieľať toto múzeum",
+      scrollHint: "Začať cestu",
+    },
+    toc: {
+      label: "Expozície",
+      origins: "Pôvod",
+      timeline: "Časová os",
+      faith: "Spoločná viera",
+      traditions: "Živé tradície",
+      today: "Rómovia dnes",
+      continue: "Pokračovať",
+    },
+    origins: {
+      label: "Expozícia 01 — Pôvod",
+      title: "Z Indie do srdca kresťanstva",
+      intro:
+        "Okolo 11. storočia začali skupiny ľudí hovoriacich indoárijským jazykom putovať na západ zo severozápadnej Indie. Hovorí o tom lingvistika, nie legenda: rómčina je sestrou hindčiny a paňdžábčiny a ďalej ju formovali dlhé pobyty v perzských a arménskych krajinách skôr, než sa vôbec dotkla Európy.",
+      body1:
+        "Keď Rómovia dosiahli Byzantskú ríšu, putovali už generácie. Ríša bola kresťanská; mestá boli plné chrámov; nových príchodzích privítali (a zaznamenali) menom — Athinganoi po grécky, koreň neskorších foriem ako Tsigani a Zigeuner.",
+      body2:
+        "Pozoruhodné je, čo nasledovalo. Počas stáročí putovania do pravoslávnych krajín si Rómovia neudržali vlastné samostatné náboženstvo. Prijali vieru ľudí, ktorí ich prijali — a najhlbšie prijatie bolo pravoslávne.",
+      factCards: {
+        a: {
+          stat: "11. stor.",
+          title: "Prvá migrácia",
+          body: "Predkovia Rómov opúšťajú indický subkontinent — pravdepodobne Pandžáb a Rádžastán.",
+        },
+        b: {
+          stat: "1100 – 1300",
+          title: "Byzantské roky",
+          body: "Stáročia strávené v grécky hovoriacom kresťanskom Východe. Rómčina prijíma stovky gréckych slov, ktoré sa dodnes denne používajú.",
+        },
+        c: {
+          stat: "1300+",
+          title: "Do Európy",
+          body: "Doložení na Balkáne, potom v Uhorsku, českých krajinách, nemeckých kniežatstvách a až v Španielsku a Británii.",
+        },
+      },
+    },
+    timeline: {
+      label: "Expozícia 02 — Časová os",
+      title: "Prechádzka stáročiami",
+      intro:
+        "Otvorte každú éru a uvidíte svet, do ktorého Rómovia vstupovali — a Cirkev, ktorá kráčala s nimi.",
+      eras: {
+        era1: {
+          range: "1000 — 1300",
+          heading: "Z Indie do kresťanského Východu",
+          body: "Predkovia Rómov prechádzajú Perziou, Arménskom a dosahujú Byzantskú ríšu. Grécki kňazi krstia. Grécke slová — drom (cesta), papin (hus), klidi (kľúč) — natrvalo vstupujú do rómčiny.",
+        },
+        era2: {
+          range: "1300 — 1500",
+          heading: "Naprieč Balkánom",
+          body: "Rómovia sa usádzajú v srbských, bulharských, macedónskych a rumunských krajinách — všetkých pravoslávnych. Monastiere a farnosti zaznamenávajú ich krsty, sobáše a pohreby. Slava, Pascha a cirkevný kalendár vstupujú do rómskeho rodinného života.",
+        },
+        era3: {
+          range: "1500 — 1800",
+          heading: "Impéria a migrácia",
+          body: "Za Osmanov sa pravoslávna identita stáva v miletskom systéme znakom príslušnosti. Rómovia v osmanskej Rumélii nosia pravoslávne mená a patrónov svätých. Rumunskí Rómovia žijú stáročia v otroctve — no rovnaká liturgia sa spieva nad otrokom aj nad slobodným.",
+        },
+        era4: {
+          range: "1800 — 1945",
+          heading: "Emancipácia a katastrofa",
+          body: "Otroctvo vo Valašsku a v Moldavsku je zrušené (1856). Rómovia spievajú v pravoslávnych zboroch, slúžia ako kumovia (krstní otcovia) a pochovávajú svojich mŕtvych pod osemcípym krížom. Potom prichádza Porajmos — rómska genocída druhej svetovej vojny.",
+        },
+        era5: {
+          range: "1945 — dodnes",
+          heading: "Obnova pod krížom",
+          body: "Za komunizmu je náboženstvo zatlačené do podzemia; rómske rodiny ukrývajú ikony v skriniach. Po roku 1989 sa pravoslávna Cirkev vracia do rómskych dedín — pomaly, nerovnomerne a často iba tam, kde kňaz zostane. To je príbeh, vnútri ktorého sa stále nachádzame.",
+        },
+      },
+    },
+    faith: {
+      label: "Expozícia 03 — Spoločná viera",
+      title: "Čo máme spoločné",
+      intro:
+        "Kdekoľvek sa Rómovia usadili v pravoslávnych krajinách, nezostali mimo viery — vstúpili do nej, dávali deťom mená jej svätých a tvorili tradície, ktoré sú každému pravoslávnemu kresťanovi nápadne známe.",
+      catechumenLabel: "Národ katechumenov",
+      catechumenBody:
+        "Rómovia sú pravoslávnymi katechumenmi na dlhej ceste. Pravoslávie prijali v takej podobe, v akej mohli — prepletené s ich vlastnými zvykmi, niekedy zmiešané so starými lžami, často bez blízkej farnosti, ktorá by ich vyučovala. Nie sú mimo Cirkvi. Sú v nej, stále sa učia, stále sa snažia zbaviť lží, stále sú obnovovaní. To je dielo tejto misie: kráčať s nimi po ceste.",
+      columns: {
+        byzantium: {
+          title: "Z Byzancie",
+          body: "Grécky hovoriaca Byzancia bola prvým dlhým domovom Rómov v kresťanskom svete. Rómčina dodnes nesie grécke podstatné mená. Rómske deti sú dodnes krstené menami ako Yiorgos, Mihalis, Maria — pravoslávnymi menami, nie indickými.",
+        },
+        balkans: {
+          title: "So Slovanmi",
+          body: "V Srbsku, Macedónsku, Bulharsku a Ukrajine si Rómovia uchovávajú Slavu — domáci sviatok rodinného patróna svätca. Zapaľujú sviečku, žehnajú kolač, prinášajú koljivo. Nie sú to požičané zvyky; je to rodinná tradícia stará stáročia.",
+        },
+        liturgy: {
+          title: "Pod jedným oltárom",
+          body: "Pravoslávna liturgia v rómskej dedine na východnom Slovensku a pravoslávna liturgia v gréckom monastieri používajú tie isté slová, tie isté gestá, ten istý Kríž. Eucharistia sa nemení podľa etnicity. To je základ tejto misie.",
+        },
+      },
+      pullQuote:
+        "Neboli sme obrátení za jednu hodinu. Boli sme obrátení pomaly, v tisíci krstoch, počas tisíc rokov — a obraciame sa aj dnes.",
+      pullQuoteAttribution: "Rómsky starešina, farnosť Markovce",
+    },
+    traditions: {
+      label: "Expozícia 04 — Živé tradície",
+      title: "Šesť vecí, ktoré nájdete v rómskom pravoslávnom dome",
+      intro:
+        "Mnohé rómske zvyky vyrastali stáročia spolu s pravoslávnou praxou. Sú blízko Cirkvi, pretože tak dlho žili vedľa Cirkvi.",
+      tapHint: "Kliknite na kartu pre viac",
+      cards: {
+        slava: {
+          title: "Slava",
+          subtitle: "Domáci svätý",
+          body: "Rómske pravoslávne rodiny na západnom Balkáne si uchovávajú Slavu: jedného menovaného svätého, ktorého ctí celá domácnosť a ktorý prechádza z otca na syna. Zapáli sa sviečka, kňaz žehná chlieb kolač, rodina spolu jedáva.",
+        },
+        feastDays: {
+          title: "Sviatky",
+          subtitle: "Kalendár srdca",
+          body: "Sv. Juraj (Đurđevdan), Pascha, Zosnutie Bohorodičky, sv. Demeter, Narodenie Pána — rómske rodiny v pravoslávnej Európe si riadia rok podľa cirkevného kalendára, nie občianskeho.",
+        },
+        baptism: {
+          title: "Krst a kum",
+          subtitle: "Vyvolená rodina",
+          body: "Kum — krstný otec — nie je hosťom na rómskom krste, je rodinou. Kum dieťaťa často prevyšuje pokrvných strýkov. Toto puto je posvätné a celoživotné, spečatené pri krstiteľnici pred ikonami.",
+        },
+        music: {
+          title: "Hudba",
+          subtitle: "Kde sa stretávajú dve tradície",
+          body: "Rómski hudobníci stáročia hrávali na pravoslávnych svadbách, krstoch a farských sviatkoch — od gréckych panigiria cez srbské svadbe po rumunské hramuri. Svadobná kapela a chrámový spev vyrastali jeden vedľa druhého.",
+        },
+        icons: {
+          title: "Ikony v dome",
+          subtitle: "Kút, kde prebýva Boh",
+          body: "Vojdite do domu rómskej rodiny v pravoslávnych krajinách a nájdete ikonu — Bohorodičku, Krista, rodinného svätca — zavesenú tam, kde ju každý vidí, často s malou olejovou lampičkou pod ňou.",
+        },
+        language: {
+          title: "Rómsky jazyk",
+          subtitle: "Knižnica ciest",
+          body: "Rómčina v sebe nesie cestu: sanskritské korene, perzské a arménske výpožičky, byzantskú gréčtinu, potom slovanské, rumunské a nemecké slová. Samotný jazyk je archívom ľudí, ktorí Rómov prijali — mnohí z nich pravoslávni.",
+        },
+      },
+    },
+    today: {
+      label: "Expozícia 05 — Rómovia dnes",
+      title: "Pravoslávne kresťanstvo je stále vierou väčšiny európskych Rómov",
+      intro:
+        "Z približne 10 miliónov Rómov v Európe väčšina žije v krajinách s pravoslávnou väčšinou. Čísla sú odhady — rómske populácie sú systematicky podhodnocované — no obraz je jednoznačný.",
+      footnote:
+        "Populačné údaje: odhady Rady Európy. Poznámky o stave od miestneho kléru a misionárov.",
+      countries: {
+        ro: "Najväčšia rómska populácia v Európe. Mnohé rómske dediny majú plné pravoslávne farnosti; mnohé ďalšie ešte žiadne nemajú.",
+        bg: "Rómovia tvoria približne 10 % obyvateľstva. Pravoslávna identita je silná; cirkevná prax sa medzi dedinami veľmi líši.",
+        rs: "Tunajší Rómovia si uchovávajú Slavu a cirkevný kalendár — no existuje len hŕstka samostatných rómskych farností.",
+        mk: "Šuto Orizari pri Skopje je najväčšou rómskou obcou na svete. Pole misie je dokorán otvorené.",
+        gr: "Grécki Rómovia sú stáročia pravoslávne pokrstení. Väčšina však žije bez vlastného aktívneho farského života.",
+        ua: "Desaťtisíce Rómov boli vysídlené vojnou. Mnohí nachádzajú prvé skutočné cirkevné prijatie vo farnostiach v exile.",
+        ru: "Ruskí Rómovia majú pravoslávne korene od 18. storočia. Ruská pravoslávna cirkev uznáva rómskeho patróna svätého.",
+        sk: "Tu žije naša misia. Aktívne pravoslávne rómske farnosti v Klenovci, Markovciach, Kačanove, Mútniku — a stále rastú.",
+      },
+    },
+    closing: {
+      label: "Pokračujte v príbehu",
+      title: "Toto múzeum je zároveň misiou.",
+      body: "To, čím ste práve prešli, nie je dokončená história. Väčšina rómskych dedín v pravoslávnej Európe stále nemá vlastnú aktívnu farnosť. Sú katechumenmi bez učiteľa v dedine. Toto je dielo, ktoré robíme — jeden kňaz, jedna kaplnka, jeden krst po druhom.",
+      ctaMission: "Pozrieť aktívnu misiu",
+      ctaSupport: "Podporiť dielo",
+    },
+    shareNudge: {
+      text: "Ak vás tento príbeh pohol, najužitočnejšie, čo môžete teraz urobiť, je zdieľať ho s niekým.",
+      shareLabel: "Zdieľať toto múzeum",
+    },
+  },
   getInvolved: {
     hero: {
       label: "Zapojte sa",
@@ -1129,6 +1304,14 @@ const sk: Dictionary = {
       title: "Médiá — Christianská rómska misia",
       description:
         "Dokumenty, rozhovory a svedectvá o pravoslávnej misii medzi Rómami — prinesenie evanjelia najväčšej nedosiahnutej menšine v Európe.",
+    },
+    heritage: {
+      title: "Múzeum rómskeho dedičstva — spoločný pravoslávny príbeh",
+      description:
+        "Interaktívne múzeum 1 000 rokov rómskych dejín a hlbokého pravoslávneho kresťanského dedičstva, ktoré Rómovia zdieľajú s Grékmi, Srbmi, Rumunmi, Rusmi a balkánskymi Slovanmi.",
+      ogTitle: "1 000 rokov rómskej a pravoslávnej histórie — interaktívne múzeum",
+      ogDescription:
+        "Od Byzantskej ríše po dnešné slávovské sviečky a krsty vo farnostiach: dlhá spoločná cesta Rómov ako pravoslávnych katechumenov.",
     },
     getInvolved: {
       title: "Zapojte sa — Christianská rómska misia",

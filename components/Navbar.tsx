@@ -7,15 +7,16 @@ import LocaleLink from "@/components/LocaleLink";
 import { useTranslation } from "@/components/LanguageProvider";
 import type { RouteKey } from "@/lib/i18n/routes";
 
-type Page = "home" | "mission" | "locations" | "media" | "stories" | "get-involved" | "our-story";
+type Page = "home" | "mission" | "locations" | "media" | "stories" | "heritage" | "get-involved" | "our-story";
 
 interface NavbarProps {
   activePage?: Page;
 }
 
-const navLinks: { key: "mission" | "locations" | "media" | "stories"; routeKey: RouteKey; page: Page }[] = [
+const navLinks: { key: "mission" | "locations" | "media" | "stories" | "heritage"; routeKey: RouteKey; page: Page }[] = [
   { key: "mission", routeKey: "mission", page: "mission" },
   { key: "locations", routeKey: "locations", page: "locations" },
+  { key: "heritage", routeKey: "heritage", page: "heritage" },
   { key: "media", routeKey: "media", page: "media" },
   { key: "stories", routeKey: "stories", page: "stories" },
 ];

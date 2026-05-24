@@ -6,6 +6,7 @@ const ro: Dictionary = {
     locations: "LOCAȚII",
     media: "MEDIA",
     stories: "POVEȘTI",
+    heritage: "MOȘTENIRE",
     share: "DISTRIBUIE",
     contact: "CONTACT",
     contactWhatsapp: "Contactați-ne pe WhatsApp",
@@ -768,6 +769,180 @@ const ro: Dictionary = {
       },
     },
   },
+  heritage: {
+    hero: {
+      label: "Muzeu interactiv",
+      titleLine1: "O poveste comună",
+      titleLine2: "de o mie de ani",
+      subtitle:
+        "Romii nu au ajuns în Europa ca străini de credință. Au pășit într-o lume creștină — iar o lume creștină a pășit alături de ei. Aceasta este povestea lungă, încă neîncheiată, a modului în care romii au devenit catehumeni ortodocși și a ceea ce încă poartă cu ei.",
+      shareLabel: "Distribuie acest muzeu",
+      scrollHint: "Începe călătoria",
+    },
+    toc: {
+      label: "Expoziții",
+      origins: "Origini",
+      timeline: "Cronologie",
+      faith: "Credință comună",
+      traditions: "Tradiții vii",
+      today: "Romii astăzi",
+      continue: "Continuă",
+    },
+    origins: {
+      label: "Expoziția 01 — Origini",
+      title: "Din India în inima creștinătății",
+      intro:
+        "În jurul secolului al XI-lea, grupuri de oameni vorbind o limbă indo-ariană au început să se deplaseze spre vest din nord-vestul Indiei. Lingvistica, nu legenda, ne spune acest lucru: limba romani este o soră a hindi și a punjabi, modelată în continuare de lungile sale popasuri în ținuturile persane și armene înainte de a atinge vreodată Europa.",
+      body1:
+        "Până când romii au ajuns la Imperiul Bizantin, călătoriseră de generații. Imperiul era creștin; orașele erau pline de biserici; nou-veniții au fost primiți (și consemnați) cu nume — Athinganoi în greacă, rădăcina formelor ulterioare precum Țigani și Zigeuner.",
+      body2:
+        "Remarcabil este ceea ce a urmat. De-a lungul secolelor de migrație în ținuturi ortodoxe, romii nu și-au păstrat o religie proprie separată. Au primit credința celor care i-au primit — iar cea mai profundă primire a fost cea ortodoxă.",
+      factCards: {
+        a: {
+          stat: "sec. XI",
+          title: "Prima migrație",
+          body: "Strămoșii romilor părăsesc subcontinentul indian — probabil Punjab și Rajasthan.",
+        },
+        b: {
+          stat: "1100–1300",
+          title: "Anii bizantini",
+          body: "Secole petrecute în Răsăritul creștin grecofon. Limba romani absoarbe sute de cuvinte grecești încă în uz zilnic.",
+        },
+        c: {
+          stat: "1300+",
+          title: "În Europa",
+          body: "Documentați în Balcani, apoi în Ungaria, Țările Cehe, principatele germane și până în Spania și Britania.",
+        },
+      },
+    },
+    timeline: {
+      label: "Expoziția 02 — Cronologie",
+      title: "O plimbare prin secole",
+      intro:
+        "Deschideți fiecare epocă pentru a vedea lumea în care romii pășeau — și Biserica care mergea alături de ei.",
+      eras: {
+        era1: {
+          range: "1000 — 1300",
+          heading: "Din India, în Răsăritul creștin",
+          body: "Strămoșii romilor traversează Persia, Armenia și ajung la Imperiul Bizantin. Preoții greci botează. Cuvinte grecești — drom (drum), papin (gâscă), klidi (cheie) — intră pentru totdeauna în limba romani.",
+        },
+        era2: {
+          range: "1300 — 1500",
+          heading: "Prin Balcani",
+          body: "Romii se așază în ținuturi sârbești, bulgărești, macedonene și românești — toate ortodoxe. Mănăstirile și parohiile consemnează botezurile, cununiile și înmormântările lor. Slava, Paștele și calendarul bisericesc intră în viața de familie a romilor.",
+        },
+        era3: {
+          range: "1500 — 1800",
+          heading: "Imperiu și migrație",
+          body: "Sub otomani, identitatea ortodoxă devine un semn de apartenență în sistemul mileturilor. Romii din Rumelia otomană poartă nume ortodoxe și sfinți ocrotitori. Romii din Țările Române trăiesc secole de robie — dar aceeași Liturghie este cântată deopotrivă peste rob și peste liber.",
+        },
+        era4: {
+          range: "1800 — 1945",
+          heading: "Emancipare și catastrofă",
+          body: "Robia din Țara Românească și Moldova este abolită (1856). Romii cântă în corurile ortodoxe, slujesc drept kumovi (nași) și își îngroapă morții sub crucea cu opt brațe. Apoi vine Porajmos — genocidul romilor din al Doilea Război Mondial.",
+        },
+        era5: {
+          range: "1945 — astăzi",
+          heading: "Reconstrucție sub Cruce",
+          body: "Sub comunism, religia este împinsă în clandestinitate; familiile rome țin icoanele ascunse în dulapuri. După 1989, Biserica Ortodoxă se întoarce în satele rome — lent, neuniform și adesea doar acolo unde un preot rămâne. Aceasta este povestea în care încă ne aflăm.",
+        },
+      },
+    },
+    faith: {
+      label: "Expoziția 03 — Credință comună",
+      title: "Ce avem în comun",
+      intro:
+        "Oriunde s-au așezat romii în ținuturile ortodoxe, nu au stat în afara credinței — au intrat în ea, și-au numit copiii după sfinții ei și au modelat tradiții care îi par izbitor de familiare oricărui creștin ortodox.",
+      catechumenLabel: "Un popor de catehumeni",
+      catechumenBody:
+        "Romii sunt catehumeni ortodocși pe un drum lung. Au primit Ortodoxia în forma în care au putut — împletită cu propriile obiceiuri, uneori amestecată cu minciuni vechi, adesea fără o parohie în apropiere care să-i învețe. Ei nu sunt în afara Bisericii. Sunt înăuntru, încă învățând, încă luptându-se să lase minciunile în urmă, încă fiind înnoiți. Aceasta este lucrarea acestei misiuni: să meargă pe drum împreună cu ei.",
+      columns: {
+        byzantium: {
+          title: "Din Bizanț",
+          body: "Bizanțul grecofon a fost prima casă lungă a romilor în lumea creștină. Limba romani încă poartă substantive grecești. Copiii romi sunt încă botezați cu nume precum Yiorgos, Mihalis, Maria — nume ortodoxe, nu indiene.",
+        },
+        balkans: {
+          title: "Cu slavii",
+          body: "În Serbia, Macedonia, Bulgaria și Ucraina, romii păstrează Slava — sărbătoarea casei a sfântului ocrotitor al familiei. Aprind lumânarea, binecuvântează kolač-ul, aduc koljivo. Acestea nu sunt obiceiuri împrumutate; sunt tradiție de familie, veche de secole.",
+        },
+        liturgy: {
+          title: "Sub un singur altar",
+          body: "O Liturghie ortodoxă într-un sat rom din estul Slovaciei și o Liturghie ortodoxă într-o mănăstire grecească folosesc aceleași cuvinte, aceleași gesturi, aceeași Cruce. Euharistia nu se schimbă în funcție de etnie. Aceasta este temelia acestei misiuni.",
+        },
+      },
+      pullQuote:
+        "Nu am fost convertiți într-o singură oră. Am fost convertiți încet, în o mie de botezuri, de-a lungul a o mie de ani — și suntem convertiți și astăzi.",
+      pullQuoteAttribution: "Bătrân rom, parohia Markovce",
+    },
+    traditions: {
+      label: "Expoziția 04 — Tradiții vii",
+      title: "Șase lucruri pe care le veți găsi într-o casă ortodoxă romă",
+      intro:
+        "Multe obiceiuri rome au crescut împreună cu practica ortodoxă de-a lungul secolelor. Sunt aproape de Biserică pentru că au trăit atâta vreme alături de ea.",
+      tapHint: "Atingeți orice card pentru a citi mai mult",
+      cards: {
+        slava: {
+          title: "Slava",
+          subtitle: "Sfântul casei",
+          body: "Familiile rome ortodoxe din vestul Balcanilor păstrează o Slavă: un singur sfânt, ținut de întreaga gospodărie, transmis din tată în fiu. Lumânarea este aprinsă, preotul binecuvântează pâinea kolač, familia mănâncă împreună.",
+        },
+        feastDays: {
+          title: "Praznice",
+          subtitle: "Calendarul inimii",
+          body: "Sf. Gheorghe (Đurđevdan), Paștele, Adormirea Maicii Domnului, Sf. Dimitrie, Nașterea Domnului — familiile rome din Europa ortodoxă își rânduiesc anul după calendarul bisericesc, nu după cel civil.",
+        },
+        baptism: {
+          title: "Botezul și kum-ul",
+          subtitle: "Familia aleasă",
+          body: "Kum-ul — nașul — nu este un oaspete la un botez de rom, este familie. Kum-ul unui copil depășește adesea unchii de sânge. Legătura este sfântă și pe viață, pecetluită la cristelniță în fața icoanelor.",
+        },
+        music: {
+          title: "Muzica",
+          subtitle: "Unde se întâlnesc două tradiții",
+          body: "Muzicanții romi au cântat la nunți ortodoxe, la botezuri și la praznice parohiale timp de secole — de la panigiria grecești la svadbe sârbești și la hramuri românești. Tarafurile de nuntă și cântarea bisericească au crescut ușa în ușă.",
+        },
+        icons: {
+          title: "Icoane în casă",
+          subtitle: "Colțul unde locuiește Dumnezeu",
+          body: "Intrați într-o casă de familie romă din ținuturi ortodoxe și veți găsi o icoană — Maica Domnului, Hristos, sfântul familiei — atârnată acolo unde toată lumea o poate vedea, adesea cu o candelă mică ardând dedesubt.",
+        },
+        language: {
+          title: "Limba romani",
+          subtitle: "O bibliotecă de călătorii",
+          body: "Limba romani poartă în ea drumul: rădăcini sanscrite, împrumuturi persane și armene, greacă bizantină, apoi slave, română și germană. Limba însăși este o arhivă a celor care i-au primit pe romi — mulți dintre ei ortodocși.",
+        },
+      },
+    },
+    today: {
+      label: "Expoziția 05 — Romii astăzi",
+      title: "Creștinismul ortodox este încă credința majorității romilor europeni",
+      intro:
+        "Din cei aproximativ 10 milioane de romi din Europa, majoritatea trăiesc în țări cu majoritate ortodoxă. Cifrele sunt estimări — populațiile rome sunt subevaluate sistematic — dar tiparul este de netăgăduit.",
+      footnote:
+        "Cifrele populației: estimări ale Consiliului Europei. Note despre situație de la clerul și misionarii locali.",
+      countries: {
+        ro: "Cea mai mare populație romă din Europa. Multe sate rome au parohii ortodoxe deplin formate; multe altele încă nu au niciuna.",
+        bg: "Romii reprezintă aproximativ 10% din populația țării. Identitatea ortodoxă este puternică; practica bisericească variază mult de la sat la sat.",
+        rs: "Romii de aici păstrează Slava și calendarul bisericesc — dar există doar o mână de parohii rome dedicate.",
+        mk: "Šuto Orizari, lângă Skopje, este cea mai mare municipalitate romă din lume. Misiunea este pe larg deschisă.",
+        gr: "Romii greci sunt botezați ortodocși de secole. Totuși cei mai mulți trăiesc fără o viață parohială proprie activă.",
+        ua: "Zeci de mii de romi strămutați de război. Mulți își găsesc prima primire reală în Biserică în parohiile pentru refugiați.",
+        ru: "Romii ruși își trag rădăcinile ortodoxe din secolul al XVIII-lea. Biserica Ortodoxă Rusă recunoaște un sfânt patron al romilor.",
+        sk: "Aici trăiește misiunea noastră. Parohii ortodoxe rome active în Klenovec, Markovce, Kačanov, Mútnik — și în creștere.",
+      },
+    },
+    closing: {
+      label: "Continuă povestea",
+      title: "Acest muzeu este, de asemenea, o misiune.",
+      body: "Ceea ce ați parcurs nu este o istorie încheiată. Cele mai multe sate rome din Europa ortodoxă încă nu au o parohie activă proprie. Sunt catehumeni fără un învățător în sat. Aceasta este lucrarea pe care o facem — un preot, o capelă, un botez pe rând.",
+      ctaMission: "Vezi misiunea activă",
+      ctaSupport: "Sprijină lucrarea",
+    },
+    shareNudge: {
+      text: "Dacă această poveste v-a mișcat, cel mai util lucru pe care îl puteți face chiar acum este să o împărtășiți cu cineva.",
+      shareLabel: "Distribuie acest muzeu",
+    },
+  },
   getInvolved: {
     hero: {
       label: "Implică-te",
@@ -1136,6 +1311,14 @@ const ro: Dictionary = {
       title: "Media — Misiunea Creștină Romă",
       description:
         "Documentare, interviuri și mărturii despre misiunea ortodoxă printre romi — aducerea Evangheliei celei mai mari minorități neatinse din Europa.",
+    },
+    heritage: {
+      title: "Muzeul Moștenirii Rome — o poveste ortodoxă comună",
+      description:
+        "Un muzeu interactiv al celor 1.000 de ani de istorie romă și al moștenirii creștin-ortodoxe profunde pe care romii o împart cu grecii, sârbii, românii, rușii și slavii din Balcani.",
+      ogTitle: "1.000 de ani de istorie romă și ortodoxă — un muzeu interactiv",
+      ogDescription:
+        "De la Imperiul Bizantin până la lumânările de Slavă și botezurile parohiale de astăzi: drumul lung și comun al romilor ca catehumeni ortodocși.",
     },
     getInvolved: {
       title: "Implică-te — Misiunea Creștină Romă",

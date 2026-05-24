@@ -6,6 +6,7 @@ const de: Dictionary = {
     locations: "STANDORTE",
     media: "MEDIEN",
     stories: "GESCHICHTEN",
+    heritage: "ERBE",
     share: "TEILEN",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktieren Sie uns auf WhatsApp",
@@ -768,6 +769,180 @@ const de: Dictionary = {
       },
     },
   },
+  heritage: {
+    hero: {
+      label: "Interaktives Museum",
+      titleLine1: "Eine gemeinsame",
+      titleLine2: "tausendjährige Geschichte",
+      subtitle:
+        "Die Roma kamen nicht als Fremde des Glaubens nach Europa. Sie traten in eine christliche Welt — und eine christliche Welt ging mit ihnen. Dies ist die lange, unvollendete Geschichte, wie die Roma zu orthodoxen Katechumenen wurden und was sie bis heute tragen.",
+      shareLabel: "Dieses Museum teilen",
+      scrollHint: "Die Reise beginnen",
+    },
+    toc: {
+      label: "Ausstellungen",
+      origins: "Ursprünge",
+      timeline: "Zeitleiste",
+      faith: "Gemeinsamer Glaube",
+      traditions: "Lebendige Traditionen",
+      today: "Die Roma heute",
+      continue: "Weiter",
+    },
+    origins: {
+      label: "Ausstellung 01 — Ursprünge",
+      title: "Von Indien ins Herz der Christenheit",
+      intro:
+        "Um das 11. Jahrhundert begannen Gruppen von Menschen, die eine indoarische Sprache sprachen, aus dem Nordwesten Indiens nach Westen zu ziehen. Linguistik, nicht Legende, sagt uns das: Romani ist eine Schwester von Hindi und Punjabi und wurde weiter geprägt durch lange Aufenthalte in persischen und armenischen Ländern, bevor sie je Europa berührte.",
+      body1:
+        "Als die Roma das Byzantinische Reich erreichten, waren sie schon seit Generationen unterwegs. Das Reich war christlich; die Städte waren voller Kirchen; die Neuankömmlinge wurden namentlich empfangen (und festgehalten) — Athinganoi auf Griechisch, die Wurzel späterer Formen wie Tsigani und Zigeuner.",
+      body2:
+        "Bemerkenswert ist, was dann geschah. Über Jahrhunderte der Wanderung in orthodoxe Länder behielten die Roma keine eigene gesonderte Religion bei. Sie nahmen den Glauben jener an, die sie aufnahmen — und die tiefste Aufnahme war die orthodoxe.",
+      factCards: {
+        a: {
+          stat: "11. Jh.",
+          title: "Erste Migration",
+          body: "Die Vorfahren der Roma verlassen den indischen Subkontinent — wahrscheinlich Punjab und Rajasthan.",
+        },
+        b: {
+          stat: "1100–1300",
+          title: "Byzantinische Jahre",
+          body: "Jahrhunderte im griechischsprachigen christlichen Osten. Romani nimmt Hunderte griechischer Wörter auf, die noch heute täglich gebraucht werden.",
+        },
+        c: {
+          stat: "1300+",
+          title: "Nach Europa",
+          body: "Belegt auf dem Balkan, dann in Ungarn, den böhmischen Ländern, den deutschen Fürstentümern und bis nach Spanien und Britannien.",
+        },
+      },
+    },
+    timeline: {
+      label: "Ausstellung 02 — Zeitleiste",
+      title: "Ein Gang durch die Jahrhunderte",
+      intro:
+        "Öffnen Sie jede Epoche, um die Welt zu sehen, in die die Roma eintraten — und die Kirche, die mit ihnen ging.",
+      eras: {
+        era1: {
+          range: "1000 — 1300",
+          heading: "Aus Indien in den christlichen Osten",
+          body: "Die Vorfahren der Roma überqueren Persien, Armenien und erreichen das Byzantinische Reich. Griechische Priester taufen. Griechische Wörter — drom (Weg), papin (Gans), klidi (Schlüssel) — treten für immer ins Romani ein.",
+        },
+        era2: {
+          range: "1300 — 1500",
+          heading: "Quer durch den Balkan",
+          body: "Die Roma siedeln in serbischen, bulgarischen, mazedonischen und rumänischen Ländern — alle orthodox. Klöster und Pfarreien verzeichnen ihre Taufen, Hochzeiten und Begräbnisse. Slava, Pascha und der Kirchenkalender treten in das Familienleben der Roma ein.",
+        },
+        era3: {
+          range: "1500 — 1800",
+          heading: "Reich und Migration",
+          body: "Unter den Osmanen wird die orthodoxe Identität im Millet-System zum Zeichen der Zugehörigkeit. Die Roma im osmanischen Rumelien tragen orthodoxe Namen und Schutzheilige. Die Roma in den rumänischen Fürstentümern leben Jahrhunderte in Sklaverei — doch dieselbe Liturgie wird über Sklave und Freie gesungen.",
+        },
+        era4: {
+          range: "1800 — 1945",
+          heading: "Emanzipation und Katastrophe",
+          body: "Die Sklaverei in der Walachei und Moldau wird abgeschafft (1856). Roma singen in orthodoxen Chören, dienen als kumovi (Paten) und begraben ihre Toten unter dem achtzackigen Kreuz. Dann kommt der Porajmos — der Genozid an den Roma im Zweiten Weltkrieg.",
+        },
+        era5: {
+          range: "1945 — heute",
+          heading: "Wiederaufbau unter dem Kreuz",
+          body: "Unter dem Kommunismus wird die Religion in den Untergrund gezwungen; Roma-Familien verstecken Ikonen in Schränken. Nach 1989 kehrt die orthodoxe Kirche in Roma-Dörfer zurück — langsam, ungleich und oft nur dort, wo ein Priester bleibt. Das ist die Geschichte, in der wir uns noch immer befinden.",
+        },
+      },
+    },
+    faith: {
+      label: "Ausstellung 03 — Gemeinsamer Glaube",
+      title: "Was wir gemeinsam haben",
+      intro:
+        "Wo immer sich die Roma in orthodoxen Ländern niederließen, standen sie nicht außerhalb des Glaubens — sie traten ein, gaben ihren Kindern Namen seiner Heiligen und formten Traditionen, die jedem orthodoxen Christen auffallend vertraut sind.",
+      catechumenLabel: "Ein Volk von Katechumenen",
+      catechumenBody:
+        "Die Roma sind orthodoxe Katechumenen auf einem langen Weg. Sie haben die Orthodoxie in der Form empfangen, die ihnen möglich war — verwoben mit eigenen Bräuchen, manchmal vermischt mit alten Lügen, oft ohne eine nahe Pfarrei, die sie unterweisen kann. Sie stehen nicht außerhalb der Kirche. Sie sind in ihr, lernen noch, ringen noch, die Lügen hinter sich zu lassen, werden noch erneuert. Das ist die Arbeit dieser Mission: den Weg mit ihnen zu gehen.",
+      columns: {
+        byzantium: {
+          title: "Aus Byzanz",
+          body: "Das griechischsprachige Byzanz war das erste lange Zuhause der Roma in der christlichen Welt. Romani trägt bis heute griechische Substantive. Roma-Kinder werden noch heute mit Namen wie Yiorgos, Mihalis, Maria getauft — orthodoxe Namen, keine indischen.",
+        },
+        balkans: {
+          title: "Mit den Slawen",
+          body: "In Serbien, Mazedonien, Bulgarien und der Ukraine bewahren die Roma die Slava — das Hausfest des Schutzheiligen der Familie. Sie zünden die Kerze an, der Priester segnet den kolač, sie bringen koljivo. Das sind keine geliehenen Bräuche; es ist Familientradition, Jahrhunderte alt.",
+        },
+        liturgy: {
+          title: "Unter einem Altar",
+          body: "Eine orthodoxe Liturgie in einem Roma-Dorf in der Ostslowakei und eine orthodoxe Liturgie in einem griechischen Kloster gebrauchen dieselben Worte, dieselben Gesten, dasselbe Kreuz. Die Eucharistie ändert sich nicht je nach Ethnie. Das ist das Fundament dieser Mission.",
+        },
+      },
+      pullQuote:
+        "Wir wurden nicht in einer einzigen Stunde bekehrt. Wir wurden langsam bekehrt, in tausend Taufen, über tausend Jahre — und wir werden auch heute noch bekehrt.",
+      pullQuoteAttribution: "Roma-Ältester, Pfarrei Markovce",
+    },
+    traditions: {
+      label: "Ausstellung 04 — Lebendige Traditionen",
+      title: "Sechs Dinge, die Sie in einem orthodoxen Roma-Haus finden",
+      intro:
+        "Viele Roma-Bräuche sind über die Jahrhunderte mit der orthodoxen Praxis zusammengewachsen. Sie stehen der Kirche nahe, weil sie so lange neben der Kirche gelebt haben.",
+      tapHint: "Tippen Sie auf eine Karte, um mehr zu lesen",
+      cards: {
+        slava: {
+          title: "Slava",
+          subtitle: "Der Heilige des Hauses",
+          body: "Orthodoxe Roma-Familien auf dem westlichen Balkan bewahren eine Slava: einen benannten Heiligen, vom ganzen Haus geehrt, vom Vater zum Sohn weitergegeben. Die Kerze wird angezündet, der Priester segnet das Brot kolač, die Familie isst zusammen.",
+        },
+        feastDays: {
+          title: "Festtage",
+          subtitle: "Kalender des Herzens",
+          body: "Hl. Georg (Đurđevdan), Pascha, Entschlafung der Gottesgebärerin, Hl. Demetrios, das Christfest — Roma-Familien im orthodoxen Europa ordnen ihr Jahr nach dem Kirchenkalender, nicht dem zivilen.",
+        },
+        baptism: {
+          title: "Taufe und Kum",
+          subtitle: "Die erwählte Familie",
+          body: "Der Kum — Pate — ist bei einer Roma-Taufe kein Gast, er ist Familie. Der Kum eines Kindes steht oft über den leiblichen Onkeln. Das Band ist heilig und lebenslang, besiegelt am Taufbecken vor den Ikonen.",
+        },
+        music: {
+          title: "Musik",
+          subtitle: "Wo zwei Traditionen einander begegnen",
+          body: "Roma-Musiker spielten jahrhundertelang auf orthodoxen Hochzeiten, Taufen und Pfarrfesten — von griechischen panigiria über serbische svadbe bis zu rumänischen hramuri. Die Hochzeitskapelle und der Kirchengesang wuchsen Tür an Tür auf.",
+        },
+        icons: {
+          title: "Ikonen im Haus",
+          subtitle: "Die Ecke, wo Gott wohnt",
+          body: "Treten Sie in das Haus einer Roma-Familie in orthodoxen Ländern, und Sie werden eine Ikone finden — Gottesgebärerin, Christus, der Familienheilige — dort hängend, wo jeder sie sehen kann, oft mit einer kleinen Öllampe darunter brennend.",
+        },
+        language: {
+          title: "Die Romani-Sprache",
+          subtitle: "Eine Bibliothek der Reisen",
+          body: "Romani trägt den Weg in sich: Sanskrit-Wurzeln, persische und armenische Lehnwörter, byzantinisches Griechisch, dann Slawisches, Rumänisches und Deutsches. Die Sprache selbst ist ein Archiv der Völker, die die Roma aufnahmen — viele von ihnen orthodox.",
+        },
+      },
+    },
+    today: {
+      label: "Ausstellung 05 — Die Roma heute",
+      title: "Das orthodoxe Christentum ist noch immer der Glaube der meisten europäischen Roma",
+      intro:
+        "Von den rund 10 Millionen Roma in Europa lebt die Mehrheit in Ländern mit orthodoxer Mehrheit. Die Zahlen sind Schätzungen — die Roma-Bevölkerungen werden systematisch zu niedrig erfasst —, aber das Muster ist unverkennbar.",
+      footnote:
+        "Bevölkerungszahlen: Schätzungen des Europarates. Hinweise zum Stand von örtlichem Klerus und Missionaren.",
+      countries: {
+        ro: "Größte Roma-Bevölkerung Europas. Viele Roma-Dörfer haben vollständige orthodoxe Pfarreien; viele weitere haben noch gar keine.",
+        bg: "Roma machen rund 10 % des Landes aus. Die orthodoxe Identität ist stark; die kirchliche Praxis schwankt stark von Dorf zu Dorf.",
+        rs: "Die Roma hier bewahren die Slava und den Kirchenkalender — aber es existieren nur eine Handvoll eigener Roma-Pfarreien.",
+        mk: "Šuto Orizari bei Skopje ist die größte Roma-Gemeinde der Welt. Das Feld ist weit offen.",
+        gr: "Griechische Roma sind seit Jahrhunderten orthodox getauft. Doch die meisten leben ohne aktives eigenes Pfarrleben.",
+        ua: "Zehntausende Roma sind durch den Krieg vertrieben. Viele finden in Flüchtlingspfarreien zum ersten Mal wirkliche kirchliche Aufnahme.",
+        ru: "Russische Roma führen ihre orthodoxen Wurzeln bis ins 18. Jahrhundert zurück. Die Russische Orthodoxe Kirche anerkennt einen Roma-Schutzheiligen.",
+        sk: "Hier lebt unsere Mission. Aktive orthodoxe Roma-Pfarreien in Klenovec, Markovce, Kačanov, Mútnik — und wachsend.",
+      },
+    },
+    closing: {
+      label: "Die Geschichte fortsetzen",
+      title: "Dieses Museum ist zugleich eine Mission.",
+      body: "Was Sie durchschritten haben, ist keine abgeschlossene Geschichte. Die meisten Roma-Dörfer im orthodoxen Europa haben noch keine eigene aktive Pfarrei. Sie sind Katechumenen ohne Lehrer im Dorf. Das ist die Arbeit, die wir tun — ein Priester, eine Kapelle, eine Taufe nach der anderen.",
+      ctaMission: "Die aktive Mission sehen",
+      ctaSupport: "Die Arbeit unterstützen",
+    },
+    shareNudge: {
+      text: "Wenn diese Geschichte Sie bewegt hat, ist das Nützlichste, was Sie jetzt tun können, sie mit jemandem zu teilen.",
+      shareLabel: "Dieses Museum teilen",
+    },
+  },
   getInvolved: {
     hero: {
       label: "Mitmachen",
@@ -1135,6 +1310,14 @@ const de: Dictionary = {
       title: "Medien — Christliche Roma-Mission",
       description:
         "Dokumentationen, Interviews und Zeugnisse über orthodoxe Mission unter Roma — das Evangelium zu Europas größter unerreichter Minderheit.",
+    },
+    heritage: {
+      title: "Roma-Erbe-Museum — eine gemeinsame orthodoxe Geschichte",
+      description:
+        "Ein interaktives Museum von 1.000 Jahren Roma-Geschichte und des tiefen orthodox-christlichen Erbes, das die Roma mit Griechen, Serben, Rumänen, Russen und den Slawen des Balkans teilen.",
+      ogTitle: "1.000 Jahre Roma- und orthodoxe Geschichte — ein interaktives Museum",
+      ogDescription:
+        "Vom Byzantinischen Reich bis zu den heutigen Slava-Kerzen und Pfarrtaufen: der lange, gemeinsame Weg der Roma als orthodoxe Katechumenen.",
     },
     getInvolved: {
       title: "Mitmachen — Christliche Roma-Mission",

@@ -4,6 +4,7 @@ export interface Dictionary {
     locations: string;
     media: string;
     stories: string;
+    heritage: string;
     share: string;
     contact: string;
     contactWhatsapp: string;
@@ -594,6 +595,104 @@ export interface Dictionary {
       };
     };
   };
+  heritage: {
+    hero: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      subtitle: string;
+      shareLabel: string;
+      scrollHint: string;
+    };
+    toc: {
+      label: string;
+      origins: string;
+      timeline: string;
+      faith: string;
+      traditions: string;
+      today: string;
+      continue: string;
+    };
+    origins: {
+      label: string;
+      title: string;
+      intro: string;
+      body1: string;
+      body2: string;
+      factCards: {
+        a: { stat: string; title: string; body: string };
+        b: { stat: string; title: string; body: string };
+        c: { stat: string; title: string; body: string };
+      };
+    };
+    timeline: {
+      label: string;
+      title: string;
+      intro: string;
+      eras: {
+        era1: { range: string; heading: string; body: string };
+        era2: { range: string; heading: string; body: string };
+        era3: { range: string; heading: string; body: string };
+        era4: { range: string; heading: string; body: string };
+        era5: { range: string; heading: string; body: string };
+      };
+    };
+    faith: {
+      label: string;
+      title: string;
+      intro: string;
+      catechumenLabel: string;
+      catechumenBody: string;
+      columns: {
+        byzantium: { title: string; body: string };
+        balkans: { title: string; body: string };
+        liturgy: { title: string; body: string };
+      };
+      pullQuote: string;
+      pullQuoteAttribution: string;
+    };
+    traditions: {
+      label: string;
+      title: string;
+      intro: string;
+      tapHint: string;
+      cards: {
+        slava: { title: string; subtitle: string; body: string };
+        feastDays: { title: string; subtitle: string; body: string };
+        baptism: { title: string; subtitle: string; body: string };
+        music: { title: string; subtitle: string; body: string };
+        icons: { title: string; subtitle: string; body: string };
+        language: { title: string; subtitle: string; body: string };
+      };
+    };
+    today: {
+      label: string;
+      title: string;
+      intro: string;
+      footnote: string;
+      countries: {
+        ro: string;
+        bg: string;
+        rs: string;
+        mk: string;
+        gr: string;
+        ua: string;
+        ru: string;
+        sk: string;
+      };
+    };
+    closing: {
+      label: string;
+      title: string;
+      body: string;
+      ctaMission: string;
+      ctaSupport: string;
+    };
+    shareNudge: {
+      text: string;
+      shareLabel: string;
+    };
+  };
   getInvolved: {
     hero: {
       label: string;
@@ -915,6 +1014,7 @@ export interface Dictionary {
     locations: MetadataEntry;
     stories: MetadataEntry;
     media: MetadataEntry;
+    heritage: MetadataEntry;
     getInvolved: MetadataEntry;
     thankYou: MetadataEntry;
     privacy: MetadataEntry;

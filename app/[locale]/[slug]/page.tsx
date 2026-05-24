@@ -8,6 +8,7 @@ import OurStoryPage from "../_components/OurStoryPage";
 import LocationsPage from "../_components/LocationsPage";
 import StoriesPage from "../_components/StoriesPage";
 import MediaPage from "../_components/MediaPage";
+import HeritagePage from "../_components/HeritagePage";
 import GetInvolvedPage from "../_components/GetInvolvedPage";
 import ThankYouPage from "../_components/ThankYouPage";
 import PrivacyPolicyPage from "../_components/PrivacyPolicyPage";
@@ -49,6 +50,8 @@ export default async function LocaleSlugPage({
       return <StoriesPage />;
     case "media":
       return <MediaPage />;
+    case "heritage":
+      return <HeritagePage />;
     case "getInvolved":
       return <GetInvolvedPage />;
     case "thankYou":
