@@ -556,7 +556,8 @@ export default function HeritagePage() {
       />
 
       {/* ────────────────────────────────────────────────────────── HERO ── */}
-      <section className="relative pt-32 lg:pt-40 pb-16 md:pb-24 overflow-hidden">
+      {/* Hero is always rendered dark — museum-style immersive plate. */}
+      <section className="relative pt-32 lg:pt-40 pb-16 md:pb-24 overflow-hidden bg-[#111111] text-white">
         {/* Backdrop image */}
         <div
           aria-hidden
@@ -566,48 +567,49 @@ export default function HeritagePage() {
               "url('/images/heritage/hero.jpg'), url('/images/klenovec-chapel.jpeg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            opacity: 0.45,
+            opacity: 0.55,
           }}
         />
+        {/* Dark scrim — fixed dark values in both themes so text stays readable */}
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, rgba(17,17,17,0.45) 0%, rgba(17,17,17,0.35) 45%, var(--bg-primary) 100%)",
+              "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 45%, rgba(17,17,17,1) 100%)",
           }}
         />
         <div
           aria-hidden
-          className="absolute inset-0 opacity-[0.12] pointer-events-none"
+          className="absolute inset-0 opacity-[0.14] pointer-events-none"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 15% 20%, var(--gold) 0, transparent 35%), radial-gradient(circle at 80% 85%, var(--gold) 0, transparent 40%)",
+              "radial-gradient(circle at 15% 20%, #D4AF37 0, transparent 35%), radial-gradient(circle at 80% 85%, #D4AF37 0, transparent 40%)",
           }}
         />
         <div className="relative max-w-[1400px] mx-auto px-5 md:px-10 xl:px-20">
           <div className="max-w-[820px]">
             <div className="flex items-center gap-4 mb-8">
-              <span className="font-georgia text-[44px] md:text-[56px] text-[var(--gold)] leading-none">
+              <span className="font-georgia text-[44px] md:text-[56px] text-[#D4AF37] leading-none">
                 ☦
               </span>
-              <div className="h-px flex-1 bg-[var(--gold)]/40 max-w-[160px]" />
+              <div className="h-px flex-1 bg-[#D4AF37]/40 max-w-[160px]" />
               <SectionLabel text={t("heritage.hero.label")} />
             </div>
-            <h1 className="font-georgia text-[42px] md:text-[64px] xl:text-[80px] leading-[1.05] text-[var(--text-primary)] tracking-tight">
+            <h1 className="font-georgia text-[42px] md:text-[64px] xl:text-[80px] leading-[1.05] text-white tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
               {t("heritage.hero.titleLine1")}
               <br />
-              <span className="text-[var(--gold)] italic">
+              <span className="text-[#D4AF37] italic">
                 {t("heritage.hero.titleLine2")}
               </span>
             </h1>
-            <p className="mt-8 md:mt-10 text-[16px] md:text-[20px] leading-[1.65] text-[var(--text-secondary)] max-w-[680px] font-georgia">
+            <p className="mt-8 md:mt-10 text-[16px] md:text-[20px] leading-[1.65] text-white/85 max-w-[680px] font-georgia drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
               {t("heritage.hero.subtitle")}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
                 href="#origins"
-                className="inline-flex items-center gap-2 bg-[var(--gold)] text-[var(--on-accent)] px-6 py-4 text-[11px] font-bold tracking-[1.5px] uppercase hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 bg-[#D4AF37] text-[#111111] px-6 py-4 text-[11px] font-bold tracking-[1.5px] uppercase hover:opacity-90 transition-opacity"
               >
                 {t("heritage.hero.scrollHint")}
                 <ChevronDown size={14} />
@@ -617,7 +619,7 @@ export default function HeritagePage() {
                 text={shareText}
                 url={url}
                 label={t("heritage.hero.shareLabel").toUpperCase()}
-                className="px-6 py-4 border border-[var(--border-strong)] text-[11px] font-bold tracking-[1.5px] uppercase hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors"
+                className="px-6 py-4 border border-white/30 text-white text-[11px] font-bold tracking-[1.5px] uppercase hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors"
               />
             </div>
           </div>
