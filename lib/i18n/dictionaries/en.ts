@@ -793,7 +793,7 @@ const en: Dictionary = {
       intro:
         "Around the 11th century, groups of people speaking an Indo-Aryan language began moving west out of northwestern India. Linguistics, not legend, tells us this: Romani is a sister of Hindi and Punjabi, shaped further by long sojourns in Persian and Armenian lands before it ever touched Europe.",
       body1:
-        "By the time the Roma reached the Byzantine Empire, they had been travelling for generations. The Empire was Christian; the cities were full of churches; the new arrivals were welcomed (and recorded) by name — Athinganoi in Greek, the root of later forms like Tsigani and Zigeuner.",
+        "By the time the Roma reached the Byzantine Empire, they had been travelling for generations. The Empire was Christian; the cities were full of churches; the new arrivals were welcomed (and recorded) by name — Athinganoi in Greek, which becomes the international Acigani and from there Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
       body2:
         "What is remarkable is what happened next. Across centuries of migration into Orthodox lands the Roma did not retain a separate religion of their own. They received the faith of the people who received them — and the deepest reception was Orthodox.",
       factCards: {
@@ -872,7 +872,7 @@ const en: Dictionary = {
           source: "Slavonic Kormchaia / Greek nomocanonical tradition",
           quote: "",
           body:
-            "In the period of Patriarch Gennadius II Scholarios (first patriarch after the Fall of Constantinople, 1454–1456), the Byzantine pastoral tradition warning against Атсингане / Цигани sorcery and fortune-telling was carried forward into the Slavic Pilot Books. Orthodox faithful were instructed not to receive them into their homes for divination. The text is preserved across the Slavonic canonical tradition rather than in a single dated decree — the precise archival citation will appear in Fr. Martin Halík's forthcoming book on Roma Orthodox history.",
+            "In the period of Patriarch Gennadius II Scholarios (first patriarch after the Fall of Constantinople, 1454–1456), the Byzantine pastoral tradition warning against Acigani sorcery and fortune-telling was carried forward into the Slavic Pilot Books. Orthodox faithful were instructed not to receive them into their homes for divination. The text is preserved across the Slavonic canonical tradition rather than in a single dated decree — the precise archival citation will appear in Fr. Martin Halík's forthcoming book on Roma Orthodox history.",
           url: "",
         },
         e1322: {
