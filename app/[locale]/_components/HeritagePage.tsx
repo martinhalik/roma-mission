@@ -556,8 +556,10 @@ export default function HeritagePage() {
       />
 
       {/* ────────────────────────────────────────────────────────── HERO ── */}
-      {/* Hero is always rendered dark — museum-style immersive plate. */}
-      <section className="relative pt-32 lg:pt-40 pb-16 md:pb-24 overflow-hidden bg-[#111111] text-white">
+      {/* Hero text/iconography stay light because the scrim is dark; the
+          scrim's last stop fades to var(--bg-primary) so the section blends
+          smoothly into whichever theme the body is in. */}
+      <section className="relative pt-32 lg:pt-40 pb-16 md:pb-24 overflow-hidden text-white">
         {/* Backdrop image */}
         <div
           aria-hidden
@@ -570,13 +572,14 @@ export default function HeritagePage() {
             opacity: 0.55,
           }}
         />
-        {/* Dark scrim — fixed dark values in both themes so text stays readable */}
+        {/* Dark scrim ending in the body's background colour so the hero
+            blends seamlessly into both light and dark themes. */}
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.45) 45%, rgba(17,17,17,1) 100%)",
+              "linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.25) 88%, var(--bg-primary) 100%)",
           }}
         />
         <div
