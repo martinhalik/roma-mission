@@ -1436,6 +1436,7 @@ const cs: Dictionary = {
       ogTitle: "1 000 let romských a pravoslavných dějin — interaktivní muzeum",
       ogDescription:
         "Od Byzantské říše po dnešní slávské svíce a křty ve farnostech: dlouhá společná cesta Romů jako pravoslavných katechumenů.",
+    },
     activity: {
       title: "Živě z terénu — Romská misie",
       description:

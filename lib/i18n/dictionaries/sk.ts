@@ -1435,6 +1435,7 @@ const sk: Dictionary = {
       ogTitle: "1 000 rokov rómskej a pravoslávnej histórie — interaktívne múzeum",
       ogDescription:
         "Od Byzantskej ríše po dnešné slávovské sviečky a krsty vo farnostiach: dlhá spoločná cesta Rómov ako pravoslávnych katechumenov.",
+    },
     activity: {
       title: "Naživo z terénu — Rómska misia",
       description:

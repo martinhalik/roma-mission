@@ -1442,6 +1442,7 @@ const ro: Dictionary = {
       ogTitle: "1.000 de ani de istorie romă și ortodoxă — un muzeu interactiv",
       ogDescription:
         "De la Imperiul Bizantin până la lumânările de Slavă și botezurile parohiale de astăzi: drumul lung și comun al romilor ca catehumeni ortodocși.",
+    },
     activity: {
       title: "În direct de pe teren — Misiunea Romă",
       description:

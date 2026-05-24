@@ -1438,6 +1438,7 @@ const en: Dictionary = {
       ogTitle: "1,000 Years of Roma + Orthodox History — An Interactive Museum",
       ogDescription:
         "From the Byzantine Empire to today's Slava candles and parish baptisms: the long, shared road of the Roma as Orthodox catechumens.",
+    },
     activity: {
       title: "Live from the Field — Roma Mission",
       description:
