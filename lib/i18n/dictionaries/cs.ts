@@ -791,7 +791,7 @@ const cs: Dictionary = {
       intro:
         "Kolem 11. století začaly skupiny lidí mluvících indoárijským jazykem putovat na západ ze severozápadní Indie. Říká nám to lingvistika, ne legenda: romština je sestrou hindštiny a paňdžábštiny a dále ji formovaly dlouhé pobyty v perských a arménských zemích, ještě než se vůbec dotkla Evropy.",
       body1:
-        "Když Romové dosáhli Byzantské říše, putovali už generace. Říše byla křesťanská; města byla plná chrámů; nové příchozí vítali (a zaznamenávali) jménem — Athinganoi řecky, kořen pozdějších forem jako Tsigani a Zigeuner.",
+        "Když Romové dosáhli Byzantské říše, putovali už generace. Říše byla křesťanská; města byla plná chrámů; nové příchozí vítali (a zaznamenávali) jménem — Athinganoi řecky, z čehož se stává mezinárodní Acigani a odtud Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
       body2:
         "Pozoruhodné je, co následovalo. Během staletí putování do pravoslavných zemí si Romové nezachovali vlastní samostatné náboženství. Přijali víru těch, kteří je přijali — a nejhlubší přijetí bylo pravoslavné.",
       factCards: {
@@ -854,6 +854,8 @@ const cs: Dictionary = {
         "Tam, kde je citace spíše obecná než jednotlivý citovatelný text, jsme raději opatrní, než abychom předstírali falešnou přesnost. Opravy posílejte na martin@romamission.eu a my je zpřesníme.",
       sourceLabel: "Pramen",
       readSourceLabel: "Číst pramen",
+      expandAllLabel: "Rozbalit vše",
+      collapseAllLabel: "Sbalit vše",
       entries: {
         e1054: {
           date: "kolem 1054",
@@ -865,12 +867,21 @@ const cs: Dictionary = {
             "Napsal žák sv. Jiřího Hagiority (zemř. 1065) na Svaté Hoře Athos. Zaznamenává, jak císař Konstantin IX. Monomachos povolal Adsincany — lid proslulý dovedností se zvířaty a čarodějnictvím — aby si poradili s divokou zvěří sužující císařský lovecký park v Philopation. Široce citováno jako jedna z nejstarších pravděpodobných zmínek o Romech v byzantském světě.",
           url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
         },
+        eBalsamon: {
+          date: "konec 12. stol.",
+          source: "Theodore Balsamon, Scholia k Photiovu Nomokánonu",
+          quote:
+            "Ventrilokvisté, satansky inspirovaní, kteří předstírají, že předpovídají neznámé.",
+          body:
+            "Patriarcha Antiochie a nejvlivnější byzantský kanonista své doby. Ve svém komentáři ke Kánonu 61 Trullského sněmu Balsamon popisuje Athinganoi, kteří si omotávají hady kolem sebe, věští z dobrých nebo zlých hvězd a prorokují budoucnost — a řadí je mezi satansky inspirované. Kanonický pokyn proti jejich konzultaci, původně namířený proti starší kacířské sektě stejného jména, je nesen dále a uplatňován proti Acigani, kteří přicházejí později.",
+          url: "https://en.wikipedia.org/wiki/Theodore_Balsamon",
+        },
         eCanon: {
           date: "11. – 16. stol.",
           source: "Slovanská Kormčaja / řecká nomokánonická tradice",
           quote: "",
           body:
-            "V období patriarchy Gennadia II. Scholaria (první patriarcha po pádu Konstantinopole, 1454–1456) byla byzantská pastorační tradice varující před čarodějnictvím a věštbou Атсингане / Цигани přenesena do slovanských Kormčich knih. Pravoslavní věřící dostali pokyn nepřijímat je do svých domů kvůli věštění. Text se zachoval v rámci slovanské kanonické tradice, nikoli v jediném datovaném dekretu.",
+            "V období patriarchy Gennadia II. Scholaria (první patriarcha po pádu Konstantinopole, 1454–1456) byla byzantská pastorační tradice varující před čarodějnictvím a věštbou Acigani přenesena do slovanských Kormčich knih. Pravoslavní věřící dostali pokyn nepřijímat je do svých domů kvůli věštění. Text se zachoval v rámci slovanské kanonické tradice, nikoli v jediném datovaném dekretu — přesná archivní citace se objeví v připravované knize o. Martina Halíka o romských pravoslavných dějinách.",
           url: "",
         },
         e1322: {
@@ -891,6 +902,22 @@ const cs: Dictionary = {
             "Dan I. Valašský daruje čtyřicet romských (Aṭigani) rodin pravoslavnému monastýru Tismana — jeden z nejstarších doložených případů, kdy byli Romové drženi jako monastýrští poddaní v rumunských knížectvích. Stejný vzorec se opakuje v Cozii, Cotmeaně a mnoha dalších monastýrech. Temná stránka společného příběhu: Církev, která je katechizovala, je rovněž držela. Toto poddanství trvá až do zrušení v letech 1855–56.",
           url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
         },
+        e1416: {
+          date: "1416",
+          source: "Městské účty Brașova (Kronstadt), Sedmihradsko",
+          quote: "",
+          body:
+            "Saské městské účty Brașova zaznamenávají platbu v naturáliích — obilí a potraviny — skupině Acigani procházející pod vlastním náčelníkem. Nejstarší datovaný městský záznam o Romech ve střední Evropě; přicházejí jako křesťanští poutníci s vůdcem, nikoli jako cizinci.",
+          url: "https://en.wikipedia.org/wiki/Timeline_of_Romani_history",
+        },
+        e1422: {
+          date: "červenec 1422",
+          source: "Cronica di Bologna; příchod Acigani do Itálie",
+          quote: "",
+          body:
+            "Skupina vedená 'vévodou Andrejem z Egypta' přichází do Boloně s asi sto muži a ženami, nesouc list o bezpečném průchodu od papeže Martina V., který je označuje za křesťany na pouti. Pět let předtím, než pařížský biskup exkomunikuje ty, kdo se s nimi radí, je římský biskup přijal jako bratry křesťany.",
+          url: "https://en.wikipedia.org/wiki/History_of_the_Romani_people",
+        },
         eParis: {
           date: "17. srpna 1427",
           source:
@@ -909,6 +936,22 @@ const cs: Dictionary = {
           body:
             "Ruský pravoslavný sněm v kapitolách odsuzujících věštce, čaroděje a falešné proroky pokračuje ve stejné dlouhé pastorační starosti: Církev chrání svůj lid před věštbou. Stejná rodina varování, která začala v byzantské kanonickoprávní tradici, sahá až do srdce Ruska.",
           url: "https://archive.org/details/stoglav00ofgoog",
+        },
+        eAthos: {
+          date: "17. – 18. stol.",
+          source: "Záznamy monastýrů Svaté Hory Athos",
+          quote: "",
+          body:
+            "Vatopedi, Iviron a další athonské monastýry zaznamenávají Atsiganoi sloužící jako kováři, tesaři a průvodci nákladních zvířat v jejich domech. Niť kovářství se táhne nepřerušeně od Adsincani z roku 1054 až po Athos osmanské éry — stejné řemeslo, stejné místo, o šest století později. Další citace v připravované knize o. Martina Halíka.",
+          url: "",
+        },
+        e1764: {
+          date: "od 1764",
+          source: "Carské Rusko za Kateřiny II.",
+          quote: "",
+          body:
+            "Reformy Kateřiny II. registrují Romy jako carské poddané s povinností usadit se a platit daně. Během následujících desetiletí jsou velké počty shromážděny do ruských pravoslavných farností; Ruska Roma — hlavní ruská romská skupina — odvozují svůj nepřetržitý pravoslavný farní život od této doby.",
+          url: "https://en.wikipedia.org/wiki/Ruska_Roma",
         },
         eAbolition: {
           date: "1855 – 1856",

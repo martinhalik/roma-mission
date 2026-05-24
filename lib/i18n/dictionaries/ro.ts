@@ -795,7 +795,7 @@ const ro: Dictionary = {
       intro:
         "În jurul secolului al XI-lea, grupuri de oameni vorbind o limbă indo-ariană au început să se deplaseze spre vest din nord-vestul Indiei. Lingvistica, nu legenda, ne spune acest lucru: limba romani este o soră a hindi și a punjabi, modelată în continuare de lungile sale popasuri în ținuturile persane și armene înainte de a atinge vreodată Europa.",
       body1:
-        "Până când romii au ajuns la Imperiul Bizantin, călătoriseră de generații. Imperiul era creștin; orașele erau pline de biserici; nou-veniții au fost primiți (și consemnați) cu nume — Athinganoi în greacă, rădăcina formelor ulterioare precum Țigani și Zigeuner.",
+        "Până când romii au ajuns la Imperiul Bizantin, călătoriseră de generații. Imperiul era creștin; orașele erau pline de biserici; nou-veniții au fost primiți (și consemnați) cu nume — Athinganoi în greacă, care devine internaționalul Acigani și de acolo Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
       body2:
         "Remarcabil este ceea ce a urmat. De-a lungul secolelor de migrație în ținuturi ortodoxe, romii nu și-au păstrat o religie proprie separată. Au primit credința celor care i-au primit — iar cea mai profundă primire a fost cea ortodoxă.",
       factCards: {
@@ -858,6 +858,8 @@ const ro: Dictionary = {
         "Acolo unde citarea este mai degrabă generală decât un singur text citabil, am preferat prudența în locul unei false precizii. Trimiteți corecții la martin@romamission.eu și le vom rafina.",
       sourceLabel: "Sursa",
       readSourceLabel: "Citește sursa",
+      expandAllLabel: "Extinde tot",
+      collapseAllLabel: "Restrânge tot",
       entries: {
         e1054: {
           date: "c. 1054",
@@ -869,12 +871,21 @@ const ro: Dictionary = {
             "Scrisă de ucenicul Sf. Gheorghe Hagioritul (†1065) la Muntele Athos. Consemnează cum împăratul Constantin al IX-lea Monomahul i-a chemat pe Adsincani — un popor renumit pentru iscusința cu animalele și pentru vrăjitorie — pentru a se ocupa de fiarele sălbatice care chinuiau parcul de vânătoare imperial de la Philopation. Citată pe scară largă drept una dintre cele mai vechi referințe probabile la romi în lumea bizantină.",
           url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
         },
+        eBalsamon: {
+          date: "sf. sec. XII",
+          source: "Theodore Balsamon, Scolii la Nomocanonul lui Photios",
+          quote:
+            "Ventriloci, inspirați satanic, care pretind a prezice cele necunoscute.",
+          body:
+            "Patriarh al Antiohiei și cel mai autoritar canonist bizantin al vremii sale. În comentariul său la Canonul 61 al Sinodului Quinisext, Balsamon descrie pe Athinganoi care își înfășoară șerpi în jurul lor, prezic după stele bune sau rele și profețesc viitorul — și îi așază printre cei inspirați satanic. Îndrumarea canonică împotriva consultării lor, îndreptată mai întâi împotriva unei secte eretice mai vechi cu același nume, este dusă mai departe și aplicată Acigani care sosesc mai târziu.",
+          url: "https://en.wikipedia.org/wiki/Theodore_Balsamon",
+        },
         eCanon: {
           date: "sec. XI – XVI",
           source: "Cârmuirea slavonă (Kormchaia) / tradiția nomocanonică greacă",
           quote: "",
           body:
-            "În perioada patriarhului Ghenadie al II-lea Scholarios (primul patriarh după Căderea Constantinopolului, 1454–1456), tradiția pastorală bizantină care avertiza împotriva vrăjitoriei și a ghicitului Атсингане / Цигани a fost preluată în Cărțile de Cârmuire slavone. Credincioșilor ortodocși li s-a poruncit să nu-i primească în casele lor pentru ghicit. Textul s-a păstrat în tradiția canonică slavonă, nu într-un singur decret datat.",
+            "În perioada patriarhului Ghenadie al II-lea Scholarios (primul patriarh după Căderea Constantinopolului, 1454–1456), tradiția pastorală bizantină care avertiza împotriva vrăjitoriei și a ghicitului Acigani a fost preluată în Cărțile de Cârmuire slavone. Credincioșilor ortodocși li s-a poruncit să nu-i primească în casele lor pentru ghicit. Textul s-a păstrat în tradiția canonică slavonă, nu într-un singur decret datat — citarea arhivistică exactă va apărea în cartea ce urmează a fi publicată de pr. Martin Halík despre istoria ortodoxă a romilor.",
           url: "",
         },
         e1322: {
@@ -895,6 +906,22 @@ const ro: Dictionary = {
             "Dan I al Țării Românești dăruiește patruzeci de familii de romi (Aṭigani) mănăstirii ortodoxe Tismana — una dintre cele mai vechi consemnări documentate ale romilor ținuți drept robi mănăstirești în principatele române. Același tipar se repetă la Cozia, Cotmeana și multe alte mănăstiri. Latura întunecată a poveștii comune: Biserica ce i-a catehizat i-a și ținut. Această robie durează până la abolirea din 1855–56.",
           url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
         },
+        e1416: {
+          date: "1416",
+          source: "Socotelile orașului Brașov (Kronstadt), Transilvania",
+          quote: "",
+          body:
+            "Socotelile municipale săsești ale Brașovului consemnează o plată în natură — grâu și provizii — unei cete de Acigani care trecea prin oraș sub propria căpetenie. Cea mai veche consemnare municipală datată a romilor în Europa Centrală; sosesc ca pelerini creștini cu un conducător, nu ca străini.",
+          url: "https://en.wikipedia.org/wiki/Timeline_of_Romani_history",
+        },
+        e1422: {
+          date: "iulie 1422",
+          source: "Cronica di Bologna; sosirea Acigani în Italia",
+          quote: "",
+          body:
+            "O ceată condusă de 'ducele Andrei al Egiptului' sosește la Bologna cu aproximativ o sută de bărbați și femei, purtând o scrisoare de liberă trecere de la Papa Martin al V-lea care îi identifică drept creștini în pelerinaj. Cu cinci ani înainte ca episcopul Parisului să-i excomunice pe cei care îi consultă, Episcopul Romei îi primise drept creștini frați.",
+          url: "https://en.wikipedia.org/wiki/History_of_the_Romani_people",
+        },
         eParis: {
           date: "17 august 1427",
           source:
@@ -913,6 +940,22 @@ const ro: Dictionary = {
           body:
             "Sinodul ortodox rus, în capitolele ce condamnă ghicitorii, vrăjitorii și prorocii mincinoși, continuă aceeași lungă grijă pastorală: Biserica își păzește poporul de ghicit. Aceeași familie de avertismente care a început cu tradiția canonică bizantină ajunge până în inima Rusiei.",
           url: "https://archive.org/details/stoglav00ofgoog",
+        },
+        eAthos: {
+          date: "sec. XVII – XVIII",
+          source: "Înregistrări monahale de la Muntele Athos",
+          quote: "",
+          body:
+            "Vatopedi, Iviron și alte mănăstiri athonite consemnează Atsiganoi slujind drept fierari, dulgheri și conducători de animale de povară în casele lor. Firul fierăriei se întinde neîntrerupt de la Adsincani din 1054 până la Athosul din vremea otomană — aceeași meserie, același loc, șase secole mai târziu. Alte citări în cartea ce urmează a fi publicată de pr. Martin Halík.",
+          url: "",
+        },
+        e1764: {
+          date: "din 1764",
+          source: "Rusia imperială sub Ecaterina a II-a",
+          quote: "",
+          body:
+            "Reformele Ecaterinei a II-a îi înregistrează pe romi ca supuși imperiali cu obligația de a se așeza și de a plăti taxe. În deceniile următoare, numere mari sunt adunate în parohiile ortodoxe ruse; Ruska Roma — principalul grup de romi din Rusia — își datează viața parohială ortodoxă neîntreruptă din această epocă.",
+          url: "https://en.wikipedia.org/wiki/Ruska_Roma",
         },
         eAbolition: {
           date: "1855 – 1856",

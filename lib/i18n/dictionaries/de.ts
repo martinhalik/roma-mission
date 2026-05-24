@@ -795,7 +795,7 @@ const de: Dictionary = {
       intro:
         "Um das 11. Jahrhundert begannen Gruppen von Menschen, die eine indoarische Sprache sprachen, aus dem Nordwesten Indiens nach Westen zu ziehen. Linguistik, nicht Legende, sagt uns das: Romani ist eine Schwester von Hindi und Punjabi und wurde weiter geprägt durch lange Aufenthalte in persischen und armenischen Ländern, bevor sie je Europa berührte.",
       body1:
-        "Als die Roma das Byzantinische Reich erreichten, waren sie schon seit Generationen unterwegs. Das Reich war christlich; die Städte waren voller Kirchen; die Neuankömmlinge wurden namentlich empfangen (und festgehalten) — Athinganoi auf Griechisch, die Wurzel späterer Formen wie Tsigani und Zigeuner.",
+        "Als die Roma das Byzantinische Reich erreichten, waren sie schon seit Generationen unterwegs. Das Reich war christlich; die Städte waren voller Kirchen; die Neuankömmlinge wurden namentlich empfangen (und festgehalten) — Athinganoi auf Griechisch, woraus das internationale Acigani und von da Tsigani, Cigán, Țigan, Zigeuner, Cigano wird.",
       body2:
         "Bemerkenswert ist, was dann geschah. Über Jahrhunderte der Wanderung in orthodoxe Länder behielten die Roma keine eigene gesonderte Religion bei. Sie nahmen den Glauben jener an, die sie aufnahmen — und die tiefste Aufnahme war die orthodoxe.",
       factCards: {
@@ -858,6 +858,8 @@ const de: Dictionary = {
         "Wo eine Quellenangabe eher allgemein als ein einzelner zitierbarer Text ist, haben wir lieber auf Vorsicht als auf falsche Genauigkeit gesetzt. Korrekturen an martin@romamission.eu — wir schärfen sie nach.",
       sourceLabel: "Quelle",
       readSourceLabel: "Quelle lesen",
+      expandAllLabel: "Alle ausklappen",
+      collapseAllLabel: "Alle einklappen",
       entries: {
         e1054: {
           date: "um 1054",
@@ -869,12 +871,21 @@ const de: Dictionary = {
             "Verfasst vom Schüler des hl. Georg Hagiorites (gest. 1065) auf dem Berg Athos. Berichtet, wie Kaiser Konstantin IX. Monomachos die Adsincani — ein Volk, das für Geschick mit Tieren und für Zauberei bekannt war — rief, um mit den wilden Tieren fertig zu werden, die den kaiserlichen Jagdpark Philopation heimsuchten. Wird weithin als einer der frühesten wahrscheinlichen Hinweise auf Roma in der byzantinischen Welt zitiert.",
           url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
         },
+        eBalsamon: {
+          date: "Spätes 12. Jh.",
+          source: "Theodore Balsamon, Scholien zum Nomokanon des Photios",
+          quote:
+            "Bauchredner, satanisch inspiriert, die vorgeben, das Unbekannte vorherzusagen.",
+          body:
+            "Patriarch von Antiochien und der maßgeblichste byzantinische Kanonist seiner Zeit. In seinem Kommentar zum Kanon 61 des Quinisextum beschreibt Balsamon Athinganoi, die Schlangen um sich winden, aus guten oder bösen Sternen wahrsagen und die Zukunft prophezeien — und zählt sie zu den satanisch Inspirierten. Die kanonische Anweisung, sie nicht zu befragen, ursprünglich gegen eine ältere häretische Sekte gleichen Namens gerichtet, wird weitergetragen und auf die später ankommenden Acigani angewendet.",
+          url: "https://en.wikipedia.org/wiki/Theodore_Balsamon",
+        },
         eCanon: {
           date: "11. – 16. Jh.",
           source: "Slawische Kormtschaja / griechische nomokanonische Tradition",
           quote: "",
           body:
-            "In der Zeit des Patriarchen Gennadios II. Scholarios (erster Patriarch nach dem Fall Konstantinopels, 1454–1456) wurde die byzantinische Hirtentradition, die vor Zauberei und Wahrsagerei der Атсингане / Цигани warnte, in die slawischen Pilotenbücher übernommen. Den orthodoxen Gläubigen wurde aufgetragen, sie nicht zur Wahrsagerei in ihre Häuser aufzunehmen. Der Text ist in der slawischen kanonischen Überlieferung bewahrt, nicht in einem einzigen datierten Dekret.",
+            "In der Zeit des Patriarchen Gennadios II. Scholarios (erster Patriarch nach dem Fall Konstantinopels, 1454–1456) wurde die byzantinische Hirtentradition, die vor Zauberei und Wahrsagerei der Acigani warnte, in die slawischen Pilotenbücher übernommen. Den orthodoxen Gläubigen wurde aufgetragen, sie nicht zur Wahrsagerei in ihre Häuser aufzunehmen. Der Text ist in der slawischen kanonischen Überlieferung bewahrt, nicht in einem einzigen datierten Dekret — die genaue archivalische Angabe wird im kommenden Buch von P. Martin Halík zur orthodoxen Geschichte der Roma erscheinen.",
           url: "",
         },
         e1322: {
@@ -895,6 +906,22 @@ const de: Dictionary = {
             "Dan I. der Walachei schenkt vierzig Roma-Familien (Aṭigani) dem orthodoxen Kloster Tismana — einer der frühesten urkundlich belegten Fälle, in denen Roma als Klostersklaven in den rumänischen Fürstentümern gehalten wurden. Dasselbe Muster wiederholt sich in Cozia, Cotmeana und vielen weiteren Klöstern. Die dunkle Seite der gemeinsamen Geschichte: Die Kirche, die sie katechisierte, hielt sie auch fest. Diese Knechtschaft währt bis zur Abschaffung 1855–56.",
           url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
         },
+        e1416: {
+          date: "1416",
+          source: "Stadtrechnungen von Brașov (Kronstadt), Siebenbürgen",
+          quote: "",
+          body:
+            "Die sächsischen Stadtrechnungen Brașovs verzeichnen eine Sachzahlung — Getreide und Lebensmittel — an eine durchziehende Schar Acigani unter ihrem eigenen Anführer. Der früheste datierte städtische Beleg von Roma in Mitteleuropa; sie kommen als christliche Reisende mit einem Anführer, nicht als Fremde.",
+          url: "https://en.wikipedia.org/wiki/Timeline_of_Romani_history",
+        },
+        e1422: {
+          date: "Juli 1422",
+          source: "Cronica di Bologna; Ankunft der Acigani in Italien",
+          quote: "",
+          body:
+            "Eine Schar unter 'Herzog Andreas von Ägypten' trifft mit etwa hundert Männern und Frauen in Bologna ein, mit einem Geleitbrief von Papst Martin V., der sie als Christen auf Pilgerreise ausweist. Fünf Jahre bevor der Bischof von Paris jene exkommunizieren wird, die sie befragen, hatte sie der Bischof von Rom als Mitchristen empfangen.",
+          url: "https://en.wikipedia.org/wiki/History_of_the_Romani_people",
+        },
         eParis: {
           date: "17. August 1427",
           source:
@@ -913,6 +940,22 @@ const de: Dictionary = {
           body:
             "Die russische orthodoxe Synode setzt in Kapiteln, die Wahrsager, Beschwörer und falsche Propheten verurteilen, dieselbe lange Hirtensorge fort: Die Kirche bewahrt ihr Volk vor Wahrsagerei. Dieselbe Familie von Warnungen, die mit der byzantinischen kanonrechtlichen Tradition begann, reicht bis ins Herz Russlands.",
           url: "https://archive.org/details/stoglav00ofgoog",
+        },
+        eAthos: {
+          date: "17. – 18. Jh.",
+          source: "Klosteraufzeichnungen vom Berg Athos",
+          quote: "",
+          body:
+            "Vatopedi, Iviron und andere Athos-Klöster verzeichnen Atsiganoi, die in ihren Häusern als Schmiede, Zimmerleute und Lasttierführer dienen. Der Schmiede-Faden läuft ungebrochen von den Adsincani von 1054 bis zum Athos der osmanischen Zeit — dasselbe Handwerk, derselbe Ort, sechs Jahrhunderte später. Weitere Belege im kommenden Buch von P. Martin Halík.",
+          url: "",
+        },
+        e1764: {
+          date: "ab 1764",
+          source: "Kaiserliches Russland unter Katharina II.",
+          quote: "",
+          body:
+            "Die Reformen Katharinas II. erfassen die Roma als kaiserliche Untertanen mit der Pflicht, sesshaft zu werden und Steuern zu zahlen. In den folgenden Jahrzehnten werden große Zahlen in russisch-orthodoxe Pfarreien aufgenommen; die Ruska Roma — Russlands wichtigste Roma-Gruppe — führen ihr ununterbrochenes orthodoxes Pfarrleben auf diese Zeit zurück.",
+          url: "https://en.wikipedia.org/wiki/Ruska_Roma",
         },
         eAbolition: {
           date: "1855 – 1856",
