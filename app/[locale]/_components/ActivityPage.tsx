@@ -10,9 +10,14 @@ import { ArrowRight, Bell, Eye, HandHeart, Heart, Instagram, MessageCircle, Play
 import type { TelegramChannelStats } from "@/lib/telegram";
 import type { InstagramChannelStats } from "@/lib/instagram";
 import type { SocialPost } from "@/lib/social-feed";
+import { MISSION_LOCATIONS } from "@/lib/data/mission-locations";
 
 const TELEGRAM_URL = "https://t.me/romamissioneu";
 const INSTAGRAM_URL = "https://www.instagram.com/bohjezivy/";
+
+const MISSION_START_YEAR = 2016;
+const MISSION_CENTERS = MISSION_LOCATIONS.filter((l) => l.type === "mission-center").length;
+const SUPPORTED_PARISHES = MISSION_LOCATIONS.filter((l) => l.type === "supported-parish").length;
 
 const PILLARS = [
   {
@@ -130,6 +135,19 @@ function PostImage({
           </div>
         </>
       )}
+    </div>
+  );
+}
+
+function StatTile({ value, label }: { value: number | string; label: string }) {
+  return (
+    <div className="bg-[var(--bg-card)] border border-[var(--border-default)] p-6 md:p-8 flex flex-col gap-2">
+      <p className="font-georgia text-[40px] md:text-[56px] text-[var(--gold)] leading-none">
+        {value}
+      </p>
+      <p className="text-[12px] md:text-[13px] font-bold tracking-[1px] text-[var(--text-primary)] uppercase mt-2">
+        {label}
+      </p>
     </div>
   );
 }
@@ -734,9 +752,26 @@ export default function ActivityPage({
         </div>
       </section>
 
-      {/* Stats and witness sections intentionally omitted — only verified
-          content shipped to /live. Re-add when real subscriber testimonials
-          or verifiable counts are provided. */}
+      {/* ── Verified stats (mission-locations data + years since 2016) ── */}
+      <section className="px-5 md:px-[120px] py-12 md:py-16 bg-[var(--bg-primary)]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+          <StatTile
+            value={new Date().getFullYear() - MISSION_START_YEAR}
+            label={t("home.missionField.statSince")}
+          />
+          <StatTile
+            value={MISSION_CENTERS}
+            label={t("locations.stats.missionCenters")}
+          />
+          <StatTile
+            value={SUPPORTED_PARISHES}
+            label={t("locations.stats.parishesSupported")}
+          />
+        </div>
+      </section>
+
+      {/* Witness/testimonials section intentionally omitted — re-add when
+          real subscriber testimonials with permission to publish are available. */}
 
       {/* ── Final CTA ── */}
       <section className="relative px-5 md:px-[120px] py-20 md:py-[120px] bg-[linear-gradient(180deg,var(--warm-bg)_0%,var(--bg-primary)_100%)] overflow-hidden">
