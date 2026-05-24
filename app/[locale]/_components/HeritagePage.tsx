@@ -46,11 +46,16 @@ const TRADITION_IMAGES: Record<TraditionKey, string> = {
 
 const VOICE_KEYS = [
   "e1054",
+  "eBalsamon",
   "eCanon",
   "e1322",
   "e1385",
+  "e1416",
+  "e1422",
   "eParis",
   "eStoglav",
+  "eAthos",
+  "e1764",
   "eAbolition",
 ] as const;
 type VoiceKey = (typeof VOICE_KEYS)[number];
@@ -378,7 +383,15 @@ function TraditionCard({ id }: { id: TraditionKey }) {
   );
 }
 
-function VoiceCard({ id }: { id: VoiceKey }) {
+function VoiceCard({
+  id,
+  open,
+  onToggle,
+}: {
+  id: VoiceKey;
+  open: boolean;
+  onToggle: () => void;
+}) {
   const { t } = useTranslation();
   const date = t(`heritage.voices.entries.${id}.date`);
   const source = t(`heritage.voices.entries.${id}.source`);
@@ -387,43 +400,119 @@ function VoiceCard({ id }: { id: VoiceKey }) {
   const url = t(`heritage.voices.entries.${id}.url`);
   const hasQuote = quote && quote.length > 0;
   const hasUrl = url && url.startsWith("http");
+  const panelId = `voice-panel-${id}`;
   return (
-    <article className="flex flex-col gap-4 bg-[var(--bg-card)] border border-[var(--border-default)] p-6 md:p-8">
-      <header className="flex flex-col gap-2">
-        <span className="text-[11px] font-bold tracking-[2px] text-[var(--gold)] uppercase">
-          {date}
-        </span>
-        <h3 className="text-[16px] md:text-[18px] font-semibold text-[var(--text-primary)] leading-[1.4]">
-          {source}
-        </h3>
-      </header>
-      {hasQuote && (
-        <blockquote className="relative border-l-2 border-[var(--gold)] pl-5 py-1">
-          <Quote
-            size={14}
-            className="absolute -left-[8px] -top-[2px] bg-[var(--bg-card)] text-[var(--gold)]"
-            aria-hidden
-          />
-          <p className="text-[15px] md:text-[16px] font-georgia italic text-[var(--text-primary)] leading-[1.7]">
-            &ldquo;{quote}&rdquo;
-          </p>
-        </blockquote>
-      )}
-      <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.75]">
-        {body}
-      </p>
-      {hasUrl && (
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[1.5px] uppercase text-[var(--gold)] hover:opacity-80 transition-opacity w-fit"
+    <article className="bg-[var(--bg-card)] border border-[var(--border-default)] hover:border-[var(--gold)]/40 transition-colors">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        aria-controls={panelId}
+        className="w-full flex items-start justify-between gap-4 p-5 md:p-6 text-left cursor-pointer group"
+      >
+        <div className="flex-1 min-w-0 flex flex-col gap-2">
+          <span className="text-[11px] font-bold tracking-[2px] text-[var(--gold)] uppercase">
+            {date}
+          </span>
+          <h3 className="text-[15px] md:text-[16px] font-semibold text-[var(--text-primary)] leading-[1.4]">
+            {source}
+          </h3>
+        </div>
+        <span
+          className={`shrink-0 mt-1 text-[var(--text-secondary)] group-hover:text-[var(--gold)] transition-transform duration-300 ${
+            open ? "rotate-45" : ""
+          }`}
+          aria-hidden
         >
-          {t("heritage.voices.readSourceLabel")}
-          <ExternalLink size={12} />
-        </a>
-      )}
+          <Plus size={18} />
+        </span>
+      </button>
+      <div
+        id={panelId}
+        hidden={!open}
+        className="flex flex-col gap-4 px-5 md:px-6 pb-5 md:pb-6 -mt-1"
+      >
+        {hasQuote && (
+          <blockquote className="relative border-l-2 border-[var(--gold)] pl-5 py-1">
+            <Quote
+              size={14}
+              className="absolute -left-[8px] -top-[2px] bg-[var(--bg-card)] text-[var(--gold)]"
+              aria-hidden
+            />
+            <p className="text-[15px] md:text-[16px] font-georgia italic text-[var(--text-primary)] leading-[1.7]">
+              &ldquo;{quote}&rdquo;
+            </p>
+          </blockquote>
+        )}
+        <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.75]">
+          {body}
+        </p>
+        {hasUrl && (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[1.5px] uppercase text-[var(--gold)] hover:opacity-80 transition-opacity w-fit"
+          >
+            {t("heritage.voices.readSourceLabel")}
+            <ExternalLink size={12} />
+          </a>
+        )}
+      </div>
     </article>
+  );
+}
+
+function VoicesArchive() {
+  const { t } = useTranslation();
+  const [openSet, setOpenSet] = useState<Set<VoiceKey>>(() => new Set());
+  const toggle = (k: VoiceKey) =>
+    setOpenSet((prev) => {
+      const next = new Set(prev);
+      if (next.has(k)) next.delete(k);
+      else next.add(k);
+      return next;
+    });
+  const allOpen = openSet.size === VOICE_KEYS.length;
+  const expandAll = () => setOpenSet(new Set(VOICE_KEYS));
+  const collapseAll = () => setOpenSet(new Set());
+  return (
+    <>
+      <SectionLabel text={t("heritage.voices.label")} />
+      <h2 className="mt-6 font-georgia text-[32px] md:text-[44px] xl:text-[56px] leading-[1.1] text-[var(--text-primary)] max-w-[900px]">
+        {t("heritage.voices.title")}
+      </h2>
+      <p className="mt-6 text-[15px] md:text-[17px] leading-[1.8] text-[var(--text-secondary)] max-w-[820px] font-georgia">
+        {t("heritage.voices.intro")}
+      </p>
+      <div className="mt-8 flex items-center justify-between gap-4">
+        <span className="text-[11px] tracking-[1.5px] uppercase text-[var(--text-muted)]">
+          {VOICE_KEYS.length} {t("heritage.voices.label").split("—")[0].trim()}
+        </span>
+        <button
+          type="button"
+          onClick={allOpen ? collapseAll : expandAll}
+          className="text-[11px] font-bold tracking-[1.5px] uppercase text-[var(--gold)] hover:opacity-80 transition-opacity cursor-pointer"
+        >
+          {allOpen
+            ? t("heritage.voices.collapseAllLabel")
+            : t("heritage.voices.expandAllLabel")}
+        </button>
+      </div>
+      <div className="mt-4 grid md:grid-cols-2 gap-4 md:gap-5">
+        {VOICE_KEYS.map((k) => (
+          <VoiceCard
+            key={k}
+            id={k}
+            open={openSet.has(k)}
+            onToggle={() => toggle(k)}
+          />
+        ))}
+      </div>
+      <p className="mt-8 text-[11px] text-[var(--text-muted)] italic max-w-[820px] leading-[1.6]">
+        {t("heritage.voices.footnote")}
+      </p>
+    </>
   );
 }
 
@@ -603,21 +692,7 @@ export default function HeritagePage() {
 
           {/* ───── VOICES IN THE ARCHIVE ───────────────────────────── */}
           <section id="voices" className="scroll-mt-28">
-            <SectionLabel text={t("heritage.voices.label")} />
-            <h2 className="mt-6 font-georgia text-[32px] md:text-[44px] xl:text-[56px] leading-[1.1] text-[var(--text-primary)] max-w-[900px]">
-              {t("heritage.voices.title")}
-            </h2>
-            <p className="mt-6 text-[15px] md:text-[17px] leading-[1.8] text-[var(--text-secondary)] max-w-[820px] font-georgia">
-              {t("heritage.voices.intro")}
-            </p>
-            <div className="mt-10 grid md:grid-cols-2 gap-5 md:gap-6">
-              {VOICE_KEYS.map((k) => (
-                <VoiceCard key={k} id={k} />
-              ))}
-            </div>
-            <p className="mt-8 text-[11px] text-[var(--text-muted)] italic max-w-[820px] leading-[1.6]">
-              {t("heritage.voices.footnote")}
-            </p>
+            <VoicesArchive />
           </section>
 
           {/* ───── SHARED FAITH ────────────────────────────────────── */}

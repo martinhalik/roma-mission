@@ -856,6 +856,8 @@ const en: Dictionary = {
         "Where a citation is general rather than a single quotable text, we have erred on the side of caution rather than fake precision. Send corrections to martin@romamission.eu and we will sharpen it.",
       sourceLabel: "Source",
       readSourceLabel: "Read the source",
+      expandAllLabel: "Expand all",
+      collapseAllLabel: "Collapse all",
       entries: {
         e1054: {
           date: "c. 1054",
@@ -866,6 +868,15 @@ const en: Dictionary = {
           body:
             "Written by the disciple of St George Hagiorites (d. 1065) on Mount Athos. Records Emperor Constantine IX Monomachos summoning the Adsincani — a people reputed for skill with animals and for sorcery — to deal with wild beasts plaguing the imperial hunting park at Philopation. Widely cited as one of the earliest probable references to Roma in the Byzantine world.",
           url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
+        },
+        eBalsamon: {
+          date: "Late 12th c.",
+          source: "Theodore Balsamon, Scholia on the Nomocanon of Photios",
+          quote:
+            "Ventriloquists, inspired satanically, who pretend to predict the unknown.",
+          body:
+            "Patriarch of Antioch and the most authoritative Byzantine canonist of his age. In his commentary on Canon 61 of the Quinisext Council, Balsamon describes Athinganoi who wind serpents around themselves, tell fortunes by good or evil stars, and prophesy the future — and lumps them with the satanically inspired. The canonical guidance against consulting them, first aimed at an older heretical sect of the same name, is carried forward and read against the Acigani who arrive later.",
+          url: "https://en.wikipedia.org/wiki/Theodore_Balsamon",
         },
         eCanon: {
           date: "11th – 16th c.",
@@ -893,6 +904,22 @@ const en: Dictionary = {
             "Dan I of Wallachia gifts forty Roma (Aṭigani) families to the Orthodox monastery of Tismana — one of the earliest documented instances of Roma being held as monastic serfs in the Romanian principalities. The same pattern is repeated at Cozia, Cotmeana and many other monasteries. The dark side of the shared story: the Church that catechised them also held them. This bondage lasts until abolition in 1855–56.",
           url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
         },
+        e1416: {
+          date: "1416",
+          source: "Brașov (Kronstadt) town accounts, Transylvania",
+          quote: "",
+          body:
+            "The Saxon municipal accounts of Brașov record a payment in kind — grain and provisions — to a band of Acigani passing through under their own chieftain. The earliest dated municipal record of Roma in Central Europe; they arrive as Christian travellers with a leader, not as strangers.",
+          url: "https://en.wikipedia.org/wiki/Timeline_of_Romani_history",
+        },
+        e1422: {
+          date: "July 1422",
+          source: "Cronica di Bologna; arrival of the Acigani in Italy",
+          quote: "",
+          body:
+            "A band led by 'Duke Andrew of Egypt' arrives in Bologna with around a hundred men and women, bearing a letter of safe-conduct from Pope Martin V identifying them as Christians on pilgrimage. Five years before the Bishop of Paris will excommunicate those who consult them, the Bishop of Rome had received them as fellow Christians.",
+          url: "https://en.wikipedia.org/wiki/History_of_the_Romani_people",
+        },
         eParis: {
           date: "17 August 1427",
           source:
@@ -911,6 +938,22 @@ const en: Dictionary = {
           body:
             "The Russian Orthodox synod, in chapters condemning soothsayers, charmers and false prophets, continues the same long pastoral concern: the Church guarding her people from divination. The same family of warnings that began with the Byzantine canon-law tradition reaches into the heart of Russia.",
           url: "https://archive.org/details/stoglav00ofgoog",
+        },
+        eAthos: {
+          date: "17th – 18th c.",
+          source: "Mount Athos monastic records",
+          quote: "",
+          body:
+            "Vatopedi, Iviron and other Athonite monasteries record Atsiganoi serving as smiths, carpenters and pack-handlers in their houses. The smithing thread runs unbroken from the Adsincani of 1054 to Ottoman-era Athos — same trade, same place, six centuries on. Further citations in Fr. Martin Halík's forthcoming book.",
+          url: "",
+        },
+        e1764: {
+          date: "1764 onwards",
+          source: "Imperial Russia under Catherine II",
+          quote: "",
+          body:
+            "Catherine II's reforms register the Roma as imperial subjects with the obligation to settle and pay taxes. Over the following decades large numbers are gathered into Russian Orthodox parishes; the Ruska Roma — Russia's main Roma group — trace their continuous Orthodox parish life to this era.",
+          url: "https://en.wikipedia.org/wiki/Ruska_Roma",
         },
         eAbolition: {
           date: "1855 – 1856",

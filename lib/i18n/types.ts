@@ -659,13 +659,20 @@ export interface Dictionary {
       footnote: string;
       sourceLabel: string;
       readSourceLabel: string;
+      expandAllLabel?: string;
+      collapseAllLabel?: string;
       entries: {
         e1054: { date: string; source: string; quote: string; body: string; url: string };
+        eBalsamon?: { date: string; source: string; quote: string; body: string; url: string };
         eCanon: { date: string; source: string; quote: string; body: string; url: string };
         e1322: { date: string; source: string; quote: string; body: string; url: string };
         e1385: { date: string; source: string; quote: string; body: string; url: string };
+        e1416?: { date: string; source: string; quote: string; body: string; url: string };
+        e1422?: { date: string; source: string; quote: string; body: string; url: string };
         eParis: { date: string; source: string; quote: string; body: string; url: string };
         eStoglav: { date: string; source: string; quote: string; body: string; url: string };
+        eAthos?: { date: string; source: string; quote: string; body: string; url: string };
+        e1764?: { date: string; source: string; quote: string; body: string; url: string };
         eAbolition: { date: string; source: string; quote: string; body: string; url: string };
       };
     };
