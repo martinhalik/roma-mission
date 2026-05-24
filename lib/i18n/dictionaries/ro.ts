@@ -6,6 +6,7 @@ const ro: Dictionary = {
     locations: "LOCAȚII",
     media: "MEDIA",
     stories: "POVEȘTI",
+    heritage: "MOȘTENIRE",
     share: "DISTRIBUIE",
     contact: "CONTACT",
     contactWhatsapp: "Contactați-ne pe WhatsApp",
@@ -768,6 +769,302 @@ const ro: Dictionary = {
       },
     },
   },
+  heritage: {
+    hero: {
+      label: "Muzeu interactiv",
+      titleLine1: "O poveste comună",
+      titleLine2: "de o mie de ani",
+      subtitle:
+        "Romii nu au ajuns în Europa ca străini de credință. Au pășit într-o lume creștină — iar o lume creștină a pășit alături de ei. Aceasta este povestea lungă, încă neîncheiată, a modului în care romii au devenit catehumeni ortodocși și a ceea ce încă poartă cu ei.",
+      shareLabel: "Distribuie acest muzeu",
+      scrollHint: "Începe călătoria",
+    },
+    toc: {
+      label: "Expoziții",
+      origins: "Origini",
+      timeline: "Cronologie",
+      voices: "Voci din arhivă",
+      faith: "Credință comună",
+      traditions: "Tradiții vii",
+      today: "Romii astăzi",
+      continue: "Continuă",
+    },
+    origins: {
+      label: "Expoziția 01 — Origini",
+      title: "Din India în inima creștinătății",
+      intro:
+        "În jurul secolului al XI-lea, grupuri de oameni vorbind o limbă indo-ariană au început să se deplaseze spre vest din nord-vestul Indiei. Lingvistica, nu legenda, ne spune acest lucru: limba romani este o soră a hindi și a punjabi, modelată în continuare de lungile sale popasuri în ținuturile persane și armene înainte de a atinge vreodată Europa.",
+      body1:
+        "Până când romii au ajuns la Imperiul Bizantin, călătoriseră de generații. Imperiul era creștin; orașele erau pline de biserici; nou-veniții au fost primiți (și consemnați) cu nume — Athinganoi în greacă, care devine internaționalul Acigani și de acolo Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
+      body2:
+        "Remarcabil este ceea ce a urmat. De-a lungul secolelor de migrație în ținuturi ortodoxe, romii nu și-au păstrat o religie proprie separată. Au primit credința celor care i-au primit — iar cea mai profundă primire a fost cea ortodoxă.",
+      factCards: {
+        a: {
+          stat: "sec. XI",
+          title: "Prima migrație",
+          body: "Strămoșii romilor părăsesc subcontinentul indian — probabil Punjab și Rajasthan.",
+        },
+        b: {
+          stat: "1100–1300",
+          title: "Anii bizantini",
+          body: "Secole petrecute în Răsăritul creștin grecofon. Limba romani absoarbe sute de cuvinte grecești încă în uz zilnic.",
+        },
+        c: {
+          stat: "1300+",
+          title: "În Europa",
+          body: "Documentați în Balcani, apoi în Ungaria, Țările Cehe, principatele germane și până în Spania și Britania.",
+        },
+      },
+    },
+    timeline: {
+      label: "Expoziția 02 — Cronologie",
+      title: "O plimbare prin secole",
+      intro:
+        "Deschideți fiecare epocă pentru a vedea lumea în care romii pășeau — și Biserica care mergea alături de ei.",
+      eras: {
+        era1: {
+          range: "1000 — 1300",
+          heading: "Din India, în Răsăritul creștin",
+          body: "Strămoșii romilor traversează Persia, Armenia și ajung la Imperiul Bizantin. Preoții greci botează. Cuvinte grecești — drom (drum), papin (gâscă), klidi (cheie) — intră pentru totdeauna în limba romani.",
+        },
+        era2: {
+          range: "1300 — 1500",
+          heading: "Prin Balcani",
+          body: "Romii se așază în ținuturi sârbești, bulgărești, macedonene și românești — toate ortodoxe. Mănăstirile și parohiile consemnează botezurile, cununiile și înmormântările lor. Slava, Paștele și calendarul bisericesc intră în viața de familie a romilor.",
+        },
+        era3: {
+          range: "1500 — 1800",
+          heading: "Imperiu și migrație",
+          body: "Sub otomani, identitatea ortodoxă devine un semn de apartenență în sistemul mileturilor. Romii din Rumelia otomană poartă nume ortodoxe și sfinți ocrotitori. Romii din Țările Române trăiesc secole de robie — dar aceeași Liturghie este cântată deopotrivă peste rob și peste liber.",
+        },
+        era4: {
+          range: "1800 — 1945",
+          heading: "Emancipare și catastrofă",
+          body: "Robia din Țara Românească și Moldova este abolită (1856). Romii cântă în corurile ortodoxe, slujesc drept kumovi (nași) și își îngroapă morții sub crucea cu opt brațe. Apoi vine Porajmos — genocidul romilor din al Doilea Război Mondial.",
+        },
+        era5: {
+          range: "1945 — astăzi",
+          heading: "Reconstrucție sub Cruce",
+          body: "Sub comunism, religia este împinsă în clandestinitate; familiile rome țin icoanele ascunse în dulapuri. După 1989, Biserica Ortodoxă se întoarce în satele rome — lent, neuniform și adesea doar acolo unde un preot rămâne. Aceasta este povestea în care încă ne aflăm.",
+        },
+      },
+    },
+    voices: {
+      label: "Expoziția 03 — Voci din arhivă",
+      title: "Ce a scris istoria despre romi",
+      intro:
+        "Romii nu și-au scris propria cronică. Ceea ce știm despre primele lor secole în lumea creștină vine de la călugări, episcopi, scribi orășenești și de la cărțile de drept canonic care încercau deja să-i înțeleagă. Iată, în ordine, vocile — citate acolo unde originalul s-a păstrat, cu surse pe care le puteți accesa.",
+      footnote:
+        "Acolo unde citarea este mai degrabă generală decât un singur text citabil, am preferat prudența în locul unei false precizii. Trimiteți corecții la martin@romamission.eu și le vom rafina.",
+      sourceLabel: "Sursa",
+      readSourceLabel: "Citește sursa",
+      expandAllLabel: "Extinde tot",
+      collapseAllLabel: "Restrânge tot",
+      entries: {
+        e1054: {
+          date: "c. 1054",
+          source:
+            "Viața Sf. Gheorghe Athonitul — Giorgi Mtsire, georgian, c. 1068 (ed. P. Peeters, Analecta Bollandiana 36–37, 1917–19)",
+          quote:
+            "Un popor samaritean, urmași ai lui Simon Magul, numiți Adsincani, care erau vrăjitori și nelegiuiți renumiți.",
+          body:
+            "Scrisă de ucenicul Sf. Gheorghe Hagioritul (†1065) la Muntele Athos. Consemnează cum împăratul Constantin al IX-lea Monomahul i-a chemat pe Adsincani — un popor renumit pentru iscusința cu animalele și pentru vrăjitorie — pentru a se ocupa de fiarele sălbatice care chinuiau parcul de vânătoare imperial de la Philopation. Citată pe scară largă drept una dintre cele mai vechi referințe probabile la romi în lumea bizantină.",
+          url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
+        },
+        eBalsamon: {
+          date: "sf. sec. XII",
+          source: "Theodore Balsamon, Scolii la Nomocanonul lui Photios",
+          quote:
+            "Ventriloci, inspirați satanic, care pretind a prezice cele necunoscute.",
+          body:
+            "Patriarh al Antiohiei și cel mai autoritar canonist bizantin al vremii sale. În comentariul său la Canonul 61 al Sinodului Quinisext, Balsamon descrie pe Athinganoi care își înfășoară șerpi în jurul lor, prezic după stele bune sau rele și profețesc viitorul — și îi așază printre cei inspirați satanic. Îndrumarea canonică împotriva consultării lor, îndreptată mai întâi împotriva unei secte eretice mai vechi cu același nume, este dusă mai departe și aplicată Acigani care sosesc mai târziu.",
+          url: "https://en.wikipedia.org/wiki/Theodore_Balsamon",
+        },
+        eCanon: {
+          date: "sec. XI – XVI",
+          source: "Cârmuirea slavonă (Kormchaia) / tradiția nomocanonică greacă",
+          quote: "",
+          body:
+            "În perioada patriarhului Ghenadie al II-lea Scholarios (primul patriarh după Căderea Constantinopolului, 1454–1456), tradiția pastorală bizantină care avertiza împotriva vrăjitoriei și a ghicitului Acigani a fost preluată în Cărțile de Cârmuire slavone. Credincioșilor ortodocși li s-a poruncit să nu-i primească în casele lor pentru ghicit. Textul s-a păstrat în tradiția canonică slavonă, nu într-un singur decret datat — citarea arhivistică exactă va apărea în cartea ce urmează a fi publicată de pr. Martin Halík despre istoria ortodoxă a romilor.",
+          url: "",
+        },
+        e1322: {
+          date: "1322",
+          source:
+            "Symon Semeonis (Simon FitzSimon), Itinerarium ab Hybernia ad Terram Sanctam — latinește, ed. Mario Esposito (Dublin, 1960)",
+          quote:
+            "Am văzut în afara acestei cetăți un trib de oameni, care se închină după rânduiala grecească și pretind că sunt din neamul lui Cain. Acești oameni rareori sau niciodată nu rămân într-un loc mai mult de treizeci de zile, ci sunt mereu, ca blestemați de Dumnezeu, nomazi și surghiuniți. După a treizecea zi rătăcesc din câmp în câmp cu corturi mici, alungite, negre și joase, asemenea celor ale arabilor.",
+          body:
+            "Un călugăr franciscan irlandez ce trecea prin Creta îi descrie pe Atsinganii pe care i-a întâlnit în afara Heraklionului. Probabil cea mai veche descriere occidentală de martor ocular a romilor care s-a păstrat — și deja în 1322 observă că se închină 'după rânduiala grecească'.",
+          url: "https://celt.ucc.ie/published/T300002-001.html",
+        },
+        e1385: {
+          date: "octombrie 1385",
+          source: "Hrisovul lui Dan I, voievod al Țării Românești",
+          quote: "",
+          body:
+            "Dan I al Țării Românești dăruiește patruzeci de familii de romi (Aṭigani) mănăstirii ortodoxe Tismana — una dintre cele mai vechi consemnări documentate ale romilor ținuți drept robi mănăstirești în principatele române. Același tipar se repetă la Cozia, Cotmeana și multe alte mănăstiri. Latura întunecată a poveștii comune: Biserica ce i-a catehizat i-a și ținut. Această robie durează până la abolirea din 1855–56.",
+          url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
+        },
+        e1416: {
+          date: "1416",
+          source: "Socotelile orașului Brașov (Kronstadt), Transilvania",
+          quote: "",
+          body:
+            "Socotelile municipale săsești ale Brașovului consemnează o plată în natură — grâu și provizii — unei cete de Acigani care trecea prin oraș sub propria căpetenie. Cea mai veche consemnare municipală datată a romilor în Europa Centrală; sosesc ca pelerini creștini cu un conducător, nu ca străini.",
+          url: "https://en.wikipedia.org/wiki/Timeline_of_Romani_history",
+        },
+        e1422: {
+          date: "iulie 1422",
+          source: "Cronica di Bologna; sosirea Acigani în Italia",
+          quote: "",
+          body:
+            "O ceată condusă de 'ducele Andrei al Egiptului' sosește la Bologna cu aproximativ o sută de bărbați și femei, purtând o scrisoare de liberă trecere de la Papa Martin al V-lea care îi identifică drept creștini în pelerinaj. Cu cinci ani înainte ca episcopul Parisului să-i excomunice pe cei care îi consultă, Episcopul Romei îi primise drept creștini frați.",
+          url: "https://en.wikipedia.org/wiki/History_of_the_Romani_people",
+        },
+        eParis: {
+          date: "17 august 1427",
+          source:
+            "Journal d'un bourgeois de Paris (anonim), însemnare pentru duminica de după mijlocul lui august 1427",
+          quote:
+            "Episcopul Parisului a mers acolo cu un călugăr franciscan numit Petit Jacobin, care, la porunca episcopului, a propovăduit în public, excomunicându-i pe toți cei care îi crezuseră și le arătaseră mâna.",
+          body:
+            "O ceată de Égyptiens — descrisă ca doisprezece penitenți, un duce, un conte și zece călăreți — a tăbărât în afara Parisului la La Chapelle. Mulțimi vaste au ieșit să li se ghicească. Episcopul Parisului a răspuns excomunicându-l pe orice creștin care îi lăsase să le citească în palmă și a poruncit procesiuni generale pentru a îndrepta greșeala.",
+          url: "https://fr.wikisource.org/wiki/Le_dimanche_d%27apr%C3%A8s_la_my-aoust,_qui_fut_le_dix-septiesme_jour_d%27aoust_oudit_an_1427",
+        },
+        eStoglav: {
+          date: "1551",
+          source:
+            "Stoglav (Стоглав) — Soborul de la Moscova sub țarul Ivan al IV-lea și mitropolitul Macarie",
+          quote: "",
+          body:
+            "Sinodul ortodox rus, în capitolele ce condamnă ghicitorii, vrăjitorii și prorocii mincinoși, continuă aceeași lungă grijă pastorală: Biserica își păzește poporul de ghicit. Aceeași familie de avertismente care a început cu tradiția canonică bizantină ajunge până în inima Rusiei.",
+          url: "https://archive.org/details/stoglav00ofgoog",
+        },
+        eAthos: {
+          date: "sec. XVII – XVIII",
+          source: "Înregistrări monahale de la Muntele Athos",
+          quote: "",
+          body:
+            "Vatopedi, Iviron și alte mănăstiri athonite consemnează Atsiganoi slujind drept fierari, dulgheri și conducători de animale de povară în casele lor. Firul fierăriei se întinde neîntrerupt de la Adsincani din 1054 până la Athosul din vremea otomană — aceeași meserie, același loc, șase secole mai târziu. Alte citări în cartea ce urmează a fi publicată de pr. Martin Halík.",
+          url: "",
+        },
+        e1764: {
+          date: "din 1764",
+          source: "Rusia imperială sub Ecaterina a II-a",
+          quote: "",
+          body:
+            "Reformele Ecaterinei a II-a îi înregistrează pe romi ca supuși imperiali cu obligația de a se așeza și de a plăti taxe. În deceniile următoare, numere mari sunt adunate în parohiile ortodoxe ruse; Ruska Roma — principalul grup de romi din Rusia — își datează viața parohială ortodoxă neîntreruptă din această epocă.",
+          url: "https://en.wikipedia.org/wiki/Ruska_Roma",
+        },
+        eAbolition: {
+          date: "1855 – 1856",
+          source:
+            "Moldova (22 decembrie 1855) și Țara Românească (20 februarie 1856)",
+          quote: "",
+          body:
+            "După aproximativ cinci secole de robie față de mănăstirile ortodoxe, boieri și statul domnesc, robia romilor în principatele române este abolită. La cea mai mică estimare, vreo 250.000 de romi trec legal în libertate. Biserica ce i-a ținut începe acum lucrarea lentă, încă neîncheiată, de a-i primi ca membri egali. Aceasta este lucrarea în care încă ne aflăm.",
+          url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
+        },
+      },
+    },
+    faith: {
+      label: "Expoziția 04 — Credință comună",
+      title: "Ce avem în comun",
+      intro:
+        "Oriunde s-au așezat romii în ținuturile ortodoxe, nu au stat în afara credinței — au intrat în ea, și-au numit copiii după sfinții ei și au modelat tradiții care îi par izbitor de familiare oricărui creștin ortodox.",
+      catechumenLabel: "Un popor de catehumeni",
+      catechumenBody:
+        "Romii sunt catehumeni ortodocși pe un drum lung. Au primit Ortodoxia în forma în care au putut — împletită cu propriile obiceiuri, uneori amestecată cu minciuni vechi, adesea fără o parohie în apropiere care să-i învețe. Ei nu sunt în afara Bisericii. Sunt înăuntru, încă învățând, încă luptându-se să lase minciunile în urmă, încă fiind înnoiți. Ca o familie romă care găsește o icoană a Maicii Domnului aruncată ca gunoi și o aduce acasă spre cinstire, poporul disprețuit păstrează chipul lepădat. Aceasta este lucrarea acestei misiuni: să meargă pe drum împreună cu ei.",
+      columns: {
+        byzantium: {
+          title: "Din Bizanț",
+          body: "Bizanțul grecofon a fost prima casă lungă a romilor în lumea creștină. Limba romani încă poartă substantive grecești. Copiii romi sunt încă botezați cu nume precum Yiorgos, Mihalis, Maria — nume ortodoxe, nu indiene.",
+        },
+        balkans: {
+          title: "Cu slavii",
+          body: "În Serbia, Macedonia, Bulgaria și Ucraina, romii trăiesc de secole înăuntrul calendarului ortodox — sărutând mâna preotului, acoperindu-și capul cu un batic, chemând preotul înaintea medicului când un copil este bolnav. Obiceiul și Biserica au crescut împreună.",
+        },
+        liturgy: {
+          title: "Sub un singur altar",
+          body: "O Liturghie ortodoxă într-un sat rom din estul Slovaciei și o Liturghie ortodoxă într-o mănăstire grecească folosesc aceleași cuvinte, aceleași gesturi, aceeași Cruce. Euharistia nu se schimbă în funcție de etnie. Aceasta este temelia acestei misiuni.",
+        },
+      },
+      pullQuote:
+        "Nu am fost convertiți într-o singură oră. Am fost convertiți încet, în o mie de botezuri, de-a lungul a o mie de ani — și suntem convertiți și astăzi.",
+      pullQuoteAttribution: "Bătrân rom, parohia Markovce",
+    },
+    traditions: {
+      label: "Expoziția 05 — Tradiții vii",
+      title: "Șase lucruri care trăiesc într-o casă ortodoxă romă",
+      intro:
+        "Multe obiceiuri rome au crescut împreună cu practica ortodoxă de-a lungul secolelor. Sunt aproape de Biserică pentru că au trăit atâta vreme alături de ea — și înăuntrul ei.",
+      tapHint: "Atingeți orice card pentru a citi mai mult",
+      closing:
+        "Și veți găsi de asemenea un preot întâmpinat cu mâna sărutată, femei care își acoperă capul cu un batic și o gospodărie care, atunci când vine durerea sau boala, cheamă preotul înaintea medicului.",
+      cards: {
+        fourNails: {
+          title: "Cele patru cuie",
+          subtitle: "Legătura cea mai adâncă",
+          body: "Iconografia ortodoxă Îl arată pe Hristos răstignit cu patru cuie — picioarele separate, nu încrucișate. Tradiția populară romă povestește despre un fierar silit să făurească patru cuie pentru Răstignire; pe al patrulea l-a furat. Povestea există în multe variante în Europa romă, dar memoria de fond se potrivește teologiei iconografice ortodoxe, nu iconografiei occidentale cu trei cuie.",
+        },
+        thirdDay: {
+          title: "A treia zi",
+          subtitle: "Înmormântare și priveghi",
+          body: "Romii păstrează trupul două nopți, se adună ca familie largă și îngroapă în a treia zi. Acesta este tiparul ortodox al pomenirii în oasele sale — Hristos a înviat a treia zi; Biserica își pomenește morții în zilele 3, 9 și 40. Romii au păstrat a treia zi chiar și acolo unde cultura din jur a încetat.",
+        },
+        byzantineChant: {
+          title: "Cântarea bizantină în glas",
+          subtitle: "O ureche deja modelată",
+          body: "Cantorii romi prind uluitor de repede cântarea modală bizantină. Urechea este deja modelată: muzica laică romă este modală — atinge aceeași familie maqam / oktoechos care a construit cântarea bizantină. Un băiat rom într-o școală parohială alunecă în glasul al doilea cum alunecă peștele în apă.",
+        },
+        roundDance: {
+          title: "Hora",
+          subtitle: "Hora, oro, syrtos",
+          body: "Hora României, oro din Macedonia și Serbia, syrtos și kalamatianos din Grecia. Romii dansează aceeași horă ca vecinii lor ortodocși — și adesea o conduc la praznicul parohial. Este un singur trup de dans, nu două.",
+        },
+        iconsHome: {
+          title: "Icoane aduse acasă",
+          subtitle: "Maica Domnului pe perete",
+          body: "Casele romilor păstrează rareori colțul formal de icoane al unui sat slav. Dar aproape fiecare casă romă are icoane — adesea unele pe care un vecin le-a aruncat ca gunoi, salvate, aduse acasă și atârnate pe perete. Maica Domnului este iubită cu o gingășie aparte. Poporul disprețuit păstrează chipul lepădat.",
+        },
+        greekBones: {
+          title: "Greacă în oase",
+          subtitle: "Limba își amintește",
+          body: "Terminațiile nominale -os din limba romani vin din greaca bizantină (raklós — băiat ne-rom, foros — oraș). Vocabularul fierăriei — amoni (nicovală), petalo (potcoavă), sideros (fier) și o listă lungă de termeni de forjă — este aproape în întregime grecesc. Limba însăși își amintește unde au fost catehizați romii.",
+        },
+      },
+    },
+    today: {
+      label: "Expoziția 06 — Romii astăzi",
+      title: "Creștinismul ortodox este încă credința majorității romilor europeni",
+      intro:
+        "Din cei aproximativ 10 milioane de romi din Europa, majoritatea trăiesc în țări cu majoritate ortodoxă. Cifrele sunt estimări — populațiile rome sunt subevaluate sistematic — dar tiparul este de netăgăduit.",
+      footnote:
+        "Cifrele populației: estimări ale Consiliului Europei. Note despre situație de la clerul și misionarii locali.",
+      countries: {
+        ro: "Cea mai mare populație romă din Europa. Multe sate rome au parohii ortodoxe deplin formate; multe altele încă nu au niciuna.",
+        bg: "Romii reprezintă aproximativ 10% din populația țării. Identitatea ortodoxă este puternică; practica bisericească variază mult de la sat la sat.",
+        rs: "Romii de aici păstrează Slava și calendarul bisericesc — dar există doar o mână de parohii rome dedicate.",
+        mk: "Šuto Orizari, lângă Skopje, este cea mai mare municipalitate romă din lume. Misiunea este pe larg deschisă.",
+        gr: "Romii greci sunt botezați ortodocși de secole. Totuși cei mai mulți trăiesc fără o viață parohială proprie activă.",
+        ua: "Zeci de mii de romi strămutați de război. Mulți își găsesc prima primire reală în Biserică în parohiile pentru refugiați.",
+        ru: "Romii ruși își trag rădăcinile ortodoxe din secolul al XVIII-lea. Biserica Ortodoxă Rusă recunoaște un sfânt patron al romilor.",
+        sk: "Aici trăiește misiunea noastră. Parohii ortodoxe rome active în Klenovec, Markovce, Kačanov, Mútnik — și în creștere.",
+      },
+    },
+    closing: {
+      label: "Continuă povestea",
+      title: "Acest muzeu este, de asemenea, o misiune.",
+      body: "Ceea ce ați parcurs nu este o istorie încheiată. Cele mai multe sate rome din Europa ortodoxă încă nu au o parohie activă proprie. Sunt catehumeni fără un învățător în sat. Aceasta este lucrarea pe care o facem — un preot, o capelă, un botez pe rând.",
+      ctaMission: "Vezi misiunea activă",
+      ctaSupport: "Sprijină lucrarea",
+    },
+    shareNudge: {
+      text: "Dacă această poveste v-a mișcat, cel mai util lucru pe care îl puteți face chiar acum este să o împărtășiți cu cineva.",
+      shareLabel: "Distribuie acest muzeu",
+    },
+  },
   getInvolved: {
     hero: {
       label: "Implică-te",
@@ -1136,6 +1433,14 @@ const ro: Dictionary = {
       title: "Media — Misiunea Creștină Romă",
       description:
         "Documentare, interviuri și mărturii despre misiunea ortodoxă printre romi — aducerea Evangheliei celei mai mari minorități neatinse din Europa.",
+    },
+    heritage: {
+      title: "Muzeul Moștenirii Rome — o poveste ortodoxă comună",
+      description:
+        "Un muzeu interactiv al celor 1.000 de ani de istorie romă și al moștenirii creștin-ortodoxe profunde pe care romii o împart cu grecii, sârbii, românii, rușii și slavii din Balcani.",
+      ogTitle: "1.000 de ani de istorie romă și ortodoxă — un muzeu interactiv",
+      ogDescription:
+        "De la Imperiul Bizantin până la lumânările de Slavă și botezurile parohiale de astăzi: drumul lung și comun al romilor ca catehumeni ortodocși.",
     },
     getInvolved: {
       title: "Implică-te — Misiunea Creștină Romă",

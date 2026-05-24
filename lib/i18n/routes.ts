@@ -7,6 +7,7 @@ export type RouteKey =
   | "locations"
   | "stories"
   | "media"
+  | "heritage"
   | "getInvolved"
   | "thankYou"
   | "privacy"
@@ -19,6 +20,7 @@ export const ROUTE_KEYS: readonly RouteKey[] = [
   "locations",
   "stories",
   "media",
+  "heritage",
   "getInvolved",
   "thankYou",
   "privacy",
@@ -26,15 +28,15 @@ export const ROUTE_KEYS: readonly RouteKey[] = [
 ] as const;
 
 export const ROUTE_SLUGS: Record<Locale, Record<RouteKey, string>> = {
-  en: { home: "", mission: "mission",     ourStory: "our-story",          locations: "locations",   stories: "stories",  media: "media",   getInvolved: "get-involved",  thankYou: "thank-you",   privacy: "privacy-policy",    terms: "terms-of-use" },
-  sk: { home: "", mission: "misia",       ourStory: "nas-pribeh",         locations: "lokality",    stories: "pribehy",  media: "media",   getInvolved: "zapojte-sa",    thankYou: "dakujeme",    privacy: "ochrana-udajov",    terms: "podmienky" },
-  cs: { home: "", mission: "mise",        ourStory: "nas-pribeh",         locations: "lokality",    stories: "pribehy",  media: "media",   getInvolved: "zapojte-se",    thankYou: "dekujeme",    privacy: "ochrana-udaju",     terms: "podminky" },
-  ro: { home: "", mission: "misiune",     ourStory: "povestea-noastra",   locations: "locatii",     stories: "marturii", media: "media",   getInvolved: "implica-te",    thankYou: "multumesc",   privacy: "confidentialitate", terms: "termeni" },
-  de: { home: "", mission: "mission",     ourStory: "unsere-geschichte",  locations: "standorte",   stories: "geschichten", media: "medien", getInvolved: "mitmachen",   thankYou: "danke",       privacy: "datenschutz",       terms: "nutzungsbedingungen" },
-  sr: { home: "", mission: "misija",      ourStory: "nasa-prica",         locations: "lokacije",    stories: "price",    media: "mediji",  getInvolved: "prikljuci-se",  thankYou: "hvala",       privacy: "privatnost",        terms: "uslovi" },
-  ru: { home: "", mission: "missiya",     ourStory: "nasha-istoriya",     locations: "mesta",       stories: "istorii",  media: "media",   getInvolved: "uchastvovat",   thankYou: "spasibo",     privacy: "konfidentsialnost", terms: "usloviya" },
-  mk: { home: "", mission: "misija",      ourStory: "nasata-prikazna",    locations: "lokacii",     stories: "prikazni", media: "mediumi", getInvolved: "vklucise",      thankYou: "blagodaram",  privacy: "privatnost",        terms: "uslovi" },
-  el: { home: "", mission: "apostoli",    ourStory: "i-istoria-mas",      locations: "topothesies", stories: "martyries", media: "mesa",   getInvolved: "symmetechete",  thankYou: "efcharistoume", privacy: "aporrito",        terms: "oroi-chrisis" },
+  en: { home: "", mission: "mission",     ourStory: "our-story",          locations: "locations",   stories: "stories",  media: "media",   heritage: "heritage",       getInvolved: "get-involved",  thankYou: "thank-you",   privacy: "privacy-policy",    terms: "terms-of-use" },
+  sk: { home: "", mission: "misia",       ourStory: "nas-pribeh",         locations: "lokality",    stories: "pribehy",  media: "media",   heritage: "dedicstvo",      getInvolved: "zapojte-sa",    thankYou: "dakujeme",    privacy: "ochrana-udajov",    terms: "podmienky" },
+  cs: { home: "", mission: "mise",        ourStory: "nas-pribeh",         locations: "lokality",    stories: "pribehy",  media: "media",   heritage: "dedictvi",       getInvolved: "zapojte-se",    thankYou: "dekujeme",    privacy: "ochrana-udaju",     terms: "podminky" },
+  ro: { home: "", mission: "misiune",     ourStory: "povestea-noastra",   locations: "locatii",     stories: "marturii", media: "media",   heritage: "mostenire",      getInvolved: "implica-te",    thankYou: "multumesc",   privacy: "confidentialitate", terms: "termeni" },
+  de: { home: "", mission: "mission",     ourStory: "unsere-geschichte",  locations: "standorte",   stories: "geschichten", media: "medien", heritage: "erbe",         getInvolved: "mitmachen",   thankYou: "danke",       privacy: "datenschutz",       terms: "nutzungsbedingungen" },
+  sr: { home: "", mission: "misija",      ourStory: "nasa-prica",         locations: "lokacije",    stories: "price",    media: "mediji",  heritage: "nasledje",       getInvolved: "prikljuci-se",  thankYou: "hvala",       privacy: "privatnost",        terms: "uslovi" },
+  ru: { home: "", mission: "missiya",     ourStory: "nasha-istoriya",     locations: "mesta",       stories: "istorii",  media: "media",   heritage: "nasledie",       getInvolved: "uchastvovat",   thankYou: "spasibo",     privacy: "konfidentsialnost", terms: "usloviya" },
+  mk: { home: "", mission: "misija",      ourStory: "nasata-prikazna",    locations: "lokacii",     stories: "prikazni", media: "mediumi", heritage: "nasledstvo",     getInvolved: "vklucise",      thankYou: "blagodaram",  privacy: "privatnost",        terms: "uslovi" },
+  el: { home: "", mission: "apostoli",    ourStory: "i-istoria-mas",      locations: "topothesies", stories: "martyries", media: "mesa",   heritage: "klironomia",     getInvolved: "symmetechete",  thankYou: "efcharistoume", privacy: "aporrito",        terms: "oroi-chrisis" },
 };
 
 export function resolveRoute(locale: Locale, urlSlug: string): RouteKey | null {

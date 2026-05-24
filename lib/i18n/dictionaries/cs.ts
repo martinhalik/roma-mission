@@ -6,6 +6,7 @@ const cs: Dictionary = {
     locations: "LOKALITY",
     media: "MÉDIA",
     stories: "PŘÍBĚHY",
+    heritage: "DĚDICTVÍ",
     share: "SDÍLET",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktujte nás na WhatsApp",
@@ -764,6 +765,302 @@ const cs: Dictionary = {
       },
     },
   },
+  heritage: {
+    hero: {
+      label: "Interaktivní muzeum",
+      titleLine1: "Společný",
+      titleLine2: "tisíciletý příběh",
+      subtitle:
+        "Romové nepřišli do Evropy jako cizinci pro víru. Vstoupili do křesťanského světa — a křesťanský svět šel s nimi. Toto je dlouhý, ještě nedokončený příběh o tom, jak se Romové stali pravoslavnými katechumeny a co si dodnes nesou s sebou.",
+      shareLabel: "Sdílet toto muzeum",
+      scrollHint: "Začít cestu",
+    },
+    toc: {
+      label: "Expozice",
+      origins: "Původ",
+      timeline: "Časová osa",
+      voices: "Hlasy z archivu",
+      faith: "Společná víra",
+      traditions: "Živé tradice",
+      today: "Romové dnes",
+      continue: "Pokračovat",
+    },
+    origins: {
+      label: "Expozice 01 — Původ",
+      title: "Z Indie do srdce křesťanstva",
+      intro:
+        "Kolem 11. století začaly skupiny lidí mluvících indoárijským jazykem putovat na západ ze severozápadní Indie. Říká nám to lingvistika, ne legenda: romština je sestrou hindštiny a paňdžábštiny a dále ji formovaly dlouhé pobyty v perských a arménských zemích, ještě než se vůbec dotkla Evropy.",
+      body1:
+        "Když Romové dosáhli Byzantské říše, putovali už generace. Říše byla křesťanská; města byla plná chrámů; nové příchozí vítali (a zaznamenávali) jménem — Athinganoi řecky, z čehož se stává mezinárodní Acigani a odtud Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
+      body2:
+        "Pozoruhodné je, co následovalo. Během staletí putování do pravoslavných zemí si Romové nezachovali vlastní samostatné náboženství. Přijali víru těch, kteří je přijali — a nejhlubší přijetí bylo pravoslavné.",
+      factCards: {
+        a: {
+          stat: "11. stol.",
+          title: "První migrace",
+          body: "Předkové Romů opouštějí indický subkontinent — pravděpodobně Paňdžáb a Rádžasthán.",
+        },
+        b: {
+          stat: "1100–1300",
+          title: "Byzantská léta",
+          body: "Staletí strávená na řecky mluvícím křesťanském Východě. Romština přijímá stovky řeckých slov, která se dodnes denně užívají.",
+        },
+        c: {
+          stat: "1300+",
+          title: "Do Evropy",
+          body: "Doloženi na Balkáně, poté v Uhrách, v českých zemích, v německých knížectvích a až ve Španělsku a Británii.",
+        },
+      },
+    },
+    timeline: {
+      label: "Expozice 02 — Časová osa",
+      title: "Procházka staletími",
+      intro:
+        "Otevřete každou éru a uvidíte svět, do něhož Romové vstupovali — a Církev, která šla s nimi.",
+      eras: {
+        era1: {
+          range: "1000 — 1300",
+          heading: "Z Indie do křesťanského Východu",
+          body: "Předkové Romů procházejí Persií, Arménií a dosahují Byzantské říše. Řečtí kněží křtí. Řecká slova — drom (cesta), papin (husa), klidi (klíč) — natrvalo vstupují do romštiny.",
+        },
+        era2: {
+          range: "1300 — 1500",
+          heading: "Napříč Balkánem",
+          body: "Romové se usazují v srbských, bulharských, makedonských a rumunských zemích — všech pravoslavných. Monastýry a farnosti zaznamenávají jejich křty, sňatky a pohřby. Slava, Pascha a církevní kalendář vstupují do romského rodinného života.",
+        },
+        era3: {
+          range: "1500 — 1800",
+          heading: "Říše a migrace",
+          body: "Pod Osmany se pravoslavná identita stává v miletském systému znakem příslušnosti. Romové v osmanské Rumélii nosí pravoslavná jména a patrony svaté. Rumunští Romové žijí staletí v otroctví — ale stejná liturgie se zpívá nad otrokem i nad svobodným.",
+        },
+        era4: {
+          range: "1800 — 1945",
+          heading: "Emancipace a katastrofa",
+          body: "Otroctví ve Valašsku a v Moldavsku je zrušeno (1856). Romové zpívají v pravoslavných sborech, slouží jako kumové (kmotři) a pohřbívají své mrtvé pod osmihrotým křížem. Pak přichází Porajmos — romská genocida druhé světové války.",
+        },
+        era5: {
+          range: "1945 — dnes",
+          heading: "Obnova pod křížem",
+          body: "Za komunismu je náboženství zatlačeno do podzemí; romské rodiny ukrývají ikony ve skříních. Po roce 1989 se pravoslavná Církev vrací do romských vesnic — pomalu, nerovnoměrně a často jen tam, kde kněz zůstane. To je příběh, uvnitř kterého stále jsme.",
+        },
+      },
+    },
+    voices: {
+      label: "Expozice 03 — Hlasy z archivu",
+      title: "Co o Romech zapsaly dějiny",
+      intro:
+        "Romové si vlastní kroniku nepsali. To, co víme o jejich prvních staletích v křesťanském světě, pochází od mnichů, biskupů, městských písařů a kanonickoprávních knih, které se je už tehdy snažily pochopit. Zde jsou v pořadí hlasy — citované tam, kde se původní text zachoval, s prameny, na něž lze kliknout.",
+      footnote:
+        "Tam, kde je citace spíše obecná než jednotlivý citovatelný text, jsme raději opatrní, než abychom předstírali falešnou přesnost. Opravy posílejte na martin@romamission.eu a my je zpřesníme.",
+      sourceLabel: "Pramen",
+      readSourceLabel: "Číst pramen",
+      expandAllLabel: "Rozbalit vše",
+      collapseAllLabel: "Sbalit vše",
+      entries: {
+        e1054: {
+          date: "kolem 1054",
+          source:
+            "Život sv. Jiřího Athonského — Giorgi Mtsire, gruzínsky, kolem 1068 (ed. P. Peeters, Analecta Bollandiana 36–37, 1917–19)",
+          quote:
+            "Samaritánský lid, potomci Šimona Mága, zvaní Adsincani, kteří byli proslulými čaroději a darebáky.",
+          body:
+            "Napsal žák sv. Jiřího Hagiority (zemř. 1065) na Svaté Hoře Athos. Zaznamenává, jak císař Konstantin IX. Monomachos povolal Adsincany — lid proslulý dovedností se zvířaty a čarodějnictvím — aby si poradili s divokou zvěří sužující císařský lovecký park v Philopation. Široce citováno jako jedna z nejstarších pravděpodobných zmínek o Romech v byzantském světě.",
+          url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
+        },
+        eBalsamon: {
+          date: "konec 12. stol.",
+          source: "Theodore Balsamon, Scholia k Photiovu Nomokánonu",
+          quote:
+            "Ventrilokvisté, satansky inspirovaní, kteří předstírají, že předpovídají neznámé.",
+          body:
+            "Patriarcha Antiochie a nejvlivnější byzantský kanonista své doby. Ve svém komentáři ke Kánonu 61 Trullského sněmu Balsamon popisuje Athinganoi, kteří si omotávají hady kolem sebe, věští z dobrých nebo zlých hvězd a prorokují budoucnost — a řadí je mezi satansky inspirované. Kanonický pokyn proti jejich konzultaci, původně namířený proti starší kacířské sektě stejného jména, je nesen dále a uplatňován proti Acigani, kteří přicházejí později.",
+          url: "https://en.wikipedia.org/wiki/Theodore_Balsamon",
+        },
+        eCanon: {
+          date: "11. – 16. stol.",
+          source: "Slovanská Kormčaja / řecká nomokánonická tradice",
+          quote: "",
+          body:
+            "V období patriarchy Gennadia II. Scholaria (první patriarcha po pádu Konstantinopole, 1454–1456) byla byzantská pastorační tradice varující před čarodějnictvím a věštbou Acigani přenesena do slovanských Kormčich knih. Pravoslavní věřící dostali pokyn nepřijímat je do svých domů kvůli věštění. Text se zachoval v rámci slovanské kanonické tradice, nikoli v jediném datovaném dekretu — přesná archivní citace se objeví v připravované knize o. Martina Halíka o romských pravoslavných dějinách.",
+          url: "",
+        },
+        e1322: {
+          date: "1322",
+          source:
+            "Symon Semeonis (Simon FitzSimon), Itinerarium ab Hybernia ad Terram Sanctam — latinsky, ed. Mario Esposito (Dublin, 1960)",
+          quote:
+            "Viděli jsme před tímto městem kmen lidí, kteří se modlí podle řeckého obřadu a tvrdí, že jsou z rodu Kainova. Tito lidé zřídka nebo nikdy nezůstávají na jednom místě déle než třicet dní, ale stále, jako prokletí Bohem, jsou kočovní a vyvrženi. Po třicátém dni putují z pole na pole s malými, podlouhlými, černými a nízkými stany, podobnými stanům Arabů.",
+          body:
+            "Irský františkán procházející Krétou popisuje Atsingany, které potkal před Heraklionem. Pravděpodobně nejstarší dochovaný popis Romů očitým svědkem ze západní Evropy — a už v roce 1322 si všímá, že se modlí 'podle řeckého obřadu'.",
+          url: "https://celt.ucc.ie/published/T300002-001.html",
+        },
+        e1385: {
+          date: "říjen 1385",
+          source: "Charta Dana I., vojvody valašského",
+          quote: "",
+          body:
+            "Dan I. Valašský daruje čtyřicet romských (Aṭigani) rodin pravoslavnému monastýru Tismana — jeden z nejstarších doložených případů, kdy byli Romové drženi jako monastýrští poddaní v rumunských knížectvích. Stejný vzorec se opakuje v Cozii, Cotmeaně a mnoha dalších monastýrech. Temná stránka společného příběhu: Církev, která je katechizovala, je rovněž držela. Toto poddanství trvá až do zrušení v letech 1855–56.",
+          url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
+        },
+        e1416: {
+          date: "1416",
+          source: "Městské účty Brașova (Kronstadt), Sedmihradsko",
+          quote: "",
+          body:
+            "Saské městské účty Brașova zaznamenávají platbu v naturáliích — obilí a potraviny — skupině Acigani procházející pod vlastním náčelníkem. Nejstarší datovaný městský záznam o Romech ve střední Evropě; přicházejí jako křesťanští poutníci s vůdcem, nikoli jako cizinci.",
+          url: "https://en.wikipedia.org/wiki/Timeline_of_Romani_history",
+        },
+        e1422: {
+          date: "červenec 1422",
+          source: "Cronica di Bologna; příchod Acigani do Itálie",
+          quote: "",
+          body:
+            "Skupina vedená 'vévodou Andrejem z Egypta' přichází do Boloně s asi sto muži a ženami, nesouc list o bezpečném průchodu od papeže Martina V., který je označuje za křesťany na pouti. Pět let předtím, než pařížský biskup exkomunikuje ty, kdo se s nimi radí, je římský biskup přijal jako bratry křesťany.",
+          url: "https://en.wikipedia.org/wiki/History_of_the_Romani_people",
+        },
+        eParis: {
+          date: "17. srpna 1427",
+          source:
+            "Journal d'un bourgeois de Paris (anonymní), zápis z neděle po polovině srpna 1427",
+          quote:
+            "Pařížský biskup tam šel s františkánským mnichem zvaným Petit Jacobin, který na biskupův příkaz veřejně kázal a exkomunikoval všechny, kdo jim uvěřili a ukázali jim svou ruku.",
+          body:
+            "Skupina Égyptiens — popsaná jako dvanáct kajícníků, vévoda, hrabě a deset jezdců — se utábořila před Paříží v La Chapelle. Velké zástupy přicházely, aby jim věštili. Pařížský biskup odpověděl exkomunikací každého křesťana, který jim dovolil číst z dlaně, a nařídil obecné průvody k nápravě prohřešku.",
+          url: "https://fr.wikisource.org/wiki/Le_dimanche_d%27apr%C3%A8s_la_my-aoust,_qui_fut_le_dix-septiesme_jour_d%27aoust_oudit_an_1427",
+        },
+        eStoglav: {
+          date: "1551",
+          source:
+            "Stoglav (Стоглав) — Moskevský sněm za cara Ivana IV. a metropolity Makarija",
+          quote: "",
+          body:
+            "Ruský pravoslavný sněm v kapitolách odsuzujících věštce, čaroděje a falešné proroky pokračuje ve stejné dlouhé pastorační starosti: Církev chrání svůj lid před věštbou. Stejná rodina varování, která začala v byzantské kanonickoprávní tradici, sahá až do srdce Ruska.",
+          url: "https://archive.org/details/stoglav00ofgoog",
+        },
+        eAthos: {
+          date: "17. – 18. stol.",
+          source: "Záznamy monastýrů Svaté Hory Athos",
+          quote: "",
+          body:
+            "Vatopedi, Iviron a další athonské monastýry zaznamenávají Atsiganoi sloužící jako kováři, tesaři a průvodci nákladních zvířat v jejich domech. Niť kovářství se táhne nepřerušeně od Adsincani z roku 1054 až po Athos osmanské éry — stejné řemeslo, stejné místo, o šest století později. Další citace v připravované knize o. Martina Halíka.",
+          url: "",
+        },
+        e1764: {
+          date: "od 1764",
+          source: "Carské Rusko za Kateřiny II.",
+          quote: "",
+          body:
+            "Reformy Kateřiny II. registrují Romy jako carské poddané s povinností usadit se a platit daně. Během následujících desetiletí jsou velké počty shromážděny do ruských pravoslavných farností; Ruska Roma — hlavní ruská romská skupina — odvozují svůj nepřetržitý pravoslavný farní život od této doby.",
+          url: "https://en.wikipedia.org/wiki/Ruska_Roma",
+        },
+        eAbolition: {
+          date: "1855 – 1856",
+          source:
+            "Moldavsko (22. prosince 1855) a Valašsko (20. února 1856)",
+          quote: "",
+          body:
+            "Po zhruba pěti staletích poddanství pravoslavným monastýrům, bojarům a knížecímu státu je otroctví Romů v rumunských knížectvích zrušeno. Při nejnižším odhadu přejde do svobody zákonně asi 250 000 Romů. Církev, která je držela, nyní začíná pomalou, ještě nedokončenou práci přijímání jich jako rovnocenných členů. To je dílo, uvnitř kterého stále jsme.",
+          url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
+        },
+      },
+    },
+    faith: {
+      label: "Expozice 04 — Společná víra",
+      title: "Co máme společné",
+      intro:
+        "Kdekoli se Romové usadili v pravoslavných zemích, nestáli mimo víru — vstoupili do ní, dávali dětem jména jejích svatých a utvářeli tradice, které jsou každému pravoslavnému křesťanovi nápadně známé.",
+      catechumenLabel: "Národ katechumenů",
+      catechumenBody:
+        "Romové jsou pravoslavní katechumeni na dlouhé cestě. Pravoslaví přijali v podobě, v jaké mohli — propletené s vlastními zvyky, někdy smíšené se starými lžemi, často bez blízké farnosti, která by je vyučovala. Nejsou mimo Církev. Jsou v ní, stále se učí, stále se snaží zbavit lží, stále jsou obnovováni. Jako romská rodina, která najde vyhozenou ikonu Bohorodičky a přinese ji domů, aby ji uctívala, opovrhovaný lid uchovává odhozený obraz. To je dílo této misie: jít s nimi po cestě.",
+      columns: {
+        byzantium: {
+          title: "Z Byzance",
+          body: "Řecky mluvící Byzanc byla prvním dlouhým domovem Romů v křesťanském světě. Romština dodnes nese řecká podstatná jména. Romské děti jsou dodnes křtěny jmény jako Yiorgos, Mihalis, Maria — pravoslavnými jmény, ne indickými.",
+        },
+        balkans: {
+          title: "Se Slovany",
+          body: "V Srbsku, Makedonii, Bulharsku a na Ukrajině žijí Romové staletí uvnitř pravoslavného kalendáře — líbají knězi ruku, zahalují si hlavu šátkem, volají kněze před lékařem, když je dítě nemocné. Zvyk a Církev rostly spolu.",
+        },
+        liturgy: {
+          title: "Pod jedním oltářem",
+          body: "Pravoslavná liturgie v romské vesnici na východním Slovensku a pravoslavná liturgie v řeckém monastýru používají stejná slova, stejná gesta, stejný Kříž. Eucharistie se nemění podle etnicity. To je základ této misie.",
+        },
+      },
+      pullQuote:
+        "Nebyli jsme obráceni za jedinou hodinu. Byli jsme obráceni pomalu, v tisíci křtech, během tisíce let — a obracíme se i dnes.",
+      pullQuoteAttribution: "Romský stařešina, farnost Markovce",
+    },
+    traditions: {
+      label: "Expozice 05 — Živé tradice",
+      title: "Šest věcí, které žijí v romském pravoslavném domě",
+      intro:
+        "Mnohé romské zvyky vyrůstaly staletí spolu s pravoslavnou praxí. Jsou blízko Církvi, protože tak dlouho žily vedle ní — a v ní.",
+      tapHint: "Klepněte na kartu pro více",
+      closing:
+        "A najdete tam také kněze, kterému se při setkání líbá ruka, ženy zahalující si hlavu šátkem a domácnost, která když přijde žal či nemoc, volá kněze před lékařem.",
+      cards: {
+        fourNails: {
+          title: "Čtyři hřeby",
+          subtitle: "Nejhlubší spojení",
+          body: "Pravoslavná ikonografie zobrazuje ukřižovaného Krista se čtyřmi hřeby — nohy oddělené, ne překřížené. Romská lidová tradice vypráví o kováři přinuceném ukovat čtyři hřeby pro ukřižování; čtvrtý ukradl. Příběh existuje v mnoha variantách po celé romské Evropě, ale podkladová paměť odpovídá pravoslavné ikonografické teologii, nikoli západní tříhřebové ikonografii.",
+        },
+        thirdDay: {
+          title: "Třetí den",
+          subtitle: "Pohřeb a bdění",
+          body: "Romové uchovávají tělo dvě noci, scházejí se jako široká rodina a pohřbívají třetího dne. Toto je pravoslavný památní vzor v kostech — Kristus vstal třetího dne; Církev si připomíná své zesnulé 3., 9. a 40. den. Romové uchovali třetí den i tam, kde okolní kultura přestala.",
+        },
+        byzantineChant: {
+          title: "Byzantský zpěv v hrdle",
+          subtitle: "Ucho už připravené",
+          body: "Romští kantoři se byzantský modální zpěv učí neuvěřitelně rychle. Ucho je už utvářeno: romská světská hudba je modální — čerpá ze stejné rodiny maqam / oktoechos, která postavila byzantský zpěv. Romský chlapec ve farní škole vklouzne do druhého tónu jako ryba do vody.",
+        },
+        roundDance: {
+          title: "Kruhový tanec",
+          subtitle: "Hora, oro, syrtos",
+          body: "Hora v Rumunsku, oro v Makedonii a Srbsku, syrtos a kalamatianos v Řecku. Romové tančí stejný kruhový tanec jako jejich pravoslavní sousedé — a často jej vedou na farním svátku. Je to jedno tělo tance, ne dvě.",
+        },
+        iconsHome: {
+          title: "Ikony přinesené domů",
+          subtitle: "Bohorodička na stěně",
+          body: "Romské domy zřídka uchovávají formální ikonový kout slovanské vesnice. Ale téměř každý romský dům má ikony — často takové, které soused vyhodil jako odpadky, zachráněné, přinesené domů a pověšené na stěnu. Bohorodička je milována s mimořádnou něhou. Opovrhovaný lid uchovává odhozený obraz.",
+        },
+        greekBones: {
+          title: "Řečtina v kostech",
+          subtitle: "Jazyk si pamatuje",
+          body: "Romské jmenné koncovky -os pocházejí z byzantské řečtiny (raklós — neromský chlapec, foros — město). Slovník kovářství — amoni (kovadlina), petalo (podkova), sideros (železo) a dlouhý seznam výhňových pojmů — je téměř zcela řecký. Sám jazyk si pamatuje, kde byli Romové katechizováni.",
+        },
+      },
+    },
+    today: {
+      label: "Expozice 06 — Romové dnes",
+      title: "Pravoslavné křesťanství je stále vírou většiny evropských Romů",
+      intro:
+        "Z přibližně 10 milionů Romů v Evropě většina žije v zemích s pravoslavnou většinou. Čísla jsou odhady — romské populace jsou systematicky podhodnocovány — ale obraz je jednoznačný.",
+      footnote:
+        "Údaje o populaci: odhady Rady Evropy. Poznámky o stavu od místního kléru a misionářů.",
+      countries: {
+        ro: "Největší romská populace v Evropě. Mnohé romské vesnice mají plné pravoslavné farnosti; mnoho dalších ještě žádné nemá.",
+        bg: "Romové tvoří přibližně 10 % obyvatelstva. Pravoslavná identita je silná; církevní praxe se mezi vesnicemi velmi liší.",
+        rs: "Zdejší Romové si udržují Slavu a církevní kalendář — ale existuje jen hrstka samostatných romských farností.",
+        mk: "Šuto Orizari u Skopje je největší romskou obcí na světě. Pole misie je dokořán otevřené.",
+        gr: "Řečtí Romové jsou staletí pravoslavně pokřtěni. Většina však žije bez vlastního aktivního farního života.",
+        ua: "Desetitisíce Romů byly vysídleny válkou. Mnozí nacházejí první skutečné církevní přijetí ve farnostech v exilu.",
+        ru: "Ruští Romové mají pravoslavné kořeny od 18. století. Ruská pravoslavná církev uznává romského patrona svatého.",
+        sk: "Zde žije naše misie. Aktivní pravoslavné romské farnosti v Klenovci, Markovcích, Kačanově, Mútniku — a stále rostou.",
+      },
+    },
+    closing: {
+      label: "Pokračujte v příběhu",
+      title: "Toto muzeum je zároveň misií.",
+      body: "To, čím jste právě prošli, není hotová historie. Většina romských vesnic v pravoslavné Evropě stále nemá vlastní aktivní farnost. Jsou katechumeny bez učitele ve vesnici. Toto je dílo, které děláme — jeden kněz, jedna kaple, jeden křest po druhém.",
+      ctaMission: "Podívat se na aktivní misii",
+      ctaSupport: "Podpořit dílo",
+    },
+    shareNudge: {
+      text: "Pokud vás tento příběh pohnul, nejužitečnější, co teď můžete udělat, je sdílet ho s někým.",
+      shareLabel: "Sdílet toto muzeum",
+    },
+  },
   getInvolved: {
     hero: {
       label: "Zapojte se",
@@ -1130,6 +1427,14 @@ const cs: Dictionary = {
       title: "Média — Křesťanská romská misie",
       description:
         "Dokumenty, rozhovory a svědectví o pravoslavné misii mezi Romy — přinášení evangelia největší nezasažené menšině v Evropě.",
+    },
+    heritage: {
+      title: "Muzeum romského dědictví — sdílený pravoslavný příběh",
+      description:
+        "Interaktivní muzeum 1 000 let romských dějin a hlubokého pravoslavného křesťanského dědictví, které Romové sdílejí s Řeky, Srby, Rumuny, Rusy a balkánskými Slovany.",
+      ogTitle: "1 000 let romských a pravoslavných dějin — interaktivní muzeum",
+      ogDescription:
+        "Od Byzantské říše po dnešní slávské svíce a křty ve farnostech: dlouhá společná cesta Romů jako pravoslavných katechumenů.",
     },
     getInvolved: {
       title: "Zapojte se — Křesťanská romská misie",

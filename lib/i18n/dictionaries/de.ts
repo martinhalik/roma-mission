@@ -6,6 +6,7 @@ const de: Dictionary = {
     locations: "STANDORTE",
     media: "MEDIEN",
     stories: "GESCHICHTEN",
+    heritage: "ERBE",
     share: "TEILEN",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktieren Sie uns auf WhatsApp",
@@ -768,6 +769,302 @@ const de: Dictionary = {
       },
     },
   },
+  heritage: {
+    hero: {
+      label: "Interaktives Museum",
+      titleLine1: "Eine gemeinsame",
+      titleLine2: "tausendjährige Geschichte",
+      subtitle:
+        "Die Roma kamen nicht als Fremde des Glaubens nach Europa. Sie traten in eine christliche Welt — und eine christliche Welt ging mit ihnen. Dies ist die lange, unvollendete Geschichte, wie die Roma zu orthodoxen Katechumenen wurden und was sie bis heute tragen.",
+      shareLabel: "Dieses Museum teilen",
+      scrollHint: "Die Reise beginnen",
+    },
+    toc: {
+      label: "Ausstellungen",
+      origins: "Ursprünge",
+      timeline: "Zeitleiste",
+      voices: "Stimmen aus dem Archiv",
+      faith: "Gemeinsamer Glaube",
+      traditions: "Lebendige Traditionen",
+      today: "Die Roma heute",
+      continue: "Weiter",
+    },
+    origins: {
+      label: "Ausstellung 01 — Ursprünge",
+      title: "Von Indien ins Herz der Christenheit",
+      intro:
+        "Um das 11. Jahrhundert begannen Gruppen von Menschen, die eine indoarische Sprache sprachen, aus dem Nordwesten Indiens nach Westen zu ziehen. Linguistik, nicht Legende, sagt uns das: Romani ist eine Schwester von Hindi und Punjabi und wurde weiter geprägt durch lange Aufenthalte in persischen und armenischen Ländern, bevor sie je Europa berührte.",
+      body1:
+        "Als die Roma das Byzantinische Reich erreichten, waren sie schon seit Generationen unterwegs. Das Reich war christlich; die Städte waren voller Kirchen; die Neuankömmlinge wurden namentlich empfangen (und festgehalten) — Athinganoi auf Griechisch, woraus das internationale Acigani und von da Tsigani, Cigán, Țigan, Zigeuner, Cigano wird.",
+      body2:
+        "Bemerkenswert ist, was dann geschah. Über Jahrhunderte der Wanderung in orthodoxe Länder behielten die Roma keine eigene gesonderte Religion bei. Sie nahmen den Glauben jener an, die sie aufnahmen — und die tiefste Aufnahme war die orthodoxe.",
+      factCards: {
+        a: {
+          stat: "11. Jh.",
+          title: "Erste Migration",
+          body: "Die Vorfahren der Roma verlassen den indischen Subkontinent — wahrscheinlich Punjab und Rajasthan.",
+        },
+        b: {
+          stat: "1100–1300",
+          title: "Byzantinische Jahre",
+          body: "Jahrhunderte im griechischsprachigen christlichen Osten. Romani nimmt Hunderte griechischer Wörter auf, die noch heute täglich gebraucht werden.",
+        },
+        c: {
+          stat: "1300+",
+          title: "Nach Europa",
+          body: "Belegt auf dem Balkan, dann in Ungarn, den böhmischen Ländern, den deutschen Fürstentümern und bis nach Spanien und Britannien.",
+        },
+      },
+    },
+    timeline: {
+      label: "Ausstellung 02 — Zeitleiste",
+      title: "Ein Gang durch die Jahrhunderte",
+      intro:
+        "Öffnen Sie jede Epoche, um die Welt zu sehen, in die die Roma eintraten — und die Kirche, die mit ihnen ging.",
+      eras: {
+        era1: {
+          range: "1000 — 1300",
+          heading: "Aus Indien in den christlichen Osten",
+          body: "Die Vorfahren der Roma überqueren Persien, Armenien und erreichen das Byzantinische Reich. Griechische Priester taufen. Griechische Wörter — drom (Weg), papin (Gans), klidi (Schlüssel) — treten für immer ins Romani ein.",
+        },
+        era2: {
+          range: "1300 — 1500",
+          heading: "Quer durch den Balkan",
+          body: "Die Roma siedeln in serbischen, bulgarischen, mazedonischen und rumänischen Ländern — alle orthodox. Klöster und Pfarreien verzeichnen ihre Taufen, Hochzeiten und Begräbnisse. Slava, Pascha und der Kirchenkalender treten in das Familienleben der Roma ein.",
+        },
+        era3: {
+          range: "1500 — 1800",
+          heading: "Reich und Migration",
+          body: "Unter den Osmanen wird die orthodoxe Identität im Millet-System zum Zeichen der Zugehörigkeit. Die Roma im osmanischen Rumelien tragen orthodoxe Namen und Schutzheilige. Die Roma in den rumänischen Fürstentümern leben Jahrhunderte in Sklaverei — doch dieselbe Liturgie wird über Sklave und Freie gesungen.",
+        },
+        era4: {
+          range: "1800 — 1945",
+          heading: "Emanzipation und Katastrophe",
+          body: "Die Sklaverei in der Walachei und Moldau wird abgeschafft (1856). Roma singen in orthodoxen Chören, dienen als kumovi (Paten) und begraben ihre Toten unter dem achtzackigen Kreuz. Dann kommt der Porajmos — der Genozid an den Roma im Zweiten Weltkrieg.",
+        },
+        era5: {
+          range: "1945 — heute",
+          heading: "Wiederaufbau unter dem Kreuz",
+          body: "Unter dem Kommunismus wird die Religion in den Untergrund gezwungen; Roma-Familien verstecken Ikonen in Schränken. Nach 1989 kehrt die orthodoxe Kirche in Roma-Dörfer zurück — langsam, ungleich und oft nur dort, wo ein Priester bleibt. Das ist die Geschichte, in der wir uns noch immer befinden.",
+        },
+      },
+    },
+    voices: {
+      label: "Ausstellung 03 — Stimmen aus dem Archiv",
+      title: "Was die Geschichte über die Roma aufschrieb",
+      intro:
+        "Die Roma haben ihre eigene Chronik nicht geschrieben. Was wir über ihre ersten Jahrhunderte in der christlichen Welt wissen, stammt von Mönchen, Bischöfen, Stadtschreibern und den kanonrechtlichen Büchern, die schon damals versuchten, sie zu fassen. Hier sind, der Reihe nach, die Stimmen — zitiert, wo der Urtext erhalten ist, mit Quellen, die Sie aufrufen können.",
+      footnote:
+        "Wo eine Quellenangabe eher allgemein als ein einzelner zitierbarer Text ist, haben wir lieber auf Vorsicht als auf falsche Genauigkeit gesetzt. Korrekturen an martin@romamission.eu — wir schärfen sie nach.",
+      sourceLabel: "Quelle",
+      readSourceLabel: "Quelle lesen",
+      expandAllLabel: "Alle ausklappen",
+      collapseAllLabel: "Alle einklappen",
+      entries: {
+        e1054: {
+          date: "um 1054",
+          source:
+            "Das Leben des hl. Georg vom Athos — Giorgi Mtsire, georgisch, um 1068 (hrsg. P. Peeters, Analecta Bollandiana 36–37, 1917–19)",
+          quote:
+            "Ein samaritanisches Volk, Nachkommen Simons des Magiers, genannt Adsincani, die berühmte Zauberer und Schurken waren.",
+          body:
+            "Verfasst vom Schüler des hl. Georg Hagiorites (gest. 1065) auf dem Berg Athos. Berichtet, wie Kaiser Konstantin IX. Monomachos die Adsincani — ein Volk, das für Geschick mit Tieren und für Zauberei bekannt war — rief, um mit den wilden Tieren fertig zu werden, die den kaiserlichen Jagdpark Philopation heimsuchten. Wird weithin als einer der frühesten wahrscheinlichen Hinweise auf Roma in der byzantinischen Welt zitiert.",
+          url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
+        },
+        eBalsamon: {
+          date: "Spätes 12. Jh.",
+          source: "Theodore Balsamon, Scholien zum Nomokanon des Photios",
+          quote:
+            "Bauchredner, satanisch inspiriert, die vorgeben, das Unbekannte vorherzusagen.",
+          body:
+            "Patriarch von Antiochien und der maßgeblichste byzantinische Kanonist seiner Zeit. In seinem Kommentar zum Kanon 61 des Quinisextum beschreibt Balsamon Athinganoi, die Schlangen um sich winden, aus guten oder bösen Sternen wahrsagen und die Zukunft prophezeien — und zählt sie zu den satanisch Inspirierten. Die kanonische Anweisung, sie nicht zu befragen, ursprünglich gegen eine ältere häretische Sekte gleichen Namens gerichtet, wird weitergetragen und auf die später ankommenden Acigani angewendet.",
+          url: "https://en.wikipedia.org/wiki/Theodore_Balsamon",
+        },
+        eCanon: {
+          date: "11. – 16. Jh.",
+          source: "Slawische Kormtschaja / griechische nomokanonische Tradition",
+          quote: "",
+          body:
+            "In der Zeit des Patriarchen Gennadios II. Scholarios (erster Patriarch nach dem Fall Konstantinopels, 1454–1456) wurde die byzantinische Hirtentradition, die vor Zauberei und Wahrsagerei der Acigani warnte, in die slawischen Pilotenbücher übernommen. Den orthodoxen Gläubigen wurde aufgetragen, sie nicht zur Wahrsagerei in ihre Häuser aufzunehmen. Der Text ist in der slawischen kanonischen Überlieferung bewahrt, nicht in einem einzigen datierten Dekret — die genaue archivalische Angabe wird im kommenden Buch von P. Martin Halík zur orthodoxen Geschichte der Roma erscheinen.",
+          url: "",
+        },
+        e1322: {
+          date: "1322",
+          source:
+            "Symon Semeonis (Simon FitzSimon), Itinerarium ab Hybernia ad Terram Sanctam — lateinisch, hrsg. Mario Esposito (Dublin, 1960)",
+          quote:
+            "Wir sahen vor dieser Stadt einen Stamm von Menschen, die nach dem griechischen Ritus anbeten und behaupten, vom Geschlecht Kains zu sein. Diese Menschen bleiben selten oder nie länger als dreißig Tage an einem Ort, sondern sind, wie von Gott verflucht, immer nomadisch und ausgestoßen. Nach dem dreißigsten Tag ziehen sie von Feld zu Feld mit kleinen, länglichen, schwarzen, niedrigen Zelten, ähnlich denen der Araber.",
+          body:
+            "Ein irischer Franziskanermönch, der durch Kreta zieht, beschreibt die Atsingani, denen er vor Heraklion begegnet. Wahrscheinlich die früheste erhaltene westeuropäische Augenzeugenbeschreibung der Roma — und schon 1322 vermerkt er, dass sie 'nach dem griechischen Ritus' anbeten.",
+          url: "https://celt.ucc.ie/published/T300002-001.html",
+        },
+        e1385: {
+          date: "Oktober 1385",
+          source: "Urkunde des Dan I., Wojwoden der Walachei",
+          quote: "",
+          body:
+            "Dan I. der Walachei schenkt vierzig Roma-Familien (Aṭigani) dem orthodoxen Kloster Tismana — einer der frühesten urkundlich belegten Fälle, in denen Roma als Klostersklaven in den rumänischen Fürstentümern gehalten wurden. Dasselbe Muster wiederholt sich in Cozia, Cotmeana und vielen weiteren Klöstern. Die dunkle Seite der gemeinsamen Geschichte: Die Kirche, die sie katechisierte, hielt sie auch fest. Diese Knechtschaft währt bis zur Abschaffung 1855–56.",
+          url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
+        },
+        e1416: {
+          date: "1416",
+          source: "Stadtrechnungen von Brașov (Kronstadt), Siebenbürgen",
+          quote: "",
+          body:
+            "Die sächsischen Stadtrechnungen Brașovs verzeichnen eine Sachzahlung — Getreide und Lebensmittel — an eine durchziehende Schar Acigani unter ihrem eigenen Anführer. Der früheste datierte städtische Beleg von Roma in Mitteleuropa; sie kommen als christliche Reisende mit einem Anführer, nicht als Fremde.",
+          url: "https://en.wikipedia.org/wiki/Timeline_of_Romani_history",
+        },
+        e1422: {
+          date: "Juli 1422",
+          source: "Cronica di Bologna; Ankunft der Acigani in Italien",
+          quote: "",
+          body:
+            "Eine Schar unter 'Herzog Andreas von Ägypten' trifft mit etwa hundert Männern und Frauen in Bologna ein, mit einem Geleitbrief von Papst Martin V., der sie als Christen auf Pilgerreise ausweist. Fünf Jahre bevor der Bischof von Paris jene exkommunizieren wird, die sie befragen, hatte sie der Bischof von Rom als Mitchristen empfangen.",
+          url: "https://en.wikipedia.org/wiki/History_of_the_Romani_people",
+        },
+        eParis: {
+          date: "17. August 1427",
+          source:
+            "Journal d'un bourgeois de Paris (anonym), Eintrag für den Sonntag nach Mariä Himmelfahrt 1427",
+          quote:
+            "Der Bischof von Paris ging dorthin mit einem Franziskanermönch, dem Petit Jacobin genannt, der auf Befehl des Bischofs öffentlich predigte und alle exkommunizierte, die ihnen geglaubt und ihnen ihre Hand gezeigt hatten.",
+          body:
+            "Eine Gruppe Égyptiens — beschrieben als zwölf Büßer, ein Herzog, ein Graf und zehn Reiter — lagerte vor Paris bei La Chapelle. Riesige Mengen kamen heraus, um sich wahrsagen zu lassen. Der Bischof von Paris antwortete mit Exkommunikation jedes Christen, der sich von ihnen aus der Hand lesen ließ, und ordnete allgemeine Prozessionen zur Wiedergutmachung des Vergehens an.",
+          url: "https://fr.wikisource.org/wiki/Le_dimanche_d%27apr%C3%A8s_la_my-aoust,_qui_fut_le_dix-septiesme_jour_d%27aoust_oudit_an_1427",
+        },
+        eStoglav: {
+          date: "1551",
+          source:
+            "Stoglav (Стоглав) — Konzil von Moskau unter Zar Iwan IV. und Metropolit Makarij",
+          quote: "",
+          body:
+            "Die russische orthodoxe Synode setzt in Kapiteln, die Wahrsager, Beschwörer und falsche Propheten verurteilen, dieselbe lange Hirtensorge fort: Die Kirche bewahrt ihr Volk vor Wahrsagerei. Dieselbe Familie von Warnungen, die mit der byzantinischen kanonrechtlichen Tradition begann, reicht bis ins Herz Russlands.",
+          url: "https://archive.org/details/stoglav00ofgoog",
+        },
+        eAthos: {
+          date: "17. – 18. Jh.",
+          source: "Klosteraufzeichnungen vom Berg Athos",
+          quote: "",
+          body:
+            "Vatopedi, Iviron und andere Athos-Klöster verzeichnen Atsiganoi, die in ihren Häusern als Schmiede, Zimmerleute und Lasttierführer dienen. Der Schmiede-Faden läuft ungebrochen von den Adsincani von 1054 bis zum Athos der osmanischen Zeit — dasselbe Handwerk, derselbe Ort, sechs Jahrhunderte später. Weitere Belege im kommenden Buch von P. Martin Halík.",
+          url: "",
+        },
+        e1764: {
+          date: "ab 1764",
+          source: "Kaiserliches Russland unter Katharina II.",
+          quote: "",
+          body:
+            "Die Reformen Katharinas II. erfassen die Roma als kaiserliche Untertanen mit der Pflicht, sesshaft zu werden und Steuern zu zahlen. In den folgenden Jahrzehnten werden große Zahlen in russisch-orthodoxe Pfarreien aufgenommen; die Ruska Roma — Russlands wichtigste Roma-Gruppe — führen ihr ununterbrochenes orthodoxes Pfarrleben auf diese Zeit zurück.",
+          url: "https://en.wikipedia.org/wiki/Ruska_Roma",
+        },
+        eAbolition: {
+          date: "1855 – 1856",
+          source:
+            "Moldau (22. Dezember 1855) und Walachei (20. Februar 1856)",
+          quote: "",
+          body:
+            "Nach etwa fünf Jahrhunderten Knechtschaft gegenüber orthodoxen Klöstern, Bojaren und dem Fürstenstaat wird die Roma-Sklaverei in den rumänischen Fürstentümern abgeschafft. Bei niedrigster Schätzung treten rund 250.000 Roma rechtmäßig in die Freiheit ein. Die Kirche, die sie gehalten hatte, beginnt nun die langsame, unvollendete Arbeit, sie als gleichberechtigte Glieder aufzunehmen. Das ist die Arbeit, in der wir uns noch befinden.",
+          url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
+        },
+      },
+    },
+    faith: {
+      label: "Ausstellung 04 — Gemeinsamer Glaube",
+      title: "Was wir gemeinsam haben",
+      intro:
+        "Wo immer sich die Roma in orthodoxen Ländern niederließen, standen sie nicht außerhalb des Glaubens — sie traten ein, gaben ihren Kindern Namen seiner Heiligen und formten Traditionen, die jedem orthodoxen Christen auffallend vertraut sind.",
+      catechumenLabel: "Ein Volk von Katechumenen",
+      catechumenBody:
+        "Die Roma sind orthodoxe Katechumenen auf einem langen Weg. Sie haben die Orthodoxie in der Form empfangen, die ihnen möglich war — verwoben mit eigenen Bräuchen, manchmal vermischt mit alten Lügen, oft ohne eine nahe Pfarrei, die sie unterweisen kann. Sie stehen nicht außerhalb der Kirche. Sie sind in ihr, lernen noch, ringen noch, die Lügen hinter sich zu lassen, werden noch erneuert. Wie eine Roma-Familie, die eine als Müll weggeworfene Ikone der Gottesgebärerin findet und nach Hause holt, um sie zu ehren — so bewahrt das verachtete Volk das verworfene Bild. Das ist die Arbeit dieser Mission: den Weg mit ihnen zu gehen.",
+      columns: {
+        byzantium: {
+          title: "Aus Byzanz",
+          body: "Das griechischsprachige Byzanz war das erste lange Zuhause der Roma in der christlichen Welt. Romani trägt bis heute griechische Substantive. Roma-Kinder werden noch heute mit Namen wie Yiorgos, Mihalis, Maria getauft — orthodoxe Namen, keine indischen.",
+        },
+        balkans: {
+          title: "Mit den Slawen",
+          body: "In Serbien, Mazedonien, Bulgarien und der Ukraine leben die Roma seit Jahrhunderten innerhalb des orthodoxen Kalenders — sie küssen dem Priester die Hand, bedecken das Haupt mit einem Tuch, rufen den Priester vor dem Arzt, wenn ein Kind krank ist. Brauch und Kirche sind miteinander gewachsen.",
+        },
+        liturgy: {
+          title: "Unter einem Altar",
+          body: "Eine orthodoxe Liturgie in einem Roma-Dorf in der Ostslowakei und eine orthodoxe Liturgie in einem griechischen Kloster gebrauchen dieselben Worte, dieselben Gesten, dasselbe Kreuz. Die Eucharistie ändert sich nicht je nach Ethnie. Das ist das Fundament dieser Mission.",
+        },
+      },
+      pullQuote:
+        "Wir wurden nicht in einer einzigen Stunde bekehrt. Wir wurden langsam bekehrt, in tausend Taufen, über tausend Jahre — und wir werden auch heute noch bekehrt.",
+      pullQuoteAttribution: "Roma-Ältester, Pfarrei Markovce",
+    },
+    traditions: {
+      label: "Ausstellung 05 — Lebendige Traditionen",
+      title: "Sechs Dinge, die in einem orthodoxen Roma-Haus leben",
+      intro:
+        "Viele Roma-Bräuche sind über die Jahrhunderte mit der orthodoxen Praxis zusammengewachsen. Sie stehen der Kirche nahe, weil sie so lange neben ihr — und in ihr — gelebt haben.",
+      tapHint: "Tippen Sie auf eine Karte, um mehr zu lesen",
+      closing:
+        "Und Sie finden auch einen Priester, dem man die Hand küsst, Frauen, die das Haupt mit einem Tuch bedecken, und ein Haus, das, wenn Trauer oder Krankheit kommt, den Priester vor dem Arzt ruft.",
+      cards: {
+        fourNails: {
+          title: "Die vier Nägel",
+          subtitle: "Die tiefste Verbindung",
+          body: "Die orthodoxe Ikonographie zeigt Christus mit vier Nägeln gekreuzigt — die Füße auseinander, nicht überkreuzt. Eine Roma-Volksüberlieferung erzählt von einem Schmied, der gezwungen war, vier Nägel für die Kreuzigung zu schmieden; den vierten stahl er. Die Geschichte besteht in vielen Varianten quer durch das Roma-Europa, doch die zugrunde liegende Erinnerung entspricht der orthodoxen ikonographischen Theologie, nicht der westlichen Drei-Nägel-Ikonographie.",
+        },
+        thirdDay: {
+          title: "Der dritte Tag",
+          subtitle: "Begräbnis und Wache",
+          body: "Die Roma halten den Leib zwei Nächte, versammeln sich als weite Familie und bestatten am dritten Tag. Das ist das orthodoxe Gedenkmuster in seinen Knochen — Christus ist am dritten Tag auferstanden; die Kirche gedenkt ihrer Toten am 3., 9. und 40. Tag. Die Roma haben den dritten Tag bewahrt, auch wo die umliegende Kultur damit aufgehört hat.",
+        },
+        byzantineChant: {
+          title: "Byzantinischer Gesang in der Kehle",
+          subtitle: "Ein bereits geformtes Ohr",
+          body: "Roma-Kantoren nehmen den byzantinischen modalen Gesang erstaunlich schnell auf. Das Ohr ist schon geformt: weltliche Roma-Musik ist modal — sie schöpft aus derselben Maqam-/Oktoechos-Familie, die den byzantinischen Gesang gebaut hat. Ein Roma-Junge in einer Pfarrschule gleitet in den zweiten Ton wie ein Fisch ins Wasser.",
+        },
+        roundDance: {
+          title: "Der Reigentanz",
+          subtitle: "Hora, oro, syrtos",
+          body: "Die hora Rumäniens, das oro Mazedoniens und Serbiens, der syrtos und kalamatianos Griechenlands. Die Roma tanzen denselben Reigen wie ihre orthodoxen Nachbarn — und führen ihn oft am Pfarrfest an. Es ist ein Tanzleib, nicht zwei.",
+        },
+        iconsHome: {
+          title: "Heimgeholte Ikonen",
+          subtitle: "Die Gottesgebärerin an der Wand",
+          body: "Roma-Häuser bewahren selten die förmliche Ikonenecke eines slawischen Dorfes. Aber fast jedes Roma-Haus hat Ikonen — oft solche, die ein Nachbar als Müll weggeworfen hat, gerettet, heimgebracht und an die Wand gehängt. Die Gottesmutter wird mit besonderer Zärtlichkeit geliebt. Das verachtete Volk bewahrt das verworfene Bild.",
+        },
+        greekBones: {
+          title: "Griechisch in den Knochen",
+          subtitle: "Die Sprache erinnert sich",
+          body: "Die nominalen -os-Endungen des Romani stammen aus dem byzantinischen Griechisch (raklós — Nicht-Roma-Junge, foros — Stadt). Der Wortschatz des Schmiedens — amoni (Amboss), petalo (Hufeisen), sideros (Eisen) und eine lange Liste von Schmiedebegriffen — ist nahezu vollständig griechisch. Die Sprache selbst erinnert sich, wo die Roma katechisiert wurden.",
+        },
+      },
+    },
+    today: {
+      label: "Ausstellung 06 — Die Roma heute",
+      title: "Das orthodoxe Christentum ist noch immer der Glaube der meisten europäischen Roma",
+      intro:
+        "Von den rund 10 Millionen Roma in Europa lebt die Mehrheit in Ländern mit orthodoxer Mehrheit. Die Zahlen sind Schätzungen — die Roma-Bevölkerungen werden systematisch zu niedrig erfasst —, aber das Muster ist unverkennbar.",
+      footnote:
+        "Bevölkerungszahlen: Schätzungen des Europarates. Hinweise zum Stand von örtlichem Klerus und Missionaren.",
+      countries: {
+        ro: "Größte Roma-Bevölkerung Europas. Viele Roma-Dörfer haben vollständige orthodoxe Pfarreien; viele weitere haben noch gar keine.",
+        bg: "Roma machen rund 10 % des Landes aus. Die orthodoxe Identität ist stark; die kirchliche Praxis schwankt stark von Dorf zu Dorf.",
+        rs: "Die Roma hier bewahren die Slava und den Kirchenkalender — aber es existieren nur eine Handvoll eigener Roma-Pfarreien.",
+        mk: "Šuto Orizari bei Skopje ist die größte Roma-Gemeinde der Welt. Das Feld ist weit offen.",
+        gr: "Griechische Roma sind seit Jahrhunderten orthodox getauft. Doch die meisten leben ohne aktives eigenes Pfarrleben.",
+        ua: "Zehntausende Roma sind durch den Krieg vertrieben. Viele finden in Flüchtlingspfarreien zum ersten Mal wirkliche kirchliche Aufnahme.",
+        ru: "Russische Roma führen ihre orthodoxen Wurzeln bis ins 18. Jahrhundert zurück. Die Russische Orthodoxe Kirche anerkennt einen Roma-Schutzheiligen.",
+        sk: "Hier lebt unsere Mission. Aktive orthodoxe Roma-Pfarreien in Klenovec, Markovce, Kačanov, Mútnik — und wachsend.",
+      },
+    },
+    closing: {
+      label: "Die Geschichte fortsetzen",
+      title: "Dieses Museum ist zugleich eine Mission.",
+      body: "Was Sie durchschritten haben, ist keine abgeschlossene Geschichte. Die meisten Roma-Dörfer im orthodoxen Europa haben noch keine eigene aktive Pfarrei. Sie sind Katechumenen ohne Lehrer im Dorf. Das ist die Arbeit, die wir tun — ein Priester, eine Kapelle, eine Taufe nach der anderen.",
+      ctaMission: "Die aktive Mission sehen",
+      ctaSupport: "Die Arbeit unterstützen",
+    },
+    shareNudge: {
+      text: "Wenn diese Geschichte Sie bewegt hat, ist das Nützlichste, was Sie jetzt tun können, sie mit jemandem zu teilen.",
+      shareLabel: "Dieses Museum teilen",
+    },
+  },
   getInvolved: {
     hero: {
       label: "Mitmachen",
@@ -1135,6 +1432,14 @@ const de: Dictionary = {
       title: "Medien — Christliche Roma-Mission",
       description:
         "Dokumentationen, Interviews und Zeugnisse über orthodoxe Mission unter Roma — das Evangelium zu Europas größter unerreichter Minderheit.",
+    },
+    heritage: {
+      title: "Roma-Erbe-Museum — eine gemeinsame orthodoxe Geschichte",
+      description:
+        "Ein interaktives Museum von 1.000 Jahren Roma-Geschichte und des tiefen orthodox-christlichen Erbes, das die Roma mit Griechen, Serben, Rumänen, Russen und den Slawen des Balkans teilen.",
+      ogTitle: "1.000 Jahre Roma- und orthodoxe Geschichte — ein interaktives Museum",
+      ogDescription:
+        "Vom Byzantinischen Reich bis zu den heutigen Slava-Kerzen und Pfarrtaufen: der lange, gemeinsame Weg der Roma als orthodoxe Katechumenen.",
     },
     getInvolved: {
       title: "Mitmachen — Christliche Roma-Mission",

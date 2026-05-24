@@ -6,6 +6,7 @@ const en: Dictionary = {
     locations: "LOCATIONS",
     media: "MEDIA",
     stories: "STORIES",
+    heritage: "HERITAGE",
     share: "SHARE",
     contact: "CONTACT",
     contactWhatsapp: "Contact us on WhatsApp",
@@ -766,6 +767,302 @@ const en: Dictionary = {
       },
     },
   },
+  heritage: {
+    hero: {
+      label: "Interactive Museum",
+      titleLine1: "A Shared",
+      titleLine2: "Thousand-Year Story",
+      subtitle:
+        "The Roma did not arrive in Europe as strangers to the faith. They walked into a Christian world — and a Christian world walked with them. This is the long, unfinished story of how Roma became Orthodox catechumens, and what they still carry.",
+      shareLabel: "Share this museum",
+      scrollHint: "Begin the journey",
+    },
+    toc: {
+      label: "Exhibits",
+      origins: "Origins",
+      timeline: "Timeline",
+      voices: "Voices in the Archive",
+      faith: "Shared Faith",
+      traditions: "Living Traditions",
+      today: "The Roma Today",
+      continue: "Continue",
+    },
+    origins: {
+      label: "Exhibit 01 — Origins",
+      title: "From India to the Heart of Christendom",
+      intro:
+        "Around the 11th century, groups of people speaking an Indo-Aryan language began moving west out of northwestern India. Linguistics, not legend, tells us this: Romani is a sister of Hindi and Punjabi, shaped further by long sojourns in Persian and Armenian lands before it ever touched Europe.",
+      body1:
+        "By the time the Roma reached the Byzantine Empire, they had been travelling for generations. The Empire was Christian; the cities were full of churches; the new arrivals were welcomed (and recorded) by name — Athinganoi in Greek, which becomes the international Acigani and from there Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
+      body2:
+        "What is remarkable is what happened next. Across centuries of migration into Orthodox lands the Roma did not retain a separate religion of their own. They received the faith of the people who received them — and the deepest reception was Orthodox.",
+      factCards: {
+        a: {
+          stat: "11th c.",
+          title: "First migration",
+          body: "Roma ancestors leave the Indian subcontinent — likely Punjab and Rajasthan.",
+        },
+        b: {
+          stat: "1100–1300",
+          title: "Byzantine years",
+          body: "Centuries spent in the Greek-speaking Christian East. Romani absorbs hundreds of Greek words still in daily use.",
+        },
+        c: {
+          stat: "1300+",
+          title: "Into Europe",
+          body: "Documented in the Balkans, then in Hungary, the Czech lands, German principalities, and as far as Spain and Britain.",
+        },
+      },
+    },
+    timeline: {
+      label: "Exhibit 02 — Timeline",
+      title: "A Walk Through the Centuries",
+      intro:
+        "Open each era to see the world the Roma were walking into — and the Church they were walking with.",
+      eras: {
+        era1: {
+          range: "1000 — 1300",
+          heading: "Out of India, into the Christian East",
+          body: "Roma ancestors cross Persia, Armenia, and reach the Byzantine Empire. Greek priests baptise. Greek words — drom (road), papin (goose), klidi (key) — enter Romani forever.",
+        },
+        era2: {
+          range: "1300 — 1500",
+          heading: "Across the Balkans",
+          body: "Roma settle in Serbian, Bulgarian, Macedonian, and Romanian lands — all Orthodox. Monasteries and parishes record their baptisms, marriages, and burials. The Slava, Pascha, and the church calendar enter Roma family life.",
+        },
+        era3: {
+          range: "1500 — 1800",
+          heading: "Empire and migration",
+          body: "Under the Ottomans, Orthodox identity becomes a marker of belonging in the millet system. Roma in Ottoman Rumelia carry Orthodox names and patron saints. Romanian Roma live in centuries of slavery — but the same liturgy is sung over slave and free.",
+        },
+        era4: {
+          range: "1800 — 1945",
+          heading: "Emancipation and catastrophe",
+          body: "Slavery in Wallachia and Moldavia is abolished (1856). Roma sing in Orthodox choirs, serve as kumovi (godfathers), and bury their dead under the eight-pointed cross. Then comes the Porajmos — the Roma genocide of WWII.",
+        },
+        era5: {
+          range: "1945 — today",
+          heading: "Rebuilding under the Cross",
+          body: "Under communism, religion is forced underground; Roma families keep icons hidden in cupboards. After 1989 the Orthodox Church returns to Roma villages — slowly, unevenly, and often only where a priest stays. That is the story we are still inside.",
+        },
+      },
+    },
+    voices: {
+      label: "Exhibit 03 — Voices in the Archive",
+      title: "What History Wrote Down About the Roma",
+      intro:
+        "The Roma did not write their own chronicle. What we know of their first centuries in the Christian world comes from monks, bishops, town clerks, and the canon-law books that were already trying to make sense of them. Here, in order, are the voices — quoted where the original survives, with sources you can click through to.",
+      footnote:
+        "Where a citation is general rather than a single quotable text, we have erred on the side of caution rather than fake precision. Send corrections to martin@romamission.eu and we will sharpen it.",
+      sourceLabel: "Source",
+      readSourceLabel: "Read the source",
+      expandAllLabel: "Expand all",
+      collapseAllLabel: "Collapse all",
+      entries: {
+        e1054: {
+          date: "c. 1054",
+          source:
+            "Life of St George the Athonite — Giorgi Mtsire, Georgian, c. 1068 (ed. P. Peeters, Analecta Bollandiana 36–37, 1917–19)",
+          quote:
+            "A Samaritan people, descendants of Simon the Magician, named Adsincani, who were renowned sorcerers and villains.",
+          body:
+            "Written by the disciple of St George Hagiorites (d. 1065) on Mount Athos. Records Emperor Constantine IX Monomachos summoning the Adsincani — a people reputed for skill with animals and for sorcery — to deal with wild beasts plaguing the imperial hunting park at Philopation. Widely cited as one of the earliest probable references to Roma in the Byzantine world.",
+          url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
+        },
+        eBalsamon: {
+          date: "Late 12th c.",
+          source: "Theodore Balsamon, Scholia on the Nomocanon of Photios",
+          quote:
+            "Ventriloquists, inspired satanically, who pretend to predict the unknown.",
+          body:
+            "Patriarch of Antioch and the most authoritative Byzantine canonist of his age. In his commentary on Canon 61 of the Quinisext Council, Balsamon describes Athinganoi who wind serpents around themselves, tell fortunes by good or evil stars, and prophesy the future — and lumps them with the satanically inspired. The canonical guidance against consulting them, first aimed at an older heretical sect of the same name, is carried forward and read against the Acigani who arrive later.",
+          url: "https://en.wikipedia.org/wiki/Theodore_Balsamon",
+        },
+        eCanon: {
+          date: "11th – 16th c.",
+          source: "Slavonic Kormchaia / Greek nomocanonical tradition",
+          quote: "",
+          body:
+            "In the period of Patriarch Gennadius II Scholarios (first patriarch after the Fall of Constantinople, 1454–1456), the Byzantine pastoral tradition warning against Acigani sorcery and fortune-telling was carried forward into the Slavic Pilot Books. Orthodox faithful were instructed not to receive them into their homes for divination. The text is preserved across the Slavonic canonical tradition rather than in a single dated decree — the precise archival citation will appear in Fr. Martin Halík's forthcoming book on Roma Orthodox history.",
+          url: "",
+        },
+        e1322: {
+          date: "1322",
+          source:
+            "Symon Semeonis (Simon FitzSimon), Itinerarium ab Hybernia ad Terram Sanctam — Latin, ed. Mario Esposito (Dublin, 1960)",
+          quote:
+            "We saw outside this city a tribe of people, who worship according to the Greek rite, and assert themselves to be of the race of Cain. These people rarely or never stop in one place for more than thirty days, but always, as if cursed by God, are nomad and outcast. After the thirtieth day they wander from field to field with small, oblong, black, and low tents, like those of the Arabs.",
+          body:
+            "An Irish Franciscan friar passing through Crete describes the Atsingani he met outside Heraklion. Probably the earliest surviving Western European eyewitness description of the Roma — and already, in 1322, he notes that they worship 'according to the Greek rite.'",
+          url: "https://celt.ucc.ie/published/T300002-001.html",
+        },
+        e1385: {
+          date: "October 1385",
+          source: "Charter of Dan I, voivode of Wallachia",
+          quote: "",
+          body:
+            "Dan I of Wallachia gifts forty Roma (Aṭigani) families to the Orthodox monastery of Tismana — one of the earliest documented instances of Roma being held as monastic serfs in the Romanian principalities. The same pattern is repeated at Cozia, Cotmeana and many other monasteries. The dark side of the shared story: the Church that catechised them also held them. This bondage lasts until abolition in 1855–56.",
+          url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
+        },
+        e1416: {
+          date: "1416",
+          source: "Brașov (Kronstadt) town accounts, Transylvania",
+          quote: "",
+          body:
+            "The Saxon municipal accounts of Brașov record a payment in kind — grain and provisions — to a band of Acigani passing through under their own chieftain. The earliest dated municipal record of Roma in Central Europe; they arrive as Christian travellers with a leader, not as strangers.",
+          url: "https://en.wikipedia.org/wiki/Timeline_of_Romani_history",
+        },
+        e1422: {
+          date: "July 1422",
+          source: "Cronica di Bologna; arrival of the Acigani in Italy",
+          quote: "",
+          body:
+            "A band led by 'Duke Andrew of Egypt' arrives in Bologna with around a hundred men and women, bearing a letter of safe-conduct from Pope Martin V identifying them as Christians on pilgrimage. Five years before the Bishop of Paris will excommunicate those who consult them, the Bishop of Rome had received them as fellow Christians.",
+          url: "https://en.wikipedia.org/wiki/History_of_the_Romani_people",
+        },
+        eParis: {
+          date: "17 August 1427",
+          source:
+            "Journal d'un bourgeois de Paris (anonymous), entry for the Sunday after Mid-August 1427",
+          quote:
+            "The Bishop of Paris went there with a Franciscan friar called the Petit Jacobin, who at the bishop's command preached publicly, excommunicating all those who had believed in them and had shown them their hand.",
+          body:
+            "A band of Égyptiens — described as twelve penitents, a duke, a count, and ten horsemen — camped outside Paris at La Chapelle. Vast crowds came out to have their fortunes read. The Bishop of Paris responded by excommunicating any Christian who had let them read the lines of the hand, and ordered general processions to undo the offence.",
+          url: "https://fr.wikisource.org/wiki/Le_dimanche_d%27apr%C3%A8s_la_my-aoust,_qui_fut_le_dix-septiesme_jour_d%27aoust_oudit_an_1427",
+        },
+        eStoglav: {
+          date: "1551",
+          source:
+            "Stoglav (Стоглав) — Council of Moscow under Tsar Ivan IV and Metropolitan Macarius",
+          quote: "",
+          body:
+            "The Russian Orthodox synod, in chapters condemning soothsayers, charmers and false prophets, continues the same long pastoral concern: the Church guarding her people from divination. The same family of warnings that began with the Byzantine canon-law tradition reaches into the heart of Russia.",
+          url: "https://archive.org/details/stoglav00ofgoog",
+        },
+        eAthos: {
+          date: "17th – 18th c.",
+          source: "Mount Athos monastic records",
+          quote: "",
+          body:
+            "Vatopedi, Iviron and other Athonite monasteries record Atsiganoi serving as smiths, carpenters and pack-handlers in their houses. The smithing thread runs unbroken from the Adsincani of 1054 to Ottoman-era Athos — same trade, same place, six centuries on. Further citations in Fr. Martin Halík's forthcoming book.",
+          url: "",
+        },
+        e1764: {
+          date: "1764 onwards",
+          source: "Imperial Russia under Catherine II",
+          quote: "",
+          body:
+            "Catherine II's reforms register the Roma as imperial subjects with the obligation to settle and pay taxes. Over the following decades large numbers are gathered into Russian Orthodox parishes; the Ruska Roma — Russia's main Roma group — trace their continuous Orthodox parish life to this era.",
+          url: "https://en.wikipedia.org/wiki/Ruska_Roma",
+        },
+        eAbolition: {
+          date: "1855 – 1856",
+          source:
+            "Moldavia (22 December 1855) and Wallachia (20 February 1856)",
+          quote: "",
+          body:
+            "After roughly five centuries of bondage to Orthodox monasteries, boyars, and the princely state, Roma slavery in the Romanian principalities is abolished. At the lowest estimate some 250,000 Roma pass legally into freedom. The Church that had held them now begins the slow, unfinished work of receiving them as equal members. That is the work we are still inside.",
+          url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
+        },
+      },
+    },
+    faith: {
+      label: "Exhibit 04 — Shared Faith",
+      title: "What We Hold in Common",
+      intro:
+        "Wherever the Roma settled in Orthodox lands, they did not stand outside the faith — they entered it, named their children for its saints, and shaped a life that looks strikingly familiar to any Orthodox Christian who looks closely.",
+      catechumenLabel: "A people of catechumens",
+      catechumenBody:
+        "The Roma are Orthodox catechumens on a long road. They have received Orthodoxy in the form they have been able to — woven through their own customs, sometimes mixed with old lies, often without a parish nearby to teach them. They are not outside the Church. They are inside it, still learning, still struggling to leave the lies behind, still being made new. Like a Roma family that finds a Theotokos icon thrown out as rubbish and brings it home to honour, the despised people keep the discarded image. That is the work of this mission — to walk the road with them.",
+      columns: {
+        byzantium: {
+          title: "From Byzantium",
+          body: "Greek-speaking Byzantium was the first long home of the Roma in the Christian world. Romani still carries hundreds of Greek nouns. Roma children are still baptised with names like Yiorgos, Mihalis, Maria — Orthodox names, not Indian ones.",
+        },
+        balkans: {
+          title: "With the Slavs",
+          body: "In Serbia, Macedonia, Bulgaria and Ukraine the Roma have lived inside the Orthodox calendar for centuries — kissing the priest's hand, covering the head with a scarf, calling the priest before the doctor when a child is sick. Custom and Church have grown together.",
+        },
+        liturgy: {
+          title: "Under one altar",
+          body: "An Orthodox liturgy in a Roma village in eastern Slovakia and an Orthodox liturgy in a Greek monastery use the same words, the same gestures, the same Cross. The Eucharist does not change for ethnicity. That is the bedrock of this mission.",
+        },
+      },
+      pullQuote:
+        "We were not converted in a single hour. We were converted slowly, in a thousand baptisms, over a thousand years — and we are still being converted today.",
+      pullQuoteAttribution: "Roma elder, Markovce parish",
+    },
+    traditions: {
+      label: "Exhibit 05 — Living Traditions",
+      title: "Six Things That Live in a Roma Orthodox Home",
+      intro:
+        "Many Roma customs have grown together with Orthodox practice over the centuries. They are close to the Church because they have lived next to the Church — and inside it — for so long.",
+      tapHint: "Tap any card to read more",
+      closing:
+        "And you will also find a priest greeted with a kissed hand, women covering their heads with a scarf, and a household that, when grief or illness comes, calls the priest before the doctor.",
+      cards: {
+        fourNails: {
+          title: "The Four Nails",
+          subtitle: "The deepest link",
+          body: "Orthodox iconography shows Christ crucified with four nails — feet apart, not crossed. Roma folk tradition tells of a blacksmith forced to forge four nails for the Crucifixion; he stole the fourth. The story exists in many variants across Roma Europe, but the underlying memory matches Orthodox iconographic theology, not Western three-nail iconography.",
+        },
+        thirdDay: {
+          title: "The Third Day",
+          subtitle: "Burial and vigil",
+          body: "Roma keep the body two nights, gather as the broad family, and bury on the third day. This is the Orthodox memorial pattern in its bones — Christ rose on the third day; the Church remembers her dead on the 3rd, 9th, and 40th. The Roma kept the third day even where the surrounding culture stopped.",
+        },
+        byzantineChant: {
+          title: "Byzantine chant in the throat",
+          subtitle: "An ear already shaped",
+          body: "Roma cantors pick up Byzantine modal chant astonishingly fast. The ear is already shaped: Roma secular music is modal — drawing on the same maqam / oktoechos family that built Byzantine chant. A Roma boy in a parish school slips into the second tone the way a fish slips into water.",
+        },
+        roundDance: {
+          title: "The Round Dance",
+          subtitle: "Hora, oro, syrtos",
+          body: "The hora of Romania, the oro of Macedonia and Serbia, the syrtos and kalamatianos of Greece. Roma dance the same round dance as their Orthodox neighbours — and often lead it at the parish feast. It is one body of dance, not two.",
+        },
+        iconsHome: {
+          title: "Icons brought home",
+          subtitle: "The Theotokos on the wall",
+          body: "Roma homes rarely keep the formal icon corner of a Slav village. But almost every Roma home has icons — frequently ones a neighbour threw out as rubbish, rescued, brought home, and hung on the wall. The Mother of God is loved with particular tenderness. The despised people keep the discarded image.",
+        },
+        greekBones: {
+          title: "Greek in the bones",
+          subtitle: "The language remembers",
+          body: "Romani's nominal -os endings come from Byzantine Greek (raklós — non-Roma boy, foros — town). The ironwork vocabulary — amoni (anvil), petalo (horseshoe), sideros (iron), and a long list of forge terms — is almost entirely Greek. The language itself remembers where the Roma were catechised.",
+        },
+      },
+    },
+    today: {
+      label: "Exhibit 06 — The Roma Today",
+      title: "Orthodox Christianity is Still the Faith of Most European Roma",
+      intro:
+        "Of the roughly 10 million Roma in Europe, the majority live in Orthodox-majority countries. The numbers are estimates — Roma populations are systematically undercounted — but the pattern is unmistakable.",
+      footnote:
+        "Population figures: Council of Europe estimates. Status notes from local clergy and missionaries.",
+      countries: {
+        ro: "Largest Roma population in Europe. Many Roma villages have full Orthodox parishes; many more still have none.",
+        bg: "Roma form roughly 10% of the country. Orthodox identity is strong; church practice varies widely between villages.",
+        rs: "Roma here keep the Slava and the church calendar — but only a handful of dedicated Roma parishes exist.",
+        mk: "Šuto Orizari, near Skopje, is the largest Roma municipality in the world. Outreach is wide open.",
+        gr: "Greek Roma have been baptised Orthodox for centuries. Yet most live without an active parish life of their own.",
+        ua: "Tens of thousands of Roma displaced by the war. Many find their first real church welcome in displacement parishes.",
+        ru: "Russian Roma trace Orthodox roots to the 18th century. The Russian Orthodox Church recognises a Roma patron saint.",
+        sk: "Where our own mission lives. Active Orthodox Roma parishes in Klenovec, Markovce, Kačanov, Mútnik — and growing.",
+      },
+    },
+    closing: {
+      label: "Continue the story",
+      title: "This museum is also a mission.",
+      body: "What you have walked through is not finished history. Most Roma villages in Orthodox Europe still have no active parish of their own. They are catechumens without a teacher in the village. That is the work we are doing — one priest, one chapel, one baptism at a time.",
+      ctaMission: "See the active mission",
+      ctaSupport: "Support the work",
+    },
+    shareNudge: {
+      text: "If this story moved you, the most useful thing you can do right now is share it with someone.",
+      shareLabel: "Share this museum",
+    },
+  },
   getInvolved: {
     hero: {
       label: "Get Involved",
@@ -1132,6 +1429,14 @@ const en: Dictionary = {
       title: "Media — Roma Mission",
       description:
         "Documentaries, interviews, and testimonies about Orthodox mission among the Roma — bringing the Gospel to Europe's largest unreached minority.",
+    },
+    heritage: {
+      title: "Roma Heritage Museum — A Shared Orthodox Story",
+      description:
+        "An interactive museum of 1,000 years of Roma history and the deep Orthodox Christian heritage they share with Greeks, Serbs, Romanians, Russians, and the Slavs of the Balkans.",
+      ogTitle: "1,000 Years of Roma + Orthodox History — An Interactive Museum",
+      ogDescription:
+        "From the Byzantine Empire to today's Slava candles and parish baptisms: the long, shared road of the Roma as Orthodox catechumens.",
     },
     getInvolved: {
       title: "Get Involved — Roma Mission",
