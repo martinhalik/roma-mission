@@ -867,7 +867,7 @@ const de: Dictionary = {
             "Ein samaritanisches Volk, Nachkommen Simons des Magiers, genannt Adsincani, die berühmte Zauberer und Schurken waren.",
           body:
             "Verfasst vom Schüler des hl. Georg Hagiorites (gest. 1065) auf dem Berg Athos. Berichtet, wie Kaiser Konstantin IX. Monomachos die Adsincani — ein Volk, das für Geschick mit Tieren und für Zauberei bekannt war — rief, um mit den wilden Tieren fertig zu werden, die den kaiserlichen Jagdpark Philopation heimsuchten. Wird weithin als einer der frühesten wahrscheinlichen Hinweise auf Roma in der byzantinischen Welt zitiert.",
-          url: "https://www.academia.edu/3197046/Roads_and_Pilgrims_According_to_the_Life_of_George_the_Athonite_",
+          url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
         },
         eCanon: {
           date: "11. – 16. Jh.",

@@ -867,7 +867,7 @@ const ro: Dictionary = {
             "Un popor samaritean, urmași ai lui Simon Magul, numiți Adsincani, care erau vrăjitori și nelegiuiți renumiți.",
           body:
             "Scrisă de ucenicul Sf. Gheorghe Hagioritul (†1065) la Muntele Athos. Consemnează cum împăratul Constantin al IX-lea Monomahul i-a chemat pe Adsincani — un popor renumit pentru iscusința cu animalele și pentru vrăjitorie — pentru a se ocupa de fiarele sălbatice care chinuiau parcul de vânătoare imperial de la Philopation. Citată pe scară largă drept una dintre cele mai vechi referințe probabile la romi în lumea bizantină.",
-          url: "https://www.academia.edu/3197046/Roads_and_Pilgrims_According_to_the_Life_of_George_the_Athonite_",
+          url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
         },
         eCanon: {
           date: "sec. XI – XVI",

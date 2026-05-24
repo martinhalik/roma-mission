@@ -863,7 +863,7 @@ const cs: Dictionary = {
             "Samaritánský lid, potomci Šimona Mága, zvaní Adsincani, kteří byli proslulými čaroději a darebáky.",
           body:
             "Napsal žák sv. Jiřího Hagiority (zemř. 1065) na Svaté Hoře Athos. Zaznamenává, jak císař Konstantin IX. Monomachos povolal Adsincany — lid proslulý dovedností se zvířaty a čarodějnictvím — aby si poradili s divokou zvěří sužující císařský lovecký park v Philopation. Široce citováno jako jedna z nejstarších pravděpodobných zmínek o Romech v byzantském světě.",
-          url: "https://www.academia.edu/3197046/Roads_and_Pilgrims_According_to_the_Life_of_George_the_Athonite_",
+          url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
         },
         eCanon: {
           date: "11. – 16. stol.",

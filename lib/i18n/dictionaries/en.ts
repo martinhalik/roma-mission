@@ -865,7 +865,7 @@ const en: Dictionary = {
             "A Samaritan people, descendants of Simon the Magician, named Adsincani, who were renowned sorcerers and villains.",
           body:
             "Written by the disciple of St George Hagiorites (d. 1065) on Mount Athos. Records Emperor Constantine IX Monomachos summoning the Adsincani — a people reputed for skill with animals and for sorcery — to deal with wild beasts plaguing the imperial hunting park at Philopation. Widely cited as one of the earliest probable references to Roma in the Byzantine world.",
-          url: "https://www.academia.edu/3197046/Roads_and_Pilgrims_According_to_the_Life_of_George_the_Athonite_",
+          url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
         },
         eCanon: {
           date: "11th – 16th c.",

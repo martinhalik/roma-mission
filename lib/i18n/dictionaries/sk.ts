@@ -862,7 +862,7 @@ const sk: Dictionary = {
             "Samaritánsky ľud, potomkovia Šimona Mága, zvaní Adsincani, ktorí boli povestnými čarodejníkmi a darebákmi.",
           body:
             "Napísal učeník sv. Juraja Hagioritu (zomr. 1065) na Svätej Hore Athos. Zaznamenáva, ako cisár Konštantín IX. Monomachos povolal Adsincanov — ľud povestný šikovnosťou so zvieratami a čarodejníctvom — aby sa vyrovnali s divou zverou sužujúcou cisársky lovecký park v Philopation. Široko citované ako jedna z najstarších pravdepodobných zmienok o Rómoch v byzantskom svete.",
-          url: "https://www.academia.edu/3197046/Roads_and_Pilgrims_According_to_the_Life_of_George_the_Athonite_",
+          url: "https://en.wikipedia.org/wiki/Names_of_the_Romani_people",
         },
         eCanon: {
           date: "11. – 16. stor.",
