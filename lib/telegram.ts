@@ -44,16 +44,64 @@ const FETCH_OPTS: RequestInit & { next: { revalidate: number } } = {
   next: { revalidate: 1800 },
 };
 
+const NAMED_ENTITIES: Record<string, string> = {
+  nbsp: " ",
+  amp: "&",
+  lt: "<",
+  gt: ">",
+  quot: '"',
+  apos: "'",
+  laquo: "«",
+  raquo: "»",
+  hellip: "…",
+  mdash: "—",
+  ndash: "–",
+  ldquo: "“",
+  rdquo: "”",
+  lsquo: "‘",
+  rsquo: "’",
+  bull: "•",
+  middot: "·",
+  copy: "©",
+  reg: "®",
+  trade: "™",
+};
+
+function decodeEntities(s: string): string {
+  return s.replace(/&(#x[0-9a-fA-F]+|#\d+|[a-zA-Z]+);/g, (match, body: string) => {
+    if (body.startsWith("#x") || body.startsWith("#X")) {
+      const code = parseInt(body.slice(2), 16);
+      return Number.isFinite(code) ? safeFromCodePoint(code) : match;
+    }
+    if (body.startsWith("#")) {
+      const code = parseInt(body.slice(1), 10);
+      return Number.isFinite(code) ? safeFromCodePoint(code) : match;
+    }
+    return NAMED_ENTITIES[body] ?? match;
+  });
+}
+
+function safeFromCodePoint(code: number): string {
+  try {
+    return String.fromCodePoint(code);
+  } catch {
+    return "";
+  }
+}
+
 function stripTags(html: string): string {
-  return html
-    .replace(/<br\s*\/?>/gi, "\n")
-    .replace(/<[^>]+>/g, "")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
+  return decodeEntities(
+    html
+      // Custom Telegram emoji wrappers: <tg-emoji>🙏</tg-emoji> or
+      // <i class="emoji" style="background-image:url('...')"><b>👀</b></i>.
+      // The unicode glyph is inside the tag, so plain tag-stripping
+      // already preserves it — but be explicit so future Telegram markup
+      // changes don't silently swallow emoji.
+      .replace(/<tg-emoji[^>]*>([\s\S]*?)<\/tg-emoji>/gi, "$1")
+      .replace(/<i class="emoji"[^>]*>([\s\S]*?)<\/i>/gi, "$1")
+      .replace(/<br\s*\/?>/gi, "\n")
+      .replace(/<[^>]+>/g, "")
+  )
     .replace(/\s+\n/g, "\n")
     .trim();
 }
