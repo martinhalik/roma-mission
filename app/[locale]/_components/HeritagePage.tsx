@@ -8,6 +8,8 @@ import {
   MapPin,
   Cross,
   ArrowRight,
+  ExternalLink,
+  Quote,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -24,14 +26,42 @@ const TIMELINE_KEYS = ["era1", "era2", "era3", "era4", "era5"] as const;
 type EraKey = (typeof TIMELINE_KEYS)[number];
 
 const TRADITION_KEYS = [
-  "slava",
-  "feastDays",
-  "baptism",
-  "music",
-  "icons",
-  "language",
+  "fourNails",
+  "thirdDay",
+  "byzantineChant",
+  "roundDance",
+  "iconsHome",
+  "greekBones",
 ] as const;
 type TraditionKey = (typeof TRADITION_KEYS)[number];
+
+const TRADITION_IMAGES: Record<TraditionKey, string> = {
+  fourNails: "trad-four-nails.jpg",
+  thirdDay: "trad-third-day.jpg",
+  byzantineChant: "trad-byzantine-chant.jpg",
+  roundDance: "trad-round-dance.jpg",
+  iconsHome: "trad-icons-home.jpg",
+  greekBones: "trad-greek-bones.jpg",
+};
+
+const VOICE_KEYS = [
+  "e1054",
+  "eCanon",
+  "e1322",
+  "e1385",
+  "eParis",
+  "eStoglav",
+  "eAbolition",
+] as const;
+type VoiceKey = (typeof VOICE_KEYS)[number];
+
+const TIMELINE_IMAGES: Record<EraKey, string> = {
+  era1: "era-1.jpg",
+  era2: "era-2.jpg",
+  era3: "era-3.jpg",
+  era4: "era-4.jpg",
+  era5: "era-5.jpg",
+};
 
 const COUNTRY_KEYS = [
   "ro",
@@ -167,6 +197,7 @@ function TOC() {
   const active = useActiveSection([
     "origins",
     "timeline",
+    "voices",
     "faith",
     "traditions",
     "today",
@@ -175,6 +206,7 @@ function TOC() {
   const items: { id: string; label: string }[] = [
     { id: "origins", label: t("heritage.toc.origins") },
     { id: "timeline", label: t("heritage.toc.timeline") },
+    { id: "voices", label: t("heritage.toc.voices") },
     { id: "faith", label: t("heritage.toc.faith") },
     { id: "traditions", label: t("heritage.toc.traditions") },
     { id: "today", label: t("heritage.toc.today") },
@@ -277,11 +309,20 @@ function TimelineAccordion() {
             <div
               id={`era-panel-${era}`}
               hidden={!isOpen}
-              className="pb-7 md:pl-[72px] md:pr-12 -mt-2"
+              className="pb-7 md:pl-[72px] md:pr-12 -mt-2 grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-6 md:gap-10 items-start"
             >
               <p className="text-[14px] md:text-[16px] text-[var(--text-secondary)] leading-[1.75] font-georgia">
                 {t(`heritage.timeline.eras.${era}.body`)}
               </p>
+              <div
+                aria-hidden
+                className="aspect-[4/3] bg-[var(--bg-elevated)] border border-[var(--border-default)] overflow-hidden"
+                style={{
+                  backgroundImage: `url('/images/heritage/${TIMELINE_IMAGES[era]}')`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              />
             </div>
           </li>
         );
@@ -298,9 +339,19 @@ function TraditionCard({ id }: { id: TraditionKey }) {
       type="button"
       onClick={() => setOpen((v) => !v)}
       aria-expanded={open}
-      className="group text-left bg-[var(--bg-card)] border border-[var(--border-default)] hover:border-[var(--gold)]/50 transition-colors cursor-pointer flex flex-col"
+      className="group text-left bg-[var(--bg-card)] border border-[var(--border-default)] hover:border-[var(--gold)]/50 transition-colors cursor-pointer flex flex-col overflow-hidden"
     >
-      <div className="flex items-start justify-between gap-3 p-5 md:p-6">
+      <div
+        aria-hidden
+        className="aspect-square w-full"
+        style={{
+          backgroundImage: `url('/images/heritage/${TRADITION_IMAGES[id]}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundColor: "var(--bg-elevated)",
+        }}
+      />
+      <div className="flex items-start justify-between gap-3 p-5 md:p-6 border-t border-[var(--border-default)]">
         <div className="flex-1 min-w-0">
           <div className="text-[10px] font-bold tracking-[2px] text-[var(--gold)] uppercase mb-2">
             {t(`heritage.traditions.cards.${id}.subtitle`)}
@@ -324,6 +375,55 @@ function TraditionCard({ id }: { id: TraditionKey }) {
         </div>
       )}
     </button>
+  );
+}
+
+function VoiceCard({ id }: { id: VoiceKey }) {
+  const { t } = useTranslation();
+  const date = t(`heritage.voices.entries.${id}.date`);
+  const source = t(`heritage.voices.entries.${id}.source`);
+  const quote = t(`heritage.voices.entries.${id}.quote`);
+  const body = t(`heritage.voices.entries.${id}.body`);
+  const url = t(`heritage.voices.entries.${id}.url`);
+  const hasQuote = quote && quote.length > 0;
+  const hasUrl = url && url.startsWith("http");
+  return (
+    <article className="flex flex-col gap-4 bg-[var(--bg-card)] border border-[var(--border-default)] p-6 md:p-8">
+      <header className="flex flex-col gap-2">
+        <span className="text-[11px] font-bold tracking-[2px] text-[var(--gold)] uppercase">
+          {date}
+        </span>
+        <h3 className="text-[16px] md:text-[18px] font-semibold text-[var(--text-primary)] leading-[1.4]">
+          {source}
+        </h3>
+      </header>
+      {hasQuote && (
+        <blockquote className="relative border-l-2 border-[var(--gold)] pl-5 py-1">
+          <Quote
+            size={14}
+            className="absolute -left-[8px] -top-[2px] bg-[var(--bg-card)] text-[var(--gold)]"
+            aria-hidden
+          />
+          <p className="text-[15px] md:text-[16px] font-georgia italic text-[var(--text-primary)] leading-[1.7]">
+            &ldquo;{quote}&rdquo;
+          </p>
+        </blockquote>
+      )}
+      <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.75]">
+        {body}
+      </p>
+      {hasUrl && (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[1.5px] uppercase text-[var(--gold)] hover:opacity-80 transition-opacity w-fit"
+        >
+          {t("heritage.voices.readSourceLabel")}
+          <ExternalLink size={12} />
+        </a>
+      )}
+    </article>
   );
 }
 
@@ -373,10 +473,11 @@ export default function HeritagePage() {
           aria-hidden
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "url('/images/klenovec-chapel.jpeg')",
+            backgroundImage:
+              "url('/images/heritage/hero.jpg'), url('/images/klenovec-chapel.jpeg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            opacity: 0.18,
+            opacity: 0.45,
           }}
         />
         <div
@@ -384,7 +485,7 @@ export default function HeritagePage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(180deg, var(--bg-primary) 0%, rgba(17,17,17,0.55) 45%, var(--bg-primary) 100%)",
+              "linear-gradient(180deg, rgba(17,17,17,0.45) 0%, rgba(17,17,17,0.35) 45%, var(--bg-primary) 100%)",
           }}
         />
         <div
@@ -445,6 +546,15 @@ export default function HeritagePage() {
             <h2 className="mt-6 font-georgia text-[32px] md:text-[44px] xl:text-[56px] leading-[1.1] text-[var(--text-primary)] max-w-[820px]">
               {t("heritage.origins.title")}
             </h2>
+            <div
+              aria-hidden
+              className="mt-10 aspect-[3/2] w-full max-w-[1000px] bg-[var(--bg-elevated)] border border-[var(--border-default)]"
+              style={{
+                backgroundImage: "url('/images/heritage/origins.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
             <div className="mt-10 grid lg:grid-cols-2 gap-10 lg:gap-16 max-w-[1000px]">
               <p className="text-[15px] md:text-[17px] leading-[1.8] text-[var(--text-secondary)] font-georgia">
                 {t("heritage.origins.intro")}
@@ -491,6 +601,25 @@ export default function HeritagePage() {
             </div>
           </section>
 
+          {/* ───── VOICES IN THE ARCHIVE ───────────────────────────── */}
+          <section id="voices" className="scroll-mt-28">
+            <SectionLabel text={t("heritage.voices.label")} />
+            <h2 className="mt-6 font-georgia text-[32px] md:text-[44px] xl:text-[56px] leading-[1.1] text-[var(--text-primary)] max-w-[900px]">
+              {t("heritage.voices.title")}
+            </h2>
+            <p className="mt-6 text-[15px] md:text-[17px] leading-[1.8] text-[var(--text-secondary)] max-w-[820px] font-georgia">
+              {t("heritage.voices.intro")}
+            </p>
+            <div className="mt-10 grid md:grid-cols-2 gap-5 md:gap-6">
+              {VOICE_KEYS.map((k) => (
+                <VoiceCard key={k} id={k} />
+              ))}
+            </div>
+            <p className="mt-8 text-[11px] text-[var(--text-muted)] italic max-w-[820px] leading-[1.6]">
+              {t("heritage.voices.footnote")}
+            </p>
+          </section>
+
           {/* ───── SHARED FAITH ────────────────────────────────────── */}
           <section id="faith" className="scroll-mt-28">
             <SectionLabel text={t("heritage.faith.label")} />
@@ -502,16 +631,27 @@ export default function HeritagePage() {
             </p>
 
             {/* Catechumen callout — the heart of the framing */}
-            <div className="mt-10 relative border-l-2 border-[var(--gold)] bg-[var(--bg-card)] p-6 md:p-10 max-w-[920px]">
-              <div className="flex items-center gap-3 mb-4">
-                <Cross size={16} className="text-[var(--gold)]" />
-                <span className="text-[10px] font-bold tracking-[2px] text-[var(--gold)] uppercase">
-                  {t("heritage.faith.catechumenLabel")}
-                </span>
+            <div className="mt-10 grid lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-6 lg:gap-8 max-w-[1100px]">
+              <div className="relative border-l-2 border-[var(--gold)] bg-[var(--bg-card)] p-6 md:p-10 order-2 lg:order-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <Cross size={16} className="text-[var(--gold)]" />
+                  <span className="text-[10px] font-bold tracking-[2px] text-[var(--gold)] uppercase">
+                    {t("heritage.faith.catechumenLabel")}
+                  </span>
+                </div>
+                <p className="text-[16px] md:text-[19px] leading-[1.75] text-[var(--text-primary)] font-georgia">
+                  {t("heritage.faith.catechumenBody")}
+                </p>
               </div>
-              <p className="text-[16px] md:text-[19px] leading-[1.75] text-[var(--text-primary)] font-georgia">
-                {t("heritage.faith.catechumenBody")}
-              </p>
+              <div
+                aria-hidden
+                className="aspect-[3/4] w-full bg-[var(--bg-elevated)] border border-[var(--border-default)] order-1 lg:order-2"
+                style={{
+                  backgroundImage: "url('/images/heritage/catechumen.jpg')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              />
             </div>
 
             <div className="mt-12 grid md:grid-cols-3 gap-5 md:gap-6">
@@ -559,6 +699,9 @@ export default function HeritagePage() {
                 <TraditionCard key={k} id={k} />
               ))}
             </div>
+            <p className="mt-10 text-[14px] md:text-[16px] text-[var(--text-secondary)] leading-[1.8] max-w-[820px] font-georgia italic">
+              {t("heritage.traditions.closing")}
+            </p>
           </section>
 
           {/* ───── TODAY ───────────────────────────────────────────── */}
@@ -578,6 +721,15 @@ export default function HeritagePage() {
             <p className="mt-6 text-[11px] text-[var(--text-muted)] italic max-w-[820px] leading-[1.6]">
               {t("heritage.today.footnote")}
             </p>
+            <div
+              aria-hidden
+              className="mt-12 aspect-[2/1] w-full bg-[var(--bg-elevated)] border border-[var(--border-default)]"
+              style={{
+                backgroundImage: "url('/images/heritage/today.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
           </section>
 
           {/* ───── CONTINUE / CTA ──────────────────────────────────── */}

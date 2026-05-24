@@ -778,6 +778,7 @@ const sk: Dictionary = {
       label: "Expozície",
       origins: "Pôvod",
       timeline: "Časová os",
+      voices: "Hlasy z archívu",
       faith: "Spoločná viera",
       traditions: "Živé tradície",
       today: "Rómovia dnes",
@@ -843,14 +844,90 @@ const sk: Dictionary = {
         },
       },
     },
+    voices: {
+      label: "Expozícia 03 — Hlasy z archívu",
+      title: "Čo o Rómoch zapísali dejiny",
+      intro:
+        "Rómovia si svoju vlastnú kroniku nepísali. To, čo vieme o ich prvých stáročiach v kresťanskom svete, pochádza od mníchov, biskupov, mestských pisárov a kanonickoprávnych kníh, ktoré sa ich už vtedy snažili pochopiť. Tu sú v poradí hlasy — citované tam, kde sa pôvodný text zachoval, s prameňmi, na ktoré sa dá kliknúť.",
+      footnote:
+        "Tam, kde je citácia skôr všeobecná než jednotlivý citovateľný text, sme radšej opatrní, než aby sme predstierali falošnú presnosť. Opravy pošlite na martin@romamission.eu a my ich spresníme.",
+      sourceLabel: "Prameň",
+      readSourceLabel: "Čítať prameň",
+      entries: {
+        e1054: {
+          date: "okolo 1054",
+          source:
+            "Život sv. Juraja Athonského — Giorgi Mtsire, gruzínsky, okolo 1068 (ed. P. Peeters, Analecta Bollandiana 36–37, 1917–19)",
+          quote:
+            "Samaritánsky ľud, potomkovia Šimona Mága, zvaní Adsincani, ktorí boli povestnými čarodejníkmi a darebákmi.",
+          body:
+            "Napísal učeník sv. Juraja Hagioritu (zomr. 1065) na Svätej Hore Athos. Zaznamenáva, ako cisár Konštantín IX. Monomachos povolal Adsincanov — ľud povestný šikovnosťou so zvieratami a čarodejníctvom — aby sa vyrovnali s divou zverou sužujúcou cisársky lovecký park v Philopation. Široko citované ako jedna z najstarších pravdepodobných zmienok o Rómoch v byzantskom svete.",
+          url: "https://www.academia.edu/3197046/Roads_and_Pilgrims_According_to_the_Life_of_George_the_Athonite_",
+        },
+        eCanon: {
+          date: "11. – 16. stor.",
+          source: "Slovanská Kormčaja / grécka nomokánonická tradícia",
+          quote: "",
+          body:
+            "V období patriarchu Gennadia II. Scholaria (prvý patriarcha po páde Konštantínopolu, 1454–1456) sa byzantská pastoračná tradícia varujúca pred čarodejníctvom a vešteckým umením Атсингане / Цигани preniesla do slovanských Kormčich kníh. Pravoslávni veriaci dostali pokyn neprijímať ich do svojich domov za účelom veštenia. Text sa zachoval v rámci slovanskej kanonickej tradície, nie v jednom datovanom dekréte.",
+          url: "",
+        },
+        e1322: {
+          date: "1322",
+          source:
+            "Symon Semeonis (Simon FitzSimon), Itinerarium ab Hybernia ad Terram Sanctam — latinsky, ed. Mario Esposito (Dublin, 1960)",
+          quote:
+            "Videli sme pred týmto mestom kmeň ľudí, ktorí sa modlia podľa gréckeho obradu a tvrdia, že sú z rodu Kaina. Títo ľudia zriedka alebo nikdy nezostávajú na jednom mieste viac než tridsať dní, ale stále, ako prekliati Bohom, sú kočovní a vyvrhnutí. Po tridsiatom dni putujú z poľa na pole s malými, podlhovastými, čiernymi a nízkymi stanmi, podobnými stanom Arabov.",
+          body:
+            "Írsky františkán prechádzajúci Krétou opisuje Atsinganov, ktorých stretol pred Heraklionom. Pravdepodobne najstarší zachovaný opis Rómov očitým svedkom zo západnej Európy — a už v roku 1322 si všíma, že sa modlia 'podľa gréckeho obradu'.",
+          url: "https://celt.ucc.ie/published/T300002-001.html",
+        },
+        e1385: {
+          date: "október 1385",
+          source: "Charta Dana I., vojvodu valašského",
+          quote: "",
+          body:
+            "Dan I. Valašský daruje štyridsať rómskych (Aṭigani) rodín pravoslávnemu monastieru Tismana — jeden z najstarších doložených prípadov, keď boli Rómovia držaní ako monastierski poddaní v rumunských kniežatstvách. Rovnaký vzor sa opakuje v Cozii, Cotmeane a mnohých ďalších monastieroch. Temná stránka spoločného príbehu: Cirkev, ktorá ich katechizovala, ich aj držala. Toto poddanstvo trvá až do zrušenia v rokoch 1855–56.",
+          url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
+        },
+        eParis: {
+          date: "17. august 1427",
+          source:
+            "Journal d'un bourgeois de Paris (anonymný), zápis z nedele po polovici augusta 1427",
+          quote:
+            "Parížsky biskup tam šiel s františkánskym mníchom zvaným Petit Jacobin, ktorý na biskupov príkaz verejne kázal a exkomunikoval všetkých, ktorí im uverili a ukázali im svoju ruku.",
+          body:
+            "Skupina Égyptiens — opísaná ako dvanásť kajúcnikov, vojvoda, gróf a desať jazdcov — sa utáborila pred Parížom v La Chapelle. Veľké zástupy prichádzali, aby im veštili. Parížsky biskup odpovedal exkomunikáciou každého kresťana, ktorý im dovolil čítať z dlane, a nariadil všeobecné procesie na nápravu prečinu.",
+          url: "https://fr.wikisource.org/wiki/Le_dimanche_d%27apr%C3%A8s_la_my-aoust,_qui_fut_le_dix-septiesme_jour_d%27aoust_oudit_an_1427",
+        },
+        eStoglav: {
+          date: "1551",
+          source:
+            "Stoglav (Стоглав) — Moskovský snem za cára Ivana IV. a metropolitu Makária",
+          quote: "",
+          body:
+            "Ruský pravoslávny snem v kapitolách odsudzujúcich vešticov, čarodejníkov a falošných prorokov pokračuje v tej istej dlhej pastoračnej starosti: Cirkev chráni svoj ľud pred veštectvom. Tá istá rodina varovaní, ktorá začala v byzantskej kanonickoprávnej tradícii, siaha až do srdca Ruska.",
+          url: "https://archive.org/details/stoglav00ofgoog",
+        },
+        eAbolition: {
+          date: "1855 – 1856",
+          source:
+            "Moldavsko (22. decembra 1855) a Valašsko (20. februára 1856)",
+          quote: "",
+          body:
+            "Po približne piatich storočiach poddanstva pravoslávnym monastierom, bojarom a kniežaciemu štátu sa otroctvo Rómov v rumunských kniežatstvách ruší. Pri najnižšom odhade prejde do slobody zákonne približne 250 000 Rómov. Cirkev, ktorá ich držala, teraz začína pomalú, ešte neuzavretú prácu prijímania ich ako rovnocenných členov. To je dielo, vnútri ktorého sa stále nachádzame.",
+          url: "https://en.wikipedia.org/wiki/Slavery_in_Romania",
+        },
+      },
+    },
     faith: {
-      label: "Expozícia 03 — Spoločná viera",
+      label: "Expozícia 04 — Spoločná viera",
       title: "Čo máme spoločné",
       intro:
         "Kdekoľvek sa Rómovia usadili v pravoslávnych krajinách, nezostali mimo viery — vstúpili do nej, dávali deťom mená jej svätých a tvorili tradície, ktoré sú každému pravoslávnemu kresťanovi nápadne známe.",
       catechumenLabel: "Národ katechumenov",
       catechumenBody:
-        "Rómovia sú pravoslávnymi katechumenmi na dlhej ceste. Pravoslávie prijali v takej podobe, v akej mohli — prepletené s ich vlastnými zvykmi, niekedy zmiešané so starými lžami, často bez blízkej farnosti, ktorá by ich vyučovala. Nie sú mimo Cirkvi. Sú v nej, stále sa učia, stále sa snažia zbaviť lží, stále sú obnovovaní. To je dielo tejto misie: kráčať s nimi po ceste.",
+        "Rómovia sú pravoslávnymi katechumenmi na dlhej ceste. Pravoslávie prijali v takej podobe, v akej mohli — prepletené s ich vlastnými zvykmi, niekedy zmiešané so starými lžami, často bez blízkej farnosti, ktorá by ich vyučovala. Nie sú mimo Cirkvi. Sú v nej, stále sa učia, stále sa snažia zbaviť lží, stále sú obnovovaní. Ako rómska rodina, ktorá nájde vyhodenú ikonu Bohorodičky a prinesie ju domov, aby ju uctievala, opovrhovaný ľud uchováva odhodený obraz. To je dielo tejto misie: kráčať s nimi po ceste.",
       columns: {
         byzantium: {
           title: "Z Byzancie",
@@ -858,7 +935,7 @@ const sk: Dictionary = {
         },
         balkans: {
           title: "So Slovanmi",
-          body: "V Srbsku, Macedónsku, Bulharsku a Ukrajine si Rómovia uchovávajú Slavu — domáci sviatok rodinného patróna svätca. Zapaľujú sviečku, žehnajú kolač, prinášajú koljivo. Nie sú to požičané zvyky; je to rodinná tradícia stará stáročia.",
+          body: "V Srbsku, Macedónsku, Bulharsku a Ukrajine žijú Rómovia stáročia vnútri pravoslávneho kalendára — bozkávajú kňazovi ruku, prikrývajú si hlavu šatkou, volajú kňaza pred lekárom, keď je dieťa choré. Zvyk a Cirkev rástli spolu.",
         },
         liturgy: {
           title: "Pod jedným oltárom",
@@ -870,46 +947,48 @@ const sk: Dictionary = {
       pullQuoteAttribution: "Rómsky starešina, farnosť Markovce",
     },
     traditions: {
-      label: "Expozícia 04 — Živé tradície",
-      title: "Šesť vecí, ktoré nájdete v rómskom pravoslávnom dome",
+      label: "Expozícia 05 — Živé tradície",
+      title: "Šesť vecí, ktoré žijú v rómskom pravoslávnom dome",
       intro:
-        "Mnohé rómske zvyky vyrastali stáročia spolu s pravoslávnou praxou. Sú blízko Cirkvi, pretože tak dlho žili vedľa Cirkvi.",
+        "Mnohé rómske zvyky vyrastali stáročia spolu s pravoslávnou praxou. Sú blízko Cirkvi, pretože tak dlho žili vedľa nej — a v nej.",
       tapHint: "Kliknite na kartu pre viac",
+      closing:
+        "A nájdete tam tiež kňaza, ktorému sa pri stretnutí bozkáva ruka, ženy zahaľujúce si hlavu šatkou a domácnosť, ktorá keď príde žiaľ či choroba, volá kňaza pred lekárom.",
       cards: {
-        slava: {
-          title: "Slava",
-          subtitle: "Domáci svätý",
-          body: "Rómske pravoslávne rodiny na západnom Balkáne si uchovávajú Slavu: jedného menovaného svätého, ktorého ctí celá domácnosť a ktorý prechádza z otca na syna. Zapáli sa sviečka, kňaz žehná chlieb kolač, rodina spolu jedáva.",
+        fourNails: {
+          title: "Štyri klince",
+          subtitle: "Najhlbšie spojenie",
+          body: "Pravoslávna ikonografia zobrazuje ukrižovaného Krista so štyrmi klincami — nohy oddelene, nie prekrížené. Rómska ľudová tradícia rozpráva o kováčovi prinútenom ukovať štyri klince na ukrižovanie; ten štvrtý ukradol. Príbeh existuje v mnohých variantoch po celej rómskej Európe, ale podkladová pamäť zodpovedá pravoslávnej ikonografickej teológii, nie západnej trojklincovej ikonografii.",
         },
-        feastDays: {
-          title: "Sviatky",
-          subtitle: "Kalendár srdca",
-          body: "Sv. Juraj (Đurđevdan), Pascha, Zosnutie Bohorodičky, sv. Demeter, Narodenie Pána — rómske rodiny v pravoslávnej Európe si riadia rok podľa cirkevného kalendára, nie občianskeho.",
+        thirdDay: {
+          title: "Tretí deň",
+          subtitle: "Pohreb a bdenie",
+          body: "Rómovia uchovávajú telo dve noci, schádzajú sa ako široká rodina a pochovávajú na tretí deň. Toto je pravoslávny pamätný vzor v kostiach — Kristus vstal tretieho dňa; Cirkev si spomína na svojich zosnulých 3., 9. a 40. deň. Rómovia uchovali tretí deň aj tam, kde okolitá kultúra prestala.",
         },
-        baptism: {
-          title: "Krst a kum",
-          subtitle: "Vyvolená rodina",
-          body: "Kum — krstný otec — nie je hosťom na rómskom krste, je rodinou. Kum dieťaťa často prevyšuje pokrvných strýkov. Toto puto je posvätné a celoživotné, spečatené pri krstiteľnici pred ikonami.",
+        byzantineChant: {
+          title: "Byzantský spev v hrdle",
+          subtitle: "Ucho už pripravené",
+          body: "Rómski kantori sa byzantský modálny spev učia neuveriteľne rýchlo. Ucho je už vytvarované: rómska svetská hudba je modálna — čerpá z tej istej rodiny maqam / oktoechos, ktorá postavila byzantský spev. Rómsky chlapec vo farskej škole vkĺzne do druhého tónu tak, ako ryba vkĺzne do vody.",
         },
-        music: {
-          title: "Hudba",
-          subtitle: "Kde sa stretávajú dve tradície",
-          body: "Rómski hudobníci stáročia hrávali na pravoslávnych svadbách, krstoch a farských sviatkoch — od gréckych panigiria cez srbské svadbe po rumunské hramuri. Svadobná kapela a chrámový spev vyrastali jeden vedľa druhého.",
+        roundDance: {
+          title: "Kruhový tanec",
+          subtitle: "Hora, oro, syrtos",
+          body: "Hora v Rumunsku, oro v Macedónsku a Srbsku, syrtos a kalamatianos v Grécku. Rómovia tancujú ten istý kruhový tanec ako ich pravoslávni susedia — a často ho vedú na farskom sviatku. Je to jedno telo tanca, nie dve.",
         },
-        icons: {
-          title: "Ikony v dome",
-          subtitle: "Kút, kde prebýva Boh",
-          body: "Vojdite do domu rómskej rodiny v pravoslávnych krajinách a nájdete ikonu — Bohorodičku, Krista, rodinného svätca — zavesenú tam, kde ju každý vidí, často s malou olejovou lampičkou pod ňou.",
+        iconsHome: {
+          title: "Ikony prinesené domov",
+          subtitle: "Bohorodička na stene",
+          body: "Rómske domy zriedka uchovávajú formálny ikonový kút slovanskej dediny. Ale takmer každý rómsky dom má ikony — často také, ktoré sused vyhodil ako odpadky, zachránené, prinesené domov a zavesené na stenu. Bohorodička je milovaná s mimoriadnou nehou. Opovrhovaný ľud uchováva odhodený obraz.",
         },
-        language: {
-          title: "Rómsky jazyk",
-          subtitle: "Knižnica ciest",
-          body: "Rómčina v sebe nesie cestu: sanskritské korene, perzské a arménske výpožičky, byzantskú gréčtinu, potom slovanské, rumunské a nemecké slová. Samotný jazyk je archívom ľudí, ktorí Rómov prijali — mnohí z nich pravoslávni.",
+        greekBones: {
+          title: "Gréčtina v kostiach",
+          subtitle: "Jazyk si pamätá",
+          body: "Rómske menné koncovky -os pochádzajú z byzantskej gréčtiny (raklós — nerómsky chlapec, foros — mesto). Slovník kováčstva — amoni (nákova), petalo (podkova), sideros (železo) a dlhý zoznam vyhniarskych pojmov — je takmer celý grécky. Sám jazyk si pamätá, kde boli Rómovia katechizovaní.",
         },
       },
     },
     today: {
-      label: "Expozícia 05 — Rómovia dnes",
+      label: "Expozícia 06 — Rómovia dnes",
       title: "Pravoslávne kresťanstvo je stále vierou väčšiny európskych Rómov",
       intro:
         "Z približne 10 miliónov Rómov v Európe väčšina žije v krajinách s pravoslávnou väčšinou. Čísla sú odhady — rómske populácie sú systematicky podhodnocované — no obraz je jednoznačný.",

@@ -608,6 +608,7 @@ export interface Dictionary {
       label: string;
       origins: string;
       timeline: string;
+      voices: string;
       faith: string;
       traditions: string;
       today: string;
@@ -651,18 +652,36 @@ export interface Dictionary {
       pullQuote: string;
       pullQuoteAttribution: string;
     };
+    voices: {
+      label: string;
+      title: string;
+      intro: string;
+      footnote: string;
+      sourceLabel: string;
+      readSourceLabel: string;
+      entries: {
+        e1054: { date: string; source: string; quote: string; body: string; url: string };
+        eCanon: { date: string; source: string; quote: string; body: string; url: string };
+        e1322: { date: string; source: string; quote: string; body: string; url: string };
+        e1385: { date: string; source: string; quote: string; body: string; url: string };
+        eParis: { date: string; source: string; quote: string; body: string; url: string };
+        eStoglav: { date: string; source: string; quote: string; body: string; url: string };
+        eAbolition: { date: string; source: string; quote: string; body: string; url: string };
+      };
+    };
     traditions: {
       label: string;
       title: string;
       intro: string;
       tapHint: string;
+      closing: string;
       cards: {
-        slava: { title: string; subtitle: string; body: string };
-        feastDays: { title: string; subtitle: string; body: string };
-        baptism: { title: string; subtitle: string; body: string };
-        music: { title: string; subtitle: string; body: string };
-        icons: { title: string; subtitle: string; body: string };
-        language: { title: string; subtitle: string; body: string };
+        fourNails: { title: string; subtitle: string; body: string };
+        thirdDay: { title: string; subtitle: string; body: string };
+        byzantineChant: { title: string; subtitle: string; body: string };
+        roundDance: { title: string; subtitle: string; body: string };
+        iconsHome: { title: string; subtitle: string; body: string };
+        greekBones: { title: string; subtitle: string; body: string };
       };
     };
     today: {
