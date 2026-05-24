@@ -2,27 +2,27 @@ import type { Dictionary } from "../types";
 
 const cs: Dictionary = {
   nav: {
-    mission: "MISE",
+    mission: "MISIE",
     locations: "LOKALITY",
     media: "MÉDIA",
     stories: "PŘÍBĚHY",
     share: "SDÍLET",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktujte nás na WhatsApp",
-    supportMission: "PODPOŘTE MISI",
+    supportMission: "PODPOŘTE MISII",
     donate: "DAROVAT",
     toggleMenu: "Otevřít menu",
     selectLanguage: "Vyberte jazyk",
   },
   footer: {
-    brand: "Křesťanská romská mise",
+    brand: "Křesťanská romská misie",
     tagline: "Zakládáme farnosti. Formujeme učedníky.\nProměňujeme komunity.",
-    colMission: "Mise",
+    colMission: "Misie",
     colMedia: "Média",
     colInvolved: "Zapojit se",
     colInvolvedShort: "Zapojit",
     colContact: "Kontakt",
-    linkOurMission: "Naše mise",
+    linkOurMission: "Naše misie",
     linkOurStory: "Náš příběh",
     linkStories: "Příběhy",
     linkMedia: "Média",
@@ -33,8 +33,8 @@ const cs: Dictionary = {
     linkMissionTrips: "Misijní cesty",
     linkTrips: "Cesty",
     director: "Ředitel",
-    copyright: "© 2026 Křesťanská romská mise. Všechna práva vyhrazena.",
-    copyrightShort: "© 2026 Křesťanská romská mise.",
+    copyright: "© 2026 Křesťanská romská misie. Všechna práva vyhrazena.",
+    copyrightShort: "© 2026 Křesťanská romská misie.",
     privacyPolicy: "Zásady ochrany osobních údajů",
     termsOfUse: "Podmínky použití",
     light: "Světlý",
@@ -43,7 +43,7 @@ const cs: Dictionary = {
     switchToDark: "Přepnout na tmavý režim",
   },
   share: {
-    title: "Sdílejte misi",
+    title: "Sdílejte misii",
     subtitle: "Pomozte ostatním objevit, co Bůh koná mezi Romy.",
     copyLink: "Kopírovat odkaz",
     copyLinkLabel: "Kopírovat odkaz",
@@ -55,12 +55,12 @@ const cs: Dictionary = {
   },
   home: {
     hero: {
-      label: "Pravoslavná romská mise v Evropě",
+      label: "Pravoslavná romská misie v Evropě",
       titleLine1: "Když je přítomen Kristus,",
       titleLine2: "vše se mění.",
       subtitle:
         "Slouží romským komunitám na Slovensku již 10 let prostřednictvím vzdělávání, aktivit, farního života, učednictví a zakládání církví.",
-      ctaSupport: "PODPOŘTE MISI",
+      ctaSupport: "PODPOŘTE MISII",
       ctaVolunteer: "DOBROVOLNICTVÍ",
       ctaLearnMore: "ZJISTIT VÍCE",
     },
@@ -978,12 +978,12 @@ const cs: Dictionary = {
     title: "Pomozte založit další farnost.",
     subtitle:
       "Vaše podpora zakládá farnosti, formuje vedoucí a proměňuje komunity.",
-    supportMission: "PODPOŘTE MISI",
+    supportMission: "PODPOŘTE MISII",
     joinMissionTrip: "PŘIDEJTE SE NA MISIJNÍ CESTU",
     becomeVolunteer: "STAŇTE SE DOBROVOLNÍKEM",
   },
   donation: {
-    eyebrow: "Podpořte misi",
+    eyebrow: "Podpořte misii",
     title: "Darujte na Roma Mission",
     close: "Zavřít",
     monthly: "MĚSÍČNĚ",
@@ -1107,7 +1107,7 @@ const cs: Dictionary = {
         "10 milionů Romů v Evropě. Žijeme mezi nimi, sázíme církve, které vydrží, a učedníme další generaci.",
     },
     mission: {
-      title: "Mise — Křesťanská romská misie",
+      title: "Misie — Křesťanská romská misie",
       description:
         "Pět milionů Romů v Evropě — většina dosud nezasažená evangeliem. Prozkoumejte rozsah potřeby, stav pravoslavné přítomnosti a práci při sázení trvalých farností.",
     },
