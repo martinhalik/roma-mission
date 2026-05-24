@@ -2,9 +2,10 @@
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRef, useEffect, useState } from "react";
-import Link from "next/link";
+import LocaleLink from "@/components/LocaleLink";
 import { ROMA_COUNTRIES } from "@/lib/data/roma-countries";
 import { MISSION_LOCATIONS, type LocationType, type MissionLocation } from "@/lib/data/mission-locations";
+import { useTranslation } from "@/components/LanguageProvider";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -19,8 +20,7 @@ interface MissionPoint {
   id: string;
   type: MarkerType;
   name: string;
-  subtitle: string;
-  description: string;
+  village: string;
   coordinates: [number, number];
 }
 
@@ -44,13 +44,27 @@ function convertToMissionPoints(locations: MissionLocation[]): MissionPoint[] {
     id: loc.id,
     type: getMarkerType(loc.type),
     name: loc.name,
-    subtitle: loc.subtitle || loc.village,
-    description: loc.description || "",
+    village: loc.village,
     coordinates: loc.coordinates,
   }));
 }
 
 const MISSION_POINTS_INITIAL = convertToMissionPoints(MISSION_LOCATIONS);
+
+// Per-location ids that have translatable subtitle/description in the
+// `locations.map` dictionary namespace. Other ids (most supported parishes)
+// fall back to the village name as subtitle and have no description.
+const TRANSLATED_MAP_IDS = new Set([
+  "klenovec",
+  "markovce",
+  "kacanov",
+  "mutnik",
+  "rimavska-pila",
+  "zemjastrabie",
+  "hnusta",
+  "hacava",
+  "varadka",
+]);
 
 function getPct(d: { pop: number; totalPop: number }): number {
   return (d.pop / d.totalPop) * 100;
@@ -74,12 +88,12 @@ const MARKER_SIZES: Record<MarkerType, number> = {
   failed: 12,
 };
 
-const MARKER_LABELS: Record<MarkerType, string> = {
-  "mission-center": "Mission Center",
-  parish: "Active Parish",
-  collaborating: "Collaborating Parish",
-  planting: "Planting Parish",
-  failed: "Discontinued",
+const MARKER_LABEL_KEYS: Record<MarkerType, string> = {
+  "mission-center": "map.markers.missionCenter",
+  parish: "map.markers.parish",
+  collaborating: "map.markers.collaborating",
+  planting: "map.markers.planting",
+  failed: "map.markers.failed",
 };
 
 const LEGEND_ITEMS: MarkerType[] = [
@@ -153,6 +167,16 @@ function getCountryColor(pct: number, isLight: boolean): string {
 
 // ─── Layer / source helpers ───────────────────────────────────────────────────
 
+// Filter to a single worldview so disputed-territory features (e.g. Kosovo)
+// don't render twice and stack opacity over Serbia. The `worldview` property
+// can be a comma-separated string (e.g. "US,CN,IN"), so use `in` for the
+// per-worldview match rather than `==`.
+const WORLDVIEW_FILTER = [
+  "any",
+  ["==", ["get", "worldview"], "all"],
+  ["in", "US", ["get", "worldview"]],
+];
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function addLayersToMap(mapInstance: any, isLight: boolean) {
   const isoCodes = ROMA_COUNTRIES.map((c) => c.iso);
@@ -167,7 +191,11 @@ function addLayersToMap(mapInstance: any, isLight: boolean) {
     ...colorEntries,
     "rgba(0,0,0,0)",
   ];
-  const layerFilter = ["in", ["get", "iso_3166_1"], ["literal", isoCodes]];
+  const layerFilter = [
+    "all",
+    WORLDVIEW_FILTER,
+    ["in", ["get", "iso_3166_1"], ["literal", isoCodes]],
+  ];
 
   if (!mapInstance.getSource("countries")) {
     mapInstance.addSource("countries", {
@@ -202,7 +230,7 @@ function addLayersToMap(mapInstance: any, isLight: boolean) {
     type: "fill",
     source: "countries",
     "source-layer": "country_boundaries",
-    filter: ["==", ["get", "iso_3166_1"], ""],
+    filter: ["all", WORLDVIEW_FILTER, ["==", ["get", "iso_3166_1"], ""]],
     paint: { "fill-color": isLight ? "#7A5A0E" : "#D4AF37", "fill-opacity": 0.18 },
   });
 }
@@ -210,6 +238,7 @@ function addLayersToMap(mapInstance: any, isLight: boolean) {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function MissionMap() {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mapInstanceRef = useRef<any>(null);
@@ -310,14 +339,22 @@ export default function MissionMap() {
         mapInstance.on("mousemove", "roma-fill", (e: any) => {
           const iso = e.features?.[0]?.properties?.iso_3166_1 as string | undefined;
           if (iso) {
-            mapInstance.setFilter("roma-hover", ["==", ["get", "iso_3166_1"], iso]);
+            mapInstance.setFilter("roma-hover", [
+              "all",
+              WORLDVIEW_FILTER,
+              ["==", ["get", "iso_3166_1"], iso],
+            ]);
             setHoveredISO(iso);
             mapInstance.getCanvas().style.cursor = "pointer";
           }
         });
 
         mapInstance.on("mouseleave", "roma-fill", () => {
-          mapInstance.setFilter("roma-hover", ["==", ["get", "iso_3166_1"], ""]);
+          mapInstance.setFilter("roma-hover", [
+            "all",
+            WORLDVIEW_FILTER,
+            ["==", ["get", "iso_3166_1"], ""],
+          ]);
           setHoveredISO(null);
           mapInstance.getCanvas().style.cursor = "";
         });
@@ -404,7 +441,7 @@ export default function MissionMap() {
       {!ready && !noToken && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <span className="text-[11px] font-semibold tracking-[2px] text-[var(--text-muted)]">
-            LOADING MAP…
+            {t("map.loading")}
           </span>
         </div>
       )}
@@ -413,10 +450,10 @@ export default function MissionMap() {
       {noToken && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 pointer-events-none">
           <span className="text-[11px] font-semibold tracking-[2px] text-[var(--text-muted)]">
-            MAP UNAVAILABLE
+            {t("map.unavailable")}
           </span>
           <span className="text-[10px] text-[var(--text-secondary)]">
-            Add NEXT_PUBLIC_MAPBOX_TOKEN to .env.local
+            {t("map.unavailableHint")}
           </span>
         </div>
       )}
@@ -425,13 +462,16 @@ export default function MissionMap() {
       {hovered && (
         <div className="absolute top-4 left-4 bg-[var(--bg-primary)]/95 border border-[var(--border-default)] px-4 py-3 pointer-events-none z-20">
           <p className="text-[9px] font-bold tracking-[1.5px] uppercase text-[var(--text-muted)]">
-            {hovered.country}
+            {t(`countries.${hovered.iso}`)}
           </p>
           <p className="text-[38px] font-bold text-[var(--gold)] leading-none mt-1">
             {formatPct(getPct(hovered))}
           </p>
           <p className="text-[9px] text-[var(--text-muted)] mt-1">
-            Roma · {formatPop(hovered.pop)} of {formatPop(hovered.totalPop)}
+            {t("map.hoverPopulation", {
+              pop: formatPop(hovered.pop),
+              total: formatPop(hovered.totalPop),
+            })}
           </p>
         </div>
       )}
@@ -445,29 +485,33 @@ export default function MissionMap() {
                 className="text-[9px] font-bold tracking-[1.5px] uppercase"
                 style={{ color: MARKER_COLORS[selectedPoint.type] }}
               >
-                {MARKER_LABELS[selectedPoint.type]}
+                {t(MARKER_LABEL_KEYS[selectedPoint.type])}
               </span>
               <h4 className="text-[17px] font-bold text-[var(--text-primary)] mt-1 leading-tight">
                 {selectedPoint.name}
               </h4>
               <p className="text-[11px] text-[var(--text-muted)] mt-0.5">
-                {selectedPoint.subtitle}
+                {TRANSLATED_MAP_IDS.has(selectedPoint.id)
+                  ? t(`locations.map.${selectedPoint.id}.subtitle`)
+                  : selectedPoint.village}
               </p>
             </div>
             <button
               onClick={() => setSelectedPoint(null)}
-              aria-label="Close"
+              aria-label={t("map.close")}
               className="text-[var(--text-muted)] hover:text-[var(--text-primary)] text-xl leading-none flex-shrink-0 mt-0.5 transition-colors"
             >
               ×
             </button>
           </div>
           <p className="text-[12px] text-[var(--text-secondary)] leading-[1.65] px-5 pb-4">
-            {selectedPoint.description}
+            {TRANSLATED_MAP_IDS.has(selectedPoint.id)
+              ? t(`locations.map.${selectedPoint.id}.description`)
+              : ""}
           </p>
           <div className="px-5 pb-5">
-            <Link
-              href="/get-involved"
+            <LocaleLink
+              routeKey="getInvolved"
               className={`block text-center text-[10px] font-bold tracking-[1px] py-3 transition-colors ${
                 selectedPoint.type === "failed"
                   ? "border border-[var(--gold)] text-[var(--gold)] hover:bg-[var(--gold)] hover:text-[var(--on-accent)]"
@@ -475,9 +519,9 @@ export default function MissionMap() {
               }`}
             >
               {selectedPoint.type === "failed"
-                ? "PREVENT THIS → GIVE NOW"
-                : "SUPPORT THIS PARISH →"}
-            </Link>
+                ? t("map.popup.preventThis")
+                : t("map.popup.supportThisParish")}
+            </LocaleLink>
           </div>
         </div>
       )}
@@ -486,7 +530,7 @@ export default function MissionMap() {
       {ready && (
         <div className="absolute bottom-4 left-4 bg-[var(--bg-primary)]/95 border border-[var(--border-default)] px-4 py-3 z-20">
           <p className="text-[9px] font-bold tracking-[1.5px] uppercase text-[var(--text-muted)] mb-2.5">
-            Legend
+            {t("map.legend")}
           </p>
           <div className="flex flex-col gap-2">
             {LEGEND_ITEMS.map((type) => (
@@ -496,7 +540,7 @@ export default function MissionMap() {
                   style={{ backgroundColor: MARKER_COLORS[type] }}
                 />
                 <span className="text-[10px] text-[var(--text-secondary)]">
-                  {MARKER_LABELS[type]}
+                  {t(MARKER_LABEL_KEYS[type])}
                 </span>
               </div>
             ))}
@@ -505,7 +549,7 @@ export default function MissionMap() {
                 className="w-12 h-2 rounded-sm flex-shrink-0"
                 style={{ background: densityGradient }}
               />
-              <span className="text-[10px] text-[var(--text-muted)]">Roma density</span>
+              <span className="text-[10px] text-[var(--text-muted)]">{t("map.romaDensity")}</span>
             </div>
           </div>
         </div>

@@ -3,6 +3,11 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import DonationModal from "../../components/DonationModal";
+import LanguageProvider from "../../components/LanguageProvider";
+
+function renderWithI18n(ui: React.ReactElement) {
+  return render(<LanguageProvider>{ui}</LanguageProvider>);
+}
 
 vi.mock("@stripe/stripe-js", () => ({
   loadStripe: vi.fn().mockResolvedValue({}),
@@ -13,6 +18,9 @@ vi.mock("@stripe/react-stripe-js", () => ({
   EmbeddedCheckoutProvider: ({ children }: { children: React.ReactNode }) => (
     <div>{children}</div>
   ),
+  Elements: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+  PaymentRequestButtonElement: () => <div data-testid="payment-request-button" />,
+  useStripe: () => null,
 }));
 
 describe("DonationModal", () => {
@@ -25,17 +33,17 @@ describe("DonationModal", () => {
   });
 
   it("renders nothing when closed", () => {
-    render(<DonationModal isOpen={false} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={false} onClose={onClose} />);
     expect(screen.queryByText("Give to Roma Mission")).not.toBeInTheDocument();
   });
 
   it("renders when open", () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     expect(screen.getByText("Give to Roma Mission")).toBeInTheDocument();
   });
 
   it("shows all preset amounts", async () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     // Monthly amounts shown by default
     expect(screen.getByText("$10")).toBeInTheDocument();
     expect(screen.getByText("$25")).toBeInTheDocument();
@@ -49,14 +57,14 @@ describe("DonationModal", () => {
   });
 
   it("defaults to monthly mode with $100 selected", () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     expect(
       screen.getByRole("button", { name: "GIVE $100/MO" })
     ).toBeInTheDocument();
   });
 
   it("toggles to one-time mode", async () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
     expect(
       screen.getByRole("button", { name: "GIVE $100" })
@@ -64,7 +72,7 @@ describe("DonationModal", () => {
   });
 
   it("selects a different preset amount", async () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "$50" }));
     expect(
       screen.getByRole("button", { name: "GIVE $50/MO" })
@@ -72,7 +80,7 @@ describe("DonationModal", () => {
   });
 
   it("accepts a custom amount", async () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     const input = screen.getByPlaceholderText("Custom amount");
     await user.type(input, "75");
     expect(
@@ -81,21 +89,21 @@ describe("DonationModal", () => {
   });
 
   it("disables submit button when custom amount is 0", async () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     const input = screen.getByPlaceholderText("Custom amount");
     await user.type(input, "0");
     expect(screen.getByRole("button", { name: /^GIVE/ })).toBeDisabled();
   });
 
   it("shows monthly impact message", () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     expect(
       screen.getByText("Covers weekly parish materials and programs.")
     ).toBeInTheDocument();
   });
 
   it("hides impact message in one-time mode", async () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
     expect(
       screen.queryByText("Covers weekly parish materials and programs.")
@@ -109,7 +117,7 @@ describe("DonationModal", () => {
     });
     vi.stubGlobal("fetch", mockFetch);
 
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     expect(mockFetch).toHaveBeenCalledWith("/api/stripe/checkout", {
@@ -130,7 +138,7 @@ describe("DonationModal", () => {
     });
     vi.stubGlobal("fetch", mockFetch);
 
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
     await user.click(screen.getByRole("button", { name: "GIVE $100" }));
 
@@ -145,7 +153,7 @@ describe("DonationModal", () => {
   it("shows error message when API call fails", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValueOnce({ ok: false }));
 
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     await waitFor(() => {
@@ -162,7 +170,7 @@ describe("DonationModal", () => {
     });
     vi.stubGlobal("fetch", vi.fn().mockReturnValueOnce(pending));
 
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     expect(screen.getByRole("button", { name: "PREPARING..." })).toBeDisabled();
@@ -171,13 +179,13 @@ describe("DonationModal", () => {
   });
 
   it("closes when the X button is clicked", async () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "Close" }));
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
   it("closes when the backdrop is clicked", () => {
-    const { container } = render(
+    const { container } = renderWithI18n(
       <DonationModal isOpen={true} onClose={onClose} />
     );
     fireEvent.click(container.firstChild!);
@@ -185,13 +193,13 @@ describe("DonationModal", () => {
   });
 
   it("does not close when modal content is clicked", async () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByText("Give to Roma Mission"));
     expect(onClose).not.toHaveBeenCalled();
   });
 
   it("closes on Escape key press", async () => {
-    render(<DonationModal isOpen={true} onClose={onClose} />);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.keyboard("{Escape}");
     expect(onClose).toHaveBeenCalledTimes(1);
   });
