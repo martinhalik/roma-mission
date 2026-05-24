@@ -18,7 +18,7 @@ export default function TermsOfUsePage() {
     <main className="min-h-full bg-[var(--bg-primary)]">
       <Navbar />
 
-      <section className="px-5 md:px-[120px] py-16 md:py-[100px] max-w-[860px]">
+      <section className="px-5 md:px-[120px] pt-24 md:pt-32 pb-16 md:pb-[100px] max-w-[860px]">
         <div className="flex items-center gap-3 mb-8">
           <div className="w-[3px] h-[14px] bg-[var(--gold)]" />
           <span className="text-[11px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">

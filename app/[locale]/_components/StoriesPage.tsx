@@ -103,7 +103,7 @@ export default function StoriesPage() {
       <Navbar activePage="stories" />
 
       {/* ── Hero ── */}
-      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
+      <section className="px-5 md:px-[120px] pt-24 md:pt-32 pb-16 md:pb-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-5 md:gap-6 max-w-[700px]">
           <SectionLabel text={t("stories.hero.label")} />
           <h1 className="text-[32px] md:text-[52px] font-bold tracking-[-1.5px] text-[var(--text-primary)] leading-[1.05]">
