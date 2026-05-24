@@ -872,7 +872,7 @@ const en: Dictionary = {
           source: "Slavonic Kormchaia / Greek nomocanonical tradition",
           quote: "",
           body:
-            "In the period of Patriarch Gennadius II Scholarios (first patriarch after the Fall of Constantinople, 1454–1456), the Byzantine pastoral tradition warning against Атсингане / Цигани sorcery and fortune-telling was carried forward into the Slavic Pilot Books. Orthodox faithful were instructed not to receive them into their homes for divination. The text is preserved across the Slavonic canonical tradition rather than in a single dated decree.",
+            "In the period of Patriarch Gennadius II Scholarios (first patriarch after the Fall of Constantinople, 1454–1456), the Byzantine pastoral tradition warning against Атсингане / Цигани sorcery and fortune-telling was carried forward into the Slavic Pilot Books. Orthodox faithful were instructed not to receive them into their homes for divination. The text is preserved across the Slavonic canonical tradition rather than in a single dated decree — the precise archival citation will appear in Fr. Martin Halík's forthcoming book on Roma Orthodox history.",
           url: "",
         },
         e1322: {
