@@ -116,36 +116,72 @@ function StructuredData({
   title: string;
   description: string;
 }) {
+  const publisher = {
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: "Christian Roma Mission",
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/logo.png`,
+    },
+  };
   const data = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Article",
+        "@type": ["Article", "ScholarlyArticle"],
         "@id": `${url}#article`,
         headline: title,
         description,
         inLanguage: locale,
-        image: `${SITE_URL}/images/klenovec-chapel.jpeg`,
-        author: { "@type": "Organization", name: "Christian Roma Mission" },
-        publisher: {
-          "@type": "Organization",
-          name: "Christian Roma Mission",
-          logo: {
-            "@type": "ImageObject",
-            url: `${SITE_URL}/logo.png`,
-          },
+        image: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}/images/heritage/hero.jpg`,
+          width: 1500,
+          height: 844,
         },
-        mainEntityOfPage: url,
+        author: publisher,
+        publisher,
+        datePublished: "2026-05-24",
+        dateModified: new Date().toISOString().slice(0, 10),
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+        keywords: [
+          "Roma history",
+          "Orthodox Christianity",
+          "Romani people",
+          "Byzantine Empire",
+          "Athinganoi",
+          "Adsincani",
+          "Acigani",
+          "Tsigani",
+          "Romani language",
+          "Roma Orthodox",
+          "Roma mission",
+          "Roma catechumens",
+          "religious heritage",
+        ].join(", "),
         about: [
           { "@type": "Thing", name: "Roma people" },
           { "@type": "Thing", name: "Orthodox Christianity" },
           { "@type": "Thing", name: "Byzantine Empire" },
           { "@type": "Thing", name: "Romani language" },
           { "@type": "Thing", name: "Religious heritage" },
+          { "@type": "Thing", name: "Mission" },
         ],
+        isPartOf: { "@type": "WebSite", "@id": `${SITE_URL}/#website` },
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "Christian Roma Mission",
+        inLanguage: locale,
+        publisher,
       },
       {
         "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumbs`,
         itemListElement: [
           {
             "@type": "ListItem",
