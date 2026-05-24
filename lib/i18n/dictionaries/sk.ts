@@ -1486,6 +1486,11 @@ const sk: Dictionary = {
       openInTelegram: "Otvoriť v Telegrame",
       viewLabel: "zobrazení",
       seeAllOnTelegram: "OTVORIŤ @ROMAMISSIONEU NA TELEGRAME",
+      viewPost: "Otvoriť príspevok",
+      morePhotos: "ďalších",
+      instagramTagline: "fotky a videá z terénu",
+      photoFallbackTelegram: "Fotka z misie",
+      photoFallbackInstagram: "Fotka na Instagrame",
       posts: {
         post1: {
           date: "Dnes",

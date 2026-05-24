@@ -1494,6 +1494,11 @@ const el: Dictionary = {
       openInTelegram: "Άνοιγμα στο Telegram",
       viewLabel: "προβολές",
       seeAllOnTelegram: "ΑΝΟΙΞΤΕ ΤΟ @ROMAMISSIONEU ΣΤΟ TELEGRAM",
+      viewPost: "Δείτε ανάρτηση",
+      morePhotos: "ακόμη",
+      instagramTagline: "φωτογραφίες & βίντεο από την αποστολή",
+      photoFallbackTelegram: "Φωτογραφία από την αποστολή",
+      photoFallbackInstagram: "Φωτογραφία στο Instagram",
       posts: {
         post1: {
           date: "Σήμερα",

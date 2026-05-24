@@ -1487,6 +1487,11 @@ const cs: Dictionary = {
       openInTelegram: "Otevřít v Telegramu",
       viewLabel: "zobrazení",
       seeAllOnTelegram: "OTEVŘÍT @ROMAMISSIONEU NA TELEGRAMU",
+      viewPost: "Otevřít příspěvek",
+      morePhotos: "dalších",
+      instagramTagline: "fotky a videa z terénu",
+      photoFallbackTelegram: "Fotka z misie",
+      photoFallbackInstagram: "Fotka na Instagramu",
       posts: {
         post1: {
           date: "Dnes",

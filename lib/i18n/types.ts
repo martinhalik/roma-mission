@@ -1071,6 +1071,11 @@ export interface Dictionary {
       openInTelegram: string;
       viewLabel: string;
       seeAllOnTelegram: string;
+      viewPost: string;
+      morePhotos: string;
+      instagramTagline: string;
+      photoFallbackTelegram: string;
+      photoFallbackInstagram: string;
       posts: {
         post1: { date: string; place: string; body: string; views: string };
         post2: { date: string; place: string; body: string; views: string };

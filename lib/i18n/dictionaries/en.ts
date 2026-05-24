@@ -1487,6 +1487,11 @@ const en: Dictionary = {
       openInTelegram: "Open in Telegram",
       viewLabel: "views",
       seeAllOnTelegram: "OPEN @ROMAMISSIONEU ON TELEGRAM",
+      viewPost: "View post",
+      morePhotos: "more",
+      instagramTagline: "photos & reels from the field",
+      photoFallbackTelegram: "Photo from the field",
+      photoFallbackInstagram: "Photo on Instagram",
       posts: {
         post1: {
           date: "Today",

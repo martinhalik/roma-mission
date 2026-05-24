@@ -1493,6 +1493,11 @@ const ro: Dictionary = {
       openInTelegram: "Deschide în Telegram",
       viewLabel: "vizualizări",
       seeAllOnTelegram: "DESCHIDE @ROMAMISSIONEU PE TELEGRAM",
+      viewPost: "Vezi postarea",
+      morePhotos: "în plus",
+      instagramTagline: "fotografii și clipuri din misiune",
+      photoFallbackTelegram: "Fotografie din misiune",
+      photoFallbackInstagram: "Fotografie pe Instagram",
       posts: {
         post1: {
           date: "Astăzi",

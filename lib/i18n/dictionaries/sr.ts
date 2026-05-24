@@ -1491,6 +1491,11 @@ const sr: Dictionary = {
       openInTelegram: "Отвори у Телеграму",
       viewLabel: "прегледа",
       seeAllOnTelegram: "ОТВОРИ @ROMAMISSIONEU НА ТЕЛЕГРАМУ",
+      viewPost: "Отвори објаву",
+      morePhotos: "још",
+      instagramTagline: "фотографије и снимци са терена",
+      photoFallbackTelegram: "Фотографија са мисије",
+      photoFallbackInstagram: "Фотографија на Инстаграму",
       posts: {
         post1: {
           date: "Данас",
