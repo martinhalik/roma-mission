@@ -776,7 +776,7 @@ const de: Dictionary = {
       titleLine1: "Eine gemeinsame",
       titleLine2: "tausendjährige Geschichte",
       subtitle:
-        "Die Roma kamen nicht als Fremde des Glaubens nach Europa. Sie traten in eine christliche Welt — und eine christliche Welt ging mit ihnen. Dies ist die lange, unvollendete Geschichte, wie die Roma zu orthodoxen Katechumenen wurden und was sie bis heute tragen.",
+        "Sie ritten auf Pferden und Wagen westwärts aus Indien — durch Persien und Armenien — und gelangten in den orthodoxen Osten. Sie kamen nicht mit Christus. Die byzantinische Welt, die sie empfing, griff zu einem älteren Namen, Athinganoi: einer häretischen Sekte, die schon für Zauberei und Wahrsagerei bekannt war. Der Name blieb haften, weil etwas an ihm passte. Dies ist die lange, unvollendete Geschichte, wie aus diesem Volk orthodoxe Katechumenen wurden — und wie weit der Weg noch reicht.",
       shareLabel: "Dieses Museum teilen",
       scrollHint: "Die Reise beginnen",
     },
@@ -794,11 +794,11 @@ const de: Dictionary = {
       label: "Ausstellung 01 — Ursprünge",
       title: "Von Indien ins Herz der Christenheit",
       intro:
-        "Um das 11. Jahrhundert begannen Gruppen von Menschen, die eine indoarische Sprache sprachen, aus dem Nordwesten Indiens nach Westen zu ziehen. Linguistik, nicht Legende, sagt uns das: Romani ist eine Schwester von Hindi und Punjabi und wurde weiter geprägt durch lange Aufenthalte in persischen und armenischen Ländern, bevor sie je Europa berührte.",
+        "Um das 11. Jahrhundert zogen Gruppen, die eine indoarische Sprache sprachen, aus dem Nordwesten Indiens nach Westen — auf Pferden und in pferdebespannten Wagen — ein Pferdevolk mit Pferdehandwerk, Pferdemusik und Pferdekünsten. Linguistik, nicht Legende, sagt uns das: Romani ist eine Schwestersprache von Hindi und Punjabi, weiter geprägt durch lange Aufenthalte in persischen und armenischen Ländern, lange bevor sie Europa erreichte.",
       body1:
-        "Als die Roma das Byzantinische Reich erreichten, waren sie schon seit Generationen unterwegs. Das Reich war christlich; die Städte waren voller Kirchen; die Neuankömmlinge wurden namentlich empfangen (und festgehalten) — Athinganoi auf Griechisch, woraus das internationale Acigani und von da Tsigani, Cigán, Țigan, Zigeuner, Cigano wird.",
+        "Als sie das Byzantinische Reich erreichten, hatte der christliche Osten keine feste Kategorie für sie. Mönche und Kanonisten griffen zum nächstliegenden Namen, den sie kannten — Athinganoi — eine Bezeichnung, die bereits einer älteren häretischen Sekte in Kleinasien gehörte, der Zauberei, Wahrsagerei und verbotene Praktiken vorgeworfen wurden. Die Neuankömmlinge brachten Schlangenbeschwörung, Wahrsagerei und eine Lebensweise mit, die der alten Schmähung so gut entsprach, dass sie haften blieb. Aus Athinganoi wurde das internationale Acigani und von dort Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
       body2:
-        "Bemerkenswert ist, was dann geschah. Über Jahrhunderte der Wanderung in orthodoxe Länder behielten die Roma keine eigene gesonderte Religion bei. Sie nahmen den Glauben jener an, die sie aufnahmen — und die tiefste Aufnahme war die orthodoxe.",
+        "Was folgte, ist eine langsame Geschichte, keine ordentliche. Über Jahrhunderte unter orthodoxen Völkern — Griechen, Bulgaren, Serben, Rumänen, Slawen — bewahrten die Roma keine eigene Religion. Sie empfingen die Taufe, übernahmen orthodoxe Schutzheilige, sangen Pascha. Die alten Praktiken verschwanden nicht in der ersten Generation, auch nicht in der zweiten. Mit jedem Jahrhundert weniger und weniger — doch noch heute sieht man in Roma-Dörfern ein Volk, das darauf wartet, dass das Licht Christi sein Werk vollendet.",
       factCards: {
         a: {
           stat: "11. Jh.",
