@@ -25,36 +25,33 @@ interface NavbarProps {
 type MiddleKey =
   | "home"
   | "mission"
-  | "locations"
-  | "heritage"
+  | "activity"
+  | "stories"
   | "media"
-  | "stories";
+  | "locations"
+  | "heritage";
 
 interface MiddleLink {
   key: MiddleKey;
   routeKey: RouteKey;
   page: Page;
   pinned?: boolean;
+  liveDot?: boolean;
 }
 
 // DOM/visual order. `pinned` items are never collapsed into the More menu.
 const middleLinks: MiddleLink[] = [
   { key: "home", routeKey: "home", page: "home", pinned: true },
-  { key: "mission", routeKey: "mission", page: "mission" },
+  { key: "mission", routeKey: "mission", page: "mission", pinned: true },
+  { key: "activity", routeKey: "activity", page: "activity", pinned: true, liveDot: true },
+  { key: "stories", routeKey: "stories", page: "stories", pinned: true },
+  { key: "media", routeKey: "media", page: "media" },
   { key: "locations", routeKey: "locations", page: "locations" },
   { key: "heritage", routeKey: "heritage", page: "heritage" },
-  { key: "media", routeKey: "media", page: "media" },
-  { key: "stories", routeKey: "stories", page: "stories", pinned: true },
 ];
 
-// Order in which collapsible items disappear into the More menu when space is tight.
-// MEDIA goes first (closest to the pinned STORIES on the right), MISSION goes last.
-const COLLAPSE_ORDER: MiddleKey[] = ["mission", "locations", "heritage", "media"];
-
-const liveLink = {
-  routeKey: "activity" as RouteKey,
-  page: "activity" as Page,
-};
+// Visible (left-to-right) order of collapsible items. The last item drops first.
+const COLLAPSE_ORDER: MiddleKey[] = ["media", "locations", "heritage"];
 
 function computeHidden(
   available: number,
@@ -204,90 +201,72 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             if (hiddenSet.has(link.key)) return null;
             const isActive = activePage === link.page;
             const cls = `${linkBase} ${isActive ? linkActive : linkIdle}`;
-            // Insert the More button just before the pinned STORIES link.
-            if (link.key === "stories" && hiddenKeys.length > 0) {
-              return (
-                <span key="__group__" className="contents">
-                  <div ref={moreWrapRef} className="relative">
-                    <button
-                      type="button"
-                      onClick={() => setMoreOpen((v) => !v)}
-                      aria-haspopup="menu"
-                      aria-expanded={moreOpen}
-                      className={`${linkBase} ${linkIdle}`}
-                    >
-                      {t("nav.more")}
-                      <ChevronDown
-                        size={12}
-                        className={`transition-transform ${moreOpen ? "rotate-180" : ""}`}
-                        aria-hidden="true"
-                      />
-                    </button>
-                    {moreOpen && (
-                      <ul
-                        role="menu"
-                        className="absolute right-0 top-full mt-2 z-[60] min-w-[200px] bg-[var(--bg-card)] border border-[var(--border-default)] shadow-lg py-1"
-                      >
-                        {hiddenKeys.map((k) => {
-                          const item = middleLinks.find((m) => m.key === k);
-                          if (!item) return null;
-                          const isItemActive = activePage === item.page;
-                          return (
-                            <li key={k} role="none">
-                              <LocaleLink
-                                routeKey={item.routeKey}
-                                role="menuitem"
-                                onClick={() => setMoreOpen(false)}
-                                className={`block px-4 py-2.5 text-[12px] tracking-[1.5px] font-medium ${
-                                  isItemActive
-                                    ? "text-[var(--gold)] bg-[var(--bg-elevated)]"
-                                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]"
-                                }`}
-                              >
-                                {t(`nav.${k}`)}
-                              </LocaleLink>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    )}
-                  </div>
-                  <LocaleLink
-                    key={link.page}
-                    routeKey={link.routeKey}
-                    className={cls}
-                  >
-                    {t(`nav.${link.key}`)}
-                  </LocaleLink>
-                </span>
-              );
-            }
             return (
               <LocaleLink
                 key={link.page}
                 routeKey={link.routeKey}
                 className={cls}
               >
+                {link.liveDot && (
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
+                  </span>
+                )}
                 {t(`nav.${link.key}`)}
               </LocaleLink>
             );
           })}
+          {hiddenKeys.length > 0 && (
+            <div ref={moreWrapRef} className="relative">
+              <button
+                type="button"
+                onClick={() => setMoreOpen((v) => !v)}
+                aria-haspopup="menu"
+                aria-expanded={moreOpen}
+                className={`${linkBase} ${linkIdle}`}
+              >
+                {t("nav.more")}
+                <ChevronDown
+                  size={12}
+                  className={`transition-transform ${moreOpen ? "rotate-180" : ""}`}
+                  aria-hidden="true"
+                />
+              </button>
+              {moreOpen && (
+                <ul
+                  role="menu"
+                  className="absolute right-0 top-full mt-2 z-[60] min-w-[200px] bg-[var(--bg-card)] border border-[var(--border-default)] shadow-lg py-1"
+                >
+                  {hiddenKeys.map((k) => {
+                    const item = middleLinks.find((m) => m.key === k);
+                    if (!item) return null;
+                    const isItemActive = activePage === item.page;
+                    return (
+                      <li key={k} role="none">
+                        <LocaleLink
+                          routeKey={item.routeKey}
+                          role="menuitem"
+                          onClick={() => setMoreOpen(false)}
+                          className={`block px-4 py-2.5 text-[12px] tracking-[1.5px] font-medium ${
+                            isItemActive
+                              ? "text-[var(--gold)] bg-[var(--bg-elevated)]"
+                              : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]"
+                          }`}
+                        >
+                          {t(`nav.${k}`)}
+                        </LocaleLink>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+          )}
         </div>
 
-        {/* Right group — LIVE pinned next to language + CTA */}
+        {/* Right group — language switcher + donate CTA */}
         <div className="flex items-center gap-3 xl:gap-4 2xl:gap-6 shrink-0">
-          <LocaleLink
-            routeKey={liveLink.routeKey}
-            className={`${linkBase} ${
-              activePage === liveLink.page ? linkActive : linkIdle
-            }`}
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
-            </span>
-            {t("nav.activity")}
-          </LocaleLink>
           <LanguageSwitcher variant="header" compact />
           <LocaleLink
             routeKey="getInvolved"
@@ -342,24 +321,15 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
                   : "text-[var(--text-secondary)] font-medium"
               }`}
             >
+              {link.liveDot && (
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
+                </span>
+              )}
               {t(`nav.${link.key}`)}
             </LocaleLink>
           ))}
-          <LocaleLink
-            routeKey={liveLink.routeKey}
-            onClick={() => setMenuOpen(false)}
-            className={`flex items-center gap-2 px-5 py-4 text-[13px] tracking-[1.5px] border-b border-[var(--border-default)] ${
-              activePage === liveLink.page
-                ? "text-[var(--gold)] font-semibold"
-                : "text-[var(--text-secondary)] font-medium"
-            }`}
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
-            </span>
-            {t("nav.activity")}
-          </LocaleLink>
 
           <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--border-default)]">
             <span className="text-[10px] tracking-[2px] text-[var(--text-muted)] uppercase font-semibold">
