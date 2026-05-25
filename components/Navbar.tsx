@@ -53,28 +53,45 @@ const middleLinks: MiddleLink[] = [
 // Visible (left-to-right) order of collapsible items. The last item drops first.
 const COLLAPSE_ORDER: MiddleKey[] = ["media", "locations", "heritage"];
 
+const GAP_PX = 16; // matches gap-4 on the link container
+const PINNED_KEYS: MiddleKey[] = middleLinks
+  .filter((l) => l.pinned)
+  .map((l) => l.key);
+
+// Width of `keys` laid out in a row with GAP_PX between them.
+function rowWidth(keys: MiddleKey[], widths: Record<string, number>): number {
+  if (keys.length === 0) return 0;
+  return (
+    keys.reduce((sum, k) => sum + (widths[k] || 0), 0) +
+    (keys.length - 1) * GAP_PX
+  );
+}
+
 function computeHidden(
   available: number,
   widths: Record<string, number>,
 ): MiddleKey[] {
-  const gap = 16; // matches gap-4 on the link container
-  const pinnedWidth = middleLinks
-    .filter((l) => l.pinned)
-    .reduce((sum, l) => sum + (widths[l.key] || 0) + gap, 0);
-  const collapsibleTotal = COLLAPSE_ORDER.reduce(
-    (sum, k) => sum + (widths[k] || 0) + gap,
-    0,
-  );
-  if (pinnedWidth + collapsibleTotal <= available) return [];
+  if (available <= 0) return [];
 
+  const pinnedW = rowWidth(PINNED_KEYS, widths);
+  // Everything visible (pinned + all collapsibles): one continuous row.
+  const allVisibleW = rowWidth(
+    [...PINNED_KEYS, ...COLLAPSE_ORDER],
+    widths,
+  );
+  if (allVisibleW <= available) return [];
+
+  // Need the More button. Reserve pinned group + gap + More button up front;
+  // each collapsible that survives costs `width + GAP_PX` (its own width plus
+  // the gap that joins it to the row).
   const moreWidth = widths.__more__ || 80;
-  let budget = available - pinnedWidth - moreWidth - gap;
+  let budget = available - pinnedW - GAP_PX - moreWidth;
   const hidden: MiddleKey[] = [];
   for (let i = 0; i < COLLAPSE_ORDER.length; i++) {
     const k = COLLAPSE_ORDER[i];
-    const w = (widths[k] || 0) + gap;
-    if (w <= budget) {
-      budget -= w;
+    const cost = (widths[k] || 0) + GAP_PX;
+    if (cost <= budget) {
+      budget -= cost;
     } else {
       for (let j = i; j < COLLAPSE_ORDER.length; j++) {
         hidden.push(COLLAPSE_ORDER[j]);
@@ -103,7 +120,12 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       for (const [key, el] of Object.entries(measureRefs.current)) {
         if (el) widths[key] = el.offsetWidth;
       }
-      const next = computeHidden(container.clientWidth, widths);
+      // clientWidth includes horizontal padding; subtract it so the budget
+      // matches the actual space items can occupy.
+      const cs = window.getComputedStyle(container);
+      const padding =
+        (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+      const next = computeHidden(container.clientWidth - padding, widths);
       setHiddenKeys((prev) => {
         if (
           prev.length === next.length &&
@@ -119,6 +141,12 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     if (containerRef.current) obs.observe(containerRef.current);
     return () => obs.disconnect();
   }, [locale]);
+
+  // Close the More dropdown if the button itself disappears (e.g. viewport
+  // resizes wide enough that nothing needs collapsing).
+  useEffect(() => {
+    if (hiddenKeys.length === 0 && moreOpen) setMoreOpen(false);
+  }, [hiddenKeys.length, moreOpen]);
 
   useEffect(() => {
     if (!moreOpen) return;
