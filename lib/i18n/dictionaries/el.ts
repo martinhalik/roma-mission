@@ -2,6 +2,7 @@ import type { Dictionary } from "../types";
 
 const el: Dictionary = {
   nav: {
+    home: "ΑΡΧΙΚΗ",
     mission: "ΙΕΡΑΠΟΣΤΟΛΗ",
     locations: "ΤΟΠΟΘΕΣΙΕΣ",
     media: "ΜΕΣΑ",

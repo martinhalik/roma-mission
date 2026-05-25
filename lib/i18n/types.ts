@@ -1,5 +1,6 @@
 export interface Dictionary {
   nav: {
+    home: string;
     mission: string;
     locations: string;
     media: string;
