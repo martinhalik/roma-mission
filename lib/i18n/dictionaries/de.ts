@@ -718,6 +718,12 @@ const de: Dictionary = {
       intro:
         "Tiefgehende Gespräche über die Mission — auf Slowakisch aufgenommen, mit englischen Untertiteln bei ausgewählten Folgen.",
     },
+    presentationsSection: {
+      label: "Presentations",
+      title: "Mission Talks Abroad",
+      intro:
+        "Talks delivered to English-speaking audiences about the work of the Christian Roma Mission in Eastern Slovakia.",
+    },
     testimoniesSection: {
       label: "Zeugnis",
       title: "Stimmen aus der Mission",
@@ -728,6 +734,21 @@ const de: Dictionary = {
       watchAria: "Ansehen: {title}",
       withGuest: "mit Gast {guest}",
     },
+    filters: {
+      title: "Nach Sprache filtern",
+      all: "Alle",
+      en: "Englisch",
+      skCs: "Slowakisch / Tschechisch",
+      ro: "Rumänisch",
+      de: "Deutsch",
+      sr: "Serbisch",
+      ru: "Russisch",
+      mk: "Mazedonisch",
+      el: "Griechisch",
+      comingSoon: "In Kürze",
+      emptyTitle: "Noch keine Videos auf {language}",
+      emptyBody: "Wir arbeiten an Übersetzungen und neuen Aufnahmen. Schauen Sie bald wieder vorbei oder stöbern Sie in der vollständigen Bibliothek in einer anderen Sprache.",
+    },
     items: {
       documentary: {
         title: "Vom IT zum Priestertum",
@@ -736,7 +757,8 @@ const de: Dictionary = {
         fullDesc:
           "Eine offizielle Dokumentation des Tschechischen Fernsehens. Der Film begleitet den Direktor der Christlichen Roma-Mission auf seinem persönlichen Weg von einer IT-Karriere zum orthodoxen Priestertum in Roma-Gemeinschaften in der ganzen Slowakei — zusammen mit seiner Frau und seinen Kindern. Er bietet einen ehrlichen Blick auf das tägliche Pfarrleben, den Familiendienst auf dem Missionsfeld und das langfristige Opfer hinter der Berufung in Gemeinschaften, die von Armut, Ausgrenzung und tiefer geistlicher Not geprägt sind.",
         source: "Tschechisches Fernsehen",
-        badgeLabel: "EN-Untertitel",
+        badgeLabel: "Untertitel",
+        audioBadge: "Slowakischer/Tschechischer Ton",
       },
       "int-1": {
         title: "Warum die Roma? Warum jetzt?",
@@ -757,6 +779,15 @@ const de: Dictionary = {
         source: "Podcast des Dekans der Orthodoxen Fakultät",
         guest: "Familienmissionare Halík",
         badgeLabel: "Slowakischer Ton",
+      },
+      "pres-usa": {
+        title: "Christian Mission to Roma in Eastern Slovakia",
+        shortDesc:
+          "Fr Martin Halik shares the story of the mission with an American audience — how it began, what it has cost, and what God has done.",
+        fullDesc:
+          "A presentation given by Fr Martin Halik during a visit to the United States. He recounts how a family left their settled life to plant the Orthodox Church among Roma in Eastern Slovakia, the realities of long-term ministry in a forgotten community, and the fruit emerging from years of steady presence.",
+        source: "United States",
+        badgeLabel: "English",
       },
       "testimony-laco": {
         title: "Lacos Geschichte",

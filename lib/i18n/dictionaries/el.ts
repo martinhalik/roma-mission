@@ -720,6 +720,12 @@ const el: Dictionary = {
       intro:
         "Εις βάθος συζητήσεις για την ιεραποστολή — ηχογραφημένες στα σλοβακικά με αγγλικούς υπότιτλους σε επιλεγμένα επεισόδια.",
     },
+    presentationsSection: {
+      label: "Presentations",
+      title: "Mission Talks Abroad",
+      intro:
+        "Talks delivered to English-speaking audiences about the work of the Christian Roma Mission in Eastern Slovakia.",
+    },
     testimoniesSection: {
       label: "Μαρτυρία",
       title: "Φωνές από την ιεραποστολή",
@@ -730,6 +736,21 @@ const el: Dictionary = {
       watchAria: "Παρακολούθηση: {title}",
       withGuest: "με τον καλεσμένο {guest}",
     },
+    filters: {
+      title: "Φιλτράρισμα ανά γλώσσα",
+      all: "Όλα",
+      en: "Αγγλικά",
+      skCs: "Σλοβακικά / Τσεχικά",
+      ro: "Ρουμανικά",
+      de: "Γερμανικά",
+      sr: "Σερβικά",
+      ru: "Ρωσικά",
+      mk: "Σλαβομακεδονικά",
+      el: "Ελληνικά",
+      comingSoon: "Σύντομα",
+      emptyTitle: "Δεν υπάρχουν ακόμη βίντεο στα {language}",
+      emptyBody: "Δουλεύουμε σε μεταφράσεις και νέες ηχογραφήσεις. Επιστρέψτε σύντομα ή περιηγηθείτε στη βιβλιοθήκη σε άλλη γλώσσα.",
+    },
     items: {
       documentary: {
         title: "Από την πληροφορική στην ιεροσύνη",
@@ -738,7 +759,8 @@ const el: Dictionary = {
         fullDesc:
           "Ένα επίσημο ντοκιμαντέρ της Τσεχικής Τηλεόρασης. Η ταινία παρακολουθεί τον διευθυντή της Χριστιανικής Ιεραποστολής Ρομά στο προσωπικό του ταξίδι από καριέρα στην πληροφορική στην ορθόδοξη ιεροσύνη σε κοινότητες Ρομά σε όλη τη Σλοβακία — μαζί με τη σύζυγο και τα παιδιά του. Προσφέρει μια ειλικρινή ματιά στην καθημερινή ενοριακή ζωή, την οικογενειακή διακονία στο πεδίο της ιεραποστολής και τη μακροχρόνια θυσία πίσω από μια κλήση σε κοινότητες σημαδεμένες από φτώχεια, αποκλεισμό και βαθιά πνευματική ανάγκη.",
         source: "Τσεχική Τηλεόραση",
-        badgeLabel: "Αγγλικοί υπότιτλοι",
+        badgeLabel: "Υπότιτλοι",
+        audioBadge: "Σλοβακικός/Τσεχικός ήχος",
       },
       "int-1": {
         title: "Γιατί οι Ρομά; Γιατί τώρα;",
@@ -759,6 +781,15 @@ const el: Dictionary = {
         source: "Podcast του Κοσμήτορα Ορθόδοξης Σχολής",
         guest: "Η οικογένεια ιεραποστόλων Halík",
         badgeLabel: "Σλοβακικός ήχος",
+      },
+      "pres-usa": {
+        title: "Christian Mission to Roma in Eastern Slovakia",
+        shortDesc:
+          "Fr Martin Halik shares the story of the mission with an American audience — how it began, what it has cost, and what God has done.",
+        fullDesc:
+          "A presentation given by Fr Martin Halik during a visit to the United States. He recounts how a family left their settled life to plant the Orthodox Church among Roma in Eastern Slovakia, the realities of long-term ministry in a forgotten community, and the fruit emerging from years of steady presence.",
+        source: "United States",
+        badgeLabel: "English",
       },
       "testimony-laco": {
         title: "Η ιστορία του Laco",
