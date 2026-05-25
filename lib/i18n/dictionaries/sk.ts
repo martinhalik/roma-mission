@@ -9,6 +9,7 @@ const sk: Dictionary = {
     stories: "PRÍBEHY",
     heritage: "DEDIČSTVO",
     activity: "NAŽIVO",
+    more: "VIAC",
     share: "ZDIEĽAŤ",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktujte nás na WhatsApp",

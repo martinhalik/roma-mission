@@ -9,6 +9,7 @@ const sr: Dictionary = {
     stories: "ПРИЧЕ",
     heritage: "НАСЛЕЂЕ",
     activity: "УЖИВО",
+    more: "ВИШЕ",
     share: "ПОДЕЛИ",
     contact: "КОНТАКТ",
     contactWhatsapp: "Контактирајте нас на WhatsApp-у",

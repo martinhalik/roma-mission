@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Home, Menu, X } from "lucide-react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import LocaleLink from "@/components/LocaleLink";
 import { useTranslation } from "@/components/LanguageProvider";
@@ -22,67 +22,251 @@ interface NavbarProps {
   activePage?: Page;
 }
 
-const middleLinks: {
-  key: "home" | "mission" | "locations" | "media" | "stories" | "heritage";
+type MiddleKey =
+  | "home"
+  | "mission"
+  | "locations"
+  | "heritage"
+  | "media"
+  | "stories";
+
+interface MiddleLink {
+  key: MiddleKey;
   routeKey: RouteKey;
   page: Page;
-}[] = [
-  { key: "home", routeKey: "home", page: "home" },
+  pinned?: boolean;
+}
+
+// DOM/visual order. `pinned` items are never collapsed into the More menu.
+const middleLinks: MiddleLink[] = [
+  { key: "home", routeKey: "home", page: "home", pinned: true },
   { key: "mission", routeKey: "mission", page: "mission" },
   { key: "locations", routeKey: "locations", page: "locations" },
   { key: "heritage", routeKey: "heritage", page: "heritage" },
   { key: "media", routeKey: "media", page: "media" },
-  { key: "stories", routeKey: "stories", page: "stories" },
+  { key: "stories", routeKey: "stories", page: "stories", pinned: true },
 ];
 
+// Order in which collapsible items disappear into the More menu when space is tight.
+// MEDIA goes first (closest to the pinned STORIES on the right), MISSION goes last.
+const COLLAPSE_ORDER: MiddleKey[] = ["mission", "locations", "heritage", "media"];
+
 const liveLink = {
-  key: "activity" as const,
   routeKey: "activity" as RouteKey,
   page: "activity" as Page,
 };
 
+function computeHidden(
+  available: number,
+  widths: Record<string, number>,
+): MiddleKey[] {
+  const gap = 16; // matches gap-4 on the link container
+  const pinnedWidth = middleLinks
+    .filter((l) => l.pinned)
+    .reduce((sum, l) => sum + (widths[l.key] || 0) + gap, 0);
+  const collapsibleTotal = COLLAPSE_ORDER.reduce(
+    (sum, k) => sum + (widths[k] || 0) + gap,
+    0,
+  );
+  if (pinnedWidth + collapsibleTotal <= available) return [];
+
+  const moreWidth = widths.__more__ || 80;
+  let budget = available - pinnedWidth - moreWidth - gap;
+  const hidden: MiddleKey[] = [];
+  for (let i = 0; i < COLLAPSE_ORDER.length; i++) {
+    const k = COLLAPSE_ORDER[i];
+    const w = (widths[k] || 0) + gap;
+    if (w <= budget) {
+      budget -= w;
+    } else {
+      for (let j = i; j < COLLAPSE_ORDER.length; j++) {
+        hidden.push(COLLAPSE_ORDER[j]);
+      }
+      break;
+    }
+  }
+  return hidden;
+}
+
 export default function Navbar({ activePage = "home" }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { t } = useTranslation();
+  const [moreOpen, setMoreOpen] = useState(false);
+  const [hiddenKeys, setHiddenKeys] = useState<MiddleKey[]>([]);
+  const { t, locale } = useTranslation();
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const measureRefs = useRef<Record<string, HTMLSpanElement | null>>({});
+  const moreWrapRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    function recompute() {
+      const container = containerRef.current;
+      if (!container) return;
+      const widths: Record<string, number> = {};
+      for (const [key, el] of Object.entries(measureRefs.current)) {
+        if (el) widths[key] = el.offsetWidth;
+      }
+      const next = computeHidden(container.clientWidth, widths);
+      setHiddenKeys((prev) => {
+        if (
+          prev.length === next.length &&
+          prev.every((k, i) => k === next[i])
+        ) {
+          return prev;
+        }
+        return next;
+      });
+    }
+    recompute();
+    const obs = new ResizeObserver(recompute);
+    if (containerRef.current) obs.observe(containerRef.current);
+    return () => obs.disconnect();
+  }, [locale]);
+
+  useEffect(() => {
+    if (!moreOpen) return;
+    function handleClick(e: MouseEvent) {
+      if (
+        moreWrapRef.current &&
+        !moreWrapRef.current.contains(e.target as Node)
+      ) {
+        setMoreOpen(false);
+      }
+    }
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setMoreOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("keydown", handleKey);
+    };
+  }, [moreOpen]);
+
+  const hiddenSet = new Set(hiddenKeys);
+  const linkBase =
+    "inline-flex items-center gap-1.5 text-[11px] tracking-[1.5px] whitespace-nowrap transition-colors";
+  const linkActive = "text-[var(--gold)] font-semibold";
+  const linkIdle =
+    "text-[var(--text-secondary)] font-medium hover:text-[var(--text-primary)]";
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
+      {/* Off-screen measurement layer — labels styled like the real ones so widths are accurate. */}
+      <div
+        aria-hidden="true"
+        className="fixed top-[-9999px] left-[-9999px] flex items-center gap-4 pointer-events-none"
+      >
+        {middleLinks.map((l) => (
+          <span
+            key={l.key}
+            ref={(el) => {
+              measureRefs.current[l.key] = el;
+            }}
+            className={`${linkBase} font-medium`}
+          >
+            {t(`nav.${l.key}`)}
+          </span>
+        ))}
+        <span
+          ref={(el) => {
+            measureRefs.current.__more__ = el;
+          }}
+          className={`${linkBase} font-medium`}
+        >
+          {t("nav.more")}
+          <ChevronDown size={12} aria-hidden="true" />
+        </span>
+      </div>
+
       {/* Desktop Nav */}
       <nav className="hidden lg:flex items-center justify-between px-5 xl:px-10 2xl:px-20 py-5 bg-[var(--nav-bg)] backdrop-blur-xl w-full border-b border-[var(--border-default)]">
         {/* Logo */}
-        <LocaleLink routeKey="home" className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity shrink-0">
+        <LocaleLink
+          routeKey="home"
+          className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity shrink-0"
+        >
           <span className="font-georgia text-[28px] text-[var(--gold)]">☦</span>
           <span className="hidden 2xl:inline text-[14px] font-bold tracking-[2px] text-[var(--text-primary)] uppercase">
             {t("footer.brand")}
           </span>
         </LocaleLink>
 
-        {/* Middle links — may overflow under tight constraints; LIVE pinned in the right group */}
-        <div className="flex items-center gap-4 xl:gap-6 2xl:gap-10 min-w-0 overflow-hidden">
+        {/* Middle links with Priority+ overflow.
+            flex-1 so the container actually claims the remaining space, which
+            is what computeHidden() measures against. */}
+        <div
+          ref={containerRef}
+          className="flex flex-1 items-center justify-center gap-4 min-w-0 px-6"
+        >
           {middleLinks.map((link) => {
+            if (hiddenSet.has(link.key)) return null;
             const isActive = activePage === link.page;
-            const linkClass = `inline-flex items-center gap-1.5 text-[11px] tracking-[1.5px] whitespace-nowrap transition-colors ${
-              isActive
-                ? "text-[var(--gold)] font-semibold"
-                : "text-[var(--text-secondary)] font-medium hover:text-[var(--text-primary)]"
-            }`;
-            if (link.key === "home") {
+            const cls = `${linkBase} ${isActive ? linkActive : linkIdle}`;
+            // Insert the More button just before the pinned STORIES link.
+            if (link.key === "stories" && hiddenKeys.length > 0) {
               return (
-                <LocaleLink
-                  key={link.page}
-                  routeKey={link.routeKey}
-                  aria-label={t("nav.home")}
-                  className={linkClass}
-                >
-                  <Home size={16} aria-hidden="true" />
-                </LocaleLink>
+                <span key="__group__" className="contents">
+                  <div ref={moreWrapRef} className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setMoreOpen((v) => !v)}
+                      aria-haspopup="menu"
+                      aria-expanded={moreOpen}
+                      className={`${linkBase} ${linkIdle}`}
+                    >
+                      {t("nav.more")}
+                      <ChevronDown
+                        size={12}
+                        className={`transition-transform ${moreOpen ? "rotate-180" : ""}`}
+                        aria-hidden="true"
+                      />
+                    </button>
+                    {moreOpen && (
+                      <ul
+                        role="menu"
+                        className="absolute right-0 top-full mt-2 z-[60] min-w-[200px] bg-[var(--bg-card)] border border-[var(--border-default)] shadow-lg py-1"
+                      >
+                        {hiddenKeys.map((k) => {
+                          const item = middleLinks.find((m) => m.key === k);
+                          if (!item) return null;
+                          const isItemActive = activePage === item.page;
+                          return (
+                            <li key={k} role="none">
+                              <LocaleLink
+                                routeKey={item.routeKey}
+                                role="menuitem"
+                                onClick={() => setMoreOpen(false)}
+                                className={`block px-4 py-2.5 text-[12px] tracking-[1.5px] font-medium ${
+                                  isItemActive
+                                    ? "text-[var(--gold)] bg-[var(--bg-elevated)]"
+                                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]"
+                                }`}
+                              >
+                                {t(`nav.${k}`)}
+                              </LocaleLink>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </div>
+                  <LocaleLink
+                    key={link.page}
+                    routeKey={link.routeKey}
+                    className={cls}
+                  >
+                    {t(`nav.${link.key}`)}
+                  </LocaleLink>
+                </span>
               );
             }
             return (
               <LocaleLink
                 key={link.page}
                 routeKey={link.routeKey}
-                className={linkClass}
+                className={cls}
               >
                 {t(`nav.${link.key}`)}
               </LocaleLink>
@@ -90,21 +274,19 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           })}
         </div>
 
-        {/* Right group — LIVE pinned here so it stays visible if middle overflows */}
+        {/* Right group — LIVE pinned next to language + CTA */}
         <div className="flex items-center gap-3 xl:gap-4 2xl:gap-6 shrink-0">
           <LocaleLink
             routeKey={liveLink.routeKey}
-            className={`inline-flex items-center gap-1.5 text-[11px] tracking-[1.5px] whitespace-nowrap transition-colors ${
-              activePage === liveLink.page
-                ? "text-[var(--gold)] font-semibold"
-                : "text-[var(--text-secondary)] font-medium hover:text-[var(--text-primary)]"
+            className={`${linkBase} ${
+              activePage === liveLink.page ? linkActive : linkIdle
             }`}
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
             </span>
-            {t(`nav.${liveLink.key}`)}
+            {t("nav.activity")}
           </LocaleLink>
           <LanguageSwitcher variant="header" compact />
           <LocaleLink
@@ -119,7 +301,10 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
       {/* Mobile Nav */}
       <nav className="flex lg:hidden items-center justify-between px-5 py-4 bg-[var(--nav-bg)] backdrop-blur-xl w-full border-b border-[var(--border-default)]">
-        <LocaleLink routeKey="home" className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity">
+        <LocaleLink
+          routeKey="home"
+          className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity"
+        >
           <span className="font-georgia text-[24px] text-[var(--gold)]">☦</span>
           <span className="text-[9px] font-bold tracking-[1.5px] text-[var(--text-primary)] leading-[1.3] uppercase max-w-[120px]">
             {t("footer.brand")}
@@ -143,7 +328,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
         </div>
       </nav>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer — vertical, all items visible */}
       {menuOpen && (
         <div className="flex lg:hidden flex-col bg-[var(--nav-bg)] backdrop-blur-xl border-t border-[var(--border-default)]">
           {middleLinks.map((link) => (
@@ -157,7 +342,6 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
                   : "text-[var(--text-secondary)] font-medium"
               }`}
             >
-              {link.key === "home" && <Home size={14} aria-hidden="true" />}
               {t(`nav.${link.key}`)}
             </LocaleLink>
           ))}
@@ -174,7 +358,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
             </span>
-            {t(`nav.${liveLink.key}`)}
+            {t("nav.activity")}
           </LocaleLink>
 
           <div className="flex items-center justify-between px-5 py-3 border-b border-[var(--border-default)]">

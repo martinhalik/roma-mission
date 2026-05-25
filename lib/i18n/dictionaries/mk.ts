@@ -9,6 +9,7 @@ const mk: Dictionary = {
     stories: "ПРИКАЗНИ",
     heritage: "НАСЛЕДСТВО",
     activity: "ВО ЖИВО",
+    more: "ПОВЕЌЕ",
     share: "СПОДЕЛИ",
     contact: "КОНТАКТ",
     contactWhatsapp: "Контактирајте нѐ на WhatsApp",

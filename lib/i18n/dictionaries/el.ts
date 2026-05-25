@@ -9,6 +9,7 @@ const el: Dictionary = {
     stories: "ΙΣΤΟΡΙΕΣ",
     heritage: "ΚΛΗΡΟΝΟΜΙΑ",
     activity: "ΖΩΝΤΑΝΑ",
+    more: "ΠΕΡΙΣΣΟΤΕΡΑ",
     share: "ΚΟΙΝΟΠΟΙΗΣΗ",
     contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
     contactWhatsapp: "Επικοινωνήστε μαζί μας στο WhatsApp",

@@ -9,6 +9,7 @@ const cs: Dictionary = {
     stories: "PŘÍBĚHY",
     heritage: "DĚDICTVÍ",
     activity: "ŽIVĚ",
+    more: "VÍCE",
     share: "SDÍLET",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktujte nás na WhatsApp",

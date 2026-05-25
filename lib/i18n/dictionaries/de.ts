@@ -9,6 +9,7 @@ const de: Dictionary = {
     stories: "GESCHICHTEN",
     heritage: "ERBE",
     activity: "LIVE",
+    more: "MEHR",
     share: "TEILEN",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktieren Sie uns auf WhatsApp",

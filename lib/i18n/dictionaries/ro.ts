@@ -9,6 +9,7 @@ const ro: Dictionary = {
     stories: "POVEȘTI",
     heritage: "MOȘTENIRE",
     activity: "ÎN DIRECT",
+    more: "MAI MULTE",
     share: "DISTRIBUIE",
     contact: "CONTACT",
     contactWhatsapp: "Contactați-ne pe WhatsApp",

@@ -9,6 +9,7 @@ const ru: Dictionary = {
     stories: "ИСТОРИИ",
     heritage: "НАСЛЕДИЕ",
     activity: "В ЭФИРЕ",
+    more: "ЕЩЁ",
     share: "ПОДЕЛИТЬСЯ",
     contact: "КОНТАКТ",
     contactWhatsapp: "Свяжитесь с нами в WhatsApp",

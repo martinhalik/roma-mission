@@ -7,6 +7,7 @@ export interface Dictionary {
     stories: string;
     heritage: string;
     activity: string;
+    more: string;
     share: string;
     contact: string;
     contactWhatsapp: string;
