@@ -732,6 +732,22 @@ const en: Dictionary = {
       watchAria: "Watch: {title}",
       withGuest: "with {guest}",
     },
+    filters: {
+      title: "Filter by language",
+      all: "All",
+      en: "English",
+      skCs: "Slovak / Czech",
+      ro: "Romanian",
+      de: "German",
+      sr: "Serbian",
+      ru: "Russian",
+      mk: "Macedonian",
+      el: "Greek",
+      comingSoon: "Coming soon",
+      emptyTitle: "No videos in {language} yet",
+      emptyBody:
+        "We're working on translations and new recordings. Check back soon, or browse the full library in another language.",
+    },
     items: {
       documentary: {
         title: "From IT to Priesthood",

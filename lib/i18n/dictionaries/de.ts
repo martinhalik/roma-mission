@@ -734,6 +734,21 @@ const de: Dictionary = {
       watchAria: "Ansehen: {title}",
       withGuest: "mit Gast {guest}",
     },
+    filters: {
+      title: "Nach Sprache filtern",
+      all: "Alle",
+      en: "Englisch",
+      skCs: "Slowakisch / Tschechisch",
+      ro: "Rumänisch",
+      de: "Deutsch",
+      sr: "Serbisch",
+      ru: "Russisch",
+      mk: "Mazedonisch",
+      el: "Griechisch",
+      comingSoon: "In Kürze",
+      emptyTitle: "Noch keine Videos auf {language}",
+      emptyBody: "Wir arbeiten an Übersetzungen und neuen Aufnahmen. Schauen Sie bald wieder vorbei oder stöbern Sie in der vollständigen Bibliothek in einer anderen Sprache.",
+    },
     items: {
       documentary: {
         title: "Vom IT zum Priestertum",

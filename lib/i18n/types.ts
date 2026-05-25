@@ -567,6 +567,21 @@ export interface Dictionary {
       watchAria: string;
       withGuest: string;
     };
+    filters: {
+      title: string;
+      all: string;
+      en: string;
+      skCs: string;
+      ro: string;
+      de: string;
+      sr: string;
+      ru: string;
+      mk: string;
+      el: string;
+      comingSoon: string;
+      emptyTitle: string;
+      emptyBody: string;
+    };
     items: {
       documentary: {
         title: string;

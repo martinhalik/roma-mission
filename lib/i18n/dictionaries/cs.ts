@@ -730,6 +730,21 @@ const cs: Dictionary = {
       watchAria: "Sledovat: {title}",
       withGuest: "s hostem {guest}",
     },
+    filters: {
+      title: "Filtrovat podle jazyka",
+      all: "Vše",
+      en: "Angličtina",
+      skCs: "Slovenština / Čeština",
+      ro: "Rumunština",
+      de: "Němčina",
+      sr: "Srbština",
+      ru: "Ruština",
+      mk: "Makedonština",
+      el: "Řečtina",
+      comingSoon: "Připravujeme",
+      emptyTitle: "Zatím žádná videa v jazyce {language}",
+      emptyBody: "Pracujeme na překladech a nových nahrávkách. Podívejte se později nebo si prohlédněte celou knihovnu v jiném jazyce.",
+    },
     items: {
       documentary: {
         title: "Z IT do kněžství",

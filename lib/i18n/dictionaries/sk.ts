@@ -729,6 +729,21 @@ const sk: Dictionary = {
       watchAria: "Pozrieť: {title}",
       withGuest: "s hosťom {guest}",
     },
+    filters: {
+      title: "Filtrovať podľa jazyka",
+      all: "Všetko",
+      en: "Angličtina",
+      skCs: "Slovenčina / Čeština",
+      ro: "Rumunčina",
+      de: "Nemčina",
+      sr: "Srbčina",
+      ru: "Ruština",
+      mk: "Macedónčina",
+      el: "Gréčtina",
+      comingSoon: "Pripravujeme",
+      emptyTitle: "Zatiaľ žiadne videá v jazyku {language}",
+      emptyBody: "Pracujeme na prekladoch a nových nahrávkach. Pozrite sa neskôr alebo si prezrite celú knižnicu v inom jazyku.",
+    },
     items: {
       documentary: {
         title: "Z IT do kňazstva",

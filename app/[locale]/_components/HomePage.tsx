@@ -8,7 +8,7 @@ import VideoModal from "@/components/VideoModal";
 import MissionMap from "@/components/MissionMap";
 import LocaleLink from "@/components/LocaleLink";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
-import { MEDIA_ITEMS, ytThumb } from "@/lib/media-data";
+import { getFeaturedMedia, ytThumb } from "@/lib/media-data";
 import SectionLabel from "@/components/SectionLabel";
 import LangBadge from "@/components/LangBadge";
 import { useTranslation } from "@/components/LanguageProvider";
@@ -51,11 +51,10 @@ const resultCards: { Icon: LucideIcon; textKey: string }[] = [
   { Icon: House, textKey: "home.results.cardFamilies" },
 ];
 
-const mediaItems = MEDIA_ITEMS.filter((item) => item.tag !== "TESTIMONY").slice(0, 3);
-
 export default function HomePage() {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const mediaItems = getFeaturedMedia(locale);
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">

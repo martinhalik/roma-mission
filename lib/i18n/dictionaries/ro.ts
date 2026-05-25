@@ -734,6 +734,21 @@ const ro: Dictionary = {
       watchAria: "Vezi: {title}",
       withGuest: "cu invitatul {guest}",
     },
+    filters: {
+      title: "Filtrează după limbă",
+      all: "Toate",
+      en: "Engleză",
+      skCs: "Slovacă / Cehă",
+      ro: "Română",
+      de: "Germană",
+      sr: "Sârbă",
+      ru: "Rusă",
+      mk: "Macedoneană",
+      el: "Greacă",
+      comingSoon: "În curând",
+      emptyTitle: "Încă nu există videoclipuri în {language}",
+      emptyBody: "Lucrăm la traduceri și înregistrări noi. Reveniți curând sau răsfoiți întreaga bibliotecă în altă limbă.",
+    },
     items: {
       documentary: {
         title: "De la IT la preoție",
