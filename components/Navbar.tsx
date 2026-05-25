@@ -66,8 +66,8 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             >
               {link.liveDot && (
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-70" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
                 </span>
               )}
               {t(`nav.${link.key}`)}
@@ -129,8 +129,8 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
             >
               {link.liveDot && (
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-70" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--gold)]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-70" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
                 </span>
               )}
               {t(`nav.${link.key}`)}
