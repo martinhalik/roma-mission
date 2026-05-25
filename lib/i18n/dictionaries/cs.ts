@@ -716,6 +716,12 @@ const cs: Dictionary = {
       intro:
         "Hloubkové rozhovory o misii — natočené ve slovenštině s anglickými titulky u vybraných dílů.",
     },
+    presentationsSection: {
+      label: "Presentations",
+      title: "Mission Talks Abroad",
+      intro:
+        "Talks delivered to English-speaking audiences about the work of the Christian Roma Mission in Eastern Slovakia.",
+    },
     testimoniesSection: {
       label: "Svědectví",
       title: "Hlasy z misie",
@@ -726,6 +732,21 @@ const cs: Dictionary = {
       watchAria: "Sledovat: {title}",
       withGuest: "s hostem {guest}",
     },
+    filters: {
+      title: "Filtrovat podle jazyka",
+      all: "Vše",
+      en: "Angličtina",
+      skCs: "Slovenština / Čeština",
+      ro: "Rumunština",
+      de: "Němčina",
+      sr: "Srbština",
+      ru: "Ruština",
+      mk: "Makedonština",
+      el: "Řečtina",
+      comingSoon: "Připravujeme",
+      emptyTitle: "Zatím žádná videa v jazyce {language}",
+      emptyBody: "Pracujeme na překladech a nových nahrávkách. Podívejte se později nebo si prohlédněte celou knihovnu v jiném jazyce.",
+    },
     items: {
       documentary: {
         title: "Z IT do kněžství",
@@ -734,7 +755,8 @@ const cs: Dictionary = {
         fullDesc:
           "Oficiální dokument České televize. Film sleduje ředitele Křesťanské romské misie na jeho osobní cestě od kariéry v IT k pravoslavnému kněžství v romských komunitách po celém Slovensku — spolu s manželkou a dětmi. Nabízí upřímný pohled na každodenní farní život, rodinnou službu v misijním poli a dlouhodobou oběť, která stojí za povoláním do komunit poznamenaných chudobou, vyloučením a hlubokou duchovní nouzí.",
         source: "Česká televize",
-        badgeLabel: "EN titulky",
+        badgeLabel: "Titulky",
+        audioBadge: "Slovenský/český zvuk",
       },
       "int-1": {
         title: "Proč Romové? Proč nyní?",
@@ -755,6 +777,15 @@ const cs: Dictionary = {
         source: "Podcast děkana pravoslavné fakulty",
         guest: "Rodinní misionáři Halíkovi",
         badgeLabel: "Slovenský zvuk",
+      },
+      "pres-usa": {
+        title: "Christian Mission to Roma in Eastern Slovakia",
+        shortDesc:
+          "Fr Martin Halik shares the story of the mission with an American audience — how it began, what it has cost, and what God has done.",
+        fullDesc:
+          "A presentation given by Fr Martin Halik during a visit to the United States. He recounts how a family left their settled life to plant the Orthodox Church among Roma in Eastern Slovakia, the realities of long-term ministry in a forgotten community, and the fruit emerging from years of steady presence.",
+        source: "United States",
+        badgeLabel: "English",
       },
       "testimony-laco": {
         title: "Lacův příběh",

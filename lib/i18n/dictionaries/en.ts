@@ -718,6 +718,12 @@ const en: Dictionary = {
       intro:
         "In-depth conversations about the mission — recorded in Slovak with English subtitles available on select episodes.",
     },
+    presentationsSection: {
+      label: "Presentations",
+      title: "Mission Talks Abroad",
+      intro:
+        "Talks delivered to English-speaking audiences about the work of the Christian Roma Mission in Eastern Slovakia.",
+    },
     testimoniesSection: {
       label: "Testimony",
       title: "Voices from the Mission",
@@ -728,6 +734,22 @@ const en: Dictionary = {
       watchAria: "Watch: {title}",
       withGuest: "with {guest}",
     },
+    filters: {
+      title: "Filter by language",
+      all: "All",
+      en: "English",
+      skCs: "Slovak / Czech",
+      ro: "Romanian",
+      de: "German",
+      sr: "Serbian",
+      ru: "Russian",
+      mk: "Macedonian",
+      el: "Greek",
+      comingSoon: "Coming soon",
+      emptyTitle: "No videos in {language} yet",
+      emptyBody:
+        "We're working on translations and new recordings. Check back soon, or browse the full library in another language.",
+    },
     items: {
       documentary: {
         title: "From IT to Priesthood",
@@ -736,7 +758,8 @@ const en: Dictionary = {
         fullDesc:
           "An official Czech Television documentary. The film follows the director of Christian Roma Mission on his personal journey from a career in IT to Orthodox priesthood in Roma communities across Slovakia — alongside his wife and children. It offers an honest look at daily parish life, family ministry on the mission field, and the long-term sacrifice behind a calling to communities shaped by poverty, exclusion, and deep spiritual need.",
         source: "Czech Television",
-        badgeLabel: "EN Subtitles",
+        badgeLabel: "Subtitles",
+        audioBadge: "Slovak/Czech Audio",
       },
       "int-1": {
         title: "Why the Roma? Why Now?",
@@ -757,6 +780,15 @@ const en: Dictionary = {
         source: "Orthodox Faculty Dean Podcast",
         guest: "Family Missionaries Halikovi",
         badgeLabel: "Slovak Audio",
+      },
+      "pres-usa": {
+        title: "Christian Mission to Roma in Eastern Slovakia",
+        shortDesc:
+          "Fr Martin Halik shares the story of the mission with an American audience — how it began, what it has cost, and what God has done.",
+        fullDesc:
+          "A presentation given by Fr Martin Halik during a visit to the United States. He recounts how a family left their settled life to plant the Orthodox Church among Roma in Eastern Slovakia, the realities of long-term ministry in a forgotten community, and the fruit emerging from years of steady presence.",
+        source: "United States",
+        badgeLabel: "English",
       },
       "testimony-laco": {
         title: "Laco's Story",

@@ -555,6 +555,11 @@ export interface Dictionary {
       title: string;
       intro: string;
     };
+    presentationsSection: {
+      label: string;
+      title: string;
+      intro: string;
+    };
     testimoniesSection: {
       label: string;
       title: string;
@@ -564,6 +569,21 @@ export interface Dictionary {
       watchAria: string;
       withGuest: string;
     };
+    filters: {
+      title: string;
+      all: string;
+      en: string;
+      skCs: string;
+      ro: string;
+      de: string;
+      sr: string;
+      ru: string;
+      mk: string;
+      el: string;
+      comingSoon: string;
+      emptyTitle: string;
+      emptyBody: string;
+    };
     items: {
       documentary: {
         title: string;
@@ -571,6 +591,7 @@ export interface Dictionary {
         fullDesc: string;
         source: string;
         badgeLabel: string;
+        audioBadge: string;
       };
       "int-1": {
         title: string;
@@ -594,6 +615,13 @@ export interface Dictionary {
         fullDesc: string;
         source: string;
         guest: string;
+        badgeLabel: string;
+      };
+      "pres-usa": {
+        title: string;
+        shortDesc: string;
+        fullDesc: string;
+        source: string;
         badgeLabel: string;
       };
     };

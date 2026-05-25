@@ -187,10 +187,10 @@ function FeaturedPostCard({ post }: { post: SocialPost }) {
 
         {/* Top-left: live + source */}
         <div className="absolute top-4 left-4 flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[var(--gold)] text-[var(--on-accent)] text-[10px] font-bold tracking-[1.5px] uppercase">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-green-500 text-white text-[10px] font-bold tracking-[1.5px] uppercase">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--on-accent)] opacity-70" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--on-accent)]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-70" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
             </span>
             {t("activity.channel.liveDot")}
           </span>
@@ -494,8 +494,8 @@ export default function ActivityPage({
           <div className="flex-1 flex flex-col gap-5 md:gap-7 max-w-[640px]">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-60" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--gold)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-60" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
               </span>
               <SectionLabel text={t("activity.hero.eyebrow")} />
             </div>
@@ -567,9 +567,9 @@ export default function ActivityPage({
                     </p>
                   )}
                 </div>
-                <div className="flex items-center gap-1 px-2 py-1 bg-[var(--gold)]/15 rounded">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
-                  <span className="text-[9px] font-bold tracking-[1px] text-[var(--gold)]">
+                <div className="flex items-center gap-1 px-2 py-1 bg-green-500/15 rounded">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-[9px] font-bold tracking-[1px] text-green-500">
                     {t("activity.channel.liveDot")}
                   </span>
                 </div>
