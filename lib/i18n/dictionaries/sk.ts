@@ -2,12 +2,14 @@ import type { Dictionary } from "../types";
 
 const sk: Dictionary = {
   nav: {
+    home: "DOMOV",
     mission: "MISIA",
     locations: "LOKALITY",
     media: "MÉDIÁ",
     stories: "PRÍBEHY",
     heritage: "DEDIČSTVO",
     activity: "NAŽIVO",
+    more: "VIAC",
     share: "ZDIEĽAŤ",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktujte nás na WhatsApp",

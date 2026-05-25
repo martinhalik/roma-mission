@@ -2,12 +2,14 @@ import type { Dictionary } from "../types";
 
 const de: Dictionary = {
   nav: {
+    home: "START",
     mission: "MISSION",
     locations: "STANDORTE",
     media: "MEDIEN",
     stories: "GESCHICHTEN",
     heritage: "ERBE",
     activity: "LIVE",
+    more: "MEHR",
     share: "TEILEN",
     contact: "KONTAKT",
     contactWhatsapp: "Kontaktieren Sie uns auf WhatsApp",

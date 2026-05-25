@@ -2,12 +2,14 @@ import type { Dictionary } from "../types";
 
 const ro: Dictionary = {
   nav: {
+    home: "ACASĂ",
     mission: "MISIUNE",
     locations: "LOCAȚII",
     media: "MEDIA",
     stories: "POVEȘTI",
     heritage: "MOȘTENIRE",
     activity: "ÎN DIRECT",
+    more: "MAI MULTE",
     share: "DISTRIBUIE",
     contact: "CONTACT",
     contactWhatsapp: "Contactați-ne pe WhatsApp",

@@ -2,12 +2,14 @@ import type { Dictionary } from "../types";
 
 const el: Dictionary = {
   nav: {
+    home: "ΑΡΧΙΚΗ",
     mission: "ΙΕΡΑΠΟΣΤΟΛΗ",
     locations: "ΤΟΠΟΘΕΣΙΕΣ",
     media: "ΜΕΣΑ",
     stories: "ΙΣΤΟΡΙΕΣ",
     heritage: "ΚΛΗΡΟΝΟΜΙΑ",
     activity: "ΖΩΝΤΑΝΑ",
+    more: "ΠΕΡΙΣΣΟΤΕΡΑ",
     share: "ΚΟΙΝΟΠΟΙΗΣΗ",
     contact: "ΕΠΙΚΟΙΝΩΝΙΑ",
     contactWhatsapp: "Επικοινωνήστε μαζί μας στο WhatsApp",
