@@ -448,7 +448,7 @@ export default function HomePage() {
 
                   {/* Meta footer */}
                   <p className="text-[11px] text-[var(--text-muted)] mt-auto pt-3 border-t border-[var(--border-default)]">
-                    {item.duration} · {source}
+                    {item.duration ? `${item.duration} · ${source}` : source}
                   </p>
                 </div>
               </button>
