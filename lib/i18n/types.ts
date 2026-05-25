@@ -553,6 +553,11 @@ export interface Dictionary {
       title: string;
       intro: string;
     };
+    presentationsSection: {
+      label: string;
+      title: string;
+      intro: string;
+    };
     testimoniesSection: {
       label: string;
       title: string;
@@ -592,6 +597,13 @@ export interface Dictionary {
         fullDesc: string;
         source: string;
         guest: string;
+        badgeLabel: string;
+      };
+      "pres-usa": {
+        title: string;
+        shortDesc: string;
+        fullDesc: string;
+        source: string;
         badgeLabel: string;
       };
     };

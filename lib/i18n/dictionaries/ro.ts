@@ -718,6 +718,12 @@ const ro: Dictionary = {
       intro:
         "Conversații aprofundate despre misiune — înregistrate în slovacă, cu subtitrare engleză disponibilă la episoade selectate.",
     },
+    presentationsSection: {
+      label: "Presentations",
+      title: "Mission Talks Abroad",
+      intro:
+        "Talks delivered to English-speaking audiences about the work of the Christian Roma Mission in Eastern Slovakia.",
+    },
     testimoniesSection: {
       label: "Mărturie",
       title: "Voci din misiune",
@@ -757,6 +763,15 @@ const ro: Dictionary = {
         source: "Podcastul Decanului Facultății Ortodoxe",
         guest: "Misionarii Halík, o familie",
         badgeLabel: "Audio slovac",
+      },
+      "pres-usa": {
+        title: "Christian Mission to Roma in Eastern Slovakia",
+        shortDesc:
+          "Fr Martin Halik shares the story of the mission with an American audience — how it began, what it has cost, and what God has done.",
+        fullDesc:
+          "A presentation given by Fr Martin Halik during a visit to the United States. He recounts how a family left their settled life to plant the Orthodox Church among Roma in Eastern Slovakia, the realities of long-term ministry in a forgotten community, and the fruit emerging from years of steady presence.",
+        source: "United States",
+        badgeLabel: "English",
       },
       "testimony-laco": {
         title: "Povestea lui Laco",
