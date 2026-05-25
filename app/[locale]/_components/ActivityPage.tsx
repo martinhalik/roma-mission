@@ -494,8 +494,8 @@ export default function ActivityPage({
           <div className="flex-1 flex flex-col gap-5 md:gap-7 max-w-[640px]">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--gold)] opacity-60" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[var(--gold)]" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-60" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
               </span>
               <SectionLabel text={t("activity.hero.eyebrow")} />
             </div>
