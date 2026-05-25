@@ -758,6 +758,7 @@ const de: Dictionary = {
           "Eine offizielle Dokumentation des Tschechischen Fernsehens. Der Film begleitet den Direktor der Christlichen Roma-Mission auf seinem persönlichen Weg von einer IT-Karriere zum orthodoxen Priestertum in Roma-Gemeinschaften in der ganzen Slowakei — zusammen mit seiner Frau und seinen Kindern. Er bietet einen ehrlichen Blick auf das tägliche Pfarrleben, den Familiendienst auf dem Missionsfeld und das langfristige Opfer hinter der Berufung in Gemeinschaften, die von Armut, Ausgrenzung und tiefer geistlicher Not geprägt sind.",
         source: "Tschechisches Fernsehen",
         badgeLabel: "Untertitel",
+        audioBadge: "Slowakischer/Tschechischer Ton",
       },
       "int-1": {
         title: "Warum die Roma? Warum jetzt?",

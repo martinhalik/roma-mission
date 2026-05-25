@@ -589,6 +589,7 @@ export interface Dictionary {
         fullDesc: string;
         source: string;
         badgeLabel: string;
+        audioBadge: string;
       };
       "int-1": {
         title: string;

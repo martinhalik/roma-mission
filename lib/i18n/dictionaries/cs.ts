@@ -754,6 +754,7 @@ const cs: Dictionary = {
           "Oficiální dokument České televize. Film sleduje ředitele Křesťanské romské misie na jeho osobní cestě od kariéry v IT k pravoslavnému kněžství v romských komunitách po celém Slovensku — spolu s manželkou a dětmi. Nabízí upřímný pohled na každodenní farní život, rodinnou službu v misijním poli a dlouhodobou oběť, která stojí za povoláním do komunit poznamenaných chudobou, vyloučením a hlubokou duchovní nouzí.",
         source: "Česká televize",
         badgeLabel: "Titulky",
+        audioBadge: "Slovenský/český zvuk",
       },
       "int-1": {
         title: "Proč Romové? Proč nyní?",

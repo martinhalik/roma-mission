@@ -10,14 +10,12 @@ import {
   MEDIA_LANGUAGE_FILTERS,
   isMediaItemVisible,
   matchesFilter,
-  mediaBadgeFlagLocale,
   ytThumb,
   type MediaItem,
   type MediaLanguageFilter,
 } from "@/lib/media-data";
-import { getLocaleMeta } from "@/lib/i18n/locales";
 import SectionLabel from "@/components/SectionLabel";
-import LangBadge from "@/components/LangBadge";
+import MediaBadges from "@/components/MediaBadges";
 import { useTranslation } from "@/components/LanguageProvider";
 
 export default function MediaPage() {
@@ -44,11 +42,6 @@ export default function MediaPage() {
   const presentations = filteredItems.filter(
     (item) => item.tag === "PRESENTATION",
   );
-
-  const badgeFlag = (item: MediaItem) => {
-    const flagLocale = mediaBadgeFlagLocale(item, locale);
-    return flagLocale ? getLocaleMeta(flagLocale).flag : undefined;
-  };
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
@@ -123,12 +116,9 @@ export default function MediaPage() {
                     <span>{documentary.duration}</span>
                     <span>·</span>
                     <span>{t(`media.items.${documentary.id}.source`)}</span>
-                    <span>·</span>
-                    <LangBadge
-                      label={t(`media.items.${documentary.id}.badgeLabel`)}
-                      variant={documentary.badgeVariant}
-                      flag={badgeFlag(documentary)}
-                    />
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <MediaBadges item={documentary} />
+                    </div>
                   </div>
                   <button
                     onClick={() => setActiveVideoId(documentary.videoId)}
@@ -161,7 +151,6 @@ export default function MediaPage() {
                     const title = t(`media.items.${ep.id}.title`);
                     const desc = t(`media.items.${ep.id}.fullDesc`);
                     const guest = t(`media.items.${ep.id}.guest`);
-                    const badgeLabel = t(`media.items.${ep.id}.badgeLabel`);
                     return (
                       <button
                         key={ep.id}
@@ -181,7 +170,7 @@ export default function MediaPage() {
 
                         <div className="flex flex-col gap-4 p-6 md:p-7 flex-1">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <LangBadge label={badgeLabel} variant={ep.badgeVariant} flag={badgeFlag(ep)} />
+                            <MediaBadges item={ep} />
                           </div>
 
                           <div>
@@ -230,7 +219,6 @@ export default function MediaPage() {
                     const title = t(`media.items.${ep.id}.title`);
                     const desc = t(`media.items.${ep.id}.fullDesc`);
                     const source = t(`media.items.${ep.id}.source`);
-                    const badgeLabel = t(`media.items.${ep.id}.badgeLabel`);
                     return (
                       <button
                         key={ep.id}
@@ -250,7 +238,7 @@ export default function MediaPage() {
 
                         <div className="flex flex-col gap-4 p-6 md:p-7 flex-1">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <LangBadge label={badgeLabel} variant={ep.badgeVariant} flag={badgeFlag(ep)} />
+                            <MediaBadges item={ep} />
                           </div>
 
                           <div>
@@ -299,7 +287,6 @@ export default function MediaPage() {
                     const title = t(`media.items.${ep.id}.title`);
                     const desc = t(`media.items.${ep.id}.fullDesc`);
                     const guest = ep.hasGuest ? t(`media.items.${ep.id}.guest`) : "";
-                    const badgeLabel = t(`media.items.${ep.id}.badgeLabel`);
                     return (
                       <button
                         key={ep.id}
@@ -319,7 +306,7 @@ export default function MediaPage() {
 
                         <div className="flex flex-col gap-4 p-6 md:p-7 flex-1">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <LangBadge label={badgeLabel} variant={ep.badgeVariant} flag={badgeFlag(ep)} />
+                            <MediaBadges item={ep} />
                           </div>
 
                           <div>

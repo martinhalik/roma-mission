@@ -8,10 +8,9 @@ import VideoModal from "@/components/VideoModal";
 import MissionMap from "@/components/MissionMap";
 import LocaleLink from "@/components/LocaleLink";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
-import { getFeaturedMedia, mediaBadgeFlagLocale, ytThumb } from "@/lib/media-data";
-import { getLocaleMeta } from "@/lib/i18n/locales";
+import { getFeaturedMedia, ytThumb } from "@/lib/media-data";
 import SectionLabel from "@/components/SectionLabel";
-import LangBadge from "@/components/LangBadge";
+import MediaBadges from "@/components/MediaBadges";
 import { useTranslation } from "@/components/LanguageProvider";
 
 const LACO_VIDEO_ID = "PNhKEQtCrVo";
@@ -412,7 +411,6 @@ export default function HomePage() {
             const title = t(`media.items.${item.id}.title`);
             const desc = t(`media.items.${item.id}.shortDesc`);
             const source = t(`media.items.${item.id}.source`);
-            const badgeLabel = t(`media.items.${item.id}.badgeLabel`);
             return (
               <button
                 key={item.id}
@@ -438,14 +436,7 @@ export default function HomePage() {
                     <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)]">
                       {item.tag}
                     </span>
-                    <LangBadge
-                      label={badgeLabel}
-                      variant={item.badgeVariant}
-                      flag={(() => {
-                        const fl = mediaBadgeFlagLocale(item, locale);
-                        return fl ? getLocaleMeta(fl).flag : undefined;
-                      })()}
-                    />
+                    <MediaBadges item={item} />
                   </div>
 
                   <h3 className="text-[15px] md:text-[17px] font-bold text-[var(--text-primary)] leading-[1.2] group-hover:text-[var(--gold)] transition-colors duration-200">

@@ -757,6 +757,7 @@ const en: Dictionary = {
           "An official Czech Television documentary. The film follows the director of Christian Roma Mission on his personal journey from a career in IT to Orthodox priesthood in Roma communities across Slovakia — alongside his wife and children. It offers an honest look at daily parish life, family ministry on the mission field, and the long-term sacrifice behind a calling to communities shaped by poverty, exclusion, and deep spiritual need.",
         source: "Czech Television",
         badgeLabel: "Subtitles",
+        audioBadge: "Slovak/Czech Audio",
       },
       "int-1": {
         title: "Why the Roma? Why Now?",
