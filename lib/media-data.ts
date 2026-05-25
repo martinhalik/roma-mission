@@ -14,6 +14,8 @@ export interface MediaItem {
   hasGuest: boolean;
   /** Locales whose speakers can follow the content (audio or subtitles). */
   languages: Locale[];
+  /** Primary spoken language of the recording — drives the badge flag for audio items. */
+  audioLanguage?: Locale;
   /** When true, the item is only rendered on the English locale */
   englishOnly?: boolean;
 }
@@ -37,6 +39,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     badgeVariant: "sub",
     hasGuest: false,
     languages: ["cs", "sk", "en", "ro", "de", "sr", "ru", "mk", "el"],
+    audioLanguage: "cs",
   },
   {
     id: "int-1",
@@ -46,6 +49,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     badgeVariant: "audio",
     hasGuest: true,
     languages: ["sk", "cs"],
+    audioLanguage: "sk",
   },
   {
     id: "int-2",
@@ -55,6 +59,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     badgeVariant: "audio",
     hasGuest: true,
     languages: ["sk", "cs"],
+    audioLanguage: "sk",
   },
   {
     id: "testimony-laco",
@@ -64,6 +69,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     badgeVariant: "audio",
     hasGuest: true,
     languages: ["en"],
+    audioLanguage: "en",
   },
   {
     id: "pres-usa",
@@ -73,6 +79,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     badgeVariant: "audio",
     hasGuest: false,
     languages: ["en"],
+    audioLanguage: "en",
     englishOnly: true,
   },
 ];
@@ -80,6 +87,20 @@ export const MEDIA_ITEMS: MediaItem[] = [
 export function isMediaItemVisible(item: MediaItem, locale: Locale) {
   if (item.englishOnly && locale !== "en") return false;
   return true;
+}
+
+/**
+ * The flag to render next to an item's language badge. Audio items show their
+ * spoken language; subtitle items show the viewer's locale (since the subs
+ * shown are in that locale).
+ */
+export function mediaBadgeFlagLocale(
+  item: MediaItem,
+  viewerLocale: Locale,
+): Locale | undefined {
+  if (item.badgeVariant === "audio") return item.audioLanguage;
+  if (item.languages.includes(viewerLocale)) return viewerLocale;
+  return item.audioLanguage;
 }
 
 export interface MediaLanguageFilter {

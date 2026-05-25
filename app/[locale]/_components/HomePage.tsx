@@ -8,7 +8,8 @@ import VideoModal from "@/components/VideoModal";
 import MissionMap from "@/components/MissionMap";
 import LocaleLink from "@/components/LocaleLink";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
-import { getFeaturedMedia, ytThumb } from "@/lib/media-data";
+import { getFeaturedMedia, mediaBadgeFlagLocale, ytThumb } from "@/lib/media-data";
+import { getLocaleMeta } from "@/lib/i18n/locales";
 import SectionLabel from "@/components/SectionLabel";
 import LangBadge from "@/components/LangBadge";
 import { useTranslation } from "@/components/LanguageProvider";
@@ -437,7 +438,14 @@ export default function HomePage() {
                     <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)]">
                       {item.tag}
                     </span>
-                    <LangBadge label={badgeLabel} variant={item.badgeVariant} />
+                    <LangBadge
+                      label={badgeLabel}
+                      variant={item.badgeVariant}
+                      flag={(() => {
+                        const fl = mediaBadgeFlagLocale(item, locale);
+                        return fl ? getLocaleMeta(fl).flag : undefined;
+                      })()}
+                    />
                   </div>
 
                   <h3 className="text-[15px] md:text-[17px] font-bold text-[var(--text-primary)] leading-[1.2] group-hover:text-[var(--gold)] transition-colors duration-200">

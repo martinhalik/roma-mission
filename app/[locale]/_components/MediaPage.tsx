@@ -10,10 +10,12 @@ import {
   MEDIA_LANGUAGE_FILTERS,
   isMediaItemVisible,
   matchesFilter,
+  mediaBadgeFlagLocale,
   ytThumb,
   type MediaItem,
   type MediaLanguageFilter,
 } from "@/lib/media-data";
+import { getLocaleMeta } from "@/lib/i18n/locales";
 import SectionLabel from "@/components/SectionLabel";
 import LangBadge from "@/components/LangBadge";
 import { useTranslation } from "@/components/LanguageProvider";
@@ -42,6 +44,11 @@ export default function MediaPage() {
   const presentations = filteredItems.filter(
     (item) => item.tag === "PRESENTATION",
   );
+
+  const badgeFlag = (item: MediaItem) => {
+    const flagLocale = mediaBadgeFlagLocale(item, locale);
+    return flagLocale ? getLocaleMeta(flagLocale).flag : undefined;
+  };
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
@@ -120,6 +127,7 @@ export default function MediaPage() {
                     <LangBadge
                       label={t(`media.items.${documentary.id}.badgeLabel`)}
                       variant={documentary.badgeVariant}
+                      flag={badgeFlag(documentary)}
                     />
                   </div>
                   <button
@@ -173,7 +181,7 @@ export default function MediaPage() {
 
                         <div className="flex flex-col gap-4 p-6 md:p-7 flex-1">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <LangBadge label={badgeLabel} variant={ep.badgeVariant} />
+                            <LangBadge label={badgeLabel} variant={ep.badgeVariant} flag={badgeFlag(ep)} />
                           </div>
 
                           <div>
@@ -242,7 +250,7 @@ export default function MediaPage() {
 
                         <div className="flex flex-col gap-4 p-6 md:p-7 flex-1">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <LangBadge label={badgeLabel} variant={ep.badgeVariant} />
+                            <LangBadge label={badgeLabel} variant={ep.badgeVariant} flag={badgeFlag(ep)} />
                           </div>
 
                           <div>
@@ -311,7 +319,7 @@ export default function MediaPage() {
 
                         <div className="flex flex-col gap-4 p-6 md:p-7 flex-1">
                           <div className="flex items-center gap-2 flex-wrap">
-                            <LangBadge label={badgeLabel} variant={ep.badgeVariant} />
+                            <LangBadge label={badgeLabel} variant={ep.badgeVariant} flag={badgeFlag(ep)} />
                           </div>
 
                           <div>
