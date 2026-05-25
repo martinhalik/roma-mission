@@ -36,7 +36,7 @@ export const MEDIA_ITEMS: MediaItem[] = [
     duration: "30 min",
     badgeVariant: "sub",
     hasGuest: false,
-    languages: ["cs", "sk", "en"],
+    languages: ["cs", "sk", "en", "ro", "de", "sr", "ru", "mk", "el"],
   },
   {
     id: "int-1",

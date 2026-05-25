@@ -757,7 +757,7 @@ const ro: Dictionary = {
         fullDesc:
           "Un documentar oficial al Televiziunii Cehe. Filmul îl urmărește pe directorul Misiunii Creștine Rome în călătoria sa personală de la o carieră în IT la preoția ortodoxă în comunitățile rome din toată Slovacia — alături de soția și copiii săi. Oferă o privire onestă asupra vieții parohiale de zi cu zi, slujirii familiei pe câmpul de misiune și sacrificiului pe termen lung din spatele unei chemări către comunități marcate de sărăcie, excludere și nevoie spirituală profundă.",
         source: "Televiziunea Cehă",
-        badgeLabel: "Subtitrare EN",
+        badgeLabel: "Subtitrări",
       },
       "int-1": {
         title: "De ce romii? De ce acum?",

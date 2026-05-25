@@ -752,7 +752,7 @@ const sk: Dictionary = {
         fullDesc:
           "Oficiálny dokument Českej televízie. Film sleduje riaditeľa Kresťanskej rómskej misie na jeho osobnej ceste od kariéry v IT k pravoslávnemu kňazstvu v rómskych komunitách po celom Slovensku — spolu s manželkou a deťmi. Ponúka úprimný pohľad na každodenný farský život, rodinnú službu v misijnom poli a dlhodobú obetu, ktorá stojí za povolaním do komunít poznačených chudobou, vylúčením a hlbokou duchovnou núdzou.",
         source: "Česká televízia",
-        badgeLabel: "EN titulky",
+        badgeLabel: "Titulky",
       },
       "int-1": {
         title: "Prečo Rómovia? Prečo teraz?",
