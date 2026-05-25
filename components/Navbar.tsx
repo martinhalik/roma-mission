@@ -188,7 +188,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           className="flex items-center gap-2 opacity-100 hover:opacity-75 transition-opacity shrink-0"
         >
           <span className="font-georgia text-[28px] text-[var(--gold)]">☦</span>
-          <span className="hidden 2xl:inline text-[14px] font-bold tracking-[2px] text-[var(--text-primary)] uppercase">
+          <span className="text-[12px] xl:text-[14px] font-bold tracking-[1.5px] xl:tracking-[2px] text-[var(--text-primary)] uppercase">
             {t("footer.brand")}
           </span>
         </LocaleLink>
