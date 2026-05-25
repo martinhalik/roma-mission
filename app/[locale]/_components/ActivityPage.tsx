@@ -567,9 +567,9 @@ export default function ActivityPage({
                     </p>
                   )}
                 </div>
-                <div className="flex items-center gap-1 px-2 py-1 bg-[var(--gold)]/15 rounded">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--gold)] animate-pulse" />
-                  <span className="text-[9px] font-bold tracking-[1px] text-[var(--gold)]">
+                <div className="flex items-center gap-1 px-2 py-1 bg-green-500/15 rounded">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-[9px] font-bold tracking-[1px] text-green-500">
                     {t("activity.channel.liveDot")}
                   </span>
                 </div>
