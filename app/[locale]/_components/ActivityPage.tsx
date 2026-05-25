@@ -187,10 +187,10 @@ function FeaturedPostCard({ post }: { post: SocialPost }) {
 
         {/* Top-left: live + source */}
         <div className="absolute top-4 left-4 flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[var(--gold)] text-[var(--on-accent)] text-[10px] font-bold tracking-[1.5px] uppercase">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-green-500 text-white text-[10px] font-bold tracking-[1.5px] uppercase">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--on-accent)] opacity-70" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--on-accent)]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-70" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
             </span>
             {t("activity.channel.liveDot")}
           </span>
