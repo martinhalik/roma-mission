@@ -2,12 +2,14 @@ import type { Dictionary } from "../types";
 
 const ru: Dictionary = {
   nav: {
+    home: "ГЛАВНАЯ",
     mission: "МИССИЯ",
     locations: "МЕСТА",
     media: "МЕДИА",
     stories: "ИСТОРИИ",
     heritage: "НАСЛЕДИЕ",
     activity: "В ЭФИРЕ",
+    more: "ЕЩЁ",
     share: "ПОДЕЛИТЬСЯ",
     contact: "КОНТАКТ",
     contactWhatsapp: "Свяжитесь с нами в WhatsApp",
@@ -718,6 +720,12 @@ const ru: Dictionary = {
       intro:
         "Глубокие беседы о миссии — записаны на словацком языке, с английскими субтитрами в отдельных эпизодах.",
     },
+    presentationsSection: {
+      label: "Presentations",
+      title: "Mission Talks Abroad",
+      intro:
+        "Talks delivered to English-speaking audiences about the work of the Christian Roma Mission in Eastern Slovakia.",
+    },
     testimoniesSection: {
       label: "Свидетельство",
       title: "Голоса из миссии",
@@ -728,6 +736,21 @@ const ru: Dictionary = {
       watchAria: "Смотреть: {title}",
       withGuest: "с гостем {guest}",
     },
+    filters: {
+      title: "Фильтр по языку",
+      all: "Все",
+      en: "Английский",
+      skCs: "Словацкий / Чешский",
+      ro: "Румынский",
+      de: "Немецкий",
+      sr: "Сербский",
+      ru: "Русский",
+      mk: "Македонский",
+      el: "Греческий",
+      comingSoon: "Скоро",
+      emptyTitle: "Видео на языке {language} пока нет",
+      emptyBody: "Мы работаем над переводами и новыми записями. Загляните позже или посмотрите всю библиотеку на другом языке.",
+    },
     items: {
       documentary: {
         title: "Из IT в священство",
@@ -736,7 +759,8 @@ const ru: Dictionary = {
         fullDesc:
           "Официальный документальный фильм Чешского телевидения. Фильм прослеживает путь директора Христианской цыганской миссии в его личном пути от карьеры в IT к православному священству в цыганских общинах по всей Словакии — вместе с женой и детьми. Он предлагает честный взгляд на ежедневную приходскую жизнь, семейное служение на миссионерском поле и долгосрочную жертву, стоящую за призванием в общины, отмеченные бедностью, исключенностью и глубокой духовной нуждой.",
         source: "Чешское телевидение",
-        badgeLabel: "Английские субтитры",
+        badgeLabel: "Субтитры",
+        audioBadge: "Словацкое/чешское аудио",
       },
       "int-1": {
         title: "Почему цыгане? Почему сейчас?",
@@ -757,6 +781,15 @@ const ru: Dictionary = {
         source: "Подкаст декана Православного факультета",
         guest: "Семейные миссионеры Халики",
         badgeLabel: "Словацкая озвучка",
+      },
+      "pres-usa": {
+        title: "Christian Mission to Roma in Eastern Slovakia",
+        shortDesc:
+          "Fr Martin Halik shares the story of the mission with an American audience — how it began, what it has cost, and what God has done.",
+        fullDesc:
+          "A presentation given by Fr Martin Halik during a visit to the United States. He recounts how a family left their settled life to plant the Orthodox Church among Roma in Eastern Slovakia, the realities of long-term ministry in a forgotten community, and the fruit emerging from years of steady presence.",
+        source: "United States",
+        badgeLabel: "English",
       },
       "testimony-laco": {
         title: "История Лацо",

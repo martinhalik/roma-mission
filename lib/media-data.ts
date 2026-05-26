@@ -1,8 +1,10 @@
+import type { Locale } from "@/lib/i18n/locales";
+
 export type BadgeVariant = "audio" | "sub";
 
 export interface MediaItem {
   id: string;
-  tag: "DOCUMENTARY" | "INTERVIEW" | "TESTIMONY";
+  tag: "DOCUMENTARY" | "INTERVIEW" | "TESTIMONY" | "PRESENTATION";
   videoId: string;
   /** Display duration — not translated (number + locale-stable unit) */
   duration: string;
@@ -10,12 +12,19 @@ export interface MediaItem {
   badgeVariant: BadgeVariant;
   /** Whether this item has a `guest` field in the dictionary */
   hasGuest: boolean;
+  /** Locales whose speakers can follow the content (audio or subtitles). */
+  languages: Locale[];
+  /** Primary spoken language of the recording — drives the badge flag for audio items. */
+  audioLanguage?: Locale;
+  /** When true, the item is only rendered on the English locale */
+  englishOnly?: boolean;
 }
 
 export const DOCUMENTARY_VIDEO_ID = "K-IDNefOa98";
 export const INTERVIEW_1_ID = "A3-IfJL_vt4";
 export const INTERVIEW_2_ID = "7tdFd08wUis";
 export const TESTIMONY_LACO_ID = "PNhKEQtCrVo";
+export const PRESENTATION_USA_ID = "LcUcxm6k7xo";
 
 export function ytThumb(id: string) {
   return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
@@ -29,6 +38,8 @@ export const MEDIA_ITEMS: MediaItem[] = [
     duration: "30 min",
     badgeVariant: "sub",
     hasGuest: false,
+    languages: ["cs", "sk", "en", "ro", "de", "sr", "ru", "mk", "el"],
+    audioLanguage: "cs",
   },
   {
     id: "int-1",
@@ -37,6 +48,8 @@ export const MEDIA_ITEMS: MediaItem[] = [
     duration: "48 min",
     badgeVariant: "audio",
     hasGuest: true,
+    languages: ["sk", "cs"],
+    audioLanguage: "sk",
   },
   {
     id: "int-2",
@@ -45,6 +58,8 @@ export const MEDIA_ITEMS: MediaItem[] = [
     duration: "35 min",
     badgeVariant: "audio",
     hasGuest: true,
+    languages: ["sk", "cs"],
+    audioLanguage: "sk",
   },
   {
     id: "testimony-laco",
@@ -53,5 +68,87 @@ export const MEDIA_ITEMS: MediaItem[] = [
     duration: "12 min",
     badgeVariant: "audio",
     hasGuest: true,
+    languages: ["en"],
+    audioLanguage: "en",
+  },
+  {
+    id: "pres-usa",
+    tag: "PRESENTATION",
+    videoId: PRESENTATION_USA_ID,
+    duration: "",
+    badgeVariant: "audio",
+    hasGuest: false,
+    languages: ["en"],
+    audioLanguage: "en",
+    englishOnly: true,
   },
 ];
+
+export function isMediaItemVisible(item: MediaItem, locale: Locale) {
+  if (item.englishOnly && locale !== "en") return false;
+  return true;
+}
+
+/**
+ * The flag to render next to an item's language badge. Audio items show their
+ * spoken language; subtitle items show the viewer's locale (since the subs
+ * shown are in that locale).
+ */
+export function mediaBadgeFlagLocale(
+  item: MediaItem,
+  viewerLocale: Locale,
+): Locale | undefined {
+  if (item.badgeVariant === "audio") return item.audioLanguage;
+  if (item.languages.includes(viewerLocale)) return viewerLocale;
+  return item.audioLanguage;
+}
+
+export interface MediaLanguageFilter {
+  id: string;
+  /** Locale codes considered a match — null means "all" */
+  langs: Locale[] | null;
+  flag: string;
+  /** Dictionary key under `media.filters` */
+  labelKey: string;
+}
+
+export const MEDIA_LANGUAGE_FILTERS: MediaLanguageFilter[] = [
+  { id: "all", langs: null, flag: "", labelKey: "media.filters.all" },
+  { id: "en", langs: ["en"], flag: "🇬🇧", labelKey: "media.filters.en" },
+  { id: "sk-cs", langs: ["sk", "cs"], flag: "🇸🇰🇨🇿", labelKey: "media.filters.skCs" },
+  { id: "ro", langs: ["ro"], flag: "🇷🇴", labelKey: "media.filters.ro" },
+  { id: "de", langs: ["de"], flag: "🇩🇪", labelKey: "media.filters.de" },
+  { id: "sr", langs: ["sr"], flag: "🇷🇸", labelKey: "media.filters.sr" },
+  { id: "ru", langs: ["ru"], flag: "🇷🇺", labelKey: "media.filters.ru" },
+  { id: "mk", langs: ["mk"], flag: "🇲🇰", labelKey: "media.filters.mk" },
+  { id: "el", langs: ["el"], flag: "🇬🇷", labelKey: "media.filters.el" },
+];
+
+export function matchesFilter(item: MediaItem, filter: MediaLanguageFilter) {
+  if (filter.langs === null) return true;
+  return item.languages.some((l) => filter.langs!.includes(l));
+}
+
+/**
+ * Picks featured media for the home page. The documentary is pinned first
+ * (it's the flagship piece), then items whose languages include the current
+ * locale, then the remaining items in their declared order. Testimonies are
+ * excluded — they have a dedicated section on the home page.
+ */
+export function getFeaturedMedia(locale: Locale, count = 3): MediaItem[] {
+  const candidates = MEDIA_ITEMS.filter(
+    (item) => item.tag !== "TESTIMONY" && isMediaItemVisible(item, locale),
+  );
+  return candidates
+    .map((item, idx) => ({ item, idx }))
+    .sort((a, b) => {
+      if (a.item.tag === "DOCUMENTARY" && b.item.tag !== "DOCUMENTARY") return -1;
+      if (b.item.tag === "DOCUMENTARY" && a.item.tag !== "DOCUMENTARY") return 1;
+      const aMatch = a.item.languages.includes(locale) ? 0 : 1;
+      const bMatch = b.item.languages.includes(locale) ? 0 : 1;
+      if (aMatch !== bMatch) return aMatch - bMatch;
+      return a.idx - b.idx;
+    })
+    .slice(0, count)
+    .map(({ item }) => item);
+}

@@ -2,12 +2,14 @@ import type { Dictionary } from "../types";
 
 const ro: Dictionary = {
   nav: {
+    home: "ACASĂ",
     mission: "MISIUNE",
     locations: "LOCAȚII",
     media: "MEDIA",
     stories: "POVEȘTI",
     heritage: "MOȘTENIRE",
     activity: "ÎN DIRECT",
+    more: "MAI MULTE",
     share: "DISTRIBUIE",
     contact: "CONTACT",
     contactWhatsapp: "Contactați-ne pe WhatsApp",
@@ -718,6 +720,12 @@ const ro: Dictionary = {
       intro:
         "Conversații aprofundate despre misiune — înregistrate în slovacă, cu subtitrare engleză disponibilă la episoade selectate.",
     },
+    presentationsSection: {
+      label: "Presentations",
+      title: "Mission Talks Abroad",
+      intro:
+        "Talks delivered to English-speaking audiences about the work of the Christian Roma Mission in Eastern Slovakia.",
+    },
     testimoniesSection: {
       label: "Mărturie",
       title: "Voci din misiune",
@@ -728,6 +736,21 @@ const ro: Dictionary = {
       watchAria: "Vezi: {title}",
       withGuest: "cu invitatul {guest}",
     },
+    filters: {
+      title: "Filtrează după limbă",
+      all: "Toate",
+      en: "Engleză",
+      skCs: "Slovacă / Cehă",
+      ro: "Română",
+      de: "Germană",
+      sr: "Sârbă",
+      ru: "Rusă",
+      mk: "Macedoneană",
+      el: "Greacă",
+      comingSoon: "În curând",
+      emptyTitle: "Încă nu există videoclipuri în {language}",
+      emptyBody: "Lucrăm la traduceri și înregistrări noi. Reveniți curând sau răsfoiți întreaga bibliotecă în altă limbă.",
+    },
     items: {
       documentary: {
         title: "De la IT la preoție",
@@ -736,7 +759,8 @@ const ro: Dictionary = {
         fullDesc:
           "Un documentar oficial al Televiziunii Cehe. Filmul îl urmărește pe directorul Misiunii Creștine Rome în călătoria sa personală de la o carieră în IT la preoția ortodoxă în comunitățile rome din toată Slovacia — alături de soția și copiii săi. Oferă o privire onestă asupra vieții parohiale de zi cu zi, slujirii familiei pe câmpul de misiune și sacrificiului pe termen lung din spatele unei chemări către comunități marcate de sărăcie, excludere și nevoie spirituală profundă.",
         source: "Televiziunea Cehă",
-        badgeLabel: "Subtitrare EN",
+        badgeLabel: "Subtitrări",
+        audioBadge: "Audio slovacă/cehă",
       },
       "int-1": {
         title: "De ce romii? De ce acum?",
@@ -757,6 +781,15 @@ const ro: Dictionary = {
         source: "Podcastul Decanului Facultății Ortodoxe",
         guest: "Misionarii Halík, o familie",
         badgeLabel: "Audio slovac",
+      },
+      "pres-usa": {
+        title: "Christian Mission to Roma in Eastern Slovakia",
+        shortDesc:
+          "Fr Martin Halik shares the story of the mission with an American audience — how it began, what it has cost, and what God has done.",
+        fullDesc:
+          "A presentation given by Fr Martin Halik during a visit to the United States. He recounts how a family left their settled life to plant the Orthodox Church among Roma in Eastern Slovakia, the realities of long-term ministry in a forgotten community, and the fruit emerging from years of steady presence.",
+        source: "United States",
+        badgeLabel: "English",
       },
       "testimony-laco": {
         title: "Povestea lui Laco",

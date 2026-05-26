@@ -1,6 +1,14 @@
 import "@testing-library/jest-dom";
 import { vi } from "vitest";
 
+if (typeof globalThis.ResizeObserver === "undefined") {
+  globalThis.ResizeObserver = class {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  } as unknown as typeof ResizeObserver;
+}
+
 // Provide minimal next/navigation stubs so components that call useRouter /
 // usePathname inside the LanguageProvider (used by LocaleLink and the
 // language switcher) can render in isolation under jsdom.

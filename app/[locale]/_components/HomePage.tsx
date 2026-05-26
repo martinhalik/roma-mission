@@ -8,9 +8,9 @@ import VideoModal from "@/components/VideoModal";
 import MissionMap from "@/components/MissionMap";
 import LocaleLink from "@/components/LocaleLink";
 import { Users, BookOpen, Crown, Heart, House, LucideIcon } from "lucide-react";
-import { MEDIA_ITEMS, ytThumb } from "@/lib/media-data";
+import { getFeaturedMedia, ytThumb } from "@/lib/media-data";
 import SectionLabel from "@/components/SectionLabel";
-import LangBadge from "@/components/LangBadge";
+import MediaBadges from "@/components/MediaBadges";
 import { useTranslation } from "@/components/LanguageProvider";
 
 const LACO_VIDEO_ID = "PNhKEQtCrVo";
@@ -51,11 +51,10 @@ const resultCards: { Icon: LucideIcon; textKey: string }[] = [
   { Icon: House, textKey: "home.results.cardFamilies" },
 ];
 
-const mediaItems = MEDIA_ITEMS.filter((item) => item.tag !== "TESTIMONY").slice(0, 3);
-
 export default function HomePage() {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
+  const mediaItems = getFeaturedMedia(locale);
 
   return (
     <main className="min-h-full bg-[var(--bg-primary)]">
@@ -412,7 +411,6 @@ export default function HomePage() {
             const title = t(`media.items.${item.id}.title`);
             const desc = t(`media.items.${item.id}.shortDesc`);
             const source = t(`media.items.${item.id}.source`);
-            const badgeLabel = t(`media.items.${item.id}.badgeLabel`);
             return (
               <button
                 key={item.id}
@@ -438,7 +436,7 @@ export default function HomePage() {
                     <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)]">
                       {item.tag}
                     </span>
-                    <LangBadge label={badgeLabel} variant={item.badgeVariant} />
+                    <MediaBadges item={item} />
                   </div>
 
                   <h3 className="text-[15px] md:text-[17px] font-bold text-[var(--text-primary)] leading-[1.2] group-hover:text-[var(--gold)] transition-colors duration-200">
@@ -450,7 +448,7 @@ export default function HomePage() {
 
                   {/* Meta footer */}
                   <p className="text-[11px] text-[var(--text-muted)] mt-auto pt-3 border-t border-[var(--border-default)]">
-                    {item.duration} · {source}
+                    {item.duration ? `${item.duration} · ${source}` : source}
                   </p>
                 </div>
               </button>
