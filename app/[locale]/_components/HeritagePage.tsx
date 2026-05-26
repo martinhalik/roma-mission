@@ -36,12 +36,12 @@ const TRADITION_KEYS = [
 type TraditionKey = (typeof TRADITION_KEYS)[number];
 
 const TRADITION_IMAGES: Record<TraditionKey, string> = {
-  fourNails: "trad-four-nails.jpg",
-  thirdDay: "trad-third-day.jpg",
-  byzantineChant: "trad-byzantine-chant.jpg",
-  roundDance: "trad-round-dance.jpg",
-  iconsHome: "trad-icons-home.jpg",
-  greekBones: "trad-greek-bones.jpg",
+  fourNails: "trad-four-nails.webp",
+  thirdDay: "trad-third-day.webp",
+  byzantineChant: "trad-byzantine-chant.webp",
+  roundDance: "trad-round-dance.webp",
+  iconsHome: "trad-icons-home.webp",
+  greekBones: "trad-greek-bones.webp",
 };
 
 const VOICE_KEYS = [
@@ -61,11 +61,11 @@ const VOICE_KEYS = [
 type VoiceKey = (typeof VOICE_KEYS)[number];
 
 const TIMELINE_IMAGES: Record<EraKey, string> = {
-  era1: "era-1.jpg",
-  era2: "era-2.jpg",
-  era3: "era-3.jpg",
-  era4: "era-4.jpg",
-  era5: "era-5.jpg",
+  era1: "era-1.webp",
+  era2: "era-2.webp",
+  era3: "era-3.webp",
+  era4: "era-4.webp",
+  era5: "era-5.webp",
 };
 
 const COUNTRY_KEYS = [
@@ -137,7 +137,7 @@ function StructuredData({
         inLanguage: locale,
         image: {
           "@type": "ImageObject",
-          url: `${SITE_URL}/images/heritage/hero.png`,
+          url: `${SITE_URL}/images/heritage/hero.webp`,
           width: 1500,
           height: 844,
         },
@@ -602,7 +602,7 @@ export default function HeritagePage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage:
-              "url('/images/heritage/hero.png'), url('/images/klenovec-chapel.jpeg')",
+              "url('/images/heritage/hero.webp'), url('/images/klenovec-chapel.jpeg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             opacity: 0.55,
@@ -680,7 +680,7 @@ export default function HeritagePage() {
               aria-hidden
               className="mt-10 aspect-[3/2] w-full max-w-[1000px] bg-[var(--bg-elevated)] border border-[var(--border-default)]"
               style={{
-                backgroundImage: "url('/images/heritage/origins.jpg')",
+                backgroundImage: "url('/images/heritage/origins.webp')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -763,7 +763,7 @@ export default function HeritagePage() {
                 aria-hidden
                 className="aspect-[3/4] w-full bg-[var(--bg-elevated)] border border-[var(--border-default)] order-1 lg:order-2"
                 style={{
-                  backgroundImage: "url('/images/heritage/catechumen.jpg')",
+                  backgroundImage: "url('/images/heritage/catechumen.webp')",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
@@ -841,7 +841,7 @@ export default function HeritagePage() {
               aria-hidden
               className="mt-12 aspect-[2/1] w-full bg-[var(--bg-elevated)] border border-[var(--border-default)]"
               style={{
-                backgroundImage: "url('/images/heritage/today.jpg')",
+                backgroundImage: "url('/images/heritage/today.webp')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
