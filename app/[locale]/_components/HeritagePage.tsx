@@ -137,7 +137,7 @@ function StructuredData({
         inLanguage: locale,
         image: {
           "@type": "ImageObject",
-          url: `${SITE_URL}/images/heritage/hero.jpg`,
+          url: `${SITE_URL}/images/heritage/hero.png`,
           width: 1500,
           height: 844,
         },
@@ -602,7 +602,7 @@ export default function HeritagePage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage:
-              "url('/images/heritage/hero.jpg'), url('/images/klenovec-chapel.jpeg')",
+              "url('/images/heritage/hero.png'), url('/images/klenovec-chapel.jpeg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             opacity: 0.55,
