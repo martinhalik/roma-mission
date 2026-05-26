@@ -10,7 +10,7 @@ interface VideoModalProps {
 }
 
 export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   useEffect(() => {
     if (!isOpen) return;
     const handleKey = (e: KeyboardEvent) => {
@@ -44,7 +44,7 @@ export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps
         <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
           <iframe
             className="absolute inset-0 w-full h-full"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&cc_load_policy=1&hl=en`}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&cc_load_policy=1&cc_lang_pref=${locale}&hl=${locale}`}
             title="Documentary"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
