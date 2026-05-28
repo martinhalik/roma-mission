@@ -804,7 +804,7 @@ const sk: Dictionary = {
       titleLine1: "Spoločný",
       titleLine2: "tisícročný príbeh",
       subtitle:
-        "Rómovia neprišli do Európy ako cudzinci pre vieru. Vkročili do kresťanského sveta — a kresťanský svet kráčal s nimi. Toto je dlhý, ešte neuzavretý príbeh o tom, ako sa Rómovia stali pravoslávnymi katechumenmi a čo si dodnes nesú so sebou.",
+        "Šli na západ na koňoch a vozoch — z Indie, cez Perziu a Arménsko — a vstúpili do pravoslávneho Východu. Neprinášali so sebou Krista. Byzantský svet, ktorý ich prijal, siahol po staršom mene — Athinganoi: heretická sekta už známa čarodejníctvom a veštením. To meno sa uchytilo, lebo v ňom niečo sedelo. Toto je dlhý, nedokončený príbeh o tom, ako sa z toho ľudu stali pravoslávni katechumeni — a aká dlhá cesta je ešte pred nimi.",
       shareLabel: "Zdieľať toto múzeum",
       scrollHint: "Začať cestu",
     },
@@ -822,11 +822,11 @@ const sk: Dictionary = {
       label: "Expozícia 01 — Pôvod",
       title: "Z Indie do srdca kresťanstva",
       intro:
-        "Okolo 11. storočia začali skupiny ľudí hovoriacich indoárijským jazykom putovať na západ zo severozápadnej Indie. Hovorí o tom lingvistika, nie legenda: rómčina je sestrou hindčiny a paňdžábčiny a ďalej ju formovali dlhé pobyty v perzských a arménskych krajinách skôr, než sa vôbec dotkla Európy.",
+        "Okolo 11. storočia sa skupiny hovoriace indoárijským jazykom vydali na západ zo severozápadnej Indie na koňoch a koňmi ťahaných vozoch — konský ľud s konskými remeslami, konskou hudbou a konským umením. Hovorí nám to lingvistika, nie legenda: rómčina je sestrou hindčiny a paňdžábčiny a ďalej ju formovali dlhé pobyty v perzských a arménskych krajinách, ešte predtým, ako sa vôbec dotkla Európy.",
       body1:
-        "Keď Rómovia dosiahli Byzantskú ríšu, putovali už generácie. Ríša bola kresťanská; mestá boli plné chrámov; nových príchodzích privítali (a zaznamenali) menom — Athinganoi po grécky, z čoho sa stáva medzinárodné Acigani a odtiaľ Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
+        "Keď dorazili do Byzantskej ríše, kresťanský Východ pre nich nemal ustálenú kategóriu. Mnísi a kanonisti siahli po najbližšom mene, ktoré mali — Athinganoi — označenie, ktoré už patrilo staršej heretickej sekte v Malej Ázii obviňovanej z čarodejníctva, veštenia a zakázaných praktík. Noví príchodzí prinášali krotenie hadov, veštenie a spôsob života, ktorý tej starej nadávke zodpovedal natoľko, že sa uchytila. Z Athinganoi sa stalo medzinárodné Acigani a odtiaľ Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
       body2:
-        "Pozoruhodné je, čo nasledovalo. Počas stáročí putovania do pravoslávnych krajín si Rómovia neudržali vlastné samostatné náboženstvo. Prijali vieru ľudí, ktorí ich prijali — a najhlbšie prijatie bolo pravoslávne.",
+        "To, čo nasledovalo, je pomalý príbeh, nie úhľadný. Počas storočí medzi pravoslávnymi národmi — Grékmi, Bulharmi, Srbmi, Rumunmi, Slovanmi — si Rómovia neuchovali vlastné samostatné náboženstvo. Prijali krst, prijali pravoslávnych svätých patrónov, spievali Paschu. Staré praktiky nezmizli v prvej generácii, ani v druhej. S každým storočím menej a menej — no dodnes možno v rómskych dedinách vidieť ľud, ktorý čaká, kým svetlo Kristovo dokončí svoje dielo.",
       factCards: {
         a: {
           stat: "11. stor.",

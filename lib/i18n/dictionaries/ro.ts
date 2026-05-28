@@ -809,7 +809,7 @@ const ro: Dictionary = {
       titleLine1: "O poveste comună",
       titleLine2: "de o mie de ani",
       subtitle:
-        "Romii nu au ajuns în Europa ca străini de credință. Au pășit într-o lume creștină — iar o lume creștină a pășit alături de ei. Aceasta este povestea lungă, încă neîncheiată, a modului în care romii au devenit catehumeni ortodocși și a ceea ce încă poartă cu ei.",
+        "Au călătorit spre vest pe cai și căruțe — din India, prin Persia și Armenia — și au pătruns în Răsăritul Ortodox. Nu au sosit purtându-L pe Hristos. Lumea bizantină care i-a primit a apelat la un nume mai vechi, Athinganoi: o sectă eretică deja cunoscută pentru vrăjitorie și ghicit. Numele s-a lipit pentru că ceva în el se potrivea. Aceasta este povestea lungă, neîncheiată, a felului în care acest popor a devenit catehumeni ortodocși — și cât de departe încă merge drumul.",
       shareLabel: "Distribuie acest muzeu",
       scrollHint: "Începe călătoria",
     },
@@ -827,11 +827,11 @@ const ro: Dictionary = {
       label: "Expoziția 01 — Origini",
       title: "Din India în inima creștinătății",
       intro:
-        "În jurul secolului al XI-lea, grupuri de oameni vorbind o limbă indo-ariană au început să se deplaseze spre vest din nord-vestul Indiei. Lingvistica, nu legenda, ne spune acest lucru: limba romani este o soră a hindi și a punjabi, modelată în continuare de lungile sale popasuri în ținuturile persane și armene înainte de a atinge vreodată Europa.",
+        "În jurul secolului al XI-lea, grupuri care vorbeau o limbă indo-ariană s-au îndreptat spre vest dinspre nord-vestul Indiei pe cai și în căruțe trase de cai — un popor al cailor, cu meșteșuguri ale cailor, muzică a cailor și meserii legate de cai. Lingvistica, nu legenda, ne spune asta: limba romani este o soră a hindi și a punjabi, modelată mai departe de șederi îndelungate în ținuturile persane și armene, cu mult înainte ca ea să atingă Europa.",
       body1:
-        "Până când romii au ajuns la Imperiul Bizantin, călătoriseră de generații. Imperiul era creștin; orașele erau pline de biserici; nou-veniții au fost primiți (și consemnați) cu nume — Athinganoi în greacă, care devine internaționalul Acigani și de acolo Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
+        "Când au ajuns în Imperiul Bizantin, Răsăritul creștin nu avea o categorie stabilită pentru ei. Călugării și canoniștii au apelat la cel mai apropiat nume pe care îl aveau — Athinganoi — o denumire care aparținea deja unei secte eretice mai vechi din Asia Mică, acuzată de vrăjitorie, ghicit și practici interzise. Noii sosiți aduceau cu ei îmblânzirea șerpilor, ghicitul și un mod de viață care se potrivea destul de bine vechiului epitet încât acesta s-a lipit. Din Athinganoi a venit internaționalul Acigani, iar de acolo Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
       body2:
-        "Remarcabil este ceea ce a urmat. De-a lungul secolelor de migrație în ținuturi ortodoxe, romii nu și-au păstrat o religie proprie separată. Au primit credința celor care i-au primit — iar cea mai profundă primire a fost cea ortodoxă.",
+        "Ceea ce a urmat este o poveste lentă, nu una ordonată. De-a lungul secolelor, printre popoarele ortodoxe — greci, bulgari, sârbi, români, slavi — romii nu și-au păstrat o religie proprie aparte. Au primit Botezul, au luat sfinți ortodocși ca ocrotitori, au cântat Paștele. Practicile vechi nu au dispărut în prima generație, nici în a doua. Tot mai puține cu fiecare veac — dar și astăzi se vede încă, în satele de romi, un popor care așteaptă ca lumina lui Hristos să-Și încheie lucrarea.",
       factCards: {
         a: {
           stat: "sec. XI",

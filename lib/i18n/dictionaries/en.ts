@@ -808,7 +808,7 @@ const en: Dictionary = {
       titleLine1: "A Shared",
       titleLine2: "Thousand-Year Story",
       subtitle:
-        "The Roma did not arrive in Europe as strangers to the faith. They walked into a Christian world — and a Christian world walked with them. This is the long, unfinished story of how Roma became Orthodox catechumens, and what they still carry.",
+        "They rode west on horses and wagons out of India — through Persia and Armenia — and into the Orthodox East. They did not arrive carrying Christ. The Byzantine world that received them reached for an older name, Athinganoi: a heretical sect already known for sorcery and divination. The name stuck because something in it fit. This is the long, unfinished story of how that people became Orthodox catechumens — and how far the road still runs.",
       shareLabel: "Share this museum",
       scrollHint: "Begin the journey",
     },
@@ -826,11 +826,11 @@ const en: Dictionary = {
       label: "Exhibit 01 — Origins",
       title: "From India to the Heart of Christendom",
       intro:
-        "Around the 11th century, groups of people speaking an Indo-Aryan language began moving west out of northwestern India. Linguistics, not legend, tells us this: Romani is a sister of Hindi and Punjabi, shaped further by long sojourns in Persian and Armenian lands before it ever touched Europe.",
+        "Around the 11th century, groups speaking an Indo-Aryan language moved west out of northwestern India on horses and horse-drawn wagons — a horse people, with horse trades, horse music, and horse-borne crafts. Linguistics, not legend, tells us this: Romani is a sister of Hindi and Punjabi, shaped further by long sojourns in Persian and Armenian lands before it ever touched Europe.",
       body1:
-        "By the time the Roma reached the Byzantine Empire, they had been travelling for generations. The Empire was Christian; the cities were full of churches; the new arrivals were welcomed (and recorded) by name — Athinganoi in Greek, which becomes the international Acigani and from there Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
+        "When they reached the Byzantine Empire, the Christian East had no settled category for them. Monks and canonists reached for the closest name they had — Athinganoi — a label that already belonged to an older heretical sect in Asia Minor accused of sorcery, fortune-telling, and forbidden practices. The new arrivals carried serpent-charming, divination, and a way of life that fit the old slur well enough that it stuck. From Athinganoi came the international Acigani, and from there Tsigani, Cigán, Țigan, Zigeuner, Cigano.",
       body2:
-        "What is remarkable is what happened next. Across centuries of migration into Orthodox lands the Roma did not retain a separate religion of their own. They received the faith of the people who received them — and the deepest reception was Orthodox.",
+        "What followed is a slow story, not a tidy one. Across centuries among Orthodox peoples — Greek, Bulgarian, Serbian, Romanian, Slavic — the Roma did not keep a separate religion of their own. They received baptism, took Orthodox patron saints, sang the Pascha. The old practices did not vanish in the first generation, or the second. Less and less with every century — but you can still see, in Roma villages today, a people waiting for the light of Christ to finish its work.",
       factCards: {
         a: {
           stat: "11th c.",
