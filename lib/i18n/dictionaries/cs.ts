@@ -1009,7 +1009,7 @@ const cs: Dictionary = {
       columns: {
         byzantium: {
           title: "Z Byzance",
-          body: "Řecky mluvící Byzanc byla prvním dlouhým domovem Romů v křesťanském světě. Romština dodnes nese řecká podstatná jména. Romské děti jsou dodnes křtěny jmény jako Yiorgos, Mihalis, Maria — pravoslavnými jmény, ne indickými.",
+          body: "Řecky mluvící Byzanc byla prvním dlouhým domovem Romů v křesťanském světě. Romština dodnes nese řecká podstatná jména. Romské děti dodnes dostávají jména pravoslavných svatých — Marie, Michal, Jiří, v řeckých podobách María, Mihalis, Yiorgos — pravoslavná jména, ne indická.",
         },
         balkans: {
           title: "Se Slovany",

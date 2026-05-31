@@ -1012,7 +1012,7 @@ const en: Dictionary = {
       columns: {
         byzantium: {
           title: "From Byzantium",
-          body: "Greek-speaking Byzantium was the first long home of the Roma in the Christian world. Romani still carries hundreds of Greek nouns. Roma children are still baptised with names like Yiorgos, Mihalis, Maria — Orthodox names, not Indian ones.",
+          body: "Greek-speaking Byzantium was the first long home of the Roma in the Christian world. Romani still carries hundreds of Greek nouns. Roma children are still given the names of Orthodox saints — Mary, Michael, George, in their Greek forms María, Mihalis, Yiorgos — Orthodox names, not Indian ones.",
         },
         balkans: {
           title: "With the Slavs",

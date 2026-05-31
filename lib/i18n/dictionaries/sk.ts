@@ -1008,7 +1008,7 @@ const sk: Dictionary = {
       columns: {
         byzantium: {
           title: "Z Byzancie",
-          body: "Grécky hovoriaca Byzancia bola prvým dlhým domovom Rómov v kresťanskom svete. Rómčina dodnes nesie grécke podstatné mená. Rómske deti sú dodnes krstené menami ako Yiorgos, Mihalis, Maria — pravoslávnymi menami, nie indickými.",
+          body: "Grécky hovoriaca Byzancia bola prvým dlhým domovom Rómov v kresťanskom svete. Rómčina dodnes nesie grécke podstatné mená. Rómske deti dodnes dostávajú mená pravoslávnych svätých — Mária, Michal, Juraj, v gréckych podobách María, Mihalis, Yiorgos — pravoslávne mená, nie indické.",
         },
         balkans: {
           title: "So Slovanmi",
