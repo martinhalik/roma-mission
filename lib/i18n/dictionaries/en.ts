@@ -1024,8 +1024,8 @@ const en: Dictionary = {
         },
       },
       pullQuote:
-        "The Eastern liturgy — its chant, its melodies, its bows — sits closer to the Roma than anything the Western Church ever sang. They do not need to be taught it. They recognise it.",
-      pullQuoteAttribution: "Fr. Martin Halík, founder, Christian Roma Mission",
+        "The Eastern liturgy — its chant, its melodies, its bows — sits closer to the Roma we serve than anything the Western Church ever sang. We do not need to teach it to them. They recognise it.",
+      pullQuoteAttribution: "Fr. Martin Halík",
     },
     traditions: {
       label: "Exhibit 05 — Living Traditions",

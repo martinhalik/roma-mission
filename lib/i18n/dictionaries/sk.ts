@@ -1020,8 +1020,8 @@ const sk: Dictionary = {
         },
       },
       pullQuote:
-        "Neboli sme obrátení za jednu hodinu. Boli sme obrátení pomaly, v tisíci krstoch, počas tisíc rokov — a obraciame sa aj dnes.",
-      pullQuoteAttribution: "Rómsky starešina, farnosť Markovce",
+        "Východná liturgia — jej spev, melódie, poklony — je Rómom, ktorým slúžime, bližšia než čokoľvek, čo kedy spievala západná Cirkev. Nemusíme ich to učiť. Spoznávajú ju.",
+      pullQuoteAttribution: "o. Martin Halík",
     },
     traditions: {
       label: "Expozícia 05 — Živé tradície",

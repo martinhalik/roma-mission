@@ -1025,8 +1025,8 @@ const de: Dictionary = {
         },
       },
       pullQuote:
-        "Wir wurden nicht in einer einzigen Stunde bekehrt. Wir wurden langsam bekehrt, in tausend Taufen, über tausend Jahre — und wir werden auch heute noch bekehrt.",
-      pullQuoteAttribution: "Roma-Ältester, Pfarrei Markovce",
+        "Die östliche Liturgie — ihr Gesang, ihre Melodien, ihre Verneigungen — steht den Roma, denen wir dienen, näher als alles, was die westliche Kirche je gesungen hat. Wir müssen es ihnen nicht beibringen. Sie erkennen es wieder.",
+      pullQuoteAttribution: "Vater Martin Halík",
     },
     traditions: {
       label: "Ausstellung 05 — Lebendige Traditionen",
