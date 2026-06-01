@@ -1013,7 +1013,7 @@ const de: Dictionary = {
       columns: {
         byzantium: {
           title: "Aus Byzanz",
-          body: "Das griechischsprachige Byzanz war das erste lange Zuhause der Roma in der christlichen Welt. Romani trägt bis heute griechische Substantive. Roma-Kinder werden noch heute mit Namen wie Yiorgos, Mihalis, Maria getauft — orthodoxe Namen, keine indischen.",
+          body: "Das griechischsprachige Byzanz war das erste lange Zuhause der Roma in der christlichen Welt. Romani trägt bis heute griechische Substantive. Roma-Kinder erhalten bis heute Namen orthodoxer Heiliger — Maria, Michael, Georg, in ihren griechischen Formen María, Mihalis, Yiorgos — orthodoxe Namen, keine indischen.",
         },
         balkans: {
           title: "Mit den Slawen",

@@ -1013,7 +1013,7 @@ const ro: Dictionary = {
       columns: {
         byzantium: {
           title: "Din Bizanț",
-          body: "Bizanțul grecofon a fost prima casă lungă a romilor în lumea creștină. Limba romani încă poartă substantive grecești. Copiii romi sunt încă botezați cu nume precum Yiorgos, Mihalis, Maria — nume ortodoxe, nu indiene.",
+          body: "Bizanțul grecofon a fost prima casă lungă a romilor în lumea creștină. Limba romani încă poartă substantive grecești. Copiii romi primesc și astăzi nume de sfinți ortodocși — Maria, Mihail, Gheorghe, în formele grecești María, Mihalis, Yiorgos — nume ortodoxe, nu indiene.",
         },
         balkans: {
           title: "Cu slavii",
