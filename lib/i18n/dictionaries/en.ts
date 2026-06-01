@@ -1024,8 +1024,8 @@ const en: Dictionary = {
         },
       },
       pullQuote:
-        "We were not converted in a single hour. We were converted slowly, in a thousand baptisms, over a thousand years — and we are still being converted today.",
-      pullQuoteAttribution: "Roma elder, Markovce parish",
+        "The Eastern liturgy — its chant, its melodies, its bows — sits closer to the Roma we serve than anything the Western Church ever sang. We do not need to teach it to them. They recognise it.",
+      pullQuoteAttribution: "Fr. Martin Halík",
     },
     traditions: {
       label: "Exhibit 05 — Living Traditions",

@@ -1025,8 +1025,8 @@ const ro: Dictionary = {
         },
       },
       pullQuote:
-        "Nu am fost convertiți într-o singură oră. Am fost convertiți încet, în o mie de botezuri, de-a lungul a o mie de ani — și suntem convertiți și astăzi.",
-      pullQuoteAttribution: "Bătrân rom, parohia Markovce",
+        "Liturghia răsăriteană — cântarea ei, melodiile ei, plecăciunile ei — este mai aproape de romii cărora le slujim decât tot ce a cântat vreodată Biserica Apuseană. Nu trebuie să-i învățăm. O recunosc.",
+      pullQuoteAttribution: "Pr. Martin Halík",
     },
     traditions: {
       label: "Expoziția 05 — Tradiții vii",
