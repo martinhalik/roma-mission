@@ -2,6 +2,7 @@ import type { Dictionary } from "../types";
 
 const ro: Dictionary = {
   nav: {
+    resources: "RESURSE",
     home: "ACASĂ",
     mission: "MISIUNE",
     locations: "LOCAȚII",
@@ -19,6 +20,7 @@ const ro: Dictionary = {
     selectLanguage: "Selectează limba",
   },
   footer: {
+    linkResources: "Resurse",
     brand: "Misiunea Creștină pentru Romi",
     tagline: "Înființăm parohii. Formăm ucenici.\nTransformăm comunități.",
     colMission: "Misiune",
@@ -1437,7 +1439,110 @@ const ro: Dictionary = {
     EE: "Estonia",
     SI: "Slovenia",
   },
+  resources: {
+    hero: {
+      label: "Resurse pentru misiune",
+      titleLine1: "În dar ați luat.",
+      titleLine2: "În dar să dați.",
+      subtitle:
+        "Traduceri liturgice, Sfânta Scriptură, o Biblie pentru copii și fișe de lucru pentru tipărit — gratuite pentru a fi descărcate, tipărite, copiate și folosite. Pentru preoții, misionarii și familiile care duc Evanghelia romilor într-o limbă pe care o înțeleg.",
+    },
+    usage: {
+      label: "Cum să folosiți aceste materiale",
+      title: "Luați-le. Folosiți-le. Dați-le mai departe.",
+      body:
+        "Tot ce se află aici este oferit gratuit pentru lucrarea Evangheliei. Descărcați, tipăriți, fotocopiați, citiți cu glas tare, adaptați pentru propria comunitate și dați oricui poate fi ajutat. Vă cerem un singur lucru: folosiți-le pentru a-i apropia pe oameni de Hristos.",
+      point1Title: "Gata de tipărit",
+      point1Body:
+        "Formatate pentru hârtie obișnuită, astfel încât orice parohie să le poată reproduce la o imprimantă simplă.",
+      point2Title: "Libere de tradus",
+      point2Body:
+        "Traduceți un text în altă limbă și trimiteți-ni-l înapoi — îl vom publica aici pentru următorul misionar.",
+      point3Title: "Vă rugăm să păstrați sursa",
+      point3Body:
+        "Lăsați numele misiunii pe ceea ce copiați, ca cei cărora le dați să poată găsi mai mult.",
+      contactPrefix:
+        "Căutați o limbă sau un format pe care nu l-am publicat încă? Scrieți la ",
+      contactSuffix: " și vom face tot posibilul să-l pregătim.",
+    },
+    ui: {
+      availableIn: "Disponibil în",
+      download: "Descarcă",
+      comingSoon: "În curând",
+      printReady: "Gata de tipărit",
+      freeToShare: "Liber de distribuit",
+      translatedByOthers: "Tradus de alții",
+      viewSource: "Vezi sursa",
+      opensExternal: "deschide un site extern",
+      langRomani: "Limba romani (romii ruși)",
+    },
+    categories: {
+      liturgy: {
+        label: "Texte liturgice",
+        title: "Sfânta Liturghie, în limba lor",
+        intro:
+          "Texte de slujbă traduse pe câmpul de misiune, ca să se poată ruga comunitățile de romi slujba Bisericii într-o limbă pe care o înțeleg. Gratuite pentru orice parohie sau misionar.",
+      },
+      scripture: {
+        label: "Sfânta Scriptură",
+        title: "Evanghelia în limba maternă a romilor",
+        intro:
+          "Scriptură deja tradusă în romani de alți traducători. Vă îndrumăm spre ea, pentru ca Cuvântul să poată ajunge mai departe decât ar putea duce o singură misiune.",
+      },
+      book: {
+        label: "Carte",
+        title: "Istoria din spatele misiunii, în scris",
+        intro:
+          "Cartea părintelui Martin despre romi și povestea lor ortodoxă — în pregătire ca e-book, pentru a fi citită pe orice dispozitiv sau tipărită.",
+      },
+      teaching: {
+        label: "Învățătură și copii",
+        title: "Pentru cateheză și pentru cei mici",
+        intro:
+          "Uneltele de zi cu zi pentru formarea tinerilor ucenici — fișe de lucru pentru tipărit și o Biblie ilustrată pentru copii, folosite la orele misiunii.",
+      },
+    },
+    items: {
+      "divine-liturgy": {
+        title: "Sfânta Liturghie a Sfântului Ioan Gură de Aur",
+        desc:
+          "Slujba principală de duminică a Bisericii Ortodoxe, pregătită pentru folosul misiunii. Disponibilă în slovacă, română și sârbă, alte limbi adăugându-se pe măsură ce sunt finalizate.",
+      },
+      "gospel-mark-romani": {
+        title: "Evanghelia după Marcu în limba romani",
+        desc:
+          "Evanghelia după Marcu în limba romani a romilor ruși — parte din efortul mai larg de a pune Scriptura în limba proprie a romilor. Această traducere este lucrarea altora; linkul duce la o prezentare a traducerilor Bibliei în romani și a locului unde pot fi găsite.",
+      },
+      "founder-book": {
+        title: "Cartea părintelui Martin Halík despre romii ortodocși",
+        desc:
+          "Pornind de la anii petrecuți printre romi și de la lunga istorie ortodoxă din spatele lor — aceeași cercetare care stă la baza expozițiilor de Moștenire de pe acest site. În pregătire ca e-book în slovacă și engleză.",
+      },
+      "catechesis-worksheets": {
+        title: "Fișe de cateheză",
+        desc:
+          "Fișe de lucru pentru tipărit din cateheza pentru copii a misiunii — litere, rugăciuni, sărbători și istorisiri biblice, făcute pentru copiii care încă învață să citească.",
+      },
+      "childrens-bible": {
+        title: "Biblia pentru copii",
+        desc:
+          "Istorisirile biblice ilustrate pe care misiunea le folosește cu copiii romi — destul de simple ca să fie citite împreună acasă sau la o oră în parohie.",
+      },
+    },
+    closing: {
+      scripture:
+        "„Mergeți și faceți ucenici din toate neamurile, botezându-i în numele Tatălui și al Fiului și al Sfântului Duh.”",
+      scriptureRef: "Matei 28, 19",
+      note:
+        "Dacă aceste materiale vă ajută, cea mai bună mulțumire este să le folosiți — și să ne spuneți unde ajung, ca să putem mulțumi împreună cu voi.",
+    },
+  },
   metadata: {
+    resources: {
+      title: "Resurse — Misiunea Creștină Romă",
+      description:
+        "Traduceri liturgice gratuite, Scriptură, o Biblie pentru copii și materiale didactice pentru tipărit, pentru misiunea ortodoxă printre romi — descărcați-le, tipăriți-le și folosiți-le liber.",
+    },
     home: {
       title: "Misiunea Creștină Romă",
       description:

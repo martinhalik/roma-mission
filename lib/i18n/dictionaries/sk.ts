@@ -2,6 +2,7 @@ import type { Dictionary } from "../types";
 
 const sk: Dictionary = {
   nav: {
+    resources: "MATERIÁLY",
     home: "DOMOV",
     mission: "MISIA",
     locations: "LOKALITY",
@@ -19,6 +20,7 @@ const sk: Dictionary = {
     selectLanguage: "Vyberte jazyk",
   },
   footer: {
+    linkResources: "Materiály",
     brand: "Kresťanská rómska misia",
     tagline: "Zakladáme farnosti. Formujeme učeníkov.\nMeníme komunity.",
     colMission: "Misia",
@@ -1430,7 +1432,110 @@ const sk: Dictionary = {
     EE: "Estónsko",
     SI: "Slovinsko",
   },
+  resources: {
+    hero: {
+      label: "Materiály pre misiu",
+      titleLine1: "Zadarmo ste dostali.",
+      titleLine2: "Zadarmo dávajte.",
+      subtitle:
+        "Preklady bohoslužieb, Sväté písmo, detská Biblia a pracovné listy na tlač — voľne na stiahnutie, tlač, kopírovanie a používanie. Pre kňazov, misionárov a rodiny, ktorí prinášajú evanjelium Rómom v jazyku, ktorému rozumejú.",
+    },
+    usage: {
+      label: "Ako tieto materiály používať",
+      title: "Vezmite si ich. Používajte ich. Odovzdávajte ďalej.",
+      body:
+        "Všetko tu je ponúkané zadarmo pre dielo evanjelia. Stiahnite si to, vytlačte, okopírujte, čítajte nahlas, prispôsobte vlastnému spoločenstvu a dajte to každému, komu to môže pomôcť. Prosíme len o jedno: použite to, aby ste ľudí priviedli bližšie ku Kristovi.",
+      point1Title: "Pripravené na tlač",
+      point1Body:
+        "Naformátované pre bežný papier, aby to každá farnosť mohla vytlačiť na jednoduchej tlačiarni.",
+      point2Title: "Voľné na preklad",
+      point2Body:
+        "Preložte text do ďalšieho jazyka a pošlite nám ho — uverejníme ho tu pre ďalšieho misionára.",
+      point3Title: "Ponechajte, prosím, zdroj",
+      point3Body:
+        "Na tom, čo kopírujete, ponechajte meno misie, aby tí, ktorým to dáte, našli viac.",
+      contactPrefix:
+        "Hľadáte jazyk alebo formát, ktorý sme ešte neuverejnili? Napíšte na ",
+      contactSuffix: " a urobíme, čo bude v našich silách, aby sme ho pripravili.",
+    },
+    ui: {
+      availableIn: "Dostupné v jazykoch",
+      download: "Stiahnuť",
+      comingSoon: "Pripravujeme",
+      printReady: "Na tlač",
+      freeToShare: "Voľné na zdieľanie",
+      translatedByOthers: "Preložili iní",
+      viewSource: "Zobraziť zdroj",
+      opensExternal: "otvorí externú stránku",
+      langRomani: "Rómčina (ruskí Rómovia)",
+    },
+    categories: {
+      liturgy: {
+        label: "Liturgické texty",
+        title: "Božská liturgia v ich jazyku",
+        intro:
+          "Bohoslužobné texty preložené priamo v misii, aby sa rómske spoločenstvá mohli modliť bohoslužbu Cirkvi v jazyku, ktorému rozumejú. Voľne k dispozícii každej farnosti či misionárovi.",
+      },
+      scripture: {
+        label: "Sväté písmo",
+        title: "Evanjelium v materinskom jazyku Rómov",
+        intro:
+          "Písmo, ktoré do rómčiny preložili iní prekladatelia. Odkazujeme naň, aby sa Slovo dostalo ďalej, než by ho dokázala niesť jediná misia.",
+      },
+      book: {
+        label: "Kniha",
+        title: "História za misiou, napísaná",
+        intro:
+          "Kniha otca Martina o Rómoch a ich pravoslávnom príbehu — pripravuje sa ako e-kniha na čítanie na akomkoľvek zariadení alebo na tlač.",
+      },
+      teaching: {
+        label: "Vyučovanie a deti",
+        title: "Pre katechézu a pre najmenších",
+        intro:
+          "Každodenné pomôcky na formovanie mladých učeníkov — pracovné listy na tlač a ilustrovaná detská Biblia, ktoré sa používajú na hodinách misie.",
+      },
+    },
+    items: {
+      "divine-liturgy": {
+        title: "Božská liturgia svätého Jána Zlatoústeho",
+        desc:
+          "Hlavná nedeľná bohoslužba pravoslávnej Cirkvi, pripravená na použitie v misii. Dostupná v slovenčine, rumunčine a srbčine, ďalšie jazyky pribúdajú, ako sú dokončené.",
+      },
+      "gospel-mark-romani": {
+        title: "Evanjelium podľa Marka v rómčine",
+        desc:
+          "Evanjelium podľa Marka v rómčine ruských Rómov — súčasť širšieho úsilia preložiť Písmo do vlastného jazyka Rómov. Tento preklad je dielom iných; odkaz vedie k prehľadu rómskych prekladov Biblie a k tomu, kde ich nájsť.",
+      },
+      "founder-book": {
+        title: "Kniha otca Martina Halíka o pravoslávnych Rómoch",
+        desc:
+          "Čerpá z rokov medzi Rómami a z dlhej pravoslávnej histórie, ktorá za nimi stojí — z toho istého výskumu, na ktorom stoja expozície Dedičstva na tejto stránke. Pripravuje sa ako e-kniha v slovenčine a angličtine.",
+      },
+      "catechesis-worksheets": {
+        title: "Katechetické pracovné listy",
+        desc:
+          "Pracovné listy na tlač z detskej katechézy misie — písmenká, modlitby, sviatky a biblické príbehy, vytvorené pre deti, ktoré sa ešte len učia čítať.",
+      },
+      "childrens-bible": {
+        title: "Detská Biblia",
+        desc:
+          "Ilustrované biblické príbehy, ktoré misia používa s rómskymi deťmi — také jednoduché, aby sa dali čítať spolu doma alebo na hodine vo farnosti.",
+      },
+    },
+    closing: {
+      scripture:
+        "„Choďte teda a získavajte mi učeníkov vo všetkých národoch a krstite ich v mene Otca i Syna i Svätého Ducha.“",
+      scriptureRef: "Matúš 28, 19",
+      note:
+        "Ak vám tieto materiály pomôžu, najlepšou vďakou je používať ich — a dať nám vedieť, kam putujú, aby sme mohli ďakovať spolu s vami.",
+    },
+  },
   metadata: {
+    resources: {
+      title: "Materiály — Christianská rómska misia",
+      description:
+        "Bezplatné preklady bohoslužieb, Sväté písmo, detská Biblia a vyučovacie materiály na tlač pre pravoslávnu misiu medzi Rómami — stiahnite si ich, vytlačte a voľne používajte.",
+    },
     home: {
       title: "Christianská rómska misia",
       description:

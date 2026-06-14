@@ -15,6 +15,7 @@ export interface Dictionary {
     donate: string;
     toggleMenu: string;
     selectLanguage: string;
+    resources: string;
   };
   footer: {
     brand: string;
@@ -34,6 +35,7 @@ export interface Dictionary {
     linkVolunteer: string;
     linkMissionTrips: string;
     linkTrips: string;
+    linkResources: string;
     director: string;
     copyright: string;
     copyrightShort: string;
@@ -750,6 +752,56 @@ export interface Dictionary {
       shareLabel: string;
     };
   };
+  resources: {
+    hero: {
+      label: string;
+      titleLine1: string;
+      titleLine2: string;
+      subtitle: string;
+    };
+    usage: {
+      label: string;
+      title: string;
+      body: string;
+      point1Title: string;
+      point1Body: string;
+      point2Title: string;
+      point2Body: string;
+      point3Title: string;
+      point3Body: string;
+      contactPrefix: string;
+      contactSuffix: string;
+    };
+    ui: {
+      availableIn: string;
+      download: string;
+      comingSoon: string;
+      printReady: string;
+      freeToShare: string;
+      translatedByOthers: string;
+      viewSource: string;
+      opensExternal: string;
+      langRomani: string;
+    };
+    categories: {
+      liturgy: { label: string; title: string; intro: string };
+      scripture: { label: string; title: string; intro: string };
+      book: { label: string; title: string; intro: string };
+      teaching: { label: string; title: string; intro: string };
+    };
+    items: {
+      "divine-liturgy": { title: string; desc: string };
+      "gospel-mark-romani": { title: string; desc: string };
+      "founder-book": { title: string; desc: string };
+      "catechesis-worksheets": { title: string; desc: string };
+      "childrens-bible": { title: string; desc: string };
+    };
+    closing: {
+      scripture: string;
+      scriptureRef: string;
+      note: string;
+    };
+  };
   getInvolved: {
     hero: {
       label: string;
@@ -1071,6 +1123,7 @@ export interface Dictionary {
     locations: MetadataEntry;
     stories: MetadataEntry;
     media: MetadataEntry;
+    resources: MetadataEntry;
     heritage: MetadataEntry;
     activity: MetadataEntry;
     getInvolved: MetadataEntry;

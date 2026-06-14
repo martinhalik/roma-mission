@@ -55,6 +55,7 @@ export default function Footer() {
     { label: t("footer.linkOurStory"), routeKey: "ourStory" },
     { label: t("footer.linkStories"), routeKey: "stories" },
     { label: t("footer.linkMedia"), routeKey: "media" },
+    { label: t("footer.linkResources"), routeKey: "resources" },
   ];
   const missionLinksMobile: { label: string; routeKey: RouteKey }[] = [
     { label: t("footer.linkOurMission"), routeKey: "mission" },

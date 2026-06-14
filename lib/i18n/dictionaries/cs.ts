@@ -2,6 +2,7 @@ import type { Dictionary } from "../types";
 
 const cs: Dictionary = {
   nav: {
+    resources: "MATERIÁLY",
     home: "DOMŮ",
     mission: "MISIE",
     locations: "LOKALITY",
@@ -19,6 +20,7 @@ const cs: Dictionary = {
     selectLanguage: "Vyberte jazyk",
   },
   footer: {
+    linkResources: "Materiály",
     brand: "Křesťanská romská misie",
     tagline: "Zakládáme farnosti. Formujeme učedníky.\nProměňujeme komunity.",
     colMission: "Misie",
@@ -1431,7 +1433,110 @@ const cs: Dictionary = {
     EE: "Estonsko",
     SI: "Slovinsko",
   },
+  resources: {
+    hero: {
+      label: "Materiály pro misii",
+      titleLine1: "Zadarmo jste dostali.",
+      titleLine2: "Zadarmo dávejte.",
+      subtitle:
+        "Překlady bohoslužeb, Písmo svaté, dětská Bible a pracovní listy k tisku — volně ke stažení, tisku, kopírování a použití. Pro kněze, misionáře a rodiny, kteří přinášejí evangelium Romům v jazyce, kterému rozumějí.",
+    },
+    usage: {
+      label: "Jak tyto materiály používat",
+      title: "Vezměte si je. Používejte je. Předávejte dál.",
+      body:
+        "Vše zde je nabízeno zdarma pro dílo evangelia. Stáhněte si to, vytiskněte, okopírujte, čtěte nahlas, přizpůsobte vlastnímu společenství a dejte to každému, komu to může pomoci. Prosíme jen o jedno: použijte to, abyste lidi přivedli blíže ke Kristu.",
+      point1Title: "Připraveno k tisku",
+      point1Body:
+        "Naformátováno pro běžný papír, aby to každá farnost mohla vytisknout na jednoduché tiskárně.",
+      point2Title: "Volné k překladu",
+      point2Body:
+        "Přeložte text do dalšího jazyka a pošlete nám ho — zveřejníme ho zde pro dalšího misionáře.",
+      point3Title: "Ponechte prosím zdroj",
+      point3Body:
+        "Na tom, co kopírujete, ponechte jméno misie, aby ti, kterým to dáte, našli více.",
+      contactPrefix:
+        "Hledáte jazyk nebo formát, který jsme ještě nezveřejnili? Napište na ",
+      contactSuffix: " a uděláme, co bude v našich silách, abychom ho připravili.",
+    },
+    ui: {
+      availableIn: "Dostupné v jazycích",
+      download: "Stáhnout",
+      comingSoon: "Připravujeme",
+      printReady: "K tisku",
+      freeToShare: "Volné ke sdílení",
+      translatedByOthers: "Přeložili jiní",
+      viewSource: "Zobrazit zdroj",
+      opensExternal: "otevře externí stránku",
+      langRomani: "Romština (ruští Romové)",
+    },
+    categories: {
+      liturgy: {
+        label: "Liturgické texty",
+        title: "Božská liturgie v jejich jazyce",
+        intro:
+          "Bohoslužebné texty přeložené přímo v misii, aby se romská společenství mohla modlit bohoslužbu Církve v jazyce, kterému rozumějí. Volně k dispozici každé farnosti či misionáři.",
+      },
+      scripture: {
+        label: "Písmo svaté",
+        title: "Evangelium v mateřském jazyce Romů",
+        intro:
+          "Písmo, které do romštiny přeložili jiní překladatelé. Odkazujeme na ně, aby se Slovo dostalo dál, než by ho dokázala nést jediná misie.",
+      },
+      book: {
+        label: "Kniha",
+        title: "Historie za misií, napsaná",
+        intro:
+          "Kniha otce Martina o Romech a jejich pravoslavném příběhu — připravuje se jako e-kniha ke čtení na jakémkoli zařízení nebo k tisku.",
+      },
+      teaching: {
+        label: "Výuka a děti",
+        title: "Pro katechezi a pro nejmenší",
+        intro:
+          "Každodenní pomůcky pro formování mladých učedníků — pracovní listy k tisku a ilustrovaná dětská Bible, které se používají na hodinách misie.",
+      },
+    },
+    items: {
+      "divine-liturgy": {
+        title: "Božská liturgie svatého Jana Zlatoústého",
+        desc:
+          "Hlavní nedělní bohoslužba pravoslavné Církve, připravená k použití v misii. Dostupná ve slovenštině, rumunštině a srbštině, další jazyky přibývají, jakmile jsou dokončeny.",
+      },
+      "gospel-mark-romani": {
+        title: "Evangelium podle Marka v romštině",
+        desc:
+          "Evangelium podle Marka v romštině ruských Romů — součást širšího úsilí přeložit Písmo do vlastního jazyka Romů. Tento překlad je dílem jiných; odkaz vede k přehledu romských překladů Bible a k tomu, kde je najít.",
+      },
+      "founder-book": {
+        title: "Kniha otce Martina Halíka o pravoslavných Romech",
+        desc:
+          "Čerpá z let mezi Romy a z dlouhé pravoslavné historie, která za nimi stojí — ze stejného výzkumu, na němž stojí expozice Dědictví na těchto stránkách. Připravuje se jako e-kniha ve slovenštině a angličtině.",
+      },
+      "catechesis-worksheets": {
+        title: "Katechetické pracovní listy",
+        desc:
+          "Pracovní listy k tisku z dětské katecheze misie — písmenka, modlitby, svátky a biblické příběhy, vytvořené pro děti, které se teprve učí číst.",
+      },
+      "childrens-bible": {
+        title: "Dětská Bible",
+        desc:
+          "Ilustrované biblické příběhy, které misie používá s romskými dětmi — tak jednoduché, aby se daly číst společně doma nebo na hodině ve farnosti.",
+      },
+    },
+    closing: {
+      scripture:
+        "„Jděte ke všem národům a získávejte mi učedníky, křtěte je ve jménu Otce i Syna i Ducha svatého.“",
+      scriptureRef: "Matouš 28, 19",
+      note:
+        "Pokud vám tyto materiály pomohou, nejlepším poděkováním je používat je — a dát nám vědět, kam putují, abychom mohli děkovat společně s vámi.",
+    },
+  },
   metadata: {
+    resources: {
+      title: "Materiály — Křesťanská romská misie",
+      description:
+        "Bezplatné překlady bohoslužeb, Písmo svaté, dětská Bible a výukové materiály k tisku pro pravoslavnou misii mezi Romy — stáhněte si je, vytiskněte a volně používejte.",
+    },
     home: {
       title: "Křesťanská romská misie",
       description:

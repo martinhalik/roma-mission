@@ -2,6 +2,7 @@ import type { Dictionary } from "../types";
 
 const en: Dictionary = {
   nav: {
+    resources: "RESOURCES",
     home: "HOME",
     mission: "MISSION",
     locations: "LOCATIONS",
@@ -19,6 +20,7 @@ const en: Dictionary = {
     selectLanguage: "Select language",
   },
   footer: {
+    linkResources: "Resources",
     brand: "Christian Roma Mission",
     tagline: "Planting parishes. Forming disciples.\nTransforming communities.",
     colMission: "Mission",
@@ -1434,7 +1436,110 @@ const en: Dictionary = {
     EE: "Estonia",
     SI: "Slovenia",
   },
+  resources: {
+    hero: {
+      label: "Resources for the Mission",
+      titleLine1: "Freely You Received.",
+      titleLine2: "Freely Give.",
+      subtitle:
+        "Liturgical translations, Holy Scripture, a children's Bible, and printable teaching sheets — free to download, print, copy, and use. Made for the priests, missionaries, and families bringing the Gospel to the Roma in a language they understand.",
+    },
+    usage: {
+      label: "How to Use These Materials",
+      title: "Take them. Use them. Pass them on.",
+      body:
+        "Everything here is offered freely for the work of the Gospel. Download it, print it, photocopy it, read it aloud, adapt it for your own community, and give it to anyone it can help. We ask only this: use it to bring people closer to Christ.",
+      point1Title: "Print-ready",
+      point1Body:
+        "Formatted for ordinary paper, so any parish can reproduce it on a simple printer.",
+      point2Title: "Free to translate",
+      point2Body:
+        "Render a text into another language and send it back — we'll publish it here for the next missionary.",
+      point3Title: "Please keep the source",
+      point3Body:
+        "Leave the mission's name on what you copy, so those you give it to can find more.",
+      contactPrefix:
+        "Looking for a language or format we haven't posted yet? Write to ",
+      contactSuffix: " and we'll do our best to prepare it.",
+    },
+    ui: {
+      availableIn: "Available in",
+      download: "Download",
+      comingSoon: "Coming soon",
+      printReady: "Print-ready",
+      freeToShare: "Free to share",
+      translatedByOthers: "Translated by others",
+      viewSource: "View source",
+      opensExternal: "opens an external site",
+      langRomani: "Romani (Ruska Roma)",
+    },
+    categories: {
+      liturgy: {
+        label: "Liturgical Texts",
+        title: "The Divine Liturgy, in their language",
+        intro:
+          "Service texts translated on the mission field so Roma communities can pray the Church's worship in a tongue they understand. Free for any parish or missionary to use.",
+      },
+      scripture: {
+        label: "Holy Scripture",
+        title: "The Gospel in the Roma's mother tongue",
+        intro:
+          "Scripture already put into Romani by other translators. We point you to it so the Word can travel further than any single mission could carry it.",
+      },
+      book: {
+        label: "Book",
+        title: "The history behind the mission, in writing",
+        intro:
+          "Fr. Martin's book on the Roma and their Orthodox story — coming as an e-book to read on any device or to print.",
+      },
+      teaching: {
+        label: "Teaching & Children",
+        title: "For catechism and for the little ones",
+        intro:
+          "The everyday tools of forming young disciples — printable worksheets and an illustrated children's Bible used in the mission's classes.",
+      },
+    },
+    items: {
+      "divine-liturgy": {
+        title: "The Divine Liturgy of St. John Chrysostom",
+        desc:
+          "The principal Sunday service of the Orthodox Church, prepared for use in the mission. Available in Slovak, Romanian, and Serbian, with more languages added as they are finished.",
+      },
+      "gospel-mark-romani": {
+        title: "The Gospel of Mark in Romani",
+        desc:
+          "The Gospel of Mark in the Romani of the Ruska Roma — part of the wider work of putting Scripture into the Roma's own language. This translation is the work of others; the link leads to an overview of Romani Bible translations and where to find them.",
+      },
+      "founder-book": {
+        title: "Fr. Martin Halík's book on the Orthodox Roma",
+        desc:
+          "Drawing on years among the Roma and the long Orthodox history behind them — the same research behind the Heritage exhibits on this site. Coming as an e-book in Slovak and English.",
+      },
+      "catechesis-worksheets": {
+        title: "Catechesis Worksheets",
+        desc:
+          "Printable worksheets from the mission's children's catechism — letters, prayers, feasts, and Bible stories, made for children who are still learning to read.",
+      },
+      "childrens-bible": {
+        title: "Children's Bible",
+        desc:
+          "The illustrated Bible stories the mission uses with Roma children — simple enough to read together at home or in a parish class.",
+      },
+    },
+    closing: {
+      scripture:
+        "“Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.”",
+      scriptureRef: "Matthew 28:19",
+      note:
+        "If these materials help you, the best thanks is to use them — and to tell us where they travel, so we can give thanks with you.",
+    },
+  },
   metadata: {
+    resources: {
+      title: "Resources — Roma Mission",
+      description:
+        "Free liturgical translations, Scripture, a children's Bible, and printable teaching materials for Orthodox mission among the Roma — download, print, and use them freely.",
+    },
     home: {
       title: "Christian Roma Mission",
       description:

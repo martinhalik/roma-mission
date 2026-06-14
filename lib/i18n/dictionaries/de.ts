@@ -2,6 +2,7 @@ import type { Dictionary } from "../types";
 
 const de: Dictionary = {
   nav: {
+    resources: "MATERIALIEN",
     home: "START",
     mission: "MISSION",
     locations: "STANDORTE",
@@ -19,6 +20,7 @@ const de: Dictionary = {
     selectLanguage: "Sprache wählen",
   },
   footer: {
+    linkResources: "Materialien",
     brand: "Christliche Roma-Mission",
     tagline: "Gemeinden gründen. Jünger formen.\nGemeinschaften verändern.",
     colMission: "Mission",
@@ -1436,7 +1438,110 @@ const de: Dictionary = {
     EE: "Estland",
     SI: "Slowenien",
   },
+  resources: {
+    hero: {
+      label: "Materialien für die Mission",
+      titleLine1: "Umsonst habt ihr empfangen.",
+      titleLine2: "Umsonst gebt es weiter.",
+      subtitle:
+        "Liturgische Übersetzungen, die Heilige Schrift, eine Kinderbibel und druckfertige Arbeitsblätter — frei zum Herunterladen, Drucken, Kopieren und Verwenden. Für die Priester, Missionare und Familien, die den Roma das Evangelium in einer Sprache bringen, die sie verstehen.",
+    },
+    usage: {
+      label: "Wie man diese Materialien nutzt",
+      title: "Nehmt sie. Nutzt sie. Gebt sie weiter.",
+      body:
+        "Alles hier wird frei für das Werk des Evangeliums angeboten. Ladet es herunter, druckt es, kopiert es, lest es laut vor, passt es eurer eigenen Gemeinde an und gebt es jedem, dem es helfen kann. Wir bitten nur um eines: Nutzt es, um Menschen näher zu Christus zu bringen.",
+      point1Title: "Druckfertig",
+      point1Body:
+        "Für normales Papier formatiert, sodass jede Gemeinde es auf einem einfachen Drucker vervielfältigen kann.",
+      point2Title: "Frei zum Übersetzen",
+      point2Body:
+        "Übersetzt einen Text in eine andere Sprache und schickt ihn uns zurück — wir veröffentlichen ihn hier für den nächsten Missionar.",
+      point3Title: "Bitte die Quelle behalten",
+      point3Body:
+        "Lasst den Namen der Mission auf dem, was ihr kopiert, damit die Beschenkten mehr finden können.",
+      contactPrefix:
+        "Sucht ihr eine Sprache oder ein Format, das wir noch nicht veröffentlicht haben? Schreibt an ",
+      contactSuffix: " und wir tun unser Bestes, es vorzubereiten.",
+    },
+    ui: {
+      availableIn: "Verfügbar in",
+      download: "Herunterladen",
+      comingSoon: "Demnächst",
+      printReady: "Druckfertig",
+      freeToShare: "Frei zum Teilen",
+      translatedByOthers: "Von anderen übersetzt",
+      viewSource: "Quelle ansehen",
+      opensExternal: "öffnet eine externe Seite",
+      langRomani: "Romani (russische Roma)",
+    },
+    categories: {
+      liturgy: {
+        label: "Liturgische Texte",
+        title: "Die Göttliche Liturgie, in ihrer Sprache",
+        intro:
+          "Gottesdiensttexte, die im Missionsfeld übersetzt wurden, damit Roma-Gemeinden den Gottesdienst der Kirche in einer Sprache beten können, die sie verstehen. Frei für jede Gemeinde und jeden Missionar.",
+      },
+      scripture: {
+        label: "Heilige Schrift",
+        title: "Das Evangelium in der Muttersprache der Roma",
+        intro:
+          "Schrift, die bereits von anderen Übersetzern ins Romani übertragen wurde. Wir verweisen darauf, damit das Wort weiter reisen kann, als eine einzelne Mission es tragen könnte.",
+      },
+      book: {
+        label: "Buch",
+        title: "Die Geschichte hinter der Mission, niedergeschrieben",
+        intro:
+          "Das Buch von Pater Martin über die Roma und ihre orthodoxe Geschichte — in Vorbereitung als E-Book zum Lesen auf jedem Gerät oder zum Drucken.",
+      },
+      teaching: {
+        label: "Lehre & Kinder",
+        title: "Für die Katechese und für die Kleinen",
+        intro:
+          "Die alltäglichen Werkzeuge zur Formung junger Jünger — druckfertige Arbeitsblätter und eine illustrierte Kinderbibel, die im Unterricht der Mission verwendet werden.",
+      },
+    },
+    items: {
+      "divine-liturgy": {
+        title: "Die Göttliche Liturgie des heiligen Johannes Chrysostomos",
+        desc:
+          "Der wichtigste Sonntagsgottesdienst der Orthodoxen Kirche, für den Gebrauch in der Mission vorbereitet. Verfügbar auf Slowakisch, Rumänisch und Serbisch, weitere Sprachen kommen hinzu, sobald sie fertig sind.",
+      },
+      "gospel-mark-romani": {
+        title: "Das Markusevangelium auf Romani",
+        desc:
+          "Das Markusevangelium im Romani der russischen Roma — Teil der umfassenderen Arbeit, die Schrift in die eigene Sprache der Roma zu bringen. Diese Übersetzung stammt von anderen; der Link führt zu einem Überblick über die Romani-Bibelübersetzungen und wo man sie findet.",
+      },
+      "founder-book": {
+        title: "Pater Martin Halíks Buch über die orthodoxen Roma",
+        desc:
+          "Es schöpft aus Jahren unter den Roma und aus der langen orthodoxen Geschichte hinter ihnen — derselben Forschung, auf der die Erbe-Ausstellungen dieser Seite beruhen. In Vorbereitung als E-Book auf Slowakisch und Englisch.",
+      },
+      "catechesis-worksheets": {
+        title: "Katechese-Arbeitsblätter",
+        desc:
+          "Druckfertige Arbeitsblätter aus der Kinderkatechese der Mission — Buchstaben, Gebete, Feste und biblische Geschichten, gemacht für Kinder, die noch lesen lernen.",
+      },
+      "childrens-bible": {
+        title: "Kinderbibel",
+        desc:
+          "Die illustrierten biblischen Geschichten, die die Mission mit Roma-Kindern verwendet — einfach genug, um sie zu Hause oder im Gemeindeunterricht gemeinsam zu lesen.",
+      },
+    },
+    closing: {
+      scripture:
+        "„Darum gehet hin und machet zu Jüngern alle Völker: Taufet sie auf den Namen des Vaters und des Sohnes und des Heiligen Geistes.“",
+      scriptureRef: "Matthäus 28,19",
+      note:
+        "Wenn diese Materialien euch helfen, ist der beste Dank, sie zu nutzen — und uns zu sagen, wohin sie reisen, damit wir mit euch danken können.",
+    },
+  },
   metadata: {
+    resources: {
+      title: "Materialien — Christliche Roma-Mission",
+      description:
+        "Kostenlose liturgische Übersetzungen, Schrift, eine Kinderbibel und druckfertige Lehrmaterialien für die orthodoxe Mission unter den Roma — herunterladen, drucken und frei verwenden.",
+    },
     home: {
       title: "Christliche Roma-Mission",
       description:
