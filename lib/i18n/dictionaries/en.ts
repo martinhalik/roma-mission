@@ -8,6 +8,7 @@ const en: Dictionary = {
     media: "MEDIA",
     stories: "STORIES",
     heritage: "HERITAGE",
+    liturgy: "LITURGY",
     activity: "LIVE",
     more: "MORE",
     share: "SHARE",
@@ -1472,6 +1473,16 @@ const en: Dictionary = {
       ogTitle: "1,000 Years of Roma + Orthodox History — An Interactive Museum",
       ogDescription:
         "From the Byzantine Empire to today's Slava candles and parish baptisms: the long, shared road of the Roma as Orthodox catechumens.",
+    },
+    liturgy: {
+      title: "Liturgy in Romani — Roma Mission",
+      description:
+        "The Divine Liturgy of St John Chrysostom in the Central-Slovak dialect of Romani — the first Orthodox translation, served with the blessing of the bishop. Read it online or download the songbook.",
+    },
+    liturgyText: {
+      title: "Text of the Liturgy — Roma Mission",
+      description:
+        "The full text of the Divine Liturgy of St John Chrysostom in Romani and Slovak, with the translator's notes.",
     },
     activity: {
       title: "Live from the Field — Roma Mission",

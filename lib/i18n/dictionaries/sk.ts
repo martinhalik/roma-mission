@@ -8,6 +8,7 @@ const sk: Dictionary = {
     media: "MÉDIÁ",
     stories: "PRÍBEHY",
     heritage: "DEDIČSTVO",
+    liturgy: "LITURGIA",
     activity: "NAŽIVO",
     more: "VIAC",
     share: "ZDIEĽAŤ",
@@ -1468,6 +1469,16 @@ const sk: Dictionary = {
       ogTitle: "1 000 rokov rómskej a pravoslávnej histórie — interaktívne múzeum",
       ogDescription:
         "Od Byzantskej ríše po dnešné slávovské sviečky a krsty vo farnostiach: dlhá spoločná cesta Rómov ako pravoslávnych katechumenov.",
+    },
+    liturgy: {
+      title: "Liturgia v rómčine — Rómska misia",
+      description:
+        "Svätá liturgia sv. Jána Zlatoústeho v stredoslovenskom dialekte rómčiny — prvý pravoslávny preklad, slúžený s požehnaním vladyku. Čítajte online alebo si stiahnite spevník.",
+    },
+    liturgyText: {
+      title: "Text liturgie — Rómska misia",
+      description:
+        "Celý text svätej liturgie sv. Jána Zlatoústeho po rómsky a po slovensky, s poznámkami prekladateľa.",
     },
     activity: {
       title: "Naživo z terénu — Rómska misia",

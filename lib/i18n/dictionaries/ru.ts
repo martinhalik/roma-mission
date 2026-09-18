@@ -8,6 +8,7 @@ const ru: Dictionary = {
     media: "МЕДИА",
     stories: "ИСТОРИИ",
     heritage: "НАСЛЕДИЕ",
+    liturgy: "ЛИТУРГИЯ",
     activity: "В ЭФИРЕ",
     more: "ЕЩЁ",
     share: "ПОДЕЛИТЬСЯ",
@@ -1473,6 +1474,16 @@ const ru: Dictionary = {
       ogTitle: "1000 лет цыганской и православной истории — интерактивный музей",
       ogDescription:
         "От Византийской империи до сегодняшних славских свечей и приходских крещений: долгий совместный путь цыган как православных оглашенных.",
+    },
+    liturgy: {
+      title: "",
+      description:
+        "",
+    },
+    liturgyText: {
+      title: "",
+      description:
+        "",
     },
     activity: {
       title: "В эфире с поля — Цыганская миссия",

@@ -6,6 +6,7 @@ export interface Dictionary {
     media: string;
     stories: string;
     heritage: string;
+    liturgy: string;
     activity: string;
     more: string;
     share: string;
@@ -1072,6 +1073,8 @@ export interface Dictionary {
     stories: MetadataEntry;
     media: MetadataEntry;
     heritage: MetadataEntry;
+    liturgy: MetadataEntry;
+    liturgyText: MetadataEntry;
     activity: MetadataEntry;
     getInvolved: MetadataEntry;
     thankYou: MetadataEntry;

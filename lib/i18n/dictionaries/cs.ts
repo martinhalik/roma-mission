@@ -8,6 +8,7 @@ const cs: Dictionary = {
     media: "MÉDIA",
     stories: "PŘÍBĚHY",
     heritage: "DĚDICTVÍ",
+    liturgy: "LITURGIE",
     activity: "ŽIVĚ",
     more: "VÍCE",
     share: "SDÍLET",
@@ -1469,6 +1470,16 @@ const cs: Dictionary = {
       ogTitle: "1 000 let romských a pravoslavných dějin — interaktivní muzeum",
       ogDescription:
         "Od Byzantské říše po dnešní slávské svíce a křty ve farnostech: dlouhá společná cesta Romů jako pravoslavných katechumenů.",
+    },
+    liturgy: {
+      title: "Liturgie v romštině — Romská misie",
+      description:
+        "Svatá liturgie sv. Jana Zlatoústého ve středoslovenském dialektu romštiny — první pravoslavný překlad, sloužený s požehnáním vladyky. Čtěte online nebo si stáhněte zpěvník.",
+    },
+    liturgyText: {
+      title: "Text liturgie — Romská misie",
+      description:
+        "Celý text svaté liturgie sv. Jana Zlatoústého romsky a slovensky, s poznámkami překladatele.",
     },
     activity: {
       title: "Živě z terénu — Romská misie",
