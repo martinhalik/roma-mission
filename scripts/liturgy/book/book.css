@@ -1,0 +1,431 @@
+/*
+ * A5 service book for the Divine Liturgy in Romani.
+ *
+ * Paginated by Paged.js in headless Chromium — see `build-book.ts`. Chrome
+ * alone cannot do running headers or page counters in margin boxes, which a
+ * service book needs; Paged.js polyfills the CSS Paged Media features that
+ * make those possible.
+ *
+ * Layout decision: Romani and Slovak are INTERLEAVED, not on facing pages.
+ * The book is read line by line during a service, and the four-line unit
+ * (priest's line in Romani, the Slovak beneath it, then the people's response
+ * the same way) has to stay together on one page. Facing-page parallel text
+ * would send the reader's eye across the gutter mid-response, and the two
+ * columns drift apart wherever one language runs longer.
+ */
+
+/* ─── Page geometry ─────────────────────────────────────────────────────── */
+
+@page {
+  size: 148mm 210mm; /* A5 */
+  margin: 16mm 14mm 18mm;
+
+  @bottom-center {
+    content: counter(page);
+    font-family: var(--serif);
+    font-size: 8.5pt;
+    color: #444;
+    vertical-align: top;
+    padding-top: 4mm;
+  }
+}
+
+/* Running head: the section the reader is currently in. */
+@page :right {
+  @top-right {
+    content: string(sect);
+    font-family: var(--serif);
+    font-size: 7.5pt;
+    font-style: italic;
+    color: #555;
+    vertical-align: bottom;
+    padding-bottom: 3mm;
+  }
+}
+
+@page :left {
+  @top-left {
+    content: string(part);
+    font-family: var(--serif);
+    font-size: 7.5pt;
+    font-style: italic;
+    color: #555;
+    vertical-align: bottom;
+    padding-bottom: 3mm;
+  }
+}
+
+/* Front matter carries no running heads or folios. */
+@page cover {
+  margin: 0;
+  @bottom-center { content: none; }
+  @top-left { content: none; }
+  @top-right { content: none; }
+}
+
+@page frontmatter {
+  @bottom-center { content: none; }
+  @top-left { content: none; }
+  @top-right { content: none; }
+}
+
+/* ─── Type ──────────────────────────────────────────────────────────────── */
+
+:root {
+  /*
+   * Liberation Serif is metric-compatible with Times New Roman and covers the
+   * Romani and Slovak diacritics (ď ť ľ ň š č ž ô ä) in full. The stack
+   * resolves to a comparable face on macOS and Windows so the book can be
+   * rebuilt anywhere.
+   */
+  --serif: "Liberation Serif", "Times New Roman", "DejaVu Serif", Georgia, serif;
+  --sans: "Liberation Sans", "Helvetica Neue", Arial, sans-serif;
+
+  /*
+   * The people's responses are set in red where the printer supports two
+   * colours, as in a traditional service book. `build-book.ts --mono` rebuilds
+   * with both inks black for single-colour printing; the responses stay
+   * distinguishable by weight either way, so colour is never load-bearing.
+   */
+  --ink: #000000;
+  --ink-soft: #3a3a3a;
+  --ink-muted: #5f5f5f;
+  --ink-rubric: #8c1c13;
+  --ink-people: #8c1c13;
+  --rule: #c9c9c9;
+}
+
+html {
+  font-family: var(--serif);
+  font-size: 10.5pt;
+  line-height: 1.38;
+  color: var(--ink);
+}
+
+body {
+  margin: 0;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* ─── Cover ─────────────────────────────────────────────────────────────── */
+
+.cover {
+  page: cover;
+  break-after: page;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 210mm;
+  box-sizing: border-box;
+  padding: 30mm 16mm 20mm;
+  text-align: center;
+}
+
+.cover-cross {
+  font-size: 22pt;
+  color: var(--ink-rubric);
+  letter-spacing: 0;
+}
+
+.cover-title-rom {
+  font-size: 21pt;
+  line-height: 1.22;
+  margin: 0 0 5mm;
+  font-weight: normal;
+}
+
+.cover-title-sk {
+  font-size: 13pt;
+  line-height: 1.3;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.cover-rule {
+  width: 34mm;
+  border: 0;
+  border-top: 0.6pt solid var(--ink-rubric);
+  margin: 7mm auto;
+}
+
+.cover-publisher {
+  font-family: var(--sans);
+  font-size: 9pt;
+  letter-spacing: 1.6pt;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.cover-edition {
+  font-size: 9pt;
+  color: var(--ink-muted);
+  margin-top: 2mm;
+}
+
+/* ─── Front matter ──────────────────────────────────────────────────────── */
+
+.frontmatter {
+  page: frontmatter;
+  break-after: page;
+}
+
+.colophon {
+  font-size: 9.5pt;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.colophon h2 {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  letter-spacing: 1.4pt;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 4mm;
+}
+
+.colophon dl {
+  margin: 0 0 6mm;
+}
+
+.colophon dt {
+  font-family: var(--sans);
+  font-size: 7.5pt;
+  letter-spacing: 0.8pt;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-top: 3mm;
+}
+
+.colophon dd {
+  margin: 0.5mm 0 0;
+}
+
+.colophon-note {
+  margin-top: 8mm;
+  padding-top: 4mm;
+  border-top: 0.5pt solid var(--rule);
+  font-style: italic;
+}
+
+.toc h2 {
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  letter-spacing: 1.4pt;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 5mm;
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 10pt;
+}
+
+.toc li {
+  margin-bottom: 1.6mm;
+}
+
+.toc li.level-2 {
+  padding-left: 6mm;
+  font-size: 9.5pt;
+  color: var(--ink-soft);
+}
+
+/*
+ * Dot leaders are drawn with a stretched dotted rule rather than CSS
+ * `leader(".")`: Paged.js does not implement `leader()`, and including it
+ * invalidates the whole `content` declaration, so the page number vanishes
+ * too. The flex filler takes `order: 1` so it sits between the link text
+ * (order 0) and the page number in `::after`.
+ */
+.toc a {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+}
+
+.toc a::before {
+  content: "";
+  order: 1;
+  flex: 1 1 auto;
+  margin: 0 1.5mm 0.7mm;
+  border-bottom: 0.4pt dotted var(--ink-muted);
+}
+
+/* Paged.js fills this with the page the target landed on. */
+.toc a::after {
+  content: target-counter(attr(href), page);
+  order: 2;
+  flex: 0 0 auto;
+  color: var(--ink-muted);
+}
+
+/* ─── Body ──────────────────────────────────────────────────────────────── */
+
+.part-title {
+  string-set: part content(text);
+  break-before: page;
+  font-size: 16pt;
+  font-weight: normal;
+  text-align: center;
+  margin: 6mm 0 8mm;
+  padding-bottom: 3mm;
+  border-bottom: 0.6pt solid var(--ink-rubric);
+  color: var(--ink);
+}
+
+.section-title {
+  string-set: sect content(text);
+  font-family: var(--sans);
+  font-size: 8.5pt;
+  font-weight: bold;
+  letter-spacing: 1.6pt;
+  text-transform: uppercase;
+  color: var(--ink-rubric);
+  text-align: center;
+  margin: 7mm 0 3.5mm;
+  break-after: avoid;
+}
+
+/*
+ * One utterance = the Romani line and its Slovak cue. Never split across a
+ * page: in use, the reader's eye is on one exchange at a time.
+ */
+.utterance {
+  break-inside: avoid;
+  margin-bottom: 2.6mm;
+}
+
+.speaker {
+  font-family: var(--sans);
+  font-size: 6.8pt;
+  font-weight: bold;
+  letter-spacing: 1.1pt;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-right: 1.6mm;
+}
+
+.line-rom {
+  margin: 0;
+  font-size: 10.5pt;
+  line-height: 1.34;
+}
+
+/* The people's part: heavier, and red where the printer allows it. */
+.utterance.people .line-rom {
+  font-weight: bold;
+  color: var(--ink-people);
+}
+
+.utterance.people .speaker {
+  color: var(--ink-people);
+}
+
+/* The Slovak is a cue, not the text being sung — smaller and indented. */
+.line-sk {
+  margin: 0.6mm 0 0 5mm;
+  font-size: 8.5pt;
+  line-height: 1.3;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.utterance.quiet .line-rom,
+.utterance.quiet .line-sk {
+  font-size: 8.5pt;
+  font-style: italic;
+  color: var(--ink-muted);
+  font-weight: normal;
+}
+
+.utterance.variable::before {
+  content: "✽";
+  float: left;
+  margin-left: -4.5mm;
+  font-size: 6pt;
+  color: var(--ink-muted);
+  line-height: 2.4;
+}
+
+.rubric {
+  margin: 3mm 6mm;
+  font-size: 8.5pt;
+  font-style: italic;
+  text-align: center;
+  color: var(--ink-rubric);
+  break-inside: avoid;
+}
+
+.rubric.optional {
+  color: var(--ink-muted);
+}
+
+/* Chant phrase divisions, as marked in the source. */
+.chant {
+  color: var(--ink-muted);
+  padding: 0 0.4mm;
+}
+
+/* Endnote references. The notes themselves are gathered at the back: a sung
+   text should not have its page foot crowded with commentary. */
+.noteref {
+  font-size: 6.5pt;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--ink-rubric);
+  text-decoration: none;
+}
+
+.utterance.people .noteref {
+  color: var(--ink-people);
+}
+
+/* ─── Endnotes ──────────────────────────────────────────────────────────── */
+
+.notes {
+  break-before: page;
+}
+
+/*
+ * Two Paged.js (0.4.3) constraints govern how the running heads are wired, and
+ * both fail silently — the heads simply come out blank:
+ *
+ *   1. `string-set` takes ONE name per declaration. The comma-separated
+ *      multi-value form disables named strings for the whole document.
+ *   2. Each name binds to exactly ONE selector — the last rule declaring it
+ *      wins. So every element that should feed `sect` must carry
+ *      `.section-title`, and every element feeding `part` must carry
+ *      `.part-title`. Do not add a second rule for either name.
+ *
+ * The endnotes chapter therefore sets its recto head with a `.section-title`
+ * that is collapsed rather than with a separate class of its own.
+ */
+.section-title.head-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.notes ol {
+  margin: 0;
+  padding-left: 7mm;
+  font-size: 8.5pt;
+  line-height: 1.34;
+  color: var(--ink-soft);
+}
+
+.notes li {
+  margin-bottom: 1.8mm;
+  break-inside: avoid;
+}

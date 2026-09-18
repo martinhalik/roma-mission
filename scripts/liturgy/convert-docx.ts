@@ -622,6 +622,21 @@ function writeTodo(doc: LiturgyDocument, issues: Issue[]) {
     "4. **The `*` marks inside lines** are read as chant phrase divisions and",
     "   rendered as a thin separator on the web and in the book. Confirm that is",
     "   what they mean.",
+    "5. **Language tag.** Romani lines are tagged `lang=\"rom\"`, the",
+    "   macrolanguage code, as specified in the brief. `rmc` (Carpathian Romani)",
+    "   would name this dialect exactly. One-line change in",
+    "   `app/[locale]/_components/LiturgyTextPage.tsx` if you prefer it.",
+    "6. **The thesis PDF is not in the repository.** /liturgy shows the citation",
+    "   and says the PDF is not published yet; the download row appears by itself",
+    "   once `public/downloads/liturgy/rigorozna-praca-2024.pdf` exists.",
+    "7. **Page copy is English in every locale.** Navigation labels are",
+    "   translated for all nine, and the page title and description are written",
+    "   for English, Slovak and Czech. German, Romanian, Serbian, Russian,",
+    "   Macedonian and Greek fall back to English rather than carry Orthodox",
+    "   terminology I could not check with a native speaker.",
+    "8. **The Serbian Služebnik scan** has a placeholder entry in",
+    "   `lib/liturgy/content.ts` (`SERBIAN_SLUZEBNIK_SCAN`, `available: false`).",
+    "   It is deliberately not rendered; flip the flag when the scan arrives.",
     ""
   );
 
