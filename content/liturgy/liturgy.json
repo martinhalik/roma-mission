@@ -1,0 +1,4166 @@
+{
+  "meta": {
+    "title": {
+      "rom": null,
+      "sk": "Svätá liturgia sv. Jána Zlatoústeho"
+    },
+    "version": "1.1",
+    "sourceDate": "2025-08-06",
+    "generatedAt": "2026-09-18",
+    "source": {
+      "file": "spevnik-v1.1.docx",
+      "sha256": "bbee9f1c39851b90b3e7b05355deec69d68dec83233ad1b105ea6568aade8dc5",
+      "bytes": 142569
+    },
+    "counts": {
+      "sections": 6,
+      "utterances": 261,
+      "rubrics": 10,
+      "footnotes": 34
+    }
+  },
+  "footnotes": [
+    {
+      "n": 1,
+      "text": "V srbské verzii sa používá “Bahtarďo” což by sa rovnalo našemu “Bachtalo” to značí “štastný”, rozhodol som sa tu skôr priblížiť církevoslovanskému spojeniu “Blahosloveno” ako “dobré” a “slovo” tj. “šukár” “phenďo” (presne “krásne povedané”) tomuto sa blíži aj rumunský rómsky preklad “śukarphendo” - sú to bežná rómska slova, ktoré každý Róm pozná. Zároveň šukár značí niečo viac ako “láčhe” tj. dobré…"
+    },
+    {
+      "n": 2,
+      "text": "V rómčine “Amen” znamená “my”, preto si myslím, že bude lepšie sa držať slova “amiň\", podobne ako Srbovia a Rumunia, aby sa to odlišilo."
+    },
+    {
+      "n": 3,
+      "text": "Dlhodobo by bolo lepšie slovo “rudinen” ktoré je príbuzné aj iným rómskym dialektom (srbský, rumunský), ale na Slovensku sa už toľko nepoužívá"
+    },
+    {
+      "n": 4,
+      "text": "V rómčine nie je bežné slovo prepáčiť - trochu iba v súvislosti s dlžobou, tam sa používa sloveso “te odel”. V srbskom prekladu použili “bahtalipe” to znamená niečo ako “urob nás šťastnými” v rumunčine sa zase prídržali slova “miluisar”, ktoré prevzali čiastočne z cirkevnoslovančiny a je blízke rumunskému prekladu “miluieste”. Alternatíva “odmuk”"
+    },
+    {
+      "n": 5,
+      "text": "možno “miro” ako v srbčine"
+    },
+    {
+      "n": 6,
+      "text": "Jk 3,17 rómsky preklad"
+    },
+    {
+      "n": 7,
+      "text": "Na východe “choli” toto slovo je veľmi podobné naprieč dialekty. Srbsky “holi” a rumunsky “xoliatar” [choliatar]"
+    },
+    {
+      "n": 8,
+      "text": "Prevzaté zo slovenčiny"
+    },
+    {
+      "n": 9,
+      "text": "Rumuni a Srbovia majú výraz “odžengo”"
+    },
+    {
+      "n": 10,
+      "text": "Klenovský dialog “bez zmeny”"
+    },
+    {
+      "n": 11,
+      "text": "V Klenovci “keresto”"
+    },
+    {
+      "n": 12,
+      "text": "pôdobne sa drží církevoslovančiny aj Rómovia v Rumunsku"
+    },
+    {
+      "n": 13,
+      "text": "všetcia"
+    },
+    {
+      "n": 14,
+      "text": "všude"
+    },
+    {
+      "n": 15,
+      "text": "po rómsky rozdeliť jedlo je “uľav o hábe”, ale nedarí se mi to pretvoriť"
+    },
+    {
+      "n": 16,
+      "text": "Pozor na krátku výslovnosť, keď sa povie “vudár”, Rómovia budú počuť “záchod” ako “budár”."
+    },
+    {
+      "n": 17,
+      "text": "v Klenovci rómsky cinlagi (Klenovec), v Rumunsky “čéri”, ale už to znajú len starí Rómovia a nepoužíva sa to"
+    },
+    {
+      "n": 18,
+      "text": "na Gemeri “temetive”"
+    },
+    {
+      "n": 19,
+      "text": "po starom činlagi (hviezdy alebo nebo)"
+    },
+    {
+      "n": 20,
+      "text": "zkrátený tvar pre ruku"
+    },
+    {
+      "n": 21,
+      "text": "Kraľinela upral o kher le Jakoboskero pro furt a leskere kraľišagoske na ela šoha ( ňikda) koňec. Lk 1:33"
+    },
+    {
+      "n": 22,
+      "text": "Dnes už sa hovorí skor “konco”"
+    },
+    {
+      "n": 23,
+      "text": "neznajú bíni, bíno … znamená to hriech/hriechy"
+    },
+    {
+      "n": 24,
+      "text": "slovenští rómovia používajú tohle slovné spojenie"
+    },
+    {
+      "n": 25,
+      "text": "kana anav o huhuru (prinesiem hriby), alebo “prínos”"
+    },
+    {
+      "n": 26,
+      "text": "lošar je radosť, lašarav (chválim), lašaripen"
+    },
+    {
+      "n": 27,
+      "text": "nerozbitné"
+    },
+    {
+      "n": 28,
+      "text": "na Gemeri sa zmäkčuje g na d"
+    },
+    {
+      "n": 29,
+      "text": "niektorí Rómovia povedia “jíleha”"
+    },
+    {
+      "n": 30,
+      "text": "barvalo sa používa pre bohaté"
+    },
+    {
+      "n": 31,
+      "text": "Na východe “choli” toto slovo je veľmi podobné naprieč dialekty. Srbsky “holi” a rumunsky “xoliatar” [choliatar]"
+    },
+    {
+      "n": 32,
+      "text": "Prevzaté zo slovenčiny"
+    },
+    {
+      "n": 33,
+      "text": "Hanik (prameň / studňa)"
+    },
+    {
+      "n": 34,
+      "text": "1 Jk 1:5"
+    }
+  ],
+  "sections": [
+    {
+      "id": "s1",
+      "slug": "liturgia-katechumenov",
+      "level": 1,
+      "title": "Liturgia Katechumenov",
+      "blocks": [
+        {
+          "kind": "utterance",
+          "id": "b1",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Požehnané je Kráľovstvo Otca i Syna i Svätého Ducha, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bachtalophenďo[[fn:1]] o krališagos le Dadéskero, le Čhavéskero, thaj le Svetos Duchóskero, akana the pro but aver the palal tha pála.",
+            "notes": [
+              1
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b2",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň[[fn:2]]",
+            "notes": [
+              2
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "slug": "ektenia-velka",
+      "level": 2,
+      "title": "Ekténia Veľká",
+      "blocks": [
+        {
+          "kind": "utterance",
+          "id": "b3",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "V pokoji k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Smirom ko Devleske, te molinas[[fn:3]].",
+            "notes": [
+              3
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b4",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen[[fn:4]]",
+            "notes": [
+              4
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b5",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za pokoj z výsosti a spásu našich duší, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o smíro[[fn:5]] ňebóstar[[fn:6]], thaj te spasínen amáre voďa, ko Devléske, molinas.",
+            "notes": [
+              5,
+              6
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b6",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b7",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za pokoj celého sveta, za blaho svätých Božích Cirkví a zjednotenie všetkých, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o smíros andro celo svetos, vaš o bachatalipen le Devleskere Khangera, thaj vaš jekhetaniben savoren, ko Devléske, molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b8",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b9",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za tento svätý chrám a za tých, ktorí doň s vierou, zbožnosťou a bázňou Božou vchádzajú, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš ada svetikano khangeri the vaš so džan andre le paťavibenaha, devleskeribňaha the so daral le Devleske, ko Devléske molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b10",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b11",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za blaženého metropolitu nášho (meno), za nášho preosvieteného archiepiskopa (meno), za dôstojné kňazstvo, diakonstvo v Christovi, za celé duchovenstvo a ľud, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o bachtalo metropolis amáro (anav), the vaš o ámaro preosvitindo archiepiskopos (anav), vaš o rájoskere rašajiben, diakonipe andro Christos, vaš o savore rašaja the o nipos, ko Devléske molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b12",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b13",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za našu vlasť, jej predstaviteľov a vojsko, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaši amári phúv, leskere rajipena the e armada, ko Devléske molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b14",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b15",
+          "role": "priest",
+          "variable": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za toto mesto (alebo za obec túto, alebo za svätý monastier tento) i za všetky, mestá, obce a krajiny i za tých, ktorí v nich s vierou žijú, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vašo ada foros (ada gav, svetikano familija). Vašo savore fora, savóre gáva, thaj savóre phúra. Thaj vašo Devléskere nípi so andre len bešen. Devléske molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b16",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b17",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za priaznivé počasie, za hojnosť zemských plodov a za pokojné časy, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vašo láčho kham thaj láčhe bríšin, vašo barvalipen olestar so pes barol pro phúv, smíribne beršá, ko Devleske molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b18",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b19",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za plaviacich sa, pocestných, nemocných, trpiacich, zajatých a za ich spásu, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš so džan pro paňi, so dromaren, vaš nasvále, so cerpinen, zaiľipena the vaš lengeri spáso, ko Devléske molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b20",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "rubric",
+          "id": "b21",
+          "tone": "optional",
+          "text": "Na tomto mieste sa v prípade potreby môžu doplniť aj iné prosby."
+        },
+        {
+          "kind": "utterance",
+          "id": "b22",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby sme boli zbavení všetkej tiesne, hnevu i núdze, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te aven ile amendar savore kikidipena, hola[[fn:7]], the čoripena[[fn:8]], ko Devleske molinas.",
+            "notes": [
+              7,
+              8
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b23",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b24",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zastaň sa, spas, zmiluj sa a zachovaj nás, Bože, Svojou blahodaťou.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ačhav pes pal amende, spasin, prepačin the doľiker amen, Dévla, tíro láčhoha kamibena.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b25",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b26",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Presvätú, prečistú, preblahoslavenú, slávnu Vládkyňu našu Bohorodičku a vždy Pannu Máriu i všetkých svätých spomínajúc, samých seba, druh druha a celý náš život Christu Bohu oddajme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bári svetikani, bári žuži, bári bachtalophenďe, bárardi Rajali amari Devleskéri daj, the mindig pačivali džúvľi María. Thaj savore svetikano manuša amenca leperkerde, amen korkoren, ó manuš manušeha, the celo amáro dživipen le Christoske Devleske te das.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b27",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Tebe, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Tuke, Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b28",
+          "role": "priest",
+          "quiet": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Hospodine, Bože náš, ktorého moc je nevýslovná a sláva nepostihnuteľná, ktorého milosť je nesmierna a ľuďomilnosť nevýslovná. Ty sám, Vládca, podľa Svojho milosrdenstva zhliadni na nás a na tento svätý chrám a udeľ nám a modliacim sa s nami Svoju hojnú milosť a štedrosť.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b29",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Lebo Tebe patrí všetka sláva, česť a poklona, Otcu i Synu i Svätému Duchu, teraz i vždycky až na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Čakh Tíro hini savóri baráripen, pativ the banďiľalipen angla Tuke, Dadeske the o Čhávoske the Sveto Duchoske, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b30",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b31",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Dobroreč, duša moja, Hospodina* a celé moje vnútro* Jeho svätému menu.* Blahoslavený si Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Láčhopen míri voďi le Dévleske!* Thaj sa miro andruno* Léskere svéto anaveske.* Bachtalophenďo sťal Devlá.*",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b32",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Opäť a opäť v pokoji k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Pále the Pále, andro smiro ko Devleske, te molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b33",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b34",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zastaň sa, spas, zmiluj sa a zachovaj nás, Bože, Svojou blahodaťou.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ačhav pes pal amende, spasin, prepačin the doľiker amen, Dévla, tíro láčhoha kamibena.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b35",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b36",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Presvätú, prečistú, preblahoslavenú, slávnu Vládkyňu našu Bohorodičku a vždy Pannu Máriu i všetkých svätých spomínajúc, samých seba, druh druha a celý náš život Christu Bohu oddajme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bári svetikani, bári žuži, bári bachtalophenďe, bárardi Rajali amari Devleskéri daj, the mindig pačivali džúvľi María. Thaj savore svetikano manuša amenca leperkerde, amen korkoren, ó manuš manušeha, the celo amáro dživipen le Christoske Devleske te das.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b37",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Tebe, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Tuke, Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b38",
+          "role": "priest",
+          "quiet": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Hospodine, Bože náš, spas ľud svoj a požehnaj Svojmu dedičstvu. Zachovaj plnosť svojej Cirkvi. Posväť tých, ktorí milujú krásu Tvojho domu, osláv ich Svojou Božskou silou a neopusť nás, dúfajúcich v Teba.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b39",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Lebo Tvoja je vláda, Kráľovstvo, moc a sláva, Otca i Syna i Svätého Ducha, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bo Tíro hi o rajariben, o Krališagos, e zor the baráripen,  Dadeskero, Čhavoskero thaj le Sveto Duchoskero, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b40",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b41",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Chváľ, duša moja Hospodina,* budem chváliť Hospodina vo svojom živote,* spievam môjmu Bohu, pokiaľ som.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Chváľen, míri voďi[[fn:9]] le Devla,* me chváľinav le Devla andro miro dživipen,* gíľavav miro Devleske, džikana sťom.",
+            "notes": [
+              9
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b42",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Sláva Otcu i Synu i Svätému Duchu* i teraz i vždycky i na veky vekov.* Amen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b43",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Jednorodený Synu* \na Slovo Božie,* \nTy si nesmrtelný a rozhodol si sa*\nkvôli nášmu spaseniu* \nvteliť od svätej Bohorodičky* \na vždy Panny Márie* \na bez premeny stal si sa človekom.* \nBol si ukrižovaný, Christe Bože,* \nale smrťou si porazil smrť.* \nJeden si zo Svätej Trojice,* \noslavovaný spolu s Otcom a so Svätým Duchom,*\nspas nás.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Báraripen le Dadeske, the o Čhavoske,* the o Sveto Duchóskero,* akana the pro but aver the palal tha pála. Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b44",
+          "role": "people",
+          "rom": {
+            "label": "Roma",
+            "text": "Jekhnaroďindo Čhavóro,*\nthe Lav Devléskero,*\nsťal nameribeskero the rozginelďal*\ntut pes vaš amari spasa.*\nPes visarel le sveti Devleskeri Dajatar,*\nthe mindig pačivali džúvľi Mária,*\nnavatin[[fn:10]] andemanušinen.*\nPokeresštašno[[fn:11]], Christos Devlá,*\nmeribnaha pomaren e meriben.*\nSťal jekh andral o Svetikano Trinto,*\nbararando jekhetanes le Dadeha the le Sveto Duchoha*\nspasín amen!",
+            "notes": [
+              10,
+              11
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b45",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Opäť a opäť v pokoji k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Pále the Pále, andro smiro ko Devleske, te molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b46",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b47",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zastaň sa, spas, zmiluj sa a zachovaj nás, Bože, Svojou blahodaťou.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ačhav pes pal amende, spasin, prepačin the doľiker amen, Dévla, tíro láčhoha kamibena.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b48",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b49",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Presvätú, prečistú, preblahoslavenú, slávnu Vládkyňu našu Bohorodičku a vždy Pannu Máriu i všetkých svätých spomínajúc, samých seba, druh druha a celý náš život Christu Bohu oddajme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bári svetikani, bári žuži, bári bachtalophenďe, bárardi Rajali amari Devleskéri daj, the mindig pačivali džúvľi María. Thaj savore svetikano manuša amenca leperkerde, amen korkoren, ó manuš manušeha, the celo amáro dživipen le Christoske Devleske te das.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b50",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Tebe, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Tuke, Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b51",
+          "role": "priest",
+          "quiet": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "My, ktorí máme od Teba dar týchto spoločných a jednomyseľných modlitieb a Ty, ktorý si prisľúbil splniť prosby dvom alebo trom, ktorí sa zídu v Tvojom mene, Sám aj teraz splň na úžitok prosby svojich služobníkov a daj nám v tomto veku poznanie Tvojej pravdy a v budúcom daruj večný život.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b52",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Lebo ty si dobrotivý a ľudomilný Boh a Tebe chválu vzdávame, Otcu i Synu i Svätému Duchu, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bo Tu sťal láčho the le manušen kamavdo Dévla the Tuke chválipen presikhavas le Dadéske the le Čhavóreske the le Sveto Duchoske, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b53",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b54",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "V Kráľovstve Svojom rozpomeň sa na nás, Hospodine,* keď prídeš do Svojho Kráľovstva.\nBlažení chudobní duchom,* lebo ich je nebeské Kráľovstvo.*\nBlažení plačúci,* lebo oni nájdu útechu.*\nBlažení krotkí,* lebo oni budú dedičmi zeme.*\nBlažení lační a smädní po spravodlivosti,* lebo oni budú nasýtení.\nBlažení milosrdní,* lebo oni dosiahnu milosrdenstvo.*\nBlažení čistého srdca,* lebo oni uvidia Boha.*\nBlažení tí, čo šíria pokoj,* lebo ich budú volať Božími synmi.*\nBlažení prenasledovaní pre spravodlivosť,* lebo ich je nebeské Kráľovstvo.*\nBlažení ste, keď vás budú pre Mňa potupovať a prenasledovať,*\na všetko zlé na vás nepravdivo hovoriť.*\nRadujte sa a veseľte sa,* lebo máte hojnú odmenu na nebesiach.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Andro Tíro Králišagos, leper tut pes pre amende, Devlá,* kana Tu aveha andro Tíro Králišagos.*\nBachtale ko náne baripen,* bo lengero hin ňeboskero kraľišagos.*\nBachtale so roven,* bo jon ovel lošando.*\nBachtale o čiten,* bo jon chudena e phúv.*\nBachtale bokhale the trušalo pál o čáčipen,* bo jon avela čále.*\nBachtale ko but prepáčines,* bo o Dél les but prepáčinen.*\nBachtale žuží iléskere,* bo on dikhena Dévla.*\nBachtale so kerenas smíro,* bo len ovľa vičinen Devléskere čháve.*\nBachtale čhiden vaš o čačipen,* bo lengero hi ňeboskero kralíšagos.*\nBachtale koškeren the čhiden* the sanaláčhe vakeren pre Man*\nLošanen the bašavel[[fn:12]]* bo tuke but potinípe pro nebosťar.*",
+            "notes": [
+              12
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b55",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Premúdrosť, stojme úctivo.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Goďaveripen, čiten! Šunen!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b56",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Poďte, pokloňme sa a padnime* pred Christom.* Spas nás, Synu Boží,* ktorý si vstal z mŕtvych, spievajúcich Ti:* Aleluja.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Aven, šéro téle thaj* pereha po čanga anglál o Christós.* Spasínen amen, Čhávo le Devléskero,* so uštiľa anglal múle, thaj so Tuke dilaven:* Aliluja, Aliluja, Aliluja.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "rubric",
+          "id": "b57",
+          "tone": "direction",
+          "text": "Na tomto mieste sa spievajú rôzne oslavné piesne podľa sviatku. (tropary a kondaky)"
+        },
+        {
+          "kind": "utterance",
+          "id": "b58",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Lebo svätý si, Bože náš a Tebe slávu vzdávame, Otcu i Synu i Svätému Duchu, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Kaj svetikano sťal Devlá amáro, thaj Tíre del o bári phenďo, le Dadéskero, le Čhavéskero, thaj le Sveto Duchóskero, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b59",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b60",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Svätý Bože, svätý Silný, svätý Nesmrteľný, zmiluj sa nad nami. (3x)\nSláva Otcu i Synu i Svätému Duchu i teraz i vždy i na veky vekov. Amen. Svätý Nesmrteľný, zmiluj sa nad nami.\nSvätý Bože, svätý Silný, svätý Nesmrteľný, zmiluj sa nad nami.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Sveto Devlá, Sveto Zoralo, Sveto Nameribeskero, prepáčin amenge. (3x)\nBáraripen le Dadéskero, le Čhavéskero, thaj le Sveto Duchóskero, akánik the furt avel, the palal tha pála. Sveto nameribeskero, prepáčin amen.\nSveto Devlá, Sveto Zoralo, Sveto nameribeskero, prepáčin amen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b61",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Vnimajme. Pokoj všetkým.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Šunen! Smirom savore.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b62",
+          "role": "reader",
+          "sk": {
+            "label": "Čtec",
+            "text": "I duchu tvojmu.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Čtec",
+            "text": "Thaj o duchos tiro.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b63",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Premúdrosť.\nTu sa spieva prokimen a ľudia opakujú prvú vetu.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Goďaveripen",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b64",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Premúdrosť",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Goďaveripen",
+            "notes": []
+          }
+        },
+        {
+          "kind": "rubric",
+          "id": "b65",
+          "tone": "direction",
+          "text": "Tu čtec hovorí čo bude čítat z Biblie “Čítanie z listu …”"
+        },
+        {
+          "kind": "utterance",
+          "id": "b66",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Vnímajme",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Šunen!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "rubric",
+          "id": "b67",
+          "tone": "direction",
+          "text": "Tu čtec číta z Biblie…"
+        },
+        {
+          "kind": "utterance",
+          "id": "b68",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Pokoj tebe.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Smirom tuke.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b69",
+          "role": "reader",
+          "sk": {
+            "label": "Čtec",
+            "text": "I duchu tvojmu.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Čtec",
+            "text": "Thaj o duchos tiro.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b70",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Premúdrosť!",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Goďaveripen!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b71",
+          "role": "reader",
+          "sk": {
+            "label": "Čtec",
+            "text": "Aleluja, Aleluja, Aleluja!",
+            "notes": []
+          },
+          "rom": {
+            "label": "Čtec",
+            "text": "Aliluja, Aliluja, Aliluja!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b72",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Aleluja, Aleluja, Aleluja!",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Aliluja, Aliluja, Aliluja!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b73",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Premúdrosť, povstaňme a uslyšme sväté Evanjelium. Pokoj všetkým.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Goďaveripen! Čiten! Šunen sveto Evanjelio! Smirom savóre.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b74",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "I duchu tvojmu.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Thaj o duchos tiro.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b75",
+          "role": "priest",
+          "variable": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Čítanie svätého Evanjelia podľa (meno).",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Katar Matúšo sveto Evanjelium ánre genen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b76",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Sláva Tebe, Hospodine, sláva Tebe!",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Bararipen Tuke, Devlá, bararipen Tuke.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b77",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Vnímajme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Šunen!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "rubric",
+          "id": "b78",
+          "tone": "direction",
+          "text": "Tu kňaz číta z Biblie evanjelium…"
+        },
+        {
+          "kind": "utterance",
+          "id": "b79",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Sláva Tebe, Hospodine, sláva Tebe.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Bararipen Tuke, Devlá, bararipen Tuke.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "rubric",
+          "id": "b80",
+          "tone": "direction",
+          "text": "Tu kňaz vyučuje (kázeň)..."
+        },
+        {
+          "kind": "utterance",
+          "id": "b81",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Volajme všetci z celej duše a z celej mysle svojej volajme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vičinen savoren katar savoro ílo, the katar savoro šéro vičinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b82",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b83",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Hospodine, Všedržiteľu, Bože otcov našich, prosíme Ťa, vypočuj nás a zmiluj sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Dévla, sar celo astaren, Dévla le dadeskero amáro, mangav Tuke, te šunen the prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b84",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b85",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zmiluj sa nad nami, Bože, podľa Svojho veľkého milosrdenstva, prosíme Ťa, vyslyš nás a zmiluj sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Prepáčinen amen, Devlá bári láčho ílóro, molínnen Tuke, šun thaj prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b86",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj. Hospodi, pomiluj. Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen. Devlá, prepáčinen. Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b87",
+          "role": "priest",
+          "variable": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Ešte sa modlime za nášho blaženého archiepiskopa a metropolitu nášho (meno), (alebo za preosväteného episkopa (meno).",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te paliker’aven molínnen vaš o bachtalo metropolitos amáro (anav), thaj vaš o preosväteno archiepiskopos ámaro (anav).",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b88",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj. Hospodi, pomiluj. Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen. Devlá, prepáčinen. Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b89",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Ešte sa modlime za našu vlasť, jej predstaviteľov a vojsko.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te paliker’aven molínnen vaši amári phúv, vaš amáre báre raja, thaj armada.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b90",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj. Hospodi, pomiluj. Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen. Devlá, prepáčinen. Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b91",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Ešte sa modlime za našich bratov, kňazov, kňazov-mníchov a za všetko naše bratstvo v Christovi.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te paliker’aven molínnen vašo amáre phrala, rašaja, rašaja-mníchy, thaj vašo amáre phralaripen andro Christos.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b92",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj. Hospodi, pomiluj. Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen. Devlá, prepáčinen. Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b93",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Ešte sa modlime za blažených a nezabudnuteľných svätejších pravoslávnych patriarchov, zakladateľov tohto svätého chrámu, a za všetkých skôr zosnulých pravoslávnych otcov a bratov, tu i všade inde odpočívajúcich.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te paliker’aven molínnen vaš e bachtale thaj najbisterdoskero buteder svetikano patriarchos [pravoslavnos], thaj vaš len so kherďa o svetikano khangeri. Kado thaj vaš sa o phralenge thaj dadóra, save[[fn:13]] soven adaj thaj akarkaj[[fn:14]] piheninen, čáče paťáben.",
+            "notes": [
+              13,
+              14
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b94",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj. Hospodi, pomiluj. Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen. Devlá, prepáčinen. Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "rubric",
+          "id": "b95",
+          "tone": "optional",
+          "text": "Tu je možné doplniť prosby za nemocných, cestujúcich a podobne."
+        },
+        {
+          "kind": "utterance",
+          "id": "b96",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Ešte sa modlime za tých, ktorí prinášajú dary a ktorí v tomto svätom a vznešenom chráme preukazujú dobrodenie, za prisluhujúcich, spievajúcich a prítomných ľudí, ktorí od Teba očakávajú veľkú a hojnú milosť.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te paliker’aven molínnen vaš len so te den andro khangeri. Thaj molínnen vaš len keren andro bári svetikano khangeri. Thaj molínnen vaš len te gilavel adaj. Savóre užaren o baro the barvalo kamiben.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b97",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj. Hospodi, pomiluj. Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen. Devlá, prepáčinen. Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b98",
+          "role": "priest",
+          "quiet": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Hospodine, Bože náš, túto vrúcnu prosbu prijmi od svojich služobníkov a zmiluj sa nad nami pre svoje veľké milosrdenstvo a svoju štedrosť zošli nám a všetkému svojmu ľudu, ktorý od Teba očakáva hojné milosti.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b99",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Lebo Ty si milostivý a ľudomilný Boh a Tebe slávu vzdávame, Otcu i Synu i Svätému Duchu, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Kaj Tu sťal kamavkerdo thaj kamennípo Devlá. Báraripen Tuke, le Dadéskero, le Čhavéskero, thaj le Sveto Duchóskero, akánik te furt avel, the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b100",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "rubric",
+          "id": "b101",
+          "tone": "optional",
+          "text": "Tu je možné doplniť prosby za zosnulých."
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "slug": "ektenia-za-katechumenov",
+      "level": 2,
+      "title": "Ektenia za katechumenov",
+      "inferred": true,
+      "blocks": [
+        {
+          "kind": "utterance",
+          "id": "b102",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Pomodlite sa, katechumeni, k Hospodinovi.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Molínnen tumen, so sikhluvav andi khangéri, le Devléske.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b103",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b104",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Verní, pomodlime sa za katechumenov, aby sa nad nimi Hospodin zmiloval.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Save so paťav, mólinnen vaš o so sikhluvav, hoj le Devlá prepáčin lenge.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b105",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b106",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby ich poučil slovom pravdy.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te sikhlaren lenge čáče láve.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b107",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b108",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby im zjavil Evanjelium spravodlivosti.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Od’garuav lenge o Evanjelium le čáčipen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b109",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b110",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby ich zjednotil so svojou svätou, všeobecnou a apoštolskou Cirkvou.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te den len jekhetane Leskero svetikano, [sobórno] thaj Apoštolikane Khangeri.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b111",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b112",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Spas, zmiluj sa, zastaň a ochráň ich, Bože, Svojou blahodaťou.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Devlá spasínen thaj prepáčinen len. Devlá Tíro láčho kamiben ušti angle thaj arakhlal len.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b113",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b114",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Katechumeni, skloňte svoje hlavy pred Hospodinom.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "So sikhluvav, tíro šéro téle pre o Devlá!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b115",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Pred Tebou, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Tuke, Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b116",
+          "role": "priest",
+          "quiet": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Hospodine, Bože náš, ktorý prebývaš na výsostiach a na ponížených hľadíš, Ktorý si ľudskému rodu zoslal spásu, jednorodeného svojho Syna a Boha, Hospodina nášho Isusa Christa, zhliadni na svojich služobníkov katechumenov, ktorí pred Tebou skláňajú svoje šije a v pravý čas ich učiň hodnými kúpeľa znovuzrodenia, hriechov odpustenia a rúcha neporušiteľnosti, zjednoť ich so svojou svätou, všeobecnou a apoštolskou Cirkvou a pričleň ich do svojho vyvoleného stáda.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b117",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby aj oni s nami slávili Tvoje najčestnejšie a veľkolepé meno, Otca i Syna i Svätého Ducha, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te len mekhel jekh amenca thaj bararen Tiro jekhfeder the šukáreskero bári anav, le Dadéskero, le Čhavéskero thaj le Svetos Duchóske, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b118",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b119",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Tí, ktorí ste katechumeni, odíďte! Katechumeni odíďte! Tí, ktorí ste katechumeni, odíďte! Nik z katechumenov nech nezostane! Tí, ktorí ste verní opäť a opäť v pokoji k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Tumen so sikhluvav, dža ári. So sikhluvav, dža ári. Tumen, so sikhluvav, dža ári. So sikhluvav te naštik adaj oves akánik. Tumen so paťav, pále the pále, andro smiro ko Devleske, te molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b120",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zastaň sa, spas, zmiluj sa a zachovaj nás, Bože, svojou blahodaťou.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ačhav pes pal amende, spasin, prepačin the doľiker amen, Dévla, tíro láčhoha kamibena.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b121",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "slug": "liturgia-vernych",
+      "level": 1,
+      "title": "Liturgia verných",
+      "inferred": true,
+      "blocks": [
+        {
+          "kind": "utterance",
+          "id": "b122",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Premúdrosť.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Goďaveripen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b123",
+          "role": "priest",
+          "quiet": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Ďakujeme Ti, Hospodine Bože mocností, ktorý si nám teraz umožnil predstúpiť pred Tvoj svätý obetný oltár a skloniť sa pred Tvojou milosrdenstvom kvôli našim hriechom a ľudským nevedomostiam. Prijmi Bože, naše modlenie a učiň nás dôstojnými prinášať Ti modlitby, prosby a nekrvavé obety za všetkých Tvojich ľudí. A daj nám, ktorých si ustanovil na túto svoju službu silou svojho Svätého Ducha, aby sme Ťa bez odsúdenia a bezúhonne v čistom svedectve nášho svedomia vzývali v každý čas a na každom mieste, aby si nás vypočujúc, bol k nám milostivý v hojnosti svojej dobroty.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b124",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Lebo Tebe patrí všetka sláva, česť a poklona, Otcu i Synu i Svätému Duchu, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Čakh Tíro hi savóre e bašavel, e pačiv the e phariben po čenge, le Dadeske thai le Čháveske thaj le Sveto Duchoske, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b125",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b126",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Opäť a opäť v pokoji, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Pále the pále, andro smiro ko Devleske, te molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b127",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b128",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zastaň sa, spas, zmiluj sa a zachovaj nás, Bože, svojou blahodaťou.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ačhav pes pal amende, spasin, prepačin the doľiker amen, Dévla, tíro láčhoha kamibena.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b129",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b130",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Premúdrosť.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Goďaveripen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b131",
+          "role": "priest",
+          "quiet": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Znovu a mnohokrát sa skláňame pred Tebou a prosíme Ťa, Dobrý a Ľudomilný, aby si zhliadol na naše modlitby, očistil naše duše a telá od všetkých poškvŕn tela a ducha a dovolil nám bez viny a odsúdenia predstúpiť pred Tvoj svätý obetný oltár. Daj, Bože, aby aj modliaci sa s nami prospievali v živote, vo viere a v duchovnej rozumnosti. Daj im, stále Ti slúžiacim s bázňou a láskou, bez viny a odsúdenia prijímať Tvoje sväté tajiny a stať sa hodnými Tvojho nebeského Kráľovstva.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b132",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Lebo nech Tvojou mocou vždy chránení Ti slávu vzdávame, Otcu i Synu i Svätému Duchu, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Kaj ačhaves amenca Tíro zoralipen. Amen barárav Tut, le Dadéskero, le Čhavéskero, thaj le Svetikano Duchóskero, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b133",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b134",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "My cherubínov* tajomne predstavujeme* a životodarnej Trojici* trojsvätú pieseň spievame* odložme teraz všetky* svetské starosti. (3x)",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amen cheruvímen* garude the sikhaven,* thaj Trinte so dél o dživipen* trinsvetikano diľi dilavel,* akánik thovas pále* savoro trapišago.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b135",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Na blaženého metropolitu nášho (meno) a preosvieteného biskupa nášho (meno) nech sa rozpomenie Hospodin Boh vo Svojom Kráľovstve, stále, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o bachtalo metropolitos amáro (anav), thaj vaš o preosväteno archiepiskopos ámaro (anav). Te napobister o Ráj, o Dévla, andre Leskero Králišagos, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b136",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "A na všetkých vás pravoslávnych kresťanov, nech sa rozpomenie Hospodin Boh vo svojom Kráľovstve, stále, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o tumen, savore pravoslavne Christiános, te napobisteren o Ráj, o Dévla, andre Leskero Králišagos, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b137",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b138",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Aby sme prijali* Kráľa všetkých,* Ktorého anjelské zbory* neviditeľne sprevádzajú.* Aleluja, aleluja, aleluja.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Te len amenca o Kráľos* savoro manuša,* andelos aven Leha* so niko le nadikhen. Aliluja, Aliluja.",
+            "notes": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "slug": "prosebna-ektenia",
+      "level": 2,
+      "title": "Prosebná ektenia",
+      "inferred": true,
+      "blocks": [
+        {
+          "kind": "utterance",
+          "id": "b139",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Doplňme modlitbu našu Hospodinovi.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te den amári modlipen le Dévleske.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b140",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b141",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za predložené čestné Dary, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o kedime báripen Dary, le Dévleske, te molinas",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b142",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b143",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za tento svätý chrám a za vchádzajúcich doň s vierou, zbožnosťou a bázňou Božou, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš adaj svetikano Khangeri thaj vaš so aven popaťábe te devleskeropachinen, so phiren daral le Devleske. Devléske, te molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b144",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b145",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby sme boli zbavení všetkej tiesne, hnevu i núdze, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te odmuk daraňipen amen. Te odmuk o holi, thaj o núdzatar, le Devleske, te molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b146",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b147",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zastaň sa, spas, zmiluj sa a zachovaj nás, Bože, Svojou blahodaťou.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ačhav pes pal amende, spasin, prepačin the doľiker amen, Dévla, tíro láčhoha kamibena.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b148",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b149",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby bol celý deň dokonalý, svätý, pokojný a bezhriešny, Hospodina prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ke o celo daj oven budžando, svetikano, smíro thaj nabiňi, , k-o Dél te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b150",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b151",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "O anjela pokoja, verného vodcu, ochrancu našich duší a tiel, Hospodina prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o smíroskére andelos, čačiko vajdos, so ušti angle amári duša thaj tešto, k-o Dél, te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b152",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b153",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "O prepáčenie a odpustenie našich hriechov a pokleskov, Hospodina prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o prepáčipen thaj odmuk amáre naláčhes thaj  bisteripen, k-o Dél, te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b154",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b155",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "O to, čo je dobré a užitočné našim dušiam a za pokoj sveta, Hospodina prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o láčhipen thaj barválipen k-o amári dušatar, thaj vaš o smíro andro sveto, k-o Dél, te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b156",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b157",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby sme zvyšný čas svojho života v pokoji a pokání dožili, Hospodina prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o mekh dživas oven naholar te mekh feder, k-o Dél, te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b158",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b159",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "O kresťanské, bezbolestné, nezahanbiteľné a pokojné ukončenie nášho života a o to, aby sme dobre obstáli na strašnom Christovom súde, prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o christiánkerde, nadukhaldo, na-pílačo thaj smíro amáre meriben. Vaš o amen láčhe te peres po Christoskéro súdo, k-o Dél, te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b160",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b161",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Presvätú, prečistú, preblahoslavenú, slávnu Vládkyňu našu Bohorodičku a vždy Pannu Máriu i všetkých svätých spomínajúc, samých seba, druh druha a celý náš život Christu Bohu oddajme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bári svetikani, bári žuži, bári bachtalophenďe, bárardi Rajali amari Devleskéri daj, the mindig pačivali džúvľi María. Thaj savore svetikano manuša amenca leperkerde, amen korkoren, ó manuš manušeha, the celo amáro dživipen le Christoske Devleske te das.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b162",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Tebe, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Tuke, Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b163",
+          "role": "priest",
+          "quiet": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Hospodine Bože, Všemohúci, jediný Svätý, prijímajúci obetu chvály od tých, ktorí Ťa vzývajú celým srdcom, prijmi aj modlitbu nás hriešnych a prines ju na svoj svätý obetný oltár a dovoľ nám, aby sme Ti prinášali duchovné dary a obety za naše hriechy a ľudskú nevedomosť. Učiň nás hodnými nájsť blahodať pred Tebou, aby Ti bola ľúbezná naša obeta a aby dobrý Duch Tvojej blahodate zostúpil na nás, na tieto predložené dary a na všetkých Tvojich ľudí.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b164",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Štedrosťou Tvojho jednorodeného Syna, s ktorým si blahoslavený, spolu so Svojím presvätým, blahým a oživujúcim Duchom, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Pre o bachtalo baripen Tiro Jekhéro Čhávo, sar pes hi bachtalo báripen. The bári svetikano, bachtilo thaj upredivkerdo Tíro Duchos, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b165",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b166",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Pokoj všetkým.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Smirom savore.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b167",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "I duchu tvojmu.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Thaj o duchos tiro.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b168",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Milujme jeden druhého, aby sme jednomyseľne vyznávali.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te kamel pajtaši vaš-o pajtaši, thaj sar jekhšéro vičiben.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b169",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Otca i Syna i Svätého Ducha, Trojicu jednobytnú a nerozdelitelnu.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Le Dadéskero, le Čhavéskero,* thaj le Svetos Duchóskero,* Trinto, savo hi jekhvaris* thaj narozdelinen.[[fn:15]]",
+            "notes": [
+              15
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b170",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Dvere, dvere, s múdrosťou vnímajme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vudar! Vudar[[fn:16]]! Šukar gudžipen. Čiten. Šunen.",
+            "notes": [
+              16
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b171",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Verím v jedného Boha, Otca Vševládcu,*\nStvoriteľa neba i zeme, všetkého viditeľného a neviditeľného.* \nI v jedného Hospodina Isusa Christa, Syna Božieho,*\nJednorodeného a zrodeného z Otca pred všetkými vekmi.*\nSvetlo zo Svetla, Boha pravého z Boha pravého,*\nzrodeného, nie stvoreného, súpodstatného s Otcom, prostredníctvom ktorého bolo všetko stvorené.* \nKtorý pre nás ľudí a pre našu spásu zostúpil z nebies* \na vtelil sa zo Svätého Ducha a Panny Márie, a stal sa človekom.*\nBol ukrižovaný za nás v dobe Pontského Piláta*, \ntrpel, bol pochovaný a v tretí deň vstal z mŕtvych podľa Písem.*\nI vystúpil na nebesá a zasadol po pravici Otca,*\na opäť príde so slávou súdiť živých a mŕtvych. Jeho kráľovstvu nebude konca.*\nI v Ducha Svätého, Hospodina, životodarného, ktorý vychádza z Otca* \na s Otcom i Synom je spolu uctievaný a spolu oslavovaný,*\na ktorý hovoril prostredníctvom prorokov.* \nV jednu svätú, všeobecnú a apoštolskú Cirkev.* \nVyznavam jeden krst na odpustenie hriechov.*\nOčakávam vzkriesenie mŕtvych a život budúceho veku. Amen.*",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Paťav ando Jekh Devla, o Dad sar celo astaren.*\no Keradimos o neboske[[fn:17]] thaj o phúv,*\nthaj savoro, so šaj dikhes thaj so nadikhes.*\nPaťav andro Jekh Ráj Isus Christos, o Čhavo le Devléskero,* Jekhéro čhávo, savo anda o Dad rodene pále savóre berša:*\nSvit andar Svito, Čáče Devlá andar čáče Devlá,* \nrodene, nakerdžarde, jekhtono hi sar Dad. Andro Leske savó hi kherdo.*\nVašo manúša thaj te spasinen amenca. Oj ávľal andaro nebos,*\nthaj keris andro jílo angle Svetikano Duchos thaj Marii pačivali džúvli, thaj andemanušinen.*\nSo pokeresštašno pro Pontios Pilatos,*\ndukhlaľ, parunďan.[[fn:18]] Thaj uštiľa andral o meriben trinto díve pále sar hin Írinen* \nThaj avel upre andro nebos[[fn:19]], thaj bešel pre o Dadéskero čáčikano va.*[[fn:20]]* \nThaj pále avľal sar o baripen te súdinen sar o džive thaj le múle, Leskero Králišagos na ovela agor.[[fn:21]][[fn:22]]\nPaťav andro Svetikano Duchos, o Ráj, so dél o dživipen.* Sar avel khataro Dade.*\nÓn pál leste šukáre vakeren the báraren le Dadé thaj le Čhavóro.*\nThaj vakerďa andaro svetikano proroko.*\nPaťav andro jekh, svetikano, sobórno thaj Apoštolikane khangéri.*\nPaťav jekh krsto téle té muken o bíni.*[[fn:23]]\nThaj užarav o mulengero uštiben* thaj večno[[fn:24]] dživipen.",
+            "notes": [
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b172",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Stojme dôstojne, stojme s bázňou a vnímajme a v pokoji pozdvihnime svätý prínos.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ušti upre lačhe, ušti andro daripen, te čiten thaj šunen. Vazdas upre svetikano anavypen[[fn:25]].",
+            "notes": [
+              25
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b173",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Milosť pokoja, obetu chvály.[[fn:26]]",
+            "notes": [
+              26
+            ]
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Kamavkerden o smíro, so daven o lašarav",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b174",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Blahodať Hospodina nášho Isusa Christa, láska Boha Otca a spoločenstvo Svätého Ducha nech je so všetkými vami.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "O bachtalipe le Devleskero Isus Christos, thaj o kamiben le Dadéskero, thaj o pajtašinen le Svetikano Duchoske hi tumen savorenca.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b175",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "I s duchom tvojím.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Thaj o duchos tiro.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b176",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Hore majme srdcia.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Íli upre!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b177",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Máme ich k Hospodinovi.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Si ámen upré o íle ko Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b178",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Vzdávajme vďaku Hospodinovi.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Upreden te palikeren le Devleské.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b179",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Je dôstojné* a spravodlivé* klaňať sa Otcu i Synu i Svätému Duchu* Trojici jednobytnej* a nerozdeliteľnej.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Hi báripen* thaj čačikano* te phariben po čenge le Dadéske, le Čhavéske thaj le Svetikano Duchóske,* Trinto hi jekhváris* thaj naphagerdo[[fn:27]].",
+            "notes": [
+              27
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b180",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Víťaznú pieseň spievajúc, volajúc, vzývajúc a hovoriac.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Nérinďom diľi diľaven[[fn:28]], vičinen, báripenen thaj vakeren.",
+            "notes": [
+              28
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b181",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Svätý, svätý, svätý Hospodin zástupov,* nebesá i zem* sú plné Tvojej slávy.* Hosana, hosana na výsostiach.* Požehnaný, ktorý prichádza v mene Hospodinovom.* Hosana, hosana na výsostiach.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Sveto, Sveto, Sveto,* Devlá Savaót,* o nebo thaj o phúv* hi pherde le Tiro báripen:* Hosána,* Hosána andre upre,* pobachtalo so avel* andre anav le Devleskero,* Hosána,* Hosána andre upre.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b182",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Vezmite, jedzte, toto je moje Telo, ktoré sa za vás láme na odpustenie hriechov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Len, te han, kado hi míro Téšto, savo pes phagel vaš tumenge, vaš téle te muken o bíni.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b183",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b184",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Pite z nej všetci, toto je moja Krv Nového Zákona, ktorá sa za vás a za mnohých prelieva na odpustenie hriechov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Pijen andar savóre, adá hí míro Rat o Névo Angluno, so pes ári čhorel vaš tumenge the vašo avéra te muken o bíni.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b185",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b186",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Tvoje z Tvojho Tebe prinášame, kvôli všetkým a za všetko.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Tiro katar Tiren, Tuke anas, pre savóro the savó.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b187",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Teba ospevujeme, Tebe dobrorečíme, Tebe ďakujeme, Hospodine, a k Tebe sa modlíme, Bože náš.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Tuke dilaven, Tuke láčhephenen,* Tuke palikéras, Devlá.* Ke tuke molinas* o Devla amáro.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b188",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Nech bude prijímajúcim k triezvosti duše, k odpusteniu hriechov, k spoločenstvu Tvojho Svätého Ducha, k naplneniu nebeského Kráľovstva, k prehĺbeniu dôvery v Teba a nech nie je na súd alebo odsúdenie.\nEšte Ti prinášame túto liturgickú službu za tých, ktorí vo viere zosnuli, praotcov, otcov, patriarchov, prorokov, apoštolov, kazateľov, evanjelistov, mučeníkov, vyznávačov, zdržanlivcov a za každú spravodlivú dušu, ktorá zosnula vo viere.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b189",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zvlášť za Presvätú, Prečistú, Preblahoslavenú, slávnu Vládkyňu našu Bohorodičku a vždy Pannu Máriu",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Jekhvar vaš i bári svetikani, bári žuži, bári bachtalophenďe, bárardi Rajali amari Devleskéri daj, the mindig pačivali džúvľi María. Thaj savore svetikano manuša amenca leperkerde, amen korkoren, ó manuš manušeha, the celo amáro dživipen le Christoske Devleske te das.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b190",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Je skutočne dôstojné blahoslaviť Teba,* Bohorodičku,* \nvždy Blahoslavenú a Prečistú* Matku Boha nášho.* Čestnejšiu než cherubíni* a neporovnateľne slávnejšiu než serafíni.* Teba, Ktorá si bez porušenia porodila Boha, Slovo,* pravú Bohorodičku* velebíme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Hi čačo thaj lačho* te bachtalephenen Devleskeri Daj,* furt bachtaliphendi thaj bári žuži* Daj o amáro Devlá.* Ov čestneder sar  o Cherubíno* thaj but na délpeter rovinen baredér sar o Serafíno,* Tu so porodindal Devlá-Láv bio porušinen* čačikani Devleskeri Daj, barjáren.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b191",
+          "role": "priest",
+          "variable": true,
+          "sk": {
+            "label": "Kňaz",
+            "text": "Medzi prvými sa rozpomeň Hospodine, na nášho blaženého archiepiskopa a metropolitu (meno), alebo za preosväteného episkopa (meno), ktorého daruj Svojim svätým cirkvám a zachovaj ho v pokoji, neporušeného, čestného, zdravého, dlho žijúceho a správne spravujúceho slovo Tvojej pravdy.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Maškaro elšéno napobister, ó Devlá, o bachtalo metropolitos amáro (anav), the vaš o preosväteno episkopos (anav), sar del Tire Svetikane Khangeri. Arakhlal les andro smíro, naphagerdo, čestno, sasto, bút dživen thaj čáčo sikhlaren Láv de Tíro Čáčipen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b192",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "I na všetkých, i na všetko.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Savóro thaj savó.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b193",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "A daj nám jednými ústami a jedným srdcom sláviť a ospevovať najčestnejšie a veľkolepé meno Tvoje, Otca i Syna i Svätého Ducha, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Thaj del amen jekhe mujeha thaj jekhe íleha[[fn:29]], te bararel thaj ďilavel o jekhfeder thaj barvalo[[fn:30]] Tíro Anav, le Dadéskero, le Čhavéskero thaj le Svetikano Duchóske, akana the pro but aver the palal tha pála.",
+            "notes": [
+              29,
+              30
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b194",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b195",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Nech je milosť veľkého Boha a Spasiteľa nášho Isusa Christa so všetkými vami.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te avri o bachtalipe o báro Dévla thaj Amáro Spasitel Isus Christos tumendar savorenca.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b196",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "I s duchom tvojím.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Thaj o duchos tiro.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b197",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Pamätajúc na všetkých svätých, opäť a opäť v pokoji k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Napobister savoro svetikano pále the pále, andro smiro ko Devleske, te molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b198",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b199",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Za prinesené a posvätené čestné Dary k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o anďarde thaj pálal o svetikano feder Dary, le Devleske, te molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b200",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b201",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby náš ľudomilný Boh, prijmúc ich na svoj svätý, nebeský a duchovný oltár ako ľúbeznú duchovnú vôňu, zoslal nám božskú blahodať a dar Svätého Ducha, pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te amaro kamalmanušno Devlá, lel len andre peleskero Svetykano, Neboskero thaj ducheskero oltaro, sar šukareskero Duxeskero sungal, thaj te čhudel amen o Devleskero bachtalo baripen thaj o Duchoskeri te den, le Devleske, te molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b202",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b203",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby sme boli zbaveni všetkej tiesne, hnevu i núdze, k Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te odmuk daraňipen amen. Te odmuk o holi[[fn:31]], thaj o čoripen,[[fn:32]] le Devleske, te molinas.",
+            "notes": [
+              31,
+              32
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b204",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b205",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zastaň sa, spas, zmiluj sa a zachovaj nás, Bože, svojou blahodaťou.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ačhav pes pal amende, spasin, prepačin the doľiker amen, Dévla, tíro láčhoha kamibena.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b206",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b207",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby bol celý deň dokonalý, svätý, pokojný a bezhriešny, Hospodina prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ke o celo daj oven budžando, svetikano, smíro thaj nabiňi, k-o Dél te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b208",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b209",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "O anjela pokoja, verného vodcu, ochrancu našich duší a tiel, Hospodina prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o smíroskére andelos, čačiko vajdos, so ušti angle amári duša thaj tešto, k-o Dél, te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b210",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b211",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "O prepáčenie a odpustenie našich hriechov a pokleskov, Hospodina prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o prepáčipen thaj odmuk amáre naláčhes thaj  bisteripen, k-o Dél, te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b212",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b213",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "O to, čo je dobré a užitočné našim dušiam a za pokoj sveta, Hospodina prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o láčhipen thaj barválipen k-o amári dušatar, thaj vaš o smíro andro sveto, k-o Dél, te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b214",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b215",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Aby sme zvyšný čas svojho života v pokoji a pokání dožili, Hospodina prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o mekh dživas oven naholar te mekh feder, k-o Dél, te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b216",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b217",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "O kresťanské, bezbolestné, nezahanbiteľné a pokojné ukončenie nášho života a o to, aby sme dobre obstáli na strašnom Christovom súde, prosme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Vaš o christiánkerde, nadukhaldo, na-pílačo thaj smíro amáre meriben. Vaš o amen láčhe te peres po Christoskéro súdo, k-o Dél, te mangen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b218",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Daruj, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "De Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b219",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Vyprosiac si zjednotenie viery a účasť Svätého Ducha, sami seba, jeden druhého i celý svoj život Christu Bohu oddajme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Te šukár phenav te aven jekh paťa’vipen thaj te lel pes o thana le Svetos Duchóske, thaj amen korkóre, jekhe avreha, thaj o sa amáro dživipen te del le Christoske, le Devleske.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b220",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Tebe, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Tuke, Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b221",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Tebe, Ľudomilný Vládca, zverujeme celý svoj život i nádej a prosíme, modlime sa a úpenlivo žiadame: učiň nás hodnými prijať s čistým svedomím Tvoje nebeské a bázeň vzbudzujúce Tajiny z tohto svätého a duchovného stola, na odpustenie hriechov, na prepáčenie pokleskov, na spoločenstvo Svätého Ducha, na dedičstvo nebeského Kráľovstva, na prehĺbenie dôvery v Teba a nie na súd alebo na odsúdenie.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b222",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "A učiň nás hodnými, Vládca, s dôverou a bez obáv z odsúdenia vzývať Teba, nebeského Boha Otca, a hovoriť.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Sikhľaren amen te láčheste, o Králišagos. Te baráren Tut náne daravipen trestostar. Tu sťal Neboskero Devla o Dad, thaj amen vakeras.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b223",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Otče náš, ktorý si na nebesiach, posväť sa meno Tvoje, príď Kráľovstvo Tvoje, buď vôľa Tvoja ako v nebi, tak i na zemi. Chlieb náš každodenný daj nám dnes, a odpusť nám naše viny, ako i my odpúšťame svojim vinníkom, a neuveď nás do pokušenia, ale zbav nás zlého.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Dado amáro, so sťal upre pro ñebos,* svetiskeren Tiro nav,* mekh avel o krališagos Tíro,* mekh ovel Tíri kavka vôla,* sar andro nebos the pre phúv.* O máro amáro sako ďíveskero máro de amen adá ďíve. *\nOdmuk amenge amare byny,* sar amen téle mukes amáre bynengére.*\nThe nadomuk hoj pále te peras andro byny,* a le amendar savóro naláčhipen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b224",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Lebo Tvoje je Kráľovstvo i moc i sláva, Otca i Syna i Svätého Ducha, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bo Tiro hi o Kraľišagos, e zór thaj o báripen, le Dadéskero, le Čhavéskero thaj le Svato Duchóskero, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b225",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b226",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Pokoj všetkým.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Smirom savore.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b227",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "I duchu tvojmu.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Thaj o duchos tiro.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b228",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Skloňte svoje hlavy pred Hospodinom.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Šéro téle pre o Devlá!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b229",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Pred Tebou, Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Tuke, Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b230",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Ďakujeme Ti, Kráľu neviditeľný, Ktorý si svojou nesmiernou mocou všetko stvoril a v hojnosti Svojej milosti všetko si priviedol z nebytia k bytiu. Ty sám, Vládca, zhliadni z Nebies na tých, ktorí pred Tebou sklonili svoje hlavy, lebo nesklonili sa pred telom a krvou, ale pred Tebou, bázeň vzbudzujúcim Bohom. Ty teda, Vládca, tento náš Prínos spravuj pre dobro nás všetkých, každému podľa jeho potreby: s plaviacimi sa plav, s cestujúcimi cestuj, nemocných vylieč, Lekár duší a tiel.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b231",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Blahodaťou, štedrosťou a ľudomilnosťou svojho jednorodeného Syna, s Ktorým si blahoslavený spolu so Svojím Presvätým, Blahým a Životodárnym Duchom, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Pre o bachtalo baripen thaj o barvalo kamiben thaj o kamalmanušno Tiro Jekhóro Čhavóskero, savo andal bachtalo si, sar Bári Svetikano, Bachtalo thaj dživipenaske Tiro Duchosko, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b232",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b233",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zhliadni Hospodine Isuse Christe, Bože náš, zo svojho svätého sídla a z trónu slávy Svojho Kráľovstva, príď a posväť nás, Ktorý hore s Otcom sedíš a zároveň tu s nami neviditeľne prebývaš; Svojou mocnou rukou podaj Svoje Prečisté Telo a čestnú Krv nám a cez nás všetkým ľuďom.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b234",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Bože, očisť ma hriešneho a zmiluj sa nado mnou. (3x)",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b235",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Vnímajme. Sväté svätým.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Čiten! Šunen! Svetikano Svati’noskero!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b236",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Jeden Svätý, Jeden Hospodin, Isus Christos, na slávu Boha Otca. Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Jekh Svetikano,* Jekh Devlá,* Isus Christos,* andro baripen le Devleskero Dadéskero.* Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "rubric",
+          "id": "b237",
+          "tone": "direction",
+          "text": "Tu sa spievajú piesne pred svätým prijímaním"
+        },
+        {
+          "kind": "utterance",
+          "id": "b238",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Verím, Hospodine, a vyznávam, že Ty si skutočne Christos, Syn Boha živého, Ktorý si prišiel na svet spasiť hriešnikov, z ktorých prvým som ja. Verím tiež, že toto je Tvoje samotné najčistejšie Telo a toto je Tvoja samotná čestná Krv. Preto sa k Tebe modlím: zmiluj sa nado mnou a odpusť mi moje hriechy úmyselné i neúmyselné, ktorých som sa dopustil slovom, skutkom, vedome i nevedome a učiň ma hodným bez odsúdenia prijať Tvoje najčistejšie Tajiny na odpustenie hriechov a pre život večný. Amen.\nZa účastníka Svojej tajomnej večere, Synu Boží, prijmi ma dnes, lebo neprezradím tajomstvo Tvojim nepriateľom, ani Ťa nepobozkám ako Judáš, ale ako lotor sa Ti vyznávam: rozpomeň sa na mňa, Hospodine, vo Svojom Kráľovstve. Aby mi prijímanie Tvojich svätých Tajín, Hospodine, nebolo na súd alebo zatratenie, ale na uzdravenie duše a tela.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b239",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Chváľte Hospodina z nebies, chváľte Ho na výsostiach. Aleluja.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Baráren o Devleské* andar o nebos,* baráren Leske andre upre.* Aliluja.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b240",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "S bázňou Božou, vierou a láskou pristúpte!",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Daren te našun Devlá! Paťav the kamen! Avórde!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b241",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Požehnaný, ktorý prichádza v mene Hospodinovom, Boh je Hospodin a zjavil sa nám.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Pobachtalo so avel andre anav le Devleskero,* Dél hi Ráj thaj sikhal Leske amenca.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b242",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Telo Christovo prijmite, z prameňa nesmrteľnosti okúste.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Le Christoskero Tešto lelendar,* le najmeribenóro hanik*[[fn:33]] astaren.",
+            "notes": [
+              33
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b243",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Okuste a vidte, aký dobrý je Boh. Aleluja, aleluja, aleluja.",
+            "notes": []
+          },
+          "rom": {
+            "label": "",
+            "text": "Astaren the dikhen* savo láčho hi o Dél.* Aliluja",
+            "notes": []
+          }
+        },
+        {
+          "kind": "rubric",
+          "id": "b244",
+          "tone": "direction",
+          "text": "Tu sa ide ku svätému prijímaniu"
+        },
+        {
+          "kind": "utterance",
+          "id": "b245",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Spas, Bože, ľud svoj a požehnaj Svojmu dedičstvu.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Spasínen, Devlá, Tíri nípi, thaj bachtalpheň Tiro čhavórenge.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b246",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Videli sme pravé svetlo, prijali sme nebeského Ducha, našli sme pravú vieru, klaniame sa nerozdeliteľnej Trojici, lebo tá nás spasila.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Dikhľam o čačikano [svetlos],* liľam o Neboskero Sveto Duchos,* arakhľam o čačikani paťáben,* šéro téle ko naphagerdo Trinto,* bo on spasínen amen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b247",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Blahoslavený Boh náš, stále, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bachtalophenďo amári Dél, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b248",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b249",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Nech sa naplnia* ústa naše* chválou Tvojou, Hospodine*, \naby sme ospevovali* Tvoju slávu*, lebo si nás uznal za hodných*\nprijať Tvoje Sväté, Božské,* Nesmrteľné* a Životodarné Tajiny.* \nZachovaj nás vo Tvojej svätyni,* aby sme sa vždy učili* \nTvojej pravde. Aleluja,* aleluja, aleluja.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Te pherdel amari muja*\nle Tiro šukáro phenďipen,* Dévla,\nhoj amenca* dilavel Tíro báripen,*\nhoj les amen sikhľavas*\nte lel peske* o Tiro Svetikano,* Devléskero, Nameribenoro* thaj Dživipenoro Tájne.* Arakhlal amen andre Tiri Svetikano kher,* te amenca furt sikhlaren* Tíro Čáčipen. Aliluja,* aliluja, aliluja.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b250",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Stojme priamo prijmúc Božské, Sväté, Prečisté, Nesmrteľné, Nebeské, Oživujúce a bázeň vzbudzujúce Christove Tajiny, dôstojne ďakujme Hospodinovi.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ušti upre! Lel Devleskere, Svetikane, Báre žuže, Nameribenore, Neboskere thaj Dživipenore, so kerel daranipen Christóske Tájne. Báre palikeren Devleske.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b251",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hospodi, pomiluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b252",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zastaň sa, spas, zmiluj sa a zachovaj nás, Bože, svojou blahodaťou.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ačhav pes pal amende, spasin, prepačin the doľiker amen, Dévla, tíro láčhoha kamibena.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b253",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b254",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Prosiac, aby bol celý deň dokonalý, svätý, pokojný a bezhriešny, sami seba i druh druha a celý svoj život Christu Bohu oddajme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Mangen ke o celo dyve oven budžando, svetikano, smíro thaj nabiňi, [amenca korkore, ó manuš manuša, thaj celo amaro dživípen, Christoske le Devleske, amen Leske dala.]",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b255",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Tebe Hospodine.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Tuké Devlá.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b256",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Ďakujeme Ti, Ľudomilný Vládca, Dobrodinec našich duší, že si nás aj dnes uznal za hodných nebeských Tvojich a nesmrteľných Tajin. Spravuj našu cestu, utvrď nás všetkých v bázni voči Tebe, ochraňuj náš život a upevni naše kroky na príhovory a prosby slávnej Bohorodičky a vždy Panny Márie a všetkých Tvojich svätých.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b257",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Lebo Ty si naše posvätenie a Tebe chválu vzdávame, Otcu i Synu i Svätému Duchu, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bo Tu keres amenca svetikano. Thaj Tíre del o šukár phenďo, le Dadéskero, le Čhavéskero, thaj le Sveto Duchoskero, akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b258",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b259",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "V pokoji odíďme.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Smírom dža ári.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b260",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "V mene Hospodinovom.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Andre Devleskero anav.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b261",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "K Hospodinovi pomodlime sa.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Le Devleske, te molinas.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b262",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Hóspodi, pomíluj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Devlá, prepáčinen.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b263",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Hospodine, ktorý žehnáš tých, ktorí Ťa dobrorečia a posväcuješ tých, ktorí v Teba dúfajú, spas ľud Svoj a požehnaj Svoje dedičstvo, zachovaj plnosť Svojej Cirkvi, posväť tých, ktorí milujú krásu Tvojho domu. Osláv ich Svojou Božskou mocou a nás, ktorí v Teba dúfame, neopusť. Daruj pokoj svojmu svetu, svojim Cirkvám, duchovným, našej vlasti, jej predstaviteľom, vojsku a všetkým Svojim ľuďom. Lebo každý dobrý údel a každý dokonalý dar je zhora; pochádza od Teba, Otca svetiel. Tebe slávu, vďaku a česť vzdávame, Otcu i Synu i Svätému Duchu, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Devlá, tu bachtalphenes ko láčhiphen Tuke. The svetikano keres so avel ko Tuke. Spasínen Tíri nípi the bachtalophen Tíro čhavórenge. O pheripen Tíro Khangeri arakh les. Ker svetikano ko kamen šukáripen Tíro khér. Báripen len Tíro Devleskéro zór; thaj namukh amen so aven ke Tute. De smíro andro Tíro sveto, Tíro khangerin the rašajoskere nípen. De smíro amáro phúv, vaš amáre báre raja thaj armada thaj savo Tíro manuša.\nBo savo láčhe thaj savó budžande avel upral le Dadestar, olestar so kerďal o kham the o čhon;[[fn:34]] Thaj Tíre del o báriphenďo thaj šukárphenďo. Le Dadéskero, le Čhavéskero, thaj le Sveto Duchóskero, akana the pro but aver the palal tha pála.",
+            "notes": [
+              34
+            ]
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b264",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b265",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Nech je meno Hospodinovo* blahoslavené* odteraz i naveky (3x).",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Te oven bararen* Devleskero anav* akánik the furt avel. (3x)",
+            "notes": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "slug": "zalm-33",
+      "level": 2,
+      "title": "Žalm 33",
+      "inferred": true,
+      "blocks": [
+        {
+          "kind": "utterance",
+          "id": "b266",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Požehnanie Hospodinovo nech zostúpi na vás, Jeho blahodaťou a ľudomilnosťou, stále, teraz i vždycky i na veky vekov.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Bachtalopheň Devleskero Tumen; Leskero bachtalodeňipen the kamalmanušendar akana the pro but aver the palal tha pála.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b267",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b268",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Sláva Tebe, Christe Bože, nádej naša, sláva Tebe.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Báripen Tuke, Christoske Devleske, amen užaren, báripe Tuke!",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b269",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Sláva Otcu, i Synu i Svätému Duchu, teraz i vždycky i na veky vekov. Amen. Hospodi, pomiluj, Hospodi, pomiluj, Hospodi, pomiluj. Požehnaj.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Báraripen le Dadéskero, le Čhavéskero, thaj le Sveto Duchóskero, akana the pro but aver the palal tha pála. Amiň. Devlá prepáčines, Devlá prepáčines, Devlá prepáčines.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b270",
+          "role": "priest",
+          "sk": {
+            "label": "Kňaz",
+            "text": "Zmŕtvychvstalý Christos, pravý Boh náš, na príhovory svojej Prečistej Matky, svätých slávnych a všechválnych apoštolov, nášho svätého otca Jána Zlatoústeho, archiepiskopa konštantínopolskeho, svätého Mikuláše, biskupa Myrského, … a všetkých svätých, nech sa zmiluje nad nami a spasí nás ako Blahý a Ľudomil.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Rašaj",
+            "text": "Ko uštila andaro meriben o Christos, amáro čáče Dél. Modlipenca Leskero bári žuži Daj; svetikano, báripeňo the savo šukárpheňo apoštolos, l amáro svetikano dadenca Jánoske Somnakuno Mujeskero, archiepiskopos le Konštantinopolosko, le svetikano Mikulášo, episkopos le Myrasko thaj savó svetikano manuša. Leskere modlipena šukárphen prepáčinen thaj spasínen amen, sar hi bári láčho ílóro thaj kames nípe.",
+            "notes": []
+          }
+        },
+        {
+          "kind": "utterance",
+          "id": "b271",
+          "role": "people",
+          "sk": {
+            "label": "Ľud",
+            "text": "Amen.",
+            "notes": []
+          },
+          "rom": {
+            "label": "Roma",
+            "text": "Amiň.",
+            "notes": []
+          }
+        }
+      ]
+    }
+  ]
+}

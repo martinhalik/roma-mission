@@ -10,7 +10,9 @@
     "test": "vitest run",
     "test:ci": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "liturgy:convert": "tsx scripts/liturgy/convert-docx.ts",
+    "book": "npm run liturgy:convert && tsx scripts/liturgy/build-book.ts"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^5.6.1",
@@ -32,9 +34,14 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/sax": "^1.2.7",
     "@vitejs/plugin-react": "^5.2.0",
     "jsdom": "^29.0.1",
+    "jszip": "^3.10.2",
+    "playwright-core": "^1.63.0",
+    "sax": "^1.6.1",
     "tailwindcss": "^4",
+    "tsx": "^4.23.13",
     "typescript": "^5",
     "vitest": "^4.1.2"
   }
