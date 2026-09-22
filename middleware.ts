@@ -81,8 +81,14 @@ export function middleware(req: NextRequest) {
     const englishKey = resolveRoute("en", slug);
     if (englishKey) {
       const canonical = ROUTE_SLUGS[first][englishKey];
+      // Keep any deeper segments — /sk/liturgy/text must land on
+      // /sk/liturgia/text, not /sk/liturgia.
+      const rest = segments.slice(2);
+      const restPath = rest.length ? `/${rest.join("/")}` : "";
       const url = req.nextUrl.clone();
-      url.pathname = canonical ? `/${first}/${canonical}` : `/${first}`;
+      url.pathname = canonical
+        ? `/${first}/${canonical}${restPath}`
+        : `/${first}${restPath}`;
       url.search = search;
       return NextResponse.redirect(url, 301);
     }

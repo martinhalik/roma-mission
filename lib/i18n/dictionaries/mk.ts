@@ -8,6 +8,7 @@ const mk: Dictionary = {
     media: "МЕДИУМИ",
     stories: "ПРИКАЗНИ",
     heritage: "НАСЛЕДСТВО",
+    liturgy: "ЛИТУРГИЈА",
     activity: "ВО ЖИВО",
     more: "ПОВЕЌЕ",
     share: "СПОДЕЛИ",
@@ -1473,6 +1474,16 @@ const mk: Dictionary = {
       ogTitle: "1.000 години ромска и православна историја — интерактивен музеј",
       ogDescription:
         "Од Византиското Царство до денешните славски свеќи и парохиските крштевки: долгиот заеднички пат на Ромите како православни оглашени.",
+    },
+    liturgy: {
+      title: "",
+      description:
+        "",
+    },
+    liturgyText: {
+      title: "",
+      description:
+        "",
     },
     activity: {
       title: "Во живо од теренот — Ромска мисија",

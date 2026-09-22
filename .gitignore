@@ -43,3 +43,6 @@ raw/
 
 # Vercel
 .vercel
+
+# Liturgy book build output (regenerate with `npm run book`)
+scripts/liturgy/book/.build/

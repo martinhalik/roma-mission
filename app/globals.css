@@ -65,3 +65,165 @@ html.light {
     cursor: pointer;
   }
 }
+
+/* ─── Liturgy text page ───────────────────────────────────────────────────── */
+/*
+ * The language toggle on /liturgy/text is three radio inputs plus these rules,
+ * so switching between Romani, Slovak and both works with JavaScript disabled.
+ * The selectors reach descendants of a sibling (`~ .liturgy-body .liturgy-sk`),
+ * which Tailwind's `peer-*` variants cannot express — they only match direct
+ * siblings. Hence plain CSS here rather than utility classes.
+ */
+@layer components {
+  .liturgy-view > input[name="liturgy-view"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /*
+   * The inputs sit next to `.liturgy-body` rather than next to their labels,
+   * so the selected and focused states are matched with `:has()` on the
+   * wrapper instead of an adjacent-sibling combinator.
+   */
+  .liturgy-view:has(#liturgy-view-both:checked) label[for="liturgy-view-both"],
+  .liturgy-view:has(#liturgy-view-rom:checked) label[for="liturgy-view-rom"],
+  .liturgy-view:has(#liturgy-view-sk:checked) label[for="liturgy-view-sk"] {
+    background-color: var(--gold);
+    color: var(--on-accent);
+    border-color: var(--gold);
+  }
+
+  /* Keyboard focus has to be drawn on the label, since the input is hidden. */
+  .liturgy-view:has(#liturgy-view-both:focus-visible) label[for="liturgy-view-both"],
+  .liturgy-view:has(#liturgy-view-rom:focus-visible) label[for="liturgy-view-rom"],
+  .liturgy-view:has(#liturgy-view-sk:focus-visible) label[for="liturgy-view-sk"] {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  #liturgy-view-rom:checked ~ .liturgy-body .liturgy-sk,
+  #liturgy-view-sk:checked ~ .liturgy-body .liturgy-rom {
+    display: none;
+  }
+
+  /* With one language showing, the remaining line carries the whole utterance
+     and no longer needs the indent that separates a translation from its
+     original. */
+  #liturgy-view-rom:checked ~ .liturgy-body .liturgy-rom,
+  #liturgy-view-sk:checked ~ .liturgy-body .liturgy-sk {
+    margin-left: 0;
+    border-left-width: 0;
+    padding-left: 0;
+  }
+
+  /*
+   * Footnote markers sit inside a line of liturgy, so the <details> and its
+   * <summary> have to flow as inline text — both are block-level by default,
+   * which would otherwise break the line at every note. The note body becomes
+   * a block again only once the reader opens it.
+   */
+  .liturgy-note {
+    display: inline;
+  }
+  .liturgy-note > summary {
+    display: inline;
+    list-style: none;
+    /*
+     * The marker itself is a 10px superscript numeral — about 4×13px, well
+     * under the 24px minimum target size. Padding on an inline box enlarges
+     * the hit area without pushing the lines of the Liturgy apart, which
+     * vertical margin or a block display would.
+     */
+    padding: 0.85em 0.4em;
+    margin: 0 -0.15em;
+  }
+  .liturgy-note > summary::-webkit-details-marker,
+  .liturgy-note > summary::marker {
+    display: none;
+    content: "";
+  }
+  .liturgy-note[open] > summary {
+    color: var(--text-primary);
+  }
+  /*
+   * Be explicit about the note body rather than relying on the browser's
+   * default handling of a closed <details>: with the element switched to
+   * `display: inline` that default still reserves a block box, which breaks
+   * the line at every footnote marker.
+   */
+  .liturgy-note:not([open]) > :not(summary) {
+    display: none;
+  }
+  .liturgy-note[open] > :not(summary) {
+    display: block;
+  }
+  /*
+   * Chrome wraps a <details>'s contents in a `::details-content` box that stays
+   * block-level even when the element itself is inline, which breaks the line
+   * after every footnote marker. Collapse it while closed. Browsers without the
+   * pseudo-element fall back to the two rules above.
+   */
+  .liturgy-note::details-content {
+    display: none;
+  }
+  .liturgy-note[open]::details-content {
+    display: block;
+  }
+}
+
+/*
+ * Print: a service book, not a web page. Navigation, footer, the toggle and
+ * the CTA come off; both languages are restored whatever the on-screen choice
+ * was; and the page goes black-on-white so it is legible from a pew.
+ */
+@media print {
+  :root,
+  html.dark,
+  html.light {
+    --bg-primary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-elevated: #ffffff;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --text-muted: #555555;
+    --gold: #8a6d1f;
+    --border-default: #cccccc;
+    --border-strong: #999999;
+  }
+
+  .liturgy-noprint,
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  /* Whatever the reader chose on screen, print both languages. */
+  #liturgy-view-rom:checked ~ .liturgy-body .liturgy-sk,
+  #liturgy-view-sk:checked ~ .liturgy-body .liturgy-rom {
+    display: block;
+  }
+
+  .liturgy-utterance {
+    break-inside: avoid;
+  }
+
+  .liturgy-section-title {
+    break-after: avoid;
+  }
+
+  /* Footnotes are collapsed on screen; open them all on paper. */
+  .liturgy-note > *:not(summary) {
+    display: block !important;
+  }
+  .liturgy-note::details-content {
+    display: block;
+  }
+
+  @page {
+    margin: 18mm 16mm;
+  }
+}

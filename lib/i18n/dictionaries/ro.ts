@@ -8,6 +8,7 @@ const ro: Dictionary = {
     media: "MEDIA",
     stories: "POVEȘTI",
     heritage: "MOȘTENIRE",
+    liturgy: "LITURGHIA",
     activity: "ÎN DIRECT",
     more: "MAI MULTE",
     share: "DISTRIBUIE",
@@ -1475,6 +1476,16 @@ const ro: Dictionary = {
       ogTitle: "1.000 de ani de istorie romă și ortodoxă — un muzeu interactiv",
       ogDescription:
         "De la Imperiul Bizantin până la lumânările de Slavă și botezurile parohiale de astăzi: drumul lung și comun al romilor ca catehumeni ortodocși.",
+    },
+    liturgy: {
+      title: "",
+      description:
+        "",
+    },
+    liturgyText: {
+      title: "",
+      description:
+        "",
     },
     activity: {
       title: "În direct de pe teren — Misiunea Romă",

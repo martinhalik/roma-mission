@@ -8,6 +8,7 @@ const de: Dictionary = {
     media: "MEDIEN",
     stories: "GESCHICHTEN",
     heritage: "ERBE",
+    liturgy: "LITURGIE",
     activity: "LIVE",
     more: "MEHR",
     share: "TEILEN",
@@ -1474,6 +1475,16 @@ const de: Dictionary = {
       ogTitle: "1.000 Jahre Roma- und orthodoxe Geschichte — ein interaktives Museum",
       ogDescription:
         "Vom Byzantinischen Reich bis zu den heutigen Slava-Kerzen und Pfarrtaufen: der lange, gemeinsame Weg der Roma als orthodoxe Katechumenen.",
+    },
+    liturgy: {
+      title: "",
+      description:
+        "",
+    },
+    liturgyText: {
+      title: "",
+      description:
+        "",
     },
     activity: {
       title: "Live aus dem Missionsfeld — Roma-Mission",

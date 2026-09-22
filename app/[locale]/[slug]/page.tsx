@@ -9,6 +9,7 @@ import LocationsPage from "../_components/LocationsPage";
 import StoriesPage from "../_components/StoriesPage";
 import MediaPage from "../_components/MediaPage";
 import HeritagePage from "../_components/HeritagePage";
+import LiturgyPage from "../_components/LiturgyPage";
 import ActivityPage from "../_components/ActivityPage";
 import GetInvolvedPage from "../_components/GetInvolvedPage";
 import { fetchTelegramFeed } from "@/lib/telegram";
@@ -56,6 +57,11 @@ export default async function LocaleSlugPage({
       return <MediaPage />;
     case "heritage":
       return <HeritagePage />;
+    case "liturgy":
+      return <LiturgyPage locale={locale} />;
+    case "liturgyText":
+      // Lives at /liturgy/text — handled by the [sub] route, not here.
+      notFound();
     case "activity": {
       const [telegramFeed, instagramFeed] = await Promise.all([
         fetchTelegramFeed(),
