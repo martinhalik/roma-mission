@@ -46,7 +46,7 @@ describe("book editions", () => {
       const files = getBookFiles(locale);
       expect(files?.epub.file).toMatch(new RegExp(`^/ebook/.+-${locale}\\.epub$`));
       expect(files?.pdf.file).toMatch(new RegExp(`^/ebook/.+-${locale}\\.pdf$`));
-      expect(files?.cover).toBe(`/ebook/cover-${locale}.png`);
+      expect(files?.cover).toBe(`/ebook/cover-${locale}.jpg`);
       expect(files?.epub.bytes).toBeGreaterThan(0);
     }
   });

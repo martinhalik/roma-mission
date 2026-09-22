@@ -26,9 +26,11 @@ function outline(src) {
     refs: [...src.matchAll(/\[\^(\d+)\](?!:)/g)].map((m) => m[1]).join(","),
     defs: lines.filter((l) => /^\[\^\d+\]:/.test(l)).map((l) => /^\[\^(\d+)\]/.exec(l)[1]).join(","),
     quoteLines: lines.filter((l) => l.startsWith(">")).length,
+    pullQuoteLines: lines.filter((l) => l.startsWith(">>")).length,
+    figures: lines.filter((l) => l.startsWith("![")).map((l) => /\]\(([^)]+)\)/.exec(l)?.[1] ?? "?").join(","),
     listItems: lines.filter((l) => /^([-*]|\d+\.)\s+(?!\d)/.test(l) && !/^#/.test(l)).length,
     tableRows: lines.filter((l) => l.startsWith("|")).length,
-    paragraphs: lines.filter((l) => l && !/^(#|>|\||[-*]\s|\d+\.\s|\[\^\d+\]:|---$)/.test(l)).length,
+    paragraphs: lines.filter((l) => l && !/^(#|>|\||!\[|[-*]\s|\d+\.\s|\[\^\d+\]:|---$)/.test(l)).length,
   };
 }
 
@@ -48,7 +50,8 @@ function check(locale, source) {
   for (const key of ["refs", "defs"]) {
     if (source[key] !== target[key]) problems.push(`footnote ${key} differ from sk.md`);
   }
-  for (const key of ["quoteLines", "listItems", "tableRows"]) {
+  if (source.figures !== target.figures) problems.push(`figures differ: sk.md has [${source.figures}], ${locale}.md has [${target.figures}]`);
+  for (const key of ["quoteLines", "pullQuoteLines", "listItems", "tableRows"]) {
     if (source[key] !== target[key]) problems.push(`${key}: sk.md has ${source[key]}, ${locale}.md has ${target[key]}`);
   }
   const ratio = target.paragraphs / source.paragraphs;

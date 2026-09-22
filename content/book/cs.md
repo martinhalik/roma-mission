@@ -8,8 +8,8 @@ prot. doc. ThDr. Štefan Pružinský, PhD., arciděkan
 
 # Úvod
 
-> „Nelpi na kráse lidské tváře, ale pozoruj duši člověka. Nehleď na to, co má člověk na sobě (tělo je dočasný oděv), ale na toho, kdo oděv nosí. Nehleď na nádheru domu, ale na toho, kdo v domě žije a jaký je; jinak urážíš Boží obraz v člověku.“
-> — Jan Kronštadský: Můj život v Kristu (výbor). Kostelní Vydří 2014, s. 22.
+>> „Nelpi na kráse lidské tváře, ale pozoruj duši člověka. Nehleď na to, co má člověk na sobě (tělo je dočasný oděv), ale na toho, kdo oděv nosí. Nehleď na nádheru domu, ale na toho, kdo v domě žije a jaký je; jinak urážíš Boží obraz v člověku.“
+>> — Jan Kronštadský: Můj život v Kristu (výbor). Kostelní Vydří 2014, s. 22.
 
 Misie je součástí života Církve a darovala nám mnoho svatých, jejichž životy dodnes mnozí znají a jsou nám příkladem ve víře v Boha, v lásce k lidem a v naději ve vzkříšení. Největším z nich byl snad apoštol Pavel, který pro povzbuzení Timotea a ostatních misionářů napsal:
 
@@ -39,16 +39,23 @@ Jak to zvládnout a kde k tomu nabrat sílu? Zde jsou lidské síly ubohé, ale 
 
 > „Amen, pravím vám: Není nikoho, kdo opustil dům, bratry nebo sestry, matku nebo otce, děti nebo pole pro mne a pro evangelium, aby nedostal nyní v tomto čase stokrát víc: domy, bratry, sestry, matky, děti i pole, i když s pronásledováním, a v budoucím věku věčný život.“
 
+![Romové v Moldavě nad Bodvou čekají na sňatek dívky z Klenovce a mladíka z Moldavy, oba pocházejí z osady a bydlí v ní. Sňatky jsou dnes už výjimkou, tento byl civilní (2019)](fig-11a.jpg)
+
+![Křesťansko-sportovní kroužek, kde jsme propojovali sport a evangelium (2018)](fig-11b.jpg)
+
 # Teorie a historie
 
-> „Hospodin řekl: Jsou jeden národ a všichni mluví jednou řečí. Toto je jen začátek jejich počínání; teď jim už nic nezabrání uskutečnit všechno, co si usmyslí. Nuže, sestupme a zmaťme jim řeč, aby jeden nerozuměl druhému! Tak je Hospodin odtud rozptýlil po celé zemi a přestali stavět město.“
-> — Gn 11,6–8
+>> „Hospodin řekl: Jsou jeden národ a všichni mluví jednou řečí. Toto je jen začátek jejich počínání; teď jim už nic nezabrání uskutečnit všechno, co si usmyslí. Nuže, sestupme a zmaťme jim řeč, aby jeden nerozuměl druhému! Tak je Hospodin odtud rozptýlil po celé zemi a přestali stavět město.“
+>> — Gn 11,6–8
 
 ## 1.1. Historie romského etnika v Evropě
 
-Hospodin přikázal Noemovi a jeho potomkům, aby naplnili zemi,[^4] ale oni se shromáždili a odmítli Boží vůli. Důsledkem toho jsou rozdílné jazyky všech národů. Zvířata se domluví, i když jsou z různých kontinentů, ale lidé už ne. Romové jsou důkazem toho, jak dokáže odlišný jazyk udělat z člověka cizince v zemi, kde se narodil. Jsou národem, který od chvíle, kdy opustil Byzantskou říši (kvůli válce, útlaku muslimů a zničené ekonomice), žije po staletí rozptýlen v různých zemích a jeho členové stále působí jako cizinci (neasimilovali se). Romové jsou svým podnikáním závislí na fungující ekonomice, protože nikdy nebyli zemědělci, ale vždy kočovníky, kteří však neměli velká stáda jako Abrahám, nýbrž nabízeli různé služby výměnou za jídlo a peníze, podobně jako dnešní terciární sektor. Existují různé dohady o původu Romů. Především díky značné podobnosti romského jazyka a hindštiny se už dvě staletí nepochybuje o tom, že Romové pocházejí z Indie. Teorie spekulují spíše o tom, z které části a z které kasty pocházejí. Někteří tuto teorii označují za romantiku, ale jejich snahy mi připadají tendenční, jen aby dokázali sílu předsudků a stereotypu.[^5] První srovnání provedl kolem roku 1760 maďarský student Stefan Vályim po setkání s Indy na teologické škole v Leidenu. Ti mu jazykem a vzhledem připomínali Romy z okolí Komárna.[^6] Další studie, které jsou už zachovány a citovány, provedli A. F. Pott (1844–1845) a Fr. Miklosich (1872–1877), kteří na základě jazyka potvrdili, že Romové pocházejí z Indie a že dlouhou dobu strávili v Řecku (Byzanci) a ve slovanských zemích.[^7]
+Hospodin přikázal Noemovi a jeho potomkům, aby naplnili zemi,[^4] ale oni se shromáždili a odmítli Boží vůli. Důsledkem toho jsou rozdílné jazyky všech národů. Zvířata se domluví, i když jsou z různých kontinentů, ale lidé už ne. Romové jsou důkazem toho, jak dokáže odlišný jazyk udělat z člověka cizince v zemi, kde se narodil. Jsou národem, který od chvíle, kdy opustil Byzantskou říši (kvůli válce, útlaku muslimů a zničené ekonomice), žije po staletí rozptýlen v různých zemích a jeho členové stále působí jako cizinci (neasimilovali se). Romové jsou svým podnikáním závislí na fungující ekonomice, protože nikdy nebyli zemědělci, ale vždy kočovníky, kteří však neměli velká stáda jako Abrahám, nýbrž nabízeli různé služby výměnou za jídlo a peníze, podobně jako dnešní terciární sektor.
 
 [^4]: Gn 9,1
+
+Existují různé dohady o původu Romů. Především díky značné podobnosti romského jazyka a hindštiny se už dvě staletí nepochybuje o tom, že Romové pocházejí z Indie. Teorie spekulují spíše o tom, z které části a z které kasty pocházejí. Někteří tuto teorii označují za romantiku, ale jejich snahy mi připadají tendenční, jen aby dokázali sílu předsudků a stereotypu.[^5] První srovnání provedl kolem roku 1760 maďarský student Stefan Vályim po setkání s Indy na teologické škole v Leidenu. Ti mu jazykem a vzhledem připomínali Romy z okolí Komárna.[^6] Další studie, které jsou už zachovány a citovány, provedli A. F. Pott (1844–1845) a Fr. Miklosich (1872–1877), kteří na základě jazyka potvrdili, že Romové pocházejí z Indie a že dlouhou dobu strávili v Řecku (Byzanci) a ve slovanských zemích.[^7]
+
 [^5]: Viz BITTNEROVÁ, D. a kol.: Etnické komunity - Romové. Praha 2013, s. 30
 [^6]: Viz HORTIS, S. A.: Cigáni v Uhorsku : o dnešnom stave, zvláštnych mravoch a spôsobe života, ako aj o ostatných vlastnostiach a danostiach Cigánov v Uhorsku. Bratislava 1995, s. 203.
 [^7]: SOULIS, G. C.: The Gypsies in the Byzantine Empire and the Balkans in the Late Middle Ages. In: Dumbarton Oaks Papers, Trustees for Harvard University 1961, vol. 15, s. 143. Dostupné na internetu: <https://doi.org/10.2307/1291178>
@@ -57,14 +64,14 @@ Pokud aspoň trochu známe romskou kulturu, můžeme si i my s pomocí dnešníc
 
 | ČESKY | HINDŠTINA | ROMŠTINA | POZNÁMKY |
 |---|---|---|---|
-| kůň | घोड़ा [ghora] | gra | |
-| noc | रात [rát] | ráti | |
-| stará | पुराना [puraana] | phura | „H“ je neznělé, takže v romštině se dá zapsat i jako pura. „N“ se dává na konec slova a naznačuje infinitiv. Pak nám vznikne puran. „A“ na konci slova znamená ženský rod. Romský jazyk se zkracuje podobně jako francouzština, přízvuk se klade na druhou slabiku, a tím nám už vzniká puraana. |
-| hladový | भूखा [bhookha] | bokhal | „h“ je neznělé a často se mění na „ch“ nebo vypadává – proto se v hindštině dá napsat i bokha |
-| jedna | एक [ek] | jekh | „j“ pomáhá vyslovit samohlásku na začátku slova, „h“ je opět neznělé a typicky se v romštině doplňuje. |
-| ano | हां [haan] | ha | |
-| jíst | खाने [khaane] | haan | na východním Slovensku se řekne „chaan“ |
-| oheň | आग [aag] | jaag(h) | |
+| **kůň** | घोड़ा [ghora] | gra | |
+| **noc** | रात [rát] | ráti | |
+| **stará** | पुराना [puraana] | phura | „H“ je neznělé, takže v romštině se dá zapsat i jako pura. „N“ se dává na konec slova a naznačuje infinitiv. Pak nám vznikne puran. „A“ na konci slova znamená ženský rod. Romský jazyk se zkracuje podobně jako francouzština, přízvuk se klade na druhou slabiku, a tím nám už vzniká puraana. |
+| **hladový** | भूखा [bhookha] | bokhal | „h“ je neznělé a často se mění na „ch“ nebo vypadává – proto se v hindštině dá napsat i bokha |
+| **jedna** | एक [ek] | jekh | „j“ pomáhá vyslovit samohlásku na začátku slova, „h“ je opět neznělé a typicky se v romštině doplňuje. |
+| **ano** | हां [haan] | ha | |
+| **jíst** | खाने [khaane] | haan | na východním Slovensku se řekne „chaan“ |
+| **oheň** | आग [aag] | jaag(h) | |
 
 *Tabulka č. 1: Srovnání hindštiny a romštiny ve středoslovenském dialektu*
 
@@ -72,11 +79,14 @@ Osobně mě velmi překvapilo, když jsem zjistil, že mezi Romy funguje kastovn
 
 [^8]: Viz BITTNEROVÁ, D. a kol.: Etnické komunity - Romové. Praha 2013, s. 20
 
-V Evropě se Romové objevili na začátku 15. století. Podle jejich jazyka je vidět, že Arábii minuli, ale zdrželi se v Arménii a Byzanci (mají mnoho arménských a řeckých slov napříč evropskými romskými dialekty). Zmínky o Romech z období před 12. stoletím známe jen dvě. První souvisí s jedním císařem, který byl označen za Roma,[^9] protože uměl dobře zacházet s koňmi. Druhá je z 11. století ze spisu „Život svatého Jiří Athoského“, kde jsou Romové pozváni do oblasti divoké zvěře, aby ji svými čáry otrávili a vyhubili. Po velkém úspěchu je císař Konstantin IX. (vládl v letech 1042 až 1055) pozval ke královskému dvoru, aby mu toto otrávení předvedli. Tehdy byl u dvora přítomen i svatý Jiří, avšak celé vystoupení, stejně jako zabíjení zvířat, se mu nelíbilo. Proto otrávené maso před ostatními požehnal křížem a pes ke všeobecnému překvapení nebyl otráven. Císař z toho byl nadšený a zvolal, že dokud je svatý Jiří u dvora, ví, že se nemusí bát ani otravy, ani čarodějů.[^10] Začátek trvalého obsazování Byzantské říše (1396–1453) by odpovídal příchodu Romů do Evropy, který se datuje právě do této doby. Je v tom vidět několik proudů: malá část zůstala na území Turecka a Řecka a ti se často dodnes považují za Turky. Jiná část se přesunula jen o malý kousek do Srbska a Rumunska, kde je nyní nejvíce Romů. Jiná skupina putovala dál na sever (Ukrajina, Polsko, Rusko, Litva, Lotyšsko, Estonsko, Finsko), další zase na západ (Itálie, Španělsko) a další část postupně přes Rumunsko, Maďarsko, Slovensko a Čechy do Německa, Francie a Anglie. Mnoho Romů došlo až do samotného Španělska, kde velmi výrazně ovlivnili hudbu i kulturu.[^11] Většina těchto poznatků vychází především z historických zmínek a ze srovnávání dialektů. Kdo se naučí romsky, při troše tréninku dobře rozumí více dialektům. Vypozoroval jsem, že se Romové při troše snahy domluví napříč celou Evropou. Stává se to především v těžké životní situaci, nebo když se mladí do sebe zamilují. Mně osobně se zdají velmi blízké slovenský, srbský a ruský dialekt.[^12] Přestože jejich historie je už pět staletí odlišná, jazyk je stále podobný. Je však pravda, že nová a méně používaná slova se liší, což je způsobeno tím, že romština nemá příliš mnoho písemných děl, a tak si tento jazyk neuchoval velkou slovní zásobu. To se však mění díky telefonu a Facebooku. Romové teď totiž začali psát. Každý zatím píše, jak slyší, ale každým dnem rostou předpoklady pro vznik ustálené psané podoby romštiny. I písně na YouTube dnes tento jazyk přenášejí z jednoho kouta Evropy do druhého.
+V Evropě se Romové objevili na začátku 15. století. Podle jejich jazyka je vidět, že Arábii minuli, ale zdrželi se v Arménii a Byzanci (mají mnoho arménských a řeckých slov napříč evropskými romskými dialekty). Zmínky o Romech z období před 12. stoletím známe jen dvě. První souvisí s jedním císařem, který byl označen za Roma,[^9] protože uměl dobře zacházet s koňmi. Druhá je z 11. století ze spisu „Život svatého Jiří Athoského“, kde jsou Romové pozváni do oblasti divoké zvěře, aby ji svými čáry otrávili a vyhubili. Po velkém úspěchu je císař Konstantin IX. (vládl v letech 1042 až 1055) pozval ke královskému dvoru, aby mu toto otrávení předvedli. Tehdy byl u dvora přítomen i svatý Jiří, avšak celé vystoupení, stejně jako zabíjení zvířat, se mu nelíbilo. Proto otrávené maso před ostatními požehnal křížem a pes ke všeobecnému překvapení nebyl otráven. Císař z toho byl nadšený a zvolal, že dokud je svatý Jiří u dvora, ví, že se nemusí bát ani otravy, ani čarodějů.[^10] Začátek trvalého obsazování Byzantské říše (1396–1453) by odpovídal příchodu Romů do Evropy, který se datuje právě do této doby. Je v tom vidět několik proudů: malá část zůstala na území Turecka a Řecka a ti se často dodnes považují za Turky. Jiná část se přesunula jen o malý kousek do Srbska a Rumunska, kde je nyní nejvíce Romů. Jiná skupina putovala dál na sever (Ukrajina, Polsko, Rusko, Litva, Lotyšsko, Estonsko, Finsko), další zase na západ (Itálie, Španělsko) a další část postupně přes Rumunsko, Maďarsko, Slovensko a Čechy do Německa, Francie a Anglie. Mnoho Romů došlo až do samotného Španělska, kde velmi výrazně ovlivnili hudbu i kulturu.[^11]
 
 [^9]: Z přednášky prof. ThDr. Jána Šafina PhD. na PBF v rámci hodiny Dějiny náboženství (2019)
 [^10]: SOULIS, G. C.: The Gypsies in the Byzantine Empire and the Balkans in the Late Middle Ages, s. 145
 [^11]: Příchod malých skupin Romů se udál i dříve, podle <https://archiv.vlada.gov.sk/romovia/3632/dejiny-romov.html> máme zprávy o pobytu na Slovensku už ze 14. století. Avšak podle obecných zdrojů je jejich „velký“ příchod zaznamenán po celé Evropě v první polovině 15. století. Celou situaci lze vysvětlit úpadkem ekonomiky Byzantské říše po obsazení území osmanskými Turky, které předcházelo dobytí Konstantinopole. Známá jsou vítězství Turků v r. 1389 na Kosově poli a v r. 1396 u Nikopole, která svědčí o neschopnosti byzantské metropole zabránit průchodu cizích vojsk přes své území, a o následné potřebě Romů utéct před osmanskými Turky, jejichž chování k vesničanům je známé i z historie Slovenska.
+
+Většina těchto poznatků vychází především z historických zmínek a ze srovnávání dialektů. Kdo se naučí romsky, při troše tréninku dobře rozumí více dialektům. Vypozoroval jsem, že se Romové při troše snahy domluví napříč celou Evropou. Stává se to především v těžké životní situaci, nebo když se mladí do sebe zamilují. Mně osobně se zdají velmi blízké slovenský, srbský a ruský dialekt.[^12] Přestože jejich historie je už pět staletí odlišná, jazyk je stále podobný. Je však pravda, že nová a méně používaná slova se liší, což je způsobeno tím, že romština nemá příliš mnoho písemných děl, a tak si tento jazyk neuchoval velkou slovní zásobu. To se však mění díky telefonu a Facebooku. Romové teď totiž začali psát. Každý zatím píše, jak slyší, ale každým dnem rostou předpoklady pro vznik ustálené psané podoby romštiny. I písně na YouTube dnes tento jazyk přenášejí z jednoho kouta Evropy do druhého.
+
 [^12]: Srbský, slovenský a ruský jsou jedinými dialekty, které jsem měl možnost porovnat v knížkách a videích. Do východoslovenské romštiny je přeložen Nový zákon dostupný na biblia.sk, knižně a na YouTube <https://www.youtube.com/watch?v=0vtvyO4FobE>, do středoslovenské romštiny je přeložena kniha Mri elšebni Biblija, kterou přeložil PhDr. Ján Berky-Ľuborecký. V srbské romštině (dialekt arli-balkánský) jsou dostupné písně od Sasa Bakic <https://youtube.com/playlist?list=PLGdXozkVaYWzgwDixQ6-h64LOUJ8NlzXn> a pravoslavný Služebnik od Tрифун Димиђ. V ruské romštině jsem měl k dispozici evangelium Святое Евангелие от Марка на русском и циганском языках (диалект русских цыган) přeložené od Георгий Цветков.
 
 Zajímavostí romského národa je skutečnost, že žijí roztroušeni po celém anglo-evropském světě v diasporách, podobně jako kdysi židovský národ. Se židovským národem později sdíleli i rozsudek smrti, a to právě v době Adolfa Hitlera. Věřím, že až se úplně obrátí k Bohu, bude jejich potenciál obrovský. Při romské misii zažívám, že se cítím doma v mnoha romských komunitách, kde mají příbuzné Romové z osad, v nichž působíme, nebo kam se tito Romové přiženili či provdali. Vím, že tam najdu ubytování i podporu pro misii, ale bohužel nemám tolik času, abych toho využil. Připomíná mi to cesty apoštola Pavla, když šel kázat Židům roztroušeným po celé Evropě (Salamína, Antiochie Pisidská, Ikonium, Lystra[^13] a mnohá další místa), u nichž často našel prvotní podporu, první věřící, a ti mu poskytli zázemí, aby pak mohl ve městě jít a kázat i pohanům.
@@ -104,12 +114,12 @@ Romové jsou lidé pokojní, nebouří se a přijímají náboženství majority
 
 [^19]: Tt 1,10–14
 
-> „Já jsem dobrý pastýř. Znám své a moje znají mne. Jako mne zná Otec, i já znám Otce a svůj život dávám za ovce. Mám i jiné ovce, které nejsou z tohoto ovčince. I ty musím přivést. Budou slyšet můj hlas a bude jedno stádo a jeden pastýř.“
-> — J 10,14–16
+>> „Já jsem dobrý pastýř. Znám své a moje znají mne. Jako mne zná Otec, i já znám Otce a svůj život dávám za ovce. Mám i jiné ovce, které nejsou z tohoto ovčince. I ty musím přivést. Budou slyšet můj hlas a bude jedno stádo a jeden pastýř.“
+>> — J 10,14–16
 
 ### Řecký původ slova „cikán“
 
-Slovo „cikán“ je odvozeno od řeckého slova atsinganos (ἀτσίγγανος), jehož různé tvary se dodnes používají k označení Romů napříč Evropou (viz tabulka č. 2). Stačí nahradit písmeno „ts“ naším nejbližším písmenem „c“ a podobnost je značná: „a-ci-n-gan-os“. Příbuzné je řecké slovo „ἀτσίγγανοi“, které v církevních spisech označuje heretika a čaroděje – což odpovídá několika historickým zdrojům o problémech s Romy v Byzanci. V překladu Trebniku do ruštiny bylo slovo ἀτσίγγανος nahrazeno slovem Cikán (Цыган). Ve svém díle „Chronografia“ vysvětluje Theofanés slovo „ἀθίγγανοι“ jako výraz označující heretiky žijící především ve Frýgii a Lykaonii. Z jiných zdrojů víme, že Romové se stejně jako tito heretici věnovali věštění a čarování, proto s nimi byli spojováni a dostali totéž označení.[^20] Dodnes se Romům v Řecku říká velmi podobně „τσιγγάνος“.
+Slovo „cikán“ je odvozeno od řeckého slova atsinganos (ἀτσίγγανος), jehož různé tvary se dodnes používají k označení Romů napříč Evropou (viz tabulka č. 2). Stačí nahradit písmeno „ts“ naším nejbližším písmenem „c“ a podobnost je značná: „a-**ci**-n-**gan**-os“. Příbuzné je řecké slovo „ἀτσίγγανοi“, které v církevních spisech označuje heretika a čaroděje – což odpovídá několika historickým zdrojům o problémech s Romy v Byzanci. V překladu Trebniku do ruštiny bylo slovo ἀτσίγγανος nahrazeno slovem Cikán (Цыган). Ve svém díle „Chronografia“ vysvětluje Theofanés slovo „ἀθίγγανοι“ jako výraz označující heretiky žijící především ve Frýgii a Lykaonii. Z jiných zdrojů víme, že Romové se stejně jako tito heretici věnovali věštění a čarování, proto s nimi byli spojováni a dostali totéž označení.[^20] Dodnes se Romům v Řecku říká velmi podobně „τσιγγάνος“.
 
 [^20]: Viz Dejiny Rómov. archiv.vlada.gov.sk (online). [cit. 2021-30-12]. Dostupné na internetu <https://archiv.vlada.gov.sk/romovia/3632/dejiny-romov.html>
 
@@ -136,7 +146,7 @@ Misie Cyrila a Metoděje byla výjimečnou událostí v dějinách Slovanů. Byz
 
 [^21]: ĎURICA, S. M.: Život Konštantína a život Metoda, Panónske legendy. Turany 2013, s. 33
 
-Cyril byl mužem, který se rozhodl, že „nebude mařit své dny ve shonu tohoto života.“[^22] Byl mužem vzdělaným, ale především mužem modlitby a Boží blahodati, ochotným zemřít pro Christa, který neshromažďoval bohatství, ale ctnosti. Uposlechl císařova povolání na misii mezi muslimy a Židy, kteří se ho pokusili otrávit. V případě Slovanů však narazil na větší překážku, o níž se zmiňuje takto: „s radostí tam půjdu, mají-li písmena pro svůj jazyk.“[^23] Slované byli prostým lidem a teologii nerozuměli, jak píše kníže Rastislav:
+Cyril byl mužem, který se rozhodl, že *„nebude mařit své dny ve shonu tohoto života.“*[^22] Byl mužem vzdělaným, ale především mužem modlitby a Boží blahodati, ochotným zemřít pro Christa, který neshromažďoval bohatství, ale ctnosti. Uposlechl císařova povolání na misii mezi muslimy a Židy, kteří se ho pokusili otrávit. V případě Slovanů však narazil na větší překážku, o níž se zmiňuje takto: *„s radostí tam půjdu, mají-li písmena pro svůj jazyk.“*[^23] Slované byli prostým lidem a teologii nerozuměli, jak píše kníže Rastislav:
 
 [^22]: ĎURICA, S. M.: Život Konštantína a život Metoda, Panónske legendy, s. 20
 [^23]: Tamtéž, s. 37
@@ -158,8 +168,8 @@ Je možné si všimnout několika podobností mezi Romy a tehdejšími Slovany:
 
 Romové z osad jdou na střední školu jen velmi výjimečně a jejich řeč je mnohem méně abstraktní. Mnohá přirovnání se nesetkají s úspěchem, pokud nejsou z jejich života, a někdy jim jejich význam musejí vysvětlit ostatní. Tehdy Romové většinou použijí romštinu a problém je vyřešen. Mnoho svatých církevních kazatelů se zaměřilo na kázání řečí lidu, a ne slovníkem teologů, a také na s tím související používání mateřského jazyka. V cizím jazyce se vždy chápe hůř, je třeba se víc soustředit a chvilku to trvá. Když chci okamžitou pozornost, používám vždy romské věty, např. „ticho, poslouchejte mě – čiten, šun ma“, „počkej – užaren“, „pozor, auto – motori avel“, „pojď sem – avorde“. Když jsem přišel do nové osady, všichni ztichli, až když na ně sociální pracovnice promluvila romsky. I letniční (pentekostální protestanti) v osadách často kážou romsky. Není problém při mluvení míchat jazyky, pokud neznáte výrazy nebo se romsky teprve učíte. Míchání romštiny a slovenštiny je pro ně běžné.
 
-> „Jeho život, i když jen krátce vyprávěný, ukazuje, jaký byl, aby ten, kdo o něm slyší a chce se mu podobat, přijal horlivost a odmítl lenost, jak o tom promluvil apoštol: Napodobujte mne, jako i já napodobuji Christa.“
-> — Život Konštantína a život Metoda, ĎURICA, S. M.: Život Konštantína a život Metoda, Panónske legendy. Turany 2013, s.19
+>> „Jeho život, i když jen krátce vyprávěný, ukazuje, jaký byl, aby ten, kdo o něm slyší a chce se mu podobat, přijal horlivost a odmítl lenost, jak o tom promluvil apoštol: Napodobujte mne, jako i já napodobuji Christa.“
+>> — Život Konštantína a život Metoda, ĎURICA, S. M.: Život Konštantína a život Metoda, Panónske legendy. Turany 2013, s.19
 
 ### Literatura v romském jazyce
 
@@ -173,14 +183,14 @@ Romové už písmo znají, ve škole se každý z nich učí písmena své země
 
 Chceme-li někomu pomoci, je potřeba se k němu sklonit, přijít k němu a nepohrdat jím. V Písmu svatém nás Christos varuje před kvasem farizeů a Písmo svaté bylo napsáno kvůli nám věřícím. Chyby farizeů jsou v evangeliu často zmiňovány a jejich hlavním znakem je pohrdání méně zbožnými lidmi. Christos nás vyzývá, abychom jedli, co nám předloží, přijali první ubytování a nestěhovali se v průběhu misie na lepší místo. Svatý Cyril je nám v tom příkladem. Z carského dvora v tehdy nejkrásnějším městě odešel na misii mezi Araby, Chazary a Slovany. Nikdy si nestěžoval, nepolevil a poslušně šel tam, kam byl vyslán. První misionáři letničních na Spiši, kteří tam přišli z Ostravy a založili sbor „Maranatha“, bydleli v osadách a nestěžovali si.[^27] Plody této služby byly obrovské, vysílala o tom reportáže i televize. Svůj život změnily stovky Romů a kolem tisíce jich navštěvovalo nedělní kázání. Postupem času si jeden z nich, který byl hlavním z těchto kazatelů, koupil velký dům a pěkné auto. Později přišel hřích, zmíněný kazatel zpronevěřil peníze sboru a misie tím utrpěla velkou ránu. Shromáždění se rozpadlo na dva sbory a kazatel odstoupil ze služby. Pokora byla vodou, která pomáhala semínku evangelia vyrůst, touha po pohodlí naopak vedla k hříchu, a tím i ke ztrátě důvěry a víry u mnohých.[^28]
 
-[^27]: KORČÁK, T. – NEÚSTUPNÝ, P.: Romové byli zvyklí jen brát, my je učíme dávat. In: Život Víry. 2011, vydání: XII (12), s. 8–11
+[^27]: KORČÁK, T. – NEÚSTUPNÝ, P.: Romové byli zvyklí jen brát, my je učíme dávat. In: *Život Víry.* 2011, vydání: XII (12), s. 8–11
 [^28]: Nejmenovaného kazatele jsem osobně navštívil v létě r. 2017, a tak jsem jeho situaci znal. Informace o zpronevěře peněz jsem se dozvěděl až mnohem později, když jsem se vyptával, proč už vlastně není v církvi. Nejde o veřejnou informaci, a je tedy i těžko ověřitelná.
 
 ## 1.4. Principy misijní práce sv. apoštola Pavla a jejich aplikace v romské misii
 
 Apoštol Pavel, nazývaný apoštolem národů, je jedním z největších misionářů Církve. Hlásal evangelium od Damašku po Španělsko a slavně přijal dar mučednictví v Římě roku 67 po Christu, kde na místě jeho popravy vytryskly tři zázračné prameny (na místech, kde se Pavlova hlava odrazila od země). Jeho tělo leží ve druhé největší římské bazilice pod hlavním oltářem. Je autorem největšího počtu pastoračních listů v Písmu svatém a příkladem pro všechny misionáře.
 
-Hlavním motorem misie apoštola Pavla bylo povolání a láska ke Christu, který se stal středem jeho života, jak i sám Pavel dosvědčuje: „Vždyť pro mne žít je Christos.“[^29] Plodem lásky ke Christu je vždy láska k lidem, jak vysvětluje apoštol Jan: „Říká-li někdo: Miluji Boha, a nenávidí svého bratra, je lhář. Vždyť kdo nemiluje svého bratra, kterého vidí, nemůže milovat Boha, kterého nevidí.“[^30] Projev této lásky je něčím tak samozřejmým, že na jeho základě bude probíhat posmrtný soud, o kterém mluví Christos: „Amen, pravím vám, cokoli jste učinili jednomu z těchto mých nejmenších bratří, mně jste učinili.“[^31] Pavel tento plod nesl a pro spásu a záchranu lidí dal všechno, co měl, a nakonec i svůj život. Pořádal také sbírky pro chudé v Jeruzalémě, kázal všude, kde byl, modlil se a poslouchal Christa i církevní autority, které ho vyslaly na misie. Aby sám nebyl věřícím na obtíž, nebylo pro něj problémem zříct se masa[^32], dnem i nocí v námaze a lopotě pracovat[^33] a odpustit, že ho u soudu všichni opustili[^34]. Avšak největším důkazem jeho lásky je oběť, byl totiž ochoten zříct se vlastní spásy kvůli spáse vlastního národa, který ho bičoval, pronásledoval a několikrát i kamenoval. V Pavlově misijní metodice pozorujeme také určité principy:
+Hlavním motorem misie apoštola Pavla bylo povolání a láska ke Christu, který se stal středem jeho života, jak i sám Pavel dosvědčuje: *„Vždyť pro mne žít je Christos.“*[^29] Plodem lásky ke Christu je vždy láska k lidem, jak vysvětluje apoštol Jan: *„Říká-li někdo: Miluji Boha, a nenávidí svého bratra, je lhář. Vždyť kdo nemiluje svého bratra, kterého vidí, nemůže milovat Boha, kterého nevidí.“*[^30] Projev této lásky je něčím tak samozřejmým, že na jeho základě bude probíhat posmrtný soud, o kterém mluví Christos: *„Amen, pravím vám, cokoli jste učinili jednomu z těchto mých nejmenších bratří, mně jste učinili.“*[^31] Pavel tento plod nesl a pro spásu a záchranu lidí dal všechno, co měl, a nakonec i svůj život. Pořádal také sbírky pro chudé v Jeruzalémě, kázal všude, kde byl, modlil se a poslouchal Christa i církevní autority, které ho vyslaly na misie. Aby sám nebyl věřícím na obtíž, nebylo pro něj problémem zříct se masa[^32], dnem i nocí v námaze a lopotě pracovat[^33] a odpustit, že ho u soudu všichni opustili[^34]. Avšak největším důkazem jeho lásky je oběť, byl totiž ochoten zříct se vlastní spásy kvůli spáse vlastního národa, který ho bičoval, pronásledoval a několikrát i kamenoval. V Pavlově misijní metodice pozorujeme také určité principy:
 
 [^29]: Fp 1,21
 [^30]: 1 J 4,19–20
@@ -205,8 +215,8 @@ Jak je známo, Židé byli od babylonského zajetí roztroušeni po celém tehde
 
 Ačkoli byli Židé roztroušeni na různých místech říše, Pavel díky tomu nacházel první útočiště právě u věřících Židů, často po prvních kázáních v synagogách, kam měl tehdy jako vzdělaný farizeus snadný přístup. Díky tomu se Církev rychle rozšířila po celé říši.
 
-> „…on je mou vyvolenou nádobou, aby nesl mé jméno pohanům, králům i synům Izraele. A já mu ukážu, co všechno musí vytrpět pro mé jméno.“
-> — Sk 9,15–16
+>> „…on je mou vyvolenou nádobou, aby nesl mé jméno pohanům, králům i synům Izraele. A já mu ukážu, co všechno musí vytrpět pro mé jméno.“
+>> — Sk 9,15–16
 
 ### Apoštol Pavel šel k těm, ke kterým jiní nešli
 
@@ -247,15 +257,21 @@ Sto metrů od našeho domu je osada, kde žije přibližně 180 Romů. Polovina 
 
 [^40]: 2 Te 3,8
 
-Naše misie začíná modlitbou za všechny rodiny z místních osad. Jak řekl Christos: „pravý pastýř zná své ovce jménem,“[^41] proto se modlím za každou rodinu z osad zvlášť. Manželka se modlí jinak, ale modlíme se každý den. Tyto modlitby začaly už dávno před misií. Na začátku jsem se bál jít do osady, a tak jsem se jen modlil na kopci a díval se na osadu, nebo jsem v noci prošel osadou a modlil se. Romové se v noci bojí, takže nejsou moc venku. Já jsem se zase víc bál Romů než noci.
+Naše misie začíná modlitbou za všechny rodiny z místních osad. Jak řekl Christos: *„pravý pastýř zná své ovce jménem,“*[^41] proto se modlím za každou rodinu z osad zvlášť. Manželka se modlí jinak, ale modlíme se každý den. Tyto modlitby začaly už dávno před misií. Na začátku jsem se bál jít do osady, a tak jsem se jen modlil na kopci a díval se na osadu, nebo jsem v noci prošel osadou a modlil se. Romové se v noci bojí, takže nejsou moc venku. Já jsem se zase víc bál Romů než noci.
 
 [^41]: J 10,2–3
 
 Po modlitbě následuje duchovní pomoc, a tou je vyučování (v úterý a v neděli), návštěvy nemocných, večerní modlitby a společná bohoslužba (neděle). Vyučujeme především děti a mládež, protože to jsou ti, kdo mají o Christa největší zájem. Rodiče neobcházíme, ale navzájem se podporujeme, i když k nám na bohoslužby nechodí. Teď je v naší osadě 38 pravoslavných dětí a dva pravoslavní dospělí. Polovina z nich přichází pravidelně. Po pěti letech vyučování, her a materiální pomoci nám Bůh daroval milost, a to takovou, že děti mohly přistoupit ke sv. Tajinám pokání, myropomazání a Eucharistie. Od té doby misie zažívá těžko vysvětlitelný růst, větší zájem o Christa a stala se z nás jedna velká rodina. Předtím to bylo hlavně o hrách, teď už je to především o Bohu a hry, vyučování a materiální pomoc už nejsou hlavním důvodem, proč k nám lidé většinou chodí. Milosti svatých Tajin předcházelo pět let vyučování, rozhovorů, pomoci a příkladu. Tyto roky byly nezbytné a byly jakousi náhradou katechumenátu, jak ho známe z dějin Církve. Jistě to jde i rychleji. Zajímavé je, že skupinu lidí, která k nám chodila od začátku, vystřídali další, takže prakticky až druhá skupina se zapojila do života Církve, zatímco první skupinka život v Církvi viděla, ale zůstala spíše pozorovatelem než účastníkem.
 
-Druhým pilířem je materiální pomoc lidem v nouzi, mužům se snažíme pomoci najít si práci. Pro maminky máme ve stodole víc než dvě tuny oblečení a hladovým rodinám rozdáváme mouku a olej, aby si upekly chléb.[^42] Všechno má svá pravidla, abychom neučili lenosti a plýtvání, a díky tomu, že každého z osady dobře známe, dokážeme přistupovat individuálně podle problémů. Avšak téměř vždy se nám vyplatilo být laskaví a vlídní, když jsme totiž byli přísní, lidé se jen zablokovali. Naopak laskavostí se z nepracujících stávali pracovití otcové a maminky, kteří mají blíž k Hospodinu. Pro chlapce máme kurzy zednictví, které vede náš zaměstnanec Peter Hruška. Chlapci dostávají stipendium, za které si kupují stavební materiál, nářadí a boty. Ze stavebního materiálu si pak doma se svými otci vylepšují chatrče. Děvčata mají s mou manželkou jednou týdně kurz vaření. Všechno se propojuje se čtením a matematikou.
+Druhým pilířem je materiální pomoc lidem v nouzi, mužům se snažíme pomoci najít si práci. Pro maminky máme ve stodole víc než dvě tuny oblečení a hladovým rodinám rozdáváme mouku a olej, aby si upekly chléb.[^42] Všechno má svá pravidla, abychom neučili lenosti a plýtvání, a díky tomu, že každého z osady dobře známe, dokážeme přistupovat individuálně podle problémů. Avšak téměř vždy se nám vyplatilo být laskaví a vlídní, když jsme totiž byli přísní, lidé se jen zablokovali. Naopak laskavostí se z nepracujících stávali pracovití otcové a maminky, kteří mají blíž k Hospodinu.
 
 [^42]: Podobně jako v době Eliáše. Dospěli jsme k tomu postupně, zkoušel jsem všechno možné i na sobě a toto jsou dvě nejlevnější suroviny, z nichž se dá přežít, pokud jste ochotni aspoň si upéct chléb. V Brně jsem kupoval bezdomovcům rohlíky a sýr, ale tady u osady bychom nedokázali pro tolik lidí nakupovat rohlíky ani sýr. Mouka a olej jsou minimum, které darujeme, aby tu nikdo nikdy nezemřel hlady. Provádíme to takto: Musejí přijít před osmou ráno, abychom je odnaučili lenosti (ani manu z nebe nešlo sbírat po východu slunce), a musí přijít hlava rodiny (otec). Mámy jsou ochotné udělat cokoli, ale problémem bývá otec, který není ochoten pracovat. Takže někdy ho k tomu donutí opravdu až hlad. Alternativou jsou těstoviny, čočka a mléko, ale ty dáváme spíše pracovitým rodinám, které jsou v karanténě, nebo když je otec nemocný a delší dobu nemůže pracovat. Díky Bohu si Romové navzájem hodně pomáhají a nejhorší, co se stalo, bylo, že někdo hlady omdlel a musela přijet sanitka. Jeden muž jednou v osadě umrzl, to mě dodnes mrzí. Taková hloupost, které se dalo zabránit. Naučil se pít alkohol, když pásl ovce. Gádžové ho vypláceli alkoholem místo peněz a možná by to přežil.
+
+![Polovina domu, která patří Křesťanské romské misii (2019)](fig-37a.jpg)
+
+![Chlapci se učí zednictví podle židovského přísloví: „Kdo neučí syna řemeslu, učí ho krást.“ (2021)](fig-37b.jpg)
+
+Pro chlapce máme kurzy zednictví, které vede náš zaměstnanec Peter Hruška. Chlapci dostávají stipendium, za které si kupují stavební materiál, nářadí a boty. Ze stavebního materiálu si pak doma se svými otci vylepšují chatrče. Děvčata mají s mou manželkou jednou týdně kurz vaření. Všechno se propojuje se čtením a matematikou.
 
 ### Misie v Klenovci v číslech - únor 2022
 
@@ -326,12 +342,12 @@ Neměl jsem však odvahu jít do osady, proto jsem se za ně začal aspoň modli
 
 ## 2.2. Jak udělat první krok
 
-Stejně jako Cyril a Metoděj nešli s prázdnýma rukama, tak i my si můžeme skrze peníze – tento nepoctivý mamon – udělat mnoho přátel, aby nás Hospodin přijal do svého království.[^46] Cyril a Metoděj nespoléhali na dary, ani to nebyl jejich prvořadý zájem, ale císař jim dary předal, aby jim i touto cestou pomohl k úspěchu a ukázal Slovanům, že si jich váží a přeje jim dobro. Sami apoštolové dávali mnohem víc, jejich misie často začínaly zázraky a uzdraveními. Také modlitby prvních křesťanů směřovaly k Bohu s prosbou, aby kvůli misii činil taková znamení: „Vztáhni svou ruku, aby se děla uzdravení, znamení a zázraky ve jménu tvého svatého Služebníka Isuse.“[^47] Mnozí svatí rozdávali svůj majetek a pomáhali chudým. Svatý Basileios Veliký stavěl basiliády, rozdával polévky[^48] a maminka sv. Řehoře Teologa byla známá svou pomocí chudým.[^49] Misie k Indiánům a domorodcům začínaly dárky, aby misionáři získali důvěru i přátelství a čas naučit se jejich jazyk. Materiální dar je něco, čemu rozumíme i bez překladu a navzdory všem bariérám. I my můžeme vyhlásit sbírku, zapojit se do projektů, nebo vzít dvě igelitky s dětským oblečením a zeptat se v osadě na maminku, která má děti v takovém věku, že by se jí to oblečení hodilo. Když už jsme v osadě, je dobré zeptat se, jak se jim daří, mužů se zeptat, zda je teď nějaká práce, a žen, jak se mají děti, zda jsou zdravé a do které třídy chodí. V zimě je zase dobré zeptat se, zda mají dost dřeva, a ženy si mezi sebou obvykle povídají o tom, co která vařila, podle toho se zjistí i finanční situace rodiny (když jsou peníze, je maso, když je bída, je většinou jen polévka).
+Stejně jako Cyril a Metoděj nešli s prázdnýma rukama, tak i my si můžeme skrze peníze – tento nepoctivý mamon – udělat mnoho přátel, aby nás Hospodin přijal do svého království.[^46] Cyril a Metoděj nespoléhali na dary, ani to nebyl jejich prvořadý zájem, ale císař jim dary předal, aby jim i touto cestou pomohl k úspěchu a ukázal Slovanům, že si jich váží a přeje jim dobro. Sami apoštolové dávali mnohem víc, jejich misie často začínaly zázraky a uzdraveními. Také modlitby prvních křesťanů směřovaly k Bohu s prosbou, aby kvůli misii činil taková znamení: *„Vztáhni svou ruku, aby se děla uzdravení, znamení a zázraky ve jménu tvého svatého Služebníka Isuse.“*[^47] Mnozí svatí rozdávali svůj majetek a pomáhali chudým. Svatý Basileios Veliký stavěl basiliády, rozdával polévky[^48] a maminka sv. Řehoře Teologa byla známá svou pomocí chudým.[^49] Misie k Indiánům a domorodcům začínaly dárky, aby misionáři získali důvěru i přátelství a čas naučit se jejich jazyk. Materiální dar je něco, čemu rozumíme i bez překladu a navzdory všem bariérám. I my můžeme vyhlásit sbírku, zapojit se do projektů, nebo vzít dvě igelitky s dětským oblečením a zeptat se v osadě na maminku, která má děti v takovém věku, že by se jí to oblečení hodilo. Když už jsme v osadě, je dobré zeptat se, jak se jim daří, mužů se zeptat, zda je teď nějaká práce, a žen, jak se mají děti, zda jsou zdravé a do které třídy chodí. V zimě je zase dobré zeptat se, zda mají dost dřeva, a ženy si mezi sebou obvykle povídají o tom, co která vařila, podle toho se zjistí i finanční situace rodiny (když jsou peníze, je maso, když je bída, je většinou jen polévka).
 
 [^46]: Viz L 16,9
 [^47]: Sk 4,30
-[^48]: Viz Basil the Great: Care for the Poor. franciscanmedia.org (online). [cit. 2021-31-12]. Dostupné na internetu: <https://www.franciscanmedia.org/minute-meditations/basil-the-great-care-for-the-poor>
-[^49]: Viz Righteous Nonna, mother of Saint Gregory the Theologian. oca.org (online). [cit. 2019-08-30]. Dostupné na internetu: <https://www.oca.org/saints/lives/2019/08/05/102214-righteous-nonna-the-mother-of-st-gregory-the-theologian>
+[^48]: Viz Basil the Great: Care for the Poor. *franciscanmedia.org* (online). [cit. 2021-31-12]. Dostupné na internetu: <https://www.franciscanmedia.org/minute-meditations/basil-the-great-care-for-the-poor>
+[^49]: Viz Righteous Nonna, mother of Saint Gregory the Theologian. *oca.org* (online). [cit. 2019-08-30]. Dostupné na internetu: <https://www.oca.org/saints/lives/2019/08/05/102214-righteous-nonna-the-mother-of-st-gregory-the-theologian>
 
 ### První krok do osady Mútnik
 
@@ -340,6 +356,10 @@ Do osady Mútnik jsem se dostal díky romské mamince 12 dětí, které jsem dou
 Poznámka: Do osady Mútnik teď jezdí mnoho vysokoškoláků dělat výzkum, je to jedna z mála osad, která je bez elektřiny. Vysokoškoláci se tam dostávají přes síť zdravotních pracovníků, kteří jsou velmi dobře koordinováni napříč Slovenskem; jsou to většinou Romové placení vládou, aby zajistili proočkovanost Romů. Na rozdíl od terénních sociálních pracovníků jsou jejich výsledky ověřitelné, proto osady doopravdy navštěvují a Romy tam dobře znají.[^50] To už u terénních sociálních pracovníků není tak časté. Paní, která mě v osadě představila, byla výjimkou, ale na úřadě už nepracuje. Byla opravdu výjimečná tím, že znala většinu lidí z osad jménem.
 
 [^50]: Projekt se jmenuje „Zdravé regióny“ a jde o jejich program 2B, konkrétně je dobré kontaktovat jednoho z koordinátorů asistentů podpory zdraví a ten vás už propojí s pracovníkem ve vaší obci/lokalitě. Seznam koordinátorů je dostupný na této adrese: zdraveregiony.eu/zamestnanci-2b/ V dnešní době se projekt výrazně přeorientoval na očkování proti koronaviru a začíná být známý především tímto, avšak úspěšně a dobře byl zorganizován už dávno předtím a vždy byl spojkou mezi lékaři a Romy z osad.
+
+![Raspjatije v osadě Klenovec, kříž byl jednou zbořen, ale týž člověk ho po třech dnech opravil a znovu vztyčil (2021)](fig-49a.jpg)
+
+![Pravidelné návštěvy v osadě Klenovec s míčem a ukulele (2017)](fig-49b.jpg)
 
 ### Příklad jinověrců – od dárku k Bibli
 
@@ -357,7 +377,7 @@ Jednorázové akce pomáhají prolomit ledy, ale nic víc se od nich očekávat 
 
 ### Romové mají čas i otevřené dveře
 
-Když zaklepete na dveře „gádžům“, setkáte se s podezřením a s lidmi, kteří nemají čas. Rychle zjistí, co potřebujete, a jdou pokračovat v činnosti, od které jste je vyrušili. Romové v osadách jsou jiní, zdá se mi, že je u nich běžné, že vám po chvilce nabídnou kávu a rádi si popovídají. Vždy je dobré pozvání přijmout, ale nechtěně to s návštěvou nepřehnat. Romové jsou velmi společenští, a tak těžko poznáte, kdy je vaše návštěva už unavuje nebo kdy už potřebují dělat něco jiného. Neřeknou vám to, protože je to nezdvořilé. Chcete-li být zdvořilí, je dobré zajímat se o jejich život, zda mají dost dřeva na zimu, jak to mají s prací, s dětmi a jak se mají prarodiče. Když se jich neštítíte a ochutnáte, co vám nabídnou, udělá jim to radost. Většinou si myslí, že se „gádžům“ hnusí a že za nimi ani nepřijdou, natož aby se u nich napili vody nebo ochutnali jídlo. Tady je velmi důležité to, co říká Christos: „jezte, co vám předloží“.[^52] Později doma si můžete dát česnek, vypít trochu alkoholu nebo si vzít chlorelu – pomáhá nám to v naší službě, když jíme někde, kde je horší hygiena.
+Když zaklepete na dveře „gádžům“, setkáte se s podezřením a s lidmi, kteří nemají čas. Rychle zjistí, co potřebujete, a jdou pokračovat v činnosti, od které jste je vyrušili. Romové v osadách jsou jiní, zdá se mi, že je u nich běžné, že vám po chvilce nabídnou kávu a rádi si popovídají. Vždy je dobré pozvání přijmout, ale nechtěně to s návštěvou nepřehnat. Romové jsou velmi společenští, a tak těžko poznáte, kdy je vaše návštěva už unavuje nebo kdy už potřebují dělat něco jiného. Neřeknou vám to, protože je to nezdvořilé. Chcete-li být zdvořilí, je dobré zajímat se o jejich život, zda mají dost dřeva na zimu, jak to mají s prací, s dětmi a jak se mají prarodiče. Když se jich neštítíte a ochutnáte, co vám nabídnou, udělá jim to radost. Většinou si myslí, že se „gádžům“ hnusí a že za nimi ani nepřijdou, natož aby se u nich napili vody nebo ochutnali jídlo. Tady je velmi důležité to, co říká Christos: *„jezte, co vám předloží“*.[^52] Později doma si můžete dát česnek, vypít trochu alkoholu nebo si vzít chlorelu – pomáhá nám to v naší službě, když jíme někde, kde je horší hygiena.
 
 [^52]: L 10,8
 
@@ -365,8 +385,8 @@ Když zaklepete na dveře „gádžům“, setkáte se s podezřením a s lidmi,
 
 Jednou mi jídlo nabídla i jedna paní, jejíž dům vypadá doslova jako smetiště. Sbírá po městě staré hadry a má jich už tolik, že jimi naplnila tři chatrče (předchozí dvě někdo zapálil, čímž možná i zabránil šíření různého lezoucího hmyzu po osadě – štěnice, svrab, švábi, blechy). Tehdy, když jsem u ní byl, měla doma tolik věcí, že se nemohla dostat k posteli a spávala na 1,2 m vysoké hromadě oblečení vedle postele. Má velmi ráda kočky, které jsou všude, a schovat před nimi v domácnosti cokoli je téměř nemožné. Ať už jsou podmínky v osadě jakékoli, nenašel by se tam tak nerozumný člověk, aby u ní cokoli snědl. Když se jednou na Silvestra ztratila, spolu s kamarádem jsme ji našli a přivedli domů ze sousední vesnice. Dcera o ni měla strach, chtěla se mi odvděčit a nabídla mi jídlo. Protože Christos řekl „jezte, co vám předloží,“ přijal jsem s modlitbou a bázní pozvání. V domě nemají elektřinu, takže jsem moc neviděl, odkud jídlo přinesli, ani co jím a piju, jinak bych to asi nezvládl. Nechápal jsem jak, ale jídlo bylo chutné a ani jsem pak večer neměl průjem, jaký jsem míval, než jsem si na jídlo z romské osady zvykl. Později jsem zjistil proč – právě ten den jí totiž oběd uvařila jedna paní ze společenství baptistů, aby pomohla její rodině, a já jsem dostal zbytky z této porce. Aleluja!
 
-> „Soužení a úzkost dolehne na každou duši člověka, který páchá zlo – nejprve Žida, ale i Řeka, avšak sláva, čest a pokoj se dostane každému, kdo koná dobro – nejprve Židovi, ale i Řekovi; neboť Bůh nikomu nestraní.“
-> — Ř 2,9–11
+>> „Soužení a úzkost dolehne na každou duši člověka, který páchá zlo – nejprve Žida, ale i Řeka, avšak sláva, čest a pokoj se dostane každému, kdo koná dobro – nejprve Židovi, ale i Řekovi; neboť Bůh nikomu nestraní.“
+>> — Ř 2,9–11
 
 ## 2.3. Kolorit romských osad: Rom není jako Rom
 
@@ -375,6 +395,10 @@ V osadách je mnoho odlišných osobností, většinou tam najdete nějakého li
 ### Zbožná Zuzka
 
 U nás je jednou z těch zbožných stařenka Zuzka. Jednou přišla poprosit, zda se může podívat do naší kapličky a pomodlit se tam. Rád jsem ji pustil dál a těšil se z jejího zájmu o kapličku, kterou tu z Boží blahodati máme. Ale stařenka Zuzka mi dala velkou lekci. Sotva přišla, začala se modlit a plakat a já jsem stál vedle ní s naší žačkou Dominikou v úžasu a pokoře, protože jsem viděl její ctnost a na druhé straně ubohost a povrchnost svých modliteb.
+
+![Přibližně čtvrtina osady Klenovec (2020)](fig-55a.jpg)
+
+![Osada Mútnik u Hnúště – domov pro 45 dospělých a 53 dětí (2019)](fig-55b.jpg)
 
 ### Pracovitý Vojto a jeho manželka Janka
 
@@ -400,15 +424,19 @@ Jednou jeden kněz pracující s mládeží hovořil s vladykou a chtěl mu uká
 
 Otec Cristián Popescu, který slouží v chrámu v brněnské romské čtvrti, jednou rázně uklidnil mladší Romy, kteří se v tramvaji chovali nevhodně. Byli z toho však velmi zdrcení, a tak jim dříve, než vystoupil, daroval ikonky, z nichž byli nadšení.
 
-I naše služba v romských osadách stojí na práci s dětmi, děti jsou ochotné, zvědavé, nebojí se a často nás u nich v osadě doprovázejí. Můj první delší kontakt s nimi byl fotbal v osadě, stačilo vzít míč a hráče už zorganizovaly ony. Stejně dobře to fungovalo i na romském sídlišti v Hnúšti – jen tam už bylo potřeba znát někoho, kdo najde hráče (děti tam nejsou venku tolik jako v osadě). Postupně jsem se naučil jména dětí, začal jsem je vždy po fotbale brávat do chrámu a tehdy jsem poznal i jejich rodiče, když jsem se u nich byl zeptat, zda mohou jít. Po fotbalových aktivitách jsem chtěl navázat kontakt a zahrát si s nimi nějaké složitější hry, např. „pokladovku“. Tam jsem však tvrdě narazil. Hry, které jsem znal, byly příliš složité a děti nedokázaly udržet tak dlouho pozornost ve slovenštině a ani si zapamatovat pravidla, a tak mě naučily hry, které hrají ony. Byly to schovávaná, honičky, vojáci nebo kočka a myš, kterou hrály ve škole. A ty hrajeme dodnes, už spolu s těmi složitějšími. „Nechte děti přicházet ke mně a nebraňte jim, neboť takovým patří Boží království,“[^54] řekl Christos, když učedníci považovali za důležitější věnovat se všem ostatním, jen ne dětem. V Holíči vznikl sbor letničních z vyučování dětí prostřednictvím programu Operácia vianočné dieťa.[^55] V Brně na romském sídlišti zase vznikla církev Armáda spásy s heslem „postarejte se o děti a za pár let uvidíte výsledky“.[^56]
+![Děti z osady v Klenovci dohánějí zameškané hodiny náboženství před modlitbami (2022)](fig-59a.jpg)
+
+![Děti z osady Mútnik se učí většinou venku. Židle nosíme s sebou, jen v době koronaviru zůstávaly v osadě (2019)](fig-59b.jpg)
+
+I naše služba v romských osadách stojí na práci s dětmi, děti jsou ochotné, zvědavé, nebojí se a často nás u nich v osadě doprovázejí. Můj první delší kontakt s nimi byl fotbal v osadě, stačilo vzít míč a hráče už zorganizovaly ony. Stejně dobře to fungovalo i na romském sídlišti v Hnúšti – jen tam už bylo potřeba znát někoho, kdo najde hráče (děti tam nejsou venku tolik jako v osadě). Postupně jsem se naučil jména dětí, začal jsem je vždy po fotbale brávat do chrámu a tehdy jsem poznal i jejich rodiče, když jsem se u nich byl zeptat, zda mohou jít. Po fotbalových aktivitách jsem chtěl navázat kontakt a zahrát si s nimi nějaké složitější hry, např. „pokladovku“. Tam jsem však tvrdě narazil. Hry, které jsem znal, byly příliš složité a děti nedokázaly udržet tak dlouho pozornost ve slovenštině a ani si zapamatovat pravidla, a tak mě naučily hry, které hrají ony. Byly to schovávaná, honičky, vojáci nebo kočka a myš, kterou hrály ve škole. A ty hrajeme dodnes, už spolu s těmi složitějšími. *„Nechte děti přicházet ke mně a nebraňte jim, neboť takovým patří Boží království,“*[^54] řekl Christos, když učedníci považovali za důležitější věnovat se všem ostatním, jen ne dětem. V Holíči vznikl sbor letničních z vyučování dětí prostřednictvím programu Operácia vianočné dieťa.[^55] V Brně na romském sídlišti zase vznikla církev Armáda spásy s heslem „postarejte se o děti a za pár let uvidíte výsledky“.[^56]
 
 [^54]: L 18,16
 [^55]: Výše zmíněný nadkonfesní projekt – informace o projektu najdete na operaciavianocnedieta.sk
-[^56]: SMÍLEK, P. a rodina.: Já a můj dům budeme sloužit Hospodinu. In: Rozsévač. 2019, roč. LXXXVIII (88), s.15
+[^56]: SMÍLEK, P. a rodina.: *Já a můj dům budeme sloužit Hospodinu.* In: Rozsévač. 2019, roč. LXXXVIII (88), s.15
 
 Řeckokatolická romská misie (dále GRM) má podobný příběh. Dnes úspěšně působí ve 20 obcích a postavila už několik center/chrámů, i když začínala bez jakýchkoli zdrojů. V letech 2021/2022 se soustředí na výstavbu velkého centra na Sigordu u Prešova. Velmi dobře jim zafungovala práce s mládeží skrze skauting.[^57] Podobně i podpora při studiu (ubytování mladých na faře, aby mohli chodit na střední školu). Tito mladí jsou nyní motorem této misie, chápou její poslání a cíl, systém práce a někteří z nich studují na kněze. Velmi to připomíná schéma práce dona Boska, který se věnoval mladým z ulice a postupně měl stále víc pomocníků z vlastních řad než zvenčí. Kněží, kteří neznali organizaci zevnitř, neměli potřebnou zkušenost se službou mladým, zatímco ti, kteří v ní vyrostli, znali ducha této služby a mohli táhnout za jeden provaz. Don Bosco osobně přivedl ke kněžství tisíce mladých a ti zachránili opuštěné farnosti, semináře a stali se služebníky mládeže. Druhým důležitým faktorem úspěchu GRM byly výlety a pobyty. Během pobytů mohli jít s dětmi víc k jádru věci, probírat životní otázky a realizovat komplexnější vyučování. V tomto směru je to velmi podobné tomu, co znám z formování mládeže mezi protestanty. I tam se za deset let k mládeži přidali především ti, kteří se zúčastnili aspoň jednoho z letních nebo zimních pobytů, protože právě tam se budovaly vztahy, které se během bohoslužby ani vyučování nevytvoří.
 
-[^57]: Viz MEKEL, M., KOLESÁROVÁ, D.: Z osady do kráľovstva. Prešov 2020, s. 38
+[^57]: Viz MEKEL, M., KOLESÁROVÁ, D.: *Z osady do kráľovstva*. Prešov 2020, s. 38
 
 ## 2.6. Kérygma a evangelium
 
@@ -426,8 +454,8 @@ Tuto Róbertovu zkušenost z výzkumu romských komunit v Prešovském kraji pot
 
 Romové byli, jsou a budou spojováni s hudbou. Mnozí Romové jsou vynikajícími muzikanty napříč celou Evropou. Pro ještě více Romů je to i hlavní výdělečná činnost. Je smutným faktem, že kytary a písně už v romských osadách pomalu nahradily především televizory a reproduktory. Tím se romský hudební sluch a talent pomalu vytrácí, což pozorují i učitelky ze speciálních škol. Neznamená to však, že by Romové přestali mít rádi hudbu, jen ji už neumějí tak dobře tvořit.
 
-> „Poslouchejte! Hle, rozsévač vyšel rozsévat.“
-> — Mk 4,3
+>> „Poslouchejte! Hle, rozsévač vyšel rozsévat.“
+>> — Mk 4,3
 
 ### Nikdo mě neposlouchal, tak jsem jim zpíval
 
@@ -450,6 +478,8 @@ Duchovní romské písně jsou dobrým nástrojem při zvěstování evangelia a
 
 V marketingu a při otevírání nových podniků lze pozorovat výraznou první vlnu zájmu, která rychle roste, ale také rychle opadá, a potom je už všechno mnohem těžší…
 
+![Obrázek č. 11: Trend prvotního zájmu](trend-diagram.png)
+
 Ze zkušenosti mnohých pozoruji i já, že totéž se děje při vyučování dětí v osadě. Když někdo přijde do osady poprvé nebo podruhé, lidé se seběhnou nebo zvědavě vykukují, co tu ten člověk chce, děti moc nevyrušují, dávají pozor a přijdou skoro všechny. Pak pomalu přichází mučednická část, při níž už neučíte jen vy děti, ale i děti učí ctnostem vás jako vyučujícího. Co to znamená? Jsou to takové posměšky dětí, případně krádeže „jakoby“ ze srandy. Je to testování hranic, nikdo jim to běžně nedovolí, ale vy jste tam přece nepřišli se prát nebo hádat. Nejlepší je konfliktu se vyhnout, ale někdy to nejde. Dokud vás zlobí jen děti, je to únosné, když však program začnou rušit i dospělí, je to už výrazně horší. Vždycky se to snažím nějak přetrpět, v nejhorším případě odejít – jednou jsem v jedné osadě nebyl tři měsíce a všechno se změnilo k lepšímu. Většinou však stačilo, že uplynul jeden den. Máme i pravidla, kdy už po druhém porušení musí neposlušné dítě odejít domů, po třetím, když nechce poslouchat, nemůže přijít příště, a tak dále, až mu to zakážeme na celý měsíc. Kromě trestů jsou i odměny jako propisky a pastelky, které si mohou po čase koupit výměnou za body, které získaly dobrým chováním. Mnohem lepší je, když jste dva, pak většinou takové potíže ani nevzniknou. Jeden může neposlušné dítě odvést domů k rodičům a druhý může pokračovat v programu. Celkově pomáhá řešit neposlušné děti rovnou s rodiči nebo být pod patronátem nějaké romské rodiny, u které vyučujete a která vám zajistí pořádek.
 
 > „Dávejte si pozor! Když tvůj bratr proti tobě zhřeší, pokárej ho; a bude-li činit pokání, odpusť mu. I kdyby proti tobě sedmkrát za den zhřešil a sedmkrát se k tobě vrátil a řekl: Lituji toho, - odpusť mu!“[^64]
@@ -466,12 +496,16 @@ Je snadné někoho milovat, když nám nic neudělá, jak říká Christos: „V
 
 ### Naše zkušenost
 
-Budete-li sloužit Romům, buďte připraveni, že vás někdy okradou. Je dobré být opatrný, ale ne příliš, jinak nebudete dělat nic jiného. Například svatý Paisij, když spatřil zloděje, opustil vlastní chatrč a nechal ji otevřenou, aby si zloděj vzal, co potřeboval.[^65] Když jsem bydlel sám v osadě, dělal jsem to podobně jako otec Paisij a nechával jsem chatrč vždy otevřenou; časem mi zmizelo[^66] mnoho věcí, ale téměř vždy mi nechali trochu, abych mohl fungovat. Pak jsem většinou šel k sousedovi nebo k těm, kdo mě okradli, a vyprosil si od nich pomoc s tím, že mě někdo okradl… Nebyl to žádný problém a rádi mi pomohli. Sousedka mi vždycky uklidila a nikdy mi nikdo nevzal ani notebook, ani telefon, ani kytaru. Nejrychleji mizí bonbony, potom houbičky a obecně cokoli, čeho máte očividně hodně a co podle mínění návštěvníka nebudete až tak potřebovat. Romové rozlišují, co kradou. Romové, které známe, se snaží krást věci, které nejsou drahé, které vám nebudou chybět (např. neukradnou památku po rodičích), nebo to, co potřebují (hřebíky, šroubek, lžičky, židle). Můj telefon putuje naší osadou z ruky do ruky, ale vždy, když jsem ho takto někomu půjčil, vrátil se mi. S bonbony a hračkami to už dělat nemohu, ty by mi zmizely. Rom by podle jejich mínění neměl krást od Roma, ale bohužel se to děje. Ve druhé osadě jsem dosud mohl půjčovat i hračky, ale teď po čtyřech letech mi začaly mizet. V jiných dvou osadách mi zase neuvěřitelně rychle kradou tužky a propisky. Pravděpodobně jim chybějí do školy a já to těžko dokážu zkontrolovat. Musím si však dávat pozor, aby jich nezmizelo moc. Když jsem to totiž neřešil, přerostlo to v to, že mi jednou zmizelo asi 50 pastelek a desítky propisek. To už byl problém, protože když jsem se příště chystal v neděli vyučovat, zjistil jsem, že nemám propisky, a v neděli byl problém sehnat tu v okolí tolik propisek. A tak jsem přišel a řekl, že mi někde ukradli všechny propisky, a kvůli tomu budeme dnes psát tužkami a pastelkami. Myslím, že si uvědomili, že je to pro mě problém, a trochu to pomohlo. Jako rodina už nemáme dům stále otevřený a zamykáme ho. Obecně dáváme pozor na klíče, finance, místnost s hračkami a sladkosti. Ostatní věci pod kontrolou nemáme, jinak bychom nestíhali sloužit. Když něco zmizí, upozorníme hlavně viníka a rodiče a snažíme se tomu do budoucna preventivně zabránit – většinou jsou to drobnosti jako šroubky, bonbon, lžička, páska či medvídek. Věci, které máme pro ně, mizí rychleji, protože Romové chápou, že je stejně nikdo nechce, takže v jejich matematice kradou něco bezcenného, což pro ně znamená, jako by nekradli nic… Velmi se to však zlepšilo, a to až do takové míry, že můžeme děti hromadně zvát k nám domů na přespání. Všechny děti v osadě už vědí, že krást a lhát je hřích, a snaží se to nedělat. Pokud dokážeme viníka usvědčit, musí to vrátit, případně nahradit, ale to je výjimečné – většinou nedokážeme usvědčit nikoho. Jednou jsem u jednoho svatého četl doporučení neztrácet příliš času pátráním po zlu a od té doby se tím řídím. I svatý Jan Zlatoústý jednou pochválil katechumeny, že už je na nich vidět plod Ducha Svatého, protože méně kradou.
+Budete-li sloužit Romům, buďte připraveni, že vás někdy okradou. Je dobré být opatrný, ale ne příliš, jinak nebudete dělat nic jiného. Například svatý Paisij, když spatřil zloděje, opustil vlastní chatrč a nechal ji otevřenou, aby si zloděj vzal, co potřeboval.[^65] Když jsem bydlel sám v osadě, dělal jsem to podobně jako otec Paisij a nechával jsem chatrč vždy otevřenou; časem mi zmizelo[^66] mnoho věcí, ale téměř vždy mi nechali trochu, abych mohl fungovat. Pak jsem většinou šel k sousedovi nebo k těm, kdo mě okradli, a vyprosil si od nich pomoc s tím, že mě někdo okradl… Nebyl to žádný problém a rádi mi pomohli. Sousedka mi vždycky uklidila a nikdy mi nikdo nevzal ani notebook, ani telefon, ani kytaru. Nejrychleji mizí bonbony, potom houbičky a obecně cokoli, čeho máte očividně hodně a co podle mínění návštěvníka nebudete až tak potřebovat. Romové rozlišují, co kradou. Romové, které známe, se snaží krást věci, které nejsou drahé, které vám nebudou chybět (např. neukradnou památku po rodičích), nebo to, co potřebují (hřebíky, šroubek, lžičky, židle). Můj telefon putuje naší osadou z ruky do ruky, ale vždy, když jsem ho takto někomu půjčil, vrátil se mi. S bonbony a hračkami to už dělat nemohu, ty by mi zmizely. Rom by podle jejich mínění neměl krást od Roma, ale bohužel se to děje.
 
 [^65]: Viz ISAAK, jeromních: Život starca Paisija svätohorského. Bratislava 2013, s. 159
 [^66]: Romové u nás používají slovo „zmizelo“, je to společensky přijatelnější slovo, protože se tím vyhnete tomu, abyste někoho přímo obvinili z krádeže. Například věta „zmizel mi mobil, nevíš, kde je?“ zní lépe než „neukradl jsi mi mobil?“ a druhý může říct „tady je“, aniž by se musel ke krádeži přímo přiznat. I to už vyžaduje hodně pokory.
 
-Nejhorší, co se mi stalo v době, kdy jsem byl ještě sám, bylo, že mi jeden chlapec z naší osady ukradl klíče a o půl roku později mi s bratrancem vykradl dům. Proběhl soud a ukradené věci mi policisté vrátili. Některé však byly nefunkční, ale náhradu jsem nežádal. Jen jsem měl pocit, že pokud to nedotáhnu do konce, hned okradou někoho jiného. Byly to děti z rodin, kde chyběl otec nebo kde měla hlavní slovo máma, a ta rozhodla, že nebudou potrestány. Celá osada mi tehdy velmi pomáhala.
+Ve druhé osadě jsem dosud mohl půjčovat i hračky, ale teď po čtyřech letech mi začaly mizet. V jiných dvou osadách mi zase neuvěřitelně rychle kradou tužky a propisky. Pravděpodobně jim chybějí do školy a já to těžko dokážu zkontrolovat. Musím si však dávat pozor, aby jich nezmizelo moc. Když jsem to totiž neřešil, přerostlo to v to, že mi jednou zmizelo asi 50 pastelek a desítky propisek. To už byl problém, protože když jsem se příště chystal v neděli vyučovat, zjistil jsem, že nemám propisky, a v neděli byl problém sehnat tu v okolí tolik propisek. A tak jsem přišel a řekl, že mi někde ukradli všechny propisky, a kvůli tomu budeme dnes psát tužkami a pastelkami. Myslím, že si uvědomili, že je to pro mě problém, a trochu to pomohlo.
+
+Jako rodina už nemáme dům stále otevřený a zamykáme ho. Obecně dáváme pozor na klíče, finance, místnost s hračkami a sladkosti. Ostatní věci pod kontrolou nemáme, jinak bychom nestíhali sloužit. Když něco zmizí, upozorníme hlavně viníka a rodiče a snažíme se tomu do budoucna preventivně zabránit – většinou jsou to drobnosti jako šroubky, bonbon, lžička, páska či medvídek. Věci, které máme pro ně, mizí rychleji, protože Romové chápou, že je stejně nikdo nechce, takže v jejich matematice kradou něco bezcenného, což pro ně znamená, jako by nekradli nic… Velmi se to však zlepšilo, a to až do takové míry, že můžeme děti hromadně zvát k nám domů na přespání. Všechny děti v osadě už vědí, že krást a lhát je hřích, a snaží se to nedělat. Pokud dokážeme viníka usvědčit, musí to vrátit, případně nahradit, ale to je výjimečné – většinou nedokážeme usvědčit nikoho. Jednou jsem u jednoho svatého četl doporučení neztrácet příliš času pátráním po zlu a od té doby se tím řídím. I svatý Jan Zlatoústý jednou pochválil katechumeny, že už je na nich vidět plod Ducha Svatého, protože méně kradou.
+
+Nejhorší, co se mi stalo, ještě když jsem byl sám, bylo to, že mi jeden chlapec z naší osady ukradl klíče a půl roku nato mi s bratrancem vykradl dům. Proběhl soud, věci mi policisté vrátili (některé nefunkční), náhradu jsem nežádal. Jen jsem měl pocit, že pokud to nedotáhnu, hned okradou jiného. Byly to děti z rodin, kde chyběl otec nebo měla hlavní slovo máma a ta rozhodla, že nebudou trestány. Celá osada mi tehdy velmi pomáhala.
 
 Vždy, když lidé říkají, že Romové kradou, a proto bychom jim neměli pomáhat, odpovídám, že misionáři byli ochotni jít i ke kanibalům a že by byla hanba, kdybychom se my teď báli jít ke zlodějům. Jak jinak se totiž napraví a uslyší zvěst o Christu?
 
@@ -480,9 +514,9 @@ Vždy, když lidé říkají, že Romové kradou, a proto bychom jim neměli pom
 Otec Marián Kuffa je známý svou pomocí chudým, ale už málokdo o něm ví, že pod vedením svého duchovního otce chodil ke skupinám velmi vzdáleným od církve, jako jsou např. prostitutky, pasáci a jiní. Nebo to, že kdysi sám bydlel v romské osadě, aby Romům pomohl, a kdyby neměl jiné úkoly, pomáhal a bydlel by tam dodnes. Jednou prohlásil, že řešením romské otázky by bylo, kdyby v každé osadě bydlel mnich.[^67] Kiko Argüello, zakladatel „Neokatechumenátní cesty“, která vznikla v romské osadě u Madridu, kde sám delší dobu bydlel, mluvil velmi podobně.[^68] Totéž vidíme v dějinách Církve, kdy misionáři nejen navštěvovali lidi, jimž zvěstovali evangelium, ale také mezi nimi bydleli. Na Spiši žil v osadě jistý kněz a o úspěchu jeho pastorace svědčí účast na jeho vlastním pohřbu, kde bylo přítomno přibližně 8 000 Romů.
 
 [^67]: Slyšel jsem to v jednom z jeho kázání dostupných na YouTube. Bylo jedním z důvodů, proč jsem se nakonec přestěhoval přímo do osady. S otcem Kuffou jsem se setkal dvakrát, když jsem k němu přivezl někoho z našich ulic. Tehdy mi řekl, že kdyby mohl, sám by bydlel v osadě, a také bylo vidět, že by byl rád, kdybych v osadě bydlel dál, ale vysvětlil mi, že pro rodinu to rozhodně není. Řekl, že naše misie musí být trochu stranou kvůli ženě a dětem a že jsou hlavně potřeba kněží, a to i pravoslavní.
-[^68]: Byl jsem tři roky členem neokatechumenátní cesty v Brně a mnoho kázání a vyučování byla tlumočená katecheze a zkušenosti přímo od Kika Argüella. Většina z toho je však ústní podání, takže je těžké uvést zdroj. O svých zkušenostech z osady píše Kiko Argüello v knize Kerygma. V barakoch s chudobnými.
+[^68]: Byl jsem tři roky členem neokatechumenátní cesty v Brně a mnoho kázání a vyučování byla tlumočená katecheze a zkušenosti přímo od Kika Argüella. Většina z toho je však ústní podání, takže je těžké uvést zdroj. O svých zkušenostech z osady píše Kiko Argüello v knize *Kerygma. V barakoch s chudobnými.*
 
-Proč by chtěl někdo bydlet v osadě? Kvůli Romům, aby jim pomohl ke spáse, a kvůli Christu, aby byl blíž trpícím a nuzným, a tím i Jemu samému. Mimořádně silně o tom mluví například svátek Narození Isuse Christa, který nám připomíná, jak Christos přišel mezi nás špinavé lidi a narodil se do ještě větší špíny – mezi dobytek. Christova slova: „kdo mi slouží, ať mě následuje; a kde jsem já, tam bude i můj služebník,“[^69] nás nenechávají na pochybách, že toto je cesta doporučená a plná pocty.
+Proč by chtěl někdo bydlet v osadě? Kvůli Romům, aby jim pomohl ke spáse, a kvůli Christu, aby byl blíž trpícím a nuzným, a tím i Jemu samému. Mimořádně silně o tom mluví například svátek Narození Isuse Christa, který nám připomíná, jak Christos přišel mezi nás špinavé lidi a narodil se do ještě větší špíny – mezi dobytek. Christova slova: *„kdo mi slouží, ať mě následuje; a kde jsem já, tam bude i můj služebník,“*[^69] nás nenechávají na pochybách, že toto je cesta doporučená a plná pocty.
 
 [^69]: J 12,26
 
@@ -492,7 +526,9 @@ V Římskokatolické církvi se několik monašek[^70] přesunulo na pět let do
 
 ## 2.11. Rodina v romské misii
 
-Podle zkušeností otce Mariána Kuffy, který má s romskou misií zkušenosti a z misijních důvodů v osadě i bydlel, jsme jako rodina upustili od plánu bydlet přímo v osadě. Jeho doporučením bylo být někde stranou a pomáhat přímo v osadě v terénu. Radil nám, aby to bylo nějak oddělené, a tím byla zajištěna bezpečnost a ochrana manželky a dětí. Snažili jsme se tedy mít všechny aktivity přímo v osadě a později v osadě vybudovat i chrám. Zatím však všechny plány postavit v osadě chrám ztroskotaly, a tak máme kapli u nás. Nějakou dobu jsme měli vedle zvonku napsáno, kdy se smí zvonit, a každého přicházejícího jsme požádali, aby přišel později – v době, kterou máme k tomu vyhrazenou. Jeden duchovní jednou řekl, že dokud lidé zvoní, je to správně, protože si tehdy uvědomují, že kněze potřebují, proto když přestanou, je už zle. Je-li toho moc, dá se na to vyhradit konkrétní čas a lidi nasměrovat do tohoto času, podobně jako to dělají úřady, firmy a jiné instituce. Problém je, pokud se v osadě neukážete, pak ztrácíte kontakt s komunitou, nevíte o jejích problémech a životě a pro misii to není dobré. Řeckokatolický kněz Martin Mekel, který je ředitelem GRM a má pět dětí, bydlel dlouhodobě s rodinou u osady v pastoračním centru. Doporučil nám dávat pozor na to, s kým se děti kamarádí. Jedna věc je všechny přivítat a mít rád, ale jiná věc je uzavírat bližší přátelství, kde už rodič musí být obezřetný a dát na své děti pozor. Mezi jejich kamarády se v opačném případě najdou i takoví, kteří je mohou naučit krást, prostituci nebo je udělat závislými na drogách.
+Podle zkušeností otce Mariána Kuffy, který má s romskou misií zkušenosti a z misijních důvodů v osadě i bydlel, jsme jako rodina upustili od plánu bydlet přímo v osadě. Jeho doporučením bylo být někde stranou a pomáhat přímo v osadě v terénu. Radil nám, aby to bylo nějak oddělené, a tím byla zajištěna bezpečnost a ochrana manželky a dětí. Snažili jsme se tedy mít všechny aktivity přímo v osadě a později v osadě vybudovat i chrám. Zatím však všechny plány postavit v osadě chrám ztroskotaly, a tak máme kapli u nás. Nějakou dobu jsme měli vedle zvonku napsáno, kdy se smí zvonit, a každého přicházejícího jsme požádali, aby přišel později – v době, kterou máme k tomu vyhrazenou. Jeden duchovní jednou řekl, že dokud lidé zvoní, je to správně, protože si tehdy uvědomují, že kněze potřebují, proto když přestanou, je už zle. Je-li toho moc, dá se na to vyhradit konkrétní čas a lidi nasměrovat do tohoto času, podobně jako to dělají úřady, firmy a jiné instituce. Problém je, pokud se v osadě neukážete, pak ztrácíte kontakt s komunitou, nevíte o jejích problémech a životě a pro misii to není dobré.
+
+Řeckokatolický kněz Martin Mekel, který je ředitelem GRM a má pět dětí, bydlel dlouhodobě s rodinou u osady v pastoračním centru. Doporučil nám dávat pozor na to, s kým se děti kamarádí. Jedna věc je všechny přivítat a mít rád, ale jiná věc je uzavírat bližší přátelství, kde už rodič musí být obezřetný a dát na své děti pozor. Mezi jejich kamarády se v opačném případě najdou i takoví, kteří je mohou naučit krást, prostituci nebo je udělat závislými na drogách.
 
 Otec Martin Mekel u sebe mnohokrát dlouhodobě ubytoval různé mladé Romy a ti byli členy jejich domácnosti. Mnozí z nich jsou nyní lídři a jsou důležitou součástí jejich misie. U nás dvakrát bydleli Romové, kteří se ocitli na ulici; aktuálně druhý z nich přespává v kotelně, kterou na noc zamykáme, a předchozí bydlel v jednom pokoji, který jsme také na noc zamykali. Jsou to však výjimky a jednotlivci, které jejich vlastní rodiny zavrhly, ale jsou ochotni zříct se alkoholu a pracovat. Program máme duchovně-pracovní, a hlavně na celý den, protože nuda je prvním krůčkem ke kriminalitě a problémům.
 
@@ -503,6 +539,10 @@ Slova sv. Paisije zase pomáhají lépe se postavit k otázce rozdávání vlast
 [^71]: domek
 [^72]: v reverendě
 
+![Hry s dětmi v osadě Klenovec během týdne i o sobotách (2020)](fig-73a.jpg)
+
+![Chatrč se skládá ze 3 místností a nejbližší místnost vpravo má vlastní vchod. To byl můj pokoj v osadě Klenovec, do kterého jsem se nastěhoval. (2016)](fig-73b.jpg)
+
 ## 2.12. Římský katolík, nebo pravoslavný
 
 Církevní rozdíly mezi Římskokatolickou a Pravoslavnou církví jsou pro Romy u nás velmi těžko uchopitelné. Co vidí na první pohled, je jiná Liturgie (pokud na nějaké Liturgii byli), pak si všimnou jiné velikosti kostela a toho, že farář má vousy a rodinu. Potom někteří díky televizi vědí, že římští katolíci mají papeže. To, že jsou pravoslavné církve nějak rozdělené a že existují sněmy, je už mimo jejich vnímání, protože to není ani v televizi, ani v jejich každodenním životě.
@@ -510,6 +550,10 @@ Církevní rozdíly mezi Římskokatolickou a Pravoslavnou církví jsou pro Rom
 V rámci naší misie Romové ani po šesti letech stále nerozumějí tomu, kdo je vlastně biskup nebo vladyka. I když jim to řekneme, zapomenou to, protože vladyku ještě neviděli a ani ho osobně neznají, nechápou, proč ho potřebují, vždyť sem stále chodí kněz, který zpovídá, křtí, podává přijímání a slouží Liturgii. Totéž platí o mnišství, avšak nějaké mnichy už viděli v akčních filmech, takže tam je to o něco lepší. Nic z toho mi nepřipadá vhodné pro rozebírání rozdílů. Tady v okolí se Romové v otázce víry rozhodují podle toho, kde jim nechtějí pokřtít dítě, a pak se doma občas ze žertu pohádají jako evangelík a katolík.
 
 Situace v Klenovci je přibližně taková, že kdo se zajímá, ten ví, že jsme pravoslavní. Tím, že máme v chrámu ikony Bohorodice a bráníme se obrazoborectví, zařadili jsme se učením mezi katolíky, s tím rozdílem, že naši kněží mohou mít rodiny. Mnozí lidé mě tu považují za katolického faráře, někteří pravděpodobně i za smilníka, protože mám ženu a děti. Prostor k vysvětlení mám, ale málokdo poslouchá, a z těch, kdo slyší, málokdo důvěřuje. Pro pochopení naší situace je dobré uvést případ, kdy se po prvním pravoslavném křtu u nás začaly osadou šířit řeči o tom, že se nově pokřtěné místo miminka narodí démon a že jsme víra démonů. Vyděšená maminka k nám přiběhla a ještě měsíc se uklidňovala tím, že nám se rok předtím démon nenarodil, ale plody této lži jsou cítit i několik měsíců později. Mnohé rodiny s ní tehdy přestaly mluvit. To jsou věci, které aktivně řešíme, ale vyznání víry zatím opakujeme jen bez většího porozumění a postupně vysvětlujeme základy víry a etiky.
+
+![První pokřtěná dospělá v Klenovci (2021)](fig-75a.jpg)
+
+![Křest Márie Halíkové v Klenovci (2021)](fig-75b.jpg)
 
 ## 2.13. Myropomazání, nebo druhý křest
 
@@ -535,8 +579,134 @@ Bohoslužebný jazyk byl pro mě v místní romské pravoslavné misii velkou ob
 
 Romové mají výlety rádi, mnozí nebyli dál než v okresním městě a nijak často se nedostanou mimo osadu – do obchodu nebo na náměstí. Tento zájem je úžasný ve srovnání s tím, kolik námahy stojí nadchnout „gádže“ z farnosti, aby se zúčastnili pouti. U Romů to není žádný problém. Druhou stranou mince však je, že přijdou i ti, kdo o duchovní program nemají zájem a budou vyrušovat a dělat problémy. Tento problém se může vyskytnout i přímo ve farnostech, když máte například vyučování nebo svátek a chcete pozvat Romy, kteří se zajímají. Často pak ze zvědavosti přijdou i jejich kamarádi, kteří se potom nudí, a od nudy je to už jen krůček k problémům.
 
+![Velký autobusový výlet do Bojnic (2019)](fig-79a.jpg)
+
+![Velký autobusový výlet do Bojnic (2019)](fig-79b.jpg)
+
 Pro nás jsou výlety motivací a odměnou pro děti. Zároveň jsou i příležitostí, aby poznaly pravoslavný duchovní život i v jiných farnostech a dokázaly se zapojit i v dospělosti, když se případně odstěhují z naší obce. Také jsou příležitostí zvyknout si i na více kněží. Je vidět, že je těžké zpovídat se jinému knězi. Zároveň je výlet velmi dobrou příležitostí, kdy máme čas navázat lepší vztahy a mít nějaké náročnější vyučování, protože účastníci jsou tehdy pozornější. Od velkých autobusových výletů (30–50 lidí, jednou za půl roku) jsme upustili a teď máme menší výlety, ale častěji (10–19 lidí, jednou za měsíc). Je to lepší, protože jsme se tak velké skupině nedokázali dobře věnovat.
 
 ## 2.16. Misijní činnost v dalších osadách
 
-S drahým, již zesnulým otcem Milanem Gerkou jsme začali spolupracovat na romské misii v osadě ve vesnici Závadka. Vždy nás podporoval v touze zjistit, jak nejlépe pracovat s romskou komunitou, a uplatnit to i v dalších farnostech. Jednou za měsíc jsme přijeli s osmi dětmi z Klenovce do Závadky na večerní a předtím jsme měli asi hodinové vyučování, zpěv a modlitby společně s dětmi z jejich osady. Velmi se tehdy osvědčily romské zpěvníky a pracovní listy, které používáme. Místní učitelka Silvia byla překvapená, že se jejich děti tehdy opravdu učily. Pracovní listy připravujeme s manželkou tak, aby byly přizpůsobeny různým kategoriím gramotnosti, takže se u nás vedle sebe učí chlapec z 1. třídy a jeho bratr z 9. třídy a naproti zase píše čtyřicetiletý pán s lehkým mentálním postižením, který se nikdy nenaučil dobře číst. Postupem času jsme začali víc působit i ve třetí osadě v okolí Klenovce. Začalo se nám opakovat mnoho věcí, které nám připomínají naše začátky. V Závadce po mnohaleté službě stačí Romům říct a díky službě již zesnulého otce M. Gerky jich přijde tolik, že musíte pro nedostatek učitelů hlídat dveře a pustit jen některé. Z Boží blahodati a s dobrými materiály se nám jako dvěma učitelům dařilo takto učit 30 dětí v klidu a tichu. Ve Varadce je třeba
+S drahým, již zesnulým otcem Milanem Gerkou jsme začali spolupracovat na romské misii v osadě ve vesnici Závadka. Vždy nás podporoval v touze zjistit, jak nejlépe pracovat s romskou komunitou, a uplatnit to i v dalších farnostech. Jednou za měsíc jsme přijeli s osmi dětmi z Klenovce do Závadky na večerní a předtím jsme měli asi hodinové vyučování, zpěv a modlitby společně s dětmi z jejich osady. Velmi se tehdy osvědčily romské zpěvníky a pracovní listy, které používáme. Místní učitelka Silvia byla překvapená, že se jejich děti tehdy opravdu učily. Pracovní listy připravujeme s manželkou tak, aby byly přizpůsobeny různým kategoriím gramotnosti, takže se u nás vedle sebe učí chlapec z 1. třídy a jeho bratr z 9. třídy a naproti zase píše čtyřicetiletý pán s lehkým mentálním postižením, který se nikdy nenaučil dobře číst. Postupem času jsme začali víc působit i ve třetí osadě v okolí Klenovce. Začalo se nám opakovat mnoho věcí, které nám připomínají naše začátky. V Závadce po mnohaleté službě stačí Romům říct a díky službě již zesnulého otce M. Gerky jich přijde tolik, že musíte pro nedostatek učitelů hlídat dveře a pustit jen některé. Z Boží blahodati a s dobrými materiály se nám jako dvěma učitelům dařilo takto učit 30 dětí v klidu a tichu. Ve Varadce je třeba si pro děti přijet, pak se těší, ale ne natolik, aby se samy nachystaly a přišly k chrámu. Když si však pro ně přijedeme, nadšeně naskáčou do auta a dojedou spolu s námi. Podobně je to i v okolních osadách, kde působíme méně než 5 let. Když si pro ně přijedeme, dojedou, pokud jim však řekneme, že mají přijít sami, je to už výrazně horší. Romové se ve srovnání s námi rozhodují víc pocitově – chci/nechci. Nechci vyrazit a jít sám, nechce se mi – když však dotyčný vidí, že jdou i ostatní, nebo že jste přijeli vy, začne se těšit a už zase chce. Možná si to pamatujeme z doby, kdy jsme jako děti jezdili na poutě a zjišťovali, kdo jede a kdo ne, a rozhodovali se právě podle toho.
+
+> „Kdybyste však věděli, co znamená: Milosrdenství chci, a ne oběť, neodsoudili byste nevinné.“[^74]
+
+[^74]: Mt 12,7
+
+# Závěr
+
+## Smutná prognóza
+
+„Děti jsou budoucnost“ – tato fráze se často opakuje, avšak současná porodnost a počet dětí připadajících na jednu ženu svědčí o tom, že tomu snad věří už jen na Oravě a pak ještě v romských osadách. Když se střízlivě podíváme na současný stav věřících na Slovensku, zjistíme, že aktuální trend ukazuje na vymírání pravoslavných farností na venkově. Obecně však na Slovensku platí, že zbožnost se udržuje spíše na venkově než ve městech. K tomu všemu se přidává další faktor – obce v Košickém, Prešovském a Banskobystrickém kraji se postupně stávají romskými. Když to všechno dáme dohromady s naší Církví, která působí převážně v těchto oblastech, můžeme logicky dojít k závěru, že pokud se mnohé farnosti nepřetvoří na romské, přijdou během 10 až 20 let o věřící, a tedy vlastně přestanou existovat. Něco podobného mi říkal i již zesnulý tajemník posvátného synodu o. Milan Gerka. Byla by škoda, kdyby slovenská moudrost, znalosti, pracovitost a zbožnost úplně vymizely.
+
+Zdá se, že v následujících letech bude úkolem kněží v obcích buď romská misie, nebo žádná misie. K romské misii bude jistě zapotřebí i půst, modlitba a především Boží blahodať. Velmi důležité je také to, jak se k tomu postaví věřící v chrámu, zda Romy přijmou mezi sebe, nebo jim alespoň vyhradí jiné prostory.[^75] Radostnou součástí toho je skutečnost, že tento život vede ke svatosti skrze trpělivost, pokoru a milosrdenství. Tehdy budeme moci více žít odkaz svatých Cyrila a Metoděje. I tehdy tu sice byli misionáři, ale i první věřící museli v chrámu přijímat nově obrácené, s nižším vzděláním a také z horších poměrů. A tak se najednou napříč celým společenským spektrem setkávali všichni v jednom chrámu a přistupovali společně k jednomu kalichu. Pohrdání tehdy musela nahradit bratrská láska, lichvu nahradila bratrská pomoc, jinak by přece misie Cyrila a Metoděje nebyla úspěšná, vždyť přišli mezi „barbary“, jimiž civilizovaný národ pohrdal. Proto se oděvme milosrdenstvím, neodsuzujme Romy, neříkejme, že křesťanství nikdy nepřijmou, ale laskavostí a vlídností si získejme prostor k jejich vyučování. Ať už přijmou, nebo nepřijmou, buďme milosrdní a laskaví, abychom to nebyli my, kdo ponese odpovědnost za to, že se Romům zavřely dveře naší farnosti a že jsme je nepustili ke Christu.
+
+[^75]: Zkušenost jeromonacha Serafima, který působí jako farář v romské obci Markovce, ale příležitostně dojíždí i do jiné obce, kde místní nechtějí Romy v chrámu přijmout.
+
+## Shrnutí
+
+Práce v romských osadách a s romskou kulturou je náročná, ale zároveň velmi důležitá a pozitivně ovlivňuje romskou komunitu. Je při ní potřeba mít pokoru, lásku a pochopení pro romskou kulturu (přijmout jídlo, naslouchat příběhům, mít soucit s pozůstalými). V Klenovci přijalo pravoslaví už více než 33 dětí a 3 dospělí Romové. A misie z Boží blahodati ovlivnila život všech v osadě.
+
+Každý otec z osady Klenovec v posledních letech už pracuje, Romové tu začali znovu zakládat rodiny a někteří i přistupovat ke svatým Tajinám. Někteří z nich se výrazně změnili, některé děti už úplně přestaly lhát a krást, jiné kradou méně. Ubylo nadávek, zmizela veřejná onanie a svlékání, v osadě se už tolik nepije, o svátcích jsou už děti doma s rodinou, a ne venku samy u ohně. Rvačky se stávají už jen výjimečně. Jiný přestal brát drogy od té doby, co chodí na Liturgii. I v osadě Mútnik už teď téměř každý otec pracuje...
+
+I v dnešní době existuje mezi Romy na Gemeru věštění a čarodějnictví, kvůli kterému dostali už při příchodu do Byzance název „cikáni“ – atsinganos (ἀτσίγγανος). Romové žijí v komunitách s vlastním jazykem, podobně jako Židé v minulosti. Uchovali si několik pravoslavných zvyků, jako například pohřbívání zesnulých třetí den, svíčky, ikony a zlaté ozdoby. Nemají vlastní literaturu ani Liturgii a mnozí z nich nemají ani základní vzdělání. Porozumění jejich jazyku, předložkám a slovosledu velmi pomáhá při komunikaci a vyučování. Romština není těžká, ale má mnoho dialektů, které jsou vzájemně srozumitelné (srovnání srbského, slovenského a ruského dialektu). Nemá ustálenou písemnou podobu, a proto je těžké ji číst i samotným Romům, navíc spojuje slova a má mnoho hlásek, jejichž psaná podoba je krkolomná, takže její zápis, který je navíc často v jiném dialektu, se Romům čte o to hůř...
+
+Hnacím motorem misie musí být láska. Mnoho lidí nechce přijít mezi Romy do osady, několik lidí bylo okradeno nebo napadeno. Mnoho Romů však díky evangeliu změnilo svůj život k lepšímu, a proto jsou misie vnímány pozitivně napříč celou společností – stejně tak katolíky, protestanty i pravoslavnými. Nejlepší je přijít mezi Romy bydlet – Romům být jako Rom.[^76] Pokud to však není možné, tak alespoň chodit na pravidelné návštěvy a vyučování. Jednorázové aktivity pomáhají prolomit ledy a udržet vztah s Církví, ale nevedou, alespoň podle naší zkušenosti, k velkým změnám. Důležité je být příkladem v pracovitosti[^77], zapojit Romy do služby v Církvi a nebát se dělat mnoho dobrého, byť i nedokonalého, spíše než jen trochu, ale dokonalého. Když přijdou do chrámu, je třeba je vést k Bohu ne křikem, ale laskavostí a vlídností. I když jsme právem hrdí na „bílou“ kulturu, je třeba si s pokorou uvědomit, že Romové s ní přijímají i mnoho zlých věcí, jako jsou potraty, rozvody, pornografie, ztráta pohlavní identity a krátkodobé vztahy – s pomocí ochotných lidí je však možné to zastavit, nebo alespoň zpomalit. Romové jsou ochotni naslouchat kněžím i jiným lidem, a navíc když zjistí, že je máte rádi a chcete jim pomoci, jde to ještě rychleji.
+
+[^76]: 1 K 9,20–22
+[^77]: 2 Te 3,8
+
+Bůh není Romům zdaleka tak cizí, podobně ani jeho matka Marie. Mnozí v nouzi volají o pomoc a Bůh jim pomáhá, jak je psáno: „On zachrání chudého, který volá o pomoc, ubohého i toho, jemuž nikdo nepomáhá.“[^78] Je však třeba zvěstovat základní pravdy evangelia, podobně jako to bylo potřeba v době Cyrila a Metoděje, protože jim dlouhodobě chybějí učitelé, kteří by přišli mezi ně, a když bohužel přijdou do chrámu, stává se, že je věřící kvůli zápachu nebo hluku preventivně vyženou. I my posíláme toho, kdo vyrušuje, domů, ale vždy mu při odchodu s láskou řekneme, že je zván i příště a že ho přivítáme, jen se musí chovat lépe. Říct to je těžké, dotyčný nám při tom většinou nadává, ale naučil nás to příklad Mariána Kuffy – mnozí se pak vracejí. Ve dvou je všechno mnohem snazší, začít se dá i samotnou modlitbou v chrámu – tak dáme věřícím nástroj, který dokážou uchopit. Jiným dobrým nástrojem jsou písně a kytara, kterou mají Romové rádi, a především romské děti, které nás obklopí vždy, když přijdeme do osady.
+
+[^78]: Ž 71,12 (72,12)
+
+# Seznam bibliografických odkazů
+
+### Písmo svaté
+
+Pro citáty z evangelií byl použit pravoslavný překlad evangelií:
+
+- VEDECKÁ GRANTOVÁ AGENTÚRA PRAVOSLÁVNEJ CIRKVI NA SLOVENSKU: *Pravoslávny preklad evanjelií* [online]. 1. vydání. Prešov 2013. Dostupné z: <https://biblia.sk/citanie/prv/mt/1>
+
+Pro ostatní citáty byl použit Slovenský ekumenický překlad:
+
+- SLOVENSKÁ BIBLICKÁ SPOLOČNOSŤ: *Ekumenický preklad* [online]. 4. opravené vydání. 2017. Dostupné z: <https://biblia.sk/citanie/seb/mt/1>
+
+### Prameny
+
+- ARGÜELLO, K.: *Kerygma. V barakoch s chudobnými.* Trnava 2013. ISBN 978-80-7141-807-8
+- BITTNEROVÁ, D. a kol.: *Etnické komunity - Romové.* 1. vydání. Praha 2013. ISBN 978-80-87398-45-6
+- Цветков, Г. a kol.: *Святое Евангелие от Марка на русском и циганском языках (диалект русских цыган).* 1. vydání. Moskva 2019. Číslo zakázky 3842
+- Димиђ, T. a kol.: *Служебник - Služebnik*. 1. vydání. Novi sad 1993. CIP 264-1
+- ĎURICA, S. M.: *Život Konštantína a život Metoda, Panónské legendy.* Turany 2013. ISBN 978-80-8128-056-6
+- HORTIS, S. A.: *Cigáni v Uhorsku : o dnešnom stave, zvláštnych mravoch a spôsobe života, ako aj o ostatných vlastnostiach a danostiach Cigánov v Uhorsku.* Bratislava 1995. ISBN 80-967263-2-3
+- CHARLEVOIX, P. F. X.: *Paraguay v době jezuitských redukcí.* 1. vydání. Olomouc 2008. ISBN 978-80-7412-008-4
+- ISAAK, jeromních: *Život starca Paisija svätohorského.* 1. vydání. Bratislava 2013. ISBN: 978-80-970866-1-9
+- IVANOV, S. A.: *Byzantské misie aneb je možné udělat z „barbara“ křesťana?.* Červený Kostelec 2012. ISBN 978-80-87378-45-8
+- KORČÁK, T. – NEÚSTUPNÝ, P.: Romové byli zvyklí jen brát, my je učíme dávat. In: *Život Víry.* 2011, vydání: XII (12), s.8-11
+- KRONŠTADSKÝ J.: *Můj život v Kristus (výbor).* 1. vydání. Kostelní Vydří 2014. ISBN 978-80-7195-712-6
+- KUFFA, M.: *Kazateľnica život.* 1. vydání. Stará Ľubovňa 2013. ISBN 978-80-89487-63-9
+- LUDVÍKOVSKÝ, J.: *Kristiánova legenda: život a umučení svatého Václava a jeho báby svaté Ludmily.* 1. vydání. Praha 2012. ISBN 978-80-7429-291-0
+- MCCOLLOUGH, J. – MCCOLLOUGH, F.: *Príbeh Cyrila a Metoda, ktorí priniesli svetlo Slovanom.* 1. vydání. Bratislava 2001. ISBN 80-7131-047-6
+- MEKEL, M. – KOLESÁROVÁ, D.: *Z osady do kráľovstva.* 1. vydání. Prešov 2020. ISBN 978-80-8099-149-4
+- PRUŽINSKÝ, Š.: *List sv. apoštola Pavla Galaťanom.* Prešov 2004. ISBN 80-8068-285-2.
+- PRUŽINSKY, Š.: *Prvý list Korintským.* Prešov 1984.
+- PRUŽINSKÝ, Š.: *List Rimanom.* Prešov 1982.
+- PRUŽINSKÝ, Š.: *Skutky svätých apoštolov.* Prešov 1996. ISBN 80-967655-2-3.
+- SMÍLEK, P. a rodina: Já a můj dům budeme sloužit Hospodinu. In: *Rozsévač.* 2019, roč. LXXXVIII (88), s.14-17
+- SMOLEN, Š.: *Cikánský evangelia.* 1. vydání. Brno 2020. ISBN 978-80-7295-262-5
+- SOULIS, G. C.: The Gypsies in the Byzantine Empire and the Balkans in the Late Middle Ages. In: *Dumbarton Oaks Papers*, Trustees for Harvard University 1961, vol. 15, s. 141–165. Dostupné online: <https://doi.org/10.2307/1291178>
+- STÁREK, J. N.: *Sw. Jana Chrysostoma, Arcibiskupa Carhradského Wěk a Spisy wybrané.* Pardubice: Jan H. Pospíšil. 1850. 530 s.
+- ŠTĚCHOVÁ, M.: *Život světcův.* Praha 1937.
+- ŠAK, Š.: *Misiológia I. Úvod do sveta misiológie* (online). 1. vydání. Prešov 2005. [cit. 2022-01-29]. ISBN 80- 8068-430-8. Dostupné online: <http://www.pulib.sk/elpub/PBF/Sak1/index.htm>
+- ШЕВКУНОВ, Г. А. [ŠEVKUNOV, G. A.]: *Nesvatí svatí a jiné příběhy.* Červený Kostelec 2017. ISBN 978-80-7465-214-1
+- TAYLOR, K. N.: *Mri elšebni Biblija andre kípóra (preklad v stredoslovenskej rómčine).* Bratislava 1999. ISBN 80-7131-037-9
+- TAYLOR, K. N.: *Mri prvo Biblija andro obrázki (preklad v západoslovenskom dialekte rómskeho jazyka).* Bratislava 2002. ISBN 80-7131-050-6
+- TAYLOR, K. N.: *Mírí jékti Biblia and.re čitrende (v dialekte Karpatskej rómčiny juhozápadného Slovenska).* Bratislava 2002. ISBN 80-7131-046-8
+- VELIMIROVIČ, N.: *Ochridský prológ.* 3. vydání. Prešov 2021. ISBN 978-80-555-2050-6
+- ŽUPINA, M.: *Kresťanská etika a jej miesto v systematickej teológii.* 1. vydání. Prešov 2003, ISBN 80-8068-237-2
+
+### Dokumentární filmy
+
+- MEDIA FILM, s.r.o. (Producent), Kaboš L. (Režisér). 2014. *Všetky moje deti* [Film]. Slovensko: MEDIA FILM, s.r.o.
+
+### Odborné články
+
+- ŠAK, Š.: Obnova misijnej perspektívy Cirkvi v duchu apoštola Pavla. In: *Pravoslávny teologický zborník I/2009* [elektronický zdroj]. Gorlice 2009. - Popis pořízen 29.1.2022. ISBN 978-913884-8-8. <https://www.unipo.sk/public/media/36749/PBZ_2009_1.pdf>
+- CAP, A.: Apoštol Pavol - geniálny misionár. In: *Pravoslávny teologický zborník I/2009* [elektronický zdroj]. Gorlice 2009. - Popis pořízen 29.1.2022. ISBN 978-913884-8-8. <https://www.unipo.sk/public/media/36749/PBZ_2009_1.pdf>
+
+### Ostatní literatura
+
+- 1453 - Pád Konstantinopole, zánik Byzantské říše. ©2005 [cit. 2019-09-11]. Dostupné z: <https://www.valka.cz/11178-1453-Pad-Konstantinopole-zanik-Byzantske-rise-1>
+- Basil the Great: Care for the Poor. *franciscanmedia.org* [online]. [cit. 2021-31-12]. Dostupné online <https://www.franciscanmedia.org/minute-meditations/basil-the-great-care-for-the-poor>
+- Dejiny Rómov. *archiv.vlada.gov.sk* [online]. [cit. 2021-30-12]. Dostupné online: <https://archiv.vlada.gov.sk/romovia/3632/dejiny-romov.html>
+- Eighth Century, Liturgical Development. *oca.org* [online]. ©1996–2019 [cit. 2019-09-11]. Dostupné z: <https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/eighth-century/liturgical-development4>
+- Equals of the Apostles and Teachers of the Slavs, Cyril and Methodius. *oca.org* [online]. ©1996–2019 [cit. 2019-09-11]. Dostupné z: <https://www.oca.org/saints/lives/2019/05/11/101350-equals-of-the-apostles-and-teachers-of-the-slavs-cyril-and-metho>
+- Krátké životopisy našich svatých otců Cyrila a Metoděje. *orthodoxia.cz* [online]. [cit. 2019-09-11]. Dostupné z: <https://www.orthodoxia.cz/c_m/cyrmet.htm>
+- Life of Constantine. *kroraina.com* [online]. [cit. 2019-09-11]. Dostupné z <http://macedonia.kroraina.com/en/kmsl/kmsl_1.htm>
+- Michael III. *britannica.com* [online]. ©2019 [cit. 2019-09-11]. Dostupné online <https://www.britannica.com/biography/Michael-III-Byzantine-emperor>
+- New Law Code. *oca.org* [online]. ©1996–2019 [cit. 2019-09-11]. Dostupné z: <https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/ninth-century/new-law-code>
+- Ninth Century, Liturgical Developments. *oca.org* [online]. ©1996–2019 [cit. 2019-09-11]. Dostupné z: <https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/ninth-century/liturgical-developments>
+- Righteous Nonna, mother of Saint Gregory the Theologian. *oca.org* [online]. ©1996–2019 [cit. 2019-08-30]. Dostupné online: <https://www.oca.org/saints/lives/2019/08/05/102214-righteous-nonna-the-mother-of-st-gregory-the-theologian>
+- Saint Photius, Patriarch of Constantinople. *oca.org* [online]. ©1996–2019 [cit. 2019-09-11]. Dostupné z: <https://www.oca.org/saints/lives/2010/02/06/100442-saint-photius-patriarch-of-constantinople>
+- Saints Cyril and Methodius—“Evangelizers of the Slavs and Equal to the Apostles”. *oca.org* [online]. ©1996–2019 [cit. 2019-09-11]. Dostupné z: <https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/ninth-century/saints-cyril-and-methodiusevangelizers-of-the-slavs-and-equal-to-the-apostl>
+- The papacy. *oca.org* [online]. ©1996–2019 [cit. 2019-09-11]. Dostupné z: <https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/ninth-century/the-papacy>
+- The West. *oca.org* [online]. ©1996–2019 [cit. 2019-09-11]. Dostupné z: <https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/ninth-century/the-west3>
+- Tres Linguae Sacrae: Three Sacred Languages--Hebrew, Greek, and Latin. *catholic.org* [online]. ©2019 [cit. 2019-09-11]. Dostupné z: <https://www.catholic.org/news/hf/faith/story.php?id=49760>
+- The West. *oca.org* [online]. ©1996–2019 [cit. 2019-09-11]. Dostupné z: <https://www.oca.org/orthodoxy/the-orthodox-faith/church-history/eighth-century/the-west2>
+
+# Poděkování
+
+V první řadě bych chtěl poděkovat Hospodinu Bohu za to, že mi dal slova k napsání této knihy, a za jeho ochranu během bydlení v romské osadě. Dále bych chtěl poděkovat svému školiteli Mgr. Petrovi Savčákovi, PhD., za užitečné rady, pomoc s výběrem tématu a za zpětnou vazbu, kterou mi poskytoval. Poděkování patří také mé manželce Michalce s dětmi, kteří mě ve studiu, misii a psaní podporují. Poděkování patří rovněž rodině Pružinských, kteří nás ve službě chudým Romům z osad trpělivě podporují.
+
+> „Každý dobrý dar a každé dokonalé obdarování pochází shůry od Otce světel...“ (Jk 1,17)
+
+# Z obálky knihy
+
+Církev je v tomto světě proto, aby tento svět pozdvihla do onoho světa, odkud je i sama. Její cíl je tedy nadnárodní, celosvětový, všelidský – sjednotit všechny lidi v Christu, všechny, bez ohledu na národnost, na rasu, na třídu... To jsou slova velkého misionáře a světce ctihodného Justina (Popoviće), který pokračuje myšlenkou, že tento ideál lze uskutečnit jen skrze víru, modlitbu, půst, lásku, krotkost, všemilosrdenství...
+
+Právě tyto výroky podle mě nejlépe vystihují knihu, kterou, milý čtenáři, držíš v rukou, ale zároveň i jejího autora a jeho misionářskou práci mezi Romy. Proto modlitebně upírám svůj zrak ke Spasiteli všech lidí s prosbou, aby si tato publikace, psaná nejprve životem a teprve potom písmeny, našla místo a čas k přečtení nejen u „fanoušků“, ale i u skeptiků či odpůrců misie mezi Romy. A jejímu autorovi ze srdce přeji, aby ji i nadále dopisoval svými skutky a duchovním zápasem za sebe i za ty, kdo ještě sedí „*ve tmě a stínu smrti.*“ Kéž Hlava Církve a Spasitel Těla – Isus Christos sešle svou blahodať, „*aby se každodenně připojovali k Církvi ti, kdo mají být spaseni.*“
+
+![](endorsement-portrait.jpg)
+
+**prot. Mgr. Peter Savčák, PhD.**

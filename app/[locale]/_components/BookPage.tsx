@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   BookOpen,
   Download,
   FileText,
+  Headphones,
   Monitor,
+  Music,
   Smartphone,
   Tablet,
   type LucideIcon,
@@ -17,15 +19,20 @@ import SectionLabel from "@/components/SectionLabel";
 import { useTranslation } from "@/components/LanguageProvider";
 import { LOCALES, type Locale } from "@/lib/i18n";
 import {
+  AUDIOBOOK,
   BOOK_UNLOCK_STORAGE_KEY,
   SEND_TO_KINDLE_URL,
   defaultBookLocale,
+  formatDuration,
   formatFileSize,
+  formatTimestamp,
   getBookFiles,
   getBookTitle,
   isBookLocale,
   isValidEmail,
   normalizePhone,
+  type Audiobook,
+  type BookFile,
   type BookFormat,
   type SubscribeChannel,
 } from "@/lib/ebook";
@@ -113,17 +120,15 @@ function LanguageSelect({ id, label, value, onChange }: LanguageSelectProps) {
   );
 }
 
-interface DownloadCardProps {
-  format: BookFormat;
+interface FileCardProps {
+  file: BookFile;
   Icon: LucideIcon;
-  bookLocale: Locale;
+  title: string;
+  devices: string;
 }
 
-function DownloadCard({ format, Icon, bookLocale }: DownloadCardProps) {
+function FileCard({ file, Icon, title, devices }: FileCardProps) {
   const { t, locale } = useTranslation();
-  const files = getBookFiles(bookLocale);
-  if (!files) return null;
-  const file = files[format];
   const fileName = file.file.split("/").pop();
 
   return (
@@ -137,14 +142,12 @@ function DownloadCard({ format, Icon, bookLocale }: DownloadCardProps) {
       </div>
       <div className="flex-1 min-w-0 flex flex-col gap-1">
         <p className="text-[16px] font-bold text-[var(--text-primary)]">
-          {t(`book.success.${format}Title`)}
+          {title}
           <span className="ml-2 text-[12px] font-normal text-[var(--text-muted)]">
             {formatFileSize(file.bytes, locale)}
           </span>
         </p>
-        <p className="text-[12px] text-[var(--text-secondary)] leading-[1.5]">
-          {t(`book.success.${format}Devices`)}
-        </p>
+        <p className="text-[12px] text-[var(--text-secondary)] leading-[1.5]">{devices}</p>
       </div>
       <span className="hidden sm:flex items-center gap-2 text-[11px] font-semibold tracking-[1.5px] text-[var(--gold)]">
         <Download className="w-4 h-4" aria-hidden="true" />
@@ -152,6 +155,82 @@ function DownloadCard({ format, Icon, bookLocale }: DownloadCardProps) {
       </span>
       <Download className="sm:hidden w-5 h-5 text-[var(--gold)]" aria-hidden="true" />
     </a>
+  );
+}
+
+interface DownloadCardProps {
+  format: BookFormat;
+  Icon: LucideIcon;
+  bookLocale: Locale;
+}
+
+function DownloadCard({ format, Icon, bookLocale }: DownloadCardProps) {
+  const { t } = useTranslation();
+  const files = getBookFiles(bookLocale);
+  if (!files) return null;
+  return (
+    <FileCard
+      file={files[format]}
+      Icon={Icon}
+      title={t(`book.success.${format}Title`)}
+      devices={t(`book.success.${format}Devices`)}
+    />
+  );
+}
+
+interface AudiobookSectionProps {
+  audiobook: Audiobook;
+}
+
+function AudiobookSection({ audiobook }: AudiobookSectionProps) {
+  const { t } = useTranslation();
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const handleChapterClick = (start: number) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = start;
+    void audio.play().catch(() => {});
+  };
+
+  return (
+    <div className="flex flex-col gap-5 pt-8 border-t border-[var(--border-default)]">
+      <div className="flex flex-col gap-3">
+        <SectionLabel text={t("book.audio.label")} />
+        <h3 className="text-[22px] font-bold tracking-[-0.3px] text-[var(--text-primary)]">{t("book.audio.title")}</h3>
+        <p className="text-[14px] text-[var(--text-secondary)] leading-[1.6]">
+          {t("book.audio.body", { duration: formatDuration(audiobook.duration, t("book.audio.duration")) })}
+        </p>
+      </div>
+      <audio ref={audioRef} controls preload="none" src={audiobook.mp3.file} className="w-full" lang="en">
+        <a href={audiobook.mp3.file}>{audiobook.mp3.file}</a>
+      </audio>
+      <details className="bg-[var(--bg-elevated)] border border-[var(--border-strong)]">
+        <summary className="px-5 py-3 text-[12px] font-semibold tracking-[1.5px] text-[var(--text-secondary)] uppercase cursor-pointer">
+          {t("book.audio.chapters")} ({audiobook.chapters.length})
+        </summary>
+        <ol className="flex flex-col max-h-[320px] overflow-y-auto border-t border-[var(--border-strong)]" lang="en">
+          {audiobook.chapters.map((chapter) => (
+            <li key={chapter.start}>
+              <button
+                type="button"
+                onClick={() => handleChapterClick(chapter.start)}
+                className="w-full flex items-baseline gap-3 px-5 py-2 text-left text-[13px] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-card)] cursor-pointer"
+              >
+                <span className="font-mono text-[11px] text-[var(--text-muted)] w-14 flex-shrink-0">
+                  {formatTimestamp(chapter.start)}
+                </span>
+                <span>{chapter.title}</span>
+              </button>
+            </li>
+          ))}
+        </ol>
+      </details>
+      <div className="flex flex-col gap-3">
+        <FileCard file={audiobook.m4b} Icon={Headphones} title={t("book.audio.m4bTitle")} devices={t("book.audio.m4bDevices")} />
+        <FileCard file={audiobook.mp3} Icon={Music} title={t("book.audio.mp3Title")} devices={t("book.audio.mp3Devices")} />
+      </div>
+    </div>
   );
 }
 
@@ -256,6 +335,12 @@ export default function BookPage() {
                 </div>
               ))}
             </div>
+            {AUDIOBOOK && (
+              <p className="flex items-center gap-2 text-[13px] text-[var(--text-secondary)]">
+                <Headphones className="w-4 h-4 text-[var(--gold)]" aria-hidden="true" />
+                {t("book.hero.audioNote")}
+              </p>
+            )}
             <a
               href="#get-the-book"
               className="self-start px-8 py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[2px] hover:opacity-90 transition-opacity"
@@ -326,6 +411,7 @@ export default function BookPage() {
                   <DownloadCard key={format} format={format} Icon={Icon} bookLocale={bookLocale} />
                 ))}
               </div>
+              {AUDIOBOOK && <AudiobookSection audiobook={AUDIOBOOK} />}
             </>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">

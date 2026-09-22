@@ -1092,6 +1092,7 @@ export interface Dictionary {
       factPriceValue: string;
       factPriceLabel: string;
       cta: string;
+      audioNote: string;
     };
     inside: {
       label: string;
@@ -1150,12 +1151,24 @@ export interface Dictionary {
       computerTitle: string;
       computerBody: string;
     };
+    audio: {
+      label: string;
+      title: string;
+      body: string;
+      chapters: string;
+      m4bTitle: string;
+      m4bDevices: string;
+      mp3Title: string;
+      mp3Devices: string;
+      duration: string;
+    };
     delivery: {
       emailSubject: string;
       emailGreeting: string;
       emailIntro: string;
       emailEpub: string;
       emailPdf: string;
+      emailAudio: string;
       emailOutro: string;
       emailSignature: string;
       sms: string;

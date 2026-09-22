@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { DICTIONARIES, isLocale, type Locale } from "@/lib/i18n";
 import {
+  AUDIOBOOK,
   getBookFiles,
   getBookTitle,
   isBookLocale,
@@ -93,6 +94,9 @@ function emailContent({ locale, bookLocale, files, siteUrl }: Delivery) {
   const fullTitle = `${title} ${subtitle}`;
   const epubUrl = `${siteUrl}${files.epub.file}`;
   const pdfUrl = `${siteUrl}${files.pdf.file}`;
+  const audio = AUDIOBOOK
+    ? { m4b: `${siteUrl}${AUDIOBOOK.m4b.file}`, mp3: `${siteUrl}${AUDIOBOOK.mp3.file}` }
+    : null;
   const intro = fill(d.emailIntro, { title: fullTitle });
 
   const button = (href: string, label: string) =>
@@ -104,6 +108,8 @@ function emailContent({ locale, bookLocale, files, siteUrl }: Delivery) {
 <p style="font-size:16px;line-height:1.6;margin:0 0 24px">${escapeHtml(intro)}</p>
 ${button(epubUrl, d.emailEpub)}
 ${button(pdfUrl, d.emailPdf)}
+${audio ? `<p style="font-size:14px;line-height:1.6;margin:20px 0 8px">${escapeHtml(d.emailAudio)}:</p>
+<p style="font-size:14px;margin:0 0 4px"><a href="${escapeHtml(audio.m4b)}" style="color:#111111">M4B</a> · <a href="${escapeHtml(audio.mp3)}" style="color:#111111">MP3</a></p>` : ""}
 <p style="font-size:16px;line-height:1.6;margin:24px 0 0">${escapeHtml(d.emailOutro)}<br/>${escapeHtml(d.emailSignature)}</p>
 <p style="font-size:12px;color:#666666;margin:24px 0 0"><a href="${escapeHtml(siteUrl)}" style="color:#666666">${escapeHtml(siteUrl.replace(/^https?:\/\//, ""))}</a></p>
 </div></body></html>`;
@@ -115,6 +121,7 @@ ${button(pdfUrl, d.emailPdf)}
     "",
     `${d.emailEpub}: ${epubUrl}`,
     `${d.emailPdf}: ${pdfUrl}`,
+    ...(audio ? [`${d.emailAudio}: ${audio.m4b} (MP3: ${audio.mp3})`] : []),
     "",
     d.emailOutro,
     d.emailSignature,

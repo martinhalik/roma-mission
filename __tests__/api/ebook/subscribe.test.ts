@@ -2,7 +2,7 @@
 import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 import { NextRequest } from "next/server";
 import { POST } from "../../../app/api/ebook/subscribe/route";
-import { BOOK_LOCALES } from "../../../lib/ebook";
+import { AUDIOBOOK, BOOK_LOCALES } from "../../../lib/ebook";
 
 const BOOK_LOCALE = BOOK_LOCALES[0];
 
@@ -126,6 +126,7 @@ describe("POST /api/ebook/subscribe", () => {
     expect(email.body.htmlContent).toContain(`https://romamission.eu/ebook/orthodox-mission-roma-${BOOK_LOCALE}.epub`);
     expect(email.body.htmlContent).toContain(`https://romamission.eu/ebook/orthodox-mission-roma-${BOOK_LOCALE}.pdf`);
     expect(email.body.textContent).toContain(".epub");
+    if (AUDIOBOOK) expect(email.body.htmlContent).toContain(`https://romamission.eu${AUDIOBOOK.m4b.file}`);
   });
 
   it("subscribes an SMS contact in E.164 and texts the EPUB link", async () => {

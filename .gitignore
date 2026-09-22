@@ -43,3 +43,7 @@ raw/
 
 # Vercel
 .vercel
+
+# Audiobook listening-test clips (scripts/build-audiobook.py --only N)
+public/ebook/audio/sample-chapter-*.wav
+__pycache__/

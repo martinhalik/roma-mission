@@ -21,7 +21,30 @@
       "translatedFrom": "Translated from the Slovak original",
       "originalEdition": "Original edition",
       "ebookEdition": "Ebook edition",
-      "rights": "All rights reserved. Free for personal reading; please do not redistribute without permission."
+      "rights": "All rights reserved. Free for personal reading; please do not redistribute without permission.",
+      "coverLines": [
+        [
+          "ORTHODOX",
+          "m"
+        ],
+        [
+          "MISSION",
+          "xl"
+        ],
+        [
+          "AMONG THE",
+          "xs"
+        ],
+        [
+          "ROMA",
+          "l"
+        ]
+      ],
+      "diagramLabels": [
+        "initial interest",
+        "clash with reality",
+        "hard work"
+      ]
     },
     "sk": {
       "title": "Pravoslávna misia medzi Rómami",
@@ -33,7 +56,30 @@
       "translatedFrom": "",
       "originalEdition": "Pôvodné vydanie",
       "ebookEdition": "Elektronické vydanie",
-      "rights": "Všetky práva vyhradené. Na osobné čítanie zdarma; bez povolenia prosím nešírte ďalej."
+      "rights": "Všetky práva vyhradené. Na osobné čítanie zdarma; bez povolenia prosím nešírte ďalej.",
+      "coverLines": [
+        [
+          "PRAVOSLÁVNA",
+          "m"
+        ],
+        [
+          "MISIA",
+          "xl"
+        ],
+        [
+          "MEDZI",
+          "xs"
+        ],
+        [
+          "RÓMAMI",
+          "l"
+        ]
+      ],
+      "diagramLabels": [
+        "prvotný záujem",
+        "stret s realitou",
+        "ťažká práca"
+      ]
     },
     "cs": {
       "title": "Pravoslavná misie mezi Romy",
@@ -45,7 +91,30 @@
       "translatedFrom": "Přeloženo ze slovenského originálu",
       "originalEdition": "Původní vydání",
       "ebookEdition": "Elektronické vydání",
-      "rights": "Všechna práva vyhrazena. Ke čtení pro osobní potřebu zdarma; bez svolení prosím nešiřte dál."
+      "rights": "Všechna práva vyhrazena. Ke čtení pro osobní potřebu zdarma; bez svolení prosím nešiřte dál.",
+      "coverLines": [
+        [
+          "PRAVOSLAVNÁ",
+          "m"
+        ],
+        [
+          "MISIE",
+          "xl"
+        ],
+        [
+          "MEZI",
+          "xs"
+        ],
+        [
+          "ROMY",
+          "l"
+        ]
+      ],
+      "diagramLabels": [
+        "prvotní zájem",
+        "střet s realitou",
+        "těžká práce"
+      ]
     },
     "ro": {
       "title": "Misiunea ortodoxă printre romi",
@@ -57,7 +126,30 @@
       "translatedFrom": "Tradusă din originalul slovac",
       "originalEdition": "Ediția originală",
       "ebookEdition": "Ediția electronică",
-      "rights": "Toate drepturile rezervate. Gratuită pentru lectură personală; vă rugăm să nu o redistribuiți fără permisiune."
+      "rights": "Toate drepturile rezervate. Gratuită pentru lectură personală; vă rugăm să nu o redistribuiți fără permisiune.",
+      "coverLines": [
+        [
+          "MISIUNEA",
+          "m"
+        ],
+        [
+          "ORTODOXĂ",
+          "xl"
+        ],
+        [
+          "PRINTRE",
+          "xs"
+        ],
+        [
+          "ROMI",
+          "l"
+        ]
+      ],
+      "diagramLabels": [
+        "interesul inițial",
+        "ciocnirea cu realitatea",
+        "muncă grea"
+      ]
     },
     "de": {
       "title": "Orthodoxe Mission unter den Roma",
@@ -69,7 +161,30 @@
       "translatedFrom": "Aus dem slowakischen Original übersetzt",
       "originalEdition": "Originalausgabe",
       "ebookEdition": "E-Book-Ausgabe",
-      "rights": "Alle Rechte vorbehalten. Kostenlos zum persönlichen Lesen; bitte nicht ohne Genehmigung weiterverbreiten."
+      "rights": "Alle Rechte vorbehalten. Kostenlos zum persönlichen Lesen; bitte nicht ohne Genehmigung weiterverbreiten.",
+      "coverLines": [
+        [
+          "ORTHODOXE",
+          "m"
+        ],
+        [
+          "MISSION",
+          "xl"
+        ],
+        [
+          "UNTER DEN",
+          "xs"
+        ],
+        [
+          "ROMA",
+          "l"
+        ]
+      ],
+      "diagramLabels": [
+        "anfängliches Interesse",
+        "Zusammenstoß mit der Realität",
+        "harte Arbeit"
+      ]
     },
     "sr": {
       "title": "Православна мисија међу Ромима",
@@ -81,7 +196,30 @@
       "translatedFrom": "Преведено са словачког оригинала",
       "originalEdition": "Оригинално издање",
       "ebookEdition": "Електронско издање",
-      "rights": "Сва права задржана. Бесплатно за лично читање; молимо вас да не делите даље без дозволе."
+      "rights": "Сва права задржана. Бесплатно за лично читање; молимо вас да не делите даље без дозволе.",
+      "coverLines": [
+        [
+          "ПРАВОСЛАВНА",
+          "m"
+        ],
+        [
+          "МИСИЈА",
+          "xl"
+        ],
+        [
+          "МЕЂУ",
+          "xs"
+        ],
+        [
+          "РОМИМА",
+          "l"
+        ]
+      ],
+      "diagramLabels": [
+        "почетно интересовање",
+        "судар са стварношћу",
+        "тежак рад"
+      ]
     },
     "ru": {
       "title": "Православная миссия среди цыган",
@@ -93,7 +231,30 @@
       "translatedFrom": "Перевод со словацкого оригинала",
       "originalEdition": "Оригинальное издание",
       "ebookEdition": "Электронное издание",
-      "rights": "Все права защищены. Бесплатно для личного чтения; пожалуйста, не распространяйте без разрешения."
+      "rights": "Все права защищены. Бесплатно для личного чтения; пожалуйста, не распространяйте без разрешения.",
+      "coverLines": [
+        [
+          "ПРАВОСЛАВНАЯ",
+          "m"
+        ],
+        [
+          "МИССИЯ",
+          "xl"
+        ],
+        [
+          "СРЕДИ",
+          "xs"
+        ],
+        [
+          "ЦЫГАН",
+          "l"
+        ]
+      ],
+      "diagramLabels": [
+        "первоначальный интерес",
+        "столкновение с реальностью",
+        "тяжёлый труд"
+      ]
     },
     "mk": {
       "title": "Православна мисија меѓу Ромите",
@@ -105,7 +266,30 @@
       "translatedFrom": "Преведено од словачкиот оригинал",
       "originalEdition": "Оригинално издание",
       "ebookEdition": "Електронско издание",
-      "rights": "Сите права задржани. Бесплатно за лично читање; ве молиме не ја споделувајте понатаму без дозвола."
+      "rights": "Сите права задржани. Бесплатно за лично читање; ве молиме не ја споделувајте понатаму без дозвола.",
+      "coverLines": [
+        [
+          "ПРАВОСЛАВНА",
+          "m"
+        ],
+        [
+          "МИСИЈА",
+          "xl"
+        ],
+        [
+          "МЕЃУ",
+          "xs"
+        ],
+        [
+          "РОМИТЕ",
+          "l"
+        ]
+      ],
+      "diagramLabels": [
+        "почетен интерес",
+        "судир со реалноста",
+        "тешка работа"
+      ]
     },
     "el": {
       "title": "Ορθόδοξη ιεραποστολή μεταξύ των Ρομά",
@@ -117,7 +301,38 @@
       "translatedFrom": "Μετάφραση από το σλοβακικό πρωτότυπο",
       "originalEdition": "Πρωτότυπη έκδοση",
       "ebookEdition": "Ηλεκτρονική έκδοση",
-      "rights": "Με επιφύλαξη παντός δικαιώματος. Δωρεάν για προσωπική ανάγνωση· παρακαλούμε μην το αναδιανέμετε χωρίς άδεια."
+      "rights": "Με επιφύλαξη παντός δικαιώματος. Δωρεάν για προσωπική ανάγνωση· παρακαλούμε μην το αναδιανέμετε χωρίς άδεια.",
+      "coverLines": [
+        [
+          "ΟΡΘΟΔΟΞΗ",
+          "m"
+        ],
+        [
+          "ΙΕΡΑΠΟΣΤΟΛΗ",
+          "xl"
+        ],
+        [
+          "ΜΕΤΑΞΥ ΤΩΝ",
+          "xs"
+        ],
+        [
+          "ΡΟΜΑ",
+          "l"
+        ]
+      ],
+      "diagramLabels": [
+        "αρχικό ενδιαφέρον",
+        "σύγκρουση με την πραγματικότητα",
+        "σκληρή δουλειά"
+      ]
     }
+  },
+  "palette": {
+    "coral": "#F1614D",
+    "cream": "#F8F7EC",
+    "ink": "#231F20",
+    "gray": "#636466",
+    "coverAuthor": "#2F5DA8",
+    "coverSubtitle": "#F6D64A"
   }
 }
