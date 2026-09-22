@@ -5,6 +5,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import { LITURGY } from "@/lib/liturgy/content";
+import {
+  COGNATES,
+  DIALECT_NOTES,
+  SCRIPTURE,
+  SOURCES,
+} from "@/lib/liturgy/language";
 
 /**
  * /liturgy — what the translation is, who made it, and where to get it.
@@ -113,6 +119,28 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
+function Prose({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="mb-5 text-[16px] leading-relaxed text-[var(--text-secondary)]">
+      {children}
+    </p>
+  );
+}
+
+/** A figure with its caption — used for the "five groups / seven codes" row. */
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div>
+      <p className="font-georgia text-[34px] leading-none text-[var(--gold)]">
+        {value}
+      </p>
+      <p className="mt-2 text-[14px] leading-snug text-[var(--text-secondary)]">
+        {label}
+      </p>
+    </div>
+  );
+}
+
 export default function LiturgyPage() {
   const { meta } = LITURGY;
 
@@ -205,6 +233,265 @@ export default function LiturgyPage() {
                 </div>
               </dl>
             </div>
+          </div>
+        </section>
+
+        {/* Which Romani */}
+        <section className="border-t border-[var(--border-default)] px-5 py-16 sm:px-6">
+          <div className="mx-auto max-w-3xl">
+            <SectionLabel>Which Romani?</SectionLabel>
+            <h3 className="font-georgia mb-5 text-[26px] leading-tight text-[var(--text-primary)] sm:text-[32px]">
+              There is no such thing as “the” Romani language
+            </h3>
+            <Prose>
+              Romani is a family, not a single tongue. Linguists sort it into
+              five main dialect groups — Vlax, Balkan, Central, Northwestern and
+              Northeastern — plus a handful of isolated varieties in Britain,
+              Iberia and southern Italy. Seven of those varieties carry their own
+              ISO language codes.
+            </Prose>
+            <Prose>
+              This translation belongs to the Central group: it is{" "}
+              <strong className="font-semibold text-[var(--text-primary)]">
+                Carpathian Romani
+              </strong>{" "}
+              (<code className="text-[14px] text-[var(--gold)]">rmc</code>), and
+              within that, the dialect spoken in{" "}
+              <strong className="font-semibold text-[var(--text-primary)]">
+                central Slovakia
+              </strong>{" "}
+              — the Romani of Klenovec and the Gemer region. That matters
+              locally: Slovakia already has a New Testament in{" "}
+              <em>eastern</em> Slovak Romani, and a whole Bible in Carpathian
+              Romani. Neither is the speech of the villages this mission serves,
+              and the difference is not academic — it is the difference between a
+              text people follow and a text people pray.
+            </Prose>
+
+            <div className="mt-10 grid grid-cols-2 gap-8 border-t border-[var(--border-default)] pt-8 sm:grid-cols-4">
+              <Stat value="5" label="main dialect groups" />
+              <Stat value="7" label="varieties with their own ISO code" />
+              <Stat value="rmc" label="the code for Carpathian Romani" />
+              <Stat value="~1000" label="years since the language left India" />
+            </div>
+          </div>
+        </section>
+
+        {/* A language from India */}
+        <section className="border-t border-[var(--border-default)] px-5 py-16 sm:px-6">
+          <div className="mx-auto max-w-3xl">
+            <SectionLabel>A language that came from India</SectionLabel>
+            <Prose>
+              Romani is an Indo-Aryan language. It left the northern Indian
+              subcontinent around a thousand years ago and it never stopped being
+              Indian — it was by studying Romani that European scholars first
+              worked out where the Roma had come from. Its closest living
+              relatives are Hindi, Urdu and Punjabi, and the family resemblance
+              is not buried in the grammar. It is sitting in the plainest words
+              of the Liturgy.
+            </Prose>
+            <Prose>
+              A Roma man from Klenovec and a man from Delhi or Lahore cannot hold
+              a conversation — a thousand years and half a continent of borrowed
+              vocabulary lie between them. But they will both recognise the word
+              for water, for house, for brother, for name. Every word below is in
+              the text of this Liturgy; the count is how often its root appears.
+            </Prose>
+
+            <div className="mt-8 overflow-hidden rounded-lg border border-[var(--border-default)]">
+              <table className="w-full text-left text-[15px]">
+                <caption className="sr-only">
+                  Words in this Liturgy and their Hindi relatives
+                </caption>
+                <thead>
+                  <tr className="border-b border-[var(--border-default)] bg-[var(--bg-card)]">
+                    <th scope="col" className="px-4 py-3 text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
+                      In the Liturgy
+                    </th>
+                    <th scope="col" className="px-4 py-3 text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
+                      Means
+                    </th>
+                    <th scope="col" className="px-4 py-3 text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase">
+                      Hindi / Urdu
+                    </th>
+                    <th scope="col" className="hidden px-4 py-3 text-right text-[11px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase sm:table-cell">
+                      Times
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {COGNATES.map((c) => (
+                    <tr
+                      key={c.romani}
+                      className="border-b border-[var(--border-default)] last:border-0"
+                    >
+                      <td className="px-4 py-3 font-medium text-[var(--text-primary)]" lang="rom">
+                        {c.romani}
+                      </td>
+                      <td className="px-4 py-3 text-[var(--text-secondary)]">
+                        {c.gloss}
+                      </td>
+                      <td className="px-4 py-3 text-[var(--text-secondary)]" lang="hi-Latn">
+                        {c.hindi}
+                      </td>
+                      <td className="hidden px-4 py-3 text-right text-[var(--text-muted)] tabular-nums sm:table-cell">
+                        {c.occurrences}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="mt-6 rounded-lg border-l-2 border-[var(--gold)] bg-[var(--bg-card)] px-5 py-4 text-[15px] leading-relaxed text-[var(--text-secondary)]">
+              The Trinity, in this Liturgy, is named half in Indian and half in
+              Slavonic:{" "}
+              <strong className="font-semibold text-[var(--text-primary)]" lang="rom">
+                le Dadéskero, le Čhavéskero thaj le Svetos Duchóskero
+              </strong>{" "}
+              — Father and Son from words the Roma carried out of India, Spirit
+              from the Church Slavonic of the Byzantine rite they were baptised
+              into. A thousand years of the journey is in one line.
+            </p>
+          </div>
+        </section>
+
+        {/* Differences between dialects */}
+        <section className="border-t border-[var(--border-default)] px-5 py-16 sm:px-6">
+          <div className="mx-auto max-w-3xl">
+            <SectionLabel>What changes from village to village</SectionLabel>
+            <Prose>
+              Every line of this translation is a choice, and the translator
+              recorded the alternatives in footnotes as he went — what the
+              Serbian and Romanian Romani liturgies say, what the older people in
+              Klenovec say, what they say a valley away in Gemer. These are the
+              interesting differences: not spelling, but a different word chosen
+              for the same prayer.
+            </Prose>
+
+            <ul className="mt-8 space-y-4">
+              {DIALECT_NOTES.map((d) => (
+                <li
+                  key={d.note}
+                  className="rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)] px-5 py-4"
+                >
+                  <p className="flex flex-wrap items-baseline gap-x-3">
+                    <span
+                      className="text-[17px] font-semibold text-[var(--text-primary)]"
+                      lang="rom"
+                    >
+                      {d.term}
+                    </span>
+                    <span className="text-[14px] text-[var(--text-muted)]">
+                      note {d.note}
+                    </span>
+                  </p>
+                  <p className="mt-1 text-[15px] text-[var(--text-secondary)]">
+                    {d.gloss}
+                  </p>
+                  <dl className="mt-3 space-y-1 border-t border-[var(--border-default)] pt-3 text-[14px]">
+                    {d.variants.map((v) => (
+                      <div key={v.where} className="flex flex-wrap gap-x-2">
+                        <dt className="text-[var(--text-muted)]">{v.where}:</dt>
+                        <dd className="text-[var(--text-primary)]" lang="rom">
+                          {v.form}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-6 text-[15px] leading-relaxed text-[var(--text-secondary)]">
+              And one that shows what is at stake in getting it wrong. Just
+              before the Creed the priest calls{" "}
+              <strong className="font-semibold text-[var(--text-primary)]" lang="rom">
+                Vudar! Vudar!
+              </strong>{" "}
+              — “The doors! The doors!”. The translator marks it with a warning:
+              clipped in ordinary speech, <em lang="rom">vudár</em> is heard as{" "}
+              <em lang="rom">budár</em> — the toilet (note 16). A vowel length is
+              the whole difference between reverence and a joke at the back of
+              the church.
+            </p>
+          </div>
+        </section>
+
+        {/* Scripture in Romani */}
+        <section className="border-t border-[var(--border-default)] px-5 py-16 sm:px-6">
+          <div className="mx-auto max-w-3xl">
+            <SectionLabel>Scripture in Romani</SectionLabel>
+            <Prose>
+              The Roma have had parts of the Bible in their own speech since
+              1837, but almost always one variety at a time, and almost always
+              from outside the Orthodox Church. These are the landmarks — not a
+              complete inventory, since portions exist in many more varieties
+              than are catalogued anywhere publicly.
+            </Prose>
+
+            <ol className="mt-8 space-y-0">
+              {SCRIPTURE.map((s) => (
+                <li
+                  key={`${s.variety}-${s.year}`}
+                  className={`border-l-2 py-4 pl-5 ${
+                    s.ours
+                      ? "border-[var(--gold)]"
+                      : "border-[var(--border-strong)]"
+                  }`}
+                >
+                  <p className="flex flex-wrap items-baseline gap-x-3">
+                    <span className="font-georgia text-[18px] text-[var(--gold)] tabular-nums">
+                      {s.year}
+                    </span>
+                    <span className="text-[16px] font-medium text-[var(--text-primary)]">
+                      {s.variety}
+                    </span>
+                    {s.iso && (
+                      <code className="text-[13px] text-[var(--text-muted)]">
+                        {s.iso}
+                      </code>
+                    )}
+                  </p>
+                  <p className="mt-1 text-[15px] leading-relaxed text-[var(--text-secondary)]">
+                    {s.what}
+                    {s.who !== "—" && (
+                      <span className="text-[var(--text-muted)]"> · {s.who}</span>
+                    )}
+                  </p>
+                </li>
+              ))}
+            </ol>
+
+            <p className="mt-8 text-[15px] leading-relaxed text-[var(--text-secondary)]">
+              Which is why this one matters: it is the Divine Liturgy rather than
+              Scripture, it is Orthodox, and it is in the dialect actually spoken
+              in the villages where it is sung.
+            </p>
+
+            <details className="mt-8 rounded-lg border border-[var(--border-default)] bg-[var(--bg-card)]">
+              <summary className="px-5 py-3 text-[13px] font-medium tracking-[1px] text-[var(--text-secondary)] uppercase">
+                Sources
+              </summary>
+              <ul className="space-y-2 px-5 pb-4 text-[14px] text-[var(--text-secondary)]">
+                {SOURCES.map((source) => (
+                  <li key={source.label}>
+                    {source.href ? (
+                      <a
+                        href={source.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-[var(--gold)] hover:underline"
+                      >
+                        {source.label}
+                      </a>
+                    ) : (
+                      source.label
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </details>
           </div>
         </section>
 
