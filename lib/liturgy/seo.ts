@@ -40,16 +40,18 @@ export const CITATIONS = [
   {
     key: "chicago",
     label: "Chicago",
-    text: `Halík, Martin. "${THESIS.title}." ${THESIS.type}, ${THESIS.institution}, ${THESIS.year}.`,
+    text: `Halík, Martin. \u201C${THESIS.title}.\u201D ${THESIS.type}, ${THESIS.institution}, ${THESIS.year}.`,
   },
   {
     key: "translation",
     label: "The translation itself",
-    text: `Halík, M., trans. (${THESIS.year}). Svätá liturgia sv. Jána Zlatoústeho — Romani (Central-Slovak dialect), v${LITURGY.meta.version}. ${PUBLISHER_NAME_SK}. ${SITE_URL}/en/liturgy`,
+    text: `Halík, M., trans. (${LITURGY.meta.sourceDate.slice(0, 4)}). Svätá liturgia sv. Jána Zlatoústeho — Romani (Central-Slovak dialect), v${LITURGY.meta.version}. ${PUBLISHER_NAME_SK}. ${SITE_URL}/en/liturgy`,
   },
   {
     key: "bibtex",
     label: "BibTeX",
+    // `@mastersthesis` is the conventional container for a non-doctoral thesis;
+    // `type` overrides the printed label, which is what carries "Rigorózna práca".
     text: `@mastersthesis{halik${THESIS.year}liturgia,
   author      = {Hal\\'ik, Martin},
   title       = {${THESIS.title}},

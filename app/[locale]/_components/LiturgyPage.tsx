@@ -729,7 +729,7 @@ export default function LiturgyPage({ locale }: { locale: Locale }) {
                     {citation.label}
                   </p>
                   {citation.key === "bibtex" ? (
-                    <pre className="overflow-x-auto text-[13px] leading-relaxed whitespace-pre text-[var(--text-secondary)]">
+                    <pre className="text-[13px] leading-relaxed break-words whitespace-pre-wrap text-[var(--text-secondary)]">
                       <code>{citation.text}</code>
                     </pre>
                   ) : (
