@@ -17,7 +17,14 @@
  * Nothing here needs LaTeX, Pandoc or a network connection.
  */
 
-import { copyFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  copyFileSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import JSZip from "jszip";
@@ -472,6 +479,39 @@ async function main() {
   mkdirSync(OUT_DIR, { recursive: true });
   copyFileSync(SOURCE_DOCX, resolve(OUT_DIR, "spevnik-v1.1.docx"));
   console.log(`✓ ${resolve(OUT_DIR, "spevnik-v1.1.docx")}`);
+
+  writeManifest();
+}
+
+/**
+ * Records which downloads actually exist, so the website can decide what to
+ * link without touching the filesystem at request time.
+ *
+ * `existsSync` from a server component is not safe here: Next.js only traces
+ * files it can see being imported, so `public/` may not be present next to the
+ * running function on a serverless deployment, and every download would
+ * silently vanish from the page. Importing a committed manifest cannot fail
+ * that way.
+ *
+ * Files not produced by this script — the thesis PDF — are picked up too, so
+ * dropping one into `public/downloads/liturgy/` and re-running is all it takes.
+ */
+function writeManifest() {
+  const files = readdirSync(OUT_DIR)
+    .filter((name) => !name.startsWith("."))
+    .sort()
+    .map((name) => ({
+      href: `/downloads/liturgy/${name}`,
+      bytes: statSync(resolve(OUT_DIR, name)).size,
+    }));
+
+  const manifestPath = resolve(ROOT, "content/liturgy/downloads.json");
+  writeFileSync(
+    manifestPath,
+    `${JSON.stringify({ generatedAt: new Date().toISOString().slice(0, 10), files }, null, 2)}\n`,
+    "utf8"
+  );
+  console.log(`✓ ${manifestPath} (${files.length} files)`);
 }
 
 main().catch((error) => {

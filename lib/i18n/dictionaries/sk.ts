@@ -1471,14 +1471,14 @@ const sk: Dictionary = {
         "Od Byzantskej ríše po dnešné slávovské sviečky a krsty vo farnostiach: dlhá spoločná cesta Rómov ako pravoslávnych katechumenov.",
     },
     liturgy: {
-      title: "Liturgia v rómčine — Rómska misia",
+      title: "Liturgia v rómčine — svätá liturgia sv. Jána Zlatoústeho | Rómska misia",
       description:
-        "Svätá liturgia sv. Jána Zlatoústeho v stredoslovenskom dialekte rómčiny — prvý pravoslávny preklad, slúžený s požehnaním vladyku. Čítajte online alebo si stiahnite spevník.",
+        "Svätá liturgia sv. Jána Zlatoústeho v stredoslovenskom dialekte rómčiny (karpatská rómčina, rmc) v preklade Martina Halíka. Čítajte online alebo si stiahnite spevník vo formáte A5 PDF a EPUB.",
     },
     liturgyText: {
-      title: "Text liturgie — Rómska misia",
+      title: "Text svätej liturgie po rómsky a po slovensky | Rómska misia",
       description:
-        "Celý text svätej liturgie sv. Jána Zlatoústeho po rómsky a po slovensky, s poznámkami prekladateľa.",
+        "Celý text svätej liturgie sv. Jána Zlatoústeho v karpatskej rómčine so slovenčinou pod každým riadkom a s 34 poznámkami prekladateľa.",
     },
     activity: {
       title: "Naživo z terénu — Rómska misia",

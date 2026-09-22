@@ -58,7 +58,7 @@ export default async function LocaleSlugPage({
     case "heritage":
       return <HeritagePage />;
     case "liturgy":
-      return <LiturgyPage />;
+      return <LiturgyPage locale={locale} />;
     case "liturgyText":
       // Lives at /liturgy/text — handled by the [sub] route, not here.
       notFound();

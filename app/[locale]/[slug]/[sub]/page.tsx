@@ -37,5 +37,5 @@ export default async function LocaleSubPage({
   const routeKey = resolveSubRoute(locale, slug, sub);
   if (routeKey !== "liturgyText") notFound();
 
-  return <LiturgyTextPage />;
+  return <LiturgyTextPage locale={locale} />;
 }

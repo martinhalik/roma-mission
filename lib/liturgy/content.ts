@@ -1,4 +1,5 @@
 import raw from "@/content/liturgy/liturgy.json";
+import downloads from "@/content/liturgy/downloads.json";
 import type { LiturgyDocument, LiturgyLine } from "./types";
 
 /**
@@ -10,27 +11,43 @@ import type { LiturgyDocument, LiturgyLine } from "./types";
  */
 export const LITURGY = raw as unknown as LiturgyDocument;
 
-/** Downloads offered on /liturgy. `available: false` renders nothing. */
-export interface LiturgyDownload {
-  key: string;
-  href: string;
-  label: string;
-  meta: string;
-  available: boolean;
-}
-
 /**
- * The Serbian Romani Služebnik (Novi Sad, 1993) exists only in print. A scan
- * is expected later; the entry is kept here so it is one flag away from going
- * live, and stays out of the UI until then.
+ * Placeholder for the Serbian Romani Služebnik (Novi Sad, 1993), which exists
+ * only in print. A scan is expected later. Kept in the data, deliberately not
+ * rendered, so adding it is a matter of dropping the file into
+ * `public/downloads/liturgy/` and re-running `npm run book`.
  */
-export const SERBIAN_SLUZEBNIK_SCAN: LiturgyDownload = {
-  key: "serbian-sluzebnik-scan",
+export const SERBIAN_SLUZEBNIK_SCAN = {
   href: "/downloads/liturgy/serbian-sluzebnik-1993.pdf",
   label: "Serbian Romani Služebnik (Novi Sad, 1993) — scan",
-  meta: "PDF · pending digitisation",
   available: false,
-};
+} as const;
+
+const DOWNLOAD_HREFS = new Set(downloads.files.map((f) => f.href));
+
+/** Byte size by href, for showing the reader what they are about to fetch. */
+const DOWNLOAD_BYTES = new Map(downloads.files.map((f) => [f.href, f.bytes]));
+
+/**
+ * Whether a download exists, according to the manifest written by
+ * `npm run book`.
+ *
+ * Deliberately not an `existsSync` check: Next.js traces imports, not runtime
+ * filesystem reads, so `public/` is not guaranteed to sit next to the running
+ * function on a serverless deployment. A stale manifest shows a wrong link;
+ * a failed `existsSync` would hide every download on production.
+ */
+export function hasDownload(href: string): boolean {
+  return DOWNLOAD_HREFS.has(href);
+}
+
+/** Human-readable size, e.g. "268 KB". Empty when the file is not in the manifest. */
+export function downloadSize(href: string): string {
+  const bytes = DOWNLOAD_BYTES.get(href);
+  if (bytes === undefined) return "";
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
 
 /** A run of text, or a footnote marker, in the order the reader meets them. */
 export type LineToken =
@@ -75,25 +92,4 @@ export function chantPhrases(text: string): string[] {
     .filter(Boolean);
 }
 
-/** Footnote lookup by display number. */
-export function footnoteText(n: number): string | null {
-  return LITURGY.footnotes.find((f) => f.n === n)?.text ?? null;
-}
 
-/** Every footnote referenced by a section, in first-appearance order. */
-export function sectionFootnotes(sectionId: string): number[] {
-  const section = LITURGY.sections.find((s) => s.id === sectionId);
-  if (!section) return [];
-
-  const seen = new Set<number>();
-  const ordered: number[] = [];
-  for (const block of section.blocks) {
-    if (block.kind !== "utterance") continue;
-    for (const n of [...(block.sk?.notes ?? []), ...(block.rom?.notes ?? [])]) {
-      if (seen.has(n)) continue;
-      seen.add(n);
-      ordered.push(n);
-    }
-  }
-  return ordered;
-}

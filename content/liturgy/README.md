@@ -17,6 +17,7 @@ content/liturgy/TODO-liturgy.md               ← generated, committed
                                    spevnik-v1.1-a5.pdf
                                    spevnik-v1.1.epub
                                    spevnik-v1.1.docx
+                               content/liturgy/downloads.json  ← what exists
 ```
 
 ## When a new version of the songbook arrives
@@ -30,7 +31,16 @@ content/liturgy/TODO-liturgy.md               ← generated, committed
    lists everything the converter could not place with confidence: Slovak
    typos, section titles recovered from formatting, lines missing a
    counterpart, unreferenced footnotes.
-4. Commit the regenerated JSON, TODO and downloads.
+4. Commit the regenerated JSON, TODO, `downloads.json` and the files themselves.
+
+`downloads.json` is the manifest the website reads to decide which download
+rows to render. It is written from whatever is actually in
+`public/downloads/liturgy/` at the end of the build, so **dropping the thesis
+PDF in there and re-running `npm run book` is all it takes** to turn the
+citation on /liturgy into a real download. The site never checks the
+filesystem at request time — Next.js traces imports rather than runtime reads,
+so on a serverless deployment `public/` may not sit next to the running
+function, and every download would quietly disappear.
 
 ## Commands
 
@@ -39,6 +49,7 @@ content/liturgy/TODO-liturgy.md               ← generated, committed
 | `npm run liturgy:convert` | docx → `liturgy.json` + `TODO-liturgy.md` |
 | `npm run book` | convert, then build the A5 PDF and the EPUB |
 | `npm run book -- --mono` | additionally write a single-colour PDF |
+| `npm test` | includes checks that the manifest matches what is on disk, that no footnote reference dangles, that the cognates cited on /liturgy really occur in the text, and that `/liturgy/text` resolves under `/liturgy` in every locale |
 
 `npm run book` needs headless Chromium. It looks in `/opt/pw-browsers/chromium`
 (the dev container and CI) and otherwise falls back to whatever installation

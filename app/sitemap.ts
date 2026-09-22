@@ -7,6 +7,8 @@ const SITE_URL =
 
 // Lower priority / less frequent updates for utility pages.
 const LOW_PRIORITY = new Set(["privacy", "terms", "thankYou"]);
+// Flagship content — the reason much of the site's search traffic arrives.
+const HIGH_PRIORITY = new Set(["liturgy", "liturgyText", "heritage"]);
 const NOINDEX = new Set(["thankYou"]);
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -37,6 +39,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
             ? 1.0
             : LOW_PRIORITY.has(routeKey)
             ? 0.2
+            : HIGH_PRIORITY.has(routeKey)
+            ? 0.9
             : 0.7,
         alternates: { languages },
       });

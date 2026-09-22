@@ -1,6 +1,14 @@
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import type { Locale } from "@/lib/i18n";
+import { buildPath } from "@/lib/i18n/routes";
 import { LITURGY, chantPhrases, tokenizeLine } from "@/lib/liturgy/content";
+import {
+  jsonLdScriptProps,
+  liturgyTextJsonLd,
+} from "@/lib/liturgy/seo";
 import type { LiturgyLine, Utterance } from "@/lib/liturgy/types";
 
 /**
@@ -155,15 +163,30 @@ function UtteranceBlock({ utterance }: { utterance: Utterance }) {
   );
 }
 
-export default function LiturgyTextPage() {
+export default function LiturgyTextPage({ locale }: { locale: Locale }) {
   const { meta, sections, footnotes } = LITURGY;
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)]">
+      <script
+        {...jsonLdScriptProps(
+          liturgyTextJsonLd(
+            locale,
+            `The full text of the Divine Liturgy of St John Chrysostom in Romani and Slovak, version ${meta.version}.`
+          )
+        )}
+      />
       <Navbar activePage="liturgy" />
 
       <main className="mx-auto max-w-3xl px-5 pt-28 pb-24 sm:px-6">
         <header className="mb-8 border-b border-[var(--border-default)] pb-8">
+          <Link
+            href={buildPath(locale, "liturgy")}
+            className="liturgy-noprint mb-4 inline-flex items-center gap-1.5 py-1 text-[13px] text-[var(--text-secondary)] transition-colors hover:text-[var(--gold)]"
+          >
+            <ArrowLeft className="size-3.5" aria-hidden="true" />
+            About this translation
+          </Link>
           <p className="mb-3 text-[11px] font-semibold tracking-[2px] text-[var(--gold)] uppercase">
             The Divine Liturgy in Romani
           </p>
@@ -191,7 +214,7 @@ export default function LiturgyTextPage() {
                 <li key={section.id}>
                   <a
                     href={`#${section.slug}`}
-                    className={`text-[15px] text-[var(--text-secondary)] hover:text-[var(--gold)] ${
+                    className={`block py-1.5 text-[15px] text-[var(--text-secondary)] hover:text-[var(--gold)] ${
                       section.level === 1 ? "font-semibold" : "ml-4"
                     }`}
                     lang="sk"

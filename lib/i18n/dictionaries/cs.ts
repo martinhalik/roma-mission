@@ -1472,14 +1472,14 @@ const cs: Dictionary = {
         "Od Byzantské říše po dnešní slávské svíce a křty ve farnostech: dlouhá společná cesta Romů jako pravoslavných katechumenů.",
     },
     liturgy: {
-      title: "Liturgie v romštině — Romská misie",
+      title: "Liturgie v romštině — svatá liturgie sv. Jana Zlatoústého | Romská misie",
       description:
-        "Svatá liturgie sv. Jana Zlatoústého ve středoslovenském dialektu romštiny — první pravoslavný překlad, sloužený s požehnáním vladyky. Čtěte online nebo si stáhněte zpěvník.",
+        "Svatá liturgie sv. Jana Zlatoústého ve středoslovenském dialektu romštiny (karpatská romština, rmc) v překladu Martina Halíka. Čtěte online nebo si stáhněte zpěvník ve formátu A5 PDF a EPUB.",
     },
     liturgyText: {
-      title: "Text liturgie — Romská misie",
+      title: "Text svaté liturgie romsky a slovensky | Romská misie",
       description:
-        "Celý text svaté liturgie sv. Jana Zlatoústého romsky a slovensky, s poznámkami překladatele.",
+        "Celý text svaté liturgie sv. Jana Zlatoústého v karpatské romštině se slovenštinou pod každým řádkem a s 34 poznámkami překladatele.",
     },
     activity: {
       title: "Živě z terénu — Romská misie",

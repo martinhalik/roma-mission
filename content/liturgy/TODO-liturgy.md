@@ -5,7 +5,7 @@ rewritten on every run. Fix the items in the source `.docx` instead, then
 re-run the conversion.
 
 Source: `spevnik-v1.1.docx` (v1.1, 142569 bytes, sha256 `bbee9f1c39851b90…`)
-Generated: 2026-09-18
+Generated: 2026-09-22
 
 Parsed **6 sections**, **261 utterances**, **10 rubrics**, **34 footnotes**.
 

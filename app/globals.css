@@ -132,6 +132,14 @@ html.light {
   .liturgy-note > summary {
     display: inline;
     list-style: none;
+    /*
+     * The marker itself is a 10px superscript numeral — about 4×13px, well
+     * under the 24px minimum target size. Padding on an inline box enlarges
+     * the hit area without pushing the lines of the Liturgy apart, which
+     * vertical margin or a block display would.
+     */
+    padding: 0.85em 0.4em;
+    margin: 0 -0.15em;
   }
   .liturgy-note > summary::-webkit-details-marker,
   .liturgy-note > summary::marker {

@@ -27,7 +27,12 @@ export interface Cognate {
  * found by the reader on /liturgy/text, which is the point of showing them.
  */
 export const COGNATES: Cognate[] = [
-  { romani: "Devel", gloss: "God", hindi: "dev — god", occurrences: 176 },
+  /*
+   * The bare nominative `Devel` never occurs — the Liturgy always addresses or
+   * inflects it. `Devla` is the vocative the people actually cry, 113 times;
+   * the count is for the whole `Devl-` root, as the column says.
+   */
+  { romani: "Devla", gloss: "God (“O God!”)", hindi: "dev — god", occurrences: 176 },
   { romani: "Dad", gloss: "Father", hindi: "dādā — elder, grandfather", occurrences: 33 },
   { romani: "Čhavo", gloss: "Son", hindi: "chāvā — young one", occurrences: 31 },
   { romani: "manuš", gloss: "person", hindi: "manuṣya — human being", occurrences: 26 },

@@ -118,12 +118,4 @@ export interface LiturgyDocument {
   sections: LiturgySection[];
 }
 
-/** Narrowing helper — `kind` is the discriminant. */
-export function isUtterance(block: LiturgyBlock): block is Utterance {
-  return block.kind === "utterance";
-}
 
-/** Narrowing helper — `kind` is the discriminant. */
-export function isRubric(block: LiturgyBlock): block is Rubric {
-  return block.kind === "rubric";
-}
