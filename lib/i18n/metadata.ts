@@ -18,6 +18,7 @@ const OG_IMAGE: Record<RouteKey, string> = {
   thankYou: "/images/mission-about-us.jpg",
   privacy: "/images/mission-about-us.jpg",
   terms: "/images/mission-about-us.jpg",
+  book: "/images/klenovec-chapel.jpeg",
 };
 
 const PRIVATE_ROUTES: ReadonlySet<RouteKey> = new Set([

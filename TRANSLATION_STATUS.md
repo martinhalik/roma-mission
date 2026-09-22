@@ -54,6 +54,12 @@ These already pull strings via `t()` and render correctly in all 9 languages:
 - `app/locations/page.tsx` — Locations: hero, stat pills, map intro, mission centers (subtitle/region/description/badge/programs), planted churches (name/note/status), active plants, ended plant (Hačava) narrative, supported parishes intro & footnote (`locations.*` namespace). `components/MissionMap.tsx` popup also reads `locations.map.<id>.{subtitle,description}` for the 9 ids that have unique copy.
 - `app/thank-you/page.tsx` — Donation thank-you: eyebrow, headline, intro, tax notice (Slovakia non-profit / US not tax-deductible), 2 Corinthians 9:7 scripture, share section copy, share/X/WhatsApp/Facebook buttons, BACK TO HOME / LEARN ABOUT THE MISSION CTAs (`thankYou.*` namespace). Metadata moved to a new `app/thank-you/layout.tsx`; the page is now a `"use client"` component so it can read `useTranslation()`. SEO metadata kept in English (consistent with current static-locale approach).
 
+### Ebook (`book.*` namespace + `content/book/*.md`)
+
+- `app/[locale]/_components/BookPage.tsx` — free-ebook landing page with email/SMS subscription gate (`book.*`, `metadata.book`, `footer.linkBook`), all 9 locales.
+- The book itself (Fr. Martin Halík, *Pravoslávna misia medzi Rómami na strednom Slovensku*, 2023) — Slovak original in `content/book/sk.md`, AI translations in `content/book/<locale>.md`. **Every translation needs a native-speaker read-through before promotion** (theological terminology especially). Russian follows the site convention "цыгане". See `content/book/README.md`.
+- **Source gap:** the Slovak text was extracted from the Drive text export, which stops mid-sentence in chapter 2.16 ("Vo Varadke treba"). The rest of 2.16, the *Záver* (Smutná prognóza, Zhrnutie) and the bibliography must be added to `sk.md` (and translated) before public launch. Photos and captions from the print edition are not included.
+
 ## What Still Needs Translation ⚠️
 
 The following pages and components still contain hardcoded English strings. **Each is a self-contained translation chunk**, suitable for a follow-up agent run.

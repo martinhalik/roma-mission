@@ -17,6 +17,7 @@ import { mergeSocialPosts } from "@/lib/social-feed";
 import ThankYouPage from "../_components/ThankYouPage";
 import PrivacyPolicyPage from "../_components/PrivacyPolicyPage";
 import TermsOfUsePage from "../_components/TermsOfUsePage";
+import BookPage from "../_components/BookPage";
 
 export async function generateMetadata({
   params,
@@ -78,5 +79,7 @@ export default async function LocaleSlugPage({
       return <PrivacyPolicyPage />;
     case "terms":
       return <TermsOfUsePage />;
+    case "book":
+      return <BookPage />;
   }
 }

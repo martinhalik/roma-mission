@@ -55,11 +55,13 @@ export default function Footer() {
     { label: t("footer.linkOurStory"), routeKey: "ourStory" },
     { label: t("footer.linkStories"), routeKey: "stories" },
     { label: t("footer.linkMedia"), routeKey: "media" },
+    { label: t("footer.linkBook"), routeKey: "book" },
   ];
   const missionLinksMobile: { label: string; routeKey: RouteKey }[] = [
     { label: t("footer.linkOurMission"), routeKey: "mission" },
     { label: t("footer.linkOurStory"), routeKey: "ourStory" },
     { label: t("footer.linkStories"), routeKey: "stories" },
+    { label: t("footer.linkBook"), routeKey: "book" },
   ];
   const mediaLinks = [t("footer.linkDocumentary"), t("footer.linkNews")];
   const involvedLinks = [

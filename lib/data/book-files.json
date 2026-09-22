@@ -1,0 +1,26 @@
+{
+  "en": {
+    "epub": {
+      "file": "/ebook/orthodox-mission-roma-en.epub",
+      "bytes": 155647
+    },
+    "pdf": {
+      "file": "/ebook/orthodox-mission-roma-en.pdf",
+      "bytes": 670254
+    },
+    "cover": "/ebook/cover-en.png",
+    "words": 20330
+  },
+  "sk": {
+    "epub": {
+      "file": "/ebook/orthodox-mission-roma-sk.epub",
+      "bytes": 151097
+    },
+    "pdf": {
+      "file": "/ebook/orthodox-mission-roma-sk.pdf",
+      "bytes": 651054
+    },
+    "cover": "/ebook/cover-sk.png",
+    "words": 16076
+  }
+}

@@ -28,6 +28,7 @@ export interface Dictionary {
     linkOurStory: string;
     linkStories: string;
     linkMedia: string;
+    linkBook: string;
     linkDocumentary: string;
     linkNews: string;
     linkSupport: string;
@@ -1077,6 +1078,88 @@ export interface Dictionary {
     thankYou: MetadataEntry;
     privacy: MetadataEntry;
     terms: MetadataEntry;
+    book: MetadataEntry;
+  };
+  book: {
+    hero: {
+      label: string;
+      byline: string;
+      intro: string;
+      factLanguagesValue: string;
+      factLanguagesLabel: string;
+      factFormatsValue: string;
+      factFormatsLabel: string;
+      factPriceValue: string;
+      factPriceLabel: string;
+      cta: string;
+    };
+    inside: {
+      label: string;
+      title: string;
+      item1: string;
+      item2: string;
+      item3: string;
+      item4: string;
+    };
+    form: {
+      label: string;
+      title: string;
+      subtitle: string;
+      tabEmail: string;
+      tabSms: string;
+      emailLabel: string;
+      emailPlaceholder: string;
+      phoneLabel: string;
+      phonePlaceholder: string;
+      phoneHint: string;
+      languageLabel: string;
+      consentEmail: string;
+      consentSms: string;
+      privacyLink: string;
+      submit: string;
+      submitting: string;
+      errorInvalidEmail: string;
+      errorInvalidPhone: string;
+      errorConsent: string;
+      errorGeneric: string;
+    };
+    success: {
+      label: string;
+      title: string;
+      sentEmail: string;
+      sentSms: string;
+      languageLabel: string;
+      epubTitle: string;
+      epubDevices: string;
+      pdfTitle: string;
+      pdfDevices: string;
+      download: string;
+    };
+    devices: {
+      label: string;
+      title: string;
+      iphoneTitle: string;
+      iphoneBody: string;
+      kindleTitle: string;
+      kindleBody: string;
+      kindleLink: string;
+      androidTitle: string;
+      androidBody: string;
+      ereaderTitle: string;
+      ereaderBody: string;
+      computerTitle: string;
+      computerBody: string;
+    };
+    delivery: {
+      emailSubject: string;
+      emailGreeting: string;
+      emailIntro: string;
+      emailEpub: string;
+      emailPdf: string;
+      emailOutro: string;
+      emailSignature: string;
+      sms: string;
+    };
   };
   activity: {
     nav: string;

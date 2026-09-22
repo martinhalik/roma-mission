@@ -1,0 +1,123 @@
+{
+  "slug": "orthodox-mission-roma",
+  "author": "Martin Halík",
+  "authorTitle": "ThDr. Martin Halík",
+  "originalTitle": "Pravoslávna misia medzi Rómami na strednom Slovensku",
+  "originalPublisher": "Pravoslávna bohoslovecká fakulta Prešovskej univerzity",
+  "originalPlace": "Prešov",
+  "originalYear": 2023,
+  "originalIsbn": "978-80-555-3079-6",
+  "editionYear": 2026,
+  "publisher": "Christian Roma Mission",
+  "siteUrl": "https://romamission.eu",
+  "editions": {
+    "en": {
+      "title": "Orthodox Mission among the Roma",
+      "subtitle": "in Central Slovakia",
+      "contents": "Contents",
+      "cover": "Cover",
+      "titlePage": "Title page",
+      "notes": "Notes",
+      "translatedFrom": "Translated from the Slovak original",
+      "originalEdition": "Original edition",
+      "ebookEdition": "Ebook edition",
+      "rights": "All rights reserved. Free for personal reading; please do not redistribute without permission."
+    },
+    "sk": {
+      "title": "Pravoslávna misia medzi Rómami",
+      "subtitle": "na strednom Slovensku",
+      "contents": "Obsah",
+      "cover": "Obálka",
+      "titlePage": "Titulná strana",
+      "notes": "Poznámky",
+      "translatedFrom": "",
+      "originalEdition": "Pôvodné vydanie",
+      "ebookEdition": "Elektronické vydanie",
+      "rights": "Všetky práva vyhradené. Na osobné čítanie zdarma; bez povolenia prosím nešírte ďalej."
+    },
+    "cs": {
+      "title": "Pravoslavná misie mezi Romy",
+      "subtitle": "na středním Slovensku",
+      "contents": "Obsah",
+      "cover": "Obálka",
+      "titlePage": "Titulní strana",
+      "notes": "Poznámky",
+      "translatedFrom": "Přeloženo ze slovenského originálu",
+      "originalEdition": "Původní vydání",
+      "ebookEdition": "Elektronické vydání",
+      "rights": "Všechna práva vyhrazena. Ke čtení pro osobní potřebu zdarma; bez svolení prosím nešiřte dál."
+    },
+    "ro": {
+      "title": "Misiunea ortodoxă printre romi",
+      "subtitle": "în Slovacia Centrală",
+      "contents": "Cuprins",
+      "cover": "Copertă",
+      "titlePage": "Pagina de titlu",
+      "notes": "Note",
+      "translatedFrom": "Tradusă din originalul slovac",
+      "originalEdition": "Ediția originală",
+      "ebookEdition": "Ediția electronică",
+      "rights": "Toate drepturile rezervate. Gratuită pentru lectură personală; vă rugăm să nu o redistribuiți fără permisiune."
+    },
+    "de": {
+      "title": "Orthodoxe Mission unter den Roma",
+      "subtitle": "in der Mittelslowakei",
+      "contents": "Inhalt",
+      "cover": "Umschlag",
+      "titlePage": "Titelseite",
+      "notes": "Anmerkungen",
+      "translatedFrom": "Aus dem slowakischen Original übersetzt",
+      "originalEdition": "Originalausgabe",
+      "ebookEdition": "E-Book-Ausgabe",
+      "rights": "Alle Rechte vorbehalten. Kostenlos zum persönlichen Lesen; bitte nicht ohne Genehmigung weiterverbreiten."
+    },
+    "sr": {
+      "title": "Православна мисија међу Ромима",
+      "subtitle": "у средњој Словачкој",
+      "contents": "Садржај",
+      "cover": "Корице",
+      "titlePage": "Насловна страна",
+      "notes": "Напомене",
+      "translatedFrom": "Преведено са словачког оригинала",
+      "originalEdition": "Оригинално издање",
+      "ebookEdition": "Електронско издање",
+      "rights": "Сва права задржана. Бесплатно за лично читање; молимо вас да не делите даље без дозволе."
+    },
+    "ru": {
+      "title": "Православная миссия среди цыган",
+      "subtitle": "в Центральной Словакии",
+      "contents": "Содержание",
+      "cover": "Обложка",
+      "titlePage": "Титульный лист",
+      "notes": "Примечания",
+      "translatedFrom": "Перевод со словацкого оригинала",
+      "originalEdition": "Оригинальное издание",
+      "ebookEdition": "Электронное издание",
+      "rights": "Все права защищены. Бесплатно для личного чтения; пожалуйста, не распространяйте без разрешения."
+    },
+    "mk": {
+      "title": "Православна мисија меѓу Ромите",
+      "subtitle": "во Средна Словачка",
+      "contents": "Содржина",
+      "cover": "Корица",
+      "titlePage": "Насловна страница",
+      "notes": "Забелешки",
+      "translatedFrom": "Преведено од словачкиот оригинал",
+      "originalEdition": "Оригинално издание",
+      "ebookEdition": "Електронско издание",
+      "rights": "Сите права задржани. Бесплатно за лично читање; ве молиме не ја споделувајте понатаму без дозвола."
+    },
+    "el": {
+      "title": "Ορθόδοξη ιεραποστολή μεταξύ των Ρομά",
+      "subtitle": "στην Κεντρική Σλοβακία",
+      "contents": "Περιεχόμενα",
+      "cover": "Εξώφυλλο",
+      "titlePage": "Σελίδα τίτλου",
+      "notes": "Σημειώσεις",
+      "translatedFrom": "Μετάφραση από το σλοβακικό πρωτότυπο",
+      "originalEdition": "Πρωτότυπη έκδοση",
+      "ebookEdition": "Ηλεκτρονική έκδοση",
+      "rights": "Με επιφύλαξη παντός δικαιώματος. Δωρεάν για προσωπική ανάγνωση· παρακαλούμε μην το αναδιανέμετε χωρίς άδεια."
+    }
+  }
+}
