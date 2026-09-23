@@ -15,7 +15,7 @@ Die Mission ist Teil des Lebens der Kirche und hat uns viele Heilige geschenkt; 
 
 > „Der Bauer, der sich mühsam plagt, soll als Erster seinen Anteil an der Ernte erhalten.“[^1]
 
-[^1]: 2 Tim 4,7
+[^1]: 2 Tim 2,6
 
 Deshalb haben wir Hoffnung auf den ewigen Lohn, auch wenn die Arbeit schwer und die Ernte dürftig ist. Diese Hoffnung war nämlich zusammen mit der Liebe die Motivation und der Treibstoff aller Missionare. Ohne diese Hoffnung auf ein Leben nach dem Tod wären die Missionare sehr bedauernswert und elend, wie der heilige Paulus sagte:
 
@@ -193,7 +193,7 @@ Der Apostel Paulus, genannt der Völkerapostel, ist einer der größten Missiona
 Der Hauptantrieb der Mission des Apostels Paulus waren die Berufung und die Liebe zu Christus, der zur Mitte seines Lebens geworden war, wie Paulus selbst bezeugt: *„Denn für mich ist das Leben Christus.“*[^29] Die Frucht der Liebe zu Christus ist immer die Liebe zu den Menschen, wie der Apostel Johannes erklärt: *„Wenn jemand sagt: Ich liebe Gott, und seinen Bruder hasst, ist er ein Lügner. Denn wer seinen Bruder nicht liebt, den er sieht, kann Gott nicht lieben, den er nicht sieht.“*[^30] Der Erweis dieser Liebe ist etwas so Selbstverständliches, dass danach das Gericht nach dem Tod gehalten werden wird, von dem Christus spricht: *„Wahrlich, ich sage euch: Was ihr einem dieser meiner geringsten Brüder getan habt, das habt ihr mir getan.“*[^31] Paulus brachte diese Frucht und gab für das Heil und die Rettung der Menschen alles, was er hatte, und schließlich auch sein Leben. Er veranstaltete auch Sammlungen für die Armen in Jerusalem, predigte überall, wo er war, betete und gehorchte Christus und den kirchlichen Autoritäten, die ihn in die Mission gesandt hatten. Um selbst den Gläubigen nicht zur Last zu fallen, war es für ihn kein Problem, auf Fleisch zu verzichten[^32], Tag und Nacht in Mühe und Plage zu arbeiten[^33] und zu vergeben, dass ihn vor Gericht alle verlassen hatten[^34]. Der größte Beweis seiner Liebe aber ist das Opfer: Er war nämlich bereit, auf sein eigenes Heil zu verzichten um des Heils seines eigenen Volkes willen, das ihn gegeißelt, verfolgt und mehrmals auch gesteinigt hatte. In der Missionsmethodik des Paulus beobachten wir auch bestimmte Grundsätze:
 
 [^29]: Phil 1,21
-[^30]: 1 Joh 4,19–20
+[^30]: 1 Joh 4,20
 [^31]: Mt 25,37–40
 [^32]: 1 Kor 8,13
 [^33]: 2 Thess 3,8
@@ -223,7 +223,7 @@ Obwohl die Juden an verschiedenen Orten des Reiches verstreut lebten, fand Paulu
 Paulus schreibt in einem seiner Briefe, dass er das Evangelium absichtlich dort verkündet, wo es andere noch nicht verkündet haben. Das war kein Hochmut, sondern Opfer und große Arbeit. Er war der Erste, der von Christus zur Verkündigung unter den Heiden berufen wurde.[^35] Zugleich vermied er dadurch Streitigkeiten darüber, wer sich zu welchem Lehrer bekannte und wer welche Kirchengemeinde gegründet hatte. Das hatte mehrere Geißelungen, eine Steinigung, viele Gefängnisaufenthalte und auch viele andere Schwierigkeiten zur Folge. Auf diese extremen Lebensbedingungen und auf die Mission bereitete ihn Christus im Voraus vor und zeigte ihm ebenso, was er alles für Ihn würde erleiden müssen.[^36] In der Slowakei sind die Roma aus den Siedlungen eine Gemeinschaft, die die meisten Kirchen als Last empfinden; auf ihre Bitten um Taufe, Trauung und Beerdigung antworten sie eher mit einer Liste von Pflichten als mit Freundlichkeit und Freude darüber, jemandem ein guter Nächster sein zu können. Sogar Besuche der Zeugen Jehovas, die von den kirchlichen Autoritäten allgemein als Besuche von Häretikern verurteilt werden, werden toleriert und positiv gesehen, wenn sie in den Siedlungen stattfinden. In der Gemeinde Klenovec in der Mittelslowakei ist die Situation zum Beispiel so, dass die orthodoxe Mission unter römisch-katholischen Roma in der evangelischen Gemeinde Klenovec sowohl von den Evangelischen als auch von den Römisch-Katholischen und den Baptisten begrüßt wird. Alle Kirchen schätzen diese Mission, weil sie den großen geistlichen und auch gesellschaftlichen Bedarf sehen. Für die Mission sind die Siedlungen also gewöhnlich offen, und es entstehen keine Streitigkeiten zwischen den einzelnen Kirchen um die Gläubigen.
 
 [^35]: Apg 9,15
-[^36]: Apg 9,15
+[^36]: Apg 9,16
 
 ### Persönliches Vorbild und Einbeziehung in die Mission
 
@@ -326,7 +326,7 @@ Ihnen fehlt ein Lehrer, der ihnen den Glauben in ihrer Sprache erklären und ihn
 
 Die Roma sind heutzutage bereit, von Christus zu hören, ähnlich wie die Slawen, als sie das Christentum annahmen und ihr Fürst Rastislav um einen Lehrer bat. Langsam aber nehmen die Roma den Atheismus an, der vom Glauben noch weiter entfernt ist als das Heidentum, und dann verachten sie auch die kirchlichen Lehrer. Die Roma glauben noch immer, wenn auch nicht vollkommen, sie achten den Priester und haben Ehrfurcht vor Gott. Aber wie lange wird das noch so bleiben? Die „Gadsche“ haben Gott verworfen, junge Leute sieht man in der Kirche nicht, weil sie mit ihrer Weisheit Gott verachtet haben, wie der Apostel schreibt: „Denn da die Welt angesichts der Weisheit Gottes Gott durch ihre eigene Weisheit nicht erkannte, gefiel es Gott, durch die Torheit der Verkündigung die zu retten, die glauben.“[^45] Schon seit der Zeit der Apostel war die Mission vor allem unter dem einfachen Volk erfolgreich, wie der heilige Paulus weiter schreibt: „Seht doch, Brüder, auf eure Berufung! Da sind nicht viele Weise nach dem Fleisch, nicht viele Mächtige, nicht viele Vornehme. Was für die Welt töricht ist, das hat Gott erwählt, um die Weisen zuschanden zu machen, und was für die Welt schwach ist, das hat Gott erwählt, um die Starken zuschanden zu machen“.
 
-[^45]: 1 Kor 1,11
+[^45]: 1 Kor 1,21
 
 # Praxis
 
@@ -484,7 +484,7 @@ Aus der Erfahrung mehrerer Menschen beobachte auch ich, dass beim Unterricht der
 
 > „Seht euch vor! Wenn dein Bruder gegen dich sündigt, weise ihn zurecht; und wenn er Buße tut, vergib ihm. Und wenn er sich siebenmal am Tag gegen dich versündigt und siebenmal zu dir zurückkommt und sagt: Es reut mich, – so vergib ihm!“[^64]
 
-[^64]: Lk 17,4–5
+[^64]: Lk 17,3–4
 
 ## 2.9. Diebstähle
 

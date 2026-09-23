@@ -15,7 +15,7 @@ Misiunea face parte din viața Bisericii și ne-a dăruit mulți sfinți; vieți
 
 > „Plugarul care se ostenește trebuie să se împărtășească cel dintâi din roade.”[^1]
 
-[^1]: 2 Tim 4, 7
+[^1]: 2 Tim 2, 6
 
 De aceea avem nădejdea răsplății veșnice, chiar dacă munca este grea și roada slabă. Această nădejde, împreună cu iubirea, a fost de fapt motivația și combustibilul tuturor misionarilor. Fără această nădejde în viața de după moarte, misionarii ar fi foarte vrednici de plâns și nenorociți, așa cum a spus Sfântul Pavel:
 
@@ -193,7 +193,7 @@ Apostolul Pavel, numit apostolul neamurilor, este unul dintre cei mai mari misio
 Principalul motor al misiunii Apostolului Pavel a fost chemarea și iubirea față de Hristos, Care a devenit centrul vieții lui, după cum mărturisește însuși Pavel: *„Căci pentru mine viața este Hristos.”*[^29] Roada iubirii față de Hristos este întotdeauna iubirea față de oameni, după cum explică Apostolul Ioan: *„Dacă zice cineva: Iubesc pe Dumnezeu, iar pe fratele său îl urăște, mincinos este. Căci cine nu-l iubește pe fratele său, pe care îl vede, nu este în stare să-L iubească pe Dumnezeu, pe Care nu-L vede.”*[^30] Arătarea acestei iubiri este ceva atât de firesc, încât pe baza ei se va desfășura judecata de după moarte, despre care vorbește Hristos: *„Adevărat vă spun, întrucât ați făcut unuia dintre acești frați ai Mei prea mici, Mie Mi-ați făcut.”*[^31] Pavel a purtat această roadă și, pentru mântuirea și salvarea oamenilor, a dat tot ce avea și, în cele din urmă, și viața. A făcut și colecte pentru săracii din Ierusalim, a propovăduit peste tot pe unde a fost, s-a rugat și a ascultat de Hristos și de autoritățile bisericești care l-au trimis în misiuni. Ca să nu fie el însuși o povară pentru credincioși, nu i-a fost greu să se lepede de carne[^32], să muncească zi și noapte în osteneală și trudă[^33] și să ierte faptul că la judecată toți l-au părăsit[^34]. Cea mai mare dovadă a iubirii lui este însă jertfa, căci era gata să renunțe la propria mântuire de dragul mântuirii propriului popor, care l-a biciuit, l-a prigonit și de mai multe ori l-a și bătut cu pietre. În metoda misionară a lui Pavel observăm și anumite principii:
 
 [^29]: Flp 1, 21
-[^30]: 1 In 4, 19–20
+[^30]: 1 In 4, 20
 [^31]: Mt 25, 37–40
 [^32]: 1 Cor 8, 13
 [^33]: 2 Tes 3, 8
@@ -223,7 +223,7 @@ Deși iudeii erau risipiți în diferite locuri ale imperiului, datorită acestu
 Pavel scrie într-una dintre epistolele sale că vestește intenționat Evanghelia acolo unde alții încă nu au vestit-o. Nu era mândrie, ci jertfă și muncă multă. A fost primul care a fost chemat de Hristos să propovăduiască printre păgâni.[^35] Totodată, datorită acestui lucru, evita certurile despre cine de ce învățător ținea și cine ce comunitate bisericească a întemeiat. Aceasta a avut drept urmare mai multe biciuiri, o lovire cu pietre, multe temnițe și multe alte probleme. Pentru aceste condiții de viață extreme și pentru misiune, Hristos l-a pregătit dinainte și i-a arătat totodată câte va trebui să pătimească pentru El.[^36] În Slovacia, romii din așezări sunt o comunitate pe care majoritatea Bisericilor o percep ca pe o povară, iar la cererile lor de botez, cununie și înmormântare răspund mai degrabă cu o listă de obligații decât cu bunătate și cu bucuria de a putea fi cuiva un aproape bun. Chiar și vizitele Martorilor lui Iehova, care sunt în general condamnate de autoritățile bisericești ca vizite ale ereticilor, sunt tolerate și privite pozitiv dacă au loc în așezări. În localitatea Klenovec din centrul Slovaciei, de exemplu, situația este următoarea: misiunea ortodoxă în mijlocul romilor romano-catolici este binevenită în comuna evanghelică Klenovec atât din partea evanghelicilor, cât și a romano-catolicilor și a baptiștilor. Toate Bisericile prețuiesc această misiune, pentru că văd o mare nevoie duhovnicească și socială. Pentru misiune, așadar, așezările sunt de obicei deschise și nu apar certuri pentru credincioși între diferitele Biserici.
 
 [^35]: FA 9, 15
-[^36]: FA 9, 15
+[^36]: FA 9, 16
 
 ### Exemplul personal și implicarea în misiune
 
@@ -326,7 +326,7 @@ Le lipsește un învățător care să le explice credința în limba lor și s�
 
 Romii sunt astăzi dispuși să audă despre Hristos, asemenea slavilor când au primit creștinismul și cneazul lor Rastislav a cerut un învățător. Încet, însă, romii primesc ateismul, care este și mai departe de credință decât păgânismul, iar apoi îi disprețuiesc și pe învățătorii Bisericii. Romii încă mai cred, chiar dacă nu desăvârșit, îl cinstesc pe preot și au evlavie înaintea lui Dumnezeu. Dar cât timp va mai fi așa? „Gagiii” L-au lepădat pe Dumnezeu, tinerii nu se văd în Biserică, pentru că, prin înțelepciunea lor, L-au disprețuit pe Dumnezeu, după cum scrie apostolul: „fiindcă lumea, prin înțelepciunea ei, nu L-a cunoscut pe Dumnezeu din semnele înțelepciunii lui Dumnezeu, I-a plăcut lui Dumnezeu să-i mântuiască pe cei ce cred prin nebunia acestei propovăduiri.”[^45] Încă din vremea apostolilor, misiunea a avut succes mai ales în mijlocul poporului simplu, după cum scrie mai departe Sfântul Pavel: „priviți, fraților, la chemarea voastră! Nu sunt între voi mulți înțelepți după trup, nici mulți puternici, nici mulți de neam ales. Ce este nebun în ochii lumii, aceea și-a ales Dumnezeu, ca să-i rușineze pe cei înțelepți, și ce este slab în ochii lumii, aceea și-a ales Dumnezeu, ca să-i rușineze pe cei puternici”.
 
-[^45]: 1 Cor 1, 11
+[^45]: 1 Cor 1, 21
 
 # Practică
 
@@ -484,7 +484,7 @@ Din experiența mai multora, observ și eu că același lucru se întâmplă la 
 
 > „Luați aminte la voi înșivă! Dacă fratele tău greșește față de tine, mustră-l; și dacă se pocăiește, iartă-l. Și chiar dacă de șapte ori pe zi greșește față de tine și de șapte ori se întoarce la tine și zice: Mă pocăiesc, - iartă-l!”[^64]
 
-[^64]: Lc 17, 4–5
+[^64]: Lc 17, 3–4
 
 ## 2.9. Furturile
 

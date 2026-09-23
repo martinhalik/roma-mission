@@ -15,7 +15,7 @@ Misie je součástí života Církve a darovala nám mnoho svatých, jejichž ž
 
 > „Rolník, který těžce pracuje, má jako první dostat podíl z úrody.“[^1]
 
-[^1]: 2 Tm 4,7
+[^1]: 2 Tm 2,6
 
 Proto máme naději na věčnou odměnu, i když je práce těžká a úroda slabá. Tato naděje spolu s láskou byla totiž motivací a palivem pro všechny misionáře. Bez této naděje na posmrtný život by byli misionáři velmi ubozí a bídní, jak řekl sv. Pavel:
 
@@ -193,7 +193,7 @@ Apoštol Pavel, nazývaný apoštolem národů, je jedním z největších misio
 Hlavním motorem misie apoštola Pavla bylo povolání a láska ke Christu, který se stal středem jeho života, jak i sám Pavel dosvědčuje: *„Vždyť pro mne žít je Christos.“*[^29] Plodem lásky ke Christu je vždy láska k lidem, jak vysvětluje apoštol Jan: *„Říká-li někdo: Miluji Boha, a nenávidí svého bratra, je lhář. Vždyť kdo nemiluje svého bratra, kterého vidí, nemůže milovat Boha, kterého nevidí.“*[^30] Projev této lásky je něčím tak samozřejmým, že na jeho základě bude probíhat posmrtný soud, o kterém mluví Christos: *„Amen, pravím vám, cokoli jste učinili jednomu z těchto mých nejmenších bratří, mně jste učinili.“*[^31] Pavel tento plod nesl a pro spásu a záchranu lidí dal všechno, co měl, a nakonec i svůj život. Pořádal také sbírky pro chudé v Jeruzalémě, kázal všude, kde byl, modlil se a poslouchal Christa i církevní autority, které ho vyslaly na misie. Aby sám nebyl věřícím na obtíž, nebylo pro něj problémem zříct se masa[^32], dnem i nocí v námaze a lopotě pracovat[^33] a odpustit, že ho u soudu všichni opustili[^34]. Avšak největším důkazem jeho lásky je oběť, byl totiž ochoten zříct se vlastní spásy kvůli spáse vlastního národa, který ho bičoval, pronásledoval a několikrát i kamenoval. V Pavlově misijní metodice pozorujeme také určité principy:
 
 [^29]: Fp 1,21
-[^30]: 1 J 4,19–20
+[^30]: 1 J 4,20
 [^31]: Mt 25,37–40
 [^32]: 1 K 8,13
 [^33]: 2 Te 3,8
@@ -223,7 +223,7 @@ Ačkoli byli Židé roztroušeni na různých místech říše, Pavel díky tomu
 Pavel v jednom ze svých listů píše, že úmyslně zvěstuje evangelium tam, kde je ještě jiní nezvěstovali. Nebyla to pýcha, ale oběť a velká dřina. Byl prvním, kdo byl Christem povolán ke zvěstování mezi pohany.[^35] Zároveň se díky tomu vyhýbal sporům o tom, kdo se hlásil ke kterému učiteli a kdo založil kterou církevní obec. To mělo za následek několikeré bičování, kamenování, mnoho žalářů a také mnohé další problémy. Na tyto extrémní životní podmínky a na misii ho Christos připravoval předem a také mu ukázal, co všechno bude muset pro Něho vytrpět.[^36] Na Slovensku jsou Romové z osad komunitou, kterou většina církví vnímá jako přítěž a na jejich žádosti o křest, sňatek a pohřeb odpovídá spíše seznamem povinností než laskavostí a radostí, že může být někomu dobrým bližním. Dokonce i návštěvy svědků Jehovových, které církevní autority obecně odsuzují jako návštěvy heretiků, jsou tolerovány a vnímány pozitivně, pokud probíhají v osadách. V obci Klenovec na středním Slovensku je situace například taková, že pravoslavná misie mezi římskokatolickými Romy je v evangelické obci Klenovec vítána jak ze strany evangelíků, tak i římských katolíků a baptistů. Všechny církve tuto misii oceňují, protože vnímají velkou duchovní i společenskou potřebu. Pro misii jsou tedy osady zpravidla otevřené a mezi jednotlivými církvemi nevznikají spory o věřící.
 
 [^35]: Sk 9,15
-[^36]: Sk 9,15
+[^36]: Sk 9,16
 
 ### Osobní příklad a zapojení do misie
 
@@ -326,7 +326,7 @@ Chybí jim učitel, který by jim víru vysvětlil jejich jazykem a nevnucoval j
 
 Romové jsou v dnešní době ochotni poslouchat o Christu, podobně jako Slované, když přijali křesťanství a jejich kníže Rastislav požádal o učitele. Pomalu však Romové přijímají ateismus, který má k víře ještě dál než pohanství, a pak už pohrdají i církevními učiteli. Romové ještě stále věří, i když ne dokonale, kněze si ctí a před Bohem mají úctu. Ale jak dlouho to ještě tak bude? „Gádžové“ Boha zavrhli, mladé v Církvi nevidět, protože svou moudrostí Bohem opovrhli, jak píše apoštol: „protože svět v projevech Boží moudrosti nepoznal Boha svou moudrostí, zalíbilo se Bohu zachránit bláznovstvím této zvěsti ty, kdo věří.“[^45] Už od dob apoštolů byla misie úspěšná hlavně mezi prostým lidem, jak píše sv. Pavel dále: „vždyť se podívejte, bratři, jaké si vás povolal! Není mezi vámi mnoho moudrých podle těla ani mnoho mocných, ani mnoho urozených. Co je pro svět bláznivé, to si Bůh vyvolil, aby zahanbil moudré, a co je pro svět slabé, to si Bůh vyvolil, aby zahanbil mocné“.
 
-[^45]: 1 K 1,11
+[^45]: 1 K 1,21
 
 # Praxe
 
@@ -484,7 +484,7 @@ Ze zkušenosti mnohých pozoruji i já, že totéž se děje při vyučování d
 
 > „Dávejte si pozor! Když tvůj bratr proti tobě zhřeší, pokárej ho; a bude-li činit pokání, odpusť mu. I kdyby proti tobě sedmkrát za den zhřešil a sedmkrát se k tobě vrátil a řekl: Lituji toho, - odpusť mu!“[^64]
 
-[^64]: L 17,4–5
+[^64]: L 17,3–4
 
 ## 2.9. Krádeže
 

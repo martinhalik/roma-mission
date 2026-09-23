@@ -58,7 +58,7 @@ These already pull strings via `t()` and render correctly in all 9 languages:
 
 - `app/[locale]/_components/BookPage.tsx` — free-ebook landing page with email/SMS subscription gate (`book.*`, `metadata.book`, `footer.linkBook`), all 9 locales.
 - The book itself (Fr. Martin Halík, *Pravoslávna misia medzi Rómami na strednom Slovensku*, 2023) — Slovak original in `content/book/sk.md`, AI translations in `content/book/<locale>.md`. **Every translation needs a native-speaker read-through before promotion** (theological terminology especially). Russian follows the site convention "цыгане". See `content/book/README.md`.
-- **Source:** `sk.md` is complete and checked against the print PDF (text, italics, pull quotes, 18 photos with captions). Kept as printed: typos in 2.9 („veci my policisté vrátili“, „ta rozhodla“); Bible references in footnotes 1, 36, 45 and 64 that do not match the quoted verses; settlement population 180 (1.5) vs 160 (2.3). The bibliography note on which Bible translation was used describes the Slovak original — the translated editions quote their own standard Bible text.
+- **Source:** `sk.md` is complete and checked against the print PDF (text, italics, pull quotes, 18 photos with captions). Corrected against the print (approved by the author): Bible references in footnotes 1 (2Tim 2, 6), 30 (1Jn 4, 20), 36 (Sk 9, 16), 45 (1Kor 1, 21), 64 (Lk 17, 3–4) and the Genesis pull quote (1Mjž 11, 6–8); typos in 2.9 („veci mi policajti vrátili“, „tá rozhodla“). Open: settlement population 180 (1.5) vs 160 (2.3). The bibliography note on which Bible translation was used describes the Slovak original — the translated editions quote their own standard Bible text.
 
 ## What Still Needs Translation ⚠️
 

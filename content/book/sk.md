@@ -15,7 +15,7 @@ Misia je súčasťou života Cirkvi a darovala nám mnohých svätcov, ich živo
 
 > „Roľník, ktorý namáhavo pracuje, má ako prvý dostať podiel z úrody.“[^1]
 
-[^1]: 2Tim 4, 7
+[^1]: 2Tim 2, 6
 
 Preto máme nádej na večnú odmenu aj keď je práca ťažká a úroda slabá. Táto nádej spoločne s láskou bola totiž motiváciou a palivom pre všetkých misionárov. Bez tejto nádeje na posmrtný život by misionári boli veľmi úbohí a biedni ako povedal sv. Pavol:
 
@@ -46,7 +46,7 @@ Ako to zvládnuť a kde na to nabrať silu? Tu sú ľudské sily úbohé, ale Bo
 # Teória a história
 
 >> „Hospodin povedal: Sú jeden národ a všetci hovoria jednou rečou. Toto je iba začiatok ich výčinov; teraz im už nič nezabráni uskutočniť všetko, čo si zaumienia. Poďme, zostúpme a zmäťme im reč, aby sa medzi sebou nedorozumeli! Tak ich Hospodin odtiaľ rozptýlil po celej zemi a prestali stavať mesto.“
->> — Mjž 11, 6–8
+>> — 1Mjž 11, 6–8
 
 ## 1.1. História rómskeho etnika v Európe
 
@@ -193,7 +193,7 @@ Apoštol Pavol, nazývaný apoštol národov, je jedným z najväčších mision
 Hlavným motorom misie apoštola Pavla bolo povolanie a láska ku Christovi, ktorý sa stal centrom jeho života, ako aj sám Pavol dosvedčuje: *„Veď pre mňa žiť je Christos.“*[^29] Ovocím lásky ku Christovi je vždy láska k ľuďom, ako vysvetľuje apoštol Ján: *„Ak niekto hovorí: Milujem Boha, a nenávidí svojho brata, je klamár. Veď kto nemiluje svojho brata, ktorého vidí, nie je schopný milovať Boha, ktorého nevidí.“*[^30] Prejav tejto lásky je niečím tak samozrejmým, že na základe toho bude prebiehať posmrtný súd, o ktorom hovorí Christos: *„Veru, hovorím vám, nakoľko ste to urobili jednému z týchto mojich najmenších bratov, mne ste to urobili.“*[^31] Pavol toto ovocie niesol a pre spásu a záchranu ľudí dal všetko, čo mal, a nakoniec aj svoj život. Robil aj zbierky pre chudobných v Jeruzaleme, kázal všade, kde bol, modlil sa a poslúchal Christa a cirkevné autority, ktoré ho vyslali na misie. Aby sám nebol veriacim na ťarchu, nebolo pre neho problémom zriecť sa mäsa[^32], dňom i nocou v námahe a lopote pracovať[^33] a odpustiť, že ho pri sude všetci opustili[^34]. Avšak najväčším dôkazom jeho lásky je obeta, bol totiž ochotný zriecť sa vlastnej spásy, kvôli spáse vlastného národa, ktorý ho bičoval, prenasledoval a viackrát aj kameňoval. V Pavlovej misijnej metodike pozorujeme aj isté princípy:
 
 [^29]: Flp 1, 21
-[^30]: 1Jn 4, 19–20
+[^30]: 1Jn 4, 20
 [^31]: Mt 25, 37–40
 [^32]: 1Kor 8, 13
 [^33]: 2Sol 3, 8
@@ -223,7 +223,7 @@ Hoci boli Židia roztrúsení na rôznych miestach ríše, Pavol našiel vďaka 
 Pavol v jednom zo svojich listov píše, že úmyselne ohlasuje evanjelium tam, kde ešte druhí neohlasovali. Nebola to pýcha, ale obeť a veľká robota. Bol prvým, ktorý bol Christom povolaný k ohlasovaniu medzi pohanmi.[^35] Zároveň sa vďaka tomu vyhýbal hádkam o tom, kto sa hlásil ku ktorému učiteľovi a kto založil akú cirkevnú obec. To malo za následok viaceré bičovania, kameňovanie, veľa žalárov a aj mnohé iné problémy. Na tieto extrémne životné podmienky a misiu ho Christos pripravoval vopred, a takisto mu ukázal, čo všetko bude musieť pre Neho vytrpieť.[^36] Na Slovensku sú Rómovia z osád komunitou, ktorú väčšina cirkví vníma ako ťarchu a na ich žiadosti o krst, sobáš a pohreb odpovedá skôr zoznamom povinností než láskavosťou a radosťou, že môže niekomu byť dobrým blížnym. Dokonca aj návštevy Jehovistov, ktoré sú všeobecne cirkevnými autoritami odsudzované ako návštevy heretikov, sú tolerované a pozitívne vnímané, ak prebiehajú v osadách. V obci Klenovec na strednom Slovensku je situácia napríklad taká, že pravoslávna misia medzi rímskokatolíckymi Rómami je v evanjelickej obci Klenovec vítaná tak zo strany evanjelikov, ako aj rímskokatolíkov a baptistov. Všetky cirkvi túto misiu oceňujú, pretože vnímajú veľkú duchovnú a aj spoločenskú potrebu. Pre misiu sú teda osady zvyčajne otvorené a nevznikajú hádky o veriacich medzi jednotlivými cirkvami.
 
 [^35]: Sk 9, 15
-[^36]: Sk 9, 15
+[^36]: Sk 9, 16
 
 ### Osobný príklad a zapojenie do misie
 
@@ -326,7 +326,7 @@ Chýba im učiteľ, ktorí by im vieru vysvetlil ich jazykom a nevnucoval im svo
 
 Rómovia sú v dnešnej dobe ochotní počúvať o Christovi, podobne ako Slovania, keď prijali kresťanstvo a ich knieža Rastislav požiadal o učiteľa. Pomaly však Rómovia prijímajú ateizmus, ktorí má k viere ešte ďalej ako pohanstvo, a potom už pohŕdajú aj cirkevnými učiteľmi. Rómovia ešte stále veria, aj keď nie dokonale, kňaza si ctia a pred Bohom majú úctu. Ale ako dlho to ešte takto bude? „Gadžovia“ Boha zavrhli, mladých v Cirkvi nevidno, pretože svojou múdrosťou Bohom opovrhli, ako píše apoštol: „pretože svet z prejavov Božej múdrosti nepoznal Boha svojou múdrosťou, zapáčilo sa Bohu zachrániť bláznovstvom tejto zvesti tých, ktorí veria.“[^45] Už od čias apoštolov bola misia úspešná hlavne medzi prostým ľudom, ako píše sv. Pavol ďalej: „veď sa pozrite, bratia, akých si vás povolal! Niet medzi vami mnoho múdrych podľa tela ani mnoho mocných, ani mnoho urodzených. Čo je pre svet bláznivé, to si Boh vyvolil, aby zahanbil múdrych, a čo je pre svet slabé, to si Boh vyvolil, aby zahanbil mocných“.
 
-[^45]: 1Kor 1, 11
+[^45]: 1Kor 1, 21
 
 # Prax
 
@@ -484,7 +484,7 @@ Zo skúsenosti viacerých aj ja pozorujem, že to isté sa deje pri vyučovaní 
 
 > „Dávajte si pozor! Ak sa tvoj brat prehreší voči tebe, pokarhaj ho; a ak učiní pokánie, odpusť mu. Ak sa aj sedem ráz za deň proti tebe prehreší a sedem ráz sa k tebe vráti a povie: Kajám sa, - odpusť mu!“[^64]
 
-[^64]: Lk 17, 4–5
+[^64]: Lk 17, 3–4
 
 ## 2.9. Krádeže
 
@@ -505,7 +505,7 @@ V druhej osade som doteraz mohol požičiavať aj hračky, ale teraz po štyroch
 
 Ako rodina už nemáme stále otvorený dom a zamykáme ho. Vo všeobecnosti dávame pozor na kľúče, financie, miestnosť s hračkami a sladkosti. Ostatné veci nemáme pod kontrolou, inak by sme nestíhali slúžiť. Keď niečo zmizne, upozorníme hlavne vinníka a rodičov a snažíme sa tomu do budúcna preventívne zabrániť – väčšinou sú to drobnosti ako skrutky, cukrík, lyžička, páska či macko. Tie veci, ktoré máme pre nich, tie miznú rýchlejšie, pretože Rómovia chápu, že ich aj tak nikto nechce, takže v ich matematike kradnú niečo bezcenné, čo pre nich znamená, akoby nekradli nič… Veľmi sa to však zlepšilo, a to až do takej miery, že môžeme deti hromadne pozývať na prespávanie ku nám domov. Všetky deti v osade už vedia, že kradnúť a klamať je hriech a snažia sa to nerobiť. Ak vieme vinníka usvedčiť, tak to musí vrátiť prípadne nahradiť, ale to je výnimočné – väčšinou nevieme usvedčiť nikoho. Raz som u jedného svätého čítal odporúčanie nestrácať veľmi čas pátraním po zle a podľa toho sa odvtedy riadim. Aj svätý Ján Zlatoústy raz pochválil katechumenov, že už na nich vidno ovocie Ducha Svätého, lebo menej kradnú.
 
-Najhoršie čo sa mi stalo, ešte keď som bol sám, tak to, že mi jeden chlapec z našej osady ukradol kľúče a pol roka neskôr mi s bratrancom vykradol dom. Prebehol súd, veci my policisté vrátili (niektoré nefunkčné), náhradu som nežiadal. Len som mal pocit, že ak to nedotiahnem, tak hneď okradnú iného. Boli to deti z rodín, kde chýbal otec alebo mala hlavné slovo mama a ta rozhodla, že nebudú trestaní. Celá osada mi vtedy veľmi pomáhala.
+Najhoršie čo sa mi stalo, ešte keď som bol sám, tak to, že mi jeden chlapec z našej osady ukradol kľúče a pol roka neskôr mi s bratrancom vykradol dom. Prebehol súd, veci mi policajti vrátili (niektoré nefunkčné), náhradu som nežiadal. Len som mal pocit, že ak to nedotiahnem, tak hneď okradnú iného. Boli to deti z rodín, kde chýbal otec alebo mala hlavné slovo mama a tá rozhodla, že nebudú trestaní. Celá osada mi vtedy veľmi pomáhala.
 
 Vždy, keď ľudia hovoria, že Rómovia kradnú, a preto by sme im nemali pomáhať, odpovedám, že misionári boli ochotní ísť aj ku kanibalom, a že by bola hanba, ak by sme sa my teraz báli ísť ku zlodejom. Ako inak sa totiž napravia a začujú zvesť o Christovi?
 

@@ -15,7 +15,7 @@ Mission is part of the life of the Church and has given us many saints; many peo
 
 > “The hardworking farmer must be first to partake of the crops.”[^1]
 
-[^1]: 2 Tim 4:7
+[^1]: 2 Tim 2:6
 
 That is why we have hope of an eternal reward even when the work is hard and the harvest is poor. For this hope, together with love, was the motivation and the fuel for all missionaries. Without this hope of life after death, missionaries would be most wretched and pitiable, as St Paul said:
 
@@ -193,7 +193,7 @@ The Apostle Paul, called the Apostle to the Nations, is one of the greatest miss
 The main driving force of the Apostle Paul’s mission was his calling and his love for Christ, who became the centre of his life, as Paul himself testifies: *“For to me, to live is Christ.”*[^29] The fruit of love for Christ is always love for people, as the Apostle John explains: *“If someone says, I love God, and hates his brother, he is a liar; for he who does not love his brother whom he has seen, how can he love God whom he has not seen?”*[^30] The expression of this love is something so self-evident that the judgement after death will take place on the basis of it, as Christ says: *“Assuredly, I say to you, inasmuch as you did it to one of the least of these My brethren, you did it to Me.”*[^31] Paul bore this fruit, and for the salvation and rescue of people he gave everything he had, and in the end his life as well. He also made collections for the poor in Jerusalem, he preached everywhere he went, he prayed and obeyed Christ and the church authorities who sent him out on mission. So as not to be a burden to the faithful, it was no problem for him to renounce meat,[^32] to work night and day in labour and toil,[^33] and to forgive that everyone had abandoned him at his trial.[^34] However, the greatest proof of his love is his sacrifice: he was willing to renounce his own salvation for the sake of the salvation of his own nation, which scourged him, persecuted him and stoned him more than once. In Paul’s missionary method we also observe certain principles:
 
 [^29]: Phil 1:21
-[^30]: 1 John 4:19–20
+[^30]: 1 John 4:20
 [^31]: Matt 25:37–40
 [^32]: 1 Cor 8:13
 [^33]: 2 Thess 3:8
@@ -223,7 +223,7 @@ Although the Jews were scattered in various places of the empire, thanks to this
 Paul writes in one of his epistles that he deliberately preaches the Gospel where others have not yet preached it. This was not pride, but sacrifice and a great deal of work. He was the first to be called by Christ to preach among the Gentiles.[^35] At the same time, thanks to this he avoided quarrels about who belonged to which teacher and who had founded which church community. This resulted in several scourgings, a stoning, many imprisonments and many other problems as well. Christ prepared him in advance for these extreme living conditions and for the mission, and He also showed him everything he would have to suffer for Him.[^36] In Slovakia the Roma from the settlements are a community that most churches perceive as a burden, and they respond to their requests for baptism, marriage and burial with a list of obligations rather than with kindness and joy that they can be a good neighbour to someone. Even visits by Jehovah’s Witnesses, which are generally condemned by church authorities as visits by heretics, are tolerated and viewed positively if they take place in the settlements. In the village of Klenovec in Central Slovakia, for example, the situation is such that the Orthodox mission among Roman Catholic Roma in the Lutheran village of Klenovec is welcomed by the Lutherans as well as by the Roman Catholics and the Baptists. All the churches appreciate this mission, because they perceive a great spiritual and also social need. So the settlements are usually open to mission, and no quarrels over believers arise between the individual churches.
 
 [^35]: Acts 9:15
-[^36]: Acts 9:15
+[^36]: Acts 9:16
 
 ### Personal Example and Involvement in the Mission
 
@@ -326,7 +326,7 @@ What they lack is a teacher who would explain the faith to them in their own lan
 
 Nowadays the Roma are willing to listen about Christ, much like the Slavs when they accepted Christianity and their prince Rastislav asked for a teacher. Slowly, however, the Roma are accepting atheism, which is even further from faith than paganism, and then they come to despise the teachers of the Church as well. The Roma still believe, even if not perfectly; they honour the priest and have reverence before God. But how much longer will it be like this? The “gadje” have rejected God; young people are not to be seen in the Church, because in their wisdom they have spurned God, as the apostle writes: “For since, in the wisdom of God, the world through wisdom did not know God, it pleased God through the foolishness of the message preached to save those who believe.”[^45] Ever since the time of the apostles, mission has been successful mainly among simple people, as St Paul writes further: “For you see your calling, brethren, that not many wise according to the flesh, not many mighty, not many noble, are called. But God has chosen the foolish things of the world to put to shame the wise, and God has chosen the weak things of the world to put to shame the things which are mighty”.
 
-[^45]: 1 Cor 1:11
+[^45]: 1 Cor 1:21
 
 # Practice
 
@@ -484,7 +484,7 @@ From the experience of several people, I too observe that the same thing happens
 
 > “Take heed to yourselves. If your brother sins against you, rebuke him; and if he repents, forgive him. And if he sins against you seven times in a day, and seven times in a day returns to you, saying, I repent, – you shall forgive him!”[^64]
 
-[^64]: Luke 17:4–5
+[^64]: Luke 17:3–4
 
 ## 2.9. Thefts
 
