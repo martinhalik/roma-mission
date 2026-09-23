@@ -15,8 +15,13 @@ subscription. Page: `/<locale>/book` (localized slugs: `/sk/kniha`,
 | `content/book/book.json` | Titles, subtitles and front-matter labels per language |
 | `scripts/build-ebooks.mjs` | Builds EPUB 3 + PDF + cover for each language |
 | `scripts/check-book-translation.mjs` | Checks a translation has the same headings, footnotes, quotes, lists and tables as `sk.md` |
-| `public/ebook/` | Generated EPUB / PDF / cover files (committed) |
+| `content/book/images/` | Photos from the print edition (`images/<locale>/` overrides a file for one language) |
+| `content/book/cover/` | Cover photo and cross from the print cover |
+| `content/book/fonts/` | P052 (Palatino clone, PDF only), Literata and Playfair Display (OFL, embedded in EPUBs) with licences |
+| `scripts/build-audiobook.py` | English audiobook (Kokoro TTS) → chaptered M4B + MP3 |
+| `public/ebook/` | Generated EPUB / PDF / cover files and `audio/` (committed) |
 | `lib/data/book-files.json` | Generated manifest (file sizes); only languages listed here appear on the page |
+| `lib/data/audiobook-en.json` | Generated audiobook chapter list and sizes (`null` hides the audiobook) |
 
 ## Formats
 
@@ -34,9 +39,30 @@ node scripts/check-book-translation.mjs      # all translations vs sk.md
 node scripts/build-ebooks.mjs                # every language (or: … sk en)
 ```
 
-Needs `zip` and Chromium/Chrome (auto-detected; override with `CHROME_PATH`).
-PDFs use Liberation Serif/Sans (Latin, Cyrillic and Greek). Rebuilds are
-byte-stable for EPUBs when the text has not changed.
+Needs `zip`, Chromium/Chrome (auto-detected; override with `CHROME_PATH`) and
+the dev dependencies (`npm install`): the PDF is laid out by Paged.js
+(footnotes at the foot of the page, running footers, paged contents) and
+printed by puppeteer-core. `KEEP_BUILD_TMP=1` keeps the intermediate HTML.
+
+The styling follows the 2023 print edition: Palatino body (P052 in the PDF;
+the reader's Palatino in EPUBs — Apple devices and Kindle have it), coral
+`#F1614D` quotations and part openers, full-page Playfair Display pull quotes
+on cream, grey subheads and captions, and the original cover photo with the
+title set per language (`coverLines` in `book.json`). Le Monde Livre and
+Palatino are commercial fonts and are not redistributed.
+
+## Audiobook (English)
+
+```bash
+python3 scripts/build-audiobook.py          # setup instructions in the file header
+```
+
+Local neural TTS (Kokoro, voice `am_michael`), about 2 h 15 min, 32 chapters:
+M4B with chapters and cover (Apple Books, audiobook apps) and MP3 with ID3
+chapters (any player). Footnote markers, tables, URLs and the bibliography
+list are not read; Slovak names are respelled for pronunciation
+(`PRONUNCIATION` in the script). The opening credits state that the narration
+is computer-generated. Rebuild it whenever `en.md` changes.
 
 ## Editing the text
 
