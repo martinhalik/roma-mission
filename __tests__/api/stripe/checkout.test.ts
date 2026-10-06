@@ -3,6 +3,15 @@ import { vi, describe, it, expect, beforeEach } from "vitest";
 import { NextRequest } from "next/server";
 
 const mockCreate = vi.hoisted(() => vi.fn());
+const mockPricesList = vi.hoisted(() => vi.fn());
+
+const MONTHLY_PRODUCT_ID = "prod_monthly_test";
+const PRESET_PRICES = [
+  { id: "price_m10", unit_amount: 1000, product: MONTHLY_PRODUCT_ID },
+  { id: "price_m25", unit_amount: 2500, product: MONTHLY_PRODUCT_ID },
+  { id: "price_m50", unit_amount: 5000, product: MONTHLY_PRODUCT_ID },
+  { id: "price_m100", unit_amount: 10000, product: MONTHLY_PRODUCT_ID },
+];
 
 vi.mock("stripe", () => ({
   default: vi.fn().mockImplementation(function () {
@@ -11,6 +20,9 @@ vi.mock("stripe", () => ({
         sessions: {
           create: mockCreate,
         },
+      },
+      prices: {
+        list: mockPricesList,
       },
     };
   }),
@@ -32,6 +44,7 @@ function makeRequest(body: unknown): NextRequest {
 describe("POST /api/stripe/checkout", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockPricesList.mockResolvedValue({ data: [] });
     process.env.STRIPE_SECRET_KEY = "sk_test_123";
     process.env.NEXT_PUBLIC_URL = "http://localhost:3000";
   });
@@ -143,5 +156,55 @@ describe("POST /api/stripe/checkout", () => {
         ],
       })
     );
+  });
+
+  describe("monthly preset prices", () => {
+    beforeEach(() => {
+      mockPricesList.mockResolvedValue({ data: PRESET_PRICES });
+      mockCreate.mockResolvedValue({ client_secret: "cs_test" });
+    });
+
+    it("looks up the preset prices by lookup key", async () => {
+      await POST(makeRequest({ amount: 100, isMonthly: true }));
+
+      expect(mockPricesList).toHaveBeenCalledWith({
+        lookup_keys: [
+          "monthly_donation_10",
+          "monthly_donation_25",
+          "monthly_donation_50",
+          "monthly_donation_100",
+        ],
+        active: true,
+      });
+    });
+
+    it("uses the fixed price for a preset amount", async () => {
+      await POST(makeRequest({ amount: 100, isMonthly: true }));
+
+      const callArgs = mockCreate.mock.calls[0][0];
+      expect(callArgs.line_items).toEqual([
+        { price: "price_m100", quantity: 1 },
+      ]);
+    });
+
+    it("puts a custom amount on the same product as the presets", async () => {
+      await POST(makeRequest({ amount: 30, isMonthly: true }));
+
+      const callArgs = mockCreate.mock.calls[0][0];
+      expect(callArgs.line_items[0].price_data).toEqual({
+        currency: "usd",
+        product: MONTHLY_PRODUCT_ID,
+        unit_amount: 3000,
+        recurring: { interval: "month" },
+      });
+    });
+
+    it("does not look up monthly prices for one-time donations", async () => {
+      await POST(makeRequest({ amount: 100, isMonthly: false }));
+
+      expect(mockPricesList).not.toHaveBeenCalled();
+      const callArgs = mockCreate.mock.calls[0][0];
+      expect(callArgs.line_items[0].price_data.product_data).toBeDefined();
+    });
   });
 });
