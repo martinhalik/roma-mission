@@ -1471,6 +1471,7 @@ const de: Dictionary = {
       printReady: "Druckfertig",
       freeToShare: "Frei zum Teilen",
       translatedByOthers: "Von anderen übersetzt",
+      printEditionOnly: "Gedruckte Ausgabe — kein Download",
       viewSource: "Quelle ansehen",
       opensExternal: "öffnet eine externe Seite",
       langRomani: "Romani (russische Roma)",

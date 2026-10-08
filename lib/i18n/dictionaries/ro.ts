@@ -1472,6 +1472,7 @@ const ro: Dictionary = {
       printReady: "Gata de tipărit",
       freeToShare: "Liber de distribuit",
       translatedByOthers: "Tradus de alții",
+      printEditionOnly: "Ediție tipărită — nu se poate descărca",
       viewSource: "Vezi sursa",
       opensExternal: "deschide un site extern",
       langRomani: "Limba romani (romii ruși)",

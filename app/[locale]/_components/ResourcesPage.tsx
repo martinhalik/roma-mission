@@ -219,6 +219,12 @@ function ResourceCard({ item, onCard }: { item: ResourceItem; onCard: boolean })
           ) : (
             <MetaPill icon={Share2} label={t("resources.ui.freeToShare")} />
           )}
+          {item.printOnly && (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-semibold tracking-[0.5px] uppercase text-[var(--text-secondary)] border border-[var(--border-strong)]">
+              <BookOpen size={12} aria-hidden="true" />
+              {t("resources.ui.printEditionOnly")}
+            </span>
+          )}
         </div>
         <h3 className="text-[18px] md:text-[20px] font-bold text-[var(--text-primary)] leading-[1.3]">
           {title}

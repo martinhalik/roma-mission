@@ -1473,6 +1473,7 @@ const el: Dictionary = {
       printReady: "Για εκτύπωση",
       freeToShare: "Ελεύθερο για κοινοποίηση",
       translatedByOthers: "Μεταφράστηκε από άλλους",
+      printEditionOnly: "Έντυπη έκδοση — όχι για λήψη",
       viewSource: "Δείτε την πηγή",
       opensExternal: "ανοίγει εξωτερικό ιστότοπο",
       langRomani: "Ρομανί (Ρώσοι Ρομά)",

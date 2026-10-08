@@ -42,6 +42,8 @@ export interface ResourceItem {
   externalUrl?: string;
   /** Someone else's translation — renders attribution rather than downloads. */
   thirdParty?: boolean;
+  /** Exists only as a physical printed edition — no file to download. */
+  printOnly?: boolean;
   /** Intended for printing — shows the print-and-share hint. */
   printable?: boolean;
 }
@@ -69,6 +71,7 @@ export const RESOURCE_ITEMS: ResourceItem[] = [
     id: "gospel-mark-romani",
     category: "scripture",
     thirdParty: true,
+    printOnly: true,
     languageLabelKey: "resources.ui.langRomani",
     externalUrl: "https://en.wikipedia.org/wiki/Bible_translations_into_Romani",
     downloads: [],

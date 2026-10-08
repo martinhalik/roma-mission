@@ -1470,6 +1470,7 @@ const mk: Dictionary = {
       printReady: "За печатење",
       freeToShare: "Слободно за споделување",
       translatedByOthers: "Превеле други",
+      printEditionOnly: "Печатено издание — не за преземање",
       viewSource: "Погледни извор",
       opensExternal: "отвора надворешна страница",
       langRomani: "Ромски (руски Роми)",

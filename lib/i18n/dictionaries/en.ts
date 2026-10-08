@@ -1469,6 +1469,7 @@ const en: Dictionary = {
       printReady: "Print-ready",
       freeToShare: "Free to share",
       translatedByOthers: "Translated by others",
+      printEditionOnly: "Printed edition — not a download",
       viewSource: "View source",
       opensExternal: "opens an external site",
       langRomani: "Romani (Ruska Roma)",

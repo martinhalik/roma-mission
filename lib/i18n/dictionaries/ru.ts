@@ -1470,6 +1470,7 @@ const ru: Dictionary = {
       printReady: "Для печати",
       freeToShare: "Свободно делиться",
       translatedByOthers: "Перевели другие",
+      printEditionOnly: "Печатное издание — не для скачивания",
       viewSource: "Открыть источник",
       opensExternal: "откроется внешний сайт",
       langRomani: "Цыганский (русские цыгане)",

@@ -1465,6 +1465,7 @@ const sk: Dictionary = {
       printReady: "Na tlač",
       freeToShare: "Voľné na zdieľanie",
       translatedByOthers: "Preložili iní",
+      printEditionOnly: "Tlačené vydanie — nie na stiahnutie",
       viewSource: "Zobraziť zdroj",
       opensExternal: "otvorí externú stránku",
       langRomani: "Rómčina (ruskí Rómovia)",

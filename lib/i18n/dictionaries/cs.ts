@@ -1466,6 +1466,7 @@ const cs: Dictionary = {
       printReady: "K tisku",
       freeToShare: "Volné ke sdílení",
       translatedByOthers: "Přeložili jiní",
+      printEditionOnly: "Tištěné vydání — ne ke stažení",
       viewSource: "Zobrazit zdroj",
       opensExternal: "otevře externí stránku",
       langRomani: "Romština (ruští Romové)",

@@ -779,6 +779,7 @@ export interface Dictionary {
       printReady: string;
       freeToShare: string;
       translatedByOthers: string;
+      printEditionOnly: string;
       viewSource: string;
       opensExternal: string;
       langRomani: string;
