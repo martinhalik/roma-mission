@@ -37,6 +37,7 @@ export default function MediaPage() {
   );
 
   const documentary = filteredItems.find((item) => item.tag === "DOCUMENTARY");
+  const reports = filteredItems.filter((item) => item.tag === "REPORT");
   const interviews = filteredItems.filter((item) => item.tag === "INTERVIEW");
   const testimonies = filteredItems.filter((item) => item.tag === "TESTIMONY");
   const presentations = filteredItems.filter(
@@ -126,6 +127,74 @@ export default function MediaPage() {
                   >
                     {t("media.documentarySection.watchCta")}
                   </button>
+                </div>
+              </section>
+              <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
+            </>
+          )}
+
+          {/* ── TV reports ── */}
+          {reports.length > 0 && (
+            <>
+              <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
+                <div className="flex flex-col gap-4 max-w-[500px] mb-10 md:mb-12">
+                  <SectionLabel text={t("media.reportsSection.label")} />
+                  <h2 className="text-[28px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[0.95]">
+                    {t("media.reportsSection.title")}
+                  </h2>
+                  <p className="text-[14px] md:text-[15px] text-[var(--text-secondary)] leading-[1.6]">
+                    {t("media.reportsSection.intro")}
+                  </p>
+                </div>
+
+                <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+                  {reports.map((ep) => {
+                    const title = t(`media.items.${ep.id}.title`);
+                    const desc = t(`media.items.${ep.id}.fullDesc`);
+                    const source = t(`media.items.${ep.id}.source`);
+                    return (
+                      <button
+                        key={ep.id}
+                        onClick={() => setActiveVideoId(ep.videoId)}
+                        className="flex flex-col gap-0 bg-[var(--bg-card)] border border-[var(--border-default)] flex-1 text-left group hover:border-[var(--gold)]/50 transition-colors duration-200 overflow-hidden"
+                        aria-label={t("media.card.watchAria", { title })}
+                      >
+                        <div
+                          className="w-full h-[200px] bg-cover bg-center relative flex items-center justify-center"
+                          style={{ backgroundImage: `url('${ytThumb(ep.videoId)}')` }}
+                        >
+                          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-200" />
+                          <div className="relative w-12 h-12 rounded-full bg-[var(--gold)] flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                            <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[14px] border-l-[var(--on-accent)] ml-1" />
+                          </div>
+                        </div>
+
+                        <div className="flex flex-col gap-4 p-6 md:p-7 flex-1">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <MediaBadges item={ep} />
+                          </div>
+
+                          <div>
+                            <h3 className="text-[15px] md:text-[16px] font-bold text-[var(--text-primary)] leading-[1.3] group-hover:text-[var(--gold)] transition-colors duration-200 mb-2">
+                              {title}
+                            </h3>
+                            <p className="text-[12px] md:text-[13px] text-[var(--text-secondary)] leading-[1.6]">
+                              {desc}
+                            </p>
+                          </div>
+
+                          <div className="flex items-center justify-between mt-auto pt-3 border-t border-[var(--border-default)]">
+                            <p className="text-[11px] text-[var(--text-muted)]">
+                              {source}
+                            </p>
+                            <span className="text-[11px] text-[var(--text-muted)]">
+                              {ep.duration}
+                            </span>
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
               </section>
               <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />

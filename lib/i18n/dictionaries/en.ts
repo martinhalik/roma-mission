@@ -713,6 +713,12 @@ const en: Dictionary = {
       watchAria: "Watch documentary",
       watchCta: "WATCH DOCUMENTARY",
     },
+    reportsSection: {
+      label: "TV reports",
+      title: "On Slovak Television",
+      intro:
+        "Reports by Slovak Television and Radio (STVR) about the mission, shared with STVR's permission and subtitled in nine languages.",
+    },
     interviewsSection: {
       label: "Interviews",
       title: "Mission Conversations",
@@ -761,6 +767,24 @@ const en: Dictionary = {
         source: "Czech Television",
         badgeLabel: "Subtitles",
         audioBadge: "Slovak/Czech Audio",
+      },
+      "stvr-orientacie": {
+        title: "From IT Work to the Roma Mission",
+        shortDesc:
+          "STVR's religious magazine Orientácie on Fr Martin Halík and the mission in Markovce.",
+        fullDesc:
+          "An official report from Orientácie, the religious magazine of Slovak Television and Radio (STVR). Fr Martin Halík has worked in IT since he was thirteen; when he had more than he needed, he began helping the poorest — first in the Roma settlements of Gemer, later in Markovce in eastern Slovakia. The report shows the Sunday school where children learn to read, write and count, boys learning practical skills by building playground equipment, and the family's journey to parishes in the United States.",
+        source: "STVR · Orientácie, 2026",
+        badgeLabel: "Subtitles",
+      },
+      "stvr-cesky-magazin": {
+        title: "A Kindergarten Blessing in Markovce",
+        shortDesc:
+          "STVR's Český magazín: two Czech clergy meet at the blessing of a new kindergarten in Markovce.",
+        fullDesc:
+          "An official report from Český magazín of Slovak Television and Radio (STVR). In Markovce in eastern Slovakia a new kindergarten was blessed, and two Czech clergy met there: Orthodox Archbishop Juraj and Fr Martin Halík, priest of the Orthodox Roma parish in Markovce. Fr Martin speaks about serving the Roma minority with his wife in their free time while he still works as a programmer, about the children he baptises and teaches, and about why Slovakia has become his home.",
+        source: "STVR · Český magazín, 2026",
+        badgeLabel: "Subtitles",
       },
       "int-1": {
         title: "Why the Roma? Why Now?",

@@ -551,6 +551,11 @@ export interface Dictionary {
       watchAria: string;
       watchCta: string;
     };
+    reportsSection: {
+      label: string;
+      title: string;
+      intro: string;
+    };
     interviewsSection: {
       label: string;
       title: string;
@@ -593,6 +598,20 @@ export interface Dictionary {
         source: string;
         badgeLabel: string;
         audioBadge: string;
+      };
+      "stvr-orientacie": {
+        title: string;
+        shortDesc: string;
+        fullDesc: string;
+        source: string;
+        badgeLabel: string;
+      };
+      "stvr-cesky-magazin": {
+        title: string;
+        shortDesc: string;
+        fullDesc: string;
+        source: string;
+        badgeLabel: string;
       };
       "int-1": {
         title: string;
