@@ -715,6 +715,12 @@ const ro: Dictionary = {
       watchAria: "Vizionează documentarul",
       watchCta: "VEZI DOCUMENTARUL",
     },
+    reportsSection: {
+      label: "Reportaje TV",
+      title: "La Televiziunea Slovacă",
+      intro:
+        "Reportaje ale Radioteleviziunii Slovace (STVR) despre misiune, publicate cu permisiunea STVR și subtitrate în nouă limbi.",
+    },
     interviewsSection: {
       label: "Interviuri",
       title: "Conversații despre misiune",
@@ -762,6 +768,24 @@ const ro: Dictionary = {
         source: "Televiziunea Cehă",
         badgeLabel: "Subtitrări",
         audioBadge: "Audio slovacă/cehă",
+      },
+      "stvr-orientacie": {
+        title: "De la IT la misiunea printre romi",
+        shortDesc:
+          "Revista religioasă Orientácie (STVR) despre părintele Martin Halík și misiunea din Markovce.",
+        fullDesc:
+          "Un reportaj oficial al revistei religioase Orientácie a Radioteleviziunii Slovace (STVR). Părintele Martin Halík lucrează în IT de la vârsta de treisprezece ani; când a avut mai mult decât îi trebuia, a început să-i ajute pe cei mai săraci — mai întâi în așezările de romi din Gemer, apoi în Markovce, în estul Slovaciei. Reportajul arată școala duminicală în care copiii învață să citească, să scrie și să socotească, băieți care învață îndemânări practice construind echipamente pentru locul de joacă și călătoria familiei la parohii din Statele Unite.",
+        source: "STVR · Orientácie, 2026",
+        badgeLabel: "Subtitrări",
+      },
+      "stvr-cesky-magazin": {
+        title: "Sfințirea unei grădinițe în Markovce",
+        shortDesc:
+          "Český magazín (STVR): doi clerici cehi se întâlnesc la sfințirea unei noi grădinițe în Markovce.",
+        fullDesc:
+          "Un reportaj oficial al emisiunii Český magazín a Radioteleviziunii Slovace (STVR). În Markovce, în estul Slovaciei, a fost sfințită o nouă grădiniță, iar acolo s-au întâlnit doi clerici cehi: arhiepiscopul ortodox Juraj și părintele Martin Halík, preotul parohiei ortodoxe a romilor din Markovce. Părintele Martin vorbește despre slujirea minorității rome, căreia el și soția sa i se dedică în timpul liber, în timp ce el lucrează în continuare ca programator, despre copiii pe care îi botează și îi învață și despre motivul pentru care Slovacia a devenit casa lui.",
+        source: "STVR · Český magazín, 2026",
+        badgeLabel: "Subtitrări",
       },
       "int-1": {
         title: "De ce romii? De ce acum?",

@@ -710,6 +710,12 @@ const sk: Dictionary = {
       watchAria: "Pozrieť dokument",
       watchCta: "POZRIEŤ DOKUMENT",
     },
+    reportsSection: {
+      label: "Televízne reportáže",
+      title: "V Slovenskej televízii",
+      intro:
+        "Reportáže Slovenskej televízie a rozhlasu (STVR) o misii, zverejnené so súhlasom STVR, s titulkami v deviatich jazykoch.",
+    },
     interviewsSection: {
       label: "Rozhovory",
       title: "Misijné rozhovory",
@@ -757,6 +763,24 @@ const sk: Dictionary = {
         source: "Česká televízia",
         badgeLabel: "Titulky",
         audioBadge: "Slovenský/český zvuk",
+      },
+      "stvr-orientacie": {
+        title: "Od práce v IT k rómskej misii",
+        shortDesc:
+          "Náboženský magazín Orientácie (STVR) o otcovi Martinovi Halíkovi a misii v Markovciach.",
+        fullDesc:
+          "Oficiálna reportáž náboženského magazínu Orientácie Slovenskej televízie a rozhlasu (STVR). Otec Martin Halík pracuje v IT od trinástich rokov; keď mal viac, ako potreboval, začal pomáhať najchudobnejším — najprv v rómskych osadách na Gemeri, neskôr v Markovciach na východnom Slovensku. Reportáž ukazuje nedeľnú školu, kde sa deti učia čítať, písať a počítať, chlapcov, ktorí sa pri stavbe preliezok učia praktickým zručnostiam, a cestu rodiny do farností v Spojených štátoch.",
+        source: "STVR · Orientácie, 2026",
+        badgeLabel: "Titulky",
+      },
+      "stvr-cesky-magazin": {
+        title: "Posvätenie škôlky v Markovciach",
+        shortDesc:
+          "Český magazín (STVR): dvaja českí duchovní sa stretli pri posvätení novej škôlky v Markovciach.",
+        fullDesc:
+          "Oficiálna reportáž Českého magazínu Slovenskej televízie a rozhlasu (STVR). V Markovciach na východnom Slovensku posvätili novú materskú školu a stretli sa tam dvaja českí duchovní: pravoslávny arcibiskup Juraj a otec Martin Halík, kňaz pravoslávnej rómskej farnosti v Markovciach. Otec Martin hovorí o službe rómskej menšine, ktorej sa s manželkou venujú vo voľnom čase, kým stále pracuje ako programátor, o deťoch, ktoré krstí a učí, a o tom, prečo sa mu Slovensko stalo domovom.",
+        source: "STVR · Český magazín, 2026",
+        badgeLabel: "Titulky",
       },
       "int-1": {
         title: "Prečo Rómovia? Prečo teraz?",

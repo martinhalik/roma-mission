@@ -4,7 +4,7 @@ export type BadgeVariant = "audio" | "sub";
 
 export interface MediaItem {
   id: string;
-  tag: "DOCUMENTARY" | "INTERVIEW" | "TESTIMONY" | "PRESENTATION";
+  tag: "DOCUMENTARY" | "REPORT" | "INTERVIEW" | "TESTIMONY" | "PRESENTATION";
   videoId: string;
   /** Display duration — not translated (number + locale-stable unit) */
   duration: string;
@@ -21,6 +21,9 @@ export interface MediaItem {
 }
 
 export const DOCUMENTARY_VIDEO_ID = "K-IDNefOa98";
+/** Slovak Television and Radio (STVR) reports, on Fr Martin's channel with STVR's permission. */
+export const STVR_ORIENTACIE_ID = "gXrNKWKqp8Q";
+export const STVR_CESKY_MAGAZIN_ID = "2wO_tW5yA64";
 export const INTERVIEW_1_ID = "A3-IfJL_vt4";
 export const INTERVIEW_2_ID = "7tdFd08wUis";
 export const TESTIMONY_LACO_ID = "PNhKEQtCrVo";
@@ -36,6 +39,26 @@ export const MEDIA_ITEMS: MediaItem[] = [
     tag: "DOCUMENTARY",
     videoId: DOCUMENTARY_VIDEO_ID,
     duration: "30 min",
+    badgeVariant: "sub",
+    hasGuest: false,
+    languages: ["cs", "sk", "en", "ro", "de", "sr", "ru", "mk", "el"],
+    audioLanguage: "cs",
+  },
+  {
+    id: "stvr-orientacie",
+    tag: "REPORT",
+    videoId: STVR_ORIENTACIE_ID,
+    duration: "6 min",
+    badgeVariant: "sub",
+    hasGuest: false,
+    languages: ["sk", "cs", "en", "ro", "de", "sr", "ru", "mk", "el"],
+    audioLanguage: "sk",
+  },
+  {
+    id: "stvr-cesky-magazin",
+    tag: "REPORT",
+    videoId: STVR_CESKY_MAGAZIN_ID,
+    duration: "5 min",
     badgeVariant: "sub",
     hasGuest: false,
     languages: ["cs", "sk", "en", "ro", "de", "sr", "ru", "mk", "el"],

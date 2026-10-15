@@ -715,6 +715,12 @@ const de: Dictionary = {
       watchAria: "Dokumentation ansehen",
       watchCta: "DOKUMENTATION ANSEHEN",
     },
+    reportsSection: {
+      label: "Fernsehberichte",
+      title: "Im Slowakischen Fernsehen",
+      intro:
+        "Berichte des Slowakischen Rundfunks und Fernsehens (STVR) über die Mission, mit Erlaubnis der STVR veröffentlicht und in neun Sprachen untertitelt.",
+    },
     interviewsSection: {
       label: "Interviews",
       title: "Missionsgespräche",
@@ -762,6 +768,24 @@ const de: Dictionary = {
         source: "Tschechisches Fernsehen",
         badgeLabel: "Untertitel",
         audioBadge: "Slowakischer/Tschechischer Ton",
+      },
+      "stvr-orientacie": {
+        title: "Von der IT zur Roma-Mission",
+        shortDesc:
+          "Das religiöse Magazin Orientácie (STVR) über Pater Martin Halík und die Mission in Markovce.",
+        fullDesc:
+          "Ein offizieller Bericht von Orientácie, dem religiösen Magazin des Slowakischen Rundfunks und Fernsehens (STVR). Pater Martin Halík arbeitet seit seinem dreizehnten Lebensjahr in der IT; als er mehr hatte, als er brauchte, begann er den Ärmsten zu helfen – zuerst in den Roma-Siedlungen von Gemer, später in Markovce in der Ostslowakei. Der Bericht zeigt die Sonntagsschule, in der Kinder lesen, schreiben und rechnen lernen, Jungen, die beim Bau von Spielplatzgeräten praktische Fertigkeiten lernen, und die Reise der Familie zu Gemeinden in den Vereinigten Staaten.",
+        source: "STVR · Orientácie, 2026",
+        badgeLabel: "Untertitel",
+      },
+      "stvr-cesky-magazin": {
+        title: "Segnung eines Kindergartens in Markovce",
+        shortDesc:
+          "Český magazín (STVR): Zwei tschechische Geistliche begegnen sich bei der Segnung eines neuen Kindergartens in Markovce.",
+        fullDesc:
+          "Ein offizieller Bericht des Český magazín des Slowakischen Rundfunks und Fernsehens (STVR). In Markovce in der Ostslowakei wurde ein neuer Kindergarten gesegnet, und zwei tschechische Geistliche begegneten sich dort: der orthodoxe Erzbischof Juraj und Pater Martin Halík, Priester der orthodoxen Roma-Gemeinde in Markovce. Pater Martin spricht über den Dienst an der Roma-Minderheit, den er mit seiner Frau in ihrer Freizeit leistet, während er weiterhin als Programmierer arbeitet, über die Kinder, die er tauft und unterrichtet, und darüber, warum die Slowakei seine Heimat geworden ist.",
+        source: "STVR · Český magazín, 2026",
+        badgeLabel: "Untertitel",
       },
       "int-1": {
         title: "Warum die Roma? Warum jetzt?",
