@@ -209,7 +209,7 @@ export default function MissionPage() {
       <section className="relative w-full h-[420px] md:h-[540px] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/mission-hero.jpg')" }}
+          style={{ backgroundImage: "url('/images/our-approach.jpg')" }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,color-mix(in_srgb,var(--bg-primary)_94%,transparent)_0%,color-mix(in_srgb,var(--bg-primary)_53%,transparent)_70%,color-mix(in_srgb,var(--bg-primary)_27%,transparent)_100%)]" />
         <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
@@ -229,9 +229,9 @@ export default function MissionPage() {
 
       {/* ── Why: Start with Why ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
-        <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-start">
+        <div className="flex flex-col xl:flex-row gap-12 xl:gap-24 items-start">
           {/* Left — headline + pull stat */}
-          <div className="flex flex-col gap-6 md:gap-8 md:w-[380px] flex-shrink-0">
+          <div className="flex flex-col gap-6 xl:gap-8 xl:w-[380px] xl:shrink-0">
             <SectionLabel text={t("mission.whyRoma.label")} />
             <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
               {t("mission.whyRoma.titleLine1")}
@@ -255,7 +255,7 @@ export default function MissionPage() {
           </div>
 
           {/* Right — reasons */}
-          <div className="flex flex-col gap-5 flex-1">
+          <div className="flex flex-col gap-5 flex-1 min-w-0">
             {reasonKeys.map((item, i) => (
               <div
                 key={item.titleKey}
@@ -281,9 +281,9 @@ export default function MissionPage() {
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
 
       {/* ── Our Story ── */}
-      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)] flex flex-col md:flex-row gap-12 md:gap-20 items-center">
+      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)] flex flex-col xl:flex-row gap-12 xl:gap-20 items-center">
         {/* Photo */}
-        <div className="w-full md:w-[460px] h-[260px] md:h-[520px] bg-[var(--bg-card)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden">
+        <div className="w-full xl:w-[460px] h-[260px] md:h-[520px] bg-[var(--bg-card)] border border-[var(--border-default)] xl:shrink-0 overflow-hidden">
           <div
             className="w-full h-full bg-cover bg-center"
             style={{ backgroundImage: "url('/images/mission-about-us.jpg')" }}
@@ -291,7 +291,7 @@ export default function MissionPage() {
         </div>
 
         {/* Text */}
-        <div className="flex flex-col gap-5 md:gap-7 flex-1">
+        <div className="flex flex-col gap-5 md:gap-7 flex-1 min-w-0">
           <SectionLabel text={t("mission.ourStory.label")} />
           <h2 className="text-[28px] md:text-[38px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
             {t("mission.ourStory.titleLine1")}
@@ -357,28 +357,28 @@ export default function MissionPage() {
             <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.8]">
               {t("mission.whatWeDo.plantingBody")}
             </p>
-            <div className="flex gap-6 pt-2 border-t border-[var(--border-default)]">
-              <div className="flex flex-col gap-1">
+            <div className="grid grid-cols-3 gap-3 pt-2 border-t border-[var(--border-default)]">
+              <div className="flex flex-col gap-1 min-w-0">
                 <span className="text-[28px] md:text-[34px] font-bold text-[var(--gold)]">
                   3
                 </span>
-                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
+                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase break-words leading-[1.4]">
                   {t("mission.whatWeDo.plantingStatPlanted")}
                 </span>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 min-w-0">
                 <span className="text-[28px] md:text-[34px] font-bold text-[var(--gold)]">
                   1
                 </span>
-                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
+                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase break-words leading-[1.4]">
                   {t("mission.whatWeDo.plantingStatLost")}
                 </span>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 min-w-0">
                 <span className="text-[28px] md:text-[34px] font-bold text-[var(--text-secondary)]">
                   +2
                 </span>
-                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
+                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase break-words leading-[1.4]">
                   {t("mission.whatWeDo.plantingStatProgress")}
                 </span>
               </div>
@@ -394,28 +394,28 @@ export default function MissionPage() {
             <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.8]">
               {t("mission.whatWeDo.parishBody")}
             </p>
-            <div className="flex gap-6 pt-2 border-t border-[var(--border-default)]">
-              <div className="flex flex-col gap-1">
+            <div className="grid grid-cols-3 gap-3 pt-2 border-t border-[var(--border-default)]">
+              <div className="flex flex-col gap-1 min-w-0">
                 <span className="text-[28px] md:text-[34px] font-bold text-[var(--gold)]">
                   8
                 </span>
-                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
+                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase break-words leading-[1.4]">
                   {t("mission.whatWeDo.parishStatSupported")}
                 </span>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 min-w-0">
                 <span className="text-[28px] md:text-[34px] font-bold text-[var(--gold)]">
                   1
                 </span>
-                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
+                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase break-words leading-[1.4]">
                   {t("mission.whatWeDo.parishStatTransformed")}
                 </span>
               </div>
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 min-w-0">
                 <span className="text-[28px] md:text-[34px] font-bold text-[var(--gold)]">
                   50+
                 </span>
-                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
+                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase break-words leading-[1.4]">
                   {t("mission.whatWeDo.parishStatFathers")}
                 </span>
               </div>
@@ -431,17 +431,17 @@ export default function MissionPage() {
             <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.8]">
               {t("mission.whatWeDo.childrenBody")}
             </p>
-            <div className="grid grid-cols-3 gap-4 pt-2 border-t border-[var(--border-default)]">
+            <div className="grid grid-cols-3 gap-3 pt-2 border-t border-[var(--border-default)]">
               {[
                 { value: "1,000+", labelKey: "mission.whatWeDo.childrenStatReached" },
                 { value: "200", labelKey: "mission.whatWeDo.childrenStatLearned" },
                 { value: "15", labelKey: "mission.whatWeDo.childrenStatJoined" },
               ].map((s) => (
-                <div key={s.labelKey} className="flex flex-col gap-1">
+                <div key={s.labelKey} className="flex flex-col gap-1 min-w-0">
                   <span className="text-[22px] md:text-[26px] font-bold text-[var(--gold)]">
                     {s.value}
                   </span>
-                  <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase leading-[1.4]">
+                  <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase break-words leading-[1.4]">
                     {t(s.labelKey)}
                   </span>
                 </div>
@@ -458,16 +458,16 @@ export default function MissionPage() {
             <p className="text-[13px] md:text-[14px] text-[var(--text-secondary)] leading-[1.8]">
               {t("mission.whatWeDo.centersBody")}
             </p>
-            <div className="flex gap-6 pt-2 border-t border-[var(--border-default)]">
-              <div>
+            <div className="grid grid-cols-2 gap-3 pt-2 border-t border-[var(--border-default)]">
+              <div className="min-w-0">
                 <span className="text-[28px] md:text-[34px] font-bold text-[var(--gold)]">1</span>
-                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
+                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase break-words leading-[1.4] block">
                   {t("mission.whatWeDo.centersStatBuilt")}
                 </span>
               </div>
-              <div>
+              <div className="min-w-0">
                 <span className="text-[28px] md:text-[34px] font-bold text-[var(--text-secondary)]">1</span>
-                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase block">
+                <span className="text-[10px] tracking-[1px] text-[var(--text-muted)] uppercase break-words leading-[1.4] block">
                   {t("mission.whatWeDo.centersStatProgress")}
                 </span>
               </div>

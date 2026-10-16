@@ -65,7 +65,7 @@ export default function GetInvolvedPage() {
         <div className="relative w-full h-[340px] md:h-[420px] overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/get-involved-hero.jpg')" }}
+            style={{ backgroundImage: "url('/images/transformed-via-education.jpeg')" }}
           />
           <div className="absolute inset-0 bg-[linear-gradient(0deg,var(--bg-primary)_0%,color-mix(in_srgb,var(--bg-primary)_60%,transparent)_50%,color-mix(in_srgb,var(--bg-primary)_27%,transparent)_100%)]" />
           <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-10 md:pb-12">

@@ -57,7 +57,7 @@ export default function MediaPage() {
       <section className="relative w-full h-[400px] md:h-[480px] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/media-hero.jpg')" }}
+          style={{ backgroundImage: "url('/images/dolinka-od-mili-nov-2020-poster-00001.jpg')" }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(0deg,color-mix(in_srgb,var(--bg-primary)_93%,transparent)_0%,color-mix(in_srgb,var(--bg-primary)_53%,transparent)_70%,color-mix(in_srgb,var(--bg-primary)_27%,transparent)_100%)]" />
         <div className="relative z-10 flex flex-col justify-end h-full px-5 md:px-[120px] pb-12 md:pb-16">
@@ -88,10 +88,10 @@ export default function MediaPage() {
           {/* ── Documentary ── */}
           {documentary && (
             <>
-              <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)] flex flex-col md:flex-row gap-10 md:gap-16 items-center">
+              <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)] flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
                 <button
                   onClick={() => setActiveVideoId(documentary.videoId)}
-                  className="w-full md:w-[600px] h-[220px] md:h-[400px] bg-[var(--bg-card)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden relative group cursor-pointer"
+                  className="w-full min-w-0 lg:w-auto lg:basis-[600px] lg:shrink lg:grow-0 h-[220px] md:h-[400px] bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden relative group cursor-pointer"
                   aria-label={t("media.documentarySection.watchAria")}
                 >
                   <div
@@ -105,7 +105,7 @@ export default function MediaPage() {
                     </div>
                   </div>
                 </button>
-                <div className="flex flex-col gap-6 flex-1">
+                <div className="flex flex-col gap-6 flex-1 min-w-0 lg:min-w-[300px]">
                   <SectionLabel text={t("media.documentarySection.label")} />
                   <h2 className="text-[28px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
                     {t(`media.items.${documentary.id}.title`)}
