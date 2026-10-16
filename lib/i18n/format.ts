@@ -1,3 +1,4 @@
+import { DONATION_CURRENCY_ISO } from "../donations";
 import type { Locale } from "./locales";
 
 const BCP47: Record<Locale, string> = {
@@ -15,7 +16,7 @@ const BCP47: Record<Locale, string> = {
 export function formatCurrency(
   amount: number,
   locale: Locale,
-  currency: string = "USD"
+  currency: string = DONATION_CURRENCY_ISO
 ): string {
   return new Intl.NumberFormat(BCP47[locale], {
     style: "currency",
@@ -23,6 +24,32 @@ export function formatCurrency(
     currencyDisplay: "narrowSymbol",
     maximumFractionDigits: Number.isInteger(amount) ? 0 : 2,
   }).format(amount);
+}
+
+export interface CurrencyAffix {
+  symbol: string;
+  position: "prefix" | "suffix";
+}
+
+/** Where the currency symbol sits for a locale, derived from Intl (never hard-coded). */
+export function currencyAffix(
+  locale: Locale,
+  currency: string = DONATION_CURRENCY_ISO
+): CurrencyAffix {
+  const parts = new Intl.NumberFormat(BCP47[locale], {
+    style: "currency",
+    currency,
+    currencyDisplay: "narrowSymbol",
+    maximumFractionDigits: 0,
+  }).formatToParts(0);
+  const symbol = parts.find((part) => part.type === "currency")?.value ?? currency;
+  const currencyIndex = parts.findIndex((part) => part.type === "currency");
+  const numberIndex = parts.findIndex((part) => part.type === "integer");
+  const position =
+    currencyIndex >= 0 && numberIndex >= 0 && currencyIndex < numberIndex
+      ? "prefix"
+      : "suffix";
+  return { symbol, position };
 }
 
 export function formatDate(date: Date | string, locale: Locale): string {

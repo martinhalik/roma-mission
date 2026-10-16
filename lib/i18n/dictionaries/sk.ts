@@ -1347,7 +1347,7 @@ const sk: Dictionary = {
     impactHigh: "Pokrýva týždenné farské materiály a programy.",
     impactMid: "Financuje celý rok katechézy pre jedno dieťa.",
     impactLow: "Zabezpečí učebné materiály na mesiac.",
-    impactBase: "Každý dolár ide priamo do terénu.",
+    impactBase: "Každé euro ide priamo do terénu.",
     error: "Niečo sa pokazilo. Skúste to prosím znova.",
     preparing: "PRIPRAVUJE SA...",
     giveMonthly: "DAROVAŤ {amount}/MES",

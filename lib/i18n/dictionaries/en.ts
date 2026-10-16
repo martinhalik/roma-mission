@@ -1351,7 +1351,7 @@ const en: Dictionary = {
     impactHigh: "Covers weekly parish materials and programs.",
     impactMid: "Funds one child's catechism for a full year.",
     impactLow: "Provides teaching materials for a month.",
-    impactBase: "Every dollar goes directly to the field.",
+    impactBase: "Every euro goes directly to the field.",
     error: "Something went wrong. Please try again.",
     preparing: "PREPARING...",
     giveMonthly: "GIVE {amount}/MO",

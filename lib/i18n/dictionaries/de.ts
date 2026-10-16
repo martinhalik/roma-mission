@@ -1352,7 +1352,7 @@ const de: Dictionary = {
     impactHigh: "Deckt wöchentliche Pfarrmaterialien und Programme.",
     impactMid: "Finanziert die Katechese eines Kindes für ein ganzes Jahr.",
     impactLow: "Stellt Unterrichtsmaterial für einen Monat bereit.",
-    impactBase: "Jeder Dollar fließt direkt in die Arbeit vor Ort.",
+    impactBase: "Jeder Euro fließt direkt in die Arbeit vor Ort.",
     error: "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
     preparing: "WIRD VORBEREITET...",
     giveMonthly: "SPENDEN {amount}/MO",
