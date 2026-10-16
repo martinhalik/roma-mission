@@ -12,10 +12,12 @@ const SKIP_DIRECTORIES = new Set([
   ".git",
 ]);
 
-// Quoted path, or a fully static template literal. Stops before a query
-// string or an interpolation so dynamic URLs are left to their own checks.
+// A local path only counts when it starts immediately after a quote,
+// an opening parenthesis, or a backtick. That skips full URLs such as
+// https://cdn.example.com/images/hero.jpg, where the character before
+// /images/ is part of the host.
 const IMAGE_LITERAL =
-  /\/images\/[A-Za-z0-9_./-]+\.(?:jpe?g|png|webp|gif|svg|avif|mp4)/g;
+  /(?<=["'(`])\/images\/[A-Za-z0-9_./-]+\.(?:jpe?g|png|webp|gif|svg|avif|mp4)/g;
 
 function collectSourceFiles(dir: string, out: string[] = []): string[] {
   for (const entry of readdirSync(dir)) {
@@ -46,6 +48,24 @@ describe("public image references", () => {
 
   it("finds image literals to check", () => {
     expect(refs.length).toBeGreaterThan(0);
+  });
+
+  it("ignores /images/ inside a full external URL", () => {
+    const remote =
+      'see https://cdn.example.com/images/missing-hero.jpg for context';
+    expect(imageLiterals(remote)).toEqual([]);
+    expect(imageLiterals('"/images/our-approach.jpg"')).toEqual([
+      "/images/our-approach.jpg",
+    ]);
+    expect(imageLiterals("'/images/our-approach.jpg'")).toEqual([
+      "/images/our-approach.jpg",
+    ]);
+    expect(imageLiterals("`/images/our-approach.jpg`")).toEqual([
+      "/images/our-approach.jpg",
+    ]);
+    expect(imageLiterals("url(/images/our-approach.jpg)")).toEqual([
+      "/images/our-approach.jpg",
+    ]);
   });
 
   it("every /images/... literal exists under public/", () => {

@@ -14,9 +14,10 @@ import { Copy, Check } from "lucide-react";
 import { useTranslation } from "./LanguageProvider";
 import { formatCurrency } from "@/lib/i18n/format";
 
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
+const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+const stripePromise = stripePublishableKey
+  ? loadStripe(stripePublishableKey)
+  : null;
 
 const MONTHLY_AMOUNTS = [10, 25, 50, 100];
 const ONETIME_AMOUNTS = [30, 100, 250, 500];

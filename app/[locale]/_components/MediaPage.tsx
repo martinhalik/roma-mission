@@ -91,7 +91,7 @@ export default function MediaPage() {
               <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)] flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
                 <button
                   onClick={() => setActiveVideoId(documentary.videoId)}
-                  className="w-full lg:w-[600px] h-[220px] md:h-[400px] bg-[var(--bg-card)] border border-[var(--border-default)] lg:shrink-0 overflow-hidden relative group cursor-pointer"
+                  className="w-full min-w-0 lg:w-auto lg:basis-[600px] lg:shrink lg:grow-0 h-[220px] md:h-[400px] bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden relative group cursor-pointer"
                   aria-label={t("media.documentarySection.watchAria")}
                 >
                   <div
@@ -105,7 +105,7 @@ export default function MediaPage() {
                     </div>
                   </div>
                 </button>
-                <div className="flex flex-col gap-6 flex-1 min-w-0">
+                <div className="flex flex-col gap-6 flex-1 min-w-0 lg:min-w-[300px]">
                   <SectionLabel text={t("media.documentarySection.label")} />
                   <h2 className="text-[28px] md:text-[36px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
                     {t(`media.items.${documentary.id}.title`)}

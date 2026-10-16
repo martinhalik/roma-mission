@@ -229,9 +229,9 @@ export default function MissionPage() {
 
       {/* ── Why: Start with Why ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
+        <div className="flex flex-col xl:flex-row gap-12 xl:gap-24 items-start">
           {/* Left — headline + pull stat */}
-          <div className="flex flex-col gap-6 lg:gap-8 lg:w-[380px] lg:shrink-0">
+          <div className="flex flex-col gap-6 xl:gap-8 xl:w-[380px] xl:shrink-0">
             <SectionLabel text={t("mission.whyRoma.label")} />
             <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
               {t("mission.whyRoma.titleLine1")}
@@ -281,9 +281,9 @@ export default function MissionPage() {
       <div className="h-px bg-[var(--border-default)] mx-5 md:mx-[120px]" />
 
       {/* ── Our Story ── */}
-      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)] flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+      <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)] flex flex-col xl:flex-row gap-12 xl:gap-20 items-center">
         {/* Photo */}
-        <div className="w-full lg:w-[460px] h-[260px] md:h-[520px] bg-[var(--bg-card)] border border-[var(--border-default)] lg:shrink-0 overflow-hidden">
+        <div className="w-full xl:w-[460px] h-[260px] md:h-[520px] bg-[var(--bg-card)] border border-[var(--border-default)] xl:shrink-0 overflow-hidden">
           <div
             className="w-full h-full bg-cover bg-center"
             style={{ backgroundImage: "url('/images/mission-about-us.jpg')" }}
