@@ -13,43 +13,49 @@ const BCP47: Record<Locale, string> = {
   el: "el-GR",
 };
 
-export function formatCurrency(
-  amount: number,
-  locale: Locale,
-  currency: string = DONATION_CURRENCY_ISO
-): string {
-  return new Intl.NumberFormat(BCP47[locale], {
-    style: "currency",
-    currency,
-    currencyDisplay: "narrowSymbol",
-    maximumFractionDigits: Number.isInteger(amount) ? 0 : 2,
-  }).format(amount);
-}
+const EURO_SYMBOL = "€";
+/** Normal space, identical on the server and in every browser. */
+const EURO_GAP = " ";
+
+/**
+ * Symbol position is fixed per locale. Intl currency formatting is not used:
+ * Node and Chromium disagree for some locales (mk renders "25 €" in Node and
+ * "€25" in Chromium), which breaks hydration.
+ * English is "€25". Every other locale is "25 €".
+ */
+const EURO_PREFIX_LOCALES = new Set<Locale>(["en"]);
 
 export interface CurrencyAffix {
   symbol: string;
   position: "prefix" | "suffix";
 }
 
-/** Where the currency symbol sits for a locale, derived from Intl (never hard-coded). */
+function formatDonationNumber(amount: number): string {
+  const negative = amount < 0;
+  const absolute = Math.abs(amount);
+  const digits = Number.isInteger(absolute) ? absolute.toString() : absolute.toFixed(2);
+  return negative ? `-${digits}` : digits;
+}
+
 export function currencyAffix(
   locale: Locale,
-  currency: string = DONATION_CURRENCY_ISO
+  _currency: string = DONATION_CURRENCY_ISO
 ): CurrencyAffix {
-  const parts = new Intl.NumberFormat(BCP47[locale], {
-    style: "currency",
-    currency,
-    currencyDisplay: "narrowSymbol",
-    maximumFractionDigits: 0,
-  }).formatToParts(0);
-  const symbol = parts.find((part) => part.type === "currency")?.value ?? currency;
-  const currencyIndex = parts.findIndex((part) => part.type === "currency");
-  const numberIndex = parts.findIndex((part) => part.type === "integer");
-  const position =
-    currencyIndex >= 0 && numberIndex >= 0 && currencyIndex < numberIndex
-      ? "prefix"
-      : "suffix";
-  return { symbol, position };
+  return {
+    symbol: EURO_SYMBOL,
+    position: EURO_PREFIX_LOCALES.has(locale) ? "prefix" : "suffix",
+  };
+}
+
+export function formatCurrency(
+  amount: number,
+  locale: Locale,
+  _currency: string = DONATION_CURRENCY_ISO
+): string {
+  const numeric = formatDonationNumber(amount);
+  const affix = currencyAffix(locale);
+  if (affix.position === "prefix") return `${affix.symbol}${numeric}`;
+  return `${numeric}${EURO_GAP}${affix.symbol}`;
 }
 
 export function formatDate(date: Date | string, locale: Locale): string {

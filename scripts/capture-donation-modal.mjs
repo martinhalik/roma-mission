@@ -33,6 +33,13 @@ const pages = [
     oneTime: "JEDNORAZOVO",
     title: "Darujte na Roma Mission",
   },
+  {
+    locale: "mk",
+    path: "/mk/vklucise",
+    open: "ДАРУВАЈТЕ СЕГА",
+    oneTime: "ЕДНОКРАТНО",
+    title: "Донирајте на Roma Mission",
+  },
 ];
 
 const widths = [375, 1280];

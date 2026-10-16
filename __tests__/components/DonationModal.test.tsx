@@ -13,11 +13,16 @@ import {
 } from "../../lib/donations";
 
 const stripeStub = vi.hoisted(() => {
-  const paymentRequest = vi.fn(() => ({
-    canMakePayment: () => Promise.resolve(null),
-    on: vi.fn(),
-    update: vi.fn(),
-  }));
+  const paymentRequest = vi.fn(
+    (options: { total: { label: string; amount: number } }) => ({
+      canMakePayment: () => Promise.resolve(null),
+      on: vi.fn(),
+      update: vi.fn((next: { total: { label: string; amount: number } }) => {
+        options.total = next.total;
+      }),
+      options,
+    })
+  );
   return {
     paymentRequest,
     stripe: {
@@ -241,6 +246,25 @@ describe("DonationModal", () => {
           country: "SK",
           currency: "eur",
           total: expect.objectContaining({ amount: 10000 }),
+        })
+      );
+    });
+  });
+
+  it("initializes the wallet with the selected amount and updates it on change", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await user.click(screen.getByRole("button", { name: "€30" }));
+
+    await waitFor(() => {
+      const created = stripeStub.paymentRequest.mock.results.at(-1)?.value as {
+        options: { total: { amount: number } };
+        update: ReturnType<typeof vi.fn>;
+      };
+      expect(created.options.total.amount).toBe(3000);
+      expect(created.update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          total: expect.objectContaining({ amount: 3000 }),
         })
       );
     });

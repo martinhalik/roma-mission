@@ -66,7 +66,15 @@ function PaymentRequestButton({ amount }: { amount: number }) {
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
   const amountRef = useRef(amount);
   amountRef.current = amount;
+  const requestRef = useRef<PaymentRequest | null>(null);
   const paymentLabel = t("donation.paymentLabel");
+
+  const syncTotal = (pr: PaymentRequest, cents: number) => {
+    if (cents < 100) return;
+    pr.update({
+      total: { label: paymentLabel, amount: cents },
+    });
+  };
 
   useEffect(() => {
     if (!stripe) return;
@@ -74,12 +82,19 @@ function PaymentRequestButton({ amount }: { amount: number }) {
     const pr = stripe.paymentRequest({
       country: PAYMENT_REQUEST_COUNTRY,
       currency: DONATION_CURRENCY,
-      total: { label: paymentLabel, amount: Math.round(amount * 100) },
+      total: {
+        label: paymentLabel,
+        amount: Math.round(amountRef.current * 100),
+      },
       requestPayerEmail: true,
     });
+    requestRef.current = pr;
 
+    let active = true;
     pr.canMakePayment().then((result) => {
-      if (result) setPaymentRequest(pr);
+      if (!active || !result) return;
+      syncTotal(pr, Math.round(amountRef.current * 100));
+      setPaymentRequest(pr);
     });
 
     pr.on("paymentmethod", async (ev) => {
@@ -107,15 +122,18 @@ function PaymentRequestButton({ amount }: { amount: number }) {
         ev.complete("fail");
       }
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stripe]);
+
+    return () => {
+      active = false;
+      if (requestRef.current === pr) requestRef.current = null;
+    };
+  }, [stripe, paymentLabel]);
 
   useEffect(() => {
-    if (!paymentRequest || amount < 1) return;
-    paymentRequest.update({
-      total: { label: paymentLabel, amount: Math.round(amount * 100) },
-    });
-  }, [paymentRequest, amount, paymentLabel]);
+    const pr = requestRef.current;
+    if (!pr || amount < 1) return;
+    syncTotal(pr, Math.round(amount * 100));
+  }, [amount, paymentLabel]);
 
   if (!paymentRequest) return null;
 

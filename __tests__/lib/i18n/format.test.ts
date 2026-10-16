@@ -1,47 +1,55 @@
-import { describe, expect, it } from "vitest";
-import { LOCALES, type Locale } from "../../../lib/i18n/locales";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import type { Locale } from "../../../lib/i18n/locales";
 import { currencyAffix, formatCurrency } from "../../../lib/i18n/format";
 
-const LOCALES_WITH_SUFFIX: Locale[] = LOCALES.map((locale) => locale.code).filter(
-  (code) => code !== "en"
-);
+const EXACT: Record<Locale, string> = {
+  en: "€25",
+  sk: "25 €",
+  cs: "25 €",
+  ro: "25 €",
+  de: "25 €",
+  sr: "25 €",
+  ru: "25 €",
+  mk: "25 €",
+  el: "25 €",
+};
 
 describe("formatCurrency", () => {
-  it("formats English as a euro prefix", () => {
-    expect(formatCurrency(25, "en").replace(/\s/g, "")).toBe("€25");
-    expect(formatCurrency(25, "en")).not.toContain("$");
-    expect(currencyAffix("en")).toEqual({ symbol: "€", position: "prefix" });
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 
-  it.each(["de", "sk"] as const)("formats %s as a euro suffix", (locale) => {
-    expect(formatCurrency(25, locale).replace(/\s/g, "")).toBe("25€");
-    expect(formatCurrency(25, locale)).not.toContain("$");
-    expect(currencyAffix(locale)).toEqual({ symbol: "€", position: "suffix" });
-  });
-
-  it.each(LOCALES.map((locale) => locale.code))(
-    "formats 25 as EUR for %s",
-    (locale) => {
-      const formatted = formatCurrency(locale === "en" ? 25 : 25, locale);
-      const compact = formatted.replace(/\s/g, "");
-      expect(compact).toContain("€");
-      expect(compact).toContain("25");
-      expect(formatted).not.toMatch(/\$|USD|dollar/i);
-      expect(currencyAffix(locale).symbol).toBe("€");
-      expect(currencyAffix(locale).position).toBe(locale === "en" ? "prefix" : "suffix");
+  it.each(Object.entries(EXACT) as [Locale, string][])(
+    "formats 25 EUR for %s as %s",
+    (locale, expected) => {
+      expect(formatCurrency(25, locale)).toBe(expected);
+      expect(formatCurrency(25, locale)).not.toMatch(/[\u00A0$]|USD/);
     }
   );
 
-  it("defaults to EUR when no currency is passed", () => {
-    for (const locale of LOCALES.map((entry) => entry.code)) {
-      expect(formatCurrency(25, locale)).toBe(formatCurrency(25, locale, "EUR"));
-    }
+  it("uses a normal space before a trailing euro sign", () => {
+    expect(formatCurrency(25, "mk")).toBe("25 €");
+    expect(formatCurrency(25, "de").codePointAt(2)).toBe(0x20);
+    expect(currencyAffix("en")).toEqual({ symbol: "€", position: "prefix" });
+    expect(currencyAffix("mk")).toEqual({ symbol: "€", position: "suffix" });
   });
 
-  it("puts the symbol after the number in every non-English locale", () => {
-    for (const locale of LOCALES_WITH_SUFFIX) {
-      expect(currencyAffix(locale).position).toBe("suffix");
-      expect(formatCurrency(10, locale).replace(/\s/g, "").endsWith("€")).toBe(true);
+  it("does not depend on Intl currency display", () => {
+    vi.spyOn(Intl, "NumberFormat").mockImplementation(() => {
+      throw new Error("currency formatting must not consult Intl");
+    });
+
+    expect(formatCurrency(25, "mk")).toBe("25 €");
+    expect(formatCurrency(25, "en")).toBe("€25");
+    expect(formatCurrency(1000, "de")).toBe("1000 €");
+    expect(formatCurrency(25.5, "sk")).toBe("25.50 €");
+    expect(currencyAffix("mk").position).toBe("suffix");
+  });
+
+  it("defaults to EUR when no currency is passed", () => {
+    for (const locale of Object.keys(EXACT) as Locale[]) {
+      expect(formatCurrency(25, locale)).toBe(formatCurrency(25, locale, "EUR"));
+      expect(formatCurrency(25, locale)).toBe(EXACT[locale]);
     }
   });
 });

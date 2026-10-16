@@ -14,9 +14,9 @@ const IMPACT_BASE: Record<Locale, string> = {
   ro: "Fiecare euro ajunge direct pe teren.",
   de: "Jeder Euro fließt direkt in die Arbeit vor Ort.",
   sr: "Сваки евро иде директно на терен.",
-  ru: "Каждый евро идёт напрямую в поле служения.",
+  ru: "Каждый евро идёт напрямую на служение.",
   mk: "Секое евро оди директно на терен.",
-  el: "Κάθε ευρώ πηγαίνει απευθείας στο πεδίο.",
+  el: "Κάθε ευρώ πηγαίνει απευθείας στο έργο της αποστολής.",
 };
 
 function collectStrings(value: unknown, path: string, hits: string[]) {
