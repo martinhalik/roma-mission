@@ -226,6 +226,112 @@ function groupTrails() {
   };
 }
 
+/**
+ * The gap from the punctuation (or the last marker, when there is none) to
+ * the next word, measured between glyph boxes. It has to sit within 1.5px of
+ * a normal word space on that line. A pair that is not on the same line — the
+ * note is open, or the word wrapped — has no horizontal gap to judge.
+ */
+function followingGaps() {
+  function glyphAt(node, index) {
+    const range = document.createRange();
+    range.setStart(node, index);
+    range.setEnd(node, index + 1);
+    return [...range.getClientRects()].find((box) => box.width > 0.2 && box.height > 0.2) || null;
+  }
+  function normalGap(line, top) {
+    const gaps = [];
+    const walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT);
+    let current;
+    while ((current = walker.nextNode())) {
+      if (current.parentElement?.closest("summary, .liturgy-note-body, .liturgy-punct")) continue;
+      const value = current.nodeValue || "";
+      for (let i = 0; i < value.length; i += 1) {
+        if (value[i] !== " " && value[i] !== "\u00a0") continue;
+        const prev = i > 0 && /\S/.test(value[i - 1]) ? glyphAt(current, i - 1) : null;
+        let j = i + 1;
+        while (j < value.length && !/\S/.test(value[j])) j += 1;
+        const next = j < value.length ? glyphAt(current, j) : null;
+        if (!prev || !next) continue;
+        if (Math.abs(prev.top - top) > 8 || Math.abs(next.top - top) > 8) continue;
+        gaps.push(next.left - prev.right);
+      }
+    }
+    if (!gaps.length) return null;
+    gaps.sort((a, b) => a - b);
+    return gaps[Math.floor(gaps.length / 2)];
+  }
+  function scan() {
+    const fails = [];
+    let pass = 0;
+    for (const cluster of document.querySelectorAll(".liturgy-cluster")) {
+      const line = cluster.closest(".liturgy-rom, .liturgy-sk");
+      const punct = cluster.querySelector(".liturgy-punct");
+      let anchor = null;
+      if (punct?.firstChild?.nodeType === Node.TEXT_NODE) {
+        const value = punct.firstChild.nodeValue || "";
+        const index = value.search(/\S/);
+        if (index >= 0) anchor = glyphAt(punct.firstChild, index);
+      }
+      if (!anchor) {
+        const summaries = [...cluster.querySelectorAll("summary")];
+        const last = summaries[summaries.length - 1];
+        if (last) {
+          const range = document.createRange();
+          range.selectNodeContents(last);
+          anchor = [...range.getClientRects()].find((box) => box.width > 0.2 && box.height > 0.2) || null;
+        }
+      }
+      let next = null;
+      let node = cluster.nextSibling;
+      while (node && line?.contains(node) && !next) {
+        const texts = [];
+        if (node.nodeType === Node.TEXT_NODE) texts.push(node);
+        else if (node.nodeType === Node.ELEMENT_NODE && !node.classList.contains("liturgy-note-body")) {
+          const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+          let current;
+          while ((current = walker.nextNode())) {
+            if (!current.parentElement?.closest("summary, .liturgy-note-body")) texts.push(current);
+          }
+        }
+        for (const text of texts) {
+          const value = text.nodeValue || "";
+          const index = value.search(/\S/);
+          if (index >= 0) next = glyphAt(text, index);
+          if (next) break;
+        }
+        if (!next) node = node.nextSibling;
+      }
+      if (!anchor || !next || Math.abs(next.top - anchor.top) > 8) {
+        pass += 1;
+        continue;
+      }
+      const gap = next.left - anchor.right;
+      const normal = normalGap(line, anchor.top);
+      if (normal == null || Math.abs(gap - normal) <= 1.5) pass += 1;
+      else {
+        fails.push({
+          n: [...cluster.querySelectorAll("summary")].map((item) => item.textContent.trim()).join("+"),
+          gap: Math.round(gap * 10) / 10,
+          normal: Math.round(normal * 10) / 10,
+        });
+      }
+    }
+    return { pass, fails };
+  }
+  const closed = scan();
+  for (const note of document.querySelectorAll(".liturgy-note")) note.open = true;
+  const opened = scan();
+  for (const note of document.querySelectorAll(".liturgy-note")) note.open = false;
+  return {
+    pass: closed.pass + opened.pass,
+    fails: [
+      ...closed.fails.map((fail) => ({ ...fail, open: false })),
+      ...opened.fails.map((fail) => ({ ...fail, open: true })),
+    ],
+  };
+}
+
 function textHunks(main, pr) {
   const hunks = [];
   let i = 0;
@@ -822,6 +928,7 @@ for (const engine of engines) {
     text: { exact: 0, after: 0, fail: 0 },
     word: tally(),
     trail: tally(),
+    follow: tally(),
   };
   const samples = [];
   const browser = await engine.launch.launch({ headless: true });
@@ -892,6 +999,13 @@ for (const engine of engines) {
           if (trails.fails.length) {
             failed = true;
             if (samples.length < 12) samples.push({ locale: entry.locale, width, trail: trails.fails.slice(0, 4) });
+          }
+          const follow = await page.evaluate(followingGaps);
+          counts.follow.pass += follow.pass;
+          counts.follow.fail += follow.fails.length;
+          if (follow.fails.length) {
+            failed = true;
+            if (samples.length < 12) samples.push({ locale: entry.locale, width, follow: follow.fails.slice(0, 4) });
           }
           if (width === widths[0]) {
             const prTexts = await page.evaluate(passageTexts);

@@ -158,10 +158,20 @@ html.light {
      * under the 24px minimum target size. Padding on an inline box enlarges
      * the hit area without pushing the lines of the Liturgy apart, which
      * vertical margin or a block display would. The left side is flush with
-     * the word; the right padding and the right margin stay.
+     * the word. The right padding is only the gap before another marker.
      */
     padding: 0.85em 0.4em 0.85em 0;
     margin: 0 -0.15em 0 0;
+  }
+  /*
+   * The right padding is the gap between two markers (21 then 22). After the
+   * last marker it would sit in front of the next word, on top of the word
+   * space, so that side is flush. Vertical padding still carries the tap
+   * target. The focus ring stays on this box, 2px with a 1px offset.
+   */
+  .liturgy-keep > .liturgy-note:last-of-type > summary {
+    padding-right: 0;
+    margin-right: 0;
   }
   /*
    * The first marker is flush with its word. A marker that follows another
@@ -201,13 +211,14 @@ html.light {
     white-space: nowrap;
   }
   /*
-   * The summary's right padding (0.4em) minus its right margin (-0.15em) is
-   * 2.5px at the marker's 10px size. That gap sits between the digit and the
-   * punctuation, so the comma was reading as "¹¹ ,Christos". Pull the
-   * punctuation back by the same amount. It stays at the line's font size.
+   * Chromium gives an inline comma after <details> a 3px advance; the same
+   * comma in the line is 4px, so ",Christos" looked closed up. inline-block
+   * keeps the full advance. The last marker is flush on the right, so the
+   * comma sits on the digit without a negative margin.
    */
   .liturgy-punct {
-    margin-left: -2.5px;
+    display: inline-block;
+    vertical-align: baseline;
   }
   .liturgy-note-body {
     display: none;

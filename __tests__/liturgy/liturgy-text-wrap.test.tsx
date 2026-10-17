@@ -108,8 +108,9 @@ describe("liturgy text wrapping", () => {
     expect(focus).toContain("outline: 2px solid var(--gold)");
     expect(focus).toContain("outline-offset: 1px");
     expect(css).toContain(".liturgy-note + .liturgy-note > summary");
-    const punct = css.slice(css.indexOf(".liturgy-punct {"), css.indexOf(".liturgy-punct {") + 80);
-    expect(punct).toContain("margin-left: -2.5px");
+    expect(css).toContain(".liturgy-keep > .liturgy-note:last-of-type > summary");
+    const punct = css.slice(css.indexOf(".liturgy-punct {"), css.indexOf(".liturgy-punct {") + 120);
+    expect(punct).toContain("display: inline-block");
   });
 
   it("gives the language chips a 44px target and a colour the selected state can override", () => {
