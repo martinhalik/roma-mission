@@ -1,10 +1,11 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Locale } from "@/lib/i18n";
 import { buildPath } from "@/lib/i18n/routes";
-import { LITURGY, chantPhrases, tokenizeLine } from "@/lib/liturgy/content";
+import { LITURGY, groupLine, tokenizeLine } from "@/lib/liturgy/content";
 import {
   jsonLdScriptProps,
   liturgyTextJsonLd,
@@ -51,21 +52,28 @@ function PhoneBreak() {
   );
 }
 
-function ChantText({ text }: { text: string }) {
-  const phrases = chantPhrases(text);
-  if (phrases.length <= 1) return <>{text.replace(/\*/g, "")}</>;
-  // Leading whitespace (usually the space after a footnote) is trimmed by
-  // chantPhrases, which glues the next phrase to the marker.
-  const leadBreak = /^\s/.test(text);
+function ChantText({ text, keepTrailingStar = false }: { text: string; keepTrailingStar?: boolean }) {
+  const phrases = text
+    .split("*")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  // A star at the end of this run is the phrase mark before a word that was
+  // peeled into the next footnote group. Keep that one. A star that simply
+  // ends a line stays omitted, which is how the line reads without the group.
+  const trailingStar = keepTrailingStar && /\*\s*$/.test(text);
+  if (phrases.length === 0) return text.includes("*") ? null : <>{text}</>;
+  if (phrases.length === 1 && !trailingStar) {
+    return <>{text.replace(/\*/g, "")}</>;
+  }
+  const lead = text.match(/^[ \u00a0]+/)?.[0] ?? "";
   return (
     <>
-      {leadBreak && <PhoneBreak />}
+      {lead}
       {phrases.map((phrase, i) => (
         <span key={i}>
           {phrase}
-          {i < phrases.length - 1 && (
+          {(i < phrases.length - 1 || trailingStar) && (
             <>
-              <PhoneBreak />
               <span
                 aria-hidden="true"
                 className="mx-1.5 text-[var(--text-muted)] select-none"
@@ -81,20 +89,29 @@ function ChantText({ text }: { text: string }) {
   );
 }
 
-function Note({ n, text }: { n: number; text: string }) {
+function footnoteText(n: number): string {
+  return LITURGY.footnotes.find((footnote) => footnote.n === n)?.text ?? "";
+}
+
+function NoteMarker({ n }: { n: number }) {
   return (
-    <details className="liturgy-note inline align-baseline">
+    <details className="liturgy-note align-baseline">
       <summary
         className="inline cursor-pointer align-super text-[10px] font-medium text-[var(--gold)] hover:underline"
         aria-label={`Translator's note ${n}`}
       >
         {n}
       </summary>
-      <span className="mt-1 mb-2 rounded border-l-2 border-[var(--gold)] bg-[var(--bg-elevated)] px-3 py-2 text-[13px] leading-relaxed text-[var(--text-secondary)]">
-        <span className="mr-1.5 font-medium text-[var(--gold)]">{n}.</span>
-        <span lang="sk">{text}</span>
-      </span>
     </details>
+  );
+}
+
+function NoteBody({ n }: { n: number }) {
+  return (
+    <span className="liturgy-note-body mt-1 mb-2 rounded border-l-2 border-[var(--gold)] bg-[var(--bg-elevated)] px-3 py-2 text-[13px] leading-relaxed text-[var(--text-secondary)]">
+      <span className="mr-1.5 font-medium text-[var(--gold)]">{n}.</span>
+      <span lang="sk">{footnoteText(n)}</span>
+    </span>
   );
 }
 
@@ -109,7 +126,7 @@ function Line({
   className: string;
   labelClassName: string;
 }) {
-  const tokens = tokenizeLine(line);
+  const pieces = groupLine(tokenizeLine(line));
   return (
     // `rom` is the macrolanguage code, as specified. `rmc` (Carpathian Romani)
     // would name this dialect exactly — change it here if you prefer it.
@@ -121,15 +138,30 @@ function Line({
           {line.label}
         </span>
       )}
-      {tokens.map((token, i) =>
-        token.type === "text" ? (
-          <ChantText key={i} text={token.value} />
-        ) : (
-          <Note
+      {pieces.map((piece, i) =>
+        piece.type === "text" ? (
+          <ChantText
             key={i}
-            n={token.n}
-            text={LITURGY.footnotes.find((f) => f.n === token.n)?.text ?? ""}
+            text={piece.value}
+            keepTrailingStar={pieces[i + 1]?.type === "keep"}
           />
+        ) : (
+          <Fragment key={i}>
+            {piece.space}
+            <span className="liturgy-cluster">
+              <span className="liturgy-keep">
+                {piece.word ? <ChantText text={piece.word} /> : null}
+                {piece.notes.map((n) => (
+                  <NoteMarker key={n} n={n} />
+                ))}
+                {piece.punct ? <span className="liturgy-punct">{piece.punct}</span> : null}
+              </span>
+              {piece.notes.map((n) => (
+                <NoteBody key={n} n={n} />
+              ))}
+            </span>
+            {piece.trail}
+          </Fragment>
         )
       )}
     </div>
@@ -286,7 +318,7 @@ export default function LiturgyTextPage({ locale }: { locale: Locale }) {
                   key={view.id}
                   htmlFor={view.id}
                   title={view.hint}
-                  className="rounded-full border border-[var(--border-strong)] px-3.5 py-1.5 text-[13px] font-medium text-[var(--text-secondary)] transition-colors hover:border-[var(--gold)] hover:text-[var(--text-primary)]"
+                  className="inline-flex min-h-11 items-center rounded-full border border-[var(--border-strong)] px-3.5 py-1.5 text-[13px] font-medium transition-colors hover:border-[var(--gold)]"
                 >
                   {view.label}
                 </label>
