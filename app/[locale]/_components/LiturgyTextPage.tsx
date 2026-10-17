@@ -37,21 +37,43 @@ const ROLE_LABEL: Record<Utterance["role"], string> = {
   reader: "text-[var(--text-secondary)]",
 };
 
+/**
+ * Break opportunity that exists only while the text column is phone-sized.
+ * On a wide column these runs already fit, and an always-on `<wbr>` would
+ * reflow lines that currently wrap on spaces. See `.liturgy-break` in
+ * globals.css.
+ */
+function PhoneBreak() {
+  return (
+    <span className="liturgy-break">
+      <wbr />
+    </span>
+  );
+}
+
 function ChantText({ text }: { text: string }) {
   const phrases = chantPhrases(text);
   if (phrases.length <= 1) return <>{text.replace(/\*/g, "")}</>;
+  // Leading whitespace (usually the space after a footnote) is trimmed by
+  // chantPhrases, which glues the next phrase to the marker.
+  const leadBreak = /^\s/.test(text);
   return (
     <>
+      {leadBreak && <PhoneBreak />}
       {phrases.map((phrase, i) => (
         <span key={i}>
           {phrase}
           {i < phrases.length - 1 && (
-            <span
-              aria-hidden="true"
-              className="mx-1.5 text-[var(--text-muted)] select-none"
-            >
-              *
-            </span>
+            <>
+              <PhoneBreak />
+              <span
+                aria-hidden="true"
+                className="mx-1.5 text-[var(--text-muted)] select-none"
+              >
+                *
+              </span>
+              <PhoneBreak />
+            </>
           )}
         </span>
       ))}
@@ -142,7 +164,7 @@ function UtteranceBlock({ utterance }: { utterance: Utterance }) {
           line={utterance.rom}
           lang="rom"
           labelClassName={label}
-          className={`liturgy-rom text-[17px] leading-[1.65] sm:text-[18px] ${
+          className={`liturgy-rom break-words text-[17px] leading-[1.65] sm:text-[18px] ${
             isPeople
               ? "font-semibold text-[var(--text-primary)]"
               : "font-normal text-[var(--text-primary)]"
@@ -154,7 +176,7 @@ function UtteranceBlock({ utterance }: { utterance: Utterance }) {
           line={utterance.sk}
           lang="sk"
           labelClassName="text-[var(--text-muted)]"
-          className={`liturgy-sk mt-1 ml-3 border-l border-[var(--border-default)] pl-3 text-[14px] leading-[1.6] text-[var(--text-secondary)] ${
+          className={`liturgy-sk break-words mt-1 ml-3 border-l border-[var(--border-default)] pl-3 text-[14px] leading-[1.6] text-[var(--text-secondary)] ${
             isPeople ? "font-medium" : "font-normal"
           }`}
         />
