@@ -73,6 +73,7 @@ export default async function LocaleSlugPage({
           posts={merged}
           telegramStats={telegramFeed.stats}
           instagramStats={instagramFeed.stats}
+          now={Date.now()}
         />
       );
     }
