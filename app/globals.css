@@ -167,6 +167,15 @@ html.light {
     display: none;
     content: "";
   }
+  /*
+   * Focus stays on the summary. An open note is display: contents, which
+   * draws no box, so a ring on the <details> would vanish. The same 2px
+   * gold outline the language chips use is drawn on the marker itself.
+   */
+  .liturgy-note > summary:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
   .liturgy-note[open] > summary {
     color: var(--text-primary);
   }

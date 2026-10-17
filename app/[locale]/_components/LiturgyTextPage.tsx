@@ -82,7 +82,7 @@ function ChantText({ text }: { text: string }) {
 
 function Note({ n, text }: { n: number; text: string }) {
   return (
-    <details className="liturgy-note inline align-baseline">
+    <details className="liturgy-note align-baseline">
       <summary
         className="inline cursor-pointer align-super text-[10px] font-medium text-[var(--gold)] hover:underline"
         aria-label={`Translator's note ${n}`}

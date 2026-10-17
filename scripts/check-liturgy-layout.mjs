@@ -7,12 +7,19 @@
  * widens the layout viewport until scrollWidth and clientWidth match again.
  * visualViewport.width stays at the device width, so that is the comparison.
  * Firefox and WebKit use the same widths. Not part of `npm test`.
+ *
+ * Also, once per text page: the marker's keyboard focus draws a real outline
+ * on the <summary>, no marker has whitespace before it, and the accessibility
+ * tree still has each marker's name and expanded state. Chromium reads that
+ * tree over CDP. Firefox and WebKit are launched headed so AT-SPI can.
  */
+import { spawnSync } from "node:child_process";
 import { chromium, firefox, webkit } from "playwright-core";
 
 const base = process.env.BASE_URL ?? "http://127.0.0.1:3000";
 const widths = [320, 360, 375, 390, 414, 768];
 
+const onlyLocales = process.env.LITURGY_LOCALES?.split(",").filter(Boolean);
 const pages = [
   { locale: "en", about: "/en/liturgy", text: "/en/liturgy/text" },
   { locale: "sk", about: "/sk/liturgia", text: "/sk/liturgia/text" },
@@ -23,7 +30,7 @@ const pages = [
   { locale: "ru", about: "/ru/liturgiya", text: "/ru/liturgiya/tekst" },
   { locale: "mk", about: "/mk/liturgija", text: "/mk/liturgija/tekst" },
   { locale: "el", about: "/el/leitourgia", text: "/el/leitourgia/keimeno" },
-];
+].filter((entry) => !onlyLocales || onlyLocales.includes(entry.locale));
 
 function parseColor(color) {
   const match = color.match(/rgba?\(([^)]+)\)/);
@@ -134,6 +141,220 @@ function scrollAndNotes() {
   };
 }
 
+// Whitespace means a text node that ends in a space, not the marker's own
+// padding. A neighbouring footnote is an element, so its body is not "before".
+function markerFocusAndGap() {
+  function whitespaceBefore(note) {
+    let node = note.previousSibling;
+    while (node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const value = node.nodeValue ?? "";
+        if (!value.length) {
+          node = node.previousSibling;
+          continue;
+        }
+        return /\s$/.test(value);
+      }
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.classList.contains("liturgy-note")) return false;
+        const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+        let last = null;
+        let current;
+        while ((current = walker.nextNode())) last = current;
+        if (!last || !(last.nodeValue || "").length) {
+          node = node.previousSibling;
+          continue;
+        }
+        return /\s$/.test(last.nodeValue);
+      }
+      node = node.previousSibling;
+    }
+    return false;
+  }
+
+  const notes = [...document.querySelectorAll(".liturgy-note")];
+  const gapFails = [];
+  let gapPass = 0;
+  const focusFails = [];
+  let focusPass = 0;
+  for (const note of notes) {
+    const summary = note.querySelector("summary");
+    if (whitespaceBefore(note)) gapFails.push(summary.textContent.trim());
+    else gapPass += 1;
+    for (const open of [false, true]) {
+      note.open = open;
+      summary.focus({ focusVisible: true });
+      const style = getComputedStyle(summary);
+      const width = parseFloat(style.outlineWidth);
+      const visible =
+        summary.matches(":focus-visible") && width > 0 && style.outlineStyle !== "none";
+      const onSummary = document.activeElement === summary;
+      if (!onSummary || !visible) {
+        focusFails.push({
+          n: summary.textContent.trim(),
+          open,
+          onSummary,
+          active: document.activeElement?.tagName ?? null,
+          width: style.outlineWidth,
+          outlineStyle: style.outlineStyle,
+        });
+      } else {
+        focusPass += 1;
+      }
+    }
+    note.open = false;
+  }
+  const labels = notes.map((note) => note.querySelector("summary").getAttribute("aria-label"));
+  return { gapPass, gapFails, focusPass, focusFails, labels };
+}
+
+function sameMultiset(a, b) {
+  const count = (values) => {
+    const map = new Map();
+    for (const value of values) map.set(value, (map.get(value) ?? 0) + 1);
+    return map;
+  };
+  const left = count(a);
+  const right = count(b);
+  if (left.size !== right.size) return false;
+  for (const [key, value] of left) if (right.get(key) !== value) return false;
+  return true;
+}
+
+// Chrome names a <summary> DisclosureTriangle. That is its disclosure button:
+// the accessible name is the aria-label and expanded follows <details open>.
+// Firefox exposes a push button. WebKitGTK's summary role is ATK_ROLE_UNKNOWN
+// (the same on main) while the name and expanded state still track the note.
+function axRoleOk(engine, node) {
+  if (engine === "chromium") return node.role === "DisclosureTriangle" || node.role === "button";
+  if (engine === "firefox") return node.role === "push button";
+  return (node.role === "unknown" && node.tag === "summary") || node.role === "push button";
+}
+
+async function chromiumAx(cdp) {
+  const { nodes } = await cdp.send("Accessibility.getFullAXTree");
+  return nodes
+    .filter((node) => !node.ignored && String(node.name?.value || "").startsWith("Translator's note "))
+    .map((node) => ({
+      name: node.name.value,
+      role: node.role?.value ?? "",
+      expanded: node.properties?.find((prop) => prop.name === "expanded")?.value?.value === true,
+      focusable: node.properties?.find((prop) => prop.name === "focusable")?.value?.value === true,
+      tag: "summary",
+    }));
+}
+
+function platformAx(appName) {
+  const script = `
+import json, sys, pyatspi
+app_name = sys.argv[1]
+desk = pyatspi.Registry.getDesktop(0)
+app = None
+names = []
+for i in range(desk.childCount):
+    item = desk.getChildAtIndex(i)
+    names.append(item.name)
+    if item.name == app_name:
+        app = item
+if app is None:
+    print(json.dumps({"error": "missing " + app_name, "apps": names}))
+    raise SystemExit(0)
+found = []
+def walk(node, depth=0):
+    if depth > 40:
+        return
+    try:
+        name = node.name or ""
+        count = node.childCount
+    except Exception:
+        return
+    if name.startswith("Translator's note "):
+        states = [pyatspi.stateToString(s) for s in node.getState().getStates()]
+        attrs = []
+        try:
+            attrs = list(node.getAttributes())
+        except Exception:
+            pass
+        tag = ""
+        for attr in attrs:
+            if attr.startswith("tag:"):
+                tag = attr.split(":", 1)[1]
+        found.append({
+            "name": name,
+            "role": node.getRoleName(),
+            "expanded": "expanded" in states,
+            "focusable": "focusable" in states,
+            "tag": tag,
+        })
+    for i in range(count):
+        try:
+            walk(node.getChildAtIndex(i), depth + 1)
+        except Exception:
+            pass
+walk(app)
+print(json.dumps(found))
+`;
+  const result = spawnSync("python3", ["-c", script, appName], { encoding: "utf8" });
+  if (result.status !== 0) {
+    return { error: (result.stderr || result.stdout || "atspi failed").slice(0, 400) };
+  }
+  try {
+    return JSON.parse(result.stdout);
+  } catch {
+    return { error: (result.stdout || "unreadable atspi").slice(0, 400) };
+  }
+}
+
+function compareAx(engine, labels, nodes, open) {
+  if (!Array.isArray(nodes)) return { pass: 0, fails: [{ open, error: nodes.error || "no tree" }] };
+  const fails = [];
+  if (!sameMultiset(nodes.map((node) => node.name), labels)) {
+    fails.push({
+      open,
+      error: "names",
+      expected: labels.length,
+      got: nodes.length,
+      sample: nodes.slice(0, 3),
+    });
+  }
+  const byName = new Map();
+  for (const node of nodes) {
+    const list = byName.get(node.name) ?? [];
+    list.push(node);
+    byName.set(node.name, list);
+  }
+  let pass = 0;
+  for (const label of labels) {
+    const list = byName.get(label);
+    const node = list?.shift();
+    if (!node || !axRoleOk(engine, node) || node.expanded !== open || !node.focusable) {
+      fails.push({
+        open,
+        label,
+        role: node?.role ?? null,
+        tag: node?.tag ?? null,
+        expanded: node?.expanded ?? null,
+        focusable: node?.focusable ?? null,
+      });
+    } else {
+      pass += 1;
+    }
+  }
+  return { pass, fails };
+}
+
+async function readAx(engine, page, cdp) {
+  if (engine === "chromium") return chromiumAx(cdp);
+  const app = engine === "firefox" ? "Firefox" : "MiniBrowser";
+  let last = [];
+  for (let attempt = 0; attempt < 8; attempt += 1) {
+    last = platformAx(app);
+    if (Array.isArray(last) && last.length) return last;
+    await page.waitForTimeout(250);
+  }
+  return last;
+}
+
 async function measureContrast(page) {
   return page.evaluate(() => {
     const opaque = (node) => {
@@ -186,12 +407,61 @@ const engines = [
 const report = {};
 let failed = false;
 
+async function checkAx(engine, page, cdp, entry, counts, samples) {
+  const closed = await page.evaluate(() => {
+    const notes = [...document.querySelectorAll(".liturgy-note")];
+    for (const note of notes) note.open = false;
+    return notes.map((note) => note.querySelector("summary").getAttribute("aria-label"));
+  });
+  let nodes = await readAx(engine.name, page, cdp);
+  let result = compareAx(engine.name, closed, nodes, false);
+  if (result.fails.length && engine.name !== "chromium") {
+    for (let attempt = 0; attempt < 6 && result.fails.length; attempt += 1) {
+      await page.waitForTimeout(300);
+      nodes = await readAx(engine.name, page, cdp);
+      result = compareAx(engine.name, closed, nodes, false);
+    }
+  }
+  counts.ax.pass += result.pass;
+  counts.ax.fail += result.fails.length;
+  if (result.fails.length) {
+    failed = true;
+    if (samples.length < 16) samples.push({ locale: entry.locale, ax: result.fails.slice(0, 2) });
+  }
+
+  const opened = await page.evaluate(() => {
+    const notes = [...document.querySelectorAll(".liturgy-note")];
+    for (const note of notes) note.open = true;
+    return notes.map((note) => note.querySelector("summary").getAttribute("aria-label"));
+  });
+  nodes = await readAx(engine.name, page, cdp);
+  result = compareAx(engine.name, opened, nodes, true);
+  if (result.fails.length && engine.name !== "chromium") {
+    for (let attempt = 0; attempt < 6 && result.fails.length; attempt += 1) {
+      await page.waitForTimeout(300);
+      nodes = await readAx(engine.name, page, cdp);
+      result = compareAx(engine.name, opened, nodes, true);
+    }
+  }
+  counts.ax.pass += result.pass;
+  counts.ax.fail += result.fails.length;
+  if (result.fails.length) {
+    failed = true;
+    if (samples.length < 16) samples.push({ locale: entry.locale, axOpen: result.fails.slice(0, 2) });
+  }
+  await page.evaluate(() => {
+    for (const note of document.querySelectorAll(".liturgy-note")) note.open = false;
+  });
+}
+
 for (const engine of engines) {
-  const counts = { scroll: tally(), marker: tally(), chip: tally() };
+  const counts = { scroll: tally(), marker: tally(), chip: tally(), focus: tally(), gap: tally(), ax: tally() };
   const samples = [];
   const browser = await engine.launch.launch({ headless: true });
   const context = await browser.newContext(engine.context);
   const page = await context.newPage();
+  const cdp = engine.name === "chromium" ? await context.newCDPSession(page) : null;
+  if (cdp) await cdp.send("Accessibility.enable");
 
   if (engine.name === "chromium") {
     report.contrast = {};
@@ -249,12 +519,44 @@ for (const engine of engines) {
               samples.push({ locale: entry.locale, width, chip });
             }
           }
+          if (width === 375) {
+            const focus = await page.evaluate(markerFocusAndGap);
+            counts.focus.pass += focus.focusPass;
+            counts.focus.fail += focus.focusFails.length;
+            counts.gap.pass += focus.gapPass;
+            counts.gap.fail += focus.gapFails.length;
+            if (focus.focusFails.length || focus.gapFails.length) {
+              failed = true;
+              samples.push({
+                locale: entry.locale,
+                focus: focus.focusFails.slice(0, 2),
+                gap: focus.gapFails.slice(0, 4),
+              });
+            }
+            if (cdp) await checkAx(engine, page, cdp, entry, counts, samples);
+          }
         }
       }
     }
   }
 
   await browser.close();
+
+  if (engine.name !== "chromium") {
+    const headed = await engine.launch.launch({
+      headless: false,
+      env: { ...process.env, GTK_MODULES: "gail:atk-bridge", GNOME_ACCESSIBILITY: "1" },
+      ...(engine.name === "firefox" ? { firefoxUserPrefs: { "accessibility.force_disabled": 0 } } : {}),
+    });
+    const headedContext = await headed.newContext({ viewport: { width: 375, height: 812 } });
+    const headedPage = await headedContext.newPage();
+    for (const entry of pages) {
+      await goto(headedPage, entry.text);
+      await checkAx(engine, headedPage, null, entry, counts, samples);
+    }
+    await headed.close();
+  }
+
   report[engine.name] = { counts, samples };
   console.log(engine.name, JSON.stringify(counts));
   if (samples.length) console.log(" samples", JSON.stringify(samples));

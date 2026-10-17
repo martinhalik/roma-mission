@@ -51,6 +51,14 @@ describe("liturgy text wrapping", () => {
     const marker = html.match(/Pokeresštašno<\/span><details[\s\S]*?<\/details>/);
     expect(marker).toBeTruthy();
     expect(marker![0]).not.toContain("<wbr");
+    // `inline` is a utility and would beat `.liturgy-note[open] { display: contents }`.
+    const details = [...line!.querySelectorAll("details")].find(
+      (el) => el.querySelector("summary")?.textContent === "11"
+    );
+    expect(details?.className.split(/\s+/)).not.toContain("inline");
+    expect(details?.querySelector("summary")?.getAttribute("aria-label")).toBe(
+      "Translator's note 11"
+    );
   });
 
   it("does not let break-word split the footnote marker", () => {
@@ -68,6 +76,12 @@ describe("liturgy text wrapping", () => {
       css.indexOf(".liturgy-note[open] {") + 180
     );
     expect(open).toContain("display: contents");
+    const focus = css.slice(
+      css.indexOf(".liturgy-note > summary:focus-visible"),
+      css.indexOf(".liturgy-note > summary:focus-visible") + 240
+    );
+    expect(focus).toContain("outline: 2px solid var(--gold)");
+    expect(focus).toContain("outline-offset: 2px");
   });
 
   it("gives the language chips a 44px target and a colour the selected state can override", () => {
