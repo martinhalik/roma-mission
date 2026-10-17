@@ -290,11 +290,11 @@ export default function HomePage() {
 
       {/* ── Testimonial — Laco ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
-        <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
           {/* Clickable photo with play overlay */}
           <button
             onClick={() => setActiveVideoId(LACO_VIDEO_ID)}
-            className="w-full md:w-[380px] h-[240px] md:h-[480px] bg-[var(--bg-elevated)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden relative group cursor-pointer"
+            className="w-full lg:w-[380px] h-[240px] md:h-[480px] bg-[var(--bg-elevated)] border border-[var(--border-default)] lg:shrink-0 overflow-hidden relative group cursor-pointer"
             aria-label={t("home.testimony.watchAria")}
           >
             <div
@@ -306,7 +306,7 @@ export default function HomePage() {
             </div>
           </button>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 min-w-0">
             <div className="mb-[20px]">
               <SectionLabel text={t("home.testimony.label")} />
             </div>
