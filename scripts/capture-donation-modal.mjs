@@ -20,6 +20,7 @@ const pages = [
     oneTime: "ONE-TIME",
     title: "Give to Roma Mission",
     custom: "Custom amount",
+    belowMin: "0.25",
   },
   {
     locale: "sk",
@@ -38,6 +39,7 @@ const pages = [
     oneTime: "JEDNORÁZOVĚ",
     title: "Darujte na Roma Mission",
     custom: "Vlastní částka",
+    belowMin: "10",
   },
   {
     locale: "ro",
@@ -65,6 +67,7 @@ const pages = [
     oneTime: "ЈЕДНОКРАТНО",
     title: "Дарујте Роминској мисији",
     custom: "Прилагођен износ",
+    belowMin: "10",
   },
   {
     locale: "ru",
@@ -83,6 +86,7 @@ const pages = [
     oneTime: "ЕДНОКРАТНО",
     title: "Донирајте на Roma Mission",
     custom: "Сопствен износ",
+    belowMin: "10",
   },
   {
     locale: "el",
@@ -95,7 +99,11 @@ const pages = [
   },
 ];
 
-const widths = [375, 1280];
+const only = new Set(
+  (process.env.ONLY ?? "").split(",").map((item) => item.trim()).filter(Boolean),
+);
+const widths = (process.env.WIDTHS ?? "375,1280").split(",").map((item) => Number(item.trim()));
+const shots = process.env.SHOTS ?? "all";
 
 const browser = await chromium.launch({
   executablePath: "/usr/local/bin/google-chrome",
@@ -114,24 +122,27 @@ async function shootModal(entry, width, suffix, url) {
   const title = page.getByRole("heading", { name: entry.title, exact: true });
   await title.waitFor();
 
-  const monthlyFile = path.join(
-    outRoot,
-    phase,
-    `${suffix}-${width}-monthly.png`,
-  );
-  await page.screenshot({ path: monthlyFile, fullPage: false });
-  console.log("wrote", monthlyFile);
+  if (shots === "all") {
+    const monthlyFile = path.join(
+      outRoot,
+      phase,
+      `${suffix}-${width}-monthly.png`,
+    );
+    await page.screenshot({ path: monthlyFile, fullPage: false });
+    console.log("wrote", monthlyFile);
 
-  await page.getByRole("button", { name: entry.oneTime, exact: true }).click();
-  const oneTimeFile = path.join(
-    outRoot,
-    phase,
-    `${suffix}-${width}-onetime.png`,
-  );
-  await page.screenshot({ path: oneTimeFile, fullPage: false });
-  console.log("wrote", oneTimeFile);
+    await page.getByRole("button", { name: entry.oneTime, exact: true }).click();
+    const oneTimeFile = path.join(
+      outRoot,
+      phase,
+      `${suffix}-${width}-onetime.png`,
+    );
+    await page.screenshot({ path: oneTimeFile, fullPage: false });
+    console.log("wrote", oneTimeFile);
 
-  await page.getByRole("button", { name: entry.monthly, exact: true }).click();
+    await page.getByRole("button", { name: entry.monthly, exact: true }).click();
+  }
+
   const input = page.getByPlaceholder(entry.custom);
   await input.click();
   await input.fill("1250");
@@ -143,17 +154,29 @@ async function shootModal(entry, width, suffix, url) {
   await page.screenshot({ path: customFile, fullPage: false });
   console.log("wrote", customFile);
 
+  if (entry.belowMin) {
+    await input.fill(entry.belowMin);
+    const belowFile = path.join(
+      outRoot,
+      phase,
+      `${suffix}-${width}-below-min.png`,
+    );
+    await page.screenshot({ path: belowFile, fullPage: false });
+    console.log("wrote", belowFile);
+  }
+
   await page.keyboard.press("Escape");
   await title.waitFor({ state: "detached" });
 }
 
 for (const entry of pages) {
+  if (only.size > 0 && !only.has(entry.locale)) continue;
   for (const width of widths) {
     await shootModal(entry, width, entry.locale, entry.path);
   }
 }
 
-if (phase === "after") {
+if (phase === "after" && shots === "all" && only.size === 0) {
   const en = pages[0];
   for (const width of widths) {
     await page.setViewportSize({ width, height: 900 });

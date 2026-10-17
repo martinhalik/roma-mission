@@ -103,3 +103,49 @@ export function formatDate(date: Date | string, locale: Locale): string {
 export function formatNumber(value: number, locale: Locale): string {
   return new Intl.NumberFormat(BCP47[locale]).format(value);
 }
+
+/**
+ * Fills `{amount}` and drops a sentence period that would double an
+ * abbreviation already ending in "." (`50 дин.`, `30 ден.`).
+ */
+export function sentenceAfterAmount(template: string, amount: string): string {
+  const text = template.replaceAll("{amount}", amount);
+  if (amount.endsWith(".") && text.endsWith("..")) return text.slice(0, -1);
+  return text;
+}
+
+/**
+ * Reads a custom donation amount. Locales whose decimal mark is a comma
+ * accept either "," or "." (the last separator wins when both appear, so
+ * `1.250,50` and `1,250.50` are both 1250.50). English keeps "," as a
+ * thousands separator. Spaces are ignored. Anything that is not a single
+ * non-negative number becomes 0.
+ */
+export function parseLocalizedAmount(raw: string, locale: Locale): number {
+  const trimmed = raw.trim().replace(/[\s\u00A0]/g, "");
+  if (!trimmed) return 0;
+
+  const decimal = DIGIT_SEPARATORS[locale].decimal;
+  let normalized = trimmed;
+  const hasComma = trimmed.includes(",");
+  const hasDot = trimmed.includes(".");
+
+  if (decimal === ",") {
+    if (hasComma && hasDot) {
+      if (trimmed.lastIndexOf(",") > trimmed.lastIndexOf(".")) {
+        normalized = trimmed.replace(/\./g, "").replace(",", ".");
+      } else {
+        normalized = trimmed.replace(/,/g, "");
+      }
+    } else if (hasComma) {
+      if (trimmed.split(",").length > 2) return 0;
+      normalized = trimmed.replace(",", ".");
+    }
+  } else {
+    normalized = trimmed.replace(/,/g, "");
+  }
+
+  if (!/^\d+(\.\d+)?$/.test(normalized)) return 0;
+  const value = Number(normalized);
+  return Number.isFinite(value) ? value : 0;
+}

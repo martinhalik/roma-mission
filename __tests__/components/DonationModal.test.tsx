@@ -6,7 +6,7 @@ import DonationModal from "../../components/DonationModal";
 import LanguageProvider from "../../components/LanguageProvider";
 import { DICTIONARIES } from "../../lib/i18n";
 import { LOCALES, type Locale } from "../../lib/i18n/locales";
-import { formatCurrency } from "../../lib/i18n/format";
+import { formatCurrency, sentenceAfterAmount } from "../../lib/i18n/format";
 import {
   CURRENCIES,
   defaultCurrency,
@@ -389,6 +389,82 @@ describe("DonationModal", () => {
     const input = screen.getByPlaceholderText("Custom amount");
     await user.type(input, "0.25");
     expect(screen.getByRole("alert")).toHaveTextContent("Minimum amount is $0.50.");
+    expect(screen.getByRole("alert").textContent).not.toMatch(/\.\./);
     expect(screen.getByRole("button", { name: "GIVE $0.25/MO" })).toBeDisabled();
+  });
+
+  it("uses a decimal text field with the currency minimum and no number spinner", () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const input = screen.getByPlaceholderText("Custom amount");
+    expect(input).toHaveAttribute("type", "text");
+    expect(input).toHaveAttribute("inputmode", "decimal");
+    expect(input).toHaveAttribute("min", "0.5");
+    expect(input).toHaveAttribute("step", "0.01");
+  });
+
+  it.each([
+    ["sr", "10", "Минимални износ је 50 дин."],
+    ["mk", "10", "Минималниот износ е 30 ден."],
+  ] as const)(
+    "minimum message in %s does not double the abbreviation period",
+    async (locale, typed, expected) => {
+      const dict = DICTIONARIES[locale];
+      render(
+        <LanguageProvider locale={locale}>
+          <DonationModal isOpen={true} onClose={onClose} />
+        </LanguageProvider>
+      );
+      await user.type(screen.getByPlaceholderText(dict.donation.customPlaceholder), typed);
+      expect(screen.getByRole("alert").textContent).toBe(expected);
+      expect(screen.getByRole("alert").textContent).not.toMatch(/\.\./);
+    },
+  );
+
+  it.each(LOCALES.map((locale) => locale.code))(
+    "shows a single-period minimum message in %s",
+    async (locale: Locale) => {
+      const dict = DICTIONARIES[locale];
+      const currency = defaultCurrency(locale);
+      const typed = currency === "czk" ? "10" : currency === "ron" ? "1" : currency === "rsd" || currency === "mkd" ? "10" : "0.25";
+      const expected = sentenceAfterAmount(
+        dict.donation.amountTooLow,
+        formatCurrency(CURRENCIES[currency].minimum, locale, currency),
+      );
+      render(
+        <LanguageProvider locale={locale}>
+          <DonationModal isOpen={true} onClose={onClose} />
+        </LanguageProvider>
+      );
+      const input = screen.getByPlaceholderText(dict.donation.customPlaceholder);
+      expect(input).toHaveAttribute("min", String(CURRENCIES[currency].minimum));
+      expect(input).toHaveAttribute("step", "0.01");
+      await user.type(input, typed);
+      expect(screen.getByRole("alert").textContent).toBe(expected);
+      expect(expected).not.toMatch(/\.\./);
+    },
+  );
+
+  it("accepts a comma or a dot as the decimal separator in Slovak", async () => {
+    const dict = DICTIONARIES.sk;
+    render(
+      <LanguageProvider locale="sk">
+        <DonationModal isOpen={true} onClose={onClose} />
+      </LanguageProvider>
+    );
+    const input = screen.getByPlaceholderText(dict.donation.customPlaceholder);
+    await user.type(input, "1,50");
+    expect(
+      screen.getByRole("button", {
+        name: dict.donation.giveMonthly.replace("{amount}", "1,50 €"),
+      })
+    ).toBeEnabled();
+
+    await user.clear(input);
+    await user.type(input, "1.50");
+    expect(
+      screen.getByRole("button", {
+        name: dict.donation.giveMonthly.replace("{amount}", "1,50 €"),
+      })
+    ).toBeEnabled();
   });
 });

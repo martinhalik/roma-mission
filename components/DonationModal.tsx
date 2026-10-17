@@ -24,7 +24,7 @@ import {
   type DonationCurrency,
 } from "@/lib/donations";
 import { GEO_COUNTRY_COOKIE } from "@/lib/geo";
-import { currencyAffix, formatCurrency } from "@/lib/i18n/format";
+import { currencyAffix, formatCurrency, parseLocalizedAmount, sentenceAfterAmount } from "@/lib/i18n/format";
 import type { Locale } from "@/lib/i18n/locales";
 import { buildPath } from "@/lib/i18n/routes";
 
@@ -228,7 +228,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const onetimeAmounts = onetimePresets(currency);
 
   const finalAmount = isCustom
-    ? parseFloat(customAmount) || 0
+    ? parseLocalizedAmount(customAmount, locale)
     : selectedAmount;
 
   const showSwitcher = locale === "en" && switcherReady && visitorCountry !== "US";
@@ -481,9 +481,17 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                   {affix.symbol}
                 </span>
               )}
+              {/*
+                Every charge currency has two decimal places, so this stays a
+                decimal field (step 0.01) rather than a whole-unit numeric one.
+                type="text" plus inputMode="decimal" drops the native number
+                spinner and lets comma-decimal locales type either separator.
+              */}
               <input
-                type="number"
-                min="1"
+                type="text"
+                inputMode="decimal"
+                min={minimum}
+                step="0.01"
                 placeholder={t("donation.customPlaceholder")}
                 value={customAmount}
                 onChange={(e) => {
@@ -508,9 +516,10 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             {/* Impact line */}
             {belowMinimum && (
               <p role="alert" className="text-[12px] text-red-400">
-                {t("donation.amountTooLow", {
-                  amount: formatCurrency(minimum, locale, currency),
-                })}
+                {sentenceAfterAmount(
+                  t("donation.amountTooLow"),
+                  formatCurrency(minimum, locale, currency),
+                )}
               </p>
             )}
 
