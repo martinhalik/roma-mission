@@ -1355,6 +1355,8 @@ const de: Dictionary = {
     impactBase: "Jeder Euro fließt direkt in die Arbeit vor Ort.",
     impactBaseEur: "Jeder Euro fließt direkt in die Arbeit vor Ort.",
     amountTooLow: "Der Mindestbetrag ist {amount}.",
+    amountInvalid: "Geben Sie einen Betrag wie 25 oder 25,50 ein.",
+    amountTooHigh: "Der Höchstbetrag ist {amount}.",
     currencyLabel: "Währung",
     error: "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
     preparing: "WIRD VORBEREITET...",

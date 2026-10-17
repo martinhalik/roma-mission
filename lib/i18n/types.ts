@@ -982,6 +982,8 @@ export interface Dictionary {
     impactBase: string;
     impactBaseEur: string;
     amountTooLow: string;
+    amountInvalid: string;
+    amountTooHigh: string;
     currencyLabel: string;
     error: string;
     preparing: string;

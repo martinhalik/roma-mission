@@ -1350,6 +1350,8 @@ const sk: Dictionary = {
     impactBase: "Každé euro ide priamo do terénu.",
     impactBaseEur: "Každé euro ide priamo do terénu.",
     amountTooLow: "Minimálna suma je {amount}.",
+    amountInvalid: "Zadajte sumu ako 25 alebo 25,50.",
+    amountTooHigh: "Maximálna suma je {amount}.",
     currencyLabel: "Mena",
     error: "Niečo sa pokazilo. Skúste to prosím znova.",
     preparing: "PRIPRAVUJE SA...",

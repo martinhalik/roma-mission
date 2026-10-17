@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { resolveCharge, toMinorUnits, type DonationCurrency } from "@/lib/donations";
+import { resolveCharge, type DonationCurrency } from "@/lib/donations";
 import {
   countryOverrideAllowed,
   GEO_COUNTRY_COOKIE,
@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_URL ?? "http://localhost:3000";
-  const unitAmount = toMinorUnits(resolved.amount, resolved.currency);
+  const unitAmount = resolved.minor;
   const lineItem = body.isMonthly
     ? buildMonthlyLineItem(unitAmount, resolved.currency)
     : buildOneTimeLineItem(unitAmount, resolved.currency);

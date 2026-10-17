@@ -92,4 +92,16 @@ describe("POST /api/stripe/payment-intent", () => {
     );
     expect(us.status).toBe(400);
   });
+
+  it("parses the wallet amount with the same rules and rejects the maximum", async () => {
+    const res = await POST(makeRequest({ amount: "25,5", locale: "en", currency: "usd" }));
+    expect(res.status).toBe(200);
+    expect(mockCreate).toHaveBeenCalledWith(expect.objectContaining({ amount: 2550, currency: "usd" }));
+
+    mockCreate.mockClear();
+    const max = await POST(makeRequest({ amount: "99999999999", locale: "mk", currency: "mkd" }));
+    expect(max.status).toBe(400);
+    expect(await max.json()).toEqual({ error: "Amount above maximum" });
+    expect(mockCreate).not.toHaveBeenCalled();
+  });
 });

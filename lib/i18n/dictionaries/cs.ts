@@ -1351,6 +1351,8 @@ const cs: Dictionary = {
     impactBase: "Každá koruna jde přímo do terénu.",
     impactBaseEur: "Každá koruna jde přímo do terénu.",
     amountTooLow: "Minimální částka je {amount}.",
+    amountInvalid: "Zadejte částku jako 25 nebo 25,50.",
+    amountTooHigh: "Maximální částka je {amount}.",
     currencyLabel: "Měna",
     error: "Něco se pokazilo. Zkuste to prosím znovu.",
     preparing: "PŘIPRAVUJE SE...",

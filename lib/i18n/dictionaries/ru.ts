@@ -1355,6 +1355,8 @@ const ru: Dictionary = {
     impactBase: "Каждый доллар идёт напрямую на служение.",
     impactBaseEur: "Каждый доллар идёт напрямую на служение.",
     amountTooLow: "Минимальная сумма — {amount}.",
+    amountInvalid: "Введите сумму, например 25 или 25,50.",
+    amountTooHigh: "Максимальная сумма — {amount}.",
     currencyLabel: "Валюта",
     error: "Что-то пошло не так. Пожалуйста, попробуйте ещё раз.",
     preparing: "ПОДГОТОВКА...",

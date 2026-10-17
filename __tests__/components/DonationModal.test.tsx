@@ -6,7 +6,8 @@ import DonationModal from "../../components/DonationModal";
 import LanguageProvider from "../../components/LanguageProvider";
 import { DICTIONARIES } from "../../lib/i18n";
 import { LOCALES, type Locale } from "../../lib/i18n/locales";
-import { formatCurrency, sentenceAfterAmount } from "../../lib/i18n/format";
+import { formatCurrency, formatCurrencyFromMinor, sentenceAfterAmount } from "../../lib/i18n/format";
+import { MAX_DONATION_MINOR } from "../../lib/donation-amount";
 import {
   CURRENCIES,
   defaultCurrency,
@@ -467,4 +468,124 @@ describe("DonationModal", () => {
       })
     ).toBeEnabled();
   });
+
+  it("uses a 16px field and a muted disabled control", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const input = screen.getByPlaceholderText("Custom amount");
+    expect(input.className).toContain("text-[16px]");
+    await user.type(input, "0.25");
+    const button = screen.getByRole("button", { name: "GIVE $0.25/MO" });
+    expect(button).toBeDisabled();
+    expect(button).toHaveAttribute("aria-disabled", "true");
+    expect(button.className).toContain("disabled:bg-[var(--bg-elevated)]");
+    expect(button.className).toContain("disabled:text-[var(--text-muted)]");
+    expect(button.className).toContain("disabled:cursor-not-allowed");
+    expect(input).toHaveAttribute("aria-describedby", "donation-amount-min");
+  });
+
+  it("charges the same minor units the English label shows for a comma decimal", async () => {
+    const mockFetch = vi.fn().mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ clientSecret: "cs_test" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await user.type(screen.getByPlaceholderText("Custom amount"), "25,5");
+
+    const button = screen.getByRole("button", { name: "GIVE $25.50" });
+    expect(button).toBeEnabled();
+    await user.click(button);
+    expect(mockFetch).toHaveBeenCalledWith(
+      "/api/stripe/checkout",
+      expect.objectContaining({
+        body: JSON.stringify({
+          amount: "25,5",
+          isMonthly: false,
+          locale: "en",
+          currency: "usd",
+        }),
+      }),
+    );
+  });
+
+  it.each([
+    ["de", "1.250", "1.250 €"],
+    ["cs", "1.250", "1 250 Kč"],
+    ["mk", "1.250", "1.250 ден."],
+    ["en", "1,250", "$1,250"],
+  ] as const)("reads %s %s as %s", async (locale, typed, formatted) => {
+    const dict = DICTIONARIES[locale];
+    render(
+      <LanguageProvider locale={locale}>
+        <DonationModal isOpen={true} onClose={onClose} />
+      </LanguageProvider>,
+    );
+    await user.click(screen.getByRole("button", { name: dict.donation.oneTime }));
+    await user.type(screen.getByPlaceholderText(dict.donation.customPlaceholder), typed);
+    expect(
+      screen.getByRole("button", {
+        name: dict.donation.giveOnce.replace("{amount}", formatted),
+      }),
+    ).toBeEnabled();
+  });
+
+  it("shows a message instead of rounding three decimal places", async () => {
+    const dict = DICTIONARIES.de;
+    render(
+      <LanguageProvider locale="de">
+        <DonationModal isOpen={true} onClose={onClose} />
+      </LanguageProvider>,
+    );
+    await user.type(screen.getByPlaceholderText(dict.donation.customPlaceholder), "25,555");
+    expect(screen.getByRole("alert")).toHaveTextContent(dict.donation.amountInvalid);
+    expect(screen.getByRole("button", { name: dict.donation.giveInvalid })).toBeDisabled();
+    expect(screen.getByPlaceholderText(dict.donation.customPlaceholder)).toHaveAttribute(
+      "aria-describedby",
+      "donation-amount-invalid",
+    );
+    expect(screen.queryByRole("button", { name: /25,56/ })).not.toBeInTheDocument();
+  });
+
+  it("explains an invalid paste and a too-large amount", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const input = screen.getByPlaceholderText("Custom amount");
+    fireEvent.change(input, { target: { value: "1e3" } });
+    expect(screen.getByRole("alert")).toHaveTextContent("Enter an amount like 25 or 25.50.");
+    expect(screen.getByRole("button", { name: "GIVE —" })).toBeDisabled();
+
+    fireEvent.change(input, { target: { value: "99999999999" } });
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      `Maximum amount is ${formatCurrencyFromMinor(MAX_DONATION_MINOR, "en")}.`,
+    );
+    expect(screen.getByPlaceholderText("Custom amount")).toHaveAttribute(
+      "aria-describedby",
+      "donation-amount-max",
+    );
+  });
+
+  it.each(LOCALES.map((locale) => locale.code))(
+    "localizes the invalid and maximum messages in %s",
+    async (locale: Locale) => {
+      const dict = DICTIONARIES[locale];
+      const currency = defaultCurrency(locale);
+      render(
+        <LanguageProvider locale={locale}>
+          <DonationModal isOpen={true} onClose={onClose} />
+        </LanguageProvider>,
+      );
+      const input = screen.getByPlaceholderText(dict.donation.customPlaceholder);
+      fireEvent.change(input, { target: { value: "1e3" } });
+      expect(screen.getByRole("alert").textContent).toBe(dict.donation.amountInvalid);
+
+      fireEvent.change(input, { target: { value: "99999999999" } });
+      const expected = sentenceAfterAmount(
+        dict.donation.amountTooHigh,
+        formatCurrencyFromMinor(MAX_DONATION_MINOR, locale, currency),
+      );
+      expect(screen.getByRole("alert").textContent).toBe(expected);
+      expect(expected).not.toMatch(/\.\./);
+    },
+  );
 });

@@ -109,5 +109,27 @@ describe("donation currency config", () => {
       ok: false,
       error: "Invalid amount",
     });
+    expect(resolveCharge({ locale: "en", currency: "usd", country: null, amount: 25.555 })).toMatchObject({
+      ok: false,
+      error: "Invalid amount",
+    });
+    expect(resolveCharge({ locale: "en", currency: "usd", country: null, amount: 99999999999 })).toMatchObject({
+      ok: false,
+      error: "Amount above maximum",
+    });
+    expect(resolveCharge({ locale: "de", currency: "eur", country: null, amount: "1.250" })).toMatchObject({
+      ok: true,
+      minor: 125000,
+      amount: 1250,
+    });
+    expect(resolveCharge({ locale: "en", currency: "usd", country: null, amount: "25,5" })).toMatchObject({
+      ok: true,
+      minor: 2550,
+      amount: 25.5,
+    });
+    expect(resolveCharge({ locale: "en", currency: "usd", country: null, amount: "999999.99" })).toMatchObject({
+      ok: true,
+      minor: 99_999_999,
+    });
   });
 });

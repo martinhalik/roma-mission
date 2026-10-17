@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { Locale } from "../../../lib/i18n/locales";
-import { currencyAffix, formatCurrency, parseLocalizedAmount, sentenceAfterAmount } from "../../../lib/i18n/format";
+import { currencyAffix, formatCurrency, formatCurrencyFromMinor, sentenceAfterAmount } from "../../../lib/i18n/format";
 import { DICTIONARIES } from "../../../lib/i18n";
 import { CURRENCIES, defaultCurrency } from "../../../lib/donations";
 
@@ -103,26 +103,19 @@ describe("minimum amount message", () => {
   });
 });
 
-describe("parseLocalizedAmount", () => {
-  it("accepts a comma or a dot in comma-decimal locales", () => {
-    expect(parseLocalizedAmount("25,50", "sk")).toBe(25.5);
-    expect(parseLocalizedAmount("25.50", "sk")).toBe(25.5);
-    expect(parseLocalizedAmount("1.250,50", "de")).toBe(1250.5);
-    expect(parseLocalizedAmount("1,250.50", "sr")).toBe(1250.5);
-    expect(parseLocalizedAmount("1 250,50", "cs")).toBe(1250.5);
-    expect(parseLocalizedAmount("0,25", "mk")).toBe(0.25);
-  });
+describe("formatCurrencyFromMinor", () => {
+  it.each(Object.entries(AMOUNTS) as [Locale, (typeof AMOUNTS)[Locale]][])(
+    "matches formatCurrency for %s",
+    (locale, expected) => {
+      expect(formatCurrencyFromMinor(2500, locale)).toBe(expected[25]);
+      expect(formatCurrencyFromMinor(125000, locale)).toBe(expected[1250]);
+      expect(formatCurrencyFromMinor(2550, locale)).toBe(expected[25.5]);
+    },
+  );
 
-  it("keeps the comma as a thousands separator in English", () => {
-    expect(parseLocalizedAmount("25.50", "en")).toBe(25.5);
-    expect(parseLocalizedAmount("1,250.50", "en")).toBe(1250.5);
-    expect(parseLocalizedAmount("25,50", "en")).toBe(2550);
-  });
-
-  it("rejects values that are not a single non-negative number", () => {
-    expect(parseLocalizedAmount("", "en")).toBe(0);
-    expect(parseLocalizedAmount("abc", "de")).toBe(0);
-    expect(parseLocalizedAmount("-5", "en")).toBe(0);
-    expect(parseLocalizedAmount("1,2,3", "sk")).toBe(0);
+  it("formats the charge cap without rounding", () => {
+    expect(formatCurrencyFromMinor(99_999_999, "en")).toBe("$999,999.99");
+    expect(formatCurrencyFromMinor(99_999_999, "de")).toBe("999.999,99 €");
+    expect(formatCurrencyFromMinor(99_999_999, "sr")).toBe("999.999,99 дин.");
   });
 });

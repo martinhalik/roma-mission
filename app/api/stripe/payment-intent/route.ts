@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resolveCharge, toMinorUnits } from "@/lib/donations";
+import { resolveCharge } from "@/lib/donations";
 import {
   countryOverrideAllowed,
   GEO_COUNTRY_COOKIE,
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
   }
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: toMinorUnits(resolved.amount, resolved.currency),
+    amount: resolved.minor,
     currency: resolved.currency,
     description: "One-Time Donation — Roma Mission",
     automatic_payment_methods: { enabled: true },

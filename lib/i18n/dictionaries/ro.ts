@@ -1355,6 +1355,8 @@ const ro: Dictionary = {
     impactBase: "Fiecare leu ajunge direct pe teren.",
     impactBaseEur: "Fiecare leu ajunge direct pe teren.",
     amountTooLow: "Suma minimă este {amount}.",
+    amountInvalid: "Introduceți o sumă precum 25 sau 25,50.",
+    amountTooHigh: "Suma maximă este {amount}.",
     currencyLabel: "Monedă",
     error: "Ceva nu a funcționat. Vă rugăm încercați din nou.",
     preparing: "SE PREGĂTEȘTE...",

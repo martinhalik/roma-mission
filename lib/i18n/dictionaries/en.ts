@@ -1354,6 +1354,8 @@ const en: Dictionary = {
     impactBase: "Every dollar goes directly to the field.",
     impactBaseEur: "Every euro goes directly to the field.",
     amountTooLow: "Minimum amount is {amount}.",
+    amountInvalid: "Enter an amount like 25 or 25.50.",
+    amountTooHigh: "Maximum amount is {amount}.",
     currencyLabel: "Currency",
     error: "Something went wrong. Please try again.",
     preparing: "PREPARING...",

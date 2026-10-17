@@ -1,3 +1,4 @@
+import { minorUnitsOfAmount } from "./donation-amount";
 import { isLocale, type Locale } from "./i18n/locales";
 
 /**
@@ -130,6 +131,8 @@ export type ChargeSuccess = {
   /** Null when the request had no known locale and EUR was used instead. */
   locale: Locale | null;
   amount: number;
+  /** Exact minor units from the same parser the modal uses for its label. */
+  minor: number;
 };
 
 export type ChargeFailure = {
@@ -167,13 +170,25 @@ export function resolveCharge(input: {
     currency = input.currency;
   }
 
-  if (typeof input.amount !== "number" || !Number.isFinite(input.amount) || input.amount <= 0) {
-    return { ok: false, status: 400, error: "Invalid amount" };
+  const parsed = minorUnitsOfAmount(input.amount, locale);
+  if (!parsed.ok) {
+    return {
+      ok: false,
+      status: 400,
+      error: parsed.reason === "aboveMaximum" ? "Amount above maximum" : "Invalid amount",
+    };
   }
 
-  if (input.amount + Number.EPSILON < CURRENCIES[currency].minimum) {
+  const minimumMinor = Math.round(CURRENCIES[currency].minimum * 100);
+  if (parsed.minor < minimumMinor) {
     return { ok: false, status: 400, error: "Amount below minimum" };
   }
 
-  return { ok: true, currency, locale, amount: input.amount };
+  return {
+    ok: true,
+    currency,
+    locale,
+    amount: parsed.minor / 100,
+    minor: parsed.minor,
+  };
 }

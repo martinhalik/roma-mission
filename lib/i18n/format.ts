@@ -115,37 +115,25 @@ export function sentenceAfterAmount(template: string, amount: string): string {
 }
 
 /**
- * Reads a custom donation amount. Locales whose decimal mark is a comma
- * accept either "," or "." (the last separator wins when both appear, so
- * `1.250,50` and `1,250.50` are both 1250.50). English keeps "," as a
- * thousands separator. Spaces are ignored. Anything that is not a single
- * non-negative number becomes 0.
+ * Formats minor units with the same separators as {@link formatCurrency}.
+ * Custom donation labels use this so the button cannot round independently
+ * of the integer that Stripe is charged.
  */
-export function parseLocalizedAmount(raw: string, locale: Locale): number {
-  const trimmed = raw.trim().replace(/[\s\u00A0]/g, "");
-  if (!trimmed) return 0;
-
-  const decimal = DIGIT_SEPARATORS[locale].decimal;
-  let normalized = trimmed;
-  const hasComma = trimmed.includes(",");
-  const hasDot = trimmed.includes(".");
-
-  if (decimal === ",") {
-    if (hasComma && hasDot) {
-      if (trimmed.lastIndexOf(",") > trimmed.lastIndexOf(".")) {
-        normalized = trimmed.replace(/\./g, "").replace(",", ".");
-      } else {
-        normalized = trimmed.replace(/,/g, "");
-      }
-    } else if (hasComma) {
-      if (trimmed.split(",").length > 2) return 0;
-      normalized = trimmed.replace(",", ".");
-    }
-  } else {
-    normalized = trimmed.replace(/,/g, "");
-  }
-
-  if (!/^\d+(\.\d+)?$/.test(normalized)) return 0;
-  const value = Number(normalized);
-  return Number.isFinite(value) ? value : 0;
+export function formatCurrencyFromMinor(
+  minor: number,
+  locale: Locale,
+  currency: DonationCurrency = defaultCurrency(locale),
+): string {
+  const negative = minor < 0;
+  const absolute = Math.abs(minor);
+  const whole = Math.trunc(absolute / 100);
+  const fraction = absolute % 100;
+  const { group, decimal } = DIGIT_SEPARATORS[locale];
+  const grouped = String(whole).replace(/\B(?=(\d{3})+(?!\d))/g, group);
+  const numeric =
+    fraction === 0 ? grouped : `${grouped}${decimal}${String(fraction).padStart(2, "0")}`;
+  const signed = negative ? `-${numeric}` : numeric;
+  const affix = currencyAffix(locale, currency);
+  if (affix.position === "prefix") return `${affix.symbol}${signed}`;
+  return `${signed}${SYMBOL_GAP}${affix.symbol}`;
 }

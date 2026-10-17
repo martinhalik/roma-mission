@@ -432,5 +432,38 @@ describe("POST /api/stripe/checkout", () => {
       expect(cents.status).toBe(200);
       expect(mockCreate.mock.calls[1][0].line_items[0].price_data.unit_amount).toBe(50);
     });
+
+    it("charges the parsed minor units and rejects an over-precise or huge amount", async () => {
+      const comma = await POST(
+        makeRequest({ amount: "25,5", isMonthly: false, locale: "en", currency: "usd" }),
+      );
+      expect(comma.status).toBe(200);
+      expect(mockCreate.mock.calls[0][0].line_items[0].price_data.unit_amount).toBe(2550);
+
+      const grouped = await POST(
+        makeRequest({ amount: "1.250", isMonthly: false, locale: "de", currency: "eur" }),
+      );
+      expect(grouped.status).toBe(200);
+      expect(mockCreate.mock.calls[1][0].line_items[0].price_data.unit_amount).toBe(125000);
+
+      const extra = await POST(
+        makeRequest({ amount: "25,555", isMonthly: false, locale: "de", currency: "eur" }),
+      );
+      expect(extra.status).toBe(400);
+      expect(await extra.json()).toEqual({ error: "Invalid amount" });
+      expect(mockCreate).toHaveBeenCalledTimes(2);
+
+      const max = await POST(
+        makeRequest({ amount: 99999999999, isMonthly: false, locale: "en", currency: "usd" }),
+      );
+      expect(max.status).toBe(400);
+      expect(await max.json()).toEqual({ error: "Amount above maximum" });
+
+      const rounded = await POST(
+        makeRequest({ amount: 25.555, isMonthly: false, locale: "en", currency: "usd" }),
+      );
+      expect(rounded.status).toBe(400);
+      expect(await rounded.json()).toEqual({ error: "Invalid amount" });
+    });
   });
 });

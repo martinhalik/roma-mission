@@ -1355,6 +1355,8 @@ const sr: Dictionary = {
     impactBase: "Сваки динар иде директно на терен.",
     impactBaseEur: "Сваки динар иде директно на терен.",
     amountTooLow: "Минимални износ је {amount}.",
+    amountInvalid: "Унесите износ као 25 или 25,50.",
+    amountTooHigh: "Максимални износ је {amount}.",
     currencyLabel: "Валута",
     error: "Нешто није у реду. Молимо покушајте поново.",
     preparing: "ПРИПРЕМА...",

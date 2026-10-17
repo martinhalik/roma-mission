@@ -24,7 +24,8 @@ import {
   type DonationCurrency,
 } from "@/lib/donations";
 import { GEO_COUNTRY_COOKIE } from "@/lib/geo";
-import { currencyAffix, formatCurrency, parseLocalizedAmount, sentenceAfterAmount } from "@/lib/i18n/format";
+import { MAX_DONATION_MINOR, parseDonationAmount } from "@/lib/donation-amount";
+import { currencyAffix, formatCurrency, formatCurrencyFromMinor, sentenceAfterAmount } from "@/lib/i18n/format";
 import type { Locale } from "@/lib/i18n/locales";
 import { buildPath } from "@/lib/i18n/routes";
 
@@ -87,17 +88,20 @@ function readSavedCurrency(): DonationCurrency | null {
 }
 
 interface PaymentRequestButtonProps {
-  amount: number;
+  amount: number | string;
+  minor: number;
   currency: DonationCurrency;
   locale: Locale;
 }
 
-function PaymentRequestButton({ amount, currency, locale }: PaymentRequestButtonProps) {
+function PaymentRequestButton({ amount, minor, currency, locale }: PaymentRequestButtonProps) {
   const { t } = useTranslation();
   const stripe = useStripe();
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
   const amountRef = useRef(amount);
   amountRef.current = amount;
+  const minorRef = useRef(minor);
+  minorRef.current = minor;
   const currencyRef = useRef(currency);
   currencyRef.current = currency;
   const localeRef = useRef(locale);
@@ -116,13 +120,12 @@ function PaymentRequestButton({ amount, currency, locale }: PaymentRequestButton
   useEffect(() => {
     if (!stripe) return;
 
-    const minor = toMinorUnits(amountRef.current, currency);
     const pr = stripe.paymentRequest({
       country: PAYMENT_REQUEST_COUNTRY,
       currency,
       total: {
         label: paymentLabel,
-        amount: minor,
+        amount: minorRef.current,
       },
       requestPayerEmail: true,
     });
@@ -131,7 +134,7 @@ function PaymentRequestButton({ amount, currency, locale }: PaymentRequestButton
     let active = true;
     pr.canMakePayment().then((result) => {
       if (!active || !result) return;
-      syncTotal(pr, toMinorUnits(amountRef.current, currencyRef.current));
+      syncTotal(pr, minorRef.current);
       setPaymentRequest(pr);
     });
 
@@ -174,9 +177,9 @@ function PaymentRequestButton({ amount, currency, locale }: PaymentRequestButton
 
   useEffect(() => {
     const pr = requestRef.current;
-    if (!pr || amount <= 0) return;
-    syncTotal(pr, toMinorUnits(amount, currency));
-  }, [amount, currency, paymentLabel]);
+    if (!pr || minor <= 0) return;
+    syncTotal(pr, minor);
+  }, [minor, currency, paymentLabel]);
 
   if (!paymentRequest) return null;
 
@@ -227,9 +230,16 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const monthlyAmounts = monthlyPresets(currency);
   const onetimeAmounts = onetimePresets(currency);
 
-  const finalAmount = isCustom
-    ? parseLocalizedAmount(customAmount, locale)
-    : selectedAmount;
+  const parsedCustom = parseDonationAmount(customAmount, locale);
+  const selectedMinor = Math.round(selectedAmount * 100);
+  const activeAmount = isCustom ? parsedCustom : { ok: true as const, minor: selectedMinor };
+  const finalMinor = activeAmount.ok ? activeAmount.minor : 0;
+  const finalAmount = finalMinor / 100;
+  const shownMinor = activeAmount.ok
+    ? activeAmount.minor
+    : activeAmount.reason === "aboveMaximum"
+      ? activeAmount.minor
+      : null;
 
   const showSwitcher = locale === "en" && switcherReady && visitorCountry !== "US";
 
@@ -298,13 +308,26 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   };
 
   const fetchClientSecret = useCallback(async () => {
+    const parsed = isCustom ? parseDonationAmount(customAmount, locale) : null;
+    const minor = isCustom
+      ? parsed && parsed.ok
+        ? parsed.minor
+        : 0
+      : Math.round(selectedAmount * 100);
+    if (minor < Math.round(CURRENCIES[currency].minimum * 100)) return;
+
     setLoading(true);
     setError(null);
     try {
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: finalAmount, isMonthly, locale, currency }),
+        body: JSON.stringify({
+          amount: isCustom ? customAmount : selectedAmount,
+          isMonthly,
+          locale,
+          currency,
+        }),
       });
       if (!res.ok) throw new Error("Failed to initiate checkout");
       const data = await res.json();
@@ -315,17 +338,29 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
     } finally {
       setLoading(false);
     }
-  }, [finalAmount, isMonthly, locale, currency, t]);
+  }, [customAmount, isCustom, selectedAmount, isMonthly, locale, currency, t]);
 
   if (!isOpen) return null;
 
   const affix = currencyAffix(locale, currency);
   const minimum = CURRENCIES[currency].minimum;
-  const belowMinimum = finalAmount > 0 && finalAmount < minimum;
+  const minimumMinor = Math.round(minimum * 100);
+  const amountInvalid = isCustom && !parsedCustom.ok && parsedCustom.reason === "invalid";
+  const amountAboveMax = isCustom && !parsedCustom.ok && parsedCustom.reason === "aboveMaximum";
+  const belowMinimum = activeAmount.ok && finalMinor > 0 && finalMinor < minimumMinor;
+  const amountAccepted = activeAmount.ok && finalMinor >= minimumMinor;
+  const canCharge = !loading && amountAccepted;
+  const describedBy = amountInvalid
+    ? "donation-amount-invalid"
+    : amountAboveMax
+      ? "donation-amount-max"
+      : belowMinimum
+        ? "donation-amount-min"
+        : undefined;
 
   const giveLabel = (() => {
-    if (finalAmount <= 0) return t("donation.giveInvalid");
-    const amount = formatCurrency(finalAmount, locale, currency);
+    if (shownMinor == null || shownMinor <= 0) return t("donation.giveInvalid");
+    const amount = formatCurrencyFromMinor(shownMinor, locale, currency);
     if (isMonthly) return t("donation.giveMonthly", { amount });
     return t("donation.giveOnce", { amount });
   })();
@@ -488,18 +523,21 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                 spinner and lets comma-decimal locales type either separator.
               */}
               <input
+                id="donation-custom-amount"
                 type="text"
                 inputMode="decimal"
                 min={minimum}
                 step="0.01"
                 placeholder={t("donation.customPlaceholder")}
                 value={customAmount}
+                aria-invalid={describedBy ? true : undefined}
+                aria-describedby={describedBy}
                 onChange={(e) => {
                   setCustomAmount(e.target.value);
                   setIsCustom(true);
                 }}
                 onFocus={() => setIsCustom(true)}
-                className={`flex-1 bg-transparent py-3 text-[13px] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] outline-none ${
+                className={`flex-1 bg-transparent py-3 text-[16px] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] outline-none ${
                   affix.position === "prefix" ? "px-3" : "pl-4 pr-3"
                 }`}
               />
@@ -514,8 +552,23 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             </div>
 
             {/* Impact line */}
+            {amountInvalid && (
+              <p id="donation-amount-invalid" role="alert" className="text-[12px] text-red-400">
+                {t("donation.amountInvalid")}
+              </p>
+            )}
+
+            {amountAboveMax && (
+              <p id="donation-amount-max" role="alert" className="text-[12px] text-red-400">
+                {sentenceAfterAmount(
+                  t("donation.amountTooHigh"),
+                  formatCurrencyFromMinor(MAX_DONATION_MINOR, locale, currency),
+                )}
+              </p>
+            )}
+
             {belowMinimum && (
-              <p role="alert" className="text-[12px] text-red-400">
+              <p id="donation-amount-min" role="alert" className="text-[12px] text-red-400">
                 {sentenceAfterAmount(
                   t("donation.amountTooLow"),
                   formatCurrency(minimum, locale, currency),
@@ -533,14 +586,21 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               <p className="text-[12px] text-red-400">{error}</p>
             )}
 
-            {!isMonthly && finalAmount >= minimum && (
-              <PaymentRequestButton amount={finalAmount} currency={currency} locale={locale} />
+            {!isMonthly && amountAccepted && (
+              <PaymentRequestButton
+                amount={isCustom ? customAmount : selectedAmount}
+                minor={finalMinor}
+                currency={currency}
+                locale={locale}
+              />
             )}
 
             <button
+              type="button"
               onClick={fetchClientSecret}
-              disabled={loading || finalAmount < minimum}
-              className="w-full py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+              disabled={!canCharge}
+              aria-disabled={!canCharge}
+              className="w-full py-4 border border-transparent bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 disabled:border-[var(--border-strong)] disabled:bg-[var(--bg-elevated)] disabled:text-[var(--text-muted)] disabled:opacity-100 disabled:cursor-not-allowed"
             >
               {loading ? t("donation.preparing") : giveLabel}
             </button>
