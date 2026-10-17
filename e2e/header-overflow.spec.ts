@@ -308,9 +308,15 @@ async function wordLayout(
         for (let index = start; index < start + targetWord.length; index++) {
           range.setStart(text, rawAt(index));
           range.setEnd(text, rawAt(index) + 1);
-          const rect = [...range.getClientRects()].find(
+          const rects = [...range.getClientRects()].filter(
             (item) => item.width > 0.4 && item.width < 80 && item.height > 2,
           );
+          // Chromium paints the hyphen as an extra rect of the first letter
+          // on the next line and gives that rect the previous line's top.
+          const rect = rects.reduce<DOMRect | undefined>((chosen, item) => {
+            if (!chosen || item.top > chosen.top + 4) return item;
+            return chosen;
+          }, undefined);
           if (!rect) continue;
           chars.push({
             ch: plain[index] ?? "",
@@ -386,7 +392,8 @@ async function wordLayout(
             ok: hyphenRect || gap > 2 || wideGlyph,
           });
         }
-        const style = getComputedStyle(el);
+        const styled = text.parentElement ?? el;
+        const style = getComputedStyle(styled);
         const box = el.parentElement?.getBoundingClientRect();
         const inkRight = wordRects.reduce((right, rect) => Math.max(right, rect.right), 0);
         layouts.push({
@@ -424,9 +431,15 @@ test.describe("mid-word heading breaks show a hyphen", () => {
         expect(layouts.length, "heading contains the word").toBeGreaterThan(0);
         for (const layout of layouts) {
           expect(layout.lang).toBe(item.lang);
-          expect(layout.hyphens).toBe("auto");
+          expect(layout.hyphens).toBe("manual");
           expect(layout.overflowWrap).toBe("break-word");
           expect(layout.hasSoftHyphen).toBe(true);
+          if (width === 320 && item.word === "Datenschutzerklärung") {
+            expect(layout.lines).toEqual(["Datenschutz", "erklärung"]);
+          }
+          if (width === 320 && item.word === "Nutzungsbedingungen") {
+            expect(layout.lines).toEqual(["Nutzungs", "bedingungen"]);
+          }
           expect(
             layout.breaks.filter((item) => !item.ok),
             `${layout.word}: ${layout.lines.join(" | ")} ${JSON.stringify(layout.breaks)}`,
@@ -462,7 +475,7 @@ test.describe("mission stat label stays inside its cell", () => {
     expect(layouts.length).toBeGreaterThan(0);
     for (const layout of layouts) {
       expect(layout.fontSize).toBe("9px");
-      expect(layout.hyphens).toBe("auto");
+      expect(layout.hyphens).toBe("manual");
       // A single line reaches the divider (WebKit paints about 4px past it).
       // The label wraps on a soft hyphen and the ink stays inside the cell.
       expect(layout.inkPast, `ink past cell ${layout.inkPast.toFixed(1)}px`).toBeLessThanOrEqual(1);
@@ -488,7 +501,7 @@ test.describe("stat labels in every locale", () => {
         const layouts = await wordLayout(page, "", ".hyphenate", true);
         expect(layouts.length, "mission card has stat labels").toBeGreaterThan(0);
         for (const layout of layouts) {
-          expect(layout.hyphens).toBe("auto");
+          expect(layout.hyphens).toBe("manual");
           expect(layout.fontSize).toBe("9px");
           expect(layout.breaks.filter((item) => !item.ok), layout.word).toEqual([]);
           if (layout.lines.length > 1) {

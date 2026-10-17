@@ -6,7 +6,9 @@ const SOFT_HYPHEN = "\u00AD";
  * Chromium and WebKit in this stack do not ship a hyphenation dictionary for
  * every locale, and `hyphens: auto` then lets `overflow-wrap` slice the word
  * with no hyphen. The marks are inserted by `<Hyphenate>` at the visible
- * heading and label. `t()` and the dictionaries stay unchanged.
+ * heading and label, which sets `hyphens: manual` so a dictionary cannot
+ * pick a different point. German compounds break once, at the boundary.
+ * `t()` and the dictionaries stay unchanged.
  * A soft hyphen is invisible unless the line actually breaks there.
  * Matching is case-insensitive so the dictionary's own casing is covered.
  */
@@ -15,8 +17,8 @@ const SOFT_HYPHEN_PATTERNS: { key: string; parts: string[] }[] = [
   { key: "Самообеспечивающийся", parts: ["Само", "обеспе", "чиваю", "щийся"] },
   { key: "конфиденциальности", parts: ["кон", "фид", "енц", "иал", "ьно", "сти"] },
   { key: "конфиденциальность", parts: ["кон", "фид", "енц", "иал", "ьно", "сть"] },
-  { key: "Datenschutzerklärung", parts: ["Daten", "schutz", "erklä", "rung"] },
-  { key: "Nutzungsbedingungen", parts: ["Nutzungs", "bedin", "gungen"] },
+  { key: "Datenschutzerklärung", parts: ["Datenschutz", "erklärung"] },
+  { key: "Nutzungsbedingungen", parts: ["Nutzungs", "bedingungen"] },
   { key: "Официально", parts: ["Офици", "ально"] },
   { key: "Официјално", parts: ["Офици", "јално"] },
   { key: "населения", parts: ["насе", "ления"] },

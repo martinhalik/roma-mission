@@ -76,6 +76,15 @@ describe("withSoftHyphens", () => {
     expect(visible(withSoftHyphens("официально"))).toBe("официально");
   });
 
+  it("breaks German compounds once, at the boundary", () => {
+    expect(withSoftHyphens("Datenschutzerklärung")).toBe(
+      `Datenschutz${SOFT_HYPHEN}erklärung`,
+    );
+    expect(withSoftHyphens("Nutzungsbedingungen")).toBe(
+      `Nutzungs${SOFT_HYPHEN}bedingungen`,
+    );
+  });
+
   it("prefers the longer конфиденциальности break", () => {
     expect(withSoftHyphens("конфиденциальности").split(SOFT_HYPHEN)).toEqual([
       "кон",

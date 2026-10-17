@@ -110,7 +110,8 @@ function CountryCard({ data }: { data: MissionCountry }) {
   const { t } = useTranslation();
   return (
     <div className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden">
-      {/* Header */}
+      {/* Header. Below 360px the row may wrap if a badge does not fit.
+          "Мы здесь" fits beside the country name at 320px, so it stays on that row. */}
       <div className="flex max-[359px]:flex-wrap items-center justify-between gap-x-3 gap-y-2 p-5 md:p-6 border-b border-[var(--border-default)]">
         <div className="flex items-center gap-3 min-w-0">
           <span className="text-[22px] leading-none">{data.flag}</span>

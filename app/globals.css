@@ -50,8 +50,10 @@ html.light {
  *
  * `hyphens: auto` breaks at the dictionary when the engine has one (html
  * lang is the locale). `hyphenate-limit-chars` keeps at least three letters
- * on either side of that break. Soft hyphens from `<Hyphenate>` cover engines
- * without that dictionary; they are not applied to every translated string.
+ * on either side of that break. Words that carry their own soft hyphens use
+ * `.hyphenate-shy` (`hyphens: manual`) so the dictionary cannot choose a
+ * different point — German compounds break only at the boundary. Those marks
+ * come from `<Hyphenate>` and are not applied to every translated string.
  * overflow-wrap is only the last resort, for a piece that still cannot break
  * on a hyphen.
  *
@@ -75,6 +77,15 @@ html.light {
     hyphenate-limit-chars: 6 3 3;
     overflow-wrap: break-word;
   }
+}
+
+/*
+ * Soft hyphens are the only breaks in these words. The heading's `auto`
+ * value is inherited, so this has to be set on the word itself.
+ */
+.hyphenate-shy {
+  -webkit-hyphens: manual;
+  hyphens: manual;
 }
 
 @layer base {
