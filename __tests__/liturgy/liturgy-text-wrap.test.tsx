@@ -72,6 +72,13 @@ describe("liturgy text wrapping", () => {
       sibling = sibling.nextSibling;
     }
     expect(following.join("").startsWith(" andemanušinen")).toBe(true);
+
+    const agor = [...container.querySelectorAll(".liturgy-keep")].find((el) =>
+      el.textContent?.startsWith("agor.")
+    );
+    expect(agor?.parentElement?.previousSibling?.nodeType).toBe(Node.TEXT_NODE);
+    expect(agor?.parentElement?.previousSibling?.textContent).toBe(" ");
+    expect(agor?.parentElement?.className).toContain("liturgy-cluster");
   });
 
   it("does not let break-word split the footnote marker", () => {
@@ -90,10 +97,11 @@ describe("liturgy text wrapping", () => {
     expect(summary).not.toContain("display: contents");
     const focus = css.slice(
       css.indexOf(".liturgy-note > summary:focus-visible"),
-      css.indexOf(".liturgy-note > summary:focus-visible") + 240
+      css.indexOf(".liturgy-note > summary:focus-visible") + 420
     );
     expect(focus).toContain("outline: 2px solid var(--gold)");
-    expect(focus).toContain("outline-offset: 2px");
+    expect(focus).toContain("outline-offset: 1px");
+    expect(css).toContain(".liturgy-note + .liturgy-note > summary");
   });
 
   it("gives the language chips a 44px target and a colour the selected state can override", () => {

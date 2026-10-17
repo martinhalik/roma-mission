@@ -163,6 +163,15 @@ html.light {
     padding: 0.85em 0.4em 0.85em 0;
     margin: 0 -0.15em 0 0;
   }
+  /*
+   * The first marker is flush with its word. A marker that follows another
+   * (21 then 22) keeps the same left padding and left margin as an ungrouped
+   * marker, which is the gap between the two numbers.
+   */
+  .liturgy-note + .liturgy-note > summary {
+    padding-left: 0.4em;
+    margin-left: -0.15em;
+  }
   .liturgy-note > summary::-webkit-details-marker,
   .liturgy-note > summary::marker {
     display: none;
@@ -175,7 +184,8 @@ html.light {
    */
   .liturgy-note > summary:focus-visible {
     outline: 2px solid var(--gold);
-    outline-offset: 2px;
+    /* 2px of offset draws the ring through the letter before a flush marker. */
+    outline-offset: 1px;
   }
   .liturgy-note[open] > summary {
     color: var(--text-primary);

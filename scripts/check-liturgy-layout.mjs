@@ -1,7 +1,7 @@
 /**
  * Layout checks for the Liturgy pages.
  *
- *   BASE_URL=http://127.0.0.1:3000 node scripts/check-liturgy-layout.mjs
+ *   BASE_URL=http://127.0.0.1:3000 MAIN_URL=http://127.0.0.1:3001 node scripts/check-liturgy-layout.mjs
  *
  * Chromium runs with mobile emulation, because a sideways overflow there
  * widens the layout viewport until scrollWidth and clientWidth match again.
@@ -17,6 +17,7 @@ import { spawnSync } from "node:child_process";
 import { chromium, firefox, webkit } from "playwright-core";
 
 const base = process.env.BASE_URL ?? "http://127.0.0.1:3000";
+const mainBase = process.env.MAIN_URL ?? "http://127.0.0.1:3001";
 const widths = [320, 360, 375, 390, 768, 1280];
 
 const onlyLocales = process.env.LITURGY_LOCALES?.split(",").filter(Boolean);
@@ -57,6 +58,183 @@ async function goto(page, url) {
   await page.goto(base + url, { waitUntil: "domcontentloaded", timeout: 60000 });
   await page.locator("main").first().waitFor({ timeout: 20000 });
   await page.evaluate(() => document.fonts.ready);
+}
+
+async function gotoMain(page, url) {
+  await page.goto(mainBase + url, { waitUntil: "domcontentloaded", timeout: 60000 });
+  await page.locator("main").first().waitFor({ timeout: 20000 });
+  await page.evaluate(() => document.fonts.ready);
+}
+
+/** Passage text with note bodies removed, so markers stay and note prose does not. */
+function passageTexts() {
+  return [...document.querySelectorAll(".liturgy-rom, .liturgy-sk")].map((line) => {
+    const clone = line.cloneNode(true);
+    clone.querySelectorAll(".liturgy-note-body").forEach((el) => el.remove());
+    clone.querySelectorAll("details").forEach((details) => {
+      [...details.children].forEach((child) => {
+        if (child.tagName !== "SUMMARY") child.remove();
+      });
+    });
+    return clone.textContent;
+  });
+}
+
+/**
+ * A grouped word needs the space in front of it, unless that word starts the
+ * line or the character before it is an opening quote, a bracket, or a chant
+ * star (the source break in front of that word is `*\n`, collapsed like main).
+ */
+function groupSpaces() {
+  const OPEN = /[«„“‘"'(\[{‹]/;
+  const fails = [];
+  let pass = 0;
+  for (const cluster of document.querySelectorAll(".liturgy-cluster")) {
+    const line = cluster.closest(".liturgy-rom, .liturgy-sk");
+    let node = cluster.previousSibling;
+    let ch = "";
+    while (node && !ch) {
+      if (
+        node.nodeType === Node.ELEMENT_NODE &&
+        line &&
+        node === line.firstElementChild &&
+        !node.querySelector(".liturgy-keep")
+      ) {
+        node = node.previousSibling;
+        continue;
+      }
+      if (node.nodeType === Node.TEXT_NODE) {
+        const value = node.nodeValue ?? "";
+        if (/[ \u00a0]$/.test(value)) {
+          pass += 1;
+          ch = " ";
+          break;
+        }
+        ch = value.trimEnd().slice(-1);
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        ch = (node.textContent ?? "").trimEnd().slice(-1);
+      }
+      if (ch === " ") break;
+      node = node.previousSibling;
+    }
+    if (ch === " ") continue;
+    const word = cluster.querySelector(".liturgy-keep");
+    let startsLine = ch === "" || ch === "\n" || ch === "\r";
+    if (!startsLine && word && line) {
+      const range = document.createRange();
+      const glyph = firstInk(word, range);
+      if (glyph) {
+        const row = firstInkOnRow(line, range, glyph.top);
+        if (row && glyph.left - row.left < 1) startsLine = true;
+      }
+    }
+    if (startsLine || OPEN.test(ch) || ch === "*") {
+      pass += 1;
+      continue;
+    }
+    fails.push({ n: cluster.querySelector("summary")?.textContent.trim() ?? "", ch });
+  }
+  return { pass, fails };
+
+  function firstInk(root, range) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let current;
+    while ((current = walker.nextNode())) {
+      if (current.parentElement?.closest("summary, .liturgy-note-body")) continue;
+      const text = current.textContent ?? "";
+      for (let i = 0; i < text.length; i += 1) {
+        if (!/\S/.test(text[i])) continue;
+        range.setStart(current, i);
+        range.setEnd(current, i + 1);
+        const rect = [...range.getClientRects()].find((box) => box.width > 0.3 && box.height > 0.3);
+        if (rect) return rect;
+      }
+    }
+    return null;
+  }
+  function firstInkOnRow(root, range, top) {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let current;
+    let best = null;
+    while ((current = walker.nextNode())) {
+      if (current.parentElement?.closest("summary, .liturgy-note-body")) continue;
+      const text = current.textContent ?? "";
+      for (let i = 0; i < text.length; i += 1) {
+        if (!/\S/.test(text[i])) continue;
+        range.setStart(current, i);
+        range.setEnd(current, i + 1);
+        const rect = [...range.getClientRects()].find((box) => box.width > 0.3 && box.height > 0.3);
+        if (!rect || Math.abs(rect.top - top) > 4) continue;
+        if (!best || rect.left < best.left) best = rect;
+        break;
+      }
+    }
+    return best;
+  }
+}
+
+function textHunks(main, pr) {
+  const hunks = [];
+  let i = 0;
+  let j = 0;
+  while (i < main.length || j < pr.length) {
+    if (main[i] === pr[j]) {
+      i += 1;
+      j += 1;
+      continue;
+    }
+    const i0 = i;
+    const j0 = j;
+    let found = false;
+    for (let span = 1; span < 80 && !found; span += 1) {
+      for (let di = 0; di <= span; di += 1) {
+        const dj = span - di;
+        const anchor = main.slice(i0 + di, i0 + di + 12);
+        if (anchor.length < 8) continue;
+        if (anchor === pr.slice(j0 + dj, j0 + dj + 12)) {
+          hunks.push({
+            mainOnly: main.slice(i0, i0 + di),
+            prOnly: pr.slice(j0, j0 + dj),
+            before: main.slice(Math.max(0, i0 - 6), i0),
+            after: main.slice(i0 + di, i0 + di + 6),
+          });
+          i = i0 + di;
+          j = j0 + dj;
+          found = true;
+          break;
+        }
+      }
+    }
+    if (!found) {
+      hunks.push({
+        mainOnly: main.slice(i0, i0 + 24),
+        prOnly: pr.slice(j0, j0 + 24),
+        before: main.slice(Math.max(0, i0 - 6), i0),
+        after: "",
+        rest: true,
+      });
+      break;
+    }
+  }
+  return hunks;
+}
+
+/** Exact match, or the only delta is the gap in front of a marker / a word space main drops after one. */
+function classifyPassage(main, pr) {
+  if (main === pr) return "exact";
+  const hunks = textHunks(main, pr);
+  let after = false;
+  for (const hunk of hunks) {
+    const gapBefore = hunk.prOnly === "" && /^\s+$/.test(hunk.mainOnly) && /^\d/.test(hunk.after);
+    const spaceAfter = hunk.mainOnly === "" && hunk.prOnly === " " && /\d$/.test(hunk.before);
+    if (gapBefore) continue;
+    if (spaceAfter) {
+      after = true;
+      continue;
+    }
+    return "fail";
+  }
+  return after ? "after" : "exact";
 }
 
 function scrollAndNotes() {
@@ -575,11 +753,14 @@ for (const engine of engines) {
     punct: tally(),
     line: tally(),
     ax: tally(),
+    text: { exact: 0, after: 0, fail: 0 },
+    word: tally(),
   };
   const samples = [];
   const browser = await engine.launch.launch({ headless: true });
   const context = await browser.newContext(engine.context);
   const page = await context.newPage();
+  const mainPage = await context.newPage();
   const cdp = engine.name === "chromium" ? await context.newCDPSession(page) : null;
   if (cdp) await cdp.send("Accessibility.enable");
 
@@ -631,6 +812,39 @@ for (const engine of engines) {
           counts.line.fail += data.lineFails.length ? 1 : 0;
           counts.gap.pass += data.gapPass;
           counts.gap.fail += data.gapFails.length;
+          const spaces = await page.evaluate(groupSpaces);
+          counts.word.pass += spaces.pass;
+          counts.word.fail += spaces.fails.length;
+          if (spaces.fails.length) {
+            failed = true;
+            if (samples.length < 12) samples.push({ locale: entry.locale, width, word: spaces.fails.slice(0, 4) });
+          }
+          if (width === widths[0]) {
+            const prTexts = await page.evaluate(passageTexts);
+            await gotoMain(mainPage, entry.text);
+            const mainTexts = await mainPage.evaluate(passageTexts);
+            if (prTexts.length !== mainTexts.length) {
+              counts.text.fail += 1;
+              failed = true;
+              samples.push({ locale: entry.locale, text: "passage count", pr: prTexts.length, main: mainTexts.length });
+            }
+            const n = Math.max(prTexts.length, mainTexts.length);
+            for (let i = 0; i < n; i += 1) {
+              const kindOf = classifyPassage(mainTexts[i] ?? "", prTexts[i] ?? "");
+              if (kindOf === "exact") counts.text.exact += 1;
+              else if (kindOf === "after") counts.text.after += 1;
+              else {
+                counts.text.fail += 1;
+                failed = true;
+                if (samples.length < 12) {
+                  samples.push({
+                    locale: entry.locale,
+                    text: textHunks(mainTexts[i] ?? "", prTexts[i] ?? "").slice(0, 2),
+                  });
+                }
+              }
+            }
+          }
           if (data.markerFails.length || data.punctFails.length || data.lineFails.length || data.gapFails.length) {
             failed = true;
             if (samples.length < 12) {

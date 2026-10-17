@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -51,26 +52,23 @@ function PhoneBreak() {
   );
 }
 
-function ChantText({ text }: { text: string }) {
-  const leadSpace = /^\s/.test(text);
-  const raw = text.split("*").map((part) => part.trim());
-  // A star at the end of this run is the phrase mark before the next word
-  // (often a word peeled off into a footnote group). Keep it, with a phone
-  // break after, instead of letting the empty last piece swallow the star.
-  const trailingStar = raw.length > 1 && raw[raw.length - 1] === "";
-  const phrases = raw.filter(Boolean);
-  if (phrases.length === 0) return leadSpace ? <> </> : null;
+function ChantText({ text, keepTrailingStar = false }: { text: string; keepTrailingStar?: boolean }) {
+  const phrases = text
+    .split("*")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  // A star at the end of this run is the phrase mark before a word that was
+  // peeled into the next footnote group. Keep that one. A star that simply
+  // ends a line stays omitted, which is how the line reads without the group.
+  const trailingStar = keepTrailingStar && /\*\s*$/.test(text);
+  if (phrases.length === 0) return text.includes("*") ? null : <>{text}</>;
   if (phrases.length === 1 && !trailingStar) {
-    return (
-      <>
-        {leadSpace ? " " : ""}
-        {phrases[0]}
-      </>
-    );
+    return <>{text.replace(/\*/g, "")}</>;
   }
+  const lead = text.match(/^[ \u00a0]+/)?.[0] ?? "";
   return (
     <>
-      {leadSpace ? " " : null}
+      {lead}
       {phrases.map((phrase, i) => (
         <span key={i}>
           {phrase}
@@ -142,20 +140,27 @@ function Line({
       )}
       {pieces.map((piece, i) =>
         piece.type === "text" ? (
-          <ChantText key={i} text={piece.value} />
+          <ChantText
+            key={i}
+            text={piece.value}
+            keepTrailingStar={pieces[i + 1]?.type === "keep"}
+          />
         ) : (
-          <span key={i} className="liturgy-cluster">
-            <span className="liturgy-keep">
-              {piece.word ? <ChantText text={piece.word} /> : null}
+          <Fragment key={i}>
+            {piece.space}
+            <span className="liturgy-cluster">
+              <span className="liturgy-keep">
+                {piece.word ? <ChantText text={piece.word} /> : null}
+                {piece.notes.map((n) => (
+                  <NoteMarker key={n} n={n} />
+                ))}
+                {piece.punct}
+              </span>
               {piece.notes.map((n) => (
-                <NoteMarker key={n} n={n} />
+                <NoteBody key={n} n={n} />
               ))}
-              {piece.punct}
             </span>
-            {piece.notes.map((n) => (
-              <NoteBody key={n} n={n} />
-            ))}
-          </span>
+          </Fragment>
         )
       )}
     </div>

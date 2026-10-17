@@ -64,6 +64,8 @@ export type LineToken =
 /** A nowrap run: the word before a marker, the marker(s), and punctuation glued on after. */
 export type KeptNotes = {
   type: "keep";
+  /** Word spaces that sit before `word`, outside the nowrap run. Never trimmed. */
+  space: string;
   word: string;
   notes: number[];
   punct: string;
@@ -78,6 +80,10 @@ const PUNCT_AFTER = /^[,.;:!?]+/;
  * follows immediately, so the marker cannot wrap onto the next line and a
  * comma cannot start the line after an open note. Adjacent markers (21 22)
  * share one group. The note body is rendered after the group, not inside it.
+ *
+ * Horizontal spaces before that word are returned on `space` and rendered as
+ * their own text node in front of the group. They are not part of the nowrap
+ * run, and nothing trims them.
  */
 export function groupLine(tokens: LineToken[]): LinePiece[] {
   const pending = tokens.map((token) =>
@@ -90,10 +96,16 @@ export function groupLine(tokens: LineToken[]): LinePiece[] {
     const token = pending[i];
     if (token.type === "note" || (token.type === "text" && pending[i + 1]?.type === "note")) {
       let word = "";
+      let space = "";
       if (token.type === "text") {
         const match = token.value.match(/^([\s\S]*?)(\S+)$/);
-        const head = match ? match[1] : token.value;
+        let head = match ? match[1] : token.value;
         word = match ? match[2] : "";
+        const spaces = head.match(/[ \u00a0]+$/);
+        if (spaces) {
+          space = spaces[0];
+          head = head.slice(0, -space.length);
+        }
         if (head) pieces.push({ type: "text", value: head });
         i += 1;
       }
@@ -112,7 +124,7 @@ export function groupLine(tokens: LineToken[]): LinePiece[] {
           after.value = after.value.slice(punct.length);
         }
       }
-      pieces.push({ type: "keep", word, notes, punct });
+      pieces.push({ type: "keep", space, word, notes, punct });
       continue;
     }
     if (token.type === "text" && token.value) pieces.push({ type: "text", value: token.value });
