@@ -59,7 +59,7 @@ function PresenceBadge({ presence, label }: { presence: Presence; label: string 
   };
   return (
     <span
-      className={`text-[9px] font-bold tracking-[1px] px-3 py-1.5 uppercase whitespace-nowrap ${styles[presence]}`}
+      className={`ml-auto shrink-0 text-[9px] font-bold tracking-[1px] px-3 py-1.5 uppercase whitespace-nowrap ${styles[presence]}`}
     >
       {label}
     </span>
@@ -110,14 +110,17 @@ function CountryCard({ data }: { data: MissionCountry }) {
   return (
     <div className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between gap-3 p-5 md:p-6 border-b border-[var(--border-default)]">
-        <div className="flex items-center gap-3">
+      <div className="flex max-[359px]:flex-wrap items-center justify-between gap-x-3 gap-y-2 p-5 md:p-6 border-b border-[var(--border-default)]">
+        <div className="flex items-center gap-3 min-w-0">
           <span className="text-[22px] leading-none">{data.flag}</span>
           <h3 className="text-[16px] md:text-[18px] font-bold text-[var(--text-primary)]">
             {t(`countries.${data.iso}`)}
           </h3>
         </div>
-        <PresenceBadge presence={data.presence} label={t(presenceLabelKey[data.presence])} />
+        <PresenceBadge
+          presence={data.presence}
+          label={t(presenceLabelKey[data.presence])}
+        />
       </div>
 
       {/* Population stats */}
@@ -482,7 +485,7 @@ export default function MissionPage() {
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-5 md:gap-6 max-w-[680px] mb-12 md:mb-16">
           <SectionLabel text={t("mission.vision.label")} />
-          <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
+          <h2 className="min-[360px]:max-[389px]:w-[calc(100%+20px)] min-[360px]:max-[389px]:-mr-5 text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
             {t("mission.vision.titleLine1")}
             <br />
             {t("mission.vision.titleLine2")}

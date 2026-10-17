@@ -40,6 +40,30 @@ html.light {
   --nav-bg: rgb(245 240 232 / 0.92); /* near-opaque — light mode needs legibility */
 }
 
+/*
+ * RU and DE page titles include single words wider than a phone column
+ * ("конфиденциальности", "Nutzungsbedingungen", "Самообеспечивающийся").
+ * The glyphs paint past the viewport. WebKit's Cyrillic fallback is the
+ * widest — that word's right edge is about 384px — so 375px still
+ * overflows there. From 390px up the same word fits, and this rule stays
+ * off so those widths do not reflow.
+ *
+ * Between 360px and 389px the page's 20px right padding is enough to hold
+ * every one of those words except that WebKit fallback. Headings marked
+ * `min-[360px]:max-[389px]:w-[calc(100%+20px)]` use the padding, so a word
+ * wraps only when it would leave the screen.
+ */
+@media (max-width: 389px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+}
+
 @layer base {
   html,
   body {

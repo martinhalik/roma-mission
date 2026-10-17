@@ -18,7 +18,7 @@ export default function ThankYouPage() {
       <Navbar />
 
       <div className="flex-1 flex items-center justify-center px-5 py-24">
-        <div className="flex flex-col items-center text-center gap-8 max-w-[540px]">
+        <div className="flex flex-col items-center text-center gap-8 min-w-0 max-w-[min(100%,540px)]">
           {/* Icon */}
           <div className="w-16 h-16 border border-[var(--gold)] flex items-center justify-center">
             <span className="font-georgia text-[28px] text-[var(--gold)]">✦</span>
@@ -90,7 +90,7 @@ export default function ThankYouPage() {
                 label={t("thankYou.shareCta")}
                 className="w-full py-4 px-6 justify-center bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity"
               />
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 <a
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText + " " + SHARE_URL)}`}
                   target="_blank"

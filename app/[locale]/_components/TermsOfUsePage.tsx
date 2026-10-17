@@ -25,7 +25,7 @@ export default function TermsOfUsePage() {
             {t("termsOfUse.eyebrow")}
           </span>
         </div>
-        <h1 className="text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] mb-4 leading-[1.05]">
+        <h1 className="min-[360px]:max-[389px]:w-[calc(100%+20px)] min-[360px]:max-[389px]:-mr-5 text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] mb-4 leading-[1.05]">
           {t("termsOfUse.title")}
         </h1>
         <p className="text-[13px] text-[var(--text-muted)] mb-12">
