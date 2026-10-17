@@ -3,7 +3,7 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRef, useEffect, useState } from "react";
 import LocaleLink from "@/components/LocaleLink";
-import { ROMA_COUNTRIES } from "@/lib/data/roma-countries";
+import { ROMA_COUNTRIES, formatRomaPopulation } from "@/lib/data/roma-countries";
 import { MISSION_LOCATIONS, type LocationType, type MissionLocation } from "@/lib/data/mission-locations";
 import { useTranslation } from "@/components/LanguageProvider";
 
@@ -111,8 +111,7 @@ function formatPct(pct: number): string {
 }
 
 function formatPop(n: number): string {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  return `${Math.round(n / 1000)}K`;
+  return formatRomaPopulation(n);
 }
 
 // ─── Color scales ─────────────────────────────────────────────────────────────
