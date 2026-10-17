@@ -20,6 +20,7 @@ import {
   buildPath,
   type RouteKey,
 } from "@/lib/i18n/routes";
+import { withSoftHyphens } from "@/lib/i18n/softHyphens";
 
 interface LanguageContextValue {
   locale: Locale;
@@ -103,10 +104,11 @@ export default function LanguageProvider({
       dict,
       t: (path, vars) => {
         const found = resolve(dict, path);
-        if (found === path && dict !== fallback) {
-          return interpolate(resolve(fallback, path), vars);
-        }
-        return interpolate(found, vars);
+        const template =
+          found === path && dict !== fallback
+            ? resolve(fallback, path)
+            : found;
+        return withSoftHyphens(interpolate(template, vars));
       },
     };
   }, [locale, routeKey, setLocale]);

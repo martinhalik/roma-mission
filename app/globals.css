@@ -48,6 +48,11 @@ html.light {
  * overflows there. From 390px up the same word fits, and this rule stays
  * off so those widths do not reflow.
  *
+ * `hyphens: auto` breaks at the dictionary when the engine has one (html
+ * lang is the locale). Soft hyphens in the rendered string cover engines
+ * without that dictionary. overflow-wrap is only the last resort, for a
+ * piece that still cannot break on a hyphen.
+ *
  * Between 360px and 389px the page's 20px right padding is enough to hold
  * every one of those words except that WebKit fallback. Headings marked
  * `min-[360px]:max-[389px]:w-[calc(100%+20px)]` use the padding, so a word
@@ -59,7 +64,10 @@ html.light {
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  .hyphenate {
+    -webkit-hyphens: auto;
+    hyphens: auto;
     overflow-wrap: break-word;
   }
 }

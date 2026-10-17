@@ -125,27 +125,27 @@ function CountryCard({ data }: { data: MissionCountry }) {
 
       {/* Population stats */}
       <div className="grid grid-cols-3 divide-x divide-[var(--border-default)] border-b border-[var(--border-default)]">
-        <div className="flex flex-col gap-1 p-4 md:p-5">
+        <div className="flex flex-col gap-1 p-4 md:p-5 min-w-0">
           <span className="text-[13px] md:text-[15px] font-bold text-[var(--text-primary)]">
             {data.officialPop}
           </span>
-          <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
+          <span className="hyphenate min-w-0 text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
             {t("mission.countries.cardOfficial")}
           </span>
         </div>
-        <div className="flex flex-col gap-1 p-4 md:p-5">
+        <div className="flex flex-col gap-1 p-4 md:p-5 min-w-0">
           <span className="text-[13px] md:text-[15px] font-bold text-[var(--text-secondary)]">
             {data.unofficialPop}
           </span>
-          <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
+          <span className="hyphenate min-w-0 text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
             {t("mission.countries.cardEstimated")}
           </span>
         </div>
-        <div className="flex flex-col gap-1 p-4 md:p-5">
+        <div className="flex flex-col gap-1 p-4 md:p-5 min-w-0">
           <span className="text-[13px] md:text-[15px] font-bold text-[var(--gold)]">
             {data.sharePercent}
           </span>
-          <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
+          <span className="hyphenate min-w-0 text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
             {t("mission.countries.cardOfPopulation")}
           </span>
         </div>
