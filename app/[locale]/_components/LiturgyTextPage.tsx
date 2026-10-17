@@ -154,12 +154,13 @@ function Line({
                 {piece.notes.map((n) => (
                   <NoteMarker key={n} n={n} />
                 ))}
-                {piece.punct}
+                {piece.punct ? <span className="liturgy-punct">{piece.punct}</span> : null}
               </span>
               {piece.notes.map((n) => (
                 <NoteBody key={n} n={n} />
               ))}
             </span>
+            {piece.trail}
           </Fragment>
         )
       )}

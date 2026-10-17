@@ -200,6 +200,15 @@ html.light {
   .liturgy-keep {
     white-space: nowrap;
   }
+  /*
+   * The summary's right padding (0.4em) minus its right margin (-0.15em) is
+   * 2.5px at the marker's 10px size. That gap sits between the digit and the
+   * punctuation, so the comma was reading as "¹¹ ,Christos". Pull the
+   * punctuation back by the same amount. It stays at the line's font size.
+   */
+  .liturgy-punct {
+    margin-left: -2.5px;
+  }
   .liturgy-note-body {
     display: none;
   }

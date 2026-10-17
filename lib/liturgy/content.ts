@@ -69,6 +69,8 @@ export type KeptNotes = {
   word: string;
   notes: number[];
   punct: string;
+  /** Whitespace that sits after the group, outside the nowrap run. Never trimmed. */
+  trail: string;
 };
 
 export type LinePiece = { type: "text"; value: string } | KeptNotes;
@@ -82,8 +84,10 @@ const PUNCT_AFTER = /^[,.;:!?]+/;
  * share one group. The note body is rendered after the group, not inside it.
  *
  * Horizontal spaces before that word are returned on `space` and rendered as
- * their own text node in front of the group. They are not part of the nowrap
- * run, and nothing trims them.
+ * their own text node in front of the group. Whitespace after the group,
+ * including a newline the chant splitter would otherwise drop, is returned on
+ * `trail` and rendered the same way, after the group. Neither is part of the
+ * nowrap run, and nothing trims them.
  */
 export function groupLine(tokens: LineToken[]): LinePiece[] {
   const pending = tokens.map((token) =>
@@ -116,6 +120,7 @@ export function groupLine(tokens: LineToken[]): LinePiece[] {
         i += 1;
       }
       let punct = "";
+      let trail = "";
       const after = pending[i];
       if (after?.type === "text") {
         const found = after.value.match(PUNCT_AFTER);
@@ -123,8 +128,13 @@ export function groupLine(tokens: LineToken[]): LinePiece[] {
           punct = found[0];
           after.value = after.value.slice(punct.length);
         }
+        const spaces = after.value.match(/^\s+/);
+        if (spaces) {
+          trail = spaces[0];
+          after.value = after.value.slice(trail.length);
+        }
       }
-      pieces.push({ type: "keep", space, word, notes, punct });
+      pieces.push({ type: "keep", space, word, notes, punct, trail });
       continue;
     }
     if (token.type === "text" && token.value) pieces.push({ type: "text", value: token.value });

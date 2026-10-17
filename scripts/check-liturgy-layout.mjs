@@ -173,6 +173,59 @@ function groupSpaces() {
   }
 }
 
+/**
+ * A group keeps the whitespace that follows it, unless the line ends on the
+ * group or the next character is closing punctuation. The same clusters are
+ * checked with every note closed and again with every note open.
+ */
+function groupTrails() {
+  const CLOSE = /^[,.;:!?]/;
+  function scan() {
+    const fails = [];
+    let pass = 0;
+    for (const cluster of document.querySelectorAll(".liturgy-cluster")) {
+      const line = cluster.closest(".liturgy-rom, .liturgy-sk");
+      let node = cluster.nextSibling;
+      let sawSpace = false;
+      let next = "";
+      while (node && line?.contains(node)) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const value = node.nodeValue ?? "";
+          if (/^\s/.test(value)) sawSpace = true;
+          const trimmed = value.trimStart();
+          if (trimmed) {
+            next = trimmed[0];
+            break;
+          }
+        } else if (node.nodeType === Node.ELEMENT_NODE && !node.classList.contains("liturgy-note-body")) {
+          const value = node.textContent ?? "";
+          if (/^\s/.test(value)) sawSpace = true;
+          const trimmed = value.trimStart();
+          if (trimmed) {
+            next = trimmed[0];
+            break;
+          }
+        }
+        node = node.nextSibling;
+      }
+      if (!next || sawSpace || CLOSE.test(next)) pass += 1;
+      else fails.push({ n: cluster.querySelector("summary")?.textContent.trim() ?? "", ch: next });
+    }
+    return { pass, fails };
+  }
+  const closed = scan();
+  for (const note of document.querySelectorAll(".liturgy-note")) note.open = true;
+  const opened = scan();
+  for (const note of document.querySelectorAll(".liturgy-note")) note.open = false;
+  return {
+    pass: closed.pass + opened.pass,
+    fails: [
+      ...closed.fails.map((fail) => ({ ...fail, open: false })),
+      ...opened.fails.map((fail) => ({ ...fail, open: true })),
+    ],
+  };
+}
+
 function textHunks(main, pr) {
   const hunks = [];
   let i = 0;
@@ -219,14 +272,14 @@ function textHunks(main, pr) {
   return hunks;
 }
 
-/** Exact match, or the only delta is the gap in front of a marker / a word space main drops after one. */
+/** Exact match, or the only delta is the gap in front of a marker / whitespace main drops after one. */
 function classifyPassage(main, pr) {
   if (main === pr) return "exact";
   const hunks = textHunks(main, pr);
   let after = false;
   for (const hunk of hunks) {
     const gapBefore = hunk.prOnly === "" && /^\s+$/.test(hunk.mainOnly) && /^\d/.test(hunk.after);
-    const spaceAfter = hunk.mainOnly === "" && hunk.prOnly === " " && /\d$/.test(hunk.before);
+    const spaceAfter = hunk.mainOnly === "" && /^\s+$/.test(hunk.prOnly) && /\d$/.test(hunk.before);
     if (gapBefore) continue;
     if (spaceAfter) {
       after = true;
@@ -299,19 +352,32 @@ function scrollAndNotes() {
   function punctSplit(note) {
     let node = note.nextSibling;
     while (node && node.nodeType === Node.TEXT_NODE && !(node.nodeValue || "").length) node = node.nextSibling;
-    if (!node || node.nodeType !== Node.TEXT_NODE) return "none";
-    const value = node.nodeValue || "";
-    if (!/^[,.;:!?]/.test(value)) return "none";
-    if (/^\s/.test(value)) return "whitespace";
+    if (node && node.nodeType === Node.TEXT_NODE && /^\s/.test(node.nodeValue || "")) return "whitespace";
+    let textNode = null;
+    if (node && node.nodeType === Node.ELEMENT_NODE && node.classList.contains("liturgy-punct")) {
+      const value = node.textContent || "";
+      if (/^\s/.test(value)) return "whitespace";
+      if (!/^[,.;:!?]/.test(value)) return "none";
+      textNode = [...node.childNodes].find((child) => child.nodeType === Node.TEXT_NODE && /\S/.test(child.nodeValue || ""));
+    } else if (node && node.nodeType === Node.TEXT_NODE && /^[,.;:!?]/.test(node.nodeValue || "")) {
+      textNode = node;
+    } else {
+      return "none";
+    }
+    if (!textNode) return "wrapped";
     const range = document.createRange();
-    range.setStart(node, 0);
-    range.setEnd(node, 1);
+    range.setStart(textNode, 0);
+    range.setEnd(textNode, 1);
     const punct = [...range.getClientRects()].find((r) => r.width > 0.3 && r.height > 0.3);
     const summary = note.querySelector("summary");
     const markerRange = document.createRange();
     markerRange.selectNodeContents(summary);
-    const marker = [...markerRange.getClientRects()].find((r) => r.width > 0.3 && r.height > 0.3);
+    const markerRects = [...markerRange.getClientRects()].filter((r) => r.width > 0.3 && r.height > 0.3);
+    const marker = punct
+      ? markerRects.find((r) => punct.top < r.bottom - 1 && punct.bottom > r.top + 1) ?? markerRects[0]
+      : markerRects[0];
     if (!punct || !marker || punct.top >= marker.bottom - 1) return "wrapped";
+    if (punct.left - marker.right > 1) return "gap";
     return null;
   }
 
@@ -367,7 +433,7 @@ function scrollAndNotes() {
         else markerPass += 1;
       }
       const split = punctSplit(note);
-      if (split === "whitespace" || split === "wrapped") {
+      if (split === "whitespace" || split === "wrapped" || split === "gap") {
         punctFails.push({ n: note.querySelector("summary").textContent.trim(), open, split });
       } else if (split === null) punctPass += 1;
       maxSw = Math.max(maxSw, document.documentElement.scrollWidth, document.body.scrollWidth);
@@ -755,6 +821,7 @@ for (const engine of engines) {
     ax: tally(),
     text: { exact: 0, after: 0, fail: 0 },
     word: tally(),
+    trail: tally(),
   };
   const samples = [];
   const browser = await engine.launch.launch({ headless: true });
@@ -818,6 +885,13 @@ for (const engine of engines) {
           if (spaces.fails.length) {
             failed = true;
             if (samples.length < 12) samples.push({ locale: entry.locale, width, word: spaces.fails.slice(0, 4) });
+          }
+          const trails = await page.evaluate(groupTrails);
+          counts.trail.pass += trails.pass;
+          counts.trail.fail += trails.fails.length;
+          if (trails.fails.length) {
+            failed = true;
+            if (samples.length < 12) samples.push({ locale: entry.locale, width, trail: trails.fails.slice(0, 4) });
           }
           if (width === widths[0]) {
             const prTexts = await page.evaluate(passageTexts);

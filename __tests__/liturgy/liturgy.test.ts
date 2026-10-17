@@ -161,16 +161,16 @@ describe("footnote groups", () => {
   it("glues the word, the marker and the comma, and leaves the following space", () => {
     const pieces = piecesOf("Pokeresštašno[[fn:11]], Christos");
     expect(pieces).toEqual([
-      { type: "keep", space: "", word: "Pokeresštašno", notes: [11], punct: "," },
-      { type: "text", value: " Christos" },
+      { type: "keep", space: "", word: "Pokeresštašno", notes: [11], punct: ",", trail: " " },
+      { type: "text", value: "Christos" },
     ]);
   });
 
   it("keeps a real space after a marker when the next thing is a word", () => {
     const pieces = piecesOf("navatin[[fn:10]] andemanušinen");
     expect(pieces).toEqual([
-      { type: "keep", space: "", word: "navatin", notes: [10], punct: "" },
-      { type: "text", value: " andemanušinen" },
+      { type: "keep", space: "", word: "navatin", notes: [10], punct: "", trail: " " },
+      { type: "text", value: "andemanušinen" },
     ]);
   });
 
@@ -178,8 +178,8 @@ describe("footnote groups", () => {
     const pieces = piecesOf("na ovela agor.[[fn:21]][[fn:22]]\nPaťav");
     expect(pieces).toEqual([
       { type: "text", value: "na ovela" },
-      { type: "keep", space: " ", word: "agor.", notes: [21, 22], punct: "" },
-      { type: "text", value: "\nPaťav" },
+      { type: "keep", space: " ", word: "agor.", notes: [21, 22], punct: "", trail: "\n" },
+      { type: "text", value: "Paťav" },
     ]);
   });
 });
