@@ -9,6 +9,7 @@ import ApplicationModal from "@/components/ApplicationModal";
 import ShareModal from "@/components/ShareModal";
 import SectionLabel from "@/components/SectionLabel";
 import { useTranslation } from "@/components/LanguageProvider";
+import Hyphenate from "@/components/Hyphenate";
 import { formatCurrency } from "@/lib/i18n/format";
 
 type WayKey = "financial" | "volunteer" | "share" | "trip";
@@ -72,9 +73,9 @@ export default function GetInvolvedPage() {
             <div className="flex flex-col gap-4 md:gap-5 max-w-[700px]">
               <SectionLabel text={t("getInvolved.hero.label")} />
               <h1 className="text-[34px] md:text-[48px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-                {t("getInvolved.hero.titleLine1")}
+                <Hyphenate>{t("getInvolved.hero.titleLine1")}</Hyphenate>
                 <br />
-                {t("getInvolved.hero.titleLine2")}
+                <Hyphenate>{t("getInvolved.hero.titleLine2")}</Hyphenate>
               </h1>
             </div>
           </div>

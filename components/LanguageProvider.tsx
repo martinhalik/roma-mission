@@ -20,7 +20,6 @@ import {
   buildPath,
   type RouteKey,
 } from "@/lib/i18n/routes";
-
 interface LanguageContextValue {
   locale: Locale;
   routeKey: RouteKey;
@@ -103,10 +102,11 @@ export default function LanguageProvider({
       dict,
       t: (path, vars) => {
         const found = resolve(dict, path);
-        if (found === path && dict !== fallback) {
-          return interpolate(resolve(fallback, path), vars);
-        }
-        return interpolate(found, vars);
+        const template =
+          found === path && dict !== fallback
+            ? resolve(fallback, path)
+            : found;
+        return interpolate(template, vars);
       },
     };
   }, [locale, routeKey, setLocale]);
