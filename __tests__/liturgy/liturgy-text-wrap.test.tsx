@@ -21,10 +21,11 @@ beforeEach(() => {
 
 // Chant stars are margins, and the newlines around them are trimmed, so
 // "andemanušinen.*Pokeresštašno¹¹," is one unbreakable run on a phone.
-// A `<wbr>` around each star breaks that run. It is hidden from 768px up so
-// wide columns keep their current line breaks. break-words is the backstop.
+// A `<wbr>` after each star breaks that run and leaves the star on the
+// preceding phrase. It is hidden from 768px up so wide columns keep their
+// current line breaks. break-words is the backstop.
 describe("liturgy text wrapping", () => {
-  it("breaks around chant stars and keeps footnote 11 on Pokeresštašno", () => {
+  it("breaks after chant stars and keeps footnote 11 on Pokeresštašno", () => {
     const { container } = render(
       <LanguageProvider>
         <LiturgyTextPage locale="en" />
@@ -42,7 +43,10 @@ describe("liturgy text wrapping", () => {
     expect(line).toBeTruthy();
     const html = line!.innerHTML;
     expect(html).toMatch(
-      /liturgy-break[^>]*>\s*<wbr[^>]*>\s*<\/span>\s*<span[^>]*>\*<\/span>\s*<span class="liturgy-break"/
+      /<span[^>]*>\*<\/span>\s*<span class="liturgy-break"[^>]*>\s*<wbr/
+    );
+    expect(html).not.toMatch(
+      /liturgy-break[^>]*>\s*<wbr[^>]*>\s*<\/span>\s*<span[^>]*>\*<\/span>/
     );
     const marker = html.match(/Pokeresštašno<\/span><details[\s\S]*?<\/details>/);
     expect(marker).toBeTruthy();
@@ -59,5 +63,37 @@ describe("liturgy text wrapping", () => {
     expect(note).toContain("overflow-wrap: normal");
     expect(summary).toContain("overflow-wrap: normal");
     expect(summary).toContain("white-space: nowrap");
+    const open = css.slice(
+      css.indexOf(".liturgy-note[open] {"),
+      css.indexOf(".liturgy-note[open] {") + 180
+    );
+    expect(open).toContain("display: contents");
+  });
+
+  it("gives the language chips a 44px target and a colour the selected state can override", () => {
+    const { container } = render(
+      <LanguageProvider>
+        <LiturgyTextPage locale="en" />
+      </LanguageProvider>
+    );
+    const labels = [...container.querySelectorAll(".liturgy-view label")];
+    expect(labels.map((label) => label.textContent)).toEqual([
+      "Both",
+      "Romani",
+      "Slovak",
+    ]);
+    for (const label of labels) {
+      expect(label.className).toContain("min-h-11");
+      expect(label.className).not.toContain("text-[var(--text-secondary)]");
+      expect(label.className).not.toContain("hover:text-");
+    }
+
+    const css = readFileSync(join(process.cwd(), "app/globals.css"), "utf8");
+    const rule = css.slice(
+      css.indexOf(".liturgy-view label {"),
+      css.indexOf(".liturgy-view:has(#liturgy-view-both:checked)")
+    );
+    expect(rule).toContain("color: var(--text-secondary)");
+    expect(rule).toContain("color: var(--text-primary)");
   });
 });

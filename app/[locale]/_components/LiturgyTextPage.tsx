@@ -65,7 +65,6 @@ function ChantText({ text }: { text: string }) {
           {phrase}
           {i < phrases.length - 1 && (
             <>
-              <PhoneBreak />
               <span
                 aria-hidden="true"
                 className="mx-1.5 text-[var(--text-muted)] select-none"
@@ -286,7 +285,7 @@ export default function LiturgyTextPage({ locale }: { locale: Locale }) {
                   key={view.id}
                   htmlFor={view.id}
                   title={view.hint}
-                  className="rounded-full border border-[var(--border-strong)] px-3.5 py-1.5 text-[13px] font-medium text-[var(--text-secondary)] transition-colors hover:border-[var(--gold)] hover:text-[var(--text-primary)]"
+                  className="inline-flex min-h-11 items-center rounded-full border border-[var(--border-strong)] px-3.5 py-1.5 text-[13px] font-medium transition-colors hover:border-[var(--gold)]"
                 >
                   {view.label}
                 </label>

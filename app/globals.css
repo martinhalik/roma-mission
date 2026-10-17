@@ -88,7 +88,19 @@ html.light {
    * The inputs sit next to `.liturgy-body` rather than next to their labels,
    * so the selected and focused states are matched with `:has()` on the
    * wrapper instead of an adjacent-sibling combinator.
+   *
+   * Resting and hover colours live here, not in a `text-*` utility. Utilities
+   * sit in a later layer and would override the selected colour below, which
+   * on the light theme puts dark text on --gold and fails AA. The selected
+   * rule is more specific, so it keeps --on-accent, including while hovered.
    */
+  .liturgy-view label {
+    color: var(--text-secondary);
+  }
+  .liturgy-view label:hover {
+    color: var(--text-primary);
+  }
+
   .liturgy-view:has(#liturgy-view-both:checked) label[for="liturgy-view-both"],
   .liturgy-view:has(#liturgy-view-rom:checked) label[for="liturgy-view-rom"],
   .liturgy-view:has(#liturgy-view-sk:checked) label[for="liturgy-view-sk"] {
@@ -159,6 +171,17 @@ html.light {
     color: var(--text-primary);
   }
   /*
+   * An open note's body is a block. Firefox then blockifies the inline
+   * <details>, so the nowrap marker wraps onto the next line, under the
+   * word it annotates. contents keeps the summary in that word's line and
+   * lets only the note body break out. The marker stays nowrap, so a
+   * two-digit note still cannot split, and the line's overflow-wrap still
+   * breaks a word that is wider than the column.
+   */
+  .liturgy-note[open] {
+    display: contents;
+  }
+  /*
    * Be explicit about the note body rather than relying on the browser's
    * default handling of a closed <details>: with the element switched to
    * `display: inline` that default still reserves a block box, which breaks
@@ -186,8 +209,9 @@ html.light {
   /*
    * Chant phrases are joined by a margin-spaced `*` with the source spaces
    * trimmed, so "andemanušinen.*Pokeresštašno" is one word and overflows a
-   * phone. The `<wbr>` inside `.liturgy-break` puts the break back. From
-   * 768px up the same run fits, and leaving the break in would reflow lines
+   * phone. The `<wbr>` after the star puts the break back and leaves the
+   * star on the preceding phrase. From 768px up the same run fits, and
+   * leaving the break in would reflow lines
    * that already wrap, so the opportunity is removed there.
    * `break-words` on the line still covers a single word that is wider than
    * the column.
