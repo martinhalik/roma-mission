@@ -231,6 +231,12 @@ function groupTrails() {
  * the next word, measured between glyph boxes. It has to sit within 1.5px of
  * a normal word space on that line. A pair that is not on the same line — the
  * note is open, or the word wrapped — has no horizontal gap to judge.
+ *
+ * On WebKit a letter's ink overlaps the following space by about a pixel, and
+ * a marker or a comma does not, so the distance between letter boxes is
+ * shorter than the gap a flush glyph leaves. The reference adds that overlap
+ * back. The measured gap is still the marker or punctuation glyph to the next
+ * word, and the 1.5px allowance is unchanged.
  */
 function followingGaps() {
   function glyphAt(node, index) {
@@ -239,8 +245,13 @@ function followingGaps() {
     range.setEnd(node, index + 1);
     return [...range.getClientRects()].find((box) => box.width > 0.2 && box.height > 0.2) || null;
   }
+  function median(values) {
+    const sorted = [...values].sort((a, b) => a - b);
+    return sorted[Math.floor(sorted.length / 2)];
+  }
   function normalGap(line, top) {
-    const gaps = [];
+    const inks = [];
+    const overlaps = [];
     const walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT);
     let current;
     while ((current = walker.nextNode())) {
@@ -254,12 +265,14 @@ function followingGaps() {
         const next = j < value.length ? glyphAt(current, j) : null;
         if (!prev || !next) continue;
         if (Math.abs(prev.top - top) > 8 || Math.abs(next.top - top) > 8) continue;
-        gaps.push(next.left - prev.right);
+        const box = glyphAt(current, i);
+        if (!box || box.width > 24 || Math.abs(box.top - top) > 8) continue;
+        inks.push(next.left - prev.right);
+        overlaps.push(prev.right - box.left);
       }
     }
-    if (!gaps.length) return null;
-    gaps.sort((a, b) => a - b);
-    return gaps[Math.floor(gaps.length / 2)];
+    if (!inks.length) return null;
+    return median(inks) + median(overlaps);
   }
   function scan() {
     const fails = [];
