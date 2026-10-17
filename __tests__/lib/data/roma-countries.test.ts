@@ -18,7 +18,7 @@ const EN_DASH = "\u2013";
 const POPULATION_RANGE = new RegExp(
   `^\\d{1,3}(,\\d{3})*${EN_DASH}\\d{1,3}(,\\d{3})*$`,
 );
-const SHARE_RANGE = new RegExp(`^~\\d+(?:\\.\\d{1,2})?(?:${EN_DASH}\\d+(?:\\.\\d{1,2})?)?%$`);
+const SHARE_RANGE = new RegExp(`^~?\\d+(?:\\.\\d{1,2})?(?:${EN_DASH}\\d+(?:\\.\\d{1,2})?)?%$`);
 
 /** Nearest integer, or one decimal when the end is below 1%. */
 function formatShareEnd(percent: number): string {
@@ -67,7 +67,7 @@ const EC_MISSION: Record<string, MissionPin> = {
     totalPop: 19000000,
     officialPop: "~570,000",
     unofficialPop: "1,800,000–2,500,000",
-    sharePercent: "~8.32%",
+    sharePercent: "8.32%",
     shareOverride: 8.32,
     sourceUrl:
       "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/romania_en",
@@ -95,7 +95,7 @@ const EC_MISSION: Record<string, MissionPin> = {
     totalPop: 6500000,
     officialPop: "~267,000",
     unofficialPop: "700,000–900,000",
-    sharePercent: "~10.33%",
+    sharePercent: "10.33%",
     shareOverride: 10.33,
     sourceUrl:
       "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/bulgaria_en",
@@ -237,8 +237,10 @@ describe("Roma country figures", () => {
 
     expect(romania.shareOverride).toBe(8.32);
     expect(bulgaria.shareOverride).toBe(10.33);
-    expect(formatCardShare(romania)).toBe("~8.32%");
-    expect(formatCardShare(bulgaria)).toBe("~10.33%");
+    expect(formatCardShare(romania)).toBe("8.32%");
+    expect(formatCardShare(bulgaria)).toBe("10.33%");
+    expect(romania.sharePercent).toBe("8.32%");
+    expect(bulgaria.sharePercent).toBe("10.33%");
     expect(formatCountryPercent(romania)).toBe("8.32%");
     expect(formatCountryPercent(bulgaria)).toBe("10.33%");
     expect(

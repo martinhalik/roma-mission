@@ -82,7 +82,7 @@ export function formatCountryPercent(country: ShareSource): string {
 
 /** Mission-card share. Uses the same override as the tooltip. */
 export function formatCardShare(country: { sharePercent: string; shareOverride?: number }): string {
-  if (country.shareOverride != null) return `~${formatShareOverride(country.shareOverride)}%`;
+  if (country.shareOverride != null) return `${formatShareOverride(country.shareOverride)}%`;
   return country.sharePercent;
 }
 
