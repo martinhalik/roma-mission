@@ -10,6 +10,7 @@ import { ArrowRight, Bell, Eye, HandHeart, Heart, Instagram, MessageCircle, Play
 import type { TelegramChannelStats } from "@/lib/telegram";
 import type { InstagramChannelStats } from "@/lib/instagram";
 import type { SocialPost } from "@/lib/social-feed";
+import { formatRelativeDate } from "@/lib/i18n/format";
 import { MISSION_LOCATIONS } from "@/lib/data/mission-locations";
 
 const TELEGRAM_URL = "https://t.me/romamissioneu";
@@ -50,22 +51,6 @@ function TelegramIcon({ size = 18 }: { size?: number }) {
       <path d="M21.944 4.317a1.07 1.07 0 0 0-1.142-.18L2.78 11.36a1.07 1.07 0 0 0 .067 2.013l4.142 1.297 1.602 5.111a1.07 1.07 0 0 0 1.81.37l2.32-2.412 4.244 3.118a1.07 1.07 0 0 0 1.69-.616l3.5-15.022a1.07 1.07 0 0 0-.211-.902ZM9.83 14.42l-.523 3.55-1.18-3.768 9.85-6.226-8.147 6.444Z" />
     </svg>
   );
-}
-
-function formatRelativeDate(iso: string, locale: string): string {
-  if (!iso) return "";
-  const then = new Date(iso).getTime();
-  if (Number.isNaN(then)) return "";
-  const diffMs = Date.now() - then;
-  const minutes = Math.round(diffMs / 60_000);
-  const hours = Math.round(diffMs / 3_600_000);
-  const days = Math.round(diffMs / 86_400_000);
-
-  const rtf = new Intl.RelativeTimeFormat(locale, { numeric: "auto" });
-  if (minutes < 60) return rtf.format(-minutes, "minute");
-  if (hours < 24) return rtf.format(-hours, "hour");
-  if (days < 30) return rtf.format(-days, "day");
-  return new Date(then).toLocaleDateString(locale, { month: "short", day: "numeric" });
 }
 
 function SourceBadge({ source, size = 12 }: { source: SocialPost["source"]; size?: number }) {
@@ -152,9 +137,9 @@ function StatTile({ value, label }: { value: number | string; label: string }) {
   );
 }
 
-function FeaturedPostCard({ post }: { post: SocialPost }) {
+function FeaturedPostCard({ post, now }: { post: SocialPost; now: number }) {
   const { locale, t } = useTranslation();
-  const relative = formatRelativeDate(post.datetime, locale);
+  const relative = formatRelativeDate(post.datetime, locale, now);
   const handle = post.source === "telegram" ? "@romamissioneu" : "@bohjezivy";
   const extras = post.source === "telegram" ? post.additionalImages.slice(0, 4) : [];
 
@@ -251,9 +236,15 @@ function FeaturedPostCard({ post }: { post: SocialPost }) {
   );
 }
 
-function TelegramTextCard({ post }: { post: SocialPost & { source: "telegram" } }) {
+function TelegramTextCard({
+  post,
+  now,
+}: {
+  post: SocialPost & { source: "telegram" };
+  now: number;
+}) {
   const { locale, t } = useTranslation();
-  const relative = formatRelativeDate(post.datetime, locale);
+  const relative = formatRelativeDate(post.datetime, locale, now);
 
   return (
     <a
@@ -311,16 +302,16 @@ function TelegramTextCard({ post }: { post: SocialPost & { source: "telegram" } 
   );
 }
 
-function SocialPostCard({ post }: { post: SocialPost }) {
+function SocialPostCard({ post, now }: { post: SocialPost; now: number }) {
   const { locale } = useTranslation();
-  const relative = formatRelativeDate(post.datetime, locale);
+  const relative = formatRelativeDate(post.datetime, locale, now);
   const handle = post.source === "telegram" ? "@romamissioneu" : "@bohjezivy";
   const hasImage = !!post.imageUrl;
   const telegramExtras =
     post.source === "telegram" ? post.additionalImages.slice(0, 3) : [];
 
   if (post.source === "telegram" && !hasImage) {
-    return <TelegramTextCard post={post} />;
+    return <TelegramTextCard post={post} now={now} />;
   }
 
   return (
@@ -396,9 +387,9 @@ function InstagramIconLucide({ size = 18 }: { size?: number }) {
 }
 
 
-function HeroPreviewPost({ post }: { post: SocialPost }) {
+function HeroPreviewPost({ post, now }: { post: SocialPost; now: number }) {
   const { locale, t } = useTranslation();
-  const relative = formatRelativeDate(post.datetime, locale);
+  const relative = formatRelativeDate(post.datetime, locale, now);
   const SourceIcon = post.source === "telegram" ? TelegramIcon : InstagramIconLucide;
 
   return (
@@ -452,6 +443,8 @@ interface ActivityPageProps {
   posts?: SocialPost[];
   telegramStats?: TelegramChannelStats;
   instagramStats?: InstagramChannelStats;
+  /** Server clock. Relative times use this so hydration matches the server. */
+  now: number;
 }
 
 function formatCount(n: number | null): string | null {
@@ -465,6 +458,7 @@ export default function ActivityPage({
   posts = [],
   telegramStats,
   instagramStats,
+  now,
 }: ActivityPageProps) {
   const { t } = useTranslation();
   const hasRealPosts = posts.length > 0;
@@ -577,7 +571,7 @@ export default function ActivityPage({
 
               <div className="flex flex-col">
                 {hasRealPosts ? (
-                  heroPosts.map((p) => <HeroPreviewPost key={p.id} post={p} />)
+                  heroPosts.map((p) => <HeroPreviewPost key={p.id} post={p} now={now} />)
                 ) : (
                   <div className="p-6 flex flex-col items-center gap-3 text-center">
                     <TelegramIcon size={24} />
@@ -682,12 +676,12 @@ export default function ActivityPage({
           </p>
         </div>
 
-        {featuredPost && <FeaturedPostCard post={featuredPost} />}
+        {featuredPost && <FeaturedPostCard post={featuredPost} now={now} />}
 
         {hasRealPosts ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {feedPosts.map((p) => (
-              <SocialPostCard key={p.id} post={p} />
+              <SocialPostCard key={p.id} post={p} now={now} />
             ))}
           </div>
         ) : (
