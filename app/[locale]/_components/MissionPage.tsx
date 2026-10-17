@@ -6,7 +6,7 @@ import CTASection from "@/components/CTASection";
 import LocaleLink from "@/components/LocaleLink";
 import SectionLabel from "@/components/SectionLabel";
 import ShareButton from "@/components/ShareButton";
-import { ROMA_COUNTRIES, isMissionCountry, type MissionCountry, type Presence, type TranslationStatus } from "@/lib/data/roma-countries";
+import { ROMA_COUNTRIES, formatCardShare, isMissionCountry, type MissionCountry, type Presence, type TranslationStatus } from "@/lib/data/roma-countries";
 import { useTranslation } from "@/components/LanguageProvider";
 
 const SHARE_URL = "https://romamission.eu/mission";
@@ -140,7 +140,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
         </div>
         <div className="flex flex-col gap-1 p-4 md:p-5">
           <span className="text-[13px] md:text-[15px] font-bold text-[var(--gold)]">
-            {data.sharePercent}
+            {formatCardShare(data)}
           </span>
           <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
             {t("mission.countries.cardOfPopulation")}

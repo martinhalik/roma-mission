@@ -3,6 +3,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   COE_ROMA_ESTIMATES_URL,
+  formatCardShare,
+  formatCountryPercent,
   formatRomaPopulation,
   isMissionCountry,
   ROMA_COUNTRIES,
@@ -38,7 +40,7 @@ function rangeEnds(unofficialPop: string): [number, number] {
 type MissionPin = Pick<
   MissionCountry,
   "pop" | "totalPop" | "officialPop" | "unofficialPop" | "sharePercent"
-> & { sourceUrl: string };
+> & { sourceUrl: string; shareOverride?: number };
 
 /** European Commission cards. These stay exactly as published on main. */
 const EC_MISSION: Record<string, MissionPin> = {
@@ -66,6 +68,7 @@ const EC_MISSION: Record<string, MissionPin> = {
     officialPop: "~570,000",
     unofficialPop: "1,800,000–2,500,000",
     sharePercent: "~8.32%",
+    shareOverride: 8.32,
     sourceUrl:
       "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/romania_en",
   },
@@ -93,6 +96,7 @@ const EC_MISSION: Record<string, MissionPin> = {
     officialPop: "~267,000",
     unofficialPop: "700,000–900,000",
     sharePercent: "~10.33%",
+    shareOverride: 10.33,
     sourceUrl:
       "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/bulgaria_en",
   },
@@ -224,21 +228,44 @@ describe("Roma country figures", () => {
     expect(moldova && isMissionCountry(moldova) && moldova.sharePercent).toBe("~0.6–8%");
   });
 
-  it("keeps the Romania and Bulgaria card shares exactly as the European Commission pages state them", () => {
+  it("uses the share override for Romania and Bulgaria on the card and the tooltip", () => {
     const romania = ROMA_COUNTRIES.find((entry) => entry.iso === "RO");
     const bulgaria = ROMA_COUNTRIES.find((entry) => entry.iso === "BG");
-    expect(romania && isMissionCountry(romania) && romania.sharePercent).toBe("~8.32%");
-    expect(bulgaria && isMissionCountry(bulgaria) && bulgaria.sharePercent).toBe("~10.33%");
+    expect(romania && isMissionCountry(romania)).toBe(true);
+    expect(bulgaria && isMissionCountry(bulgaria)).toBe(true);
+    if (!romania || !isMissionCountry(romania) || !bulgaria || !isMissionCountry(bulgaria)) return;
+
+    expect(romania.shareOverride).toBe(8.32);
+    expect(bulgaria.shareOverride).toBe(10.33);
+    expect(formatCardShare(romania)).toBe("~8.32%");
+    expect(formatCardShare(bulgaria)).toBe("~10.33%");
+    expect(formatCountryPercent(romania)).toBe("8.32%");
+    expect(formatCountryPercent(bulgaria)).toBe("10.33%");
+    expect(
+      `${formatCountryPercent(romania)} Roma · ${formatRomaPopulation(romania.pop)} of ${formatRomaPopulation(romania.totalPop)}`,
+    ).toBe("8.32% Roma · 1.85M of 19.0M");
+    expect(
+      `${formatCountryPercent(bulgaria)} Roma · ${formatRomaPopulation(bulgaria.pop)} of ${formatRomaPopulation(bulgaria.totalPop)}`,
+    ).toBe("10.33% Roma · 750K of 6.5M");
+
+    const withOverride = ROMA_COUNTRIES.filter((country) => country.shareOverride != null).map(
+      (country) => country.iso,
+    );
+    expect(withOverride.sort()).toEqual(["BG", "RO"]);
   });
 
-  it("renders the Romania and Bulgaria map tooltips from the map population and the card total", () => {
-    function tooltip(pop: number, total: number): string {
-      const pct = (pop / total) * 100;
-      const pctText = pct >= 1 ? `${pct.toFixed(1)}%` : `${pct.toFixed(2)}%`;
-      return `${pctText} Roma · ${formatRomaPopulation(pop)} of ${formatRomaPopulation(total)}`;
-    }
-    expect(tooltip(1_850_000, 19_000_000)).toBe("9.7% Roma · 1.85M of 19.0M");
-    expect(tooltip(750_000, 6_500_000)).toBe("11.5% Roma · 750K of 6.5M");
+  it("keeps the calculated tooltip percent when a country has no share override", () => {
+    const germany = ROMA_COUNTRIES.find((entry) => entry.iso === "DE");
+    const moldova = ROMA_COUNTRIES.find((entry) => entry.iso === "MD");
+    expect(germany?.shareOverride).toBeUndefined();
+    expect(moldova?.shareOverride).toBeUndefined();
+    expect(germany && formatCountryPercent(germany)).toBe("0.13%");
+    expect(moldova && isMissionCountry(moldova) && formatCountryPercent(moldova)).toBe("4.5%");
+    expect(moldova && isMissionCountry(moldova) && formatCardShare(moldova)).toBe("~0.6–8%");
+    expect(
+      germany &&
+        `${formatCountryPercent(germany)} Roma · ${formatRomaPopulation(germany.pop)} of ${formatRomaPopulation(germany.totalPop)}`,
+    ).toBe("0.13% Roma · 105K of 84.0M");
   });
 
   it("writes every population range with an en dash and no spaces", () => {

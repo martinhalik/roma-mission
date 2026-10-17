@@ -13,6 +13,8 @@ export interface MissionCountry {
   officialPop: string;
   unofficialPop: string;
   sharePercent: string;
+  /** When set, the card and the map tooltip both show this percent instead of pop ÷ total. */
+  shareOverride?: number;
   presence: Presence;
   presenceLabel: string;
   scripture: TranslationStatus;
@@ -31,6 +33,8 @@ export interface MapCountry {
   pop: number;
   totalPop: number;
   sourceUrl?: string;
+  /** When set, the map tooltip shows this percent instead of pop ÷ total. */
+  shareOverride?: number;
 }
 
 export type RomaCountry = MissionCountry | MapCountry;
@@ -60,6 +64,33 @@ export function formatRomaPopulation(n: number): string {
   const one = thousands.toFixed(1);
   if (Math.abs(Number(one) * 1000 - n) < 1) return `${one}K`;
   return `${thousands.toFixed(2)}K`;
+}
+
+/** Two decimals, matching the European Commission sentences (8.32, 10.33). */
+export function formatShareOverride(percent: number): string {
+  return percent.toFixed(2);
+}
+
+type ShareSource = { pop: number; totalPop: number; shareOverride?: number };
+
+/** Map tooltip percentage. An override replaces pop ÷ total. */
+export function formatCountryPercent(country: ShareSource): string {
+  if (country.shareOverride != null) return `${formatShareOverride(country.shareOverride)}%`;
+  const pct = (country.pop / country.totalPop) * 100;
+  return pct >= 1 ? `${pct.toFixed(1)}%` : `${pct.toFixed(2)}%`;
+}
+
+/** Mission-card share. Uses the same override as the tooltip. */
+export function formatCardShare(country: { sharePercent: string; shareOverride?: number }): string {
+  if (country.shareOverride != null) return `~${formatShareOverride(country.shareOverride)}%`;
+  return country.sharePercent;
+}
+
+function explicitShare(percent: number): Pick<MissionCountry, "shareOverride" | "sharePercent"> {
+  return {
+    shareOverride: percent,
+    sharePercent: formatCardShare({ sharePercent: "", shareOverride: percent }),
+  };
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -110,7 +141,7 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     totalPop: 19000000,
     officialPop: "~570,000",
     unofficialPop: "1,800,000–2,500,000",
-    sharePercent: "~8.32%",
+    ...explicitShare(8.32),
     presence: "orthodox",
     presenceLabel: "Orthodox Active",
     scripture: "available",
@@ -200,7 +231,7 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     totalPop: 6500000,
     officialPop: "~267,000",
     unofficialPop: "700,000–900,000",
-    sharePercent: "~10.33%",
+    ...explicitShare(10.33),
     presence: "opportunity",
     presenceLabel: "Opportunity",
     scripture: "partial",
