@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/components/LanguageProvider";
+import Hyphenate from "@/components/Hyphenate";
 
 export default function TermsOfUsePage() {
   const { t } = useTranslation();
@@ -26,7 +27,7 @@ export default function TermsOfUsePage() {
           </span>
         </div>
         <h1 className="min-[360px]:max-[389px]:w-[calc(100%+20px)] min-[360px]:max-[389px]:-mr-5 text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] mb-4 leading-[1.05]">
-          {t("termsOfUse.title")}
+          <Hyphenate>{t("termsOfUse.title")}</Hyphenate>
         </h1>
         <p className="text-[13px] text-[var(--text-muted)] mb-12">
           {t("termsOfUse.lastUpdated")}

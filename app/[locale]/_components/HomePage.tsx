@@ -12,6 +12,7 @@ import { getFeaturedMedia, ytThumb } from "@/lib/media-data";
 import SectionLabel from "@/components/SectionLabel";
 import MediaBadges from "@/components/MediaBadges";
 import { useTranslation } from "@/components/LanguageProvider";
+import Hyphenate from "@/components/Hyphenate";
 
 const LACO_VIDEO_ID = "PNhKEQtCrVo";
 
@@ -400,9 +401,9 @@ export default function HomePage() {
         <div className="flex flex-col gap-4 mb-10 md:mb-12">
           <SectionLabel text={t("home.featuredMedia.label")} />
           <h2 className="min-[360px]:max-[389px]:w-[calc(100%+20px)] min-[360px]:max-[389px]:-mr-5 text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-            {t("home.featuredMedia.titleLine1")}
+            <Hyphenate>{t("home.featuredMedia.titleLine1")}</Hyphenate>
             <br />
-            {t("home.featuredMedia.titleLine2")}
+            <Hyphenate>{t("home.featuredMedia.titleLine2")}</Hyphenate>
           </h2>
         </div>
 

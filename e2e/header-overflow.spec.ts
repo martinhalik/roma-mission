@@ -92,6 +92,29 @@ test.describe("header does not overflow at 320px", () => {
         report.past.join(" | "),
       ).toBeLessThanOrEqual(report.clientWidth);
       expect(report.past).toEqual([]);
+      const marked = await page.evaluate(() => {
+        const shy = "\u00AD";
+        const hits: string[] = [];
+        const title = document.title;
+        if (title.includes(shy)) hits.push(`title ${title.slice(0, 80)}`);
+        document
+          .querySelectorAll('meta[name="description"], meta[property^="og:"]')
+          .forEach((el) => {
+            const content = el.getAttribute("content") || "";
+            if (content.includes(shy)) {
+              const name = el.getAttribute("property") || el.getAttribute("name") || "meta";
+              hits.push(`${name} ${content.slice(0, 80)}`);
+            }
+          });
+        document.querySelectorAll("[aria-label], [title], [alt], [placeholder]").forEach((el) => {
+          for (const attr of ["aria-label", "title", "alt", "placeholder"]) {
+            const value = el.getAttribute(attr);
+            if (value && value.includes(shy)) hits.push(`${attr} ${value.slice(0, 80)}`);
+          }
+        });
+        return hits;
+      });
+      expect(marked).toEqual([]);
       // Playwright's Chromium has no Macedonian Intl data, so the activity
       // page's relative date hydrates as English while Node rendered
       // Macedonian. Firefox and WebKit include `mk` and stay quiet. That
@@ -205,6 +228,8 @@ const HYPHEN_WIDTHS = [320, 360, 375] as const;
 interface LineBreak {
   gap: number;
   hyphenRect: boolean;
+  /** Firefox can paint a dictionary hyphen inside the last letter's advance. */
+  wideGlyph: boolean;
   ok: boolean;
 }
 
@@ -216,18 +241,29 @@ interface WordLayout {
   hasSoftHyphen: boolean;
   /** Ink right edge minus the padding box's right edge. Negative means inside. */
   inkPast: number;
+  /** Letters of this word on each visual line, after the Chromium hyphen quirk. */
+  lines: string[];
+  word: string;
   breaks: LineBreak[];
 }
 
 /**
  * A mid-word break counts as hyphenated when Chromium paints the hyphen as
- * its own narrow rect, or when Firefox/WebKit extend the line box past the
- * last letter. Heading hyphens are about 10px; the 9px stat label's hyphen
- * is about 3px. Character tops alone mis-count Chromium: the first glyph of
- * the next line often reports the previous line's top.
+ * its own narrow rect, when Firefox/WebKit extend the line box past the
+ * last letter, or when Firefox folds the hyphen into that letter's advance
+ * (the line box then ends on the letter and the gap is ~0, but the letter
+ * is far wider than the same letter elsewhere). Heading hyphens are about
+ * 10px; the 9px stat label's hyphen is about 3px. Character tops alone
+ * mis-count Chromium: the first glyph of the next line often reports the
+ * previous line's top.
  */
-async function wordLayout(page: Page, word: string, selector: string): Promise<WordLayout[]> {
-  return page.evaluate(({ target, selector: rootSelector }) => {
+async function wordLayout(
+  page: Page,
+  word: string,
+  selector: string,
+  everyWord = false,
+): Promise<WordLayout[]> {
+  return page.evaluate(({ target, selector: rootSelector, everyWord: allWords }) => {
     const layouts: WordLayout[] = [];
     const nodes = document.querySelectorAll(rootSelector);
     for (const el of nodes) {
@@ -238,9 +274,21 @@ async function wordLayout(page: Page, word: string, selector: string): Promise<W
         const text = node as Text;
         const raw = text.textContent || "";
         const plain = raw.replace(/\u00AD/g, "");
-        const start = plain.indexOf(target);
-        if (start < 0) continue;
+        const runs: { start: number; word: string }[] = [];
+        if (allWords) {
+          for (const match of plain.matchAll(/\p{L}+/gu)) {
+            if (match.index == null || match[0].length < 2) continue;
+            runs.push({ start: match.index, word: match[0] });
+          }
+        } else {
+          const found = plain.indexOf(target);
+          if (found >= 0) runs.push({ start: found, word: target });
+        }
+        if (runs.length === 0) continue;
         el.scrollIntoView({ block: "center" });
+        for (const run of runs) {
+        const start = run.start;
+        const targetWord = run.word;
         const rawAt = (plainIndex: number) => {
           let seen = 0;
           for (let i = 0; i < raw.length; i++) {
@@ -252,28 +300,51 @@ async function wordLayout(page: Page, word: string, selector: string): Promise<W
         };
         const range = document.createRange();
         range.setStart(text, rawAt(start));
-        range.setEnd(text, rawAt(start + target.length));
+        range.setEnd(text, rawAt(start + targetWord.length));
         const wordRects = [...range.getClientRects()].filter(
           (rect) => rect.width > 1 && rect.height > 2,
         );
-        const chars: { top: number; right: number }[] = [];
-        for (let index = start; index < start + target.length; index++) {
+        const chars: { ch: string; top: number; right: number; width: number }[] = [];
+        for (let index = start; index < start + targetWord.length; index++) {
           range.setStart(text, rawAt(index));
           range.setEnd(text, rawAt(index) + 1);
           const rect = [...range.getClientRects()].find(
             (item) => item.width > 0.4 && item.width < 80 && item.height > 2,
           );
           if (!rect) continue;
-          chars.push({ top: rect.top, right: rect.right });
+          chars.push({
+            ch: plain[index] ?? "",
+            top: rect.top,
+            right: rect.right,
+            width: rect.width,
+          });
         }
-        const groups: { top: number; chars: { top: number; right: number }[] }[] = [];
-        for (const glyph of chars) {
-          let group = groups.find((item) => Math.abs(item.top - glyph.top) < 4);
+        const wide = chars.filter((glyph) => glyph.width >= 5).map((glyph) => glyph.width);
+        wide.sort((a, b) => a - b);
+        const median = wide.length ? wide[Math.floor(wide.length / 2)] : 8;
+        const groups: {
+          top: number;
+          chars: { ch: string; top: number; right: number; width: number }[];
+        }[] = [];
+        const place = (
+          top: number,
+          glyph: { ch: string; top: number; right: number; width: number },
+        ) => {
+          let group = groups.find((item) => Math.abs(item.top - top) < 4);
           if (!group) {
-            group = { top: glyph.top, chars: [] };
+            group = { top, chars: [] };
             groups.push(group);
           }
           group.chars.push(glyph);
+        };
+        for (let index = 0; index < chars.length; index++) {
+          const glyph = chars[index];
+          const next = chars[index + 1];
+          // Chromium paints the hyphen as the first character of the next
+          // line and reports that glyph on the previous line's top.
+          const hyphenGhost =
+            glyph.width < median * 0.65 && Boolean(next && next.top > glyph.top + 4);
+          place(hyphenGhost && next ? next.top : glyph.top, glyph);
         }
         const breaks: LineBreak[] = [];
         for (let index = 0; index < groups.length - 1; index++) {
@@ -292,10 +363,27 @@ async function wordLayout(page: Page, word: string, selector: string): Promise<W
               rect.left >= textRect.right - 4,
           );
           const gap = textRect ? textRect.right - last.right : 0;
+          const peers = chars.filter(
+            (glyph) => glyph !== last && glyph.ch === last.ch && glyph.width >= 5,
+          );
+          const peerWidths = peers.map((glyph) => glyph.width).sort((a, b) => a - b);
+          const others = chars
+            .filter((glyph) => glyph !== last && glyph.width >= 5)
+            .map((glyph) => glyph.width)
+            .sort((a, b) => a - b);
+          const baseline = peerWidths.length
+            ? peerWidths[Math.floor(peerWidths.length / 2)]
+            : others.length
+              ? others[Math.floor(others.length / 2)]
+              : median;
+          // Same letter: hinting never adds 40%. A unique last letter has to
+          // clear a higher bar so a naturally wide glyph is not a hyphen.
+          const wideGlyph = baseline > 0 && last.width > baseline * (peerWidths.length ? 1.4 : 1.55);
           breaks.push({
             gap: Math.round(gap),
             hyphenRect,
-            ok: hyphenRect || gap > 2,
+            wideGlyph,
+            ok: hyphenRect || gap > 2 || wideGlyph,
           });
         }
         const style = getComputedStyle(el);
@@ -308,12 +396,15 @@ async function wordLayout(page: Page, word: string, selector: string): Promise<W
           fontSize: style.fontSize,
           hasSoftHyphen: raw.includes("\u00AD"),
           inkPast: box ? inkRight - box.right : 0,
+          lines: groups.map((group) => group.chars.map((glyph) => glyph.ch).join("")),
+          word: targetWord,
           breaks,
         });
+        }
       }
     }
     return layouts;
-  }, { target: word, selector });
+  }, { target: word, selector, everyWord });
 }
 
 test.describe("mid-word heading breaks show a hyphen", () => {
@@ -336,7 +427,15 @@ test.describe("mid-word heading breaks show a hyphen", () => {
           expect(layout.hyphens).toBe("auto");
           expect(layout.overflowWrap).toBe("break-word");
           expect(layout.hasSoftHyphen).toBe(true);
-          expect(layout.breaks.filter((item) => !item.ok)).toEqual([]);
+          expect(
+            layout.breaks.filter((item) => !item.ok),
+            `${layout.word}: ${layout.lines.join(" | ")} ${JSON.stringify(layout.breaks)}`,
+          ).toEqual([]);
+          if (layout.lines.length > 1) {
+            for (const line of layout.lines) {
+              expect(line.length, layout.lines.join(" | ")).toBeGreaterThanOrEqual(3);
+            }
+          }
         }
 
         const breaks = layouts.flatMap((layout) => layout.breaks);
@@ -369,6 +468,39 @@ test.describe("mission stat label stays inside its cell", () => {
       expect(layout.inkPast, `ink past cell ${layout.inkPast.toFixed(1)}px`).toBeLessThanOrEqual(1);
       expect(layout.breaks.filter((item) => !item.ok)).toEqual([]);
       expect(layout.breaks.length, "wraps on a hyphen").toBeGreaterThan(0);
+      for (const line of layout.lines) {
+        expect(line.length, layout.lines.join(" | ")).toBeGreaterThanOrEqual(3);
+      }
     }
   });
+});
+
+test.describe("stat labels in every locale", () => {
+  for (const width of HYPHEN_WIDTHS) {
+    for (const locale of LOCALES) {
+      const slug = ROUTE_SLUGS[locale.code].mission;
+      const path = `/${locale.code}/${slug}`;
+      test(`${path} at ${width}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path, { waitUntil: "domcontentloaded" });
+        await waitForHydration(page);
+
+        const layouts = await wordLayout(page, "", ".hyphenate", true);
+        expect(layouts.length, "mission card has stat labels").toBeGreaterThan(0);
+        for (const layout of layouts) {
+          expect(layout.hyphens).toBe("auto");
+          expect(layout.fontSize).toBe("9px");
+          expect(layout.breaks.filter((item) => !item.ok), layout.word).toEqual([]);
+          if (layout.lines.length > 1) {
+            for (const line of layout.lines) {
+              expect(
+                line.length,
+                `${layout.word}: ${layout.lines.join(" | ")}`,
+              ).toBeGreaterThanOrEqual(3);
+            }
+          }
+        }
+      });
+    }
+  }
 });

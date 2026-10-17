@@ -17,6 +17,7 @@ import {
 import SectionLabel from "@/components/SectionLabel";
 import MediaBadges from "@/components/MediaBadges";
 import { useTranslation } from "@/components/LanguageProvider";
+import Hyphenate from "@/components/Hyphenate";
 
 export default function MediaPage() {
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
@@ -64,9 +65,9 @@ export default function MediaPage() {
           <div className="flex flex-col gap-5 md:gap-6 max-w-[700px]">
             <SectionLabel text={t("media.hero.label")} />
             <h1 className="text-[34px] md:text-[48px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.05]">
-              {t("media.hero.titleLine1")}
+              <Hyphenate>{t("media.hero.titleLine1")}</Hyphenate>
               <br />
-              {t("media.hero.titleLine2")}
+              <Hyphenate>{t("media.hero.titleLine2")}</Hyphenate>
             </h1>
             <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.6] max-w-[600px]">
               {t("media.hero.subtitle")}

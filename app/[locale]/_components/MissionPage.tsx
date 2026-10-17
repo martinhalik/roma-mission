@@ -8,6 +8,7 @@ import SectionLabel from "@/components/SectionLabel";
 import ShareButton from "@/components/ShareButton";
 import { ROMA_COUNTRIES, isMissionCountry, type MissionCountry, type Presence, type TranslationStatus } from "@/lib/data/roma-countries";
 import { useTranslation } from "@/components/LanguageProvider";
+import Hyphenate from "@/components/Hyphenate";
 
 const SHARE_URL = "https://romamission.eu/mission";
 const SHARE_TITLE = "Roma Mission — Europe's Most Neglected People";
@@ -130,7 +131,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
             {data.officialPop}
           </span>
           <span className="hyphenate min-w-0 text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-            {t("mission.countries.cardOfficial")}
+            <Hyphenate>{t("mission.countries.cardOfficial")}</Hyphenate>
           </span>
         </div>
         <div className="flex flex-col gap-1 p-4 md:p-5 min-w-0">
@@ -138,7 +139,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
             {data.unofficialPop}
           </span>
           <span className="hyphenate min-w-0 text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-            {t("mission.countries.cardEstimated")}
+            <Hyphenate>{t("mission.countries.cardEstimated")}</Hyphenate>
           </span>
         </div>
         <div className="flex flex-col gap-1 p-4 md:p-5 min-w-0">
@@ -146,7 +147,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
             {data.sharePercent}
           </span>
           <span className="hyphenate min-w-0 text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-            {t("mission.countries.cardOfPopulation")}
+            <Hyphenate>{t("mission.countries.cardOfPopulation")}</Hyphenate>
           </span>
         </div>
       </div>
@@ -486,9 +487,9 @@ export default function MissionPage() {
         <div className="flex flex-col gap-5 md:gap-6 max-w-[680px] mb-12 md:mb-16">
           <SectionLabel text={t("mission.vision.label")} />
           <h2 className="min-[360px]:max-[389px]:w-[calc(100%+20px)] min-[360px]:max-[389px]:-mr-5 text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
-            {t("mission.vision.titleLine1")}
+            <Hyphenate>{t("mission.vision.titleLine1")}</Hyphenate>
             <br />
-            {t("mission.vision.titleLine2")}
+            <Hyphenate>{t("mission.vision.titleLine2")}</Hyphenate>
           </h2>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.7]">
             {t("mission.vision.body")}

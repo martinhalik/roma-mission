@@ -1,35 +1,67 @@
 const SOFT_HYPHEN = "\u00AD";
 
 /**
- * Syllable breaks for words that overflow a phone column. Chromium and WebKit
- * in this stack do not ship a hyphenation dictionary for every locale, so
- * `hyphens: auto` alone still slices these words with no hyphen. The marks
- * are inserted when the string is rendered; the dictionaries stay unchanged.
+ * Breaks for words that overflow a phone heading or a mission stat label.
+ * Each piece is at least three letters, so a line cannot end on an orphan.
+ * Chromium and WebKit in this stack do not ship a hyphenation dictionary for
+ * every locale, and `hyphens: auto` then lets `overflow-wrap` slice the word
+ * with no hyphen. The marks are inserted by `<Hyphenate>` at the visible
+ * heading and label. `t()` and the dictionaries stay unchanged.
  * A soft hyphen is invisible unless the line actually breaks there.
+ * Matching is case-insensitive so the dictionary's own casing is covered.
  */
-const SOFT_HYPHENATED: Record<string, string> = {
-  Задокументировано: shy("За", "до", "ку", "мен", "ти", "ро", "ва", "но"),
-  Самообеспечивающийся: shy("Са", "мо", "обес", "пе", "чи", "ва", "ю", "щий", "ся"),
-  конфиденциальности: shy("кон", "фи", "ден", "ци", "аль", "но", "сти"),
-  конфиденциальность: shy("кон", "фи", "ден", "ци", "аль", "ность"),
-  Datenschutzerklärung: shy("Daten", "schutz", "er", "klä", "rung"),
-  Nutzungsbedingungen: shy("Nutzungs", "be", "din", "gun", "gen"),
-  Официально: shy("Офи", "ци", "аль", "но"),
-};
+const SOFT_HYPHEN_PATTERNS: { key: string; parts: string[] }[] = [
+  { key: "Задокументировано", parts: ["Задоку", "ментиро", "вано"] },
+  { key: "Самообеспечивающийся", parts: ["Само", "обеспе", "чиваю", "щийся"] },
+  { key: "конфиденциальности", parts: ["кон", "фид", "енц", "иал", "ьно", "сти"] },
+  { key: "конфиденциальность", parts: ["кон", "фид", "енц", "иал", "ьно", "сть"] },
+  { key: "Datenschutzerklärung", parts: ["Daten", "schutz", "erklä", "rung"] },
+  { key: "Nutzungsbedingungen", parts: ["Nutzungs", "bedin", "gungen"] },
+  { key: "Официально", parts: ["Офици", "ально"] },
+  { key: "Официјално", parts: ["Офици", "јално"] },
+  { key: "населения", parts: ["насе", "ления"] },
+  { key: "населението", parts: ["насе", "лението"] },
+  { key: "становништва", parts: ["ста", "нов", "ништва"] },
+  { key: "Проценето", parts: ["Проце", "нето"] },
+  { key: "Bevölkerung", parts: ["Bevöl", "kerung"] },
+  { key: "Geschätzt", parts: ["Gesch", "ätzt"] },
+  { key: "πληθυσμού", parts: ["πληθυσ", "μού"] },
+  { key: "Offiziell", parts: ["Offi", "ziell"] },
+  { key: "Oficiálne", parts: ["Ofici", "álne"] },
+  { key: "Oficiálně", parts: ["Ofici", "álně"] },
+  { key: "populácie", parts: ["popu", "lácie"] },
+  { key: "populație", parts: ["popu", "lație"] },
+  { key: "populace", parts: ["popu", "lace"] },
+  { key: "Population", parts: ["Popu", "lation"] },
+  { key: "Estimated", parts: ["Esti", "mated"] },
+  { key: "Званично", parts: ["Зва", "нично"] },
+  { key: "Εκτίμηση", parts: ["Εκτί", "μηση"] },
+];
 
-const SOFT_HYPHEN_KEYS = Object.keys(SOFT_HYPHENATED).sort(
-  (a, b) => b.length - a.length,
+const SOFT_HYPHEN_KEYS = [...SOFT_HYPHEN_PATTERNS].sort(
+  (a, b) => b.key.length - a.key.length,
 );
 
-function shy(...parts: string[]): string {
-  return parts.join(SOFT_HYPHEN);
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function applyPattern(match: string, parts: string[]) {
+  let index = 0;
+  const slices: string[] = [];
+  for (const part of parts) {
+    slices.push(match.slice(index, index + part.length));
+    index += part.length;
+  }
+  if (index !== match.length) return match;
+  return slices.join(SOFT_HYPHEN);
 }
 
 export function withSoftHyphens(text: string): string {
   let out = text;
-  for (const key of SOFT_HYPHEN_KEYS) {
-    if (!out.includes(key)) continue;
-    out = out.split(key).join(SOFT_HYPHENATED[key]);
+  for (const pattern of SOFT_HYPHEN_KEYS) {
+    const expression = new RegExp(escapeRegExp(pattern.key), "gi");
+    out = out.replace(expression, (match) => applyPattern(match, pattern.parts));
   }
   return out;
 }
