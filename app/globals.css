@@ -48,14 +48,16 @@ html.light {
  * overflows there. From 390px up the same word fits, and this rule stays
  * off so those widths do not reflow.
  *
- * `hyphens: auto` breaks at the dictionary when the engine has one (html
- * lang is the locale). `hyphenate-limit-chars` keeps at least three letters
- * on either side of that break. Words that carry their own soft hyphens use
- * `.hyphenate-shy` (`hyphens: manual`) so the dictionary cannot choose a
- * different point — German compounds break only at the boundary. Those marks
- * come from `<Hyphenate>` and are not applied to every translated string.
- * overflow-wrap is only the last resort, for a piece that still cannot break
- * on a hyphen.
+ * Below 390px, headings and stat labels use `hyphens: manual`. A dictionary
+ * break (`auto`) can land mid-syllable or on a two-letter piece. Soft hyphens
+ * from `<Hyphenate>` are the break points: German compounds once, at the
+ * boundary, and the long phone words on a syllable of at least three letters.
+ * Those marks are not applied to every translated string. overflow-wrap is
+ * only the last resort, for a piece that still cannot break on a hyphen.
+ *
+ * From 390px up, headings and stat labels use `hyphens: none`, so a soft
+ * hyphen is not a break opportunity, and `overflow-wrap: normal`, so a word
+ * stays whole. The line breaks match the unhyphenated heading.
  *
  * Between 360px and 389px the page's 20px right padding is enough to hold
  * every one of those words except that WebKit fallback. Headings marked
@@ -69,23 +71,27 @@ html.light {
   h4,
   h5,
   h6,
-  .hyphenate {
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    -webkit-hyphenate-limit-before: 3;
-    -webkit-hyphenate-limit-after: 3;
-    hyphenate-limit-chars: 6 3 3;
+  .hyphenate,
+  .hyphenate-shy {
+    -webkit-hyphens: manual;
+    hyphens: manual;
     overflow-wrap: break-word;
   }
 }
 
-/*
- * Soft hyphens are the only breaks in these words. The heading's `auto`
- * value is inherited, so this has to be set on the word itself.
- */
-.hyphenate-shy {
-  -webkit-hyphens: manual;
-  hyphens: manual;
+@media (min-width: 390px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .hyphenate,
+  .hyphenate-shy {
+    -webkit-hyphens: none;
+    hyphens: none;
+    overflow-wrap: normal;
+  }
 }
 
 @layer base {

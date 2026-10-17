@@ -36,6 +36,13 @@ const CASED_KEYS = [
   "Bevölkerung",
   "становништва",
   "населението",
+  "Присоединяйтесь",
+  "Zdokumentované",
+  "Zdokumentováno",
+  "Καταγεγραμμένα",
+  "Ηχογραφημένα",
+  "Документовано",
+  "Документирано",
 ];
 
 function PlainProbe({ path }: { path: string }) {
@@ -74,6 +81,15 @@ describe("withSoftHyphens", () => {
     expect(withSoftHyphens("От населения")).toBe(`От насе${SOFT_HYPHEN}ления`);
     expect(withSoftHyphens("ОТ НАСЕЛЕНИЯ")).toBe(`ОТ НАСЕ${SOFT_HYPHEN}ЛЕНИЯ`);
     expect(visible(withSoftHyphens("официально"))).toBe("официально");
+  });
+
+  it("breaks the orphaned phone words on a hyphen", () => {
+    expect(withSoftHyphens("Присоединяйтесь")).toBe(`Присоеди${SOFT_HYPHEN}няйтесь`);
+    expect(withSoftHyphens("Zdokumentované.")).toBe(`Zdokumen${SOFT_HYPHEN}tované.`);
+    expect(withSoftHyphens("Καταγεγραμμένα.")).toBe(`Καταγε${SOFT_HYPHEN}γραμμένα.`);
+    expect(withSoftHyphens("Ηχογραφημένα.")).toBe(`Ηχογρα${SOFT_HYPHEN}φημένα.`);
+    expect(withSoftHyphens("Документовано.")).toBe(`Докумен${SOFT_HYPHEN}товано.`);
+    expect(withSoftHyphens("Документирано.")).toBe(`Докумен${SOFT_HYPHEN}тирано.`);
   });
 
   it("breaks German compounds once, at the boundary", () => {

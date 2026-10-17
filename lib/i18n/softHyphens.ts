@@ -38,6 +38,13 @@ const SOFT_HYPHEN_PATTERNS: { key: string; parts: string[] }[] = [
   { key: "Estimated", parts: ["Esti", "mated"] },
   { key: "Званично", parts: ["Зва", "нично"] },
   { key: "Εκτίμηση", parts: ["Εκτί", "μηση"] },
+  { key: "Присоединяйтесь", parts: ["Присоеди", "няйтесь"] },
+  { key: "Zdokumentované", parts: ["Zdokumen", "tované"] },
+  { key: "Zdokumentováno", parts: ["Zdokumen", "továno"] },
+  { key: "Καταγεγραμμένα", parts: ["Καταγε", "γραμμένα"] },
+  { key: "Ηχογραφημένα", parts: ["Ηχογρα", "φημένα"] },
+  { key: "Документовано", parts: ["Докумен", "товано"] },
+  { key: "Документирано", parts: ["Докумен", "тирано"] },
 ];
 
 const SOFT_HYPHEN_KEYS = [...SOFT_HYPHEN_PATTERNS].sort(

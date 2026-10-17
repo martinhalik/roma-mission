@@ -4,6 +4,7 @@ import { Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import LanguageProvider from "@/components/LanguageProvider";
+import StripSoftHyphensOnCopy from "@/components/StripSoftHyphensOnCopy";
 import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n";
 import "./globals.css";
 
@@ -51,6 +52,7 @@ export default async function RootLayout({
         className={`${spaceGrotesk.variable} font-primary h-full bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased`}
       >
         <LanguageProvider>{children}</LanguageProvider>
+        <StripSoftHyphensOnCopy />
         <Analytics />
         <Script id="ms-clarity" strategy="afterInteractive">
           {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${CLARITY_PROJECT_ID}");`}

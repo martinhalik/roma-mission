@@ -262,8 +262,9 @@ async function wordLayout(
   word: string,
   selector: string,
   everyWord = false,
+  scroll = true,
 ): Promise<WordLayout[]> {
-  return page.evaluate(({ target, selector: rootSelector, everyWord: allWords }) => {
+  return page.evaluate(({ target, selector: rootSelector, everyWord: allWords, scroll: shouldScroll }) => {
     const layouts: WordLayout[] = [];
     const nodes = document.querySelectorAll(rootSelector);
     for (const el of nodes) {
@@ -285,7 +286,7 @@ async function wordLayout(
           if (found >= 0) runs.push({ start: found, word: target });
         }
         if (runs.length === 0) continue;
-        el.scrollIntoView({ block: "center" });
+        if (shouldScroll) el.scrollIntoView({ block: "center" });
         for (const run of runs) {
         const start = run.start;
         const targetWord = run.word;
@@ -411,7 +412,7 @@ async function wordLayout(
       }
     }
     return layouts;
-  }, { target: word, selector, everyWord });
+  }, { target: word, selector, everyWord, scroll });
 }
 
 test.describe("mid-word heading breaks show a hyphen", () => {
@@ -515,5 +516,208 @@ test.describe("stat labels in every locale", () => {
         }
       });
     }
+  }
+});
+
+const NARROW_WIDTHS = [320, 360] as const;
+const WIDE_WIDTHS = [390, 414, 768, 1024, 1280] as const;
+
+/** A wrapped heading must not open a line on punctuation such as a stranded period. */
+async function punctuationLineStarts(page: Page): Promise<string[]> {
+  return page.evaluate(() => {
+    const hits: string[] = [];
+    const seen = new Set<Text>();
+    const roots = document.querySelectorAll("h1, h2, h3, h4, h5, h6, .hyphenate");
+    for (const el of roots) {
+      const style = getComputedStyle(el);
+      if (style.display === "none" || style.visibility === "hidden") continue;
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      const glyphs: { ch: string; top: number }[] = [];
+      let node: Node | null;
+      while ((node = walker.nextNode())) {
+        const text = node as Text;
+        if (seen.has(text)) continue;
+        seen.add(text);
+        const raw = text.textContent || "";
+        const range = document.createRange();
+        for (let index = 0; index < raw.length; index++) {
+          const ch = raw[index];
+          if (ch === "\u00AD" || ch === "\n") continue;
+          range.setStart(text, index);
+          range.setEnd(text, index + 1);
+          const rects = [...range.getClientRects()].filter(
+            (item) => item.width > 0.4 && item.height > 2,
+          );
+          const rect = rects.reduce<DOMRect | undefined>((chosen, item) => {
+            if (!chosen || item.top > chosen.top + 4) return item;
+            return chosen;
+          }, undefined);
+          if (!rect) continue;
+          glyphs.push({ ch, top: rect.top });
+        }
+      }
+      const lines: { top: number; chars: string[] }[] = [];
+      for (const glyph of glyphs) {
+        let line = lines.find((item) => Math.abs(item.top - glyph.top) < 4);
+        if (!line) {
+          line = { top: glyph.top, chars: [] };
+          lines.push(line);
+        }
+        line.chars.push(glyph.ch);
+      }
+      for (const line of lines) {
+        const text = line.chars.join("").trim();
+        if (text.length === 0) continue;
+        // A wrapped parenthetical may open on "(", which is the text.
+        // A stranded period or comma from overflow-wrap is the failure.
+        if (/^[.,;:!?…]/u.test(text)) {
+          const label = (el.textContent || "").replace(/\u00AD/g, "").replace(/\s+/g, " ").trim().slice(0, 60);
+          hits.push(`${label} → “${text.slice(0, 24)}”`);
+        }
+      }
+    }
+    return hits;
+  });
+}
+
+function pathsFor(localeCode: string): string[] {
+  return PATHS.filter(
+    (path) => path === `/${localeCode}` || path.startsWith(`/${localeCode}/`),
+  );
+}
+
+test.describe("narrow headings do not orphan a letter or punctuation", () => {
+  for (const width of NARROW_WIDTHS) {
+    for (const locale of LOCALES) {
+      test(`${locale.code} at ${width}px`, async ({ page }) => {
+        test.setTimeout(180_000);
+        await page.setViewportSize({ width, height: 800 });
+        for (const path of pathsFor(locale.code)) {
+          await page.goto(path, { waitUntil: "domcontentloaded" });
+          await waitForHydration(page);
+          const layouts = await wordLayout(
+            page,
+            "",
+            "h1, h2, h3, h4, h5, h6, .hyphenate",
+            true,
+            false,
+          );
+          for (const layout of layouts) {
+            if (layout.lines.length < 2) continue;
+            expect(
+              layout.breaks.filter((item) => !item.ok),
+              `${path} ${layout.word}: ${layout.lines.join(" | ")} ${JSON.stringify(layout.breaks)}`,
+            ).toEqual([]);
+            for (const line of layout.lines) {
+              expect(
+                line.length,
+                `${path} ${layout.word}: ${layout.lines.join(" | ")}`,
+              ).toBeGreaterThanOrEqual(3);
+            }
+          }
+          const punct = await punctuationLineStarts(page);
+          expect(punct, path).toEqual([]);
+        }
+      });
+    }
+  }
+});
+
+test.describe("wide headings do not hyphenate", () => {
+  for (const width of WIDE_WIDTHS) {
+    for (const locale of LOCALES) {
+      test(`${locale.code} at ${width}px`, async ({ page }) => {
+        test.setTimeout(180_000);
+        await page.setViewportSize({ width, height: 900 });
+        for (const path of pathsFor(locale.code)) {
+          await page.goto(path, { waitUntil: "domcontentloaded" });
+          await waitForHydration(page);
+          const layouts = await wordLayout(
+            page,
+            "",
+            "h1, h2, h3, h4, h5, h6, .hyphenate",
+            true,
+            false,
+          );
+          for (const layout of layouts) {
+            if (layout.lines.length === 0) continue;
+            expect(layout.hyphens, `${path} ${layout.word}`).toBe("none");
+            expect(layout.overflowWrap, `${path} ${layout.word}`).toBe("normal");
+            expect(
+              layout.lines,
+              `${path} ${layout.word} broke at ${width}px`,
+            ).toHaveLength(1);
+          }
+        }
+      });
+    }
+  }
+});
+
+const COPY_CASES = [
+  { path: "/ru", needle: "Задокументировано" },
+  { path: "/ru/konfidentsialnost", needle: "конфиденциальности" },
+  { path: "/ru/media", needle: "Задокументировано" },
+  { path: "/ru/uchastvovat", needle: "Присоединяйтесь" },
+  { path: "/de/datenschutz", needle: "Datenschutzerklärung" },
+  { path: "/sk/media", needle: "Zdokumentované" },
+] as const;
+
+test.describe("copying a hyphenated heading drops the soft hyphen", () => {
+  for (const item of COPY_CASES) {
+    test(item.path, async ({ page }) => {
+      await page.setViewportSize({ width: 320, height: 800 });
+      await page.goto(item.path, { waitUntil: "domcontentloaded" });
+      await waitForHydration(page);
+      const copied = await page.evaluate(async (needle) => {
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        let node: Node | null;
+        let target: Text | null = null;
+        while ((node = walker.nextNode())) {
+          const plain = (node.textContent || "").replace(/\u00AD/g, "");
+          if (!plain.includes(needle)) continue;
+          const host = node.parentElement;
+          if (!host || host.closest("script, style, nav, footer")) continue;
+          const box = host.getBoundingClientRect();
+          if (box.width < 1 || box.height < 1) continue;
+          if (!host.closest(".hyphenate-shy")) continue;
+          target = node as Text;
+          break;
+        }
+        const host = target?.parentElement;
+        if (!host) return "missing";
+        const box = host.getBoundingClientRect();
+        if (box.width < 1 || box.height < 1 || host.closest("script, style, nav, footer")) {
+          return "hidden";
+        }
+        host.scrollIntoView({ block: "center" });
+        const range = document.createRange();
+        range.selectNodeContents(host);
+        const selection = document.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        // Window bubble runs after the document listener, so this reads the
+        // text that listener wrote even if it was registered later.
+        function readCopy(): string {
+          let copied = "no-event";
+          const onCopy = (event: ClipboardEvent) => {
+            copied = `${event.defaultPrevented ? "prevented" : "open"}:${event.clipboardData?.getData("text/plain") ?? ""}`;
+          };
+          window.addEventListener("copy", onCopy);
+          document.execCommand("copy");
+          window.removeEventListener("copy", onCopy);
+          return copied;
+        }
+        let copied = readCopy();
+        for (let attempt = 0; attempt < 8 && !copied.includes(needle); attempt++) {
+          await new Promise((resolve) => requestAnimationFrame(() => resolve(undefined)));
+          copied = readCopy();
+        }
+        return copied;
+      }, item.needle);
+      const copiedText = copied.includes(":") ? copied.slice(copied.indexOf(":") + 1) : copied;
+      expect(copiedText, `${item.path} (${copied})`).not.toContain("\u00AD");
+      expect(copiedText.replace(/\s+/g, " "), `${item.path} (${copied})`).toContain(item.needle);
+    });
   }
 });
