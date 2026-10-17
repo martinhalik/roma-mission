@@ -128,9 +128,18 @@ html.light {
    */
   .liturgy-note {
     display: inline;
+    /*
+     * The line uses overflow-wrap: break-word so a long chant run can break
+     * on a phone. Firefox also breaks inside the inline marker, so "10"–"34"
+     * split between their digits and the page grows. The marker is one token;
+     * the note body still wraps at spaces once it is open.
+     */
+    overflow-wrap: normal;
   }
   .liturgy-note > summary {
     display: inline;
+    overflow-wrap: normal;
+    white-space: nowrap;
     list-style: none;
     /*
      * The marker itself is a 10px superscript numeral — about 4×13px, well

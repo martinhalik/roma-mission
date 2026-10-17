@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { beforeEach, describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
 import LiturgyTextPage from "@/app/[locale]/_components/LiturgyTextPage";
@@ -45,5 +47,17 @@ describe("liturgy text wrapping", () => {
     const marker = html.match(/Pokeresštašno<\/span><details[\s\S]*?<\/details>/);
     expect(marker).toBeTruthy();
     expect(marker![0]).not.toContain("<wbr");
+  });
+
+  it("does not let break-word split the footnote marker", () => {
+    const css = readFileSync(join(process.cwd(), "app/globals.css"), "utf8");
+    const note = css.slice(css.indexOf(".liturgy-note {"), css.indexOf(".liturgy-note > summary"));
+    const summary = css.slice(
+      css.indexOf(".liturgy-note > summary {"),
+      css.indexOf(".liturgy-note > summary::-webkit-details-marker")
+    );
+    expect(note).toContain("overflow-wrap: normal");
+    expect(summary).toContain("overflow-wrap: normal");
+    expect(summary).toContain("white-space: nowrap");
   });
 });
