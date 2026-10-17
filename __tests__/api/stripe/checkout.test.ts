@@ -1,17 +1,10 @@
 // @vitest-environment node
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import { NextRequest } from "next/server";
+import { MONTHLY_PRESET_AMOUNTS } from "../../../lib/donations";
 
 const mockCreate = vi.hoisted(() => vi.fn());
 const mockPricesList = vi.hoisted(() => vi.fn());
-
-const MONTHLY_PRODUCT_ID = "prod_monthly_test";
-const PRESET_PRICES = [
-  { id: "price_m10", unit_amount: 1000, product: MONTHLY_PRODUCT_ID },
-  { id: "price_m25", unit_amount: 2500, product: MONTHLY_PRODUCT_ID },
-  { id: "price_m50", unit_amount: 5000, product: MONTHLY_PRODUCT_ID },
-  { id: "price_m100", unit_amount: 10000, product: MONTHLY_PRODUCT_ID },
-];
 
 vi.mock("stripe", () => ({
   default: vi.fn().mockImplementation(function () {
@@ -28,10 +21,7 @@ vi.mock("stripe", () => ({
   }),
 }));
 
-// Import after mocks are in place
-const { POST } = await import(
-  "../../../app/api/stripe/checkout/route"
-);
+const { POST } = await import("../../../app/api/stripe/checkout/route");
 
 function makeRequest(body: unknown): NextRequest {
   return new NextRequest("http://localhost:3000/api/stripe/checkout", {
@@ -40,6 +30,11 @@ function makeRequest(body: unknown): NextRequest {
     body: JSON.stringify(body),
   });
 }
+
+const MONTHLY_PRODUCT_DATA = {
+  name: "Monthly Donation — Roma Mission",
+  description: "Supporting Orthodox mission to Roma communities in Eastern Europe",
+};
 
 describe("POST /api/stripe/checkout", () => {
   beforeEach(() => {
@@ -99,7 +94,7 @@ describe("POST /api/stripe/checkout", () => {
     );
   });
 
-  it("converts dollar amount to cents", async () => {
+  it("converts the major-unit amount to cents", async () => {
     mockCreate.mockResolvedValueOnce({ client_secret: "cs_test" });
 
     await POST(makeRequest({ amount: 25.5, isMonthly: false }));
@@ -108,7 +103,10 @@ describe("POST /api/stripe/checkout", () => {
       expect.objectContaining({
         line_items: [
           expect.objectContaining({
-            price_data: expect.objectContaining({ unit_amount: 2550 }),
+            price_data: expect.objectContaining({
+              currency: "eur",
+              unit_amount: 2550,
+            }),
           }),
         ],
       })
@@ -125,6 +123,7 @@ describe("POST /api/stripe/checkout", () => {
         line_items: [
           expect.objectContaining({
             price_data: expect.objectContaining({
+              currency: "eur",
               recurring: { interval: "month" },
             }),
           }),
@@ -133,70 +132,85 @@ describe("POST /api/stripe/checkout", () => {
     );
   });
 
-  it("one-time line item has no recurring field", async () => {
+  it("one-time line item has no recurring field and uses EUR", async () => {
     mockCreate.mockResolvedValueOnce({ client_secret: "cs_test" });
 
     await POST(makeRequest({ amount: 30, isMonthly: false }));
 
     const callArgs = mockCreate.mock.calls[0][0];
+    expect(callArgs.line_items[0].price_data).toEqual({
+      currency: "eur",
+      product_data: {
+        name: "One-Time Donation — Roma Mission",
+        description: MONTHLY_PRODUCT_DATA.description,
+      },
+      unit_amount: 3000,
+    });
     expect(callArgs.line_items[0].price_data.recurring).toBeUndefined();
-  });
-
-  it("uses USD currency", async () => {
-    mockCreate.mockResolvedValueOnce({ client_secret: "cs_test" });
-
-    await POST(makeRequest({ amount: 100, isMonthly: false }));
-
-    expect(mockCreate).toHaveBeenCalledWith(
-      expect.objectContaining({
-        line_items: [
-          expect.objectContaining({
-            price_data: expect.objectContaining({ currency: "usd" }),
-          }),
-        ],
-      })
-    );
+    expect(callArgs.line_items[0].price).toBeUndefined();
   });
 
   describe("monthly preset prices", () => {
     beforeEach(() => {
-      mockPricesList.mockResolvedValue({ data: PRESET_PRICES });
       mockCreate.mockResolvedValue({ client_secret: "cs_test" });
     });
 
-    it("looks up the preset prices by lookup key", async () => {
-      await POST(makeRequest({ amount: 100, isMonthly: true }));
+    it.each([
+      [10, 1000],
+      [25, 2500],
+      [50, 5000],
+      [100, 10000],
+    ] as const)(
+      "preset %i EUR uses inline price_data (unit_amount %i, interval month)",
+      async (amount, unitAmount) => {
+        await POST(makeRequest({ amount, isMonthly: true }));
 
-      expect(mockPricesList).toHaveBeenCalledWith({
-        lookup_keys: [
-          "monthly_donation_10",
-          "monthly_donation_25",
-          "monthly_donation_50",
-          "monthly_donation_100",
-        ],
-        active: true,
-      });
+        expect(mockPricesList).not.toHaveBeenCalled();
+        const callArgs = mockCreate.mock.calls[0][0];
+        expect(callArgs.mode).toBe("subscription");
+        expect(callArgs.line_items).toEqual([
+          {
+            price_data: {
+              currency: "eur",
+              product_data: MONTHLY_PRODUCT_DATA,
+              unit_amount: unitAmount,
+              recurring: { interval: "month" },
+            },
+            quantity: 1,
+          },
+        ]);
+      }
+    );
+
+    it("covers every monthly preset amount", () => {
+      expect(MONTHLY_PRESET_AMOUNTS).toEqual([10, 25, 50, 100]);
     });
 
-    it("uses the fixed price for a preset amount", async () => {
-      await POST(makeRequest({ amount: 100, isMonthly: true }));
-
-      const callArgs = mockCreate.mock.calls[0][0];
-      expect(callArgs.line_items).toEqual([
-        { price: "price_m100", quantity: 1 },
-      ]);
-    });
-
-    it("puts a custom amount on the same product as the presets", async () => {
+    it("puts a custom monthly amount on inline EUR price_data, not a stored Price", async () => {
       await POST(makeRequest({ amount: 30, isMonthly: true }));
 
+      expect(mockPricesList).not.toHaveBeenCalled();
       const callArgs = mockCreate.mock.calls[0][0];
+      expect(callArgs.line_items[0].price).toBeUndefined();
       expect(callArgs.line_items[0].price_data).toEqual({
-        currency: "usd",
-        product: MONTHLY_PRODUCT_ID,
+        currency: "eur",
+        product_data: MONTHLY_PRODUCT_DATA,
         unit_amount: 3000,
         recurring: { interval: "month" },
       });
+    });
+
+    it("falls back to inline EUR price_data when no dashboard Prices exist", async () => {
+      await POST(makeRequest({ amount: 25, isMonthly: true }));
+
+      expect(mockPricesList).not.toHaveBeenCalled();
+      const callArgs = mockCreate.mock.calls[0][0];
+      expect(callArgs.line_items[0].price).toBeUndefined();
+      expect(callArgs.line_items[0].price_data.currency).toBe("eur");
+      expect(callArgs.line_items[0].price_data.product_data).toEqual(
+        MONTHLY_PRODUCT_DATA
+      );
+      expect(callArgs.line_items[0].price_data.unit_amount).toBe(2500);
     });
 
     it("does not look up monthly prices for one-time donations", async () => {
@@ -204,6 +218,7 @@ describe("POST /api/stripe/checkout", () => {
 
       expect(mockPricesList).not.toHaveBeenCalled();
       const callArgs = mockCreate.mock.calls[0][0];
+      expect(callArgs.line_items[0].price_data.currency).toBe("eur");
       expect(callArgs.line_items[0].price_data.product_data).toBeDefined();
     });
   });

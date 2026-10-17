@@ -12,15 +12,21 @@ import {
 } from "@stripe/react-stripe-js";
 import { Copy, Check } from "lucide-react";
 import { useTranslation } from "./LanguageProvider";
-import { formatCurrency } from "@/lib/i18n/format";
+import {
+  DONATION_CURRENCY,
+  MONTHLY_PRESET_AMOUNTS,
+  ONETIME_PRESET_AMOUNTS,
+  PAYMENT_REQUEST_COUNTRY,
+} from "@/lib/donations";
+import { currencyAffix, formatCurrency } from "@/lib/i18n/format";
 
 const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = stripePublishableKey
   ? loadStripe(stripePublishableKey)
   : null;
 
-const MONTHLY_AMOUNTS = [10, 25, 50, 100];
-const ONETIME_AMOUNTS = [30, 100, 250, 500];
+const MONTHLY_AMOUNTS = MONTHLY_PRESET_AMOUNTS;
+const ONETIME_AMOUNTS = ONETIME_PRESET_AMOUNTS;
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -60,20 +66,35 @@ function PaymentRequestButton({ amount }: { amount: number }) {
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
   const amountRef = useRef(amount);
   amountRef.current = amount;
+  const requestRef = useRef<PaymentRequest | null>(null);
   const paymentLabel = t("donation.paymentLabel");
+
+  const syncTotal = (pr: PaymentRequest, cents: number) => {
+    if (cents < 100) return;
+    pr.update({
+      total: { label: paymentLabel, amount: cents },
+    });
+  };
 
   useEffect(() => {
     if (!stripe) return;
 
     const pr = stripe.paymentRequest({
-      country: "US",
-      currency: "usd",
-      total: { label: paymentLabel, amount: Math.round(amount * 100) },
+      country: PAYMENT_REQUEST_COUNTRY,
+      currency: DONATION_CURRENCY,
+      total: {
+        label: paymentLabel,
+        amount: Math.round(amountRef.current * 100),
+      },
       requestPayerEmail: true,
     });
+    requestRef.current = pr;
 
+    let active = true;
     pr.canMakePayment().then((result) => {
-      if (result) setPaymentRequest(pr);
+      if (!active || !result) return;
+      syncTotal(pr, Math.round(amountRef.current * 100));
+      setPaymentRequest(pr);
     });
 
     pr.on("paymentmethod", async (ev) => {
@@ -101,15 +122,18 @@ function PaymentRequestButton({ amount }: { amount: number }) {
         ev.complete("fail");
       }
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stripe]);
+
+    return () => {
+      active = false;
+      if (requestRef.current === pr) requestRef.current = null;
+    };
+  }, [stripe, paymentLabel]);
 
   useEffect(() => {
-    if (!paymentRequest || amount < 1) return;
-    paymentRequest.update({
-      total: { label: paymentLabel, amount: Math.round(amount * 100) },
-    });
-  }, [paymentRequest, amount, paymentLabel]);
+    const pr = requestRef.current;
+    if (!pr || amount < 1) return;
+    syncTotal(pr, Math.round(amount * 100));
+  }, [amount, paymentLabel]);
 
   if (!paymentRequest) return null;
 
@@ -208,6 +232,8 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
 
   if (!isOpen) return null;
 
+  const affix = currencyAffix(locale);
+
   const giveLabel = (() => {
     if (finalAmount <= 0) return t("donation.giveInvalid");
     const amount = formatCurrency(finalAmount, locale);
@@ -299,7 +325,14 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                   : "border-[var(--border-default)]"
               }`}
             >
-              <span className="pl-4 text-[var(--text-muted)] text-[14px]">$</span>
+              {affix.position === "prefix" && (
+                <span
+                  data-testid="currency-affix"
+                  className="pl-4 text-[var(--text-muted)] text-[14px]"
+                >
+                  {affix.symbol}
+                </span>
+              )}
               <input
                 type="number"
                 min="1"
@@ -310,8 +343,18 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                   setIsCustom(true);
                 }}
                 onFocus={() => setIsCustom(true)}
-                className="flex-1 bg-transparent px-3 py-3 text-[13px] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] outline-none"
+                className={`flex-1 bg-transparent py-3 text-[13px] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] outline-none ${
+                  affix.position === "prefix" ? "px-3" : "pl-4 pr-3"
+                }`}
               />
+              {affix.position === "suffix" && (
+                <span
+                  data-testid="currency-affix"
+                  className="pr-4 text-[var(--text-muted)] text-[14px]"
+                >
+                  {affix.symbol}
+                </span>
+              )}
             </div>
 
             {/* Impact line */}

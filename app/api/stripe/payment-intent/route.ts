@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import Stripe from "stripe";
+import { DONATION_CURRENCY } from "@/lib/donations";
+import { createStripeClient } from "@/lib/stripe-server";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+const stripe = createStripeClient();
 
 export async function POST(req: NextRequest) {
   const { amount } = await req.json();
@@ -12,7 +13,7 @@ export async function POST(req: NextRequest) {
 
   const paymentIntent = await stripe.paymentIntents.create({
     amount: Math.round(amount * 100),
-    currency: "usd",
+    currency: DONATION_CURRENCY,
     description: "One-Time Donation — Roma Mission",
     automatic_payment_methods: { enabled: true },
   });

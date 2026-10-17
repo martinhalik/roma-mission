@@ -1352,7 +1352,7 @@ const ro: Dictionary = {
     impactHigh: "Acoperă materialele și programele parohiale săptămânale.",
     impactMid: "Finanțează catehezele unui copil pentru un an întreg.",
     impactLow: "Asigură materiale didactice pentru o lună.",
-    impactBase: "Fiecare dolar ajunge direct pe teren.",
+    impactBase: "Fiecare euro ajunge direct pe teren.",
     error: "Ceva nu a funcționat. Vă rugăm încercați din nou.",
     preparing: "SE PREGĂTEȘTE...",
     giveMonthly: "DONEAZĂ {amount}/LUNĂ",
