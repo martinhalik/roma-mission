@@ -149,7 +149,7 @@ export default function StoriesPage() {
             </div>
           </button>
 
-          <div className="flex flex-col gap-6 flex-1 min-w-0">
+          <div className="flex flex-col gap-6 flex-1 min-w-0 pt-6 lg:pt-0">
             <span className="text-[var(--gold)] text-[100px] md:text-[120px] leading-[0.3] font-bold">
               &ldquo;
             </span>
@@ -238,16 +238,16 @@ export default function StoriesPage() {
 
         <LocaleLink
           routeKey="ourStory"
-          className="group flex flex-col md:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden hover:border-[var(--gold)]/40 transition-colors"
+          className="group flex flex-col lg:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden hover:border-[var(--gold)]/40 transition-colors"
         >
           <div
-            className="w-full md:w-[360px] h-[220px] md:h-[320px] bg-[var(--bg-elevated)] bg-cover flex-shrink-0 transition-transform duration-500 group-hover:scale-[1.02] origin-center overflow-hidden"
+            className="w-full lg:w-[360px] h-[220px] md:h-[320px] bg-[var(--bg-elevated)] bg-cover lg:shrink-0 transition-transform duration-500 group-hover:scale-[1.02] origin-center overflow-hidden"
             style={{
               backgroundImage: "url('/images/mission-about-us.jpg')",
               backgroundPosition: "center 30%",
             }}
           />
-          <div className="flex flex-col gap-4 p-6 md:p-10 justify-center">
+          <div className="flex flex-col gap-4 p-6 md:p-10 justify-center min-w-0">
             <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
               {t("stories.founder.eyebrow")}
             </span>

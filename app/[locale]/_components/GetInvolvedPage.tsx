@@ -159,9 +159,9 @@ export default function GetInvolvedPage() {
 
       {/* ── FAQ ── */}
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-card)]">
-        <div className="flex flex-col md:flex-row gap-10 md:gap-20">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
           {/* Left */}
-          <div className="flex flex-col gap-5 md:w-[400px] flex-shrink-0">
+          <div className="flex flex-col gap-5 lg:w-[400px] lg:shrink-0">
             <SectionLabel text={t("getInvolved.faq.label")} />
             <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[0.95]">
               {t("getInvolved.faq.titleLine1")}
@@ -179,7 +179,7 @@ export default function GetInvolvedPage() {
             </p>
           </div>
           {/* Right */}
-          <div className="flex flex-col flex-1">
+          <div className="flex flex-col flex-1 min-w-0">
             {FAQ_KEYS.map((key) => (
               <div
                 key={key}
