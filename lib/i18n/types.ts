@@ -980,6 +980,9 @@ export interface Dictionary {
     impactMid: string;
     impactLow: string;
     impactBase: string;
+    impactBaseEur: string;
+    amountTooLow: string;
+    currencyLabel: string;
     error: string;
     preparing: string;
     giveMonthly: string;

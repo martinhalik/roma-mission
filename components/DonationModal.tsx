@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import type { PaymentRequest } from "@stripe/stripe-js";
 import {
@@ -13,20 +13,25 @@ import {
 import { Copy, Check } from "lucide-react";
 import { useTranslation } from "./LanguageProvider";
 import {
-  DONATION_CURRENCY,
-  MONTHLY_PRESET_AMOUNTS,
-  ONETIME_PRESET_AMOUNTS,
+  CURRENCIES,
+  CURRENCY_CHOICE_KEY,
   PAYMENT_REQUEST_COUNTRY,
+  defaultCurrency,
+  equivalentPreset,
+  monthlyPresets,
+  onetimePresets,
+  toMinorUnits,
+  type DonationCurrency,
 } from "@/lib/donations";
+import { GEO_COUNTRY_COOKIE } from "@/lib/geo";
 import { currencyAffix, formatCurrency } from "@/lib/i18n/format";
+import type { Locale } from "@/lib/i18n/locales";
+import { buildPath } from "@/lib/i18n/routes";
 
 const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = stripePublishableKey
   ? loadStripe(stripePublishableKey)
   : null;
-
-const MONTHLY_AMOUNTS = MONTHLY_PRESET_AMOUNTS;
-const ONETIME_AMOUNTS = ONETIME_PRESET_AMOUNTS;
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -60,31 +65,64 @@ function CopyField({ label, value }: { label: string; value: string }) {
   );
 }
 
-function PaymentRequestButton({ amount }: { amount: number }) {
+function readGeoCountry(): string | null {
+  if (typeof document === "undefined") return null;
+  let found: string | null = null;
+  for (const part of document.cookie.split(";")) {
+    const [name, ...rest] = part.trim().split("=");
+    if (name !== GEO_COUNTRY_COOKIE) continue;
+    const value = decodeURIComponent(rest.join("=")).trim().toUpperCase();
+    found = /^[A-Z]{2}$/.test(value) ? value : null;
+  }
+  return found;
+}
+
+function readSavedCurrency(): DonationCurrency | null {
+  try {
+    const saved = localStorage.getItem(CURRENCY_CHOICE_KEY);
+    return saved === "usd" || saved === "eur" ? saved : null;
+  } catch {
+    return null;
+  }
+}
+
+interface PaymentRequestButtonProps {
+  amount: number;
+  currency: DonationCurrency;
+  locale: Locale;
+}
+
+function PaymentRequestButton({ amount, currency, locale }: PaymentRequestButtonProps) {
   const { t } = useTranslation();
   const stripe = useStripe();
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
   const amountRef = useRef(amount);
   amountRef.current = amount;
+  const currencyRef = useRef(currency);
+  currencyRef.current = currency;
+  const localeRef = useRef(locale);
+  localeRef.current = locale;
   const requestRef = useRef<PaymentRequest | null>(null);
   const paymentLabel = t("donation.paymentLabel");
+  const minimumMinor = toMinorUnits(CURRENCIES[currency].minimum, currency);
 
-  const syncTotal = (pr: PaymentRequest, cents: number) => {
-    if (cents < 100) return;
+  const syncTotal = (pr: PaymentRequest, minor: number) => {
+    if (minor < minimumMinor) return;
     pr.update({
-      total: { label: paymentLabel, amount: cents },
+      total: { label: paymentLabel, amount: minor },
     });
   };
 
   useEffect(() => {
     if (!stripe) return;
 
+    const minor = toMinorUnits(amountRef.current, currency);
     const pr = stripe.paymentRequest({
       country: PAYMENT_REQUEST_COUNTRY,
-      currency: DONATION_CURRENCY,
+      currency,
       total: {
         label: paymentLabel,
-        amount: Math.round(amountRef.current * 100),
+        amount: minor,
       },
       requestPayerEmail: true,
     });
@@ -93,16 +131,21 @@ function PaymentRequestButton({ amount }: { amount: number }) {
     let active = true;
     pr.canMakePayment().then((result) => {
       if (!active || !result) return;
-      syncTotal(pr, Math.round(amountRef.current * 100));
+      syncTotal(pr, toMinorUnits(amountRef.current, currencyRef.current));
       setPaymentRequest(pr);
     });
 
     pr.on("paymentmethod", async (ev) => {
+      const thankYou = buildPath(localeRef.current, "thankYou");
       try {
         const res = await fetch("/api/stripe/payment-intent", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ amount: amountRef.current }),
+          body: JSON.stringify({
+            amount: amountRef.current,
+            locale: localeRef.current,
+            currency: currencyRef.current,
+          }),
         });
         const { clientSecret } = await res.json();
         const { error, paymentIntent } = await stripe.confirmCardPayment(
@@ -114,9 +157,9 @@ function PaymentRequestButton({ amount }: { amount: number }) {
         ev.complete("success");
         if (paymentIntent.status === "requires_action") {
           const { error: actionError } = await stripe.confirmCardPayment(clientSecret);
-          if (!actionError) window.location.href = "/thank-you";
+          if (!actionError) window.location.href = thankYou;
         } else {
-          window.location.href = "/thank-you";
+          window.location.href = thankYou;
         }
       } catch {
         ev.complete("fail");
@@ -127,13 +170,13 @@ function PaymentRequestButton({ amount }: { amount: number }) {
       active = false;
       if (requestRef.current === pr) requestRef.current = null;
     };
-  }, [stripe, paymentLabel]);
+  }, [stripe, paymentLabel, currency]);
 
   useEffect(() => {
     const pr = requestRef.current;
-    if (!pr || amount < 1) return;
-    syncTotal(pr, Math.round(amount * 100));
-  }, [amount, paymentLabel]);
+    if (!pr || amount <= 0) return;
+    syncTotal(pr, toMinorUnits(amount, currency));
+  }, [amount, currency, paymentLabel]);
 
   if (!paymentRequest) return null;
 
@@ -159,8 +202,13 @@ function PaymentRequestButton({ amount }: { amount: number }) {
 export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const { t, locale } = useTranslation();
   const [step, setStep] = useState<Step>("select");
+  const [currency, setCurrency] = useState<DonationCurrency>(() => defaultCurrency(locale));
+  const [visitorCountry, setVisitorCountry] = useState<string | null>(null);
+  const [switcherReady, setSwitcherReady] = useState(false);
   const [isMonthly, setIsMonthly] = useState(true);
-  const [selectedAmount, setSelectedAmount] = useState(100);
+  const [selectedAmount, setSelectedAmount] = useState(
+    () => monthlyPresets(defaultCurrency(locale))[3],
+  );
   const [customAmount, setCustomAmount] = useState("");
   const [isCustom, setIsCustom] = useState(false);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
@@ -168,10 +216,49 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const [error, setError] = useState<string | null>(null);
   const [bankOpen, setBankOpen] = useState(false);
   const [bankTab, setBankTab] = useState<"us" | "intl">("us");
+  const currencyRef = useRef(currency);
+  const isMonthlyRef = useRef(isMonthly);
+  const isCustomRef = useRef(isCustom);
+  const selectedAmountRef = useRef(selectedAmount);
+  isMonthlyRef.current = isMonthly;
+  isCustomRef.current = isCustom;
+  selectedAmountRef.current = selectedAmount;
+
+  const monthlyAmounts = monthlyPresets(currency);
+  const onetimeAmounts = onetimePresets(currency);
 
   const finalAmount = isCustom
     ? parseFloat(customAmount) || 0
     : selectedAmount;
+
+  const showSwitcher = locale === "en" && switcherReady && visitorCountry !== "US";
+
+  useEffect(() => {
+    const country = readGeoCountry();
+    setVisitorCountry(country);
+    if (locale === "en" && country === "US") {
+      setCurrency("usd");
+    } else if (locale === "en") {
+      const saved = readSavedCurrency();
+      if (saved) setCurrency(saved);
+    }
+    setSwitcherReady(true);
+  }, [locale]);
+
+  useEffect(() => {
+    if (currencyRef.current === currency) return;
+    const previous = currencyRef.current;
+    currencyRef.current = currency;
+    if (isCustomRef.current) return;
+    setSelectedAmount(
+      equivalentPreset(
+        selectedAmountRef.current,
+        previous,
+        currency,
+        isMonthlyRef.current ? "monthly" : "onetime",
+      ),
+    );
+  }, [currency]);
 
   const US_BANK = [
     { label: t("donation.bankFields.accountName"), value: "Martin Halík" },
@@ -217,7 +304,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: finalAmount, isMonthly }),
+        body: JSON.stringify({ amount: finalAmount, isMonthly, locale, currency }),
       });
       if (!res.ok) throw new Error("Failed to initiate checkout");
       const data = await res.json();
@@ -228,18 +315,52 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
     } finally {
       setLoading(false);
     }
-  }, [finalAmount, isMonthly, t]);
+  }, [finalAmount, isMonthly, locale, currency, t]);
 
   if (!isOpen) return null;
 
-  const affix = currencyAffix(locale);
+  const affix = currencyAffix(locale, currency);
+  const minimum = CURRENCIES[currency].minimum;
+  const belowMinimum = finalAmount > 0 && finalAmount < minimum;
 
   const giveLabel = (() => {
     if (finalAmount <= 0) return t("donation.giveInvalid");
-    const amount = formatCurrency(finalAmount, locale);
+    const amount = formatCurrency(finalAmount, locale, currency);
     if (isMonthly) return t("donation.giveMonthly", { amount });
     return t("donation.giveOnce", { amount });
   })();
+
+  const impactCopy = (() => {
+    if (finalAmount >= monthlyAmounts[3]) return t("donation.impactHigh");
+    if (finalAmount >= monthlyAmounts[2]) return t("donation.impactMid");
+    if (finalAmount >= monthlyAmounts[1]) return t("donation.impactLow");
+    if (locale === "en" && currency === "eur") return t("donation.impactBaseEur");
+    return t("donation.impactBase");
+  })();
+
+  const handleCurrencyChange = (next: DonationCurrency) => {
+    setCurrency(next);
+    try {
+      localStorage.setItem(CURRENCY_CHOICE_KEY, next);
+    } catch {
+      // Storage can throw in private mode. The choice still applies this visit.
+    }
+  };
+
+  const handleCurrencyKey = (event: ReactKeyboardEvent<HTMLButtonElement>) => {
+    if (
+      event.key !== "ArrowRight" &&
+      event.key !== "ArrowLeft" &&
+      event.key !== "ArrowDown" &&
+      event.key !== "ArrowUp"
+    ) {
+      return;
+    }
+    event.preventDefault();
+    handleCurrencyChange(
+      event.key === "ArrowRight" || event.key === "ArrowDown" ? "eur" : "usd",
+    );
+  };
 
   return (
     <div
@@ -272,10 +393,37 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
         {step === "select" && (
           <Elements stripe={stripePromise}>
           <div className="px-8 py-7 flex flex-col gap-6">
+            {showSwitcher && (
+              <div
+                role="radiogroup"
+                aria-label={t("donation.currencyLabel")}
+                className="flex bg-[var(--bg-primary)] border border-[var(--border-default)] p-1"
+              >
+                {(["usd", "eur"] as const).map((code) => (
+                  <button
+                    key={code}
+                    type="button"
+                    role="radio"
+                    aria-checked={currency === code}
+                    tabIndex={currency === code ? 0 : -1}
+                    onClick={() => handleCurrencyChange(code)}
+                    onKeyDown={handleCurrencyKey}
+                    className={`flex-1 py-2.5 text-[12px] font-semibold tracking-[0.5px] transition-colors ${
+                      currency === code
+                        ? "bg-[var(--gold)] text-[var(--on-accent)]"
+                        : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                    }`}
+                  >
+                    {code.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            )}
+
             {/* Frequency toggle */}
             <div className="flex bg-[var(--bg-primary)] border border-[var(--border-default)] p-1">
               <button
-                onClick={() => { setIsMonthly(true); setSelectedAmount(MONTHLY_AMOUNTS[1]); setIsCustom(false); setCustomAmount(""); }}
+                onClick={() => { setIsMonthly(true); setSelectedAmount(monthlyAmounts[1]); setIsCustom(false); setCustomAmount(""); }}
                 className={`flex-1 py-2.5 text-[12px] font-semibold tracking-[0.5px] transition-colors ${
                   isMonthly
                     ? "bg-[var(--gold)] text-[var(--on-accent)]"
@@ -285,7 +433,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                 {t("donation.monthly")}
               </button>
               <button
-                onClick={() => { setIsMonthly(false); setSelectedAmount(ONETIME_AMOUNTS[1]); setIsCustom(false); setCustomAmount(""); }}
+                onClick={() => { setIsMonthly(false); setSelectedAmount(onetimeAmounts[1]); setIsCustom(false); setCustomAmount(""); }}
                 className={`flex-1 py-2.5 text-[12px] font-semibold tracking-[0.5px] transition-colors ${
                   !isMonthly
                     ? "bg-[var(--gold)] text-[var(--on-accent)]"
@@ -298,7 +446,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
 
             {/* Preset amounts */}
             <div className="grid grid-cols-4 gap-2">
-              {(isMonthly ? MONTHLY_AMOUNTS : ONETIME_AMOUNTS).map((amt) => (
+              {(isMonthly ? monthlyAmounts : onetimeAmounts).map((amt) => (
                 <button
                   key={amt}
                   onClick={() => {
@@ -306,13 +454,13 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                     setIsCustom(false);
                     setCustomAmount("");
                   }}
-                  className={`py-3 text-[13px] font-semibold border transition-colors ${
+                  className={`min-w-0 px-1 py-3 text-[12px] leading-tight font-semibold border transition-colors ${
                     !isCustom && selectedAmount === amt
                       ? "bg-[var(--gold)] border-[var(--gold)] text-[var(--on-accent)]"
                       : "border-[var(--border-default)] text-[var(--text-secondary)] hover:border-[var(--gold)] hover:text-[var(--gold)]"
                   }`}
                 >
-                  {formatCurrency(amt, locale)}
+                  {formatCurrency(amt, locale, currency)}
                 </button>
               ))}
             </div>
@@ -358,15 +506,17 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             </div>
 
             {/* Impact line */}
+            {belowMinimum && (
+              <p role="alert" className="text-[12px] text-red-400">
+                {t("donation.amountTooLow", {
+                  amount: formatCurrency(minimum, locale, currency),
+                })}
+              </p>
+            )}
+
             {isMonthly && (
               <p className="text-[12px] text-[var(--text-muted)] leading-[1.5]">
-                {finalAmount >= 100
-                  ? t("donation.impactHigh")
-                  : finalAmount >= 50
-                  ? t("donation.impactMid")
-                  : finalAmount >= 25
-                  ? t("donation.impactLow")
-                  : t("donation.impactBase")}
+                {impactCopy}
               </p>
             )}
 
@@ -374,13 +524,13 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               <p className="text-[12px] text-red-400">{error}</p>
             )}
 
-            {!isMonthly && finalAmount >= 1 && (
-              <PaymentRequestButton amount={finalAmount} />
+            {!isMonthly && finalAmount >= minimum && (
+              <PaymentRequestButton amount={finalAmount} currency={currency} locale={locale} />
             )}
 
             <button
               onClick={fetchClientSecret}
-              disabled={loading || finalAmount < 1}
+              disabled={loading || finalAmount < minimum}
               className="w-full py-4 bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {loading ? t("donation.preparing") : giveLabel}

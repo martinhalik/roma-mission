@@ -1,24 +1,38 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { DONATION_CURRENCY } from "@/lib/donations";
+import { resolveCharge, toMinorUnits, type DonationCurrency } from "@/lib/donations";
+import {
+  countryOverrideAllowed,
+  GEO_COUNTRY_COOKIE,
+  resolveVisitorCountry,
+} from "@/lib/geo";
+import { DEFAULT_LOCALE } from "@/lib/i18n/locales";
+import { buildPath } from "@/lib/i18n/routes";
 import { createStripeClient } from "@/lib/stripe-server";
 
 const stripe = createStripeClient();
 
 // Preset amounts live in lib/donations.ts and are rendered by DonationModal.
-// This route does not look up Stripe Prices: every amount, preset or custom,
-// is an inline EUR price_data line item. Legacy USD Prices
-// (lookup_key monthly_donation_<amount>) stay in the Stripe account and are
-// never selected for an EUR session.
+// Every amount, preset or custom, is an inline price_data line item. Legacy
+// USD Prices (lookup_key monthly_donation_<amount>) are not queried.
 const DONATION_DESCRIPTION =
   "Supporting Orthodox mission to Roma communities in Eastern Europe";
 
 type LineItem = Stripe.Checkout.SessionCreateParams.LineItem;
 
-function buildMonthlyLineItem(unitAmount: number): LineItem {
+function visitorCountry(req: NextRequest): string | null {
+  return resolveVisitorCountry({
+    headerCountry: req.headers.get("x-vercel-ip-country"),
+    queryCountry: req.nextUrl.searchParams.get("country"),
+    cookieCountry: req.cookies.get(GEO_COUNTRY_COOKIE)?.value ?? null,
+    allowOverride: countryOverrideAllowed(),
+  });
+}
+
+function buildMonthlyLineItem(unitAmount: number, currency: DonationCurrency): LineItem {
   return {
     price_data: {
-      currency: DONATION_CURRENCY,
+      currency,
       product_data: {
         name: "Monthly Donation — Roma Mission",
         description: DONATION_DESCRIPTION,
@@ -30,10 +44,10 @@ function buildMonthlyLineItem(unitAmount: number): LineItem {
   };
 }
 
-function buildOneTimeLineItem(unitAmount: number): LineItem {
+function buildOneTimeLineItem(unitAmount: number, currency: DonationCurrency): LineItem {
   return {
     price_data: {
-      currency: DONATION_CURRENCY,
+      currency,
       product_data: {
         name: "One-Time Donation — Roma Mission",
         description: DONATION_DESCRIPTION,
@@ -45,24 +59,30 @@ function buildOneTimeLineItem(unitAmount: number): LineItem {
 }
 
 export async function POST(req: NextRequest) {
-  const { amount, isMonthly } = await req.json();
+  const body = await req.json();
+  const resolved = resolveCharge({
+    locale: body.locale,
+    currency: body.currency,
+    country: visitorCountry(req),
+    amount: body.amount,
+  });
 
-  if (!amount || amount < 1) {
-    return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
+  if (!resolved.ok) {
+    return NextResponse.json({ error: resolved.error }, { status: resolved.status });
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_URL ?? "http://localhost:3000";
-  const unitAmount = Math.round(amount * 100);
-
-  const lineItem = isMonthly
-    ? buildMonthlyLineItem(unitAmount)
-    : buildOneTimeLineItem(unitAmount);
+  const unitAmount = toMinorUnits(resolved.amount, resolved.currency);
+  const lineItem = body.isMonthly
+    ? buildMonthlyLineItem(unitAmount, resolved.currency)
+    : buildOneTimeLineItem(unitAmount, resolved.currency);
+  const thankYou = buildPath(resolved.locale ?? DEFAULT_LOCALE, "thankYou");
 
   const session = await stripe.checkout.sessions.create({
     ui_mode: "embedded",
-    mode: isMonthly ? "subscription" : "payment",
+    mode: body.isMonthly ? "subscription" : "payment",
     line_items: [lineItem],
-    return_url: `${baseUrl}/thank-you`,
+    return_url: `${baseUrl}${thankYou}`,
   });
 
   return NextResponse.json({ clientSecret: session.client_secret });

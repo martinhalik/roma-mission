@@ -9,6 +9,7 @@ import ApplicationModal from "@/components/ApplicationModal";
 import ShareModal from "@/components/ShareModal";
 import SectionLabel from "@/components/SectionLabel";
 import { useTranslation } from "@/components/LanguageProvider";
+import { defaultCurrency, marketingAmounts } from "@/lib/donations";
 import { formatCurrency } from "@/lib/i18n/format";
 
 type WayKey = "financial" | "volunteer" | "share" | "trip";
@@ -29,8 +30,6 @@ const WAYS: Way[] = [
 ];
 
 const FAQ_KEYS: FaqKey[] = ["donation", "volunteer", "parish", "contact"];
-
-const FINANCIAL_AMOUNTS = [25, 50, 100] as const;
 
 export default function GetInvolvedPage() {
   const [modal, setModal] = useState<ModalState>("closed");
@@ -96,7 +95,7 @@ export default function GetInvolvedPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
             {WAYS.map((w) => {
               const points = w.key === "financial"
-                ? FINANCIAL_AMOUNTS.map((amt, i) =>
+                ? marketingAmounts(defaultCurrency(locale)).map((amt, i) =>
                     t(`getInvolved.ways.financial.point${i + 1}`, {
                       amount: formatCurrency(amt, locale),
                     })

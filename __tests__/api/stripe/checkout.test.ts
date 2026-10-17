@@ -1,7 +1,9 @@
 // @vitest-environment node
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import { NextRequest } from "next/server";
-import { MONTHLY_PRESET_AMOUNTS } from "../../../lib/donations";
+import { monthlyPresets } from "../../../lib/donations";
+import { buildPath } from "../../../lib/i18n/routes";
+import type { Locale } from "../../../lib/i18n/locales";
 
 const mockCreate = vi.hoisted(() => vi.fn());
 const mockPricesList = vi.hoisted(() => vi.fn());
@@ -23,10 +25,17 @@ vi.mock("stripe", () => ({
 
 const { POST } = await import("../../../app/api/stripe/checkout/route");
 
-function makeRequest(body: unknown): NextRequest {
-  return new NextRequest("http://localhost:3000/api/stripe/checkout", {
+function makeRequest(
+  body: unknown,
+  extra?: { country?: string; cookie?: string; query?: string },
+): NextRequest {
+  const query = extra?.query ? `?country=${extra.query}` : "";
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (extra?.country) headers["x-vercel-ip-country"] = extra.country;
+  if (extra?.cookie) headers.cookie = extra.cookie;
+  return new NextRequest(`http://localhost:3000/api/stripe/checkout${query}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify(body),
   });
 }
@@ -182,8 +191,8 @@ describe("POST /api/stripe/checkout", () => {
       }
     );
 
-    it("covers every monthly preset amount", () => {
-      expect(MONTHLY_PRESET_AMOUNTS).toEqual([10, 25, 50, 100]);
+    it("covers every euro monthly preset amount", () => {
+      expect(monthlyPresets("eur")).toEqual([10, 25, 50, 100]);
     });
 
     it("puts a custom monthly amount on inline EUR price_data, not a stored Price", async () => {
@@ -220,6 +229,208 @@ describe("POST /api/stripe/checkout", () => {
       const callArgs = mockCreate.mock.calls[0][0];
       expect(callArgs.line_items[0].price_data.currency).toBe("eur");
       expect(callArgs.line_items[0].price_data.product_data).toBeDefined();
+    });
+  });
+
+  describe("locale allowlist", () => {
+    const cases: {
+      locale: Locale;
+      currency: string;
+      onetime: number;
+      monthly: number;
+      custom: number;
+    }[] = [
+      { locale: "en", currency: "usd", onetime: 30, monthly: 25, custom: 40 },
+      { locale: "sk", currency: "eur", onetime: 30, monthly: 25, custom: 40 },
+      { locale: "de", currency: "eur", onetime: 30, monthly: 25, custom: 40 },
+      { locale: "el", currency: "eur", onetime: 30, monthly: 25, custom: 40 },
+      { locale: "cs", currency: "czk", onetime: 750, monthly: 600, custom: 400 },
+      { locale: "ro", currency: "ron", onetime: 150, monthly: 125, custom: 80 },
+      { locale: "sr", currency: "rsd", onetime: 3500, monthly: 3000, custom: 2000 },
+      { locale: "ru", currency: "usd", onetime: 30, monthly: 25, custom: 40 },
+      { locale: "mk", currency: "mkd", onetime: 1800, monthly: 1500, custom: 900 },
+    ];
+
+    beforeEach(() => {
+      mockCreate.mockResolvedValue({ client_secret: "cs_test" });
+    });
+
+    it.each(cases)(
+      "charges $locale in $currency for one-time, monthly preset, monthly custom, and fallback",
+      async ({ locale, currency, onetime, monthly, custom }) => {
+        const thankYou = `http://localhost:3000${buildPath(locale, "thankYou")}`;
+
+        await POST(makeRequest({ amount: onetime, isMonthly: false, locale, currency }));
+        let args = mockCreate.mock.calls.at(-1)?.[0];
+        expect(args).toBeDefined();
+        expect(args.mode).toBe("payment");
+        expect(args.return_url).toBe(thankYou);
+        expect(args.line_items[0].price).toBeUndefined();
+        expect(args.line_items[0].price_data).toMatchObject({
+          currency,
+          unit_amount: onetime * 100,
+        });
+        expect(args.line_items[0].price_data.recurring).toBeUndefined();
+
+        await POST(makeRequest({ amount: monthly, isMonthly: true, locale, currency }));
+        args = mockCreate.mock.calls.at(-1)?.[0];
+        expect(args.mode).toBe("subscription");
+        expect(args.return_url).toBe(thankYou);
+        expect(args.line_items[0].price_data).toMatchObject({
+          currency,
+          unit_amount: monthly * 100,
+          recurring: { interval: "month" },
+        });
+
+        await POST(makeRequest({ amount: custom, isMonthly: true, locale, currency }));
+        args = mockCreate.mock.calls.at(-1)?.[0];
+        expect(mockPricesList).not.toHaveBeenCalled();
+        expect(args.line_items[0].price).toBeUndefined();
+        expect(args.line_items[0].price_data).toMatchObject({
+          currency,
+          unit_amount: custom * 100,
+          recurring: { interval: "month" },
+        });
+
+        await POST(makeRequest({ amount: monthly, isMonthly: true, locale, currency }));
+        args = mockCreate.mock.calls.at(-1)?.[0];
+        expect(args.line_items[0].price_data.currency).toBe(currency);
+        expect(args.line_items[0].price).toBeUndefined();
+      },
+    );
+
+    it("charges English euros for a non-US visitor and keeps the English thank-you path", async () => {
+      const res = await POST(
+        makeRequest(
+          { amount: 25.5, isMonthly: false, locale: "en", currency: "eur" },
+          { country: "DE" },
+        ),
+      );
+      expect(res.status).toBe(200);
+      const args = mockCreate.mock.calls[0][0];
+      expect(args.line_items[0].price_data).toMatchObject({
+        currency: "eur",
+        unit_amount: 2550,
+      });
+      expect(args.return_url).toBe("http://localhost:3000/en/thank-you");
+    });
+
+    it("rejects EUR for an English visitor in the US", async () => {
+      const res = await POST(
+        makeRequest(
+          { amount: 25, isMonthly: true, locale: "en", currency: "eur" },
+          { country: "US" },
+        ),
+      );
+      expect(res.status).toBe(400);
+      expect(await res.json()).toEqual({ error: "Currency not allowed" });
+      expect(mockCreate).not.toHaveBeenCalled();
+    });
+
+    it("charges USD for an English visitor in the US", async () => {
+      const res = await POST(
+        makeRequest(
+          { amount: 25, isMonthly: true, locale: "en", currency: "usd" },
+          { country: "US" },
+        ),
+      );
+      expect(res.status).toBe(200);
+      expect(mockCreate.mock.calls[0][0].line_items[0].price_data.currency).toBe("usd");
+    });
+
+    it("rejects a client currency outside de, sk, and ru", async () => {
+      for (const [locale, currency] of [
+        ["de", "usd"],
+        ["sk", "usd"],
+        ["ru", "eur"],
+        ["cs", "eur"],
+      ] as const) {
+        mockCreate.mockClear();
+        const res = await POST(
+          makeRequest({ amount: 25, isMonthly: false, locale, currency }),
+        );
+        expect(res.status).toBe(400);
+        expect(mockCreate).not.toHaveBeenCalled();
+      }
+    });
+
+    it("honors a non-production country cookie and query", async () => {
+      const byCookie = await POST(
+        makeRequest(
+          { amount: 25, isMonthly: false, locale: "en", currency: "eur" },
+          { cookie: "geo_country=US" },
+        ),
+      );
+      expect(byCookie.status).toBe(400);
+
+      const byQuery = await POST(
+        makeRequest(
+          { amount: 25, isMonthly: false, locale: "en", currency: "eur" },
+          { query: "US" },
+        ),
+      );
+      expect(byQuery.status).toBe(400);
+      expect(mockCreate).not.toHaveBeenCalled();
+    });
+
+    it("ignores the country cookie and query in production", async () => {
+      vi.stubEnv("NODE_ENV", "production");
+      vi.stubEnv("VERCEL_ENV", "production");
+      const res = await POST(
+        makeRequest(
+          { amount: 25, isMonthly: false, locale: "en", currency: "eur" },
+          { cookie: "geo_country=US", query: "US" },
+        ),
+      );
+      expect(res.status).toBe(200);
+      expect(mockCreate.mock.calls[0][0].line_items[0].price_data.currency).toBe("eur");
+      vi.unstubAllEnvs();
+    });
+
+    it("still rejects EUR from the platform header when the override is disabled", async () => {
+      vi.stubEnv("VERCEL_ENV", "production");
+      const res = await POST(
+        makeRequest(
+          { amount: 25, isMonthly: false, locale: "en", currency: "eur" },
+          { country: "US", query: "DE" },
+        ),
+      );
+      expect(res.status).toBe(400);
+      expect(mockCreate).not.toHaveBeenCalled();
+      vi.unstubAllEnvs();
+    });
+
+    it("falls back to EUR when the locale is missing or unknown", async () => {
+      await POST(makeRequest({ amount: 30, isMonthly: false, currency: "usd" }));
+      expect(mockCreate.mock.calls[0][0].line_items[0].price_data.currency).toBe("eur");
+      expect(mockCreate.mock.calls[0][0].return_url).toBe("http://localhost:3000/en/thank-you");
+
+      await POST(makeRequest({ amount: 30, isMonthly: true, locale: "xx", currency: "czk" }));
+      expect(mockCreate.mock.calls[1][0].line_items[0].price_data).toMatchObject({
+        currency: "eur",
+        unit_amount: 3000,
+        recurring: { interval: "month" },
+      });
+    });
+
+    it("rejects amounts under the currency minimum", async () => {
+      const low = await POST(
+        makeRequest({ amount: 10, isMonthly: false, locale: "cs", currency: "czk" }),
+      );
+      expect(low.status).toBe(400);
+      expect(await low.json()).toEqual({ error: "Amount below minimum" });
+
+      const ok = await POST(
+        makeRequest({ amount: 15, isMonthly: false, locale: "cs", currency: "czk" }),
+      );
+      expect(ok.status).toBe(200);
+      expect(mockCreate.mock.calls[0][0].line_items[0].price_data.unit_amount).toBe(1500);
+
+      const cents = await POST(
+        makeRequest({ amount: 0.5, isMonthly: false, locale: "en", currency: "usd" }),
+      );
+      expect(cents.status).toBe(200);
+      expect(mockCreate.mock.calls[1][0].line_items[0].price_data.unit_amount).toBe(50);
     });
   });
 });

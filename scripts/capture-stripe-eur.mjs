@@ -4,7 +4,7 @@
  * Speaks to a local mock of the Stripe API (never api.stripe.com, never a
  * live key). Start the Next server first with:
  *
- *   STRIPE_SECRET_KEY=sk_test_mock_eur \
+ *   STRIPE_SECRET_KEY=sk_test_mock \
  *   STRIPE_API_HOST=127.0.0.1 \
  *   STRIPE_API_PORT=12111 \
  *   STRIPE_API_PROTOCOL=http \
@@ -58,27 +58,28 @@ const server = http.createServer(async (req, res) => {
   });
 
   const isPaymentIntent = (req.url ?? "").startsWith("/v1/payment_intents");
+  const currency = body.currency ?? body.line_items?.[0]?.price_data?.currency ?? "eur";
   const payload = isPaymentIntent
     ? {
-        id: "pi_mock_eur",
+        id: "pi_mock",
         object: "payment_intent",
-        client_secret: "pi_mock_eur_secret",
-        currency: "eur",
+        client_secret: "pi_mock_secret",
+        currency,
         amount: Number(body.amount ?? 0),
         status: "requires_payment_method",
       }
     : {
-        id: "cs_mock_eur",
+        id: "cs_mock",
         object: "checkout.session",
-        client_secret: "cs_mock_eur_secret",
-        currency: "eur",
+        client_secret: "cs_mock_secret",
+        currency,
         mode: body.mode ?? "payment",
         status: "open",
       };
 
   res.writeHead(200, {
     "Content-Type": "application/json",
-    "Request-Id": "req_mock_eur",
+    "Request-Id": "req_mock",
   });
   res.end(JSON.stringify(payload));
 });
@@ -86,49 +87,118 @@ const server = http.createServer(async (req, res) => {
 await new Promise((resolve) => server.listen(PORT, "127.0.0.1", resolve));
 console.log(`mock stripe listening on ${PORT}`);
 
+const locales = [
+  { locale: "en", currency: "usd", onetime: 30, monthly: 25, custom: 40 },
+  { locale: "sk", currency: "eur", onetime: 30, monthly: 25, custom: 40 },
+  { locale: "de", currency: "eur", onetime: 30, monthly: 25, custom: 40 },
+  { locale: "el", currency: "eur", onetime: 30, monthly: 25, custom: 40 },
+  { locale: "cs", currency: "czk", onetime: 750, monthly: 600, custom: 400 },
+  { locale: "ro", currency: "ron", onetime: 150, monthly: 125, custom: 80 },
+  { locale: "sr", currency: "rsd", onetime: 3500, monthly: 3000, custom: 2000 },
+  { locale: "ru", currency: "usd", onetime: 30, monthly: 25, custom: 40 },
+  { locale: "mk", currency: "mkd", onetime: 1800, monthly: 1500, custom: 900 },
+];
+
 const cases = [
   {
-    name: "checkout-one-time",
+    name: "checkout-missing-locale-eur-fallback",
     path: "/api/stripe/checkout",
-    body: { amount: 30, isMonthly: false },
-  },
-  {
-    name: "checkout-monthly-preset-10",
-    path: "/api/stripe/checkout",
-    body: { amount: 10, isMonthly: true },
-  },
-  {
-    name: "checkout-monthly-preset-25",
-    path: "/api/stripe/checkout",
-    body: { amount: 25, isMonthly: true },
-  },
-  {
-    name: "checkout-monthly-preset-50",
-    path: "/api/stripe/checkout",
-    body: { amount: 50, isMonthly: true },
-  },
-  {
-    name: "checkout-monthly-preset-100",
-    path: "/api/stripe/checkout",
-    body: { amount: 100, isMonthly: true },
-  },
-  {
-    name: "checkout-monthly-custom",
-    path: "/api/stripe/checkout",
-    body: { amount: 30, isMonthly: true },
-  },
-  {
-    name: "checkout-monthly-fallback",
-    path: "/api/stripe/checkout",
-    body: { amount: 25, isMonthly: true },
-    note: "Same inline price_data path as a preset. No Stripe Price is looked up, so a missing dashboard Price still charges EUR.",
-  },
-  {
-    name: "payment-intent",
-    path: "/api/stripe/payment-intent",
-    body: { amount: 30 },
+    body: { amount: 30, isMonthly: false, currency: "usd" },
+    expectStatus: 200,
+    note: "Unknown or missing locale falls back to EUR and ignores the client currency.",
   },
 ];
+
+for (const item of locales) {
+  cases.push(
+    {
+      name: `checkout-onetime-${item.locale}`,
+      path: "/api/stripe/checkout",
+      body: { amount: item.onetime, isMonthly: false, locale: item.locale, currency: item.currency },
+      expectStatus: 200,
+    },
+    {
+      name: `checkout-monthly-preset-${item.locale}`,
+      path: "/api/stripe/checkout",
+      body: { amount: item.monthly, isMonthly: true, locale: item.locale, currency: item.currency },
+      expectStatus: 200,
+    },
+    {
+      name: `checkout-monthly-custom-${item.locale}`,
+      path: "/api/stripe/checkout",
+      body: { amount: item.custom, isMonthly: true, locale: item.locale, currency: item.currency },
+      expectStatus: 200,
+    },
+    {
+      name: `checkout-monthly-fallback-${item.locale}`,
+      path: "/api/stripe/checkout",
+      body: { amount: item.monthly, isMonthly: true, locale: item.locale, currency: item.currency },
+      expectStatus: 200,
+      note: "Same inline price_data path as a preset. No Stripe Price is looked up.",
+    },
+    {
+      name: `payment-intent-${item.locale}`,
+      path: "/api/stripe/payment-intent",
+      body: { amount: item.onetime, locale: item.locale, currency: item.currency },
+      expectStatus: 200,
+    },
+  );
+}
+
+cases.push(
+  {
+    name: "checkout-en-non-us-eur",
+    path: "/api/stripe/checkout",
+    headers: { "x-vercel-ip-country": "DE" },
+    body: { amount: 25, isMonthly: true, locale: "en", currency: "eur" },
+    expectStatus: 200,
+  },
+  {
+    name: "checkout-en-us-usd",
+    path: "/api/stripe/checkout",
+    headers: { "x-vercel-ip-country": "US" },
+    body: { amount: 25, isMonthly: true, locale: "en", currency: "usd" },
+    expectStatus: 200,
+  },
+  {
+    name: "checkout-en-us-eur-rejected",
+    path: "/api/stripe/checkout",
+    headers: { "x-vercel-ip-country": "US" },
+    body: { amount: 25, isMonthly: true, locale: "en", currency: "eur" },
+    expectStatus: 400,
+  },
+  {
+    name: "checkout-de-usd-rejected",
+    path: "/api/stripe/checkout",
+    body: { amount: 25, isMonthly: false, locale: "de", currency: "usd" },
+    expectStatus: 400,
+  },
+  {
+    name: "checkout-sk-usd-rejected",
+    path: "/api/stripe/checkout",
+    body: { amount: 25, isMonthly: false, locale: "sk", currency: "usd" },
+    expectStatus: 400,
+  },
+  {
+    name: "checkout-ru-eur-rejected",
+    path: "/api/stripe/checkout",
+    body: { amount: 25, isMonthly: false, locale: "ru", currency: "eur" },
+    expectStatus: 400,
+  },
+  {
+    name: "payment-intent-en-us-eur-rejected",
+    path: "/api/stripe/payment-intent",
+    headers: { "x-vercel-ip-country": "US" },
+    body: { amount: 30, locale: "en", currency: "eur" },
+    expectStatus: 400,
+  },
+  {
+    name: "checkout-cs-below-minimum",
+    path: "/api/stripe/checkout",
+    body: { amount: 10, isMonthly: false, locale: "cs", currency: "czk" },
+    expectStatus: 400,
+  },
+);
 
 await mkdir(OUT, { recursive: true });
 
@@ -136,18 +206,20 @@ for (const item of cases) {
   const before = captured.length;
   const response = await fetch(`${APP}${item.path}`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", ...(item.headers ?? {}) },
     body: JSON.stringify(item.body),
   });
   const json = await response.json();
   const outgoing = captured.slice(before);
-  if (!response.ok || outgoing.length === 0) {
+  const rejected = item.expectStatus === 400;
+  if (response.status !== item.expectStatus || (rejected ? outgoing.length !== 0 : outgoing.length === 0)) {
     console.error(item.name, response.status, json, outgoing);
     server.close();
     process.exit(1);
   }
   const record = {
     request: item.body,
+    headers: item.headers ?? null,
     note: item.note ?? null,
     appStatus: response.status,
     appResponse: json,
@@ -157,15 +229,15 @@ for (const item of cases) {
   await writeFile(file, `${JSON.stringify(record, null, 2)}\n`);
   const currency =
     outgoing[0]?.body?.currency ??
-    outgoing[0]?.body?.line_items?.[0]?.price_data?.currency;
-  console.log(item.name, "currency=", currency);
+    outgoing[0]?.body?.line_items?.[0]?.price_data?.currency ??
+    "rejected";
+  console.log(item.name, response.status, "currency=", currency);
 }
 
 const summary = {
   mock: true,
   liveStripe: false,
   realTestModeSession: "not created — needs STRIPE_SECRET_KEY=sk_test_... before merge",
-  currency: "eur",
   files: cases.map((item) => `${item.name}.json`),
 };
 await writeFile(path.join(OUT, "summary.json"), `${JSON.stringify(summary, null, 2)}\n`);

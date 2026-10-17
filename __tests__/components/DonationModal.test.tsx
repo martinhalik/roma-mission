@@ -8,8 +8,10 @@ import { DICTIONARIES } from "../../lib/i18n";
 import { LOCALES, type Locale } from "../../lib/i18n/locales";
 import { formatCurrency } from "../../lib/i18n/format";
 import {
-  MONTHLY_PRESET_AMOUNTS,
-  ONETIME_PRESET_AMOUNTS,
+  CURRENCIES,
+  defaultCurrency,
+  monthlyPresets,
+  onetimePresets,
 } from "../../lib/donations";
 
 const stripeStub = vi.hoisted(() => {
@@ -57,6 +59,8 @@ describe("DonationModal", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.stubGlobal("fetch", vi.fn());
+    localStorage.clear();
+    document.cookie = "geo_country=; Max-Age=0";
   });
 
   it("renders nothing when closed", () => {
@@ -72,21 +76,21 @@ describe("DonationModal", () => {
   it("shows all preset amounts", async () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     // Monthly amounts shown by default
-    expect(screen.getByText("€10")).toBeInTheDocument();
-    expect(screen.getByText("€25")).toBeInTheDocument();
-    expect(screen.getByText("€50")).toBeInTheDocument();
-    expect(screen.getByText("€100")).toBeInTheDocument();
+    expect(screen.getByText("$10")).toBeInTheDocument();
+    expect(screen.getByText("$25")).toBeInTheDocument();
+    expect(screen.getByText("$50")).toBeInTheDocument();
+    expect(screen.getByText("$100")).toBeInTheDocument();
     // Switch to one-time to see those amounts
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
-    expect(screen.getByText("€30")).toBeInTheDocument();
-    expect(screen.getByText("€250")).toBeInTheDocument();
-    expect(screen.getByText("€500")).toBeInTheDocument();
+    expect(screen.getByText("$30")).toBeInTheDocument();
+    expect(screen.getByText("$250")).toBeInTheDocument();
+    expect(screen.getByText("$500")).toBeInTheDocument();
   });
 
-  it("defaults to monthly mode with €100 selected", () => {
+  it("defaults to monthly mode with $100 selected", () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     expect(
-      screen.getByRole("button", { name: "GIVE €100/MO" })
+      screen.getByRole("button", { name: "GIVE $100/MO" })
     ).toBeInTheDocument();
   });
 
@@ -94,15 +98,15 @@ describe("DonationModal", () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
     expect(
-      screen.getByRole("button", { name: "GIVE €100" })
+      screen.getByRole("button", { name: "GIVE $100" })
     ).toBeInTheDocument();
   });
 
   it("selects a different preset amount", async () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
-    await user.click(screen.getByRole("button", { name: "€50" }));
+    await user.click(screen.getByRole("button", { name: "$50" }));
     expect(
-      screen.getByRole("button", { name: "GIVE €50/MO" })
+      screen.getByRole("button", { name: "GIVE $50/MO" })
     ).toBeInTheDocument();
   });
 
@@ -111,7 +115,7 @@ describe("DonationModal", () => {
     const input = screen.getByPlaceholderText("Custom amount");
     await user.type(input, "75");
     expect(
-      screen.getByRole("button", { name: "GIVE €75/MO" })
+      screen.getByRole("button", { name: "GIVE $75/MO" })
     ).toBeInTheDocument();
   });
 
@@ -145,12 +149,12 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", mockFetch);
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
-    await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
+    await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     expect(mockFetch).toHaveBeenCalledWith("/api/stripe/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 100, isMonthly: true }),
+      body: JSON.stringify({ amount: 100, isMonthly: true, locale: "en", currency: "usd" }),
     });
 
     await waitFor(() => {
@@ -167,12 +171,17 @@ describe("DonationModal", () => {
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
-    await user.click(screen.getByRole("button", { name: "GIVE €100" }));
+    await user.click(screen.getByRole("button", { name: "GIVE $100" }));
 
     expect(mockFetch).toHaveBeenCalledWith(
       "/api/stripe/checkout",
       expect.objectContaining({
-        body: JSON.stringify({ amount: 100, isMonthly: false }),
+        body: JSON.stringify({
+          amount: 100,
+          isMonthly: false,
+          locale: "en",
+          currency: "usd",
+        }),
       })
     );
   });
@@ -181,7 +190,7 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValueOnce({ ok: false }));
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
-    await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
+    await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     await waitFor(() => {
       expect(
@@ -198,7 +207,7 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", vi.fn().mockReturnValueOnce(pending));
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
-    await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
+    await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     expect(screen.getByRole("button", { name: "PREPARING..." })).toBeDisabled();
 
@@ -233,18 +242,17 @@ describe("DonationModal", () => {
 
   it("derives the custom-amount symbol from the locale", () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
-    expect(screen.getByTestId("currency-affix")).toHaveTextContent("€");
-    expect(screen.queryByText("$")).not.toBeInTheDocument();
+    expect(screen.getByTestId("currency-affix")).toHaveTextContent("$");
   });
 
-  it("requests the wallet payment in EUR for Slovakia", async () => {
+  it("requests the wallet payment in USD for Slovakia", async () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
     await waitFor(() => {
       expect(stripeStub.paymentRequest).toHaveBeenCalledWith(
         expect.objectContaining({
           country: "SK",
-          currency: "eur",
+          currency: "usd",
           total: expect.objectContaining({ amount: 10000 }),
         })
       );
@@ -254,7 +262,7 @@ describe("DonationModal", () => {
   it("initializes the wallet with the selected amount and updates it on change", async () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
-    await user.click(screen.getByRole("button", { name: "€30" }));
+    await user.click(screen.getByRole("button", { name: "$30" }));
 
     await waitFor(() => {
       const created = stripeStub.paymentRequest.mock.results.at(-1)?.value as {
@@ -271,19 +279,22 @@ describe("DonationModal", () => {
   });
 
   it.each(LOCALES.map((locale) => locale.code))(
-    "renders EUR amounts in the %s modal",
+    "renders the %s currency in the modal",
     async (locale: Locale) => {
       const dict = DICTIONARIES[locale];
+      const currency = defaultCurrency(locale);
+      const monthly = monthlyPresets(currency);
+      const onetime = onetimePresets(currency);
       render(
         <LanguageProvider locale={locale}>
           <DonationModal isOpen={true} onClose={onClose} />
         </LanguageProvider>
       );
 
-      for (const amount of MONTHLY_PRESET_AMOUNTS) {
+      for (const amount of monthly) {
         expect(
           screen.getByRole("button", {
-            name: formatCurrency(amount, locale),
+            name: formatCurrency(amount, locale, currency),
           })
         ).toBeInTheDocument();
       }
@@ -292,18 +303,22 @@ describe("DonationModal", () => {
         screen.getByRole("button", {
           name: dict.donation.giveMonthly.replace(
             "{amount}",
-            formatCurrency(100, locale)
+            formatCurrency(monthly[3], locale, currency)
           ),
         })
       ).toBeInTheDocument();
-      expect(screen.getByTestId("currency-affix")).toHaveTextContent("€");
-      expect(screen.queryByText("$")).not.toBeInTheDocument();
+      expect(screen.getByTestId("currency-affix")).toHaveTextContent(
+        CURRENCIES[currency].symbol
+      );
+      if (locale !== "en") {
+        expect(screen.queryByRole("radio", { name: "EUR" })).not.toBeInTheDocument();
+      }
 
       await user.click(screen.getByRole("button", { name: dict.donation.oneTime }));
-      for (const amount of ONETIME_PRESET_AMOUNTS) {
+      for (const amount of onetime) {
         expect(
           screen.getByRole("button", {
-            name: formatCurrency(amount, locale),
+            name: formatCurrency(amount, locale, currency),
           })
         ).toBeInTheDocument();
       }
@@ -311,7 +326,7 @@ describe("DonationModal", () => {
         screen.getByRole("button", {
           name: dict.donation.giveOnce.replace(
             "{amount}",
-            formatCurrency(100, locale)
+            formatCurrency(onetime[1], locale, currency)
           ),
         })
       ).toBeInTheDocument();
@@ -322,4 +337,58 @@ describe("DonationModal", () => {
       expect(screen.getByText(dict.donation.impactBase)).toBeInTheDocument();
     }
   );
+
+  it("shows a USD/EUR switcher for English outside the US and remembers EUR", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const euros = screen.getByRole("radio", { name: "EUR" });
+    expect(screen.getByRole("radio", { name: "USD" })).toHaveAttribute("aria-checked", "true");
+    await user.click(euros);
+    expect(screen.getByText("€25")).toBeInTheDocument();
+    expect(localStorage.getItem("donation-currency")).toBe("eur");
+
+    const input = screen.getByPlaceholderText("Custom amount");
+    await user.type(input, "5");
+    expect(screen.getByText("Every euro goes directly to the field.")).toBeInTheDocument();
+  });
+
+  it("restores a saved English euro choice after mount", async () => {
+    localStorage.setItem("donation-currency", "eur");
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: "GIVE €100/MO" })).toBeInTheDocument();
+    });
+  });
+
+  it("hides the switcher and forces USD for a US visitor", async () => {
+    document.cookie = "geo_country=US";
+    localStorage.setItem("donation-currency", "eur");
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: "GIVE $100/MO" })).toBeInTheDocument();
+    });
+    expect(screen.queryByRole("radio", { name: "EUR" })).not.toBeInTheDocument();
+  });
+
+  it("recreates the wallet request when the currency changes", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await user.click(screen.getByRole("radio", { name: "EUR" }));
+    await waitFor(() => {
+      expect(stripeStub.paymentRequest).toHaveBeenCalledWith(
+        expect.objectContaining({
+          country: "SK",
+          currency: "eur",
+          total: expect.objectContaining({ amount: 10000 }),
+        })
+      );
+    });
+  });
+
+  it("blocks a custom amount under the currency minimum", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const input = screen.getByPlaceholderText("Custom amount");
+    await user.type(input, "0.25");
+    expect(screen.getByRole("alert")).toHaveTextContent("Minimum amount is $0.50.");
+    expect(screen.getByRole("button", { name: "GIVE $0.25/MO" })).toBeDisabled();
+  });
 });

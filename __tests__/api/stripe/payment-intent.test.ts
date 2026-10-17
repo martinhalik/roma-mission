@@ -16,10 +16,15 @@ vi.mock("stripe", () => ({
 
 const { POST } = await import("../../../app/api/stripe/payment-intent/route");
 
-function makeRequest(body: unknown): NextRequest {
+function makeRequest(
+  body: unknown,
+  extra?: { country?: string },
+): NextRequest {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (extra?.country) headers["x-vercel-ip-country"] = extra.country;
   return new NextRequest("http://localhost:3000/api/stripe/payment-intent", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify(body),
   });
 }
@@ -49,5 +54,42 @@ describe("POST /api/stripe/payment-intent", () => {
       description: "One-Time Donation — Roma Mission",
       automatic_payment_methods: { enabled: true },
     });
+  });
+
+  it("charges the wallet in the locale currency", async () => {
+    const cases = [
+      ["en", "usd", 30],
+      ["ru", "usd", 30],
+      ["cs", "czk", 750],
+      ["ro", "ron", 150],
+      ["sr", "rsd", 3500],
+      ["mk", "mkd", 1800],
+      ["de", "eur", 30],
+    ] as const;
+
+    for (const [locale, currency, amount] of cases) {
+      mockCreate.mockClear();
+      const res = await POST(makeRequest({ amount, locale, currency }));
+      expect(res.status).toBe(200);
+      expect(mockCreate).toHaveBeenCalledWith({
+        amount: amount * 100,
+        currency,
+        description: "One-Time Donation — Roma Mission",
+        automatic_payment_methods: { enabled: true },
+      });
+    }
+  });
+
+  it("rejects a disallowed wallet currency", async () => {
+    const res = await POST(
+      makeRequest({ amount: 30, locale: "ru", currency: "eur" }, { country: "DE" }),
+    );
+    expect(res.status).toBe(400);
+    expect(mockCreate).not.toHaveBeenCalled();
+
+    const us = await POST(
+      makeRequest({ amount: 30, locale: "en", currency: "eur" }, { country: "US" }),
+    );
+    expect(us.status).toBe(400);
   });
 });
