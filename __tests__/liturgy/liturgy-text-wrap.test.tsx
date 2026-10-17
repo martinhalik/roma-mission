@@ -48,17 +48,30 @@ describe("liturgy text wrapping", () => {
     expect(html).not.toMatch(
       /liturgy-break[^>]*>\s*<wbr[^>]*>\s*<\/span>\s*<span[^>]*>\*<\/span>/
     );
-    const marker = html.match(/Pokeresštašno<\/span><details[\s\S]*?<\/details>/);
-    expect(marker).toBeTruthy();
-    expect(marker![0]).not.toContain("<wbr");
-    // `inline` is a utility and would beat `.liturgy-note[open] { display: contents }`.
-    const details = [...line!.querySelectorAll("details")].find(
-      (el) => el.querySelector("summary")?.textContent === "11"
+    const keep = [...line!.querySelectorAll(".liturgy-keep")].find((el) =>
+      el.textContent?.startsWith("Pokeresštašno")
     );
+    expect(keep).toBeTruthy();
+    expect(keep!.textContent?.startsWith("Pokeresštašno11,")).toBe(true);
+    expect(keep!.innerHTML).not.toContain("<wbr");
+    const details = keep!.querySelector("details");
     expect(details?.className.split(/\s+/)).not.toContain("inline");
     expect(details?.querySelector("summary")?.getAttribute("aria-label")).toBe(
       "Translator's note 11"
     );
+    const cluster = keep!.parentElement;
+    expect(cluster?.querySelector(".liturgy-note-body")?.textContent).toContain("11.");
+    const navatin = [...line!.querySelectorAll(".liturgy-keep")].find((el) =>
+      el.textContent?.startsWith("navatin")
+    );
+    expect(navatin?.textContent).toBe("navatin10");
+    const following: string[] = [];
+    let sibling = navatin?.parentElement?.nextSibling ?? null;
+    while (sibling && !(sibling instanceof HTMLElement && sibling.classList.contains("liturgy-cluster"))) {
+      following.push(sibling.textContent ?? "");
+      sibling = sibling.nextSibling;
+    }
+    expect(following.join("").startsWith(" andemanušinen")).toBe(true);
   });
 
   it("does not let break-word split the footnote marker", () => {
@@ -71,11 +84,10 @@ describe("liturgy text wrapping", () => {
     expect(note).toContain("overflow-wrap: normal");
     expect(summary).toContain("overflow-wrap: normal");
     expect(summary).toContain("white-space: nowrap");
-    const open = css.slice(
-      css.indexOf(".liturgy-note[open] {"),
-      css.indexOf(".liturgy-note[open] {") + 180
-    );
-    expect(open).toContain("display: contents");
+    const keep = css.slice(css.indexOf(".liturgy-keep {"), css.indexOf(".liturgy-keep {") + 80);
+    expect(keep).toContain("white-space: nowrap");
+    expect(summary).toContain("padding: 0.85em 0.4em 0.85em 0");
+    expect(summary).not.toContain("display: contents");
     const focus = css.slice(
       css.indexOf(".liturgy-note > summary:focus-visible"),
       css.indexOf(".liturgy-note > summary:focus-visible") + 240

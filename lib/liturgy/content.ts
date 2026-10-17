@@ -61,6 +61,67 @@ export type LineToken =
  * footnote reference, so rendering has to walk the string rather than just
  * print it.
  */
+/** A nowrap run: the word before a marker, the marker(s), and punctuation glued on after. */
+export type KeptNotes = {
+  type: "keep";
+  word: string;
+  notes: number[];
+  punct: string;
+};
+
+export type LinePiece = { type: "text"; value: string } | KeptNotes;
+
+const PUNCT_AFTER = /^[,.;:!?]+/;
+
+/**
+ * Groups each footnote with the word before it and any punctuation that
+ * follows immediately, so the marker cannot wrap onto the next line and a
+ * comma cannot start the line after an open note. Adjacent markers (21 22)
+ * share one group. The note body is rendered after the group, not inside it.
+ */
+export function groupLine(tokens: LineToken[]): LinePiece[] {
+  const pending = tokens.map((token) =>
+    token.type === "text" ? { type: "text" as const, value: token.value } : { type: "note" as const, n: token.n }
+  );
+  const pieces: LinePiece[] = [];
+  let i = 0;
+
+  while (i < pending.length) {
+    const token = pending[i];
+    if (token.type === "note" || (token.type === "text" && pending[i + 1]?.type === "note")) {
+      let word = "";
+      if (token.type === "text") {
+        const match = token.value.match(/^([\s\S]*?)(\S+)$/);
+        const head = match ? match[1] : token.value;
+        word = match ? match[2] : "";
+        if (head) pieces.push({ type: "text", value: head });
+        i += 1;
+      }
+      const notes: number[] = [];
+      while (i < pending.length && pending[i].type === "note") {
+        const note = pending[i];
+        if (note.type === "note") notes.push(note.n);
+        i += 1;
+      }
+      let punct = "";
+      const after = pending[i];
+      if (after?.type === "text") {
+        const found = after.value.match(PUNCT_AFTER);
+        if (found) {
+          punct = found[0];
+          after.value = after.value.slice(punct.length);
+        }
+      }
+      pieces.push({ type: "keep", word, notes, punct });
+      continue;
+    }
+    if (token.type === "text" && token.value) pieces.push({ type: "text", value: token.value });
+    i += 1;
+  }
+
+  return pieces;
+}
+
 export function tokenizeLine(line: LiturgyLine): LineToken[] {
   const tokens: LineToken[] = [];
   const pattern = /\[\[fn:(\d+)\]\]/g;

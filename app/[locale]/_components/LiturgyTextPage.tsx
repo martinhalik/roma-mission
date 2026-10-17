@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { Locale } from "@/lib/i18n";
 import { buildPath } from "@/lib/i18n/routes";
-import { LITURGY, chantPhrases, tokenizeLine } from "@/lib/liturgy/content";
+import { LITURGY, groupLine, tokenizeLine } from "@/lib/liturgy/content";
 import {
   jsonLdScriptProps,
   liturgyTextJsonLd,
@@ -52,18 +52,29 @@ function PhoneBreak() {
 }
 
 function ChantText({ text }: { text: string }) {
-  const phrases = chantPhrases(text);
-  if (phrases.length <= 1) return <>{text.replace(/\*/g, "")}</>;
-  // Leading whitespace (usually the space after a footnote) is trimmed by
-  // chantPhrases, which glues the next phrase to the marker.
-  const leadBreak = /^\s/.test(text);
+  const leadSpace = /^\s/.test(text);
+  const raw = text.split("*").map((part) => part.trim());
+  // A star at the end of this run is the phrase mark before the next word
+  // (often a word peeled off into a footnote group). Keep it, with a phone
+  // break after, instead of letting the empty last piece swallow the star.
+  const trailingStar = raw.length > 1 && raw[raw.length - 1] === "";
+  const phrases = raw.filter(Boolean);
+  if (phrases.length === 0) return leadSpace ? <> </> : null;
+  if (phrases.length === 1 && !trailingStar) {
+    return (
+      <>
+        {leadSpace ? " " : ""}
+        {phrases[0]}
+      </>
+    );
+  }
   return (
     <>
-      {leadBreak && <PhoneBreak />}
+      {leadSpace ? " " : null}
       {phrases.map((phrase, i) => (
         <span key={i}>
           {phrase}
-          {i < phrases.length - 1 && (
+          {(i < phrases.length - 1 || trailingStar) && (
             <>
               <span
                 aria-hidden="true"
@@ -80,7 +91,11 @@ function ChantText({ text }: { text: string }) {
   );
 }
 
-function Note({ n, text }: { n: number; text: string }) {
+function footnoteText(n: number): string {
+  return LITURGY.footnotes.find((footnote) => footnote.n === n)?.text ?? "";
+}
+
+function NoteMarker({ n }: { n: number }) {
   return (
     <details className="liturgy-note align-baseline">
       <summary
@@ -89,11 +104,16 @@ function Note({ n, text }: { n: number; text: string }) {
       >
         {n}
       </summary>
-      <span className="mt-1 mb-2 rounded border-l-2 border-[var(--gold)] bg-[var(--bg-elevated)] px-3 py-2 text-[13px] leading-relaxed text-[var(--text-secondary)]">
-        <span className="mr-1.5 font-medium text-[var(--gold)]">{n}.</span>
-        <span lang="sk">{text}</span>
-      </span>
     </details>
+  );
+}
+
+function NoteBody({ n }: { n: number }) {
+  return (
+    <span className="liturgy-note-body mt-1 mb-2 rounded border-l-2 border-[var(--gold)] bg-[var(--bg-elevated)] px-3 py-2 text-[13px] leading-relaxed text-[var(--text-secondary)]">
+      <span className="mr-1.5 font-medium text-[var(--gold)]">{n}.</span>
+      <span lang="sk">{footnoteText(n)}</span>
+    </span>
   );
 }
 
@@ -108,7 +128,7 @@ function Line({
   className: string;
   labelClassName: string;
 }) {
-  const tokens = tokenizeLine(line);
+  const pieces = groupLine(tokenizeLine(line));
   return (
     // `rom` is the macrolanguage code, as specified. `rmc` (Carpathian Romani)
     // would name this dialect exactly — change it here if you prefer it.
@@ -120,15 +140,22 @@ function Line({
           {line.label}
         </span>
       )}
-      {tokens.map((token, i) =>
-        token.type === "text" ? (
-          <ChantText key={i} text={token.value} />
+      {pieces.map((piece, i) =>
+        piece.type === "text" ? (
+          <ChantText key={i} text={piece.value} />
         ) : (
-          <Note
-            key={i}
-            n={token.n}
-            text={LITURGY.footnotes.find((f) => f.n === token.n)?.text ?? ""}
-          />
+          <span key={i} className="liturgy-cluster">
+            <span className="liturgy-keep">
+              {piece.word ? <ChantText text={piece.word} /> : null}
+              {piece.notes.map((n) => (
+                <NoteMarker key={n} n={n} />
+              ))}
+              {piece.punct}
+            </span>
+            {piece.notes.map((n) => (
+              <NoteBody key={n} n={n} />
+            ))}
+          </span>
         )
       )}
     </div>

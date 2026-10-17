@@ -157,10 +157,11 @@ html.light {
      * The marker itself is a 10px superscript numeral — about 4×13px, well
      * under the 24px minimum target size. Padding on an inline box enlarges
      * the hit area without pushing the lines of the Liturgy apart, which
-     * vertical margin or a block display would.
+     * vertical margin or a block display would. The left side is flush with
+     * the word; the right padding and the right margin stay.
      */
-    padding: 0.85em 0.4em;
-    margin: 0 -0.15em;
+    padding: 0.85em 0.4em 0.85em 0;
+    margin: 0 -0.15em 0 0;
   }
   .liturgy-note > summary::-webkit-details-marker,
   .liturgy-note > summary::marker {
@@ -168,9 +169,9 @@ html.light {
     content: "";
   }
   /*
-   * Focus stays on the summary. An open note is display: contents, which
-   * draws no box, so a ring on the <details> would vanish. The same 2px
-   * gold outline the language chips use is drawn on the marker itself.
+   * Focus stays on the summary, which keeps its own box when the note is
+   * open. The same 2px gold outline the language chips use is drawn on
+   * the marker itself.
    */
   .liturgy-note > summary:focus-visible {
     outline: 2px solid var(--gold);
@@ -180,15 +181,22 @@ html.light {
     color: var(--text-primary);
   }
   /*
-   * An open note's body is a block. Firefox then blockifies the inline
-   * <details>, so the nowrap marker wraps onto the next line, under the
-   * word it annotates. contents keeps the summary in that word's line and
-   * lets only the note body break out. The marker stays nowrap, so a
-   * two-digit note still cannot split, and the line's overflow-wrap still
-   * breaks a word that is wider than the column.
+   * The word, its marker (or adjacent markers), and any punctuation right
+   * after them are one unbreakable run. Firefox otherwise wraps a closed
+   * marker onto the next line. The note body is a sibling after this run,
+   * so opening 21 cannot push 22 onto the next line, and the box opens
+   * after "Pokeresštašno¹¹," rather than before the comma.
    */
-  .liturgy-note[open] {
-    display: contents;
+  .liturgy-keep {
+    white-space: nowrap;
+  }
+  .liturgy-note-body {
+    display: none;
+  }
+  .liturgy-cluster:has(.liturgy-note:nth-of-type(1)[open]) > .liturgy-note-body:nth-child(1 of .liturgy-note-body),
+  .liturgy-cluster:has(.liturgy-note:nth-of-type(2)[open]) > .liturgy-note-body:nth-child(2 of .liturgy-note-body),
+  .liturgy-cluster:has(.liturgy-note:nth-of-type(3)[open]) > .liturgy-note-body:nth-child(3 of .liturgy-note-body) {
+    display: block;
   }
   /*
    * Be explicit about the note body rather than relying on the browser's
@@ -200,19 +208,17 @@ html.light {
     display: none;
   }
   .liturgy-note[open] > :not(summary) {
-    display: block;
+    display: none;
   }
   /*
    * Chrome wraps a <details>'s contents in a `::details-content` box that stays
-   * block-level even when the element itself is inline, which breaks the line
-   * after every footnote marker. Collapse it while closed. Browsers without the
-   * pseudo-element fall back to the two rules above.
+   * block-level even when the element itself is inline. The note text lives
+   * outside the <details>, so that box stays collapsed open or closed — a
+   * block here would push the punctuation onto the next line.
    */
-  .liturgy-note::details-content {
-    display: none;
-  }
+  .liturgy-note::details-content,
   .liturgy-note[open]::details-content {
-    display: block;
+    display: none;
   }
 
   /*
@@ -273,11 +279,8 @@ html.light {
   }
 
   /* Footnotes are collapsed on screen; open them all on paper. */
-  .liturgy-note > *:not(summary) {
+  .liturgy-note-body {
     display: block !important;
-  }
-  .liturgy-note::details-content {
-    display: block;
   }
 
   @page {

@@ -17,7 +17,7 @@ import { spawnSync } from "node:child_process";
 import { chromium, firefox, webkit } from "playwright-core";
 
 const base = process.env.BASE_URL ?? "http://127.0.0.1:3000";
-const widths = [320, 360, 375, 390, 414, 768];
+const widths = [320, 360, 375, 390, 768, 1280];
 
 const onlyLocales = process.env.LITURGY_LOCALES?.split(",").filter(Boolean);
 const pages = [
@@ -98,31 +98,137 @@ function scrollAndNotes() {
     return null;
   }
 
+  function anchorRect(note) {
+    const keep = note.closest(".liturgy-keep");
+    const first = keep?.querySelector(".liturgy-note") ?? note;
+    return glyphBefore(first);
+  }
+
+  function markerOnWord(note) {
+    const summary = note.querySelector("summary");
+    const word = anchorRect(note);
+    const range = document.createRange();
+    range.selectNodeContents(summary);
+    const marker = [...range.getClientRects()].find((r) => r.width > 0.3 && r.height > 0.3);
+    const dropped = !word || !marker || marker.top >= word.bottom - 1;
+    return {
+      dropped,
+      n: summary.textContent.trim(),
+      word: (note.closest(".liturgy-keep")?.firstChild?.textContent || "").replace(/\s+/g, " ").trim().slice(-24),
+    };
+  }
+
+  function punctSplit(note) {
+    let node = note.nextSibling;
+    while (node && node.nodeType === Node.TEXT_NODE && !(node.nodeValue || "").length) node = node.nextSibling;
+    if (!node || node.nodeType !== Node.TEXT_NODE) return "none";
+    const value = node.nodeValue || "";
+    if (!/^[,.;:!?]/.test(value)) return "none";
+    if (/^\s/.test(value)) return "whitespace";
+    const range = document.createRange();
+    range.setStart(node, 0);
+    range.setEnd(node, 1);
+    const punct = [...range.getClientRects()].find((r) => r.width > 0.3 && r.height > 0.3);
+    const summary = note.querySelector("summary");
+    const markerRange = document.createRange();
+    markerRange.selectNodeContents(summary);
+    const marker = [...markerRange.getClientRects()].find((r) => r.width > 0.3 && r.height > 0.3);
+    if (!punct || !marker || punct.top >= marker.bottom - 1) return "wrapped";
+    return null;
+  }
+
+  function lineStartPunct() {
+    const fails = [];
+    const range = document.createRange();
+    for (const line of document.querySelectorAll(".liturgy-rom, .liturgy-sk")) {
+      const glyphs = [];
+      const walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT);
+      let current;
+      while ((current = walker.nextNode())) {
+        if (current.parentElement?.closest(".liturgy-note-body, summary")) continue;
+        const value = current.textContent || "";
+        for (let c = 0; c < value.length; c += 1) {
+          const ch = value[c];
+          if (!ch.trim()) continue;
+          range.setStart(current, c);
+          range.setEnd(current, c + 1);
+          const rect = [...range.getClientRects()].find((r) => r.width > 0.3 && r.height > 0.3);
+          if (!rect) continue;
+          glyphs.push({ ch, x: rect.left, y: Math.round(rect.top) });
+        }
+      }
+      const rows = new Map();
+      for (const glyph of glyphs) {
+        const row = rows.get(glyph.y) ?? [];
+        row.push(glyph);
+        rows.set(glyph.y, row);
+      }
+      for (const row of rows.values()) {
+        row.sort((a, b) => a.x - b.x);
+        if (/^[,.;:!?]$/.test(row[0].ch)) fails.push(row[0].ch + row.slice(1, 4).map((glyph) => glyph.ch).join(""));
+      }
+    }
+    return fails;
+  }
+
   const notes = [...document.querySelectorAll(".liturgy-note")];
   const markerFails = [];
   let markerPass = 0;
+  const punctFails = [];
+  let punctPass = 0;
   let maxSw = sw;
   for (const note of notes) {
-    const summary = note.querySelector("summary");
     for (const open of [false, true]) {
       note.open = open;
-      const word = glyphBefore(note);
-      const range = document.createRange();
-      range.selectNodeContents(summary);
-      const marker = [...range.getClientRects()].find((r) => r.width > 0.3 && r.height > 0.3);
-      const dropped = !word || !marker || marker.top >= word.bottom - 1;
-      if (dropped) {
-        markerFails.push({
-          n: summary.textContent.trim(),
-          open,
-          word: (note.previousSibling?.textContent || "").replace(/\s+/g, " ").trim().slice(-24),
-        });
-      } else {
-        markerPass += 1;
+      const targets = open
+        ? [...(note.closest(".liturgy-keep")?.querySelectorAll(".liturgy-note") ?? [note])]
+        : [note];
+      for (const target of targets) {
+        const result = markerOnWord(target);
+        if (result.dropped) markerFails.push({ n: result.n, open, word: result.word, whileOpen: note.querySelector("summary").textContent.trim() });
+        else markerPass += 1;
       }
+      const split = punctSplit(note);
+      if (split === "whitespace" || split === "wrapped") {
+        punctFails.push({ n: note.querySelector("summary").textContent.trim(), open, split });
+      } else if (split === null) punctPass += 1;
       maxSw = Math.max(maxSw, document.documentElement.scrollWidth, document.body.scrollWidth);
     }
     note.open = false;
+  }
+  const lineFails = lineStartPunct();
+  const gapFails = [];
+  let gapPass = 0;
+  for (const note of notes) {
+    let node = note.previousSibling;
+    let spaced = false;
+    while (node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const value = node.nodeValue ?? "";
+        if (!value.length) {
+          node = node.previousSibling;
+          continue;
+        }
+        spaced = /\s$/.test(value);
+        break;
+      }
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.classList.contains("liturgy-note")) break;
+        const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+        let last = null;
+        let current;
+        while ((current = walker.nextNode())) last = current;
+        if (!last || !(last.nodeValue || "").length) {
+          node = node.previousSibling;
+          continue;
+        }
+        spaced = /\s$/.test(last.nodeValue);
+        break;
+      }
+      node = node.previousSibling;
+    }
+    if (spaced) gapFails.push(note.querySelector("summary").textContent.trim());
+    else gapPass += 1;
   }
 
   const chips = [...document.querySelectorAll(".liturgy-view label")].map((label) => ({
@@ -137,6 +243,11 @@ function scrollAndNotes() {
     client: document.documentElement.clientWidth,
     markerPass,
     markerFails,
+    punctPass,
+    punctFails,
+    lineFails,
+    gapPass,
+    gapFails,
     chips,
   };
 }
@@ -455,7 +566,16 @@ async function checkAx(engine, page, cdp, entry, counts, samples) {
 }
 
 for (const engine of engines) {
-  const counts = { scroll: tally(), marker: tally(), chip: tally(), focus: tally(), gap: tally(), ax: tally() };
+  const counts = {
+    scroll: tally(),
+    marker: tally(),
+    chip: tally(),
+    focus: tally(),
+    gap: tally(),
+    punct: tally(),
+    line: tally(),
+    ax: tally(),
+  };
   const samples = [];
   const browser = await engine.launch.launch({ headless: true });
   const context = await browser.newContext(engine.context);
@@ -505,10 +625,23 @@ for (const engine of engines) {
         if (kind === "text") {
           counts.marker.pass += data.markerPass;
           counts.marker.fail += data.markerFails.length;
-          if (data.markerFails.length) {
+          counts.punct.pass += data.punctPass;
+          counts.punct.fail += data.punctFails.length;
+          counts.line.pass += data.lineFails.length ? 0 : 1;
+          counts.line.fail += data.lineFails.length ? 1 : 0;
+          counts.gap.pass += data.gapPass;
+          counts.gap.fail += data.gapFails.length;
+          if (data.markerFails.length || data.punctFails.length || data.lineFails.length || data.gapFails.length) {
             failed = true;
             if (samples.length < 12) {
-              samples.push({ locale: entry.locale, width, marker: data.markerFails.slice(0, 3) });
+              samples.push({
+                locale: entry.locale,
+                width,
+                marker: data.markerFails.slice(0, 3),
+                punct: data.punctFails.slice(0, 3),
+                line: data.lineFails.slice(0, 3),
+                gap: data.gapFails.slice(0, 4),
+              });
             }
           }
           for (const chip of data.chips) {
@@ -523,14 +656,11 @@ for (const engine of engines) {
             const focus = await page.evaluate(markerFocusAndGap);
             counts.focus.pass += focus.focusPass;
             counts.focus.fail += focus.focusFails.length;
-            counts.gap.pass += focus.gapPass;
-            counts.gap.fail += focus.gapFails.length;
-            if (focus.focusFails.length || focus.gapFails.length) {
+            if (focus.focusFails.length) {
               failed = true;
               samples.push({
                 locale: entry.locale,
                 focus: focus.focusFails.slice(0, 2),
-                gap: focus.gapFails.slice(0, 4),
               });
             }
             if (cdp) await checkAx(engine, page, cdp, entry, counts, samples);
