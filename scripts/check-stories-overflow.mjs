@@ -67,6 +67,19 @@ const otherPages = [
   },
 ];
 
+async function gotoSettled(page, url) {
+  const response = await page.goto(url, {
+    waitUntil: "domcontentloaded",
+    timeout: 60000,
+  });
+  await page.locator("main").first().waitFor({ timeout: 20000 });
+  await Promise.race([
+    page.waitForLoadState("networkidle"),
+    page.waitForTimeout(2500),
+  ]);
+  return response;
+}
+
 function measureScript() {
   const vw = document.documentElement.clientWidth;
   const sw = document.documentElement.scrollWidth;
@@ -114,7 +127,7 @@ if (shots) await mkdir(shotDir, { recursive: true });
 for (const entry of stories) {
   for (const width of widths) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto(base + entry.path, { waitUntil: "networkidle" });
+    await gotoSettled(page, base + entry.path);
     await page.evaluate(() => document.fonts.ready);
     const data = await page.evaluate(measureScript);
     const row = { locale: entry.locale, path: entry.path, width, ...data };
@@ -165,7 +178,7 @@ if (process.env.CHECK_OTHERS === "1") {
   for (const group of otherPages) {
     for (const [locale, urlPath] of Object.entries(group.paths)) {
       await page.setViewportSize({ width: 768, height: 900 });
-      const response = await page.goto(base + urlPath, { waitUntil: "networkidle" });
+      const response = await gotoSettled(page, base + urlPath);
       await page.evaluate(() => document.fonts.ready);
       const data = await page.evaluate(measureScript);
       otherResults.push({
