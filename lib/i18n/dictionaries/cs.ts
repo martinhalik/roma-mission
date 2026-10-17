@@ -693,7 +693,7 @@ const cs: Dictionary = {
       paragraph1:
         "Martin a Míša se do Klenovce přestěhovali natrvalo. Ne jako návštěvníci, ne jako pracovníci neziskovky na smlouvu. Koupili dům, vychovali děti a vybudovali farnost — protože romské komunity, kterým slouží, zklamala každá iniciativa, která se nakonec sbalila a odešla.",
       paragraph2:
-        "V roce 2025 dárci přispěli zhruba 3 000 €. Skutečné náklady misie byly 16 900 €. Rozdíl pokrývá Martin z vlastního příjmu. Každé euro, které darujete, jde přímo na to, aby vše, co jste právě četli, mohlo pokračovat.",
+        "V roce 2025 dárci přispěli zhruba 3 000 €. Skutečné náklady misie byly 16 900 €. Rozdíl pokrývá Martin z vlastního příjmu. Každá koruna, kterou darujete, jde přímo na to, aby vše, co jste právě četli, mohlo pokračovat.",
       ctaSupport: "Podpořte tuto misii",
       ctaLearn: "Zjistěte, jak to funguje",
     },
@@ -1348,7 +1348,12 @@ const cs: Dictionary = {
     impactHigh: "Pokryje týdenní farní materiály a programy.",
     impactMid: "Financuje celý rok katecheze pro jedno dítě.",
     impactLow: "Zajistí výukové materiály na měsíc.",
-    impactBase: "Každé euro jde přímo do terénu.",
+    impactBase: "Každá koruna jde přímo do terénu.",
+    impactBaseEur: "Každá koruna jde přímo do terénu.",
+    amountTooLow: "Minimální částka je {amount}.",
+    amountInvalid: "Zadejte částku jako 25 nebo 25,50.",
+    amountTooHigh: "Maximální částka je {amount}.",
+    currencyLabel: "Měna",
     error: "Něco se pokazilo. Zkuste to prosím znovu.",
     preparing: "PŘIPRAVUJE SE...",
     giveMonthly: "DAROVAT {amount}/MĚS",

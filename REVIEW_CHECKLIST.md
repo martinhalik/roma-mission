@@ -137,7 +137,7 @@ These are leftover untranslated strings found while auditing this branch. None b
 | `app/page.tsx` (lines 195–197) | `alt` for population-growing / education / dignity images | ✅ Resolved — reads `home.imageAlt.populationGrowing` / `education` / `dignity` |
 | `app/page.tsx` (line 247) | `alt="Our approach"` | ✅ Resolved — reads `t("home.imageAlt.approach")` |
 | `app/mission/page.tsx` (line 117) | `{data.country}` country-grid card header | ✅ Resolved — reads `` t(`countries.${data.iso}`) `` |
-| `components/DonationModal.tsx` | preset buttons + give CTA | ✅ Resolved — both render via `formatCurrency(…, locale)` in EUR; the `donation.give*` dictionary values use `{amount}`. The custom-amount symbol is `currencyAffix(locale)` (prefix or suffix), not a literal `$`. |
+| `components/DonationModal.tsx` | preset buttons + give CTA | ✅ Resolved — both render via `formatCurrency(…, locale, currency)`; the `donation.give*` dictionary values use `{amount}`. The custom-amount symbol is `currencyAffix(locale, currency)` (English prefix, other locales a suffix). |
 | `app/api/stripe/payment-intent/route.ts` (line 10) | `"Invalid amount"` JSON error | Server-side, never user-rendered — left as-is |
 
 ### SEO metadata — review surface
