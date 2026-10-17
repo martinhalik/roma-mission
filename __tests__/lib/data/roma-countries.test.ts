@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { isMissionCountry, ROMA_COUNTRIES } from "@/lib/data/roma-countries";
 
@@ -8,7 +9,7 @@ const DEAD_WORLD_BANK_BRIEF =
 describe("Roma country sources", () => {
   it("does not cite the removed World Bank Moldova brief", () => {
     const source = readFileSync(
-      new URL("../../../lib/data/roma-countries.ts", import.meta.url),
+      path.resolve(process.cwd(), "lib/data/roma-countries.ts"),
       "utf8",
     );
     expect(source).not.toContain(DEAD_WORLD_BANK_BRIEF);
