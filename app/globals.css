@@ -128,9 +128,18 @@ html.light {
    */
   .liturgy-note {
     display: inline;
+    /*
+     * The line uses overflow-wrap: break-word so a long chant run can break
+     * on a phone. Firefox also breaks inside the inline marker, so "10"–"34"
+     * split between their digits and the page grows. The marker is one token;
+     * the note body still wraps at spaces once it is open.
+     */
+    overflow-wrap: normal;
   }
   .liturgy-note > summary {
     display: inline;
+    overflow-wrap: normal;
+    white-space: nowrap;
     list-style: none;
     /*
      * The marker itself is a 10px superscript numeral — about 4×13px, well
@@ -172,6 +181,21 @@ html.light {
   }
   .liturgy-note[open]::details-content {
     display: block;
+  }
+
+  /*
+   * Chant phrases are joined by a margin-spaced `*` with the source spaces
+   * trimmed, so "andemanušinen.*Pokeresštašno" is one word and overflows a
+   * phone. The `<wbr>` inside `.liturgy-break` puts the break back. From
+   * 768px up the same run fits, and leaving the break in would reflow lines
+   * that already wrap, so the opportunity is removed there.
+   * `break-words` on the line still covers a single word that is wider than
+   * the column.
+   */
+  @media (min-width: 768px) {
+    .liturgy-break {
+      display: none;
+    }
   }
 }
 
