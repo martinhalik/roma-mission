@@ -3,7 +3,7 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useRef, useEffect, useState } from "react";
 import LocaleLink from "@/components/LocaleLink";
-import { ROMA_COUNTRIES } from "@/lib/data/roma-countries";
+import { ROMA_COUNTRIES, formatCountryPercent, formatRomaPopulation } from "@/lib/data/roma-countries";
 import { MISSION_LOCATIONS, type LocationType, type MissionLocation } from "@/lib/data/mission-locations";
 import { useTranslation } from "@/components/LanguageProvider";
 
@@ -106,13 +106,8 @@ const LEGEND_ITEMS: MarkerType[] = [
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-function formatPct(pct: number): string {
-  return pct >= 1 ? `${pct.toFixed(1)}%` : `${pct.toFixed(2)}%`;
-}
-
 function formatPop(n: number): string {
-  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
-  return `${Math.round(n / 1000)}K`;
+  return formatRomaPopulation(n);
 }
 
 // ─── Color scales ─────────────────────────────────────────────────────────────
@@ -465,7 +460,7 @@ export default function MissionMap() {
             {t(`countries.${hovered.iso}`)}
           </p>
           <p className="text-[38px] font-bold text-[var(--gold)] leading-none mt-1">
-            {formatPct(getPct(hovered))}
+            {formatCountryPercent(hovered)}
           </p>
           <p className="text-[9px] text-[var(--text-muted)] mt-1">
             {t("map.hoverPopulation", {
