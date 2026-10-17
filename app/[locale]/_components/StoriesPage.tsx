@@ -125,11 +125,11 @@ export default function StoriesPage() {
           <SectionLabel text={t("stories.featured.label")} />
         </div>
 
-        <div className="flex flex-col md:flex-row gap-10 md:gap-20 items-start md:items-center">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-start lg:items-center">
           {/* Photo — click to play video */}
           <button
             onClick={() => setVideoOpen(true)}
-            className="w-full md:w-[440px] h-[260px] md:h-[500px] bg-[var(--bg-elevated)] border border-[var(--border-default)] flex-shrink-0 overflow-hidden relative group cursor-pointer"
+            className="w-full lg:w-[440px] h-[260px] md:h-[500px] bg-[var(--bg-elevated)] border border-[var(--border-default)] lg:shrink-0 overflow-hidden relative group cursor-pointer"
             aria-label={t("stories.featured.watchAria")}
           >
             <div
@@ -149,7 +149,7 @@ export default function StoriesPage() {
             </div>
           </button>
 
-          <div className="flex flex-col gap-6 flex-1">
+          <div className="flex flex-col gap-6 flex-1 min-w-0 pt-6 lg:pt-0">
             <span className="text-[var(--gold)] text-[100px] md:text-[120px] leading-[0.3] font-bold">
               &ldquo;
             </span>
@@ -238,16 +238,16 @@ export default function StoriesPage() {
 
         <LocaleLink
           routeKey="ourStory"
-          className="group flex flex-col md:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden hover:border-[var(--gold)]/40 transition-colors"
+          className="group flex flex-col lg:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden hover:border-[var(--gold)]/40 transition-colors"
         >
           <div
-            className="w-full md:w-[360px] h-[220px] md:h-[320px] bg-[var(--bg-elevated)] bg-cover flex-shrink-0 transition-transform duration-500 group-hover:scale-[1.02] origin-center overflow-hidden"
+            className="w-full lg:w-[360px] h-[220px] md:h-[320px] bg-[var(--bg-elevated)] bg-cover lg:shrink-0 transition-transform duration-500 group-hover:scale-[1.02] origin-center overflow-hidden"
             style={{
               backgroundImage: "url('/images/mission-about-us.jpg')",
               backgroundPosition: "center 30%",
             }}
           />
-          <div className="flex flex-col gap-4 p-6 md:p-10 justify-center">
+          <div className="flex flex-col gap-4 p-6 md:p-10 justify-center min-w-0">
             <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
               {t("stories.founder.eyebrow")}
             </span>
@@ -278,15 +278,15 @@ export default function StoriesPage() {
         </div>
 
         {/* Featured family story — full width, large photo */}
-        <div className="flex flex-col md:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden mb-5 md:mb-6">
+        <div className="flex flex-col lg:flex-row bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden mb-5 md:mb-6">
           <div
-            className="w-full md:w-[520px] h-[280px] md:h-[420px] bg-[var(--bg-elevated)] bg-cover flex-shrink-0"
+            className="w-full lg:w-[520px] h-[280px] md:h-[420px] bg-[var(--bg-elevated)] bg-cover lg:shrink-0"
             style={{
               backgroundImage: `url('/images/${featuredMedia.image}')`,
               backgroundPosition: featuredMedia.imagePosition,
             }}
           />
-          <div className="flex flex-col gap-5 p-6 md:p-10 justify-center">
+          <div className="flex flex-col gap-5 p-6 md:p-10 justify-center min-w-0">
             <span className="text-[10px] font-semibold tracking-[1.5px] text-[var(--gold)] uppercase">
               {t(`stories.testimonies.${featuredKey}.country`)}
             </span>
