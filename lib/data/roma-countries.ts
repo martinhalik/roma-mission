@@ -45,7 +45,7 @@ export const COE_ROMA_ESTIMATES_URL = "https://rm.coe.int/1680088ea9";
 /**
  * Compact population for the map tooltip.
  * One decimal when it is exact (19.0M, 550K). A second decimal only when
- * one decimal would change the figure (2.15M, 37.5K, 1.05K).
+ * one decimal would change the figure (1.85M, 37.5K, 1.05K).
  */
 export function formatRomaPopulation(n: number): string {
   if (n >= 1_000_000) {
@@ -106,11 +106,11 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     iso: "RO",
     country: "Romania",
     flag: "🇷🇴",
-    pop: 2150000,
+    pop: 1850000,
     totalPop: 19000000,
     officialPop: "~570,000",
     unofficialPop: "1,800,000–2,500,000",
-    sharePercent: "~9–13%",
+    sharePercent: "~8.32%",
     presence: "orthodox",
     presenceLabel: "Orthodox Active",
     scripture: "available",
@@ -196,11 +196,11 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     iso: "BG",
     country: "Bulgaria",
     flag: "🇧🇬",
-    pop: 800000,
+    pop: 750000,
     totalPop: 6500000,
     officialPop: "~267,000",
     unofficialPop: "700,000–900,000",
-    sharePercent: "~11–14%",
+    sharePercent: "~10.33%",
     presence: "opportunity",
     presenceLabel: "Opportunity",
     scripture: "partial",

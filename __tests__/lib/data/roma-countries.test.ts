@@ -16,7 +16,7 @@ const EN_DASH = "\u2013";
 const POPULATION_RANGE = new RegExp(
   `^\\d{1,3}(,\\d{3})*${EN_DASH}\\d{1,3}(,\\d{3})*$`,
 );
-const SHARE_RANGE = new RegExp(`^~\\d+(?:\\.\\d)?(?:${EN_DASH}\\d+(?:\\.\\d)?)?%$`);
+const SHARE_RANGE = new RegExp(`^~\\d+(?:\\.\\d{1,2})?(?:${EN_DASH}\\d+(?:\\.\\d{1,2})?)?%$`);
 
 /** Nearest integer, or one decimal when the end is below 1%. */
 function formatShareEnd(percent: number): string {
@@ -61,11 +61,11 @@ const EC_MISSION: Record<string, MissionPin> = {
       "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/czech-republic_en",
   },
   RO: {
-    pop: 2150000,
+    pop: 1850000,
     totalPop: 19000000,
     officialPop: "~570,000",
     unofficialPop: "1,800,000–2,500,000",
-    sharePercent: "~9–13%",
+    sharePercent: "~8.32%",
     sourceUrl:
       "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/romania_en",
   },
@@ -88,11 +88,11 @@ const EC_MISSION: Record<string, MissionPin> = {
       "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/hungary_en",
   },
   BG: {
-    pop: 800000,
+    pop: 750000,
     totalPop: 6500000,
     officialPop: "~267,000",
     unofficialPop: "700,000–900,000",
-    sharePercent: "~11–14%",
+    sharePercent: "~10.33%",
     sourceUrl:
       "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/bulgaria_en",
   },
@@ -191,7 +191,7 @@ describe("Roma country figures", () => {
     );
   });
 
-  it("keeps the six European Commission cards on their main figures and links", () => {
+  it("keeps Slovakia, Czechia, Greece, and Hungary on their main figures, and pins Romania and Bulgaria to the European Commission page", () => {
     for (const [iso, expected] of Object.entries(EC_MISSION)) {
       const country = ROMA_COUNTRIES.find((entry) => entry.iso === iso);
       expect(country && isMissionCountry(country), iso).toBe(true);
@@ -222,6 +222,23 @@ describe("Roma country figures", () => {
     }
     const moldova = ROMA_COUNTRIES.find((entry) => entry.iso === "MD");
     expect(moldova && isMissionCountry(moldova) && moldova.sharePercent).toBe("~0.6–8%");
+  });
+
+  it("keeps the Romania and Bulgaria card shares exactly as the European Commission pages state them", () => {
+    const romania = ROMA_COUNTRIES.find((entry) => entry.iso === "RO");
+    const bulgaria = ROMA_COUNTRIES.find((entry) => entry.iso === "BG");
+    expect(romania && isMissionCountry(romania) && romania.sharePercent).toBe("~8.32%");
+    expect(bulgaria && isMissionCountry(bulgaria) && bulgaria.sharePercent).toBe("~10.33%");
+  });
+
+  it("renders the Romania and Bulgaria map tooltips from the map population and the card total", () => {
+    function tooltip(pop: number, total: number): string {
+      const pct = (pop / total) * 100;
+      const pctText = pct >= 1 ? `${pct.toFixed(1)}%` : `${pct.toFixed(2)}%`;
+      return `${pctText} Roma · ${formatRomaPopulation(pop)} of ${formatRomaPopulation(total)}`;
+    }
+    expect(tooltip(1_850_000, 19_000_000)).toBe("9.7% Roma · 1.85M of 19.0M");
+    expect(tooltip(750_000, 6_500_000)).toBe("11.5% Roma · 750K of 6.5M");
   });
 
   it("writes every population range with an en dash and no spaces", () => {
@@ -270,7 +287,7 @@ describe("Roma country figures", () => {
   });
 
   it("formats populations without rounding them to a different figure", () => {
-    expect(formatRomaPopulation(2150000)).toBe("2.15M");
+    expect(formatRomaPopulation(1850000)).toBe("1.85M");
     expect(formatRomaPopulation(2750000)).toBe("2.75M");
     expect(formatRomaPopulation(1840000)).toBe("1.84M");
     expect(formatRomaPopulation(19000000)).toBe("19.0M");
@@ -279,7 +296,7 @@ describe("Roma country figures", () => {
     expect(formatRomaPopulation(8500)).toBe("8.5K");
     expect(formatRomaPopulation(12500)).toBe("12.5K");
     expect(formatRomaPopulation(1050)).toBe("1.05K");
-    expect(formatRomaPopulation(800000)).toBe("800K");
+    expect(formatRomaPopulation(750000)).toBe("750K");
     expect(formatRomaPopulation(105000)).toBe("105K");
   });
 });
