@@ -20,7 +20,7 @@ export interface MissionCountry {
   liturgy: TranslationStatus;
   liturgyNote: string;
   knownWorkers: string;
-  sourceUrl?: string;
+  sourceUrl: string;
 }
 
 // Countries shown on the map for geographic context only
@@ -45,7 +45,7 @@ export const COE_ROMA_ESTIMATES_URL = "https://rm.coe.int/1680088ea9";
 /**
  * Compact population for the map tooltip.
  * One decimal when it is exact (19.0M, 550K). A second decimal only when
- * one decimal would change the figure (1.85M, 37.5K, 1.05K).
+ * one decimal would change the figure (2.15M, 37.5K, 1.05K).
  */
 export function formatRomaPopulation(n: number): string {
   if (n >= 1_000_000) {
@@ -88,11 +88,11 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     iso: "CZ",
     country: "Czechia",
     flag: "🇨🇿",
-    pop: 200000,
+    pop: 250000,
     totalPop: 10900000,
     officialPop: "~13,000",
-    unofficialPop: "150,000–250,000",
-    sharePercent: "~1–2%",
+    unofficialPop: "200,000–300,000",
+    sharePercent: "~2–3%",
     presence: "next-steps",
     presenceLabel: "Next Steps",
     scripture: "partial",
@@ -100,17 +100,17 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     liturgy: "needed",
     liturgyNote: "No Roma-language liturgical materials exist",
     knownWorkers: "Caritas Czech Republic, some evangelical outreach programs",
-    sourceUrl: COE_ROMA_ESTIMATES_URL,
+    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/czech-republic_en",
   },
   {
     iso: "RO",
     country: "Romania",
     flag: "🇷🇴",
-    pop: 1850000,
+    pop: 2150000,
     totalPop: 19000000,
     officialPop: "~570,000",
-    unofficialPop: "1,200,000–2,500,000",
-    sharePercent: "~6–13%",
+    unofficialPop: "1,800,000–2,500,000",
+    sharePercent: "~9–13%",
     presence: "orthodox",
     presenceLabel: "Orthodox Active",
     scripture: "available",
@@ -118,7 +118,7 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     liturgy: "partial",
     liturgyNote: "Romanian Orthodox liturgy used; limited Roma-specific materials",
     knownWorkers: "Romanian Orthodox Church, Romani CRISS, Romanian Bible Society",
-    sourceUrl: COE_ROMA_ESTIMATES_URL,
+    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/romania_en",
   },
   {
     iso: "MD",
@@ -128,7 +128,7 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     totalPop: 2400000,
     officialPop: "9,356",
     unofficialPop: "14,200–200,000",
-    sharePercent: "~4%",
+    sharePercent: "~0.6–8%",
     presence: "orthodox",
     presenceLabel: "Orthodox Active",
     scripture: "partial",
@@ -172,7 +172,7 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     liturgy: "partial",
     liturgyNote: "Greek Orthodox liturgy used; Roma-specific materials very limited",
     knownWorkers: "Greek Orthodox Church, local parish outreach programs",
-    sourceUrl: COE_ROMA_ESTIMATES_URL,
+    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/greece_en",
   },
   {
     iso: "HU",
@@ -190,17 +190,17 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     liturgy: "needed",
     liturgyNote: "No Roma-language liturgical materials exist",
     knownWorkers: "Hungarian Baptist Aid, Reformed Church of Hungary programs",
-    sourceUrl: COE_ROMA_ESTIMATES_URL,
+    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/hungary_en",
   },
   {
     iso: "BG",
     country: "Bulgaria",
     flag: "🇧🇬",
-    pop: 750000,
+    pop: 800000,
     totalPop: 6500000,
     officialPop: "~267,000",
-    unofficialPop: "700,000–800,000",
-    sharePercent: "~11–12%",
+    unofficialPop: "700,000–900,000",
+    sharePercent: "~11–14%",
     presence: "opportunity",
     presenceLabel: "Opportunity",
     scripture: "partial",
@@ -208,7 +208,7 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     liturgy: "needed",
     liturgyNote: "No Roma-language liturgical materials exist",
     knownWorkers: "Amalipe Center (Roma NGO), various evangelical groups",
-    sourceUrl: COE_ROMA_ESTIMATES_URL,
+    sourceUrl: "https://commission.europa.eu/strategy-and-policy/policies/justice-and-fundamental-rights/combatting-discrimination/roma-eu/roma-equality-inclusion-and-participation-eu-country/bulgaria_en",
   },
   {
     iso: "MK",

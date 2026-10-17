@@ -174,18 +174,17 @@ function CountryCard({ data }: { data: MissionCountry }) {
         </p>
       </div>
 
-      {data.sourceUrl ? (
-        <div className="px-5 md:px-6 py-3">
-          <a
-            href={data.sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[10px] tracking-[0.5px] text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors duration-150"
-          >
-            {t("mission.countries.cardSource")}
-          </a>
-        </div>
-      ) : null}
+      {/* Source */}
+      <div className="px-5 md:px-6 py-3">
+        <a
+          href={data.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[10px] tracking-[0.5px] text-[var(--text-muted)] hover:text-[var(--gold)] transition-colors duration-150"
+        >
+          {t("mission.countries.cardSource")}
+        </a>
+      </div>
     </div>
   );
 }
