@@ -20,7 +20,7 @@ export interface MissionCountry {
   liturgy: TranslationStatus;
   liturgyNote: string;
   knownWorkers: string;
-  sourceUrl: string;
+  sourceUrl?: string;
 }
 
 // Countries shown on the map for geographic context only
@@ -113,7 +113,9 @@ export const ROMA_COUNTRIES: RomaCountry[] = [
     liturgy: "needed",
     liturgyNote: "Moldovan Orthodox liturgy used; no Roma-specific materials",
     knownWorkers: "Moldovan Orthodox Church, some Protestant mission groups",
-    sourceUrl: "https://www.worldbank.org/en/country/moldova/brief/roma-in-moldova",
+    // No source link. The World Bank brief at
+    // /en/country/moldova/brief/roma-in-moldova returns 404, the Wayback
+    // Machine has no snapshot, and no live page states these figures together.
   },
   {
     iso: "RS",
