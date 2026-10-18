@@ -682,6 +682,72 @@ const COPY_CASES = [
   { path: "/sk/media", needle: "Zdokumentované" },
 ] as const;
 
+/** Whole-heading selections whose `<br>` main copies as a newline. */
+const COPY_BREAK_CASES = [
+  { path: "/sk", tag: "h2", needle: "Zaznamenané", plain: "Zdokumentované. Zaznamenané.\nTransparentné." },
+  { path: "/cs", tag: "h2", needle: "Zaznamenáno", plain: "Zdokumentováno. Zaznamenáno.\nTransparentní." },
+  { path: "/sr", tag: "h2", needle: "Снимљено", plain: "Документовано. Снимљено.\nТранспарентно." },
+  { path: "/ru", tag: "h2", needle: "Записано", plain: "Задокументировано. Записано.\nПрозрачно." },
+  { path: "/mk", tag: "h2", needle: "Снимено", plain: "Документирано. Снимено.\nТранспарентно." },
+  {
+    path: "/ru/missiya",
+    tag: "h2",
+    needle: "приход",
+    plain: "Самообеспечивающийся приход\nв каждой цыганской общине",
+  },
+  { path: "/sk/media", tag: "h1", needle: "Nahrané", plain: "Zdokumentované. Nahrané.\nTransparentne." },
+  { path: "/cs/media", tag: "h1", needle: "Nahrané", plain: "Zdokumentované. Nahrané.\nTransparentně." },
+  { path: "/sr/mediji", tag: "h1", needle: "Снимљено", plain: "Документовано. Снимљено.\nТранспарентно." },
+  { path: "/ru/media", tag: "h1", needle: "Записано", plain: "Задокументировано. Записано.\nПрозрачно." },
+  { path: "/mk/mediumi", tag: "h1", needle: "Снимено", plain: "Документирано. Снимено.\nТранспарентно." },
+  { path: "/el/mesa", tag: "h1", needle: "Ηχογραφημένα", plain: "Καταγεγραμμένα. Ηχογραφημένα.\nΔιαφανή." },
+  { path: "/ru/uchastvovat", tag: "h1", needle: "Присоединяйтесь", plain: "Присоединяйтесь к делу\nЦеркви" },
+] as const;
+
+interface CopiedSelection {
+  missing?: boolean;
+  plain: string;
+  html: string;
+  prevented: boolean;
+  /** `selection.toString()` with U+00AD removed: main's native plain copy. */
+  native: string;
+  hasBr: boolean;
+}
+
+async function copyContents(page: Page, tag: string, needle: string): Promise<CopiedSelection> {
+  return page.evaluate(
+    ({ tag: rootTag, needle: rootNeedle }) => {
+      const shy = "\u00AD";
+      const host = [...document.querySelectorAll(rootTag)].find((el) =>
+        (el.textContent || "").replaceAll(shy, "").includes(rootNeedle),
+      );
+      if (!host) {
+        return { missing: true, plain: "", html: "", prevented: false, native: "", hasBr: false };
+      }
+      host.scrollIntoView({ block: "center" });
+      const range = document.createRange();
+      range.selectNodeContents(host);
+      const selection = document.getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+      const native = (selection?.toString() ?? "").replaceAll(shy, "");
+      let plain = "";
+      let html = "";
+      let prevented = false;
+      const onCopy = (event: ClipboardEvent) => {
+        prevented = event.defaultPrevented;
+        plain = event.clipboardData?.getData("text/plain") ?? "";
+        html = event.clipboardData?.getData("text/html") ?? "";
+      };
+      window.addEventListener("copy", onCopy);
+      document.execCommand("copy");
+      window.removeEventListener("copy", onCopy);
+      return { plain, html, prevented, native, hasBr: Boolean(host.querySelector("br")) };
+    },
+    { tag, needle },
+  );
+}
+
 test.describe("copying a hyphenated heading drops the soft hyphen", () => {
   for (const item of COPY_CASES) {
     test(item.path, async ({ page }) => {
@@ -737,6 +803,76 @@ test.describe("copying a hyphenated heading drops the soft hyphen", () => {
       const copiedText = copied.includes(":") ? copied.slice(copied.indexOf(":") + 1) : copied;
       expect(copiedText, `${item.path} (${copied})`).not.toContain("\u00AD");
       expect(copiedText.replace(/\s+/g, " "), `${item.path} (${copied})`).toContain(item.needle);
+    });
+  }
+});
+
+test.describe("copy keeps the browser line break and drops only the soft hyphen", () => {
+  for (const item of COPY_BREAK_CASES) {
+    test(`${item.path} ${item.tag}`, async ({ page }) => {
+      await page.setViewportSize({ width: 320, height: 800 });
+      await page.goto(item.path, { waitUntil: "domcontentloaded" });
+      await waitForHydration(page);
+
+      const copied = await copyContents(page, item.tag, item.needle);
+      expect(copied.missing, item.path).toBeFalsy();
+      expect(copied.hasBr, item.path).toBe(true);
+      expect(copied.prevented, item.path).toBe(true);
+      expect(copied.plain, item.path).toBe(item.plain);
+      expect(copied.plain, item.path).toBe(copied.native);
+      expect(copied.plain, item.path).not.toContain("\u00AD");
+      expect(copied.plain, item.path).not.toContain(item.plain.replace("\n", ""));
+      expect(copied.html.toLowerCase(), item.path).toContain("<br");
+      expect(copied.html, item.path).not.toContain("\u00AD");
+      expect(copied.html.toLowerCase(), item.path).not.toContain("&shy;");
+    });
+  }
+
+  for (const locale of LOCALES) {
+    const path = `/${locale.code}/${ROUTE_SLUGS[locale.code].mission}`;
+    test(`${path} stat labels`, async ({ page }) => {
+      await page.setViewportSize({ width: 320, height: 900 });
+      await page.goto(path, { waitUntil: "domcontentloaded" });
+      await waitForHydration(page);
+
+      const labels = await page.evaluate(() => {
+        const shy = "\u00AD";
+        return [...document.querySelectorAll("span.hyphenate")]
+          .filter((el) => (el.textContent || "").includes(shy))
+          .map((host) => {
+            host.scrollIntoView({ block: "center" });
+            const range = document.createRange();
+            range.selectNodeContents(host);
+            const selection = document.getSelection();
+            selection?.removeAllRanges();
+            selection?.addRange(range);
+            const native = (selection?.toString() ?? "").replaceAll(shy, "");
+            let plain = "";
+            let prevented = false;
+            const onCopy = (event: ClipboardEvent) => {
+              prevented = event.defaultPrevented;
+              plain = event.clipboardData?.getData("text/plain") ?? "";
+            };
+            window.addEventListener("copy", onCopy);
+            document.execCommand("copy");
+            window.removeEventListener("copy", onCopy);
+            return {
+              plain,
+              native,
+              prevented,
+              hasBr: Boolean(host.querySelector("br")),
+            };
+          });
+      });
+
+      expect(labels.length, path).toBeGreaterThan(0);
+      for (const label of labels) {
+        expect(label.prevented, label.native).toBe(true);
+        expect(label.plain, label.native).toBe(label.native);
+        expect(label.plain, label.native).not.toContain("\u00AD");
+        expect(label.hasBr, label.native).toBe(false);
+        expect(label.plain, label.native).not.toContain("\n");
+      }
     });
   }
 });
