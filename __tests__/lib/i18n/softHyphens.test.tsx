@@ -39,6 +39,7 @@ const CASED_KEYS = [
   "Присоединяйтесь",
   "Zdokumentované",
   "Zdokumentováno",
+  "πληθυσμού",
   "Καταγεγραμμένα",
   "Ηχογραφημένα",
   "Документовано",
@@ -90,6 +91,12 @@ describe("withSoftHyphens", () => {
     expect(withSoftHyphens("Ηχογραφημένα.")).toBe(`Ηχογρα${SOFT_HYPHEN}φημένα.`);
     expect(withSoftHyphens("Документовано.")).toBe(`Докумен${SOFT_HYPHEN}товано.`);
     expect(withSoftHyphens("Документирано.")).toBe(`Докумен${SOFT_HYPHEN}тирано.`);
+  });
+
+  it("keeps a Greek word-initial cluster on the next piece", () => {
+    expect(withSoftHyphens("πληθυσμού")).toBe(`πληθυ${SOFT_HYPHEN}σμού`);
+    expect(withSoftHyphens("Του πληθυσμού")).toBe(`Του πληθυ${SOFT_HYPHEN}σμού`);
+    expect(visible(withSoftHyphens("Του πληθυσμού"))).toBe("Του πληθυσμού");
   });
 
   it("breaks German compounds once, at the boundary", () => {

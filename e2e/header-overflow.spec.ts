@@ -467,6 +467,25 @@ test.describe("mid-word heading breaks show a hyphen", () => {
 });
 
 test.describe("mission stat label stays inside its cell", () => {
+  test("πληθυσμού at 320px breaks before σμ", async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 800 });
+    await page.goto("/el/apostoli", { waitUntil: "domcontentloaded" });
+    await waitForHydration(page);
+
+    const layouts = await wordLayout(page, "πληθυσμού", "span.hyphenate");
+    expect(layouts.length).toBeGreaterThan(0);
+    for (const layout of layouts) {
+      expect(layout.lang).toBe("el");
+      expect(layout.hyphens).toBe("manual");
+      expect(layout.hasSoftHyphen).toBe(true);
+      expect(layout.lines).toEqual(["πληθυ", "σμού"]);
+      expect(layout.breaks.filter((item) => !item.ok)).toEqual([]);
+      for (const line of layout.lines) {
+        expect(line.length, layout.lines.join(" | ")).toBeGreaterThanOrEqual(3);
+      }
+    }
+  });
+
   test("Официально at 320px", async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 800 });
     await page.goto("/ru/missiya", { waitUntil: "domcontentloaded" });

@@ -8,6 +8,8 @@ const SOFT_HYPHEN = "\u00AD";
  * with no hyphen. The marks are inserted by `<Hyphenate>` at the visible
  * heading and label, which sets `hyphens: manual` so a dictionary cannot
  * pick a different point. German compounds break once, at the boundary.
+ * A Greek cluster that can start a word stays on the next piece: σμ in
+ * πληθυσμού breaks as πληθυ-σμού, not πληθυσ-μού.
  * `t()` and the dictionaries stay unchanged.
  * A soft hyphen is invisible unless the line actually breaks there.
  * Matching is case-insensitive so the dictionary's own casing is covered.
@@ -27,7 +29,7 @@ const SOFT_HYPHEN_PATTERNS: { key: string; parts: string[] }[] = [
   { key: "Проценето", parts: ["Проце", "нето"] },
   { key: "Bevölkerung", parts: ["Bevöl", "kerung"] },
   { key: "Geschätzt", parts: ["Gesch", "ätzt"] },
-  { key: "πληθυσμού", parts: ["πληθυσ", "μού"] },
+  { key: "πληθυσμού", parts: ["πληθυ", "σμού"] },
   { key: "Offiziell", parts: ["Offi", "ziell"] },
   { key: "Oficiálne", parts: ["Ofici", "álne"] },
   { key: "Oficiálně", parts: ["Ofici", "álně"] },
