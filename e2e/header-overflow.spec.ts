@@ -721,3 +721,67 @@ test.describe("copying a hyphenated heading drops the soft hyphen", () => {
     });
   }
 });
+
+const CARD_BADGE_WIDTHS = [320, 360, 390, 768, 1024, 1280] as const;
+
+test.describe("country card badges keep a gap and stay in the header", () => {
+  for (const width of CARD_BADGE_WIDTHS) {
+    for (const locale of LOCALES) {
+      const path = `/${locale.code}/${ROUTE_SLUGS[locale.code].mission}`;
+      test(`${path} at ${width}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(path, { waitUntil: "domcontentloaded" });
+        await waitForHydration(page);
+        await page.evaluate(() => document.fonts.ready);
+        await page.waitForFunction(
+          () => document.querySelectorAll("[data-badge-settled='true']").length >= 11,
+        );
+        const cards = await page.evaluate(() => {
+          return [...document.querySelectorAll("h3")].flatMap((heading) => {
+            const row = heading.parentElement;
+            const header = row?.parentElement;
+            if (!header || !row?.querySelector("span")) return [];
+            const badge = [...header.children].find(
+              (el) => el !== row && el.tagName === "SPAN",
+            );
+            if (!(badge instanceof HTMLElement)) return [];
+            const headerBox = header.getBoundingClientRect();
+            const nameBox = heading.getBoundingClientRect();
+            const badgeBox = badge.getBoundingClientRect();
+            if (headerBox.width < 1 || badgeBox.width < 1 || nameBox.width < 1) return [];
+            const horizontal = Math.max(
+              nameBox.left - badgeBox.right,
+              badgeBox.left - nameBox.right,
+            );
+            const vertical = Math.max(
+              nameBox.top - badgeBox.bottom,
+              badgeBox.top - nameBox.bottom,
+            );
+            const gap =
+              horizontal < 0 && vertical < 0
+                ? Math.max(horizontal, vertical)
+                : horizontal > 0 && vertical > 0
+                  ? Math.hypot(horizontal, vertical)
+                  : Math.max(horizontal, vertical);
+            return [
+              {
+                name: (heading.textContent || "").replace(/\s+/g, " ").trim(),
+                gap,
+                badgeRight: badgeBox.right,
+                headerRight: headerBox.right,
+              },
+            ];
+          });
+        });
+        expect(cards.length, path).toBeGreaterThanOrEqual(11);
+        for (const card of cards) {
+          expect(card.gap, `${path} ${card.name}`).toBeGreaterThanOrEqual(8);
+          expect(
+            card.badgeRight,
+            `${path} ${card.name} badge past the header`,
+          ).toBeLessThanOrEqual(card.headerRight + 1);
+        }
+      });
+    }
+  }
+});

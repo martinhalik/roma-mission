@@ -1,5 +1,6 @@
 "use client";
 
+import { useLayoutEffect, useRef, useState, type RefObject } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
@@ -47,7 +48,15 @@ const presenceLabelKey: Record<Presence, string> = {
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
-function PresenceBadge({ presence, label }: { presence: Presence; label: string }) {
+function PresenceBadge({
+  presence,
+  label,
+  className = "",
+}: {
+  presence: Presence;
+  label: string;
+  className?: string;
+}) {
   const styles: Record<Presence, string> = {
     active:
       "bg-[#22c55e20] text-[#22c55e] border border-[#22c55e]/40",
@@ -60,7 +69,7 @@ function PresenceBadge({ presence, label }: { presence: Presence; label: string 
   };
   return (
     <span
-      className={`ml-auto shrink-0 text-[9px] font-bold tracking-[1px] px-3 py-1.5 uppercase whitespace-nowrap ${styles[presence]}`}
+      className={`text-[9px] font-bold tracking-[1px] px-3 py-1.5 uppercase whitespace-nowrap ${styles[presence]} ${className}`}
     >
       {label}
     </span>
@@ -106,14 +115,63 @@ function TranslationBadge({
   );
 }
 
+function useBadgeWrap(headerRef: RefObject<HTMLDivElement | null>) {
+  const [state, setState] = useState({ wrap: false, settled: false });
+
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    let cancelled = false;
+
+    const measure = (settled: boolean) => {
+      if (cancelled || !header.isConnected) return;
+      const badge = [...header.children].find((el) => el.tagName === "SPAN");
+      if (!(badge instanceof HTMLElement)) return;
+      const previous = header.style.flexWrap;
+      header.style.flexWrap = "nowrap";
+      const headerBox = header.getBoundingClientRect();
+      const badgeBox = badge.getBoundingClientRect();
+      const overflows = badgeBox.right > headerBox.right + 1;
+      header.style.flexWrap = previous;
+      setState((current) => {
+        const nextSettled = current.settled || settled;
+        if (current.wrap === overflows && current.settled === nextSettled) return current;
+        return { wrap: overflows, settled: nextSettled };
+      });
+    };
+
+    measure(false);
+    const observer = new ResizeObserver(() => measure(true));
+    document.fonts?.ready.then(() => {
+      measure(true);
+      if (cancelled) return;
+      observer.observe(header);
+      const badge = [...header.children].find((el) => el.tagName === "SPAN");
+      if (badge) observer.observe(badge);
+    }).catch(() => undefined);
+    return () => {
+      cancelled = true;
+      observer.disconnect();
+    };
+  }, [headerRef]);
+
+  return state;
+}
+
 function CountryCard({ data }: { data: MissionCountry }) {
   const { t } = useTranslation();
+  const headerRef = useRef<HTMLDivElement>(null);
+  const badgeLayout = useBadgeWrap(headerRef);
   return (
     <div className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden">
-      {/* Header. Below 360px the row may wrap if a badge does not fit.
-          "Мы здесь" fits beside the country name at 320px, so it stays on that row. */}
-      <div className="flex max-[359px]:flex-wrap items-center justify-between gap-x-3 gap-y-2 p-5 md:p-6 border-b border-[var(--border-default)]">
-        <div className="flex items-center gap-3 min-w-0">
+      {/* Same row as main while the badge stays inside the header. A badge
+          that would leave the header wraps under the name, at the right edge. */}
+      <div
+        ref={headerRef}
+        data-badge-settled={badgeLayout.settled ? "true" : undefined}
+        className={`flex items-center justify-between gap-3 p-5 md:p-6 border-b border-[var(--border-default)] ${badgeLayout.wrap ? "flex-wrap" : ""}`}
+      >
+        <div className="flex items-center gap-3">
           <span className="text-[22px] leading-none">{data.flag}</span>
           <h3 className="text-[16px] md:text-[18px] font-bold text-[var(--text-primary)]">
             {t(`countries.${data.iso}`)}
@@ -122,6 +180,7 @@ function CountryCard({ data }: { data: MissionCountry }) {
         <PresenceBadge
           presence={data.presence}
           label={t(presenceLabelKey[data.presence])}
+          className={badgeLayout.wrap ? "ml-auto" : ""}
         />
       </div>
 
