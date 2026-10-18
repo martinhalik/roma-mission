@@ -49,17 +49,16 @@ interface PlainState {
 }
 
 /**
- * Chromium's `selection.toString()` applies `text-transform`, but its native
- * copy keeps the source characters. Plain text is therefore read from the
- * live nodes the range covers (the same fragment as `cloneContents`, so a
- * flex item's computed display is still available): text in source case,
- * U+00AD removed, `<br>` as a newline, and a newline at each block boundary.
- * A paragraph keeps the blank line Chromium and WebKit copy after it.
- * Firefox copies flex items inline, leaves the blank line before a paragraph
- * or list, and indents a list that sits inside a larger selection.
- * WebKit's native copy uppercases transformed labels. Hyphenated labels here
- * stay in source case, which matches Chromium and Firefox and is the accepted
- * difference for WebKit. A selection with no soft hyphen is left to the browser.
+ * A soft hyphen is invisible when pasted, but Chromium's native copy keeps
+ * the character. Single-block selections (one heading, label, or paragraph)
+ * are rebuilt in source case, with U+00AD removed, because `selection.toString()`
+ * applies `text-transform` and the native clipboard does not.
+ *
+ * A selection that crosses blocks, a replaced element, or several ranges is
+ * left entirely to the browser. Rebuilding that text drops blank lines, image
+ * alt text, and button visibility that each engine copies differently. A
+ * multi-block copy can therefore still contain U+00AD. Pasted, the character
+ * is invisible, and everything else matches the browser's own clipboard.
  */
 export default function StripSoftHyphensOnCopy() {
   useLayoutEffect(() => {
@@ -249,10 +248,62 @@ export default function StripSoftHyphensOnCopy() {
       return lines.join("\n");
     }
 
+    function isBlockLevel(element: Element): boolean {
+      const display = getComputedStyle(element).display;
+      return (
+        display === "block" ||
+        display === "list-item" ||
+        display === "flex" ||
+        display === "grid" ||
+        display === "table-cell"
+      );
+    }
+
+    function nearestBlock(node: Node): Element | null {
+      let element: Element | null =
+        node.nodeType === Node.ELEMENT_NODE ? (node as Element) : node.parentElement;
+      while (element) {
+        if (isBlockLevel(element)) return element;
+        element = element.parentElement;
+      }
+      return null;
+    }
+
+    function crossesReplaced(range: Range): boolean {
+      const root = range.commonAncestorContainer;
+      const host = root.nodeType === Node.ELEMENT_NODE ? (root as Element) : root.parentElement;
+      if (!host) return false;
+      for (const element of host.querySelectorAll(
+        "img, video, audio, canvas, iframe, embed, object, svg, input, textarea, select",
+      )) {
+        if (overlaps(range, element)) return true;
+      }
+      return false;
+    }
+
+    function containsInnerBlock(range: Range, block: Element): boolean {
+      for (const element of block.querySelectorAll("*")) {
+        if (!isBlockLevel(element) || !overlaps(range, element)) continue;
+        return true;
+      }
+      return false;
+    }
+
+    /** One range, one block, and nothing replaced inside it. */
+    function isSingleBlock(selection: Selection): boolean {
+      if (selection.rangeCount !== 1) return false;
+      const range = selection.getRangeAt(0);
+      const start = nearestBlock(range.startContainer);
+      const end = nearestBlock(range.endContainer);
+      if (!start || start !== end) return false;
+      if (crossesReplaced(range)) return false;
+      return !containsInnerBlock(range, start);
+    }
+
     function handleCopy(event: ClipboardEvent) {
       const selection = document.getSelection();
       if (!selection || selection.rangeCount === 0 || !event.clipboardData) return;
-      if (!selectionHasSoftHyphen(selection)) return;
+      if (!selectionHasSoftHyphen(selection) || !isSingleBlock(selection)) return;
       event.preventDefault();
       event.clipboardData.setData("text/plain", plainFromSelection(selection, engine()));
       event.clipboardData.setData("text/html", htmlWithoutSoftHyphens(selection));

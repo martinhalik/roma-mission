@@ -1,6 +1,7 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 import { LOCALES } from "../lib/i18n/locales";
 import { ROUTE_KEYS, ROUTE_SLUGS, type RouteKey } from "../lib/i18n/routes";
+import nativeMultiblockCopy from "./fixtures/native-multiblock-copy.json";
 
 const PATHS: string[] = [];
 for (const locale of LOCALES) {
@@ -704,27 +705,6 @@ const COPY_BREAK_CASES = [
   { path: "/ru/uchastvovat", tag: "h1", needle: "Присоединяйтесь", plain: "Присоединяйтесь к делу\nЦеркви" },
 ] as const;
 
-/**
- * Main's native copy of /ru/konfidentsialnost. Chromium and WebKit share the
- * breaks; Firefox puts the blank line before the paragraph and indents the
- * nested list. WebKit's only accepted difference is letter case, and this
- * selection has no text-transform, so it matches exactly.
- */
-const COPY_BLOCK_PLAIN = {
-  chromium: {
-    h1p: "Политика конфиденциальности\nПоследнее обновление: январь 2026 г.\n\n",
-    list: "Политика конфиденциальности\nПоследнее обновление: январь 2026 г.\n\n1. Введение\nChristian Roma Mission (далее «мы», «нас» или «наш») обязуется защищать вашу конфиденциальность. Настоящая Политика конфиденциальности разъясняет, каким образом мы собираем, используем, раскрываем и защищаем ваши данные, когда вы посещаете наш веб-сайт или совершаете пожертвование.\n2. Какие данные мы собираем\nМы можем собирать следующие категории данных:\n·\nИдентификационные данные (имя, адрес электронной почты, почтовый адрес)\n·\nПлатёжные данные, безопасно обрабатываемые нашими поставщиками платёжных услуг\n·\nСведения, которые вы добровольно предоставляете через контактные формы или заявки на волонтёрство\n·\nТехнические данные, такие как IP-адрес, тип браузера и посещённые страницы",
-  },
-  firefox: {
-    h1p: "Политика конфиденциальности\n\nПоследнее обновление: январь 2026 г.",
-    list: "Политика конфиденциальности\n\nПоследнее обновление: январь 2026 г.\n1. Введение\nChristian Roma Mission (далее «мы», «нас» или «наш») обязуется защищать вашу конфиденциальность. Настоящая Политика конфиденциальности разъясняет, каким образом мы собираем, используем, раскрываем и защищаем ваши данные, когда вы посещаете наш веб-сайт или совершаете пожертвование.\n2. Какие данные мы собираем\nМы можем собирать следующие категории данных:\n\n    ·Идентификационные данные (имя, адрес электронной почты, почтовый адрес)\n    ·Платёжные данные, безопасно обрабатываемые нашими поставщиками платёжных услуг\n    ·Сведения, которые вы добровольно предоставляете через контактные формы или заявки на волонтёрство\n    ·Технические данные, такие как IP-адрес, тип браузера и посещённые страницы",
-  },
-  webkit: {
-    h1p: "Политика конфиденциальности\nПоследнее обновление: январь 2026 г.\n\n",
-    list: "Политика конфиденциальности\nПоследнее обновление: январь 2026 г.\n\n1. Введение\nChristian Roma Mission (далее «мы», «нас» или «наш») обязуется защищать вашу конфиденциальность. Настоящая Политика конфиденциальности разъясняет, каким образом мы собираем, используем, раскрываем и защищаем ваши данные, когда вы посещаете наш веб-сайт или совершаете пожертвование.\n2. Какие данные мы собираем\nМы можем собирать следующие категории данных:\n·\nИдентификационные данные (имя, адрес электронной почты, почтовый адрес)\n·\nПлатёжные данные, безопасно обрабатываемые нашими поставщиками платёжных услуг\n·\nСведения, которые вы добровольно предоставляете через контактные формы или заявки на волонтёрство\n·\nТехнические данные, такие как IP-адрес, тип браузера и посещённые страницы",
-  },
-} as const;
-
 interface CopiedSelection {
   missing?: boolean;
   plain: string;
@@ -899,56 +879,94 @@ test.describe("copy keeps the browser line break and drops only the soft hyphen"
     });
   }
 
-  test("a heading plus the paragraph under it, and a list", async ({ page }, testInfo) => {
-    const engine = testInfo.project.name as "chromium" | "firefox" | "webkit";
-    await page.setViewportSize({ width: 320, height: 800 });
-    await page.goto("/ru/konfidentsialnost", { waitUntil: "domcontentloaded" });
-    await waitForHydration(page);
+});
 
-    const copied = await page.evaluate(() => {
-      const shy = "\u00AD";
-      function read(mode: "h1p" | "list") {
-        const h1 = document.querySelector("main h1");
-        const paragraph = h1?.nextElementSibling;
-        const list = document.querySelector("main ul");
-        if (!h1 || !paragraph || !list) return null;
-        const range = document.createRange();
-        range.setStartBefore(h1);
-        range.setEndAfter(mode === "h1p" ? paragraph : list);
-        const selection = document.getSelection();
-        selection?.removeAllRanges();
-        selection?.addRange(range);
-        let plain = "";
-        let html = "";
-        let prevented = false;
-        const onCopy = (event: ClipboardEvent) => {
-          prevented = event.defaultPrevented;
-          plain = event.clipboardData?.getData("text/plain") ?? "";
-          html = event.clipboardData?.getData("text/html") ?? "";
-        };
-        window.addEventListener("copy", onCopy);
-        document.execCommand("copy");
-        window.removeEventListener("copy", onCopy);
-        return { plain, html, prevented, shy: (range.cloneContents().textContent || "").includes(shy) };
-      }
-      return { h1p: read("h1p"), list: read("list") };
-    });
+const MULTIBLOCK_CASES = [
+  { kind: "A", locale: "sk", path: "/sk", needle: "Transparentn" },
+  { kind: "A", locale: "ru", path: "/ru", needle: "Прозрачно" },
+  { kind: "A", locale: "el", path: "/el", needle: "Διαφαν" },
+  { kind: "B", locale: "sk", path: "/sk", needle: "" },
+  { kind: "B", locale: "ru", path: "/ru", needle: "" },
+  { kind: "B", locale: "el", path: "/el", needle: "" },
+  { kind: "C", locale: "sk", path: "/sk/ochrana-udajov", needle: "" },
+  { kind: "C", locale: "ru", path: "/ru/konfidentsialnost", needle: "" },
+  { kind: "C", locale: "el", path: "/el/aporrito", needle: "" },
+] as const;
 
-    expect(copied.h1p, "heading and paragraph").toBeTruthy();
-    expect(copied.list, "heading through list").toBeTruthy();
-    for (const item of [copied.h1p, copied.list]) {
-      expect(item?.shy).toBe(true);
-      expect(item?.prevented).toBe(true);
-      expect(item?.plain).not.toContain("\u00AD");
-      expect(item?.html).not.toContain("\u00AD");
-      expect(item?.html.toLowerCase()).not.toContain("&shy;");
+test.describe("multi-block copy stays on the browser clipboard", () => {
+  test.beforeEach(async ({ context, browserName }) => {
+    const origin = "http://127.0.0.1:3000";
+    if (browserName === "chromium") {
+      await context.grantPermissions(["clipboard-read", "clipboard-write"], { origin });
+    } else if (browserName === "webkit") {
+      await context.grantPermissions(["clipboard-read"], { origin });
     }
-    expect(copied.h1p?.plain).toBe(COPY_BLOCK_PLAIN[engine].h1p);
-    expect(copied.list?.plain).toBe(COPY_BLOCK_PLAIN[engine].list);
-    expect(copied.h1p?.plain).toContain("\n");
-    expect(copied.list?.plain).toMatch(/\n\s*·/);
-    expect(copied.list?.plain).not.toContain("данных:·");
   });
+
+  for (const width of [320, 1280] as const) {
+    for (const item of MULTIBLOCK_CASES) {
+      test(`${item.kind} ${item.path} at ${width}px`, async ({ page, browserName }) => {
+        await page.setViewportSize({ width, height: 900 });
+        await page.goto(item.path, { waitUntil: "domcontentloaded" });
+        await waitForHydration(page);
+        if (item.kind === "B") {
+          await page.waitForFunction(() =>
+            (document.body.textContent || "").includes("NEXT_PUBLIC_MAPBOX_TOKEN"),
+          );
+        }
+
+        const copied = await page.evaluate(
+          ({ kind, needle }) => {
+            const shy = "\u00AD";
+            const selection = document.getSelection();
+            selection?.removeAllRanges();
+            const range = document.createRange();
+            if (kind === "A") {
+              const host = [...document.querySelectorAll("h2")].find((el) =>
+                (el.textContent || "").replaceAll(shy, "").includes(needle),
+              );
+              const grid = host?.closest("section")?.querySelector(".grid");
+              if (!host || !grid) return { missing: true, prevented: false, fragmentShy: false };
+              host.scrollIntoView({ block: "center" });
+              range.setStartBefore(host);
+              range.setEndAfter(grid);
+            } else if (kind === "B") {
+              range.selectNodeContents(document.body);
+            } else {
+              const heading = document.querySelector("main h1");
+              const section = heading?.closest("section");
+              const list = section?.querySelector("ul");
+              if (!section || !list) return { missing: true, prevented: false, fragmentShy: false };
+              section.scrollIntoView({ block: "center" });
+              range.setStart(section, 0);
+              range.setEndAfter(list);
+            }
+            selection?.addRange(range);
+            const fragmentShy = (range.cloneContents().textContent || "").includes(shy);
+            let prevented = false;
+            const onCopy = (event: ClipboardEvent) => {
+              prevented = event.defaultPrevented;
+            };
+            window.addEventListener("copy", onCopy);
+            document.execCommand("copy");
+            window.removeEventListener("copy", onCopy);
+            return { missing: false, prevented, fragmentShy };
+          },
+          { kind: item.kind, needle: item.needle },
+        );
+
+        expect(copied.missing, item.path).toBe(false);
+        expect(copied.prevented, item.path).toBe(false);
+        const clip = await page.evaluate(() => navigator.clipboard.readText());
+        const expected =
+          nativeMultiblockCopy[browserName as "chromium" | "firefox" | "webkit"][
+            `${item.kind}|${item.locale}|${width}`
+          ];
+        expect(clip.replaceAll("\u00AD", ""), item.path).toBe(expected);
+        if (copied.fragmentShy) expect(clip, item.path).toContain("\u00AD");
+      });
+    }
+  }
 });
 
 const CARD_BADGE_WIDTHS = [320, 360, 390, 768, 1024, 1280] as const;
