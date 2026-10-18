@@ -40,6 +40,60 @@ html.light {
   --nav-bg: rgb(245 240 232 / 0.92); /* near-opaque — light mode needs legibility */
 }
 
+/*
+ * RU and DE page titles include single words wider than a phone column
+ * ("конфиденциальности", "Nutzungsbedingungen", "Самообеспечивающийся").
+ * The glyphs paint past the viewport. WebKit's Cyrillic fallback is the
+ * widest — that word's right edge is about 384px — so 375px still
+ * overflows there. From 390px up the same word fits, and this rule stays
+ * off so those widths do not reflow.
+ *
+ * Below 390px, headings and stat labels use `hyphens: manual`. A dictionary
+ * break (`auto`) can land mid-syllable or on a two-letter piece. Soft hyphens
+ * from `<Hyphenate>` are the break points: German compounds once, at the
+ * boundary, and the long phone words on a syllable of at least three letters.
+ * Those marks are not applied to every translated string. overflow-wrap is
+ * only the last resort, for a piece that still cannot break on a hyphen.
+ *
+ * From 390px up, headings and stat labels use `hyphens: none`, so a soft
+ * hyphen is not a break opportunity, and `overflow-wrap: normal`, so a word
+ * stays whole. The line breaks match the unhyphenated heading.
+ *
+ * Between 360px and 389px the page's 20px right padding is enough to hold
+ * every one of those words except that WebKit fallback. Headings marked
+ * `min-[360px]:max-[389px]:w-[calc(100%+20px)]` use the padding, so a word
+ * wraps only when it would leave the screen.
+ */
+@media (max-width: 389px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .hyphenate,
+  .hyphenate-shy {
+    -webkit-hyphens: manual;
+    hyphens: manual;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (min-width: 390px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .hyphenate,
+  .hyphenate-shy {
+    -webkit-hyphens: none;
+    hyphens: none;
+    overflow-wrap: normal;
+  }
+}
+
 @layer base {
   html,
   body {

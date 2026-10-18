@@ -1,5 +1,6 @@
 "use client";
 
+import { useLayoutEffect, useRef, useState, type RefObject } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
@@ -8,6 +9,7 @@ import SectionLabel from "@/components/SectionLabel";
 import ShareButton from "@/components/ShareButton";
 import { ROMA_COUNTRIES, isMissionCountry, type MissionCountry, type Presence, type TranslationStatus } from "@/lib/data/roma-countries";
 import { useTranslation } from "@/components/LanguageProvider";
+import Hyphenate from "@/components/Hyphenate";
 
 const SHARE_URL = "https://romamission.eu/mission";
 const SHARE_TITLE = "Roma Mission — Europe's Most Neglected People";
@@ -46,7 +48,15 @@ const presenceLabelKey: Record<Presence, string> = {
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
-function PresenceBadge({ presence, label }: { presence: Presence; label: string }) {
+function PresenceBadge({
+  presence,
+  label,
+  className = "",
+}: {
+  presence: Presence;
+  label: string;
+  className?: string;
+}) {
   const styles: Record<Presence, string> = {
     active:
       "bg-[#22c55e20] text-[#22c55e] border border-[#22c55e]/40",
@@ -59,7 +69,7 @@ function PresenceBadge({ presence, label }: { presence: Presence; label: string 
   };
   return (
     <span
-      className={`text-[9px] font-bold tracking-[1px] px-3 py-1.5 uppercase whitespace-nowrap ${styles[presence]}`}
+      className={`text-[9px] font-bold tracking-[1px] px-3 py-1.5 uppercase whitespace-nowrap ${styles[presence]} ${className}`}
     >
       {label}
     </span>
@@ -105,45 +115,99 @@ function TranslationBadge({
   );
 }
 
+function useBadgeWrap(headerRef: RefObject<HTMLDivElement | null>) {
+  const [state, setState] = useState({ wrap: false, settled: false });
+
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    let cancelled = false;
+
+    const measure = (settled: boolean) => {
+      if (cancelled || !header.isConnected) return;
+      const badge = [...header.children].find((el) => el.tagName === "SPAN");
+      if (!(badge instanceof HTMLElement)) return;
+      const previous = header.style.flexWrap;
+      header.style.flexWrap = "nowrap";
+      const headerBox = header.getBoundingClientRect();
+      const badgeBox = badge.getBoundingClientRect();
+      const overflows = badgeBox.right > headerBox.right + 1;
+      header.style.flexWrap = previous;
+      setState((current) => {
+        const nextSettled = current.settled || settled;
+        if (current.wrap === overflows && current.settled === nextSettled) return current;
+        return { wrap: overflows, settled: nextSettled };
+      });
+    };
+
+    measure(false);
+    const observer = new ResizeObserver(() => measure(true));
+    document.fonts?.ready.then(() => {
+      measure(true);
+      if (cancelled) return;
+      observer.observe(header);
+      const badge = [...header.children].find((el) => el.tagName === "SPAN");
+      if (badge) observer.observe(badge);
+    }).catch(() => undefined);
+    return () => {
+      cancelled = true;
+      observer.disconnect();
+    };
+  }, [headerRef]);
+
+  return state;
+}
+
 function CountryCard({ data }: { data: MissionCountry }) {
   const { t } = useTranslation();
+  const headerRef = useRef<HTMLDivElement>(null);
+  const badgeLayout = useBadgeWrap(headerRef);
   return (
     <div className="flex flex-col bg-[var(--bg-card)] border border-[var(--border-default)] overflow-hidden">
-      {/* Header */}
-      <div className="flex items-center justify-between gap-3 p-5 md:p-6 border-b border-[var(--border-default)]">
+      {/* Same row as main while the badge stays inside the header. A badge
+          that would leave the header wraps under the name, at the right edge. */}
+      <div
+        ref={headerRef}
+        data-badge-settled={badgeLayout.settled ? "true" : undefined}
+        className={`flex items-center justify-between gap-3 p-5 md:p-6 border-b border-[var(--border-default)] ${badgeLayout.wrap ? "flex-wrap" : ""}`}
+      >
         <div className="flex items-center gap-3">
           <span className="text-[22px] leading-none">{data.flag}</span>
           <h3 className="text-[16px] md:text-[18px] font-bold text-[var(--text-primary)]">
             {t(`countries.${data.iso}`)}
           </h3>
         </div>
-        <PresenceBadge presence={data.presence} label={t(presenceLabelKey[data.presence])} />
+        <PresenceBadge
+          presence={data.presence}
+          label={t(presenceLabelKey[data.presence])}
+          className={badgeLayout.wrap ? "ml-auto" : ""}
+        />
       </div>
 
       {/* Population stats */}
       <div className="grid grid-cols-3 divide-x divide-[var(--border-default)] border-b border-[var(--border-default)]">
-        <div className="flex flex-col gap-1 p-4 md:p-5">
+        <div className="flex flex-col gap-1 p-4 md:p-5 min-w-0">
           <span className="text-[13px] md:text-[15px] font-bold text-[var(--text-primary)]">
             {data.officialPop}
           </span>
-          <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-            {t("mission.countries.cardOfficial")}
+          <span className="hyphenate min-w-0 text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
+            <Hyphenate>{t("mission.countries.cardOfficial")}</Hyphenate>
           </span>
         </div>
-        <div className="flex flex-col gap-1 p-4 md:p-5">
+        <div className="flex flex-col gap-1 p-4 md:p-5 min-w-0">
           <span className="text-[13px] md:text-[15px] font-bold text-[var(--text-secondary)]">
             {data.unofficialPop}
           </span>
-          <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-            {t("mission.countries.cardEstimated")}
+          <span className="hyphenate min-w-0 text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
+            <Hyphenate>{t("mission.countries.cardEstimated")}</Hyphenate>
           </span>
         </div>
-        <div className="flex flex-col gap-1 p-4 md:p-5">
+        <div className="flex flex-col gap-1 p-4 md:p-5 min-w-0">
           <span className="text-[13px] md:text-[15px] font-bold text-[var(--gold)]">
             {data.sharePercent}
           </span>
-          <span className="text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
-            {t("mission.countries.cardOfPopulation")}
+          <span className="hyphenate min-w-0 text-[9px] tracking-[1px] text-[var(--text-muted)] uppercase">
+            <Hyphenate>{t("mission.countries.cardOfPopulation")}</Hyphenate>
           </span>
         </div>
       </div>
@@ -482,10 +546,10 @@ export default function MissionPage() {
       <section className="px-5 md:px-[120px] py-16 md:py-[100px] bg-[var(--bg-primary)]">
         <div className="flex flex-col gap-5 md:gap-6 max-w-[680px] mb-12 md:mb-16">
           <SectionLabel text={t("mission.vision.label")} />
-          <h2 className="text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
-            {t("mission.vision.titleLine1")}
+          <h2 className="min-[360px]:max-[389px]:w-[calc(100%+20px)] min-[360px]:max-[389px]:-mr-5 text-[28px] md:text-[42px] font-bold tracking-[-1px] text-[var(--text-primary)] leading-[1.0]">
+            <Hyphenate>{t("mission.vision.titleLine1")}</Hyphenate>
             <br />
-            {t("mission.vision.titleLine2")}
+            <Hyphenate>{t("mission.vision.titleLine2")}</Hyphenate>
           </h2>
           <p className="text-[15px] md:text-[18px] text-[var(--text-secondary)] leading-[1.7]">
             {t("mission.vision.body")}

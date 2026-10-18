@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/components/LanguageProvider";
+import Hyphenate from "@/components/Hyphenate";
 
 export default function PrivacyPolicyPage() {
   const { t } = useTranslation();
@@ -33,8 +34,8 @@ export default function PrivacyPolicyPage() {
             {t("privacyPolicy.eyebrow")}
           </span>
         </div>
-        <h1 className="text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] mb-4 leading-[1.05]">
-          {t("privacyPolicy.title")}
+        <h1 className="min-[360px]:max-[389px]:w-[calc(100%+20px)] min-[360px]:max-[389px]:-mr-5 text-[32px] md:text-[44px] font-bold tracking-[-1px] text-[var(--text-primary)] mb-4 leading-[1.05]">
+          <Hyphenate>{t("privacyPolicy.title")}</Hyphenate>
         </h1>
         <p className="text-[13px] text-[var(--text-muted)] mb-12">
           {t("privacyPolicy.lastUpdated")}

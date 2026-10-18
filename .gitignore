@@ -41,6 +41,11 @@ yarn-error.log*
 # Raw / unoptimized source images (keep locally, never commit)
 raw/
 
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+
 # Vercel
 .vercel
 
