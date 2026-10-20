@@ -6,10 +6,13 @@ import DonationModal from "../../components/DonationModal";
 import LanguageProvider from "../../components/LanguageProvider";
 import { DICTIONARIES } from "../../lib/i18n";
 import { LOCALES, type Locale } from "../../lib/i18n/locales";
-import { formatCurrency } from "../../lib/i18n/format";
+import { formatCurrency, formatCurrencyFromMinor, sentenceAfterAmount } from "../../lib/i18n/format";
+import { MAX_DONATION_MINOR } from "../../lib/donation-amount";
 import {
-  MONTHLY_PRESET_AMOUNTS,
-  ONETIME_PRESET_AMOUNTS,
+  CURRENCIES,
+  defaultCurrency,
+  monthlyPresets,
+  onetimePresets,
 } from "../../lib/donations";
 
 const stripeStub = vi.hoisted(() => {
@@ -57,6 +60,8 @@ describe("DonationModal", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.stubGlobal("fetch", vi.fn());
+    localStorage.clear();
+    document.cookie = "geo_country=; Max-Age=0";
   });
 
   it("renders nothing when closed", () => {
@@ -72,21 +77,21 @@ describe("DonationModal", () => {
   it("shows all preset amounts", async () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     // Monthly amounts shown by default
-    expect(screen.getByText("€10")).toBeInTheDocument();
-    expect(screen.getByText("€25")).toBeInTheDocument();
-    expect(screen.getByText("€50")).toBeInTheDocument();
-    expect(screen.getByText("€100")).toBeInTheDocument();
+    expect(screen.getByText("$10")).toBeInTheDocument();
+    expect(screen.getByText("$25")).toBeInTheDocument();
+    expect(screen.getByText("$50")).toBeInTheDocument();
+    expect(screen.getByText("$100")).toBeInTheDocument();
     // Switch to one-time to see those amounts
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
-    expect(screen.getByText("€30")).toBeInTheDocument();
-    expect(screen.getByText("€250")).toBeInTheDocument();
-    expect(screen.getByText("€500")).toBeInTheDocument();
+    expect(screen.getByText("$30")).toBeInTheDocument();
+    expect(screen.getByText("$250")).toBeInTheDocument();
+    expect(screen.getByText("$500")).toBeInTheDocument();
   });
 
-  it("defaults to monthly mode with €100 selected", () => {
+  it("defaults to monthly mode with $100 selected", () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     expect(
-      screen.getByRole("button", { name: "GIVE €100/MO" })
+      screen.getByRole("button", { name: "GIVE $100/MO" })
     ).toBeInTheDocument();
   });
 
@@ -94,15 +99,15 @@ describe("DonationModal", () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
     expect(
-      screen.getByRole("button", { name: "GIVE €100" })
+      screen.getByRole("button", { name: "GIVE $100" })
     ).toBeInTheDocument();
   });
 
   it("selects a different preset amount", async () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
-    await user.click(screen.getByRole("button", { name: "€50" }));
+    await user.click(screen.getByRole("button", { name: "$50" }));
     expect(
-      screen.getByRole("button", { name: "GIVE €50/MO" })
+      screen.getByRole("button", { name: "GIVE $50/MO" })
     ).toBeInTheDocument();
   });
 
@@ -111,7 +116,7 @@ describe("DonationModal", () => {
     const input = screen.getByPlaceholderText("Custom amount");
     await user.type(input, "75");
     expect(
-      screen.getByRole("button", { name: "GIVE €75/MO" })
+      screen.getByRole("button", { name: "GIVE $75/MO" })
     ).toBeInTheDocument();
   });
 
@@ -145,12 +150,12 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", mockFetch);
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
-    await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
+    await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     expect(mockFetch).toHaveBeenCalledWith("/api/stripe/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 100, isMonthly: true }),
+      body: JSON.stringify({ amount: 100, isMonthly: true, locale: "en", currency: "usd" }),
     });
 
     await waitFor(() => {
@@ -167,12 +172,17 @@ describe("DonationModal", () => {
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
-    await user.click(screen.getByRole("button", { name: "GIVE €100" }));
+    await user.click(screen.getByRole("button", { name: "GIVE $100" }));
 
     expect(mockFetch).toHaveBeenCalledWith(
       "/api/stripe/checkout",
       expect.objectContaining({
-        body: JSON.stringify({ amount: 100, isMonthly: false }),
+        body: JSON.stringify({
+          amount: 100,
+          isMonthly: false,
+          locale: "en",
+          currency: "usd",
+        }),
       })
     );
   });
@@ -181,7 +191,7 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValueOnce({ ok: false }));
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
-    await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
+    await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     await waitFor(() => {
       expect(
@@ -198,7 +208,7 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", vi.fn().mockReturnValueOnce(pending));
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
-    await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
+    await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     expect(screen.getByRole("button", { name: "PREPARING..." })).toBeDisabled();
 
@@ -233,18 +243,17 @@ describe("DonationModal", () => {
 
   it("derives the custom-amount symbol from the locale", () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
-    expect(screen.getByTestId("currency-affix")).toHaveTextContent("€");
-    expect(screen.queryByText("$")).not.toBeInTheDocument();
+    expect(screen.getByTestId("currency-affix")).toHaveTextContent("$");
   });
 
-  it("requests the wallet payment in EUR for Slovakia", async () => {
+  it("requests the wallet payment in USD for Slovakia", async () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
     await waitFor(() => {
       expect(stripeStub.paymentRequest).toHaveBeenCalledWith(
         expect.objectContaining({
           country: "SK",
-          currency: "eur",
+          currency: "usd",
           total: expect.objectContaining({ amount: 10000 }),
         })
       );
@@ -254,7 +263,7 @@ describe("DonationModal", () => {
   it("initializes the wallet with the selected amount and updates it on change", async () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
-    await user.click(screen.getByRole("button", { name: "€30" }));
+    await user.click(screen.getByRole("button", { name: "$30" }));
 
     await waitFor(() => {
       const created = stripeStub.paymentRequest.mock.results.at(-1)?.value as {
@@ -271,19 +280,22 @@ describe("DonationModal", () => {
   });
 
   it.each(LOCALES.map((locale) => locale.code))(
-    "renders EUR amounts in the %s modal",
+    "renders the %s currency in the modal",
     async (locale: Locale) => {
       const dict = DICTIONARIES[locale];
+      const currency = defaultCurrency(locale);
+      const monthly = monthlyPresets(currency);
+      const onetime = onetimePresets(currency);
       render(
         <LanguageProvider locale={locale}>
           <DonationModal isOpen={true} onClose={onClose} />
         </LanguageProvider>
       );
 
-      for (const amount of MONTHLY_PRESET_AMOUNTS) {
+      for (const amount of monthly) {
         expect(
           screen.getByRole("button", {
-            name: formatCurrency(amount, locale),
+            name: formatCurrency(amount, locale, currency),
           })
         ).toBeInTheDocument();
       }
@@ -292,18 +304,22 @@ describe("DonationModal", () => {
         screen.getByRole("button", {
           name: dict.donation.giveMonthly.replace(
             "{amount}",
-            formatCurrency(100, locale)
+            formatCurrency(monthly[3], locale, currency)
           ),
         })
       ).toBeInTheDocument();
-      expect(screen.getByTestId("currency-affix")).toHaveTextContent("€");
-      expect(screen.queryByText("$")).not.toBeInTheDocument();
+      expect(screen.getByTestId("currency-affix")).toHaveTextContent(
+        CURRENCIES[currency].symbol
+      );
+      if (locale !== "en") {
+        expect(screen.queryByRole("radio", { name: "EUR" })).not.toBeInTheDocument();
+      }
 
       await user.click(screen.getByRole("button", { name: dict.donation.oneTime }));
-      for (const amount of ONETIME_PRESET_AMOUNTS) {
+      for (const amount of onetime) {
         expect(
           screen.getByRole("button", {
-            name: formatCurrency(amount, locale),
+            name: formatCurrency(amount, locale, currency),
           })
         ).toBeInTheDocument();
       }
@@ -311,7 +327,7 @@ describe("DonationModal", () => {
         screen.getByRole("button", {
           name: dict.donation.giveOnce.replace(
             "{amount}",
-            formatCurrency(100, locale)
+            formatCurrency(onetime[1], locale, currency)
           ),
         })
       ).toBeInTheDocument();
@@ -321,5 +337,255 @@ describe("DonationModal", () => {
       await user.type(input, "5");
       expect(screen.getByText(dict.donation.impactBase)).toBeInTheDocument();
     }
+  );
+
+  it("shows a USD/EUR switcher for English outside the US and remembers EUR", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const euros = screen.getByRole("radio", { name: "EUR" });
+    expect(screen.getByRole("radio", { name: "USD" })).toHaveAttribute("aria-checked", "true");
+    await user.click(euros);
+    expect(screen.getByText("€25")).toBeInTheDocument();
+    expect(localStorage.getItem("donation-currency")).toBe("eur");
+
+    const input = screen.getByPlaceholderText("Custom amount");
+    await user.type(input, "5");
+    expect(screen.getByText("Every euro goes directly to the field.")).toBeInTheDocument();
+  });
+
+  it("restores a saved English euro choice after mount", async () => {
+    localStorage.setItem("donation-currency", "eur");
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: "GIVE €100/MO" })).toBeInTheDocument();
+    });
+  });
+
+  it("hides the switcher and forces USD for a US visitor", async () => {
+    document.cookie = "geo_country=US";
+    localStorage.setItem("donation-currency", "eur");
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: "GIVE $100/MO" })).toBeInTheDocument();
+    });
+    expect(screen.queryByRole("radio", { name: "EUR" })).not.toBeInTheDocument();
+  });
+
+  it("recreates the wallet request when the currency changes", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await user.click(screen.getByRole("radio", { name: "EUR" }));
+    await waitFor(() => {
+      expect(stripeStub.paymentRequest).toHaveBeenCalledWith(
+        expect.objectContaining({
+          country: "SK",
+          currency: "eur",
+          total: expect.objectContaining({ amount: 10000 }),
+        })
+      );
+    });
+  });
+
+  it("blocks a custom amount under the currency minimum", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const input = screen.getByPlaceholderText("Custom amount");
+    await user.type(input, "0.25");
+    expect(screen.getByRole("alert")).toHaveTextContent("Minimum amount is $0.50.");
+    expect(screen.getByRole("alert").textContent).not.toMatch(/\.\./);
+    expect(screen.getByRole("button", { name: "GIVE $0.25/MO" })).toBeDisabled();
+  });
+
+  it("uses a decimal text field with the currency minimum and no number spinner", () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const input = screen.getByPlaceholderText("Custom amount");
+    expect(input).toHaveAttribute("type", "text");
+    expect(input).toHaveAttribute("inputmode", "decimal");
+    expect(input).toHaveAttribute("min", "0.5");
+    expect(input).toHaveAttribute("step", "0.01");
+  });
+
+  it.each([
+    ["sr", "10", "Минимални износ је 50 дин."],
+    ["mk", "10", "Минималниот износ е 30 ден."],
+  ] as const)(
+    "minimum message in %s does not double the abbreviation period",
+    async (locale, typed, expected) => {
+      const dict = DICTIONARIES[locale];
+      render(
+        <LanguageProvider locale={locale}>
+          <DonationModal isOpen={true} onClose={onClose} />
+        </LanguageProvider>
+      );
+      await user.type(screen.getByPlaceholderText(dict.donation.customPlaceholder), typed);
+      expect(screen.getByRole("alert").textContent).toBe(expected);
+      expect(screen.getByRole("alert").textContent).not.toMatch(/\.\./);
+    },
+  );
+
+  it.each(LOCALES.map((locale) => locale.code))(
+    "shows a single-period minimum message in %s",
+    async (locale: Locale) => {
+      const dict = DICTIONARIES[locale];
+      const currency = defaultCurrency(locale);
+      const typed = currency === "czk" ? "10" : currency === "ron" ? "1" : currency === "rsd" || currency === "mkd" ? "10" : "0.25";
+      const expected = sentenceAfterAmount(
+        dict.donation.amountTooLow,
+        formatCurrency(CURRENCIES[currency].minimum, locale, currency),
+      );
+      render(
+        <LanguageProvider locale={locale}>
+          <DonationModal isOpen={true} onClose={onClose} />
+        </LanguageProvider>
+      );
+      const input = screen.getByPlaceholderText(dict.donation.customPlaceholder);
+      expect(input).toHaveAttribute("min", String(CURRENCIES[currency].minimum));
+      expect(input).toHaveAttribute("step", "0.01");
+      await user.type(input, typed);
+      expect(screen.getByRole("alert").textContent).toBe(expected);
+      expect(expected).not.toMatch(/\.\./);
+    },
+  );
+
+  it("accepts a comma or a dot as the decimal separator in Slovak", async () => {
+    const dict = DICTIONARIES.sk;
+    render(
+      <LanguageProvider locale="sk">
+        <DonationModal isOpen={true} onClose={onClose} />
+      </LanguageProvider>
+    );
+    const input = screen.getByPlaceholderText(dict.donation.customPlaceholder);
+    await user.type(input, "1,50");
+    expect(
+      screen.getByRole("button", {
+        name: dict.donation.giveMonthly.replace("{amount}", "1,50 €"),
+      })
+    ).toBeEnabled();
+
+    await user.clear(input);
+    await user.type(input, "1.50");
+    expect(
+      screen.getByRole("button", {
+        name: dict.donation.giveMonthly.replace("{amount}", "1,50 €"),
+      })
+    ).toBeEnabled();
+  });
+
+  it("uses a 16px field and a muted disabled control", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const input = screen.getByPlaceholderText("Custom amount");
+    expect(input.className).toContain("text-[16px]");
+    await user.type(input, "0.25");
+    const button = screen.getByRole("button", { name: "GIVE $0.25/MO" });
+    expect(button).toBeDisabled();
+    expect(button).toHaveAttribute("aria-disabled", "true");
+    expect(button.className).toContain("disabled:bg-[var(--bg-elevated)]");
+    expect(button.className).toContain("disabled:text-[var(--text-muted)]");
+    expect(button.className).toContain("disabled:cursor-not-allowed");
+    expect(input).toHaveAttribute("aria-describedby", "donation-amount-min");
+  });
+
+  it("charges the same minor units the English label shows for a comma decimal", async () => {
+    const mockFetch = vi.fn().mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ clientSecret: "cs_test" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await user.type(screen.getByPlaceholderText("Custom amount"), "25,5");
+
+    const button = screen.getByRole("button", { name: "GIVE $25.50" });
+    expect(button).toBeEnabled();
+    await user.click(button);
+    expect(mockFetch).toHaveBeenCalledWith(
+      "/api/stripe/checkout",
+      expect.objectContaining({
+        body: JSON.stringify({
+          amount: "25,5",
+          isMonthly: false,
+          locale: "en",
+          currency: "usd",
+        }),
+      }),
+    );
+  });
+
+  it.each([
+    ["de", "1.250", "1.250 €"],
+    ["cs", "1.250", "1 250 Kč"],
+    ["mk", "1.250", "1.250 ден."],
+    ["en", "1,250", "$1,250"],
+  ] as const)("reads %s %s as %s", async (locale, typed, formatted) => {
+    const dict = DICTIONARIES[locale];
+    render(
+      <LanguageProvider locale={locale}>
+        <DonationModal isOpen={true} onClose={onClose} />
+      </LanguageProvider>,
+    );
+    await user.click(screen.getByRole("button", { name: dict.donation.oneTime }));
+    await user.type(screen.getByPlaceholderText(dict.donation.customPlaceholder), typed);
+    expect(
+      screen.getByRole("button", {
+        name: dict.donation.giveOnce.replace("{amount}", formatted),
+      }),
+    ).toBeEnabled();
+  });
+
+  it("shows a message instead of rounding three decimal places", async () => {
+    const dict = DICTIONARIES.de;
+    render(
+      <LanguageProvider locale="de">
+        <DonationModal isOpen={true} onClose={onClose} />
+      </LanguageProvider>,
+    );
+    await user.type(screen.getByPlaceholderText(dict.donation.customPlaceholder), "25,555");
+    expect(screen.getByRole("alert")).toHaveTextContent(dict.donation.amountInvalid);
+    expect(screen.getByRole("button", { name: dict.donation.giveInvalid })).toBeDisabled();
+    expect(screen.getByPlaceholderText(dict.donation.customPlaceholder)).toHaveAttribute(
+      "aria-describedby",
+      "donation-amount-invalid",
+    );
+    expect(screen.queryByRole("button", { name: /25,56/ })).not.toBeInTheDocument();
+  });
+
+  it("explains an invalid paste and a too-large amount", async () => {
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const input = screen.getByPlaceholderText("Custom amount");
+    fireEvent.change(input, { target: { value: "1e3" } });
+    expect(screen.getByRole("alert")).toHaveTextContent("Enter an amount like 25 or 25.50.");
+    expect(screen.getByRole("button", { name: "GIVE —" })).toBeDisabled();
+
+    fireEvent.change(input, { target: { value: "99999999999" } });
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      `Maximum amount is ${formatCurrencyFromMinor(MAX_DONATION_MINOR, "en")}.`,
+    );
+    expect(screen.getByPlaceholderText("Custom amount")).toHaveAttribute(
+      "aria-describedby",
+      "donation-amount-max",
+    );
+  });
+
+  it.each(LOCALES.map((locale) => locale.code))(
+    "localizes the invalid and maximum messages in %s",
+    async (locale: Locale) => {
+      const dict = DICTIONARIES[locale];
+      const currency = defaultCurrency(locale);
+      render(
+        <LanguageProvider locale={locale}>
+          <DonationModal isOpen={true} onClose={onClose} />
+        </LanguageProvider>,
+      );
+      const input = screen.getByPlaceholderText(dict.donation.customPlaceholder);
+      fireEvent.change(input, { target: { value: "1e3" } });
+      expect(screen.getByRole("alert").textContent).toBe(dict.donation.amountInvalid);
+
+      fireEvent.change(input, { target: { value: "99999999999" } });
+      const expected = sentenceAfterAmount(
+        dict.donation.amountTooHigh,
+        formatCurrencyFromMinor(MAX_DONATION_MINOR, locale, currency),
+      );
+      expect(screen.getByRole("alert").textContent).toBe(expected);
+      expect(expected).not.toMatch(/\.\./);
+    },
   );
 });

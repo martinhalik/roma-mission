@@ -8,16 +8,18 @@ const CURRENCY_CODE = /\bUSD\b/;
 const DOLLAR_SIGN = /\$/;
 
 const IMPACT_BASE: Record<Locale, string> = {
-  en: "Every euro goes directly to the field.",
+  en: "Every dollar goes directly to the field.",
   sk: "Každé euro ide priamo do terénu.",
-  cs: "Každé euro jde přímo do terénu.",
-  ro: "Fiecare euro ajunge direct pe teren.",
+  cs: "Každá koruna jde přímo do terénu.",
+  ro: "Fiecare leu ajunge direct pe teren.",
   de: "Jeder Euro fließt direkt in die Arbeit vor Ort.",
-  sr: "Сваки евро иде директно на терен.",
-  ru: "Каждый евро идёт напрямую на служение.",
-  mk: "Секое евро оди директно на терен.",
+  sr: "Сваки динар иде директно на терен.",
+  ru: "Каждый доллар идёт напрямую на служение.",
+  mk: "Секој денар оди директно на терен.",
   el: "Κάθε ευρώ πηγαίνει απευθείας στο έργο της αποστολής.",
 };
+
+const DOLLAR_LOCALES = new Set<Locale>(["en", "ru"]);
 
 function collectStrings(value: unknown, path: string, hits: string[]) {
   if (typeof value === "string") {
@@ -34,17 +36,26 @@ function collectStrings(value: unknown, path: string, hits: string[]) {
 
 describe("donation copy", () => {
   it.each(LOCALES.map((locale) => locale.code))(
-    "impactBase in %s talks about euro",
+    "impactBase in %s names that locale's currency",
     (locale) => {
       expect(DICTIONARIES[locale].donation.impactBase).toBe(IMPACT_BASE[locale]);
     }
   );
 
-  it("has no dollar, USD, or $ left in any dictionary", () => {
+  it("keeps an English euro sentence for the switcher", () => {
+    expect(DICTIONARIES.en.donation.impactBaseEur).toBe(
+      "Every euro goes directly to the field.",
+    );
+  });
+
+  it("mentions dollars only in the English and Russian dictionaries", () => {
     const hits: string[] = [];
     for (const locale of LOCALES.map((entry) => entry.code)) {
+      if (DOLLAR_LOCALES.has(locale)) continue;
       collectStrings(DICTIONARIES[locale], locale, hits);
     }
     expect(hits).toEqual([]);
+    expect(DICTIONARIES.en.donation.impactBase).toMatch(/dollar/i);
+    expect(DICTIONARIES.ru.donation.impactBase).toMatch(/доллар/);
   });
 });

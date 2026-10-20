@@ -1,4 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import {
+  countryOverrideAllowed,
+  GEO_COUNTRY_COOKIE,
+  normalizeCountry,
+} from "@/lib/geo";
 import { LOCALES, DEFAULT_LOCALE, type Locale } from "@/lib/i18n/locales";
 import {
   ROUTE_SLUGS,
@@ -39,6 +44,31 @@ const SLUG_TO_KEY: Record<string, RouteKey> = (() => {
   return map;
 })();
 
+/**
+ * Records the visitor country without changing HTML. The cached page stays
+ * geo-neutral; the donation modal reads this cookie after mount. The header
+ * wins over `?country=`. With neither, the cookie is cleared so local dev
+ * (no geo) stays non-US instead of replaying an old override.
+ */
+function applyGeoCookie(req: NextRequest, res: NextResponse): NextResponse {
+  const header = normalizeCountry(req.headers.get("x-vercel-ip-country"));
+  const query = countryOverrideAllowed()
+    ? normalizeCountry(req.nextUrl.searchParams.get("country"))
+    : null;
+  const country = header ?? query;
+  if (country) {
+    res.cookies.set(GEO_COUNTRY_COOKIE, country, {
+      path: "/",
+      sameSite: "lax",
+      httpOnly: false,
+      maxAge: 60 * 60 * 24,
+    });
+  } else {
+    res.cookies.set(GEO_COUNTRY_COOKIE, "", { path: "/", maxAge: 0 });
+  }
+  return res;
+}
+
 export function middleware(req: NextRequest) {
   const { pathname, search } = req.nextUrl;
 
@@ -47,7 +77,7 @@ export function middleware(req: NextRequest) {
     const locale = detectLocale(req);
     const url = req.nextUrl.clone();
     url.pathname = `/${locale}`;
-    return NextResponse.redirect(url, 302);
+    return applyGeoCookie(req, NextResponse.redirect(url, 302));
   }
 
   const segments = pathname.split("/").filter(Boolean);
@@ -62,7 +92,7 @@ export function middleware(req: NextRequest) {
       const res = NextResponse.next();
       res.headers.set("x-roma-locale", first);
       res.headers.set("x-roma-pathname", pathname);
-      return res;
+      return applyGeoCookie(req, res);
     }
 
     // The slug is canonical for the URL's locale → pass through.
@@ -71,7 +101,7 @@ export function middleware(req: NextRequest) {
       const res = NextResponse.next();
       res.headers.set("x-roma-locale", first);
       res.headers.set("x-roma-pathname", pathname);
-      return res;
+      return applyGeoCookie(req, res);
     }
 
     // Slug is the English alias of a route → 301 to the locale's canonical slug.
@@ -90,14 +120,14 @@ export function middleware(req: NextRequest) {
         ? `/${first}/${canonical}${restPath}`
         : `/${first}${restPath}`;
       url.search = search;
-      return NextResponse.redirect(url, 301);
+      return applyGeoCookie(req, NextResponse.redirect(url, 301));
     }
 
     // Unknown slug under a known locale → pass through; the catch-all 404s.
     const res = NextResponse.next();
     res.headers.set("x-roma-locale", first);
     res.headers.set("x-roma-pathname", pathname);
-    return res;
+    return applyGeoCookie(req, res);
   }
 
   // Non-locale top-level path. Try to resolve the first segment as a known
@@ -120,7 +150,7 @@ export function middleware(req: NextRequest) {
     url.pathname = `/${detected}${pathname}`;
   }
   url.search = search;
-  return NextResponse.redirect(url, 302);
+  return applyGeoCookie(req, NextResponse.redirect(url, 302));
 }
 
 export const config = {
