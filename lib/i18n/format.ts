@@ -47,11 +47,32 @@ export interface CurrencyAffix {
 }
 
 function formatDonationNumber(amount: number, locale: Locale): string {
-  const negative = amount < 0;
   const absolute = Math.abs(amount);
   const fixed = Number.isInteger(absolute)
     ? Math.trunc(absolute).toString()
     : absolute.toFixed(2);
+  return localiseDigits(amount < 0, fixed, locale);
+}
+
+/** File sizes and similar: always `fractionDigits` decimals, the locale's separators, no Intl. */
+export function formatDecimal(
+  value: number,
+  locale: Locale,
+  fractionDigits = 1
+): string {
+  return localiseDigits(
+    value < 0,
+    Math.abs(value).toFixed(fractionDigits),
+    locale
+  );
+}
+
+/** `fixed` is an unsigned "1234.5"-style string from toFixed / toString. */
+function localiseDigits(
+  negative: boolean,
+  fixed: string,
+  locale: Locale
+): string {
   const [whole, fraction] = fixed.split(".");
   const { group, decimal } = DIGIT_SEPARATORS[locale];
   const grouped = whole.replace(/\B(?=(\d{3})+(?!\d))/g, group);

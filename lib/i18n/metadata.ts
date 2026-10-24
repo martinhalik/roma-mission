@@ -15,6 +15,7 @@ const OG_IMAGE: Record<RouteKey, string> = {
   heritage: "/images/heritage/hero.webp",
   liturgy: "/images/markovce-with-our-bishop.jpg",
   liturgyText: "/images/markovce-with-our-bishop.jpg",
+  childrensBible: "/images/childrens-bible.jpg",
   activity: "/images/klenovec-chapel.jpeg",
   getInvolved: "/images/mission-about-us.jpg",
   thankYou: "/images/mission-about-us.jpg",
