@@ -15,6 +15,7 @@ type Page =
   | "stories"
   | "heritage"
   | "liturgy"
+  | "childrens-bible"
   | "activity"
   | "get-involved"
   | "our-story";
@@ -31,7 +32,8 @@ type MiddleKey =
   | "media"
   | "locations"
   | "heritage"
-  | "liturgy";
+  | "liturgy"
+  | "childrensBible";
 
 interface MiddleLink {
   key: MiddleKey;
@@ -51,10 +53,17 @@ const middleLinks: MiddleLink[] = [
   { key: "locations", routeKey: "locations", page: "locations" },
   { key: "heritage", routeKey: "heritage", page: "heritage" },
   { key: "liturgy", routeKey: "liturgy", page: "liturgy" },
+  { key: "childrensBible", routeKey: "childrensBible", page: "childrens-bible" },
 ];
 
 // Visible (left-to-right) order of collapsible items. The last item drops first.
-const COLLAPSE_ORDER: MiddleKey[] = ["media", "locations", "heritage", "liturgy"];
+const COLLAPSE_ORDER: MiddleKey[] = [
+  "media",
+  "locations",
+  "heritage",
+  "liturgy",
+  "childrensBible",
+];
 
 const GAP_PX = 16; // matches gap-4 on the link container
 const PINNED_KEYS: MiddleKey[] = middleLinks

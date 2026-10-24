@@ -7,6 +7,7 @@ export interface Dictionary {
     stories: string;
     heritage: string;
     liturgy: string;
+    childrensBible: string;
     activity: string;
     more: string;
     share: string;
@@ -1094,6 +1095,7 @@ export interface Dictionary {
     heritage: MetadataEntry;
     liturgy: MetadataEntry;
     liturgyText: MetadataEntry;
+    childrensBible: MetadataEntry;
     activity: MetadataEntry;
     getInvolved: MetadataEntry;
     thankYou: MetadataEntry;
@@ -1187,6 +1189,79 @@ export interface Dictionary {
       scripture: string;
       scriptureRef: string;
     };
+  };
+  childrensBible: ChildrensBibleCopy;
+}
+
+/** Copy for the Children's Bible page and its downloads list. */
+export interface ChildrensBibleCopy {
+  hero: {
+    title: string;
+    subtitle: string;
+    lead: string;
+    ctaPrint: string;
+    ctaLessons: string;
+  };
+  inside: {
+    label: string;
+    title: string;
+    storyTitle: string;
+    storyBody: string;
+    sheetTitle: string;
+    sheetBody: string;
+    printNote: string;
+    statStories: string;
+    statBiblePages: string;
+    statSheetPages: string;
+    statLanguages: string;
+  };
+  lessons: {
+    label: string;
+    title: string;
+    body: string;
+    slovakOnly: string;
+    imageAlt: string;
+    cta: string;
+  };
+  downloads: {
+    label: string;
+    title: string;
+    loading: string;
+    error: string;
+    /** Shown when the manifest has no edition in the page's language yet. */
+    preparing: string;
+    languageGroup: string;
+    editionGroup: string;
+    editions: { jezis: string; isus: string };
+    editionNotes: { jezis: string; isus: string };
+    bibleTitle: string;
+    bibleMeta: string;
+    worksheetsTitle: string;
+    worksheetsMeta: string;
+    /** `{count}` is the number of stories. */
+    storiesToggle: string;
+    story: string;
+    sheet: string;
+    bookletsTitle: string;
+    /** `{from}` and `{to}` are story numbers. */
+    bookletStories: string;
+    bookletCover: string;
+    bookletMeta: string;
+    coverMeta: string;
+    noBooklets: string;
+    /** `{size}` is the file size in megabytes, already formatted. */
+    size: string;
+  };
+  print: {
+    label: string;
+    title: string;
+    sheetsTitle: string;
+    sheetsBody: string;
+    bookletsTitle: string;
+    bookletsBody: string;
+    freeTitle: string;
+    /** `{email}` is replaced by the contact address as a link. */
+    freeBody: string;
   };
 }
 
