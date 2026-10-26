@@ -787,6 +787,15 @@ const ro: Dictionary = {
         source: "STVR · Český magazín, 2026",
         badgeLabel: "Subtitrări",
       },
+      "stvr-od-pramena": {
+        title: "Ceh, preot, misionar",
+        shortDesc:
+          "Emisiunea STVR Od prameňa (în cehă) despre părintele Martin Halík: de la design la Kiwi.com la parohia ortodoxă romă din Markovce.",
+        fullDesc:
+          "O emisiune oficială a Televiziunii și Radioului Slovac (STVR): Od prameňa, în limba cehă. Părintele Martin Halík este din Brno, dintr-o familie de preot, și a condus designul la Kiwi.com; își dorea misiunea, iar o tabără de vară l-a adus printre romii din districtul Rimavská Sobota. Hirotonit de arhiepiscopul Juraj, slujește astăzi parohia ortodoxă romă din Markovce: o școală duminicală, o sală de calculatoare, o sală de clasă în aer liber pentru 30–50 de copii și băieți care slujesc în altar, iar în paralel lucrează în continuare ca programator.",
+        source: "STVR · Od prameňa, 2026",
+        badgeLabel: "Subtitrări",
+      },
       "int-1": {
         title: "De ce romii? De ce acum?",
         shortDesc:

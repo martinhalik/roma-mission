@@ -786,6 +786,15 @@ const en: Dictionary = {
         source: "STVR · Český magazín, 2026",
         badgeLabel: "Subtitles",
       },
+      "stvr-od-pramena": {
+        title: "A Czech, a Priest, a Missionary",
+        shortDesc:
+          "STVR's Od prameňa (in Czech) follows Fr Martin Halík from design at Kiwi.com to the Orthodox Roma parish in Markovce.",
+        fullDesc:
+          "An official programme of Slovak Television and Radio (STVR), Od prameňa, in Czech. Fr Martin Halík comes from Brno, from a priest's family, and led design at Kiwi.com; he longed for mission, and a summer camp brought him to the Roma of the Rimavská Sobota district. Ordained by Archbishop Juraj, he now serves the Orthodox Roma parish in Markovce: a Sunday school, a computer room, an outdoor classroom for 30 to 50 children and altar boys at the services, while he still works as a programmer.",
+        source: "STVR · Od prameňa, 2026",
+        badgeLabel: "Subtitles",
+      },
       "int-1": {
         title: "Why the Roma? Why Now?",
         shortDesc:
