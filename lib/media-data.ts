@@ -24,6 +24,7 @@ export const DOCUMENTARY_VIDEO_ID = "K-IDNefOa98";
 /** Slovak Television and Radio (STVR) reports, on Fr Martin's channel with STVR's permission. */
 export const STVR_ORIENTACIE_ID = "gXrNKWKqp8Q";
 export const STVR_CESKY_MAGAZIN_ID = "2wO_tW5yA64";
+export const STVR_OD_PRAMENA_ID = "-i7S1b5YvRo";
 export const INTERVIEW_1_ID = "A3-IfJL_vt4";
 export const INTERVIEW_2_ID = "7tdFd08wUis";
 export const TESTIMONY_LACO_ID = "PNhKEQtCrVo";
@@ -62,6 +63,16 @@ export const MEDIA_ITEMS: MediaItem[] = [
     badgeVariant: "sub",
     hasGuest: false,
     languages: ["cs", "sk", "en", "ro", "de", "sr", "ru", "mk", "el"],
+    audioLanguage: "cs",
+  },
+  {
+    id: "stvr-od-pramena",
+    tag: "REPORT",
+    videoId: STVR_OD_PRAMENA_ID,
+    duration: "25 min",
+    badgeVariant: "sub",
+    hasGuest: false,
+    languages: ["cs", "sk", "en"],
     audioLanguage: "cs",
   },
   {

@@ -787,6 +787,15 @@ const de: Dictionary = {
         source: "STVR · Český magazín, 2026",
         badgeLabel: "Untertitel",
       },
+      "stvr-od-pramena": {
+        title: "Tscheche, Priester, Missionar",
+        shortDesc:
+          "Die STVR-Sendung Od prameňa (auf Tschechisch) über Pater Martin Halík: vom Design bei Kiwi.com zur orthodoxen Roma-Gemeinde in Markovce.",
+        fullDesc:
+          "Eine offizielle Sendung des Slowakischen Fernsehens und Rundfunks (STVR): Od prameňa, auf Tschechisch. Pater Martin Halík stammt aus Brünn, aus einer Priesterfamilie, und leitete das Design bei Kiwi.com; er sehnte sich nach Mission, und ein Sommerlager führte ihn zu den Roma im Bezirk Rimavská Sobota. Von Erzbischof Juraj geweiht, dient er heute der orthodoxen Roma-Gemeinde in Markovce: eine Sonntagsschule, ein Computerraum, ein Klassenzimmer im Freien für 30 bis 50 Kinder und Ministranten bei den Gottesdiensten, und daneben arbeitet er weiter als Programmierer.",
+        source: "STVR · Od prameňa, 2026",
+        badgeLabel: "Untertitel",
+      },
       "int-1": {
         title: "Warum die Roma? Warum jetzt?",
         shortDesc:

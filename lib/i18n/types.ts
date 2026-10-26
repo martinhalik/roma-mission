@@ -613,6 +613,13 @@ export interface Dictionary {
         source: string;
         badgeLabel: string;
       };
+      "stvr-od-pramena": {
+        title: string;
+        shortDesc: string;
+        fullDesc: string;
+        source: string;
+        badgeLabel: string;
+      };
       "int-1": {
         title: string;
         shortDesc: string;

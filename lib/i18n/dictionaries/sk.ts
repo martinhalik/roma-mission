@@ -782,6 +782,15 @@ const sk: Dictionary = {
         source: "STVR · Český magazín, 2026",
         badgeLabel: "Titulky",
       },
+      "stvr-od-pramena": {
+        title: "Čech, kňaz, misionár",
+        shortDesc:
+          "Relácia STVR Od prameňa (po česky) o otcovi Martinovi Halíkovi: od dizajnu v Kiwi.com k pravoslávnej rómskej farnosti v Markovciach.",
+        fullDesc:
+          "Oficiálna relácia Slovenskej televízie a rozhlasu (STVR) Od prameňa, po česky. Otec Martin Halík pochádza z Brna, z kňazskej rodiny, a viedol dizajn v Kiwi.com; túžil po misii a letný tábor ho priviedol medzi Rómov v okrese Rimavská Sobota. Vysvätil ho arcibiskup Juraj a dnes slúži v pravoslávnej rómskej farnosti v Markovciach: nedeľná škola, počítačová učebňa, vonkajšia učebňa pre 30 až 50 detí a miništranti pri bohoslužbách, popri tom stále pracuje ako programátor.",
+        source: "STVR · Od prameňa, 2026",
+        badgeLabel: "Titulky",
+      },
       "int-1": {
         title: "Prečo Rómovia? Prečo teraz?",
         shortDesc:
