@@ -213,7 +213,13 @@ describe("DonationModal", () => {
     expect(email).toHaveAttribute("type", "email");
     expect(email).toHaveAttribute("autocomplete", "email");
     expect(email).toHaveAttribute("inputmode", "email");
+    expect(email.className).toContain("focus-visible:outline-solid");
+    expect(email.className).toContain("focus-visible:outline-2");
+    expect(email.className).toContain("focus-visible:outline-offset-2");
     expect(email.className).toContain("focus-visible:outline-[var(--gold)]");
+    expect(screen.getByText("Email for receipt (required)").className).toContain(
+      "text-[var(--text-secondary)]",
+    );
 
     await user.click(give);
     const emptyAlert = screen.getByRole("alert");

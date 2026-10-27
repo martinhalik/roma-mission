@@ -612,7 +612,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="donation-email"
-                className="text-[10px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase"
+                className="text-[10px] font-semibold tracking-[1px] text-[var(--text-secondary)] uppercase"
               >
                 {t("donation.emailLabel")}
               </label>
@@ -632,10 +632,10 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                   setEmail(event.target.value);
                   if (emailError) setEmailError(null);
                 }}
-                className={`w-full bg-transparent border px-4 py-3 text-[13px] text-[var(--text-primary)] outline-none transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gold)] ${
+                className={`w-full bg-transparent border px-4 py-3 text-[13px] text-[var(--text-primary)] outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gold)] ${
                   emailError
                     ? "border-[var(--error)]"
-                    : "border-[var(--border-default)] focus:border-[var(--gold)]"
+                    : "border-[var(--border-default)]"
                 }`}
               />
               {emailError && (
