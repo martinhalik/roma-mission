@@ -243,6 +243,65 @@ describe("DonationModal", () => {
     expect(mockFetch).not.toHaveBeenCalled();
   });
 
+  it("gives when Enter is pressed in the email field", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ clientSecret: "cs_test" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+
+    const email = screen.getByLabelText("Email for receipt (required)");
+    await user.type(email, "not-an-email");
+    await user.keyboard("{Enter}");
+    expect(screen.getByRole("alert")).toHaveTextContent("Enter a valid email address.");
+    expect(email).toHaveFocus();
+    expect(mockFetch).not.toHaveBeenCalled();
+
+    await user.clear(email);
+    await user.type(email, donorEmail);
+    await user.keyboard("{Enter}");
+    expect(mockFetch).toHaveBeenCalledWith(
+      "/api/stripe/checkout",
+      expect.objectContaining({
+        body: JSON.stringify({
+          amount: 100,
+          isMonthly: false,
+          locale: "en",
+          currency: "usd",
+          email: donorEmail,
+        }),
+      }),
+    );
+  });
+
+  it("gives when Enter is pressed in the custom amount field", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ clientSecret: "cs_test" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await fillReceiptEmail();
+    const amount = screen.getByPlaceholderText("Custom amount");
+    await user.type(amount, "40");
+    await user.keyboard("{Enter}");
+    expect(mockFetch).toHaveBeenCalledWith(
+      "/api/stripe/checkout",
+      expect.objectContaining({
+        body: JSON.stringify({
+          amount: "40",
+          isMonthly: false,
+          locale: "en",
+          currency: "usd",
+          email: donorEmail,
+        }),
+      }),
+    );
+  });
+
   it("sends the English euro choice together with the donor email", async () => {
     const mockFetch = vi.fn().mockResolvedValueOnce({
       ok: true,

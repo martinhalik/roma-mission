@@ -527,6 +527,15 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               ))}
             </div>
 
+            <form
+              className="flex flex-col gap-6"
+              noValidate
+              onSubmit={(event) => {
+                event.preventDefault();
+                if (!canCharge) return;
+                void fetchClientSecret();
+              }}
+            >
             {/* Custom amount */}
             <div
               className={`flex items-center border transition-colors ${
@@ -660,14 +669,14 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
             )}
 
             <button
-              type="button"
-              onClick={fetchClientSecret}
+              type="submit"
               disabled={!canCharge}
               aria-disabled={!canCharge}
               className="w-full py-4 border border-transparent bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 disabled:border-[var(--border-strong)] disabled:bg-[var(--bg-elevated)] disabled:text-[var(--text-muted)] disabled:opacity-100 disabled:cursor-not-allowed"
             >
               {loading ? t("donation.preparing") : giveLabel}
             </button>
+            </form>
 
             {/* Bank transfer */}
             <div>
