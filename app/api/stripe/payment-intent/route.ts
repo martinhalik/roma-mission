@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resolveCharge } from "@/lib/donations";
+import { normalizeDonorEmail, resolveCharge } from "@/lib/donations";
 import {
   countryOverrideAllowed,
   GEO_COUNTRY_COOKIE,
@@ -31,11 +31,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: resolved.error }, { status: resolved.status });
   }
 
+  const donorEmail = normalizeDonorEmail(body.email);
+  if (!donorEmail) {
+    return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+  }
+
   const paymentIntent = await stripe.paymentIntents.create({
     amount: resolved.minor,
     currency: resolved.currency,
     description: "One-Time Donation — Roma Mission",
     automatic_payment_methods: { enabled: true },
+    receipt_email: donorEmail,
   });
 
   return NextResponse.json({ clientSecret: paymentIntent.client_secret });

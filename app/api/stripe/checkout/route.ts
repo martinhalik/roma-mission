@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { resolveCharge, type DonationCurrency } from "@/lib/donations";
+import { normalizeDonorEmail, resolveCharge, type DonationCurrency } from "@/lib/donations";
+import { toStripeCheckoutLocale } from "@/lib/stripe-locale";
 import {
   countryOverrideAllowed,
   GEO_COUNTRY_COOKIE,
@@ -71,6 +72,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: resolved.error }, { status: resolved.status });
   }
 
+  const donorEmail = normalizeDonorEmail(body.email);
+  if (!donorEmail) {
+    return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+  }
+
   const baseUrl = process.env.NEXT_PUBLIC_URL ?? "http://localhost:3000";
   const unitAmount = resolved.minor;
   const lineItem = body.isMonthly
@@ -83,6 +89,8 @@ export async function POST(req: NextRequest) {
     mode: body.isMonthly ? "subscription" : "payment",
     line_items: [lineItem],
     return_url: `${baseUrl}${thankYou}`,
+    customer_email: donorEmail,
+    locale: toStripeCheckoutLocale(resolved.locale),
   });
 
   return NextResponse.json({ clientSecret: session.client_secret });

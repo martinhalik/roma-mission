@@ -16,6 +16,12 @@ html.dark {
   --cream: #F5F0E8;
   --warm-bg: #1A1714;
   --nav-bg: rgb(17 17 17 / 0.50);   /* semi-transparent — dark mode */
+  /*
+   * Error text and invalid borders. #F87171 is the red already used for
+   * donation errors. It is 6.16:1 on the dark card. The same red is 2.27:1
+   * on the light card, so light mode uses a darker red below.
+   */
+  --error: #F87171;
 }
 
 /* ─── Light mode — warm cream palette ─────────────────────────────────────── */
@@ -38,6 +44,8 @@ html.light {
   --cream: #5C4A35;
   --warm-bg: #EDE8DE;
   --nav-bg: rgb(245 240 232 / 0.92); /* near-opaque — light mode needs legibility */
+  /* 6.67:1 on the light card (#EDE8DE). */
+  --error: #9B1C1C;
 }
 
 @layer base {
@@ -286,6 +294,7 @@ html.light {
     --gold: #8a6d1f;
     --border-default: #cccccc;
     --border-strong: #999999;
+    --error: #9B1C1C;
   }
 
   .liturgy-noprint,

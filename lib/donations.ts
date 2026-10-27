@@ -192,3 +192,14 @@ export function resolveCharge(input: {
     minor: parsed.minor,
   };
 }
+
+const DONOR_EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/** Trimmed donor email, or null when the value cannot receive a receipt. */
+export function normalizeDonorEmail(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const email = value.trim();
+  if (email.length === 0 || email.length > 254) return null;
+  if (!DONOR_EMAIL_PATTERN.test(email)) return null;
+  return email;
+}

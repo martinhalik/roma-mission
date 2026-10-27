@@ -983,6 +983,8 @@ export interface Dictionary {
     monthly: string;
     oneTime: string;
     customPlaceholder: string;
+    emailLabel: string;
+    emailInvalid: string;
     impactHigh: string;
     impactMid: string;
     impactLow: string;

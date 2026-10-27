@@ -4,6 +4,7 @@ import { NextRequest } from "next/server";
 import { monthlyPresets } from "../../../lib/donations";
 import { buildPath } from "../../../lib/i18n/routes";
 import type { Locale } from "../../../lib/i18n/locales";
+import { toStripeCheckoutLocale } from "../../../lib/stripe-locale";
 
 const mockCreate = vi.hoisted(() => vi.fn());
 const mockPricesList = vi.hoisted(() => vi.fn());
@@ -33,10 +34,14 @@ function makeRequest(
   const headers: Record<string, string> = { "Content-Type": "application/json" };
   if (extra?.country) headers["x-vercel-ip-country"] = extra.country;
   if (extra?.cookie) headers.cookie = extra.cookie;
+  const payload =
+    body && typeof body === "object" && !Array.isArray(body)
+      ? { email: "donor@example.com", ...(body as Record<string, unknown>) }
+      : body;
   return new NextRequest(`http://localhost:3000/api/stripe/checkout${query}`, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body: JSON.stringify(payload),
   });
 }
 
@@ -70,6 +75,40 @@ describe("POST /api/stripe/checkout", () => {
   it("returns 400 when amount is negative", async () => {
     const res = await POST(makeRequest({ amount: -5, isMonthly: false }));
     expect(res.status).toBe(400);
+  });
+
+  it("returns 400 when a valid charge has no donor email", async () => {
+    const res = await POST(
+      makeRequest({ amount: 25, isMonthly: false, locale: "de", currency: "eur", email: undefined }),
+    );
+    expect(res.status).toBe(400);
+    expect(await res.json()).toEqual({ error: "Invalid email" });
+    expect(mockCreate).not.toHaveBeenCalled();
+  });
+
+  it("puts the trimmed email and Checkout locale on a euro charge", async () => {
+    mockCreate.mockResolvedValueOnce({ client_secret: "cs_test_email" });
+    const res = await POST(
+      makeRequest({
+        amount: 30,
+        isMonthly: false,
+        locale: "de",
+        currency: "eur",
+        email: "  Donor@Example.com ",
+      }),
+    );
+    expect(res.status).toBe(200);
+    expect(mockCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        customer_email: "Donor@Example.com",
+        locale: "de",
+        line_items: [
+          expect.objectContaining({
+            price_data: expect.objectContaining({ currency: "eur", unit_amount: 3000 }),
+          }),
+        ],
+      }),
+    );
   });
 
   it("creates a subscription session for a monthly donation", async () => {
@@ -270,6 +309,8 @@ describe("POST /api/stripe/checkout", () => {
           currency,
           unit_amount: onetime * 100,
         });
+        expect(args.customer_email).toBe("donor@example.com");
+        expect(args.locale).toBe(toStripeCheckoutLocale(locale));
         expect(args.line_items[0].price_data.recurring).toBeUndefined();
 
         await POST(makeRequest({ amount: monthly, isMonthly: true, locale, currency }));

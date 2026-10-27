@@ -19,6 +19,7 @@ import {
   defaultCurrency,
   equivalentPreset,
   monthlyPresets,
+  normalizeDonorEmail,
   onetimePresets,
   toMinorUnits,
   type DonationCurrency,
@@ -92,9 +93,10 @@ interface PaymentRequestButtonProps {
   minor: number;
   currency: DonationCurrency;
   locale: Locale;
+  email: string;
 }
 
-function PaymentRequestButton({ amount, minor, currency, locale }: PaymentRequestButtonProps) {
+function PaymentRequestButton({ amount, minor, currency, locale, email }: PaymentRequestButtonProps) {
   const { t } = useTranslation();
   const stripe = useStripe();
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
@@ -106,6 +108,8 @@ function PaymentRequestButton({ amount, minor, currency, locale }: PaymentReques
   currencyRef.current = currency;
   const localeRef = useRef(locale);
   localeRef.current = locale;
+  const emailRef = useRef(email);
+  emailRef.current = email;
   const requestRef = useRef<PaymentRequest | null>(null);
   const paymentLabel = t("donation.paymentLabel");
   const minimumMinor = toMinorUnits(CURRENCIES[currency].minimum, currency);
@@ -140,6 +144,12 @@ function PaymentRequestButton({ amount, minor, currency, locale }: PaymentReques
 
     pr.on("paymentmethod", async (ev) => {
       const thankYou = buildPath(localeRef.current, "thankYou");
+      const receiptEmail =
+        normalizeDonorEmail(emailRef.current) ?? normalizeDonorEmail(ev.payerEmail);
+      if (!receiptEmail) {
+        ev.complete("fail");
+        return;
+      }
       try {
         const res = await fetch("/api/stripe/payment-intent", {
           method: "POST",
@@ -148,8 +158,13 @@ function PaymentRequestButton({ amount, minor, currency, locale }: PaymentReques
             amount: amountRef.current,
             locale: localeRef.current,
             currency: currencyRef.current,
+            email: receiptEmail,
           }),
         });
+        if (!res.ok) {
+          ev.complete("fail");
+          return;
+        }
         const { clientSecret } = await res.json();
         const { error, paymentIntent } = await stripe.confirmCardPayment(
           clientSecret,
@@ -217,6 +232,9 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
   const [bankOpen, setBankOpen] = useState(false);
   const [bankTab, setBankTab] = useState<"us" | "intl">("us");
   const currencyRef = useRef(currency);
@@ -303,11 +321,18 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
     setStep("select");
     setClientSecret(null);
     setError(null);
+    setEmailError(null);
     setLoading(false);
     onClose();
   };
 
   const fetchClientSecret = useCallback(async () => {
+    const donorEmail = normalizeDonorEmail(email);
+    if (!donorEmail) {
+      setEmailError(t("donation.emailInvalid"));
+      emailInputRef.current?.focus();
+      return;
+    }
     const parsed = isCustom ? parseDonationAmount(customAmount, locale) : null;
     const minor = isCustom
       ? parsed && parsed.ok
@@ -318,6 +343,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
 
     setLoading(true);
     setError(null);
+    setEmailError(null);
     try {
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
@@ -327,6 +353,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
           isMonthly,
           locale,
           currency,
+          email: donorEmail,
         }),
       });
       if (!res.ok) throw new Error("Failed to initiate checkout");
@@ -338,7 +365,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
     } finally {
       setLoading(false);
     }
-  }, [customAmount, isCustom, selectedAmount, isMonthly, locale, currency, t]);
+  }, [customAmount, isCustom, selectedAmount, isMonthly, locale, currency, t, email]);
 
   if (!isOpen) return null;
 
@@ -500,6 +527,15 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               ))}
             </div>
 
+            <form
+              className="flex flex-col gap-6"
+              noValidate
+              onSubmit={(event) => {
+                event.preventDefault();
+                if (!canCharge) return;
+                void fetchClientSecret();
+              }}
+            >
             {/* Custom amount */}
             <div
               className={`flex items-center border transition-colors ${
@@ -582,6 +618,42 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               </p>
             )}
 
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="donation-email"
+                className="text-[10px] font-semibold tracking-[1px] text-[var(--text-secondary)] uppercase"
+              >
+                {t("donation.emailLabel")}
+              </label>
+              <input
+                ref={emailInputRef}
+                id="donation-email"
+                name="email"
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                required
+                aria-required="true"
+                aria-invalid={emailError ? true : undefined}
+                aria-describedby={emailError ? "donation-email-error" : undefined}
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                  if (emailError) setEmailError(null);
+                }}
+                className={`w-full bg-transparent border px-4 py-3 text-[13px] text-[var(--text-primary)] outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gold)] ${
+                  emailError
+                    ? "border-[var(--error)]"
+                    : "border-[var(--border-default)]"
+                }`}
+              />
+              {emailError && (
+                <p id="donation-email-error" role="alert" className="text-[12px] text-[var(--error)]">
+                  {emailError}
+                </p>
+              )}
+            </div>
+
             {error && (
               <p className="text-[12px] text-red-400">{error}</p>
             )}
@@ -592,18 +664,19 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
                 minor={finalMinor}
                 currency={currency}
                 locale={locale}
+                email={email}
               />
             )}
 
             <button
-              type="button"
-              onClick={fetchClientSecret}
+              type="submit"
               disabled={!canCharge}
               aria-disabled={!canCharge}
               className="w-full py-4 border border-transparent bg-[var(--gold)] text-[var(--on-accent)] text-[12px] font-bold tracking-[1px] hover:opacity-90 disabled:border-[var(--border-strong)] disabled:bg-[var(--bg-elevated)] disabled:text-[var(--text-muted)] disabled:opacity-100 disabled:cursor-not-allowed"
             >
               {loading ? t("donation.preparing") : giveLabel}
             </button>
+            </form>
 
             {/* Bank transfer */}
             <div>

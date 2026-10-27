@@ -56,6 +56,13 @@ vi.mock("@stripe/react-stripe-js", () => ({
 describe("DonationModal", () => {
   const onClose = vi.fn();
   const user = userEvent.setup();
+  const donorEmail = "donor@example.com";
+
+  async function fillReceiptEmail() {
+    const input = screen.getByLabelText("Email for receipt (required)");
+    await user.clear(input);
+    await user.type(input, donorEmail);
+  }
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -150,12 +157,19 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", mockFetch);
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await fillReceiptEmail();
     await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     expect(mockFetch).toHaveBeenCalledWith("/api/stripe/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 100, isMonthly: true, locale: "en", currency: "usd" }),
+      body: JSON.stringify({
+        amount: 100,
+        isMonthly: true,
+        locale: "en",
+        currency: "usd",
+        email: donorEmail,
+      }),
     });
 
     await waitFor(() => {
@@ -172,6 +186,7 @@ describe("DonationModal", () => {
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await fillReceiptEmail();
     await user.click(screen.getByRole("button", { name: "GIVE $100" }));
 
     expect(mockFetch).toHaveBeenCalledWith(
@@ -182,8 +197,132 @@ describe("DonationModal", () => {
           isMonthly: false,
           locale: "en",
           currency: "usd",
+          email: donorEmail,
         }),
       })
+    );
+  });
+
+  it("keeps the receipt error under the email field and focuses it", async () => {
+    const mockFetch = vi.fn();
+    vi.stubGlobal("fetch", mockFetch);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const email = screen.getByLabelText("Email for receipt (required)");
+    const give = screen.getByRole("button", { name: "GIVE $100/MO" });
+    expect(email).toBeRequired();
+    expect(email).toHaveAttribute("type", "email");
+    expect(email).toHaveAttribute("autocomplete", "email");
+    expect(email).toHaveAttribute("inputmode", "email");
+    expect(email.className).toContain("focus-visible:outline-solid");
+    expect(email.className).toContain("focus-visible:outline-2");
+    expect(email.className).toContain("focus-visible:outline-offset-2");
+    expect(email.className).toContain("focus-visible:outline-[var(--gold)]");
+    expect(screen.getByText("Email for receipt (required)").className).toContain(
+      "text-[var(--text-secondary)]",
+    );
+
+    await user.click(give);
+    const emptyAlert = screen.getByRole("alert");
+    expect(emptyAlert).toHaveTextContent("Enter a valid email address.");
+    expect(emptyAlert).toHaveAttribute("id", "donation-email-error");
+    expect(email).toHaveAttribute("aria-invalid", "true");
+    expect(email).toHaveAttribute("aria-describedby", "donation-email-error");
+    expect(email.compareDocumentPosition(emptyAlert) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(emptyAlert.compareDocumentPosition(give) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(email).toHaveFocus();
+    expect(email.className).toContain("border-[var(--error)]");
+    expect(emptyAlert.className).toContain("text-[var(--error)]");
+    expect(mockFetch).not.toHaveBeenCalled();
+
+    await user.type(email, "anna@");
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+    await user.click(give);
+    expect(screen.getByRole("alert")).toHaveTextContent("Enter a valid email address.");
+    expect(email).toHaveValue("anna@");
+    expect(email).toHaveFocus();
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  it("gives when Enter is pressed in the email field", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ clientSecret: "cs_test" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+
+    const email = screen.getByLabelText("Email for receipt (required)");
+    await user.type(email, "not-an-email");
+    await user.keyboard("{Enter}");
+    expect(screen.getByRole("alert")).toHaveTextContent("Enter a valid email address.");
+    expect(email).toHaveFocus();
+    expect(mockFetch).not.toHaveBeenCalled();
+
+    await user.clear(email);
+    await user.type(email, donorEmail);
+    await user.keyboard("{Enter}");
+    expect(mockFetch).toHaveBeenCalledWith(
+      "/api/stripe/checkout",
+      expect.objectContaining({
+        body: JSON.stringify({
+          amount: 100,
+          isMonthly: false,
+          locale: "en",
+          currency: "usd",
+          email: donorEmail,
+        }),
+      }),
+    );
+  });
+
+  it("gives when Enter is pressed in the custom amount field", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ clientSecret: "cs_test" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await fillReceiptEmail();
+    const amount = screen.getByPlaceholderText("Custom amount");
+    await user.type(amount, "40");
+    await user.keyboard("{Enter}");
+    expect(mockFetch).toHaveBeenCalledWith(
+      "/api/stripe/checkout",
+      expect.objectContaining({
+        body: JSON.stringify({
+          amount: "40",
+          isMonthly: false,
+          locale: "en",
+          currency: "usd",
+          email: donorEmail,
+        }),
+      }),
+    );
+  });
+
+  it("sends the English euro choice together with the donor email", async () => {
+    const mockFetch = vi.fn().mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ clientSecret: "cs_test" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("radio", { name: "EUR" }));
+    await fillReceiptEmail();
+    await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
+    expect(mockFetch).toHaveBeenCalledWith(
+      "/api/stripe/checkout",
+      expect.objectContaining({
+        body: JSON.stringify({
+          amount: 100,
+          isMonthly: true,
+          locale: "en",
+          currency: "eur",
+          email: donorEmail,
+        }),
+      }),
     );
   });
 
@@ -191,6 +330,7 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValueOnce({ ok: false }));
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await fillReceiptEmail();
     await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     await waitFor(() => {
@@ -208,6 +348,7 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", vi.fn().mockReturnValueOnce(pending));
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await fillReceiptEmail();
     await user.click(screen.getByRole("button", { name: "GIVE $100/MO" }));
 
     expect(screen.getByRole("button", { name: "PREPARING..." })).toBeDisabled();
@@ -311,6 +452,7 @@ describe("DonationModal", () => {
       expect(screen.getByTestId("currency-affix")).toHaveTextContent(
         CURRENCIES[currency].symbol
       );
+      expect(screen.getByLabelText(dict.donation.emailLabel)).toBeRequired();
       if (locale !== "en") {
         expect(screen.queryByRole("radio", { name: "EUR" })).not.toBeInTheDocument();
       }
@@ -493,6 +635,7 @@ describe("DonationModal", () => {
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
     await user.type(screen.getByPlaceholderText("Custom amount"), "25,5");
+    await fillReceiptEmail();
 
     const button = screen.getByRole("button", { name: "GIVE $25.50" });
     expect(button).toBeEnabled();
@@ -505,6 +648,7 @@ describe("DonationModal", () => {
           isMonthly: false,
           locale: "en",
           currency: "usd",
+          email: donorEmail,
         }),
       }),
     );

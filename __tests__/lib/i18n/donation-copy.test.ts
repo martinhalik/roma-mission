@@ -34,11 +34,30 @@ function collectStrings(value: unknown, path: string, hits: string[]) {
   }
 }
 
+const EMAIL_LABEL: Record<Locale, string> = {
+  en: "Email for receipt (required)",
+  sk: "E-mail na potvrdenie (povinné)",
+  cs: "E-mail pro potvrzení (povinné)",
+  ro: "E-mail pentru chitanță (obligatoriu)",
+  de: "E-Mail für die Quittung (Pflichtfeld)",
+  sr: "Е-пошта за потврду (обавезно)",
+  ru: "Эл. почта для квитанции (обязательно)",
+  mk: "Е-пошта за потврда (задолжително)",
+  el: "Email για την απόδειξη (υποχρεωτικό)",
+};
+
 describe("donation copy", () => {
   it.each(LOCALES.map((locale) => locale.code))(
     "impactBase in %s names that locale's currency",
     (locale) => {
       expect(DICTIONARIES[locale].donation.impactBase).toBe(IMPACT_BASE[locale]);
+    }
+  );
+
+  it.each(LOCALES.map((locale) => locale.code))(
+    "email label in %s says the field is required",
+    (locale) => {
+      expect(DICTIONARIES[locale].donation.emailLabel).toBe(EMAIL_LABEL[locale]);
     }
   );
 

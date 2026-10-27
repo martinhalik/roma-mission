@@ -22,10 +22,14 @@ function makeRequest(
 ): NextRequest {
   const headers: Record<string, string> = { "Content-Type": "application/json" };
   if (extra?.country) headers["x-vercel-ip-country"] = extra.country;
+  const payload =
+    body && typeof body === "object" && !Array.isArray(body)
+      ? { email: "donor@example.com", ...(body as Record<string, unknown>) }
+      : body;
   return new NextRequest("http://localhost:3000/api/stripe/payment-intent", {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body: JSON.stringify(payload),
   });
 }
 
@@ -53,6 +57,7 @@ describe("POST /api/stripe/payment-intent", () => {
       currency: "eur",
       description: "One-Time Donation — Roma Mission",
       automatic_payment_methods: { enabled: true },
+      receipt_email: "donor@example.com",
     });
   });
 
@@ -76,6 +81,7 @@ describe("POST /api/stripe/payment-intent", () => {
         currency,
         description: "One-Time Donation — Roma Mission",
         automatic_payment_methods: { enabled: true },
+        receipt_email: "donor@example.com",
       });
     }
   });
@@ -96,7 +102,9 @@ describe("POST /api/stripe/payment-intent", () => {
   it("parses the wallet amount with the same rules and rejects the maximum", async () => {
     const res = await POST(makeRequest({ amount: "25,5", locale: "en", currency: "usd" }));
     expect(res.status).toBe(200);
-    expect(mockCreate).toHaveBeenCalledWith(expect.objectContaining({ amount: 2550, currency: "usd" }));
+    expect(mockCreate).toHaveBeenCalledWith(
+      expect.objectContaining({ amount: 2550, currency: "usd", receipt_email: "donor@example.com" }),
+    );
 
     mockCreate.mockClear();
     const max = await POST(makeRequest({ amount: "99999999999", locale: "mk", currency: "mkd" }));

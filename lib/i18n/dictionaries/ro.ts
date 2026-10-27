@@ -1358,6 +1358,8 @@ const ro: Dictionary = {
     monthly: "LUNAR",
     oneTime: "O SINGURĂ DATĂ",
     customPlaceholder: "Sumă personalizată",
+    emailLabel: "E-mail pentru chitanță (obligatoriu)",
+    emailInvalid: "Introduceți o adresă de e-mail validă.",
     impactHigh: "Acoperă materialele și programele parohiale săptămânale.",
     impactMid: "Finanțează catehezele unui copil pentru un an întreg.",
     impactLow: "Asigură materiale didactice pentru o lună.",
