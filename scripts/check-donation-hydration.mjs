@@ -2,10 +2,16 @@ import { chromium } from "playwright-core";
 
 const base = process.env.BASE_URL ?? "http://127.0.0.1:3000";
 const pages = [
-  { locale: "mk", path: "/mk/vklucise", amount: "25 €" },
+  { locale: "en", path: "/en/get-involved", amount: "$25" },
+  { locale: "en-us", path: "/en/get-involved?country=US", amount: "$25" },
   { locale: "de", path: "/de/mitmachen", amount: "25 €" },
-  { locale: "en", path: "/en/get-involved", amount: "€25" },
   { locale: "sk", path: "/sk/zapojte-sa", amount: "25 €" },
+  { locale: "el", path: "/el/symmetechete", amount: "25 €" },
+  { locale: "cs", path: "/cs/zapojte-se", amount: "600 Kč" },
+  { locale: "ro", path: "/ro/implica-te", amount: "125 lei" },
+  { locale: "sr", path: "/sr/prikljuci-se", amount: "3.000 дин." },
+  { locale: "ru", path: "/ru/uchastvovat", amount: "25 $" },
+  { locale: "mk", path: "/mk/vklucise", amount: "1.500 ден." },
 ];
 
 const browser = await chromium.launch({

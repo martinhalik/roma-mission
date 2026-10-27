@@ -697,7 +697,7 @@ const ro: Dictionary = {
       paragraph1:
         "Martin și Misha s-au mutat la Klenovec definitiv. Nu ca vizitatori, nu ca lucrători ONG cu contract. Au cumpărat o casă, au crescut copii și au construit o parohie — pentru că comunitățile rome pe care le slujesc au fost dezamăgite de fiecare inițiativă care, în cele din urmă, și-a făcut bagajele și a plecat.",
       paragraph2:
-        "În 2025, donatorii au contribuit cu aproximativ 3.000 €. Costurile reale ale misiunii au fost de 16.900 €. Diferența este acoperită din venitul personal al lui Martin. Fiecare euro pe care îl dăruiți merge direct către susținerea a ceea ce tocmai ați citit.",
+        "În 2025, donatorii au contribuit cu aproximativ 3.000 €. Costurile reale ale misiunii au fost de 16.900 €. Diferența este acoperită din venitul personal al lui Martin. Fiecare leu pe care îl dăruiți merge direct către susținerea a ceea ce tocmai ați citit.",
       ctaSupport: "Susține această misiune",
       ctaLearn: "Vezi cum funcționează",
     },
@@ -1361,7 +1361,12 @@ const ro: Dictionary = {
     impactHigh: "Acoperă materialele și programele parohiale săptămânale.",
     impactMid: "Finanțează catehezele unui copil pentru un an întreg.",
     impactLow: "Asigură materiale didactice pentru o lună.",
-    impactBase: "Fiecare euro ajunge direct pe teren.",
+    impactBase: "Fiecare leu ajunge direct pe teren.",
+    impactBaseEur: "Fiecare leu ajunge direct pe teren.",
+    amountTooLow: "Suma minimă este {amount}.",
+    amountInvalid: "Introduceți o sumă precum 25 sau 25,50.",
+    amountTooHigh: "Suma maximă este {amount}.",
+    currencyLabel: "Monedă",
     error: "Ceva nu a funcționat. Vă rugăm încercați din nou.",
     preparing: "SE PREGĂTEȘTE...",
     giveMonthly: "DONEAZĂ {amount}/LUNĂ",

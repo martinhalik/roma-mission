@@ -695,7 +695,7 @@ const en: Dictionary = {
       paragraph1:
         "Martin and Misha moved to Klenovec permanently. Not as visitors, not as NGO workers on a contract. They bought a house, raised children, and built a parish — because the Roma communities they serve have been let down by every initiative that eventually packed up and left.",
       paragraph2:
-        "In 2025, donors contributed roughly €3,000. Actual mission costs were €16,900. The gap is covered from Martin's personal income. Every euro you give goes directly to sustaining what you've just read.",
+        "In 2025, donors contributed roughly €3,000. Actual mission costs were €16,900. The gap is covered from Martin's personal income. Every dollar you give goes directly to sustaining what you've just read.",
       ctaSupport: "Support This Mission",
       ctaLearn: "Learn How It Works",
     },
@@ -1360,7 +1360,12 @@ const en: Dictionary = {
     impactHigh: "Covers weekly parish materials and programs.",
     impactMid: "Funds one child's catechism for a full year.",
     impactLow: "Provides teaching materials for a month.",
-    impactBase: "Every euro goes directly to the field.",
+    impactBase: "Every dollar goes directly to the field.",
+    impactBaseEur: "Every euro goes directly to the field.",
+    amountTooLow: "Minimum amount is {amount}.",
+    amountInvalid: "Enter an amount like 25 or 25.50.",
+    amountTooHigh: "Maximum amount is {amount}.",
+    currencyLabel: "Currency",
     error: "Something went wrong. Please try again.",
     preparing: "PREPARING...",
     giveMonthly: "GIVE {amount}/MO",
