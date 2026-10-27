@@ -1353,6 +1353,8 @@ const sk: Dictionary = {
     monthly: "MESAČNE",
     oneTime: "JEDNORAZOVO",
     customPlaceholder: "Vlastná suma",
+    emailLabel: "E-mail na potvrdenie",
+    emailInvalid: "Zadajte platnú e-mailovú adresu.",
     impactHigh: "Pokrýva týždenné farské materiály a programy.",
     impactMid: "Financuje celý rok katechézy pre jedno dieťa.",
     impactLow: "Zabezpečí učebné materiály na mesiac.",

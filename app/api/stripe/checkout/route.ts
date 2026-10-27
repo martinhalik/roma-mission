@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { DONATION_CURRENCY } from "@/lib/donations";
+import { DONATION_CURRENCY, normalizeDonorEmail } from "@/lib/donations";
 import { createStripeClient } from "@/lib/stripe-server";
+import { toStripeCheckoutLocale } from "@/lib/stripe-locale";
 
 const stripe = createStripeClient();
 
@@ -45,10 +46,15 @@ function buildOneTimeLineItem(unitAmount: number): LineItem {
 }
 
 export async function POST(req: NextRequest) {
-  const { amount, isMonthly } = await req.json();
+  const { amount, isMonthly, email, locale } = await req.json();
 
   if (!amount || amount < 1) {
     return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
+  }
+
+  const donorEmail = normalizeDonorEmail(email);
+  if (!donorEmail) {
+    return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_URL ?? "http://localhost:3000";
@@ -63,6 +69,8 @@ export async function POST(req: NextRequest) {
     mode: isMonthly ? "subscription" : "payment",
     line_items: [lineItem],
     return_url: `${baseUrl}/thank-you`,
+    customer_email: donorEmail,
+    locale: toStripeCheckoutLocale(locale),
   });
 
   return NextResponse.json({ clientSecret: session.client_secret });

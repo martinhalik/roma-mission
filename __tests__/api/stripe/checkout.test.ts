@@ -24,10 +24,14 @@ vi.mock("stripe", () => ({
 const { POST } = await import("../../../app/api/stripe/checkout/route");
 
 function makeRequest(body: unknown): NextRequest {
+  const payload =
+    body && typeof body === "object" && !Array.isArray(body)
+      ? { email: "donor@example.com", locale: "en", ...(body as Record<string, unknown>) }
+      : body;
   return new NextRequest("http://localhost:3000/api/stripe/checkout", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+    body: JSON.stringify(payload),
   });
 }
 
@@ -62,6 +66,72 @@ describe("POST /api/stripe/checkout", () => {
     const res = await POST(makeRequest({ amount: -5, isMonthly: false }));
     expect(res.status).toBe(400);
   });
+
+  it("returns 400 when the donor email is missing", async () => {
+    const res = await POST(makeRequest({ amount: 25, isMonthly: false, email: undefined }));
+    expect(res.status).toBe(400);
+    const data = await res.json();
+    expect(data.error).toBe("Invalid email");
+    expect(mockCreate).not.toHaveBeenCalled();
+  });
+
+  it("returns 400 when the donor email is not an address", async () => {
+    const res = await POST(makeRequest({ amount: 25, isMonthly: false, email: "not-an-email" }));
+    expect(res.status).toBe(400);
+    expect(mockCreate).not.toHaveBeenCalled();
+  });
+
+  it("sets customer_email and the Checkout locale from the donor", async () => {
+    mockCreate.mockResolvedValueOnce({ client_secret: "cs_test_email" });
+
+    const res = await POST(
+      makeRequest({
+        amount: 25,
+        isMonthly: false,
+        email: "  Donor@Example.com ",
+        locale: "de",
+      })
+    );
+
+    expect(res.status).toBe(200);
+    expect(mockCreate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        customer_email: "Donor@Example.com",
+        locale: "de",
+        mode: "payment",
+        ui_mode: "embedded",
+      })
+    );
+  });
+
+  it.each([
+    ["en", "en"],
+    ["sk", "sk"],
+    ["cs", "cs"],
+    ["ro", "ro"],
+    ["de", "de"],
+    ["ru", "ru"],
+    ["el", "el"],
+    ["sr", "auto"],
+    ["mk", "auto"],
+  ] as const)(
+    "passes site locale %s to Checkout as %s",
+    async (siteLocale, checkoutLocale) => {
+      mockCreate.mockResolvedValueOnce({ client_secret: "cs_test_locale" });
+
+      await POST(
+        makeRequest({ amount: 10, isMonthly: true, locale: siteLocale })
+      );
+
+      expect(mockCreate).toHaveBeenCalledWith(
+        expect.objectContaining({
+          customer_email: "donor@example.com",
+          locale: checkoutLocale,
+          mode: "subscription",
+        })
+      );
+    }
+  );
 
   it("creates a subscription session for a monthly donation", async () => {
     mockCreate.mockResolvedValueOnce({ client_secret: "cs_test_monthly" });

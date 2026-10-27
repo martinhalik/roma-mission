@@ -1358,6 +1358,8 @@ const de: Dictionary = {
     monthly: "MONATLICH",
     oneTime: "EINMALIG",
     customPlaceholder: "Eigener Betrag",
+    emailLabel: "E-Mail für die Quittung",
+    emailInvalid: "Geben Sie eine gültige E-Mail-Adresse ein.",
     impactHigh: "Deckt wöchentliche Pfarrmaterialien und Programme.",
     impactMid: "Finanziert die Katechese eines Kindes für ein ganzes Jahr.",
     impactLow: "Stellt Unterrichtsmaterial für einen Monat bereit.",

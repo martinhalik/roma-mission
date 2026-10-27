@@ -1357,6 +1357,8 @@ const en: Dictionary = {
     monthly: "MONTHLY",
     oneTime: "ONE-TIME",
     customPlaceholder: "Custom amount",
+    emailLabel: "Email for receipt",
+    emailInvalid: "Enter a valid email address.",
     impactHigh: "Covers weekly parish materials and programs.",
     impactMid: "Funds one child's catechism for a full year.",
     impactLow: "Provides teaching materials for a month.",

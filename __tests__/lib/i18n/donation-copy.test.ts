@@ -32,11 +32,43 @@ function collectStrings(value: unknown, path: string, hits: string[]) {
   }
 }
 
+const EMAIL_LABEL: Record<Locale, string> = {
+  en: "Email for receipt",
+  sk: "E-mail na potvrdenie",
+  cs: "E-mail pro potvrzení",
+  ro: "E-mail pentru chitanță",
+  de: "E-Mail für die Quittung",
+  sr: "Е-пошта за потврду",
+  ru: "Эл. почта для квитанции",
+  mk: "Е-пошта за потврда",
+  el: "Email για την απόδειξη",
+};
+
+const EMAIL_INVALID: Record<Locale, string> = {
+  en: "Enter a valid email address.",
+  sk: "Zadajte platnú e-mailovú adresu.",
+  cs: "Zadejte platnou e-mailovou adresu.",
+  ro: "Introduceți o adresă de e-mail validă.",
+  de: "Geben Sie eine gültige E-Mail-Adresse ein.",
+  sr: "Унесите исправну адресу е-поште.",
+  ru: "Введите действительный адрес эл. почты.",
+  mk: "Внесете валидна адреса за е-пошта.",
+  el: "Εισαγάγετε μια έγκυρη διεύθυνση email.",
+};
+
 describe("donation copy", () => {
   it.each(LOCALES.map((locale) => locale.code))(
     "impactBase in %s talks about euro",
     (locale) => {
       expect(DICTIONARIES[locale].donation.impactBase).toBe(IMPACT_BASE[locale]);
+    }
+  );
+
+  it.each(LOCALES.map((locale) => locale.code))(
+    "email field copy in %s is localized",
+    (locale) => {
+      expect(DICTIONARIES[locale].donation.emailLabel).toBe(EMAIL_LABEL[locale]);
+      expect(DICTIONARIES[locale].donation.emailInvalid).toBe(EMAIL_INVALID[locale]);
     }
   );
 

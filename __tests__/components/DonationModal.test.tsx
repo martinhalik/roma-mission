@@ -13,10 +13,17 @@ import {
 } from "../../lib/donations";
 
 const stripeStub = vi.hoisted(() => {
+  const handlers: Record<string, (event: {
+    paymentMethod: { id: string };
+    payerEmail?: string;
+    complete: (status: "success" | "fail") => void;
+  }) => Promise<void> | void> = {};
   const paymentRequest = vi.fn(
     (options: { total: { label: string; amount: number } }) => ({
       canMakePayment: () => Promise.resolve(null),
-      on: vi.fn(),
+      on: vi.fn((event: string, handler: (typeof handlers)[string]) => {
+        handlers[event] = handler;
+      }),
       update: vi.fn((next: { total: { label: string; amount: number } }) => {
         options.total = next.total;
       }),
@@ -25,6 +32,7 @@ const stripeStub = vi.hoisted(() => {
   );
   return {
     paymentRequest,
+    handlers,
     stripe: {
       paymentRequest,
       confirmCardPayment: vi.fn(),
@@ -53,11 +61,19 @@ vi.mock("@stripe/react-stripe-js", () => ({
 describe("DonationModal", () => {
   const onClose = vi.fn();
   const user = userEvent.setup();
+  const donorEmail = "donor@example.com";
 
   beforeEach(() => {
     vi.clearAllMocks();
     vi.stubGlobal("fetch", vi.fn());
+    delete stripeStub.handlers.paymentmethod;
   });
+
+  async function fillReceiptEmail(email = donorEmail) {
+    const input = screen.getByLabelText("Email for receipt");
+    await user.clear(input);
+    await user.type(input, email);
+  }
 
   it("renders nothing when closed", () => {
     renderWithI18n(<DonationModal isOpen={false} onClose={onClose} />);
@@ -145,12 +161,18 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", mockFetch);
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await fillReceiptEmail();
     await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
 
     expect(mockFetch).toHaveBeenCalledWith("/api/stripe/checkout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 100, isMonthly: true }),
+      body: JSON.stringify({
+        amount: 100,
+        isMonthly: true,
+        email: donorEmail,
+        locale: "en",
+      }),
     });
 
     await waitFor(() => {
@@ -167,20 +189,77 @@ describe("DonationModal", () => {
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
     await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await fillReceiptEmail();
     await user.click(screen.getByRole("button", { name: "GIVE €100" }));
 
     expect(mockFetch).toHaveBeenCalledWith(
       "/api/stripe/checkout",
       expect.objectContaining({
-        body: JSON.stringify({ amount: 100, isMonthly: false }),
+        body: JSON.stringify({
+          amount: 100,
+          isMonthly: false,
+          email: donorEmail,
+          locale: "en",
+        }),
       })
     );
+  });
+
+  it("requires an email before creating a Checkout Session", async () => {
+    const mockFetch = vi.fn();
+    vi.stubGlobal("fetch", mockFetch);
+
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    const email = screen.getByLabelText("Email for receipt");
+    expect(email).toBeRequired();
+    expect(email).toHaveAttribute("type", "email");
+    expect(email).toHaveAttribute("autocomplete", "email");
+
+    await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
+
+    expect(mockFetch).not.toHaveBeenCalled();
+    expect(screen.getByRole("alert")).toHaveTextContent(
+      "Enter a valid email address."
+    );
+    expect(email).toHaveAttribute("aria-invalid", "true");
+    expect(email).toHaveFocus();
+  });
+
+  it("sends the German locale with the donor email", async () => {
+    const mockFetch = vi.fn().mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ clientSecret: "cs_test" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+
+    render(
+      <LanguageProvider locale="de">
+        <DonationModal isOpen={true} onClose={onClose} />
+      </LanguageProvider>
+    );
+    await user.type(
+      screen.getByLabelText("E-Mail für die Quittung"),
+      donorEmail
+    );
+    await user.click(screen.getByRole("button", { name: "SPENDEN 100 €/MO" }));
+
+    expect(mockFetch).toHaveBeenCalledWith("/api/stripe/checkout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        amount: 100,
+        isMonthly: true,
+        email: donorEmail,
+        locale: "de",
+      }),
+    });
   });
 
   it("shows error message when API call fails", async () => {
     vi.stubGlobal("fetch", vi.fn().mockResolvedValueOnce({ ok: false }));
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await fillReceiptEmail();
     await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
 
     await waitFor(() => {
@@ -198,6 +277,7 @@ describe("DonationModal", () => {
     vi.stubGlobal("fetch", vi.fn().mockReturnValueOnce(pending));
 
     renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await fillReceiptEmail();
     await user.click(screen.getByRole("button", { name: "GIVE €100/MO" }));
 
     expect(screen.getByRole("button", { name: "PREPARING..." })).toBeDisabled();
@@ -270,6 +350,66 @@ describe("DonationModal", () => {
     });
   });
 
+  it("sends the entered email as the wallet receipt address", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ clientSecret: "pi_test_secret" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+    stripeStub.stripe.confirmCardPayment.mockResolvedValue({
+      error: { message: "stop" },
+    });
+    const complete = vi.fn();
+
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await fillReceiptEmail();
+    await waitFor(() => {
+      expect(stripeStub.handlers.paymentmethod).toEqual(expect.any(Function));
+    });
+
+    await stripeStub.handlers.paymentmethod?.({
+      paymentMethod: { id: "pm_test" },
+      payerEmail: "wallet@example.com",
+      complete,
+    });
+
+    expect(mockFetch).toHaveBeenCalledWith("/api/stripe/payment-intent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: 100, email: donorEmail }),
+    });
+    expect(complete).toHaveBeenCalledWith("fail");
+  });
+
+  it("uses the wallet payer email when the receipt field is empty", async () => {
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: false,
+      json: async () => ({ error: "Invalid email" }),
+    });
+    vi.stubGlobal("fetch", mockFetch);
+    const complete = vi.fn();
+
+    renderWithI18n(<DonationModal isOpen={true} onClose={onClose} />);
+    await user.click(screen.getByRole("button", { name: "ONE-TIME" }));
+    await waitFor(() => {
+      expect(stripeStub.handlers.paymentmethod).toEqual(expect.any(Function));
+    });
+
+    await stripeStub.handlers.paymentmethod?.({
+      paymentMethod: { id: "pm_test" },
+      payerEmail: "wallet@example.com",
+      complete,
+    });
+
+    expect(mockFetch).toHaveBeenCalledWith(
+      "/api/stripe/payment-intent",
+      expect.objectContaining({
+        body: JSON.stringify({ amount: 100, email: "wallet@example.com" }),
+      })
+    );
+  });
+
   it.each(LOCALES.map((locale) => locale.code))(
     "renders EUR amounts in the %s modal",
     async (locale: Locale) => {
@@ -298,6 +438,7 @@ describe("DonationModal", () => {
       ).toBeInTheDocument();
       expect(screen.getByTestId("currency-affix")).toHaveTextContent("€");
       expect(screen.queryByText("$")).not.toBeInTheDocument();
+      expect(screen.getByLabelText(dict.donation.emailLabel)).toBeRequired();
 
       await user.click(screen.getByRole("button", { name: dict.donation.oneTime }));
       for (const amount of ONETIME_PRESET_AMOUNTS) {

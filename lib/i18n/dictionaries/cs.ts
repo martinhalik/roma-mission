@@ -1354,6 +1354,8 @@ const cs: Dictionary = {
     monthly: "MĚSÍČNĚ",
     oneTime: "JEDNORÁZOVĚ",
     customPlaceholder: "Vlastní částka",
+    emailLabel: "E-mail pro potvrzení",
+    emailInvalid: "Zadejte platnou e-mailovou adresu.",
     impactHigh: "Pokryje týdenní farní materiály a programy.",
     impactMid: "Financuje celý rok katecheze pro jedno dítě.",
     impactLow: "Zajistí výukové materiály na měsíc.",

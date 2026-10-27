@@ -17,6 +17,7 @@ import {
   MONTHLY_PRESET_AMOUNTS,
   ONETIME_PRESET_AMOUNTS,
   PAYMENT_REQUEST_COUNTRY,
+  normalizeDonorEmail,
 } from "@/lib/donations";
 import { currencyAffix, formatCurrency } from "@/lib/i18n/format";
 
@@ -60,12 +61,20 @@ function CopyField({ label, value }: { label: string; value: string }) {
   );
 }
 
-function PaymentRequestButton({ amount }: { amount: number }) {
+function PaymentRequestButton({
+  amount,
+  email,
+}: {
+  amount: number;
+  email: string;
+}) {
   const { t } = useTranslation();
   const stripe = useStripe();
   const [paymentRequest, setPaymentRequest] = useState<PaymentRequest | null>(null);
   const amountRef = useRef(amount);
   amountRef.current = amount;
+  const emailRef = useRef(email);
+  emailRef.current = email;
   const requestRef = useRef<PaymentRequest | null>(null);
   const paymentLabel = t("donation.paymentLabel");
 
@@ -98,12 +107,23 @@ function PaymentRequestButton({ amount }: { amount: number }) {
     });
 
     pr.on("paymentmethod", async (ev) => {
+      const receiptEmail =
+        normalizeDonorEmail(emailRef.current) ??
+        normalizeDonorEmail(ev.payerEmail);
+      if (!receiptEmail) {
+        ev.complete("fail");
+        return;
+      }
       try {
         const res = await fetch("/api/stripe/payment-intent", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ amount: amountRef.current }),
+          body: JSON.stringify({ amount: amountRef.current, email: receiptEmail }),
         });
+        if (!res.ok) {
+          ev.complete("fail");
+          return;
+        }
         const { clientSecret } = await res.json();
         const { error, paymentIntent } = await stripe.confirmCardPayment(
           clientSecret,
@@ -166,6 +186,9 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
   const [bankOpen, setBankOpen] = useState(false);
   const [bankTab, setBankTab] = useState<"us" | "intl">("us");
 
@@ -206,18 +229,31 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
     setStep("select");
     setClientSecret(null);
     setError(null);
+    setEmailError(null);
     setLoading(false);
     onClose();
   };
 
   const fetchClientSecret = useCallback(async () => {
+    const donorEmail = normalizeDonorEmail(email);
+    if (!donorEmail) {
+      setEmailError(t("donation.emailInvalid"));
+      emailInputRef.current?.focus();
+      return;
+    }
     setLoading(true);
     setError(null);
+    setEmailError(null);
     try {
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: finalAmount, isMonthly }),
+        body: JSON.stringify({
+          amount: finalAmount,
+          isMonthly,
+          email: donorEmail,
+          locale,
+        }),
       });
       if (!res.ok) throw new Error("Failed to initiate checkout");
       const data = await res.json();
@@ -228,7 +264,7 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
     } finally {
       setLoading(false);
     }
-  }, [finalAmount, isMonthly, t]);
+  }, [finalAmount, isMonthly, t, email, locale]);
 
   if (!isOpen) return null;
 
@@ -370,12 +406,48 @@ export default function DonationModal({ isOpen, onClose }: DonationModalProps) {
               </p>
             )}
 
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="donation-email"
+                className="text-[10px] font-semibold tracking-[1px] text-[var(--text-muted)] uppercase"
+              >
+                {t("donation.emailLabel")}
+              </label>
+              <input
+                ref={emailInputRef}
+                id="donation-email"
+                name="email"
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                required
+                aria-required="true"
+                aria-invalid={emailError ? true : undefined}
+                aria-describedby={emailError ? "donation-email-error" : undefined}
+                value={email}
+                onChange={(event) => {
+                  setEmail(event.target.value);
+                  if (emailError) setEmailError(null);
+                }}
+                className={`w-full bg-transparent border px-4 py-3 text-[13px] text-[var(--text-primary)] outline-none transition-colors ${
+                  emailError
+                    ? "border-red-400"
+                    : "border-[var(--border-default)] focus:border-[var(--gold)]"
+                }`}
+              />
+              {emailError && (
+                <p id="donation-email-error" role="alert" className="text-[12px] text-red-400">
+                  {emailError}
+                </p>
+              )}
+            </div>
+
             {error && (
               <p className="text-[12px] text-red-400">{error}</p>
             )}
 
             {!isMonthly && finalAmount >= 1 && (
-              <PaymentRequestButton amount={finalAmount} />
+              <PaymentRequestButton amount={finalAmount} email={email} />
             )}
 
             <button
