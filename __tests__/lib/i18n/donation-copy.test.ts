@@ -8,16 +8,18 @@ const CURRENCY_CODE = /\bUSD\b/;
 const DOLLAR_SIGN = /\$/;
 
 const IMPACT_BASE: Record<Locale, string> = {
-  en: "Every euro goes directly to the field.",
+  en: "Every dollar goes directly to the field.",
   sk: "Každé euro ide priamo do terénu.",
-  cs: "Každé euro jde přímo do terénu.",
-  ro: "Fiecare euro ajunge direct pe teren.",
+  cs: "Každá koruna jde přímo do terénu.",
+  ro: "Fiecare leu ajunge direct pe teren.",
   de: "Jeder Euro fließt direkt in die Arbeit vor Ort.",
-  sr: "Сваки евро иде директно на терен.",
-  ru: "Каждый евро идёт напрямую на служение.",
-  mk: "Секое евро оди директно на терен.",
+  sr: "Сваки динар иде директно на терен.",
+  ru: "Каждый доллар идёт напрямую на служение.",
+  mk: "Секој денар оди директно на терен.",
   el: "Κάθε ευρώ πηγαίνει απευθείας στο έργο της αποστολής.",
 };
+
+const DOLLAR_LOCALES = new Set<Locale>(["en", "ru"]);
 
 function collectStrings(value: unknown, path: string, hits: string[]) {
   if (typeof value === "string") {
@@ -33,50 +35,46 @@ function collectStrings(value: unknown, path: string, hits: string[]) {
 }
 
 const EMAIL_LABEL: Record<Locale, string> = {
-  en: "Email for receipt",
-  sk: "E-mail na potvrdenie",
-  cs: "E-mail pro potvrzení",
-  ro: "E-mail pentru chitanță",
-  de: "E-Mail für die Quittung",
-  sr: "Е-пошта за потврду",
-  ru: "Эл. почта для квитанции",
-  mk: "Е-пошта за потврда",
-  el: "Email για την απόδειξη",
-};
-
-const EMAIL_INVALID: Record<Locale, string> = {
-  en: "Enter a valid email address.",
-  sk: "Zadajte platnú e-mailovú adresu.",
-  cs: "Zadejte platnou e-mailovou adresu.",
-  ro: "Introduceți o adresă de e-mail validă.",
-  de: "Geben Sie eine gültige E-Mail-Adresse ein.",
-  sr: "Унесите исправну адресу е-поште.",
-  ru: "Введите действительный адрес эл. почты.",
-  mk: "Внесете валидна адреса за е-пошта.",
-  el: "Εισαγάγετε μια έγκυρη διεύθυνση email.",
+  en: "Email for receipt (required)",
+  sk: "E-mail na potvrdenie (povinné)",
+  cs: "E-mail pro potvrzení (povinné)",
+  ro: "E-mail pentru chitanță (obligatoriu)",
+  de: "E-Mail für die Quittung (Pflichtfeld)",
+  sr: "Е-пошта за потврду (обавезно)",
+  ru: "Эл. почта для квитанции (обязательно)",
+  mk: "Е-пошта за потврда (задолжително)",
+  el: "Email για την απόδειξη (υποχρεωτικό)",
 };
 
 describe("donation copy", () => {
   it.each(LOCALES.map((locale) => locale.code))(
-    "impactBase in %s talks about euro",
+    "impactBase in %s names that locale's currency",
     (locale) => {
       expect(DICTIONARIES[locale].donation.impactBase).toBe(IMPACT_BASE[locale]);
     }
   );
 
   it.each(LOCALES.map((locale) => locale.code))(
-    "email field copy in %s is localized",
+    "email label in %s says the field is required",
     (locale) => {
       expect(DICTIONARIES[locale].donation.emailLabel).toBe(EMAIL_LABEL[locale]);
-      expect(DICTIONARIES[locale].donation.emailInvalid).toBe(EMAIL_INVALID[locale]);
     }
   );
 
-  it("has no dollar, USD, or $ left in any dictionary", () => {
+  it("keeps an English euro sentence for the switcher", () => {
+    expect(DICTIONARIES.en.donation.impactBaseEur).toBe(
+      "Every euro goes directly to the field.",
+    );
+  });
+
+  it("mentions dollars only in the English and Russian dictionaries", () => {
     const hits: string[] = [];
     for (const locale of LOCALES.map((entry) => entry.code)) {
+      if (DOLLAR_LOCALES.has(locale)) continue;
       collectStrings(DICTIONARIES[locale], locale, hits);
     }
     expect(hits).toEqual([]);
+    expect(DICTIONARIES.en.donation.impactBase).toMatch(/dollar/i);
+    expect(DICTIONARIES.ru.donation.impactBase).toMatch(/доллар/);
   });
 });

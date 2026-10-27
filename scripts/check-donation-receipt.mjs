@@ -20,27 +20,33 @@ const pages = [
     path: "/en/get-involved",
     open: "GIVE NOW",
     title: "Give to Roma Mission",
-    emailLabel: "Email for receipt",
+    emailLabel: "Email for receipt (required)",
     invalid: "Enter a valid email address.",
-    give: "GIVE €100/MO",
+    give: "GIVE $100/MO",
+    amount: 100,
+    currency: "usd",
   },
   {
     locale: "de",
     path: "/de/mitmachen",
     open: "JETZT SPENDEN",
     title: "An Roma Mission spenden",
-    emailLabel: "E-Mail für die Quittung",
+    emailLabel: "E-Mail für die Quittung (Pflichtfeld)",
     invalid: "Geben Sie eine gültige E-Mail-Adresse ein.",
     give: "SPENDEN 100 €/MO",
+    amount: 100,
+    currency: "eur",
   },
   {
     locale: "sr",
     path: "/sr/prikljuci-se",
     open: "ДАЈТЕ САДА",
     title: "Дарујте Роминској мисији",
-    emailLabel: "Е-пошта за потврду",
+    emailLabel: "Е-пошта за потврду (обавезно)",
     invalid: "Унесите исправну адресу е-поште.",
-    give: "ДАРУЈТЕ 100 €/МЕС",
+    give: "ДАРУЈТЕ 12.000 дин./МЕС",
+    amount: 12000,
+    currency: "rsd",
   },
 ];
 
@@ -91,6 +97,7 @@ async function checkPage(page, entry, width) {
     assert((await email.getAttribute("type")) === "email", `${entry.locale} type`);
     assert((await email.getAttribute("required")) !== null, `${entry.locale} required`);
     assert((await email.getAttribute("autocomplete")) === "email", `${entry.locale} autocomplete`);
+    assert((await email.getAttribute("inputmode")) === "email", `${entry.locale} inputmode`);
 
     await page.getByRole("button", { name: entry.give, exact: true }).click();
     await page.getByRole("alert").filter({ hasText: entry.invalid }).waitFor();
@@ -112,8 +119,10 @@ async function checkPage(page, entry, width) {
     assert(posts[0].email === donorEmail, `${entry.locale} email ${JSON.stringify(posts[0])}`);
     assert(posts[0].locale === entry.locale, `${entry.locale} site locale ${JSON.stringify(posts[0])}`);
     assert(
-      posts[0].amount === 100 && posts[0].isMonthly === true,
-      `${entry.locale} amount changed ${JSON.stringify(posts[0])}`
+      posts[0].amount === entry.amount &&
+        posts[0].currency === entry.currency &&
+        posts[0].isMonthly === true,
+      `${entry.locale} amount or currency changed ${JSON.stringify(posts[0])}`
     );
 
     await page.keyboard.press("Escape");
