@@ -12,10 +12,11 @@ const base = process.env.BASE_URL ?? "http://127.0.0.1:3000";
 const widths = [390, 1440];
 const donorEmail = "donor@example.com";
 
+// `locale` is what the browser posts. Vitest asserts the API maps that to
+// Checkout's locale (sr and mk become "auto"; the others pass through).
 const pages = [
   {
     locale: "en",
-    stripeLocale: "en",
     path: "/en/get-involved",
     open: "GIVE NOW",
     title: "Give to Roma Mission",
@@ -25,7 +26,6 @@ const pages = [
   },
   {
     locale: "de",
-    stripeLocale: "de",
     path: "/de/mitmachen",
     open: "JETZT SPENDEN",
     title: "An Roma Mission spenden",
@@ -35,7 +35,6 @@ const pages = [
   },
   {
     locale: "sr",
-    stripeLocale: "auto",
     path: "/sr/prikljuci-se",
     open: "ДАЈТЕ САДА",
     title: "Дарујте Роминској мисији",
@@ -136,15 +135,8 @@ for (const engine of engines) {
       const label = `${engine.name} ${width} ${entry.locale}`;
       try {
         await checkPage(page, entry, width);
-        results.push({ label, ok: true, stripeLocale: entry.stripeLocale });
-        console.log(
-          "ok",
-          label,
-          "posted",
-          entry.locale,
-          "stripe checkout locale",
-          entry.stripeLocale
-        );
+        results.push({ label, ok: true, postedLocale: entry.locale });
+        console.log("ok", label, "posted locale", entry.locale);
       } catch (error) {
         failed += 1;
         results.push({ label, ok: false, error: String(error) });
